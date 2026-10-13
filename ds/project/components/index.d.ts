@@ -3,8 +3,26 @@ import type * as React from 'react';
 /** Names in the Qualys utility icon set. download and the arrows come from the Figma Buttons sheet; chevrons, check and search from the Inputs sheet; event-* from the Tagging System (24px, coloured by EventType); time and general-* from the Cards page (general-* are 56 x 43: size sets the height). */
 export type IconName = 'download' | 'arrow-right' | 'arrow-left' | 'outlink' | 'search' | 'check' | 'filter' | 'menu' | 'time' | 'general-events' | 'general-webinar' | 'general-resource' | 'social-linkedin' | 'social-x' | 'social-facebook' | 'social-instagram' | 'social-vimeo' | 'social-youtube' | 'social-url' | 'event-qualys' | 'event-webinar' | 'event-industry' | 'event-speaking' | 'event-training' | 'chevron-right' | 'chevron-left' | 'chevron-up' | 'chevron-down' | 'plus' | 'cross' | 'view-list' | 'view-month' | 'view-grid' | 'alert-triangle' | 'alert-circle' | 'check-circle' | 'x-circle' | 'file' | 'party' | 'cookie';
 
-export interface IconProps { name: IconName; /** px, default 16 */ size?: number; /** accessible name; omit for decorative icons */ title?: string; className?: string }
-export declare function Icon(props: IconProps): React.ReactElement | null;
+/** A Hugeicons drawing as exported by @hugeicons/core-free-icons, e.g. `import { Alert01Icon } from '@hugeicons/core-free-icons'`. */
+export type HugeiconData = ReadonlyArray<readonly [string, Record<string, string | number>]>;
+/** Preset icon sizes: xs 12px (1px stroke), sm 16px (1.25px), md 20px (1.5px), lg 24px (1.5px), xl 32px (2px). */
+export type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export interface IconProps {
+  /** a Qualys utility icon, or a bundled Hugeicon as "hi:<name>" (e.g. "hi:alert-01", "hi:arrow-right-01"); see Icon.hugeicons */
+  name?: IconName | `hi:${string}`;
+  /** any Hugeicons free icon, passed as its data (instead of `name`) */
+  icon?: HugeiconData;
+  /** a preset (xs–xl, recommended: sets the stroke weight too) or px; default 16 */
+  size?: IconSize | number;
+  /** approved colours: black (icon-default), blue (icon-feature), white (icon-inverted); default: the surrounding text colour */
+  tone?: 'black' | 'blue' | 'white';
+  /** stroke icons: override the preset's stroke weight (px) */
+  strokeWidth?: number;
+  /** accessible name; omit for decorative icons */
+  title?: string;
+  className?: string;
+}
+export declare const Icon: ((props: IconProps) => React.ReactElement | null) & { /** the bundled Hugeicons sets: [set name, names] */ hugeicons: Array<[string, string[]]> };
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** Figma: Primary, Primary inverted, Secondary, Secondary alt, Secondary inverted */
@@ -687,6 +705,8 @@ export interface NavMegaMenu {
   allLabel?: string;
   /** eyebrow over the groups, e.g. "Platform Apps" */
   groupsLabel?: string;
+  /** columns of groups: 3 (default) or 2 */
+  groupColumns?: 2 | 3;
   groups: NavGroup[];
 }
 export interface NavColumnsMenu { columns: Array<{ title?: string; links: Array<string | NavLink> }> }
@@ -711,9 +731,11 @@ export interface NavProps {
   /** label of the current item; or set `current` on the item */
   current?: string;
   /** links on the right: "Community", "Login", "Contact Us" */
-  utility?: Array<string | NavLink>;
+  /** utility links; `collapse: true` hides one when the desktop bar is narrow (below 1366px), e.g. Community and Contact Us */
+  utility?: Array<string | (NavLink & { collapse?: boolean })>;
   /** true shows the search icon (and the search field in the mobile menu) */
-  search?: boolean | { href?: string; label?: string; placeholder?: string; onClick?: () => void; onSearch?: (query: string) => void };
+  /** without href or onClick, the icon opens a search panel under the bar: a contained SearchBar (focused) and optional suggested searches */
+  search?: boolean | { href?: string; label?: string; placeholder?: string; onClick?: () => void; onSearch?: (query: string) => void; suggestions?: Array<string | NavLink>; suggestionsLabel?: string };
   /** the one call to action: a small primary Button, full width in the mobile menu */
   cta?: { label: string; href?: string; onClick?: () => void };
   /** custom right-hand buttons instead of `cta` */
@@ -725,7 +747,8 @@ export interface NavProps {
   /** 'auto' (default) switches at 1200px; 'desktop' or 'mobile' forces one layout */
   layout?: 'auto' | 'desktop' | 'mobile';
   /** index of the item whose menu starts open */
-  defaultOpen?: number;
+  /** which menu starts open: an item's index, or 'search' for the search panel */
+  defaultOpen?: number | 'search';
   /** documentation: show the mobile menu in the page flow, optionally at a level ([item] or [item, 'all' | group]) */
   inlinePanel?: boolean;
   defaultPath?: Array<number | 'all'>;
@@ -1022,7 +1045,7 @@ export interface TestimonialCarouselProps {
 export declare function TestimonialCarousel(props: TestimonialCarouselProps): React.ReactElement;
 
 export interface LogoCard { title?: React.ReactNode; body?: React.ReactNode; /** image address or your own node */ badge?: string | React.ReactNode; badgeAlt?: string; link?: { label?: React.ReactNode; href: string; onClick?: (event: React.MouseEvent) => void }; closable?: boolean }
-export interface LogoItem { src: string; alt?: string; href?: string; /** opens a logo HoverCard from the logo */ card?: LogoCard }
+export interface LogoItem { src: string; alt?: string; href?: string; /** opens a logo HoverCard from the logo */ card?: LogoCard; /** optical nudge for visual weight: about 0.85–0.95 for dense, dark or heavy logos, 1.05–1.15 for thin, light ones; default 1 */ scale?: number }
 export interface LogoCarouselProps {
   title?: React.ReactNode;
   titleLevel?: number;
@@ -1033,6 +1056,12 @@ export interface LogoCarouselProps {
   paused?: boolean;
   pauseLabel?: string;
   playLabel?: string;
+  /** on phones: 'stack' (default) shows up to `mobileMax` logos in two still columns; 'carousel' keeps the moving row */
+  mobile?: 'stack' | 'carousel';
+  /** stack only: how many logos to show on phones; default 8 */
+  mobileMax?: number;
+  /** false fits every logo to its tile instead of balancing their visual size; default true */
+  optical?: boolean;
   id?: string;
   className?: string;
 }
@@ -1041,7 +1070,18 @@ export declare function LogoCarousel(props: LogoCarouselProps): React.ReactEleme
 export interface LogoHierarchyProps {
   title?: React.ReactNode;
   titleLevel?: number;
-  tiers: Array<{ label?: React.ReactNode; logos: Array<LogoItem | string> }>;
+  tiers: Array<{
+    label?: React.ReactNode;
+    logos: Array<LogoItem | string>;
+    /** 'signature' draws the logos larger (320 × 84 cells); default: the first tier when it has one or two logos */
+    level?: 'signature' | 'standard';
+    /** on phones: one or two columns; 'auto' (default) uses one column up to four logos and two from five */
+    mobileColumns?: 1 | 2 | 'auto';
+  }>;
+  /** the default mobileColumns for every tier */
+  mobileColumns?: 1 | 2 | 'auto';
+  /** false fits every logo to its cell instead of balancing their visual size; default true */
+  optical?: boolean;
   id?: string;
   className?: string;
 }

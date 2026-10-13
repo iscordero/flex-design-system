@@ -909,7 +909,7 @@
     views.forEach(function (v) { v.hidden = v !== view; });
     /* Size the stages now, so a jump to a card lands in the right place. */
     Array.prototype.forEach.call(view.querySelectorAll('.ds-stage[data-c]'), function (el) { var st = stages[el.getAttribute('data-c')]; if (st) fit(st); });
-    if (viewId === 'assets') fillAssets();
+    if (view.querySelector('img[data-blob]')) fillAssets();
     Array.prototype.forEach.call(rail.querySelectorAll('a[href^="#"]'), function (a) {
       var t = a.getAttribute('href').slice(1);
       if (t === token || (t === viewId && !rail.querySelector('a[href="#' + token + '"]'))) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');

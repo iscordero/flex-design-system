@@ -224,7 +224,7 @@ views.append(('overview', '''<div class="ds-stage" data-c="Cover"></div>
 <ul class="ds-facts"><li><b>%d</b> components, patterns and page modules in <b>%d</b> families</li><li><b>%d</b> guides</li><li><b>%d</b> colour tokens</li><li>Updated <b>%s</b></li></ul></header>
 <article class="ds-prose">%s</article>''' % (lede, ncomp, len(fam['families']), len(guides), len(tok['color']['tokens']), SNAP, rest)))
 
-for gid, title, body, toc in guides:
+for gi, (gid, title, body, toc) in enumerate(guides):
     links = []
 
     def walk(items):
@@ -235,7 +235,7 @@ for gid, title, body, toc in guides:
     walk(toc)
     views.append((gid, '''<header class="ds-head"><p class="ds-eyebrow">Guideline %s of %d</p><h1>%s</h1></header>
 <ul class="ds-toc" aria-label="In this guide">%s</ul>
-<article class="ds-prose">%s</article>''' % (gid.split('-')[1], len(guides), esc(title), ''.join(links), body)))
+<article class="ds-prose">%s</article><!--EXTRA:%s-->''' % (gi + 1, len(guides), esc(title), ''.join(links), body, gid)))
 
 # tokens
 COLOR_GROUPS = [
@@ -407,6 +407,34 @@ def family_view(fid, fname, members, eyebrow):
 # Foundations: Typography and Grid each have their own page, next to the tokens and assets.
 for fname in ('Typography', 'Grid'):
     family_view(slug(fname), fname, [fname], 'Foundations')
+# The Icon card and the asset files sit at the end of their guidelines: icons and logos together, images under Media.
+family_view('icons', 'Icons', ['Icon'], 'Guidelines')
+_icon_view = views.pop()
+ICON_CARD = re.search(r'<div class="ds-family">.*</div>$', _icon_view[1], re.S).group(0)
+
+
+def asset_html(keys):
+    out = []
+    for key in keys:
+        g = idx['assetGroups'][key]
+        big = g.get('tile') == 'l'
+        out.append('<section class="ds-group"><h2>%s</h2><ul class="ds-assets %s">' % (esc(g['name']), 'is-l' if big else 'is-s'))
+        for n in g['order']:
+            f = g['files'][n]
+            dark = 'reversed' in n
+            out.append('<li><span class="ds-tile%s"><img data-blob="%s" alt="%s"></span><span class="ds-name">%s</span></li>' % (' is-dark' if dark else '', f['blob'], esc(n.rsplit('.', 1)[0].replace('-', ' ')), esc(n)))
+        out.append('</ul></section>')
+    return ''.join(out)
+
+
+EXTRAS = {}
+for gp in idx['docs']['sections']:
+    gid = re.search(r'guide-(\d+)', gp).group(0)
+    if 'icons-logos' in gp:
+        EXTRAS[gid] = ('<section class="ds-group" id="icons"><h2>The Icon component</h2>%s</section>' % ICON_CARD) + asset_html([k for k in idx['groups'] if k != 'Images'])
+    elif 'media' in gp:
+        EXTRAS[gid] = asset_html(['Images'])
+views[:] = [(v, re.sub(r'<!--EXTRA:(guide-\d+)-->', lambda m: EXTRAS.get(m.group(1), ''), h)) for v, h in views]
 ncount = sum(len(m) for _, fams in SECTIONS for _, m in fams)
 index = ['<header class="ds-head"><p class="ds-eyebrow">Library</p><h1>All</h1><p class="ds-lede">%d parts in two groups. <b>Components</b> are the pieces a page uses, from a single button or field to a whole form or filter bar. <b>Page modules</b> are the full-width sections a page is built from (a hero, a footer). Each card says whether it is a component or a pattern made of several.</p></header>' % ncount]
 nav_secs = []
@@ -422,23 +450,12 @@ for sname, fams in SECTIONS:
     nav_secs.append((sname, nav_fams))
 views.append(('components', ''.join(index)))
 
-# assets
-ah = ['<header class="ds-head"><p class="ds-eyebrow">Assets</p><h1>Assets</h1><p class="ds-lede">The logo, icon and image files the components use. Customer and sponsor logos are not part of this set; the logo modules show placeholders.</p></header>']
-for key in idx['groups']:
-    g = idx['assetGroups'][key]
-    big = g.get('tile') == 'l'
-    ah.append('<section class="ds-group"><h2>%s</h2><ul class="ds-assets %s">' % (esc(g['name']), 'is-l' if big else 'is-s'))
-    for n in g['order']:
-        f = g['files'][n]
-        dark = 'reversed' in n
-        ah.append('<li><span class="ds-tile%s"><img data-blob="%s" alt="%s"></span><span class="ds-name">%s</span></li>' % (' is-dark' if dark else '', f['blob'], esc(n.rsplit('.', 1)[0].replace('-', ' ')), esc(n)))
-    ah.append('</ul></section>')
-views.append(('assets', ''.join(ah)))
+
 
 # ---------- rail ----------
 nav = ['<div><h2>Start</h2><ul><li><a href="#overview">Overview</a></li></ul></div>',
        '<div><h2>Guidelines</h2><ul>%s</ul></div>' % ''.join('<li><a href="#%s">%s</a></li>' % (gid, esc(t)) for gid, t, _, _ in guides),
-       '<div><h2>Foundations</h2><ul><li><a href="#tokens">Design tokens</a></li><li><a href="#typography">Typography</a></li><li><a href="#grid">Grid</a></li><li><a href="#assets">Assets</a></li></ul></div>']
+       '<div><h2>Foundations</h2><ul><li><a href="#tokens">Design tokens</a></li><li><a href="#typography">Typography</a></li><li><a href="#grid">Grid</a></li></ul></div>']
 for k, (sname, nav_fams) in enumerate(nav_secs):
     part = ['<div class="ds-navsec"><h2>%s</h2>' % esc(sname)]
     if k == 0:

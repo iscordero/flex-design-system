@@ -19,6 +19,8 @@ Badges and text tags from the Figma Tagging System: a badge signals status (rece
 - **Label tag** (`variant="label"`): `label` at Regular weight, 16px IBM Plex Sans in `text-primary`. A plain descriptor beside a value or an icon.
 - **Eyebrow tag** (`variant="eyebrow"`): `eyebrow-xs`, 12px SemiBold capitals with +5% letter spacing in `text-primary`. A small overline on a card or tile. Both take `href` to become links.
 - **Contrast (as designed, flagged):** yellow (1.7:1), orange (2.8:1), green (3.3:1) and blue (3.8:1) badges fall below 4.5:1 for 12–14px text, in every variant; the red light fill is 3.8:1. Purple, dark red, red fill, gray and slate pass. The blue text tag is 3.8:1 at 18px Medium.
+- **Wording: tags label, they never ask.** A tag names a status, a category or a fact: "New", "Beta", "100+ Connectors", "Critical". No action words or calls to action ("Discover", "Learn", "Try", "Get", "See", "Register", "Download", "Join"). If the reader should do something, use a TextLink or Button beside the tag instead. One to three words, no full stops.
+- **Which size:** `rg` on cards and in content; `sm` in tables, filters, the nav menus and next to 14–16px text. `sm` is the smallest; don't scale a badge down further.
 - The doc's table calls badges "pill-shaped", but every badge component uses `radius-sm`; this follows the components.
 
 **Vulnerability metadata** (from the Chips & Badges Showcase). Each set uses badges (`rg`, uppercase); the tone carries the same meaning everywhere, and the word is always shown.

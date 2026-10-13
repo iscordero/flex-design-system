@@ -84,5 +84,6 @@ The detailed rules follow this overview, one section each. Read the section for 
 - **Typography** (`guide-3-typography.md`): families, the type scale and weights.
 - **Layout, Spacing and Radius** (`guide-4-layout.md`): breakpoints, margins, columns, spacing, radius and elevation.
 - **States and Motion** (`guide-5-states-motion.md`): hover, focus, disabled and timing.
-- **Imagery, Iconography and Logo** (`guide-6-imagery-icons-logo.md`): photography, icon sets and logo use.
+- **Icons and Logos** (`guide-6-icons-logos.md`): the icon sets, sizes and colours, the Icon component and its library, the Qualys logo and other companies' logos, with the icon and logo files.
+- **Media** (`guide-9-media.md`): photography, video, product images and people photos, with the image files.
 - **Buttons and Links** (`guide-8-buttons-links.md`): button tiers and their labels, do's and don'ts, mobile sizing, inline hyperlinks and text link buttons.

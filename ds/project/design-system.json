@@ -545,7 +545,8 @@
       "project/guide-3-typography.md",
       "project/guide-4-layout.md",
       "project/guide-5-states-motion.md",
-      "project/guide-6-imagery-icons-logo.md",
+      "project/guide-6-icons-logos.md",
+      "project/guide-9-media.md",
       "project/guide-8-buttons-links.md"
     ]
   },
@@ -559,9 +560,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-08T22:22:27Z",
+    "at": "2026-10-13T20:46:15Z",
     "by": "Isabel",
-    "note": "One profile text hierarchy everywhere: name title-sm 16px, role paragraph-rg, company Medium",
+    "note": "Mega menu: capability rows use the group-heading style (Wix Madefor Text SemiBold 16px); the rail's ground runs to the bottom edge when the menu scrolls.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

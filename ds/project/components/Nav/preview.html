@@ -1,11 +1,11 @@
-<!-- @dsCard group="Page modules · Header and footer" height=4775 width=1440 subtitle="Block module · Global navigation: mega menu, a dropdown for every other item, Community bar, mobile menu." -->
+<!-- @dsCard group="Page modules · Header and footer" height=5148 width=1440 subtitle="Block module · Global navigation: mega menu, a dropdown for every other item, Community bar, mobile menu." -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>Nav — preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-200)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.stage{position:relative}.s1{height:830px}.s2{height:610px}.s3{height:96px}.s4{height:434px}.s5{height:478px}.s6{height:434px}.s7{height:478px}.phones{display:flex;gap:48px;padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone--tall{min-height:844px;overflow:hidden;background:var(--surface-neutral-100)}.phone .q-nav{position:static}</style>
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-200)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.stage{position:relative}.s1{height:755px}.s2{height:515px}.s3{height:96px}.s4{height:371px}.s5{height:407px}.s6{height:371px}.s7{height:407px}.s8{height:407px}.s9{height:302px}.phones{display:flex;gap:48px;padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone--tall{min-height:844px;overflow:hidden;background:var(--surface-neutral-100)}.phone .q-nav{position:static}</style>
 </head>
 <body>
 <div id="root"></div>
@@ -13,16 +13,16 @@
 var Q = window.Qualys, h = React.createElement;
 var LOGO = '/_blob/a0d4062abbce2ceb87d5be08d326359f', SHIELD = '/_blob/1317004b4eea94a3648caf5ff41b1862';
 var PLATFORM = {
-  overview: {title: 'Enterprise TruRisk Platform', description: 'Everything you need to measure, manage and reduce your cyber risk in one place', href: '#'},
+  overview: {title: 'Enterprise TruRisk Platform', description: 'Everything you need to measure, manage, and reduce your cyber risk in one place', href: '#'},
   railLabel: 'Capabilities', groupsLabel: 'Platform Apps',
   groups: [
-    {title: 'Risk Operations Center (ROC)', links: [{label: 'Enterprise TruRisk Management/ CTEM', badge: true}, {label: 'Agentic AI', badge: true}, 'ETM Identity']},
-    {title: 'Vulnerability & Configuration Management', links: [{label: 'TotalAppSec', badge: true}, 'TotalAI', 'Vulnerability Management, Detection & Response (VMDR)']},
+    {title: 'Risk Operations Center (ROC)', links: ['Enterprise TruRisk Management / CTEM', {label: 'Agentic AI', badge: true}, 'ETM Identity', {label: 'TruConfirm', badge: true}, 'Integrations']},
+    {title: 'Vulnerability & Configuration Management', links: ['TotalAppSec', 'TotalAI', 'Vulnerability Management, Detection & Response (VMDR)']},
     {title: 'Compliance', links: ['Policy Audit', 'File Integrity Monitoring (FIM)']},
-    {title: 'Asset Management', badge: true, links: ['Cybersecurity Asset Management (CSAM)', 'External Attack Surface Management (EASM)']},
-    {title: 'Risk Remediation', links: [{label: 'TruRisk Eliminate (TE)', badge: true}, 'Patch Management (PM)', 'Custom Assessment and Remediation (CAR)']},
+    {title: 'Asset Management', links: ['CyberSecurity Asset Management (CSAM)', 'External Attack Surface Management (EASM)']},
+    {title: 'Risk Remediation', links: ['TruRisk Eliminate (TE)']},
     {title: 'Threat Detection & Response', links: ['Multi-Vector EDR']},
-    {title: 'Cloud Security', links: ['TotalCloud (CNAPP)', 'Cloud Security Posture Management (CSPM)', 'Kubernetes and Container Security (KCS)', 'Cloud Workload Protection (CWP)', 'Cloud Infrastructure and Entitlement Management (CIEM)', 'Cloud Detection and Response (CDR)', 'SaaS Security Posture Management (SSPM)']}
+    {title: 'Cloud Security', links: ['TotalCloud (CNAPP)', 'Cloud Security Posture Management (CSPM)', 'Kubernetes and Container Security (KCS)', 'Cloud Workload Protection (CWP)', 'Infrastructure as Code (IaC) Security', 'Cloud Infrastructure and Entitlement Management (CIEM)', 'Cloud Detection and Response (CDR)', 'Cloud Workflow Automation (CWA)', 'SaaS Security Posture Management (SSPM)', 'Data Security Posture Management (DSPM)']}
   ]};
 /* The menus below use the column dropdown. Their links and addresses come from qualys.com (its sitemap and footer). */
 var W = 'https://www.qualys.com';
@@ -38,21 +38,25 @@ var RESOURCES = {columns: [
 var SUPPORT = {columns: [
   {title: 'Support', links: [L('Customer Support', 'https://success.qualys.com/customersupport'), L('Qualys FAQs', '/support/faq/general'), L('Login Troubleshooting', '/support/faq/login'), L('Service Level Agreement (SLA)', '/support/sla'), L('Release Notes', '/documentation/release-notes')]},
   {title: 'Training and Community', links: [L('Training', '/training/'), L('Community', 'https://community.qualys.com/'), L('Discussions', 'https://success.qualys.com/discussions/s'), L('Developers', 'https://community.qualys.com/api')]}]};
-/* Partners and Company share one item, "More". */
-var MORE = {columns: [
+/* Partners and Company each have their own item, as on qualys.com. */
+var PARTNERS = {columns: [
   {title: 'Partners', links: [L('Overview', '/partners'), L('MSSP Partners', '/partners/mssp'), L('VAS Resellers', '/partners/vas'), L('Consultants and Auditors', '/subscriptions/consultants'), L('PCI Partners', '/partners/pci'), L('Integration Partners', '/partners/integration')]},
+]};
+var COMPANY = {columns: [
   {title: 'Company', links: [L('About Us', '/company'), L('Management', '/company/management'), L('Investor Relations', 'https://investor.qualys.com/'), L('Careers', '/careers'), L('Awards', '/customers/awards'), L('Contact Us', '/company/contacts')]}]};
-var ITEMS = [{label: 'Platform', menu: PLATFORM}, {label: 'Solutions', menu: SOLUTIONS}, {label: 'Customers', menu: CUSTOMERS}, {label: 'Resources', menu: RESOURCES}, {label: 'Support', menu: SUPPORT}, {label: 'More', menu: MORE}];
+var ITEMS = [{label: 'Platform', menu: PLATFORM}, {label: 'Solutions', menu: SOLUTIONS}, {label: 'Customers', menu: CUSTOMERS}, {label: 'Resources', menu: RESOURCES}, {label: 'Support', menu: SUPPORT}, {label: 'Partners', menu: PARTNERS}, {label: 'Company', menu: COMPANY}];
 /* Links to qualys.com open in a new tab, so the preview stays put. */
 document.addEventListener('click', function (e) {
   var a = e.target.closest && e.target.closest('a[href^="http"]');
   if (a) { e.preventDefault(); window.open(a.href, '_blank', 'noopener'); }
 });
-var COMMON = {logoSrc: LOGO, items: ITEMS, utility: ['Community', 'Login', 'Contact Us'], search: true, cta: {label: 'Get Started', href: '#'}};
+var COMMON = {logoSrc: LOGO, items: ITEMS, utility: [{label: 'Community', collapse: true}, 'Login', {label: 'Contact Us', collapse: true}], search: {placeholder: 'Search qualys.com', suggestions: ['VMDR', 'TotalCloud', 'Patch Management', 'Policy Audit', 'CSAM', 'Agentic AI']}, cta: {label: 'Get Started', href: '#'}};
 function nav(extra) { return h(Q.Nav, Object.assign({}, COMMON, extra)); }
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
   h('div', {className: 'cap'}, 'Desktop \u00b7 mega menu open'),
   h('div', {className: 'stage s1'}, nav({layout: 'desktop', hover: false, defaultOpen: 0})),
+  h('div', {className: 'cap'}, 'Desktop \u00b7 search open: the panel drops under the bar and the field takes focus'),
+  h('div', {className: 'stage s9'}, nav({layout: 'desktop', hover: false, defaultOpen: 'search'})),
   h('div', {className: 'cap'}, 'Desktop \u00b7 Solutions'),
   h('div', {className: 'stage s2'}, nav({layout: 'desktop', hover: false, defaultOpen: 1})),
   h('div', {className: 'cap'}, 'Desktop \u00b7 Customers'),
@@ -61,8 +65,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
   h('div', {className: 'stage s5'}, nav({layout: 'desktop', hover: false, defaultOpen: 3})),
   h('div', {className: 'cap'}, 'Desktop \u00b7 Support'),
   h('div', {className: 'stage s6'}, nav({layout: 'desktop', hover: false, defaultOpen: 4})),
-  h('div', {className: 'cap'}, 'Desktop \u00b7 More: Partners and Company together'),
+  h('div', {className: 'cap'}, 'Desktop \u00b7 Partners'),
   h('div', {className: 'stage s7'}, nav({layout: 'desktop', hover: false, defaultOpen: 5})),
+  h('div', {className: 'cap'}, 'Desktop \u00b7 Company'),
+  h('div', {className: 'stage s8'}, nav({layout: 'desktop', hover: false, defaultOpen: 6})),
   h('div', {className: 'cap'}, 'Community'),
   h('div', {className: 'stage s3'}, h(Q.Nav, {layout: 'desktop', logoSrc: LOGO, label: 'COMMUNITY', align: 'center', current: 'Discussions', items: ['Discussions', 'Blog', 'Training', 'Docs', 'Support', 'Webinars', 'Trust'].map(function (l) { return {label: l, href: '#'}; })})),
   h('div', {className: 'cap'}, 'Mobile and tablet \u00b7 closed'),

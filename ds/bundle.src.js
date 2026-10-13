@@ -4,6 +4,10 @@
   var h = React.createElement;
   var ICONS = __ICONS__;
   var FIGMA_ICONS = __FIGMA_ICONS__;
+  /* Hugeicons (free, stroke rounded, MIT): the Arrows, Alert, AI, Bookmarks and Add and remove sets, named in kebab case (Alert01Icon -> "hi:alert-01"). */
+  var HUGEICONS = __HUGEICONS__;
+  /* Icon sizes: px and the stroke drawn at that size (stroke icons keep this weight however they scale). */
+  var ICON_SIZES = { xs: [12, 1], sm: [16, 1.25], md: [20, 1.5], lg: [24, 1.5], xl: [32, 2] };
 
   function cx() {
     var out = [];
@@ -23,13 +27,30 @@
   }
 
   /* Icon — the Qualys utility set, inline so it takes currentColor. */
+  function hugeEls(els, sw) {
+    /* A Hugeicons drawing: plain strings are 1.5 round-capped strokes; other entries are [tag, attributes]. */
+    return els.map(function (el, i) {
+      if (typeof el === 'string') el = ['path', { d: el, stroke: 'currentColor', strokeWidth: '1.5', strokeLinecap: 'round', strokeLinejoin: 'round' }];
+      var t = el[0], at = Object.assign({}, el[1], { key: i });
+      if (at.stroke && sw != null) { at.strokeWidth = sw; at.vectorEffect = 'non-scaling-stroke'; }
+      return h(t, at);
+    });
+  }
   function Icon(p) {
-    var size = p.size || 16;
+    var preset = typeof p.size === 'string' ? ICON_SIZES[p.size] : null;
+    var size = preset ? preset[0] : (p.size || 16);
+    var tone = p.tone === 'black' || p.tone === 'blue' || p.tone === 'white' ? p.tone : null;
     var common = {
-      className: cx('q-icon', p.className), width: size, height: size, fill: 'none', focusable: 'false',
+      className: cx('q-icon', tone && 'q-icon--' + tone, p.className), width: size, height: size, fill: 'none', focusable: 'false',
       role: p.title ? 'img' : undefined, 'aria-hidden': p.title ? undefined : 'true'
     };
     var title = p.title ? h('title', null, p.title) : null;
+    /* Hugeicons: by name ("hi:arrow-right-01") from the bundled sets, or any icon from @hugeicons/core-free-icons passed as `icon`. */
+    var huge = Array.isArray(p.icon) ? p.icon : (typeof p.name === 'string' && p.name.indexOf('hi:') === 0 ? HUGEICONS.icons[p.name.slice(3)] : null);
+    if (huge) {
+      var sw = p.strokeWidth != null ? p.strokeWidth : (preset ? preset[1] : null);
+      return h('svg', Object.assign({ viewBox: '0 0 24 24' }, common), title, hugeEls(huge, sw));
+    }
     var f = FIGMA_ICONS[p.name];
     if (f) {
       var box = f.vb.split(' ');
@@ -48,6 +69,8 @@
       h('g', { transform: g.rot ? 'rotate(' + g.rot + ' 12 12)' : undefined },
         h('path', { d: g.d, fill: 'currentColor', fillRule: 'nonzero', transform: 'translate(' + g.tx + ' ' + g.ty + ')' })));
   }
+  /* The bundled Hugeicons sets, for documentation: [[set name, [names]]]. */
+  Icon.hugeicons = HUGEICONS.groups;
   function iconNode(x, size) { return typeof x === 'string' ? h(Icon, { name: x, size: size }) : x; }
 
   /* SocialButton — a link to a social profile or website (Figma: Social): the 52px blue icon button, or a plain small glyph. */
@@ -58,7 +81,7 @@
     var props = omit(p, ['network', 'variant', 'size', 'label', 'icon', 'className', 'href', 'newTab']);
     props.className = cx('q-social', plain && 'q-social--plain', small && 'q-social--sm', p.className);
     props['aria-label'] = p.label || SOCIAL[network];
-    var icon = typeof p.icon === 'string' ? h('img', { src: p.icon, alt: '' }) : (p.icon || h(Icon, { name: 'social-' + network, size: plain ? 15 : (small ? 20 : 24) }));
+    var icon = typeof p.icon === 'string' ? h('img', { src: p.icon, alt: '' }) : (p.icon || h(Icon, { name: 'social-' + network, size: plain ? 16 : (small ? 20 : 24) }));
     if (!p.href) { props.type = 'button'; return h('button', props, icon); }
     props.href = p.href;
     if (p.newTab !== false) { props.target = '_blank'; props.rel = 'noopener'; }
@@ -100,7 +123,7 @@
     var rest = omit(p, ['arrow', 'className', 'children', 'disabled', 'tone']);
     if (p.disabled) { rest['aria-disabled'] = 'true'; rest.tabIndex = -1; rest.href = undefined; rest.onClick = undefined; }
     rest.className = cx('q-hyperlink', p.tone === 'inverted' && 'q-hyperlink--inverted', p.arrow && 'q-hyperlink--arrow', p.arrow === 'always' && 'q-hyperlink--arrow-always', p.disabled && 'is-disabled', p.className);
-    return h('a', rest, p.children, p.arrow ? h('span', { className: 'q-hyperlink__arrow' }, h(Icon, { name: 'arrow-right', size: 14 })) : null);
+    return h('a', rest, p.children, p.arrow ? h('span', { className: 'q-hyperlink__arrow' }, h(Icon, { name: 'arrow-right', size: 'sm' })) : null);
   }
 
   /* Breadcrumbs — where the page sits in the site: a link for each level above it, then the page itself as plain text. (Figma: Breadcrumbs) */
@@ -162,7 +185,7 @@
     if (p.removable) {
       return h('span', { className: cx('q-chip', 'q-chip--' + size, 'q-chip--removable', p.className) }, label, count,
         h('button', { type: 'button', className: 'q-chip__x', 'aria-label': (p.removeLabel || 'Remove') + ' ' + name, disabled: p.disabled, onClick: p.onRemove },
-          h(Icon, { name: 'cross', size: 14 })));
+          h(Icon, { name: 'cross', size: size === 'sm' ? 'xs' : 'sm' })));
     }
     var chip = h('button', {
       type: 'button', className: cx('q-chip', 'q-chip--' + size, active && 'is-active', p.className),
@@ -171,7 +194,7 @@
     if (!(active && p.onRemove)) return chip;
     return h('span', { className: cx('q-chip-wrap', 'q-chip-wrap--' + size) }, chip,
       h('button', { type: 'button', className: 'q-chip__remove', 'aria-label': 'Remove ' + name, onClick: p.onRemove },
-        h(Icon, { name: 'cross', size: size === 'sm' ? 14 : 16 })));
+        h(Icon, { name: 'cross', size: size === 'sm' ? 'xs' : 'sm' })));
   }
 
   /* Flag — notice anchored to a container edge: tiers (large) or a time label (small). */
@@ -478,12 +501,12 @@
         })),
         limited ? h('button', { type: 'button', className: 'q-fdrawer__more', 'aria-expanded': isOpen ? 'true' : 'false', 'aria-controls': hid + '-list', onClick: function () { var n = Object.assign({}, expanded); n[sc.id] = !isOpen; setExpanded(n); } },
           h('span', null, isOpen ? (p.lessLabel || 'Show less') : (opts.length - sc.limit) + ' more'),
-          h(Icon, { name: isOpen ? 'chevron-up' : 'chevron-down', size: 14 })) : null);
+          h(Icon, { name: isOpen ? 'chevron-up' : 'chevron-down', size: 'sm' })) : null);
     }
     var panel = h('div', { ref: ref, className: 'q-fdrawer__panel', role: inline ? 'group' : 'dialog', 'aria-modal': inline ? undefined : 'true', 'aria-label': p.title || 'Filters' },
       /* The close button sits on its own white bar, so the list scrolls away under it instead of behind it. */
       h('div', { className: 'q-fdrawer__top' },
-        h('button', { type: 'button', className: 'q-fdrawer__close', 'aria-label': p.closeLabel || 'Close', onClick: close }, h(Icon, { name: 'cross', size: 17 }))),
+        h('button', { type: 'button', className: 'q-fdrawer__close', 'aria-label': p.closeLabel || 'Close', onClick: close }, h(Icon, { name: 'cross', size: 'sm' }))),
       h('div', { className: 'q-fdrawer__body' }, sections.map(section)),
       h('div', { className: 'q-fdrawer__foot' },
         showReset ? h(TextLink, { tone: 'blue', disabled: !total, onClick: function () { setDraft(copy({})); if (p.onReset) p.onReset(); } }, p.resetLabel || 'Reset Filters') : null,
@@ -892,7 +915,7 @@
   function metaCat(text) { return text ? h('span', { className: 'q-card__cat' }, text) : null; }
   function metaText(text) { return text ? h('span', { className: 'q-card__fmt' }, text) : null; }
   function metaTime(text) {
-    return text ? h('span', { className: 'q-card__time' }, h(Icon, { name: 'time', size: 14 }), h('span', null, text)) : null;
+    return text ? h('span', { className: 'q-card__time' }, h(Icon, { name: 'time', size: 'sm' }), h('span', null, text)) : null;
   }
   function cardFoot(left, right) {
     return h('div', { className: 'q-card__foot' }, left || h('span'), right || null);
@@ -1114,14 +1137,20 @@
     return it.items && it.items.length ? { columns: [{ links: it.items }] } : null;
   }
   /* Every link inside a menu hovers the same way: it turns blue and this arrow slides in beside it. */
-  function navArrow() { return h('span', { className: 'q-mega__arrow', 'aria-hidden': 'true' }, h(Icon, { name: 'arrow-right', size: 18 })); }
+  function navArrow() { return h('span', { className: 'q-mega__arrow', 'aria-hidden': 'true' }, h(Icon, { name: 'arrow-right', size: 'sm' })); }
+  /* A menu link's text: the last word, the badge and the arrow are glued together, so when the label wraps the arrow follows the last word, not the box. */
+  function navText(label, badge, arrow) {
+    var b = navBadge(badge), a = arrow === false ? null : navArrow();
+    if (typeof label !== 'string') return [h(React.Fragment, { key: 'l' }, label), h('span', { key: 't', className: 'q-mega__tail' }, b, a)];
+    var k = label.lastIndexOf(' ');
+    return [k >= 0 ? label.slice(0, k + 1) : null, h('span', { key: 't', className: 'q-mega__tail' }, k >= 0 ? label.slice(k + 1) : label, b, a)];
+  }
   function navGroup(g, key) {
     return h('div', { key: key, className: 'q-mega__group' },
-      h(g.href ? 'a' : 'div', { className: 'q-mega__heading', href: g.href }, g.title, g.href ? navArrow() : null),
+      h(g.href ? 'a' : 'div', { className: 'q-mega__heading', href: g.href }, navText(g.title, null, !!g.href)),
       h('ul', { className: 'q-mega__links' }, (g.links || []).map(function (l, i) {
         l = navLinkObj(l);
-        return h('li', { key: i }, h('a', { className: 'q-mega__link', href: l.href || '#' },
-          h('span', null, l.label), navBadge(l.badge), navArrow()));
+        return h('li', { key: i }, h('a', { className: 'q-mega__link', href: l.href || '#' }, navText(l.label, l.badge)));
       })));
   }
   /* Mega menu: overview and a capability filter on a warm rail, the groups of links beside it. */
@@ -1138,7 +1167,7 @@
       h('div', { className: 'q-mega__rail' },
         ov ? h('div', { className: 'q-mega__overview' },
           h('div', { className: 'q-nav__eyebrow' }, ov.eyebrow || 'Overview'),
-          h(ov.href ? 'a' : 'div', { className: 'q-mega__title', href: ov.href }, ov.title, ov.href ? navArrow() : null),
+          h(ov.href ? 'a' : 'div', { className: 'q-mega__title', href: ov.href }, navText(ov.title, null, !!ov.href)),
           ov.description ? h('p', { className: 'q-mega__desc' }, ov.description) : null) : null,
         groups.length > 1 ? h('div', { className: 'q-mega__filter' },
           h('div', { className: 'q-nav__eyebrow', id: p.id + '-rail' }, m.railLabel || 'Capabilities'),
@@ -1148,7 +1177,22 @@
             })))) : null),
       h('div', { className: 'q-mega__main' },
         m.groupsLabel ? h('div', { className: 'q-nav__eyebrow q-nav__eyebrow--rule' }, m.groupsLabel) : null,
-        h('div', { className: cx('q-mega__groups', shown.length === 1 && 'is-single') }, shown.map(navGroup))));
+        /* Three columns of groups by default; groupColumns: 2 for a menu with fewer, longer groups */
+        h('div', { className: cx('q-mega__groups', m.groupColumns === 2 && 'q-mega__groups--c2', shown.length === 1 && 'is-single') }, shown.map(navGroup))));
+  }
+  /* Search panel: a contained SearchBar that takes focus, and optional suggested searches below it. */
+  function NavSearch(p) {
+    var s = p.search, ref = React.useRef(null);
+    React.useEffect(function () { var el = ref.current && ref.current.querySelector('input'); if (el) el.focus({ preventScroll: true }); }, []);
+    var sug = s.suggestions || [];
+    return h('div', { ref: ref, className: 'q-navsearch' },
+      h(SearchBar, { variant: 'contained', placeholder: s.placeholder || 'Search qualys.com', label: s.label || 'Search', onKeyDown: function (e) { if (e.key === 'Enter' && s.onSearch) s.onSearch(e.target.value); } }),
+      sug.length ? h('div', { className: 'q-navsearch__sug' },
+        h('div', { className: 'q-nav__eyebrow' }, s.suggestionsLabel || 'Popular searches'),
+        h('ul', null, sug.map(function (x, i) {
+          x = navLinkObj(x);
+          return h('li', { key: i }, h('a', { className: 'q-chip q-chip--rg q-navsearch__chip', href: x.href || '#' }, x.label));
+        }))) : null);
   }
   /* Column dropdown: one or more titled columns of links. */
   function navColumns(m) {
@@ -1157,7 +1201,7 @@
         c.title ? h('div', { className: 'q-nav__eyebrow q-nav__eyebrow--rule' }, c.title) : null,
         h('ul', { className: 'q-navdrop__links' }, (c.links || []).map(function (l, k) {
           l = navLinkObj(l);
-          return h('li', { key: k }, h('a', { className: 'q-navdrop__link', href: l.href || '#' }, h('span', null, l.label), navBadge(l.badge), navArrow()));
+          return h('li', { key: k }, h('a', { className: 'q-navdrop__link', href: l.href || '#' }, navText(l.label, l.badge)));
         })));
     }));
   }
@@ -1236,7 +1280,8 @@
       var m = navMenu(it), isOpen = open === i, pid = id + '-m' + i;
       if (!m) return h('li', { key: i, className: 'q-nav__item' },
         h('a', { ref: function (el) { linkRefs.current[i] = el; }, className: cx('q-nav__link', isCurrent(it) && 'is-current'), href: it.href || '#', 'aria-current': isCurrent(it) ? 'page' : undefined, onClick: function () { setPicked(i); setOpen(null); } }, it.label));
-      return h('li', { key: i, className: 'q-nav__item', onMouseEnter: p.hover === false ? undefined : function () { setOpen(i); } },
+      /* Hovering an item opens its menu, unless the search panel is open: someone may be typing. */
+      return h('li', { key: i, className: 'q-nav__item', onMouseEnter: p.hover === false ? undefined : function () { if (open !== 'search') setOpen(i); } },
         h('button', {
           ref: function (el) { linkRefs.current[i] = el; },
           type: 'button', className: cx('q-nav__link', (isOpen || isCurrent(it)) && 'is-current', isOpen && 'is-open'), 'aria-expanded': isOpen ? 'true' : 'false', 'aria-controls': pid,
@@ -1248,15 +1293,22 @@
     }
     var actions = p.actions || (cta ? h(Button, { size: 'sm', href: cta.href, onClick: cta.onClick }, cta.label) : null);
     var search = p.search ? (p.search === true ? {} : p.search) : null;
-    var desktop = h('div', { ref: deskRef, className: 'q-nav__desktop', onMouseLeave: p.hover === false ? undefined : function () { setOpen(null); }, onKeyDown: function (e) { if (e.key === 'Escape' && open != null) { var b = root.current && root.current.querySelector('.q-nav__link.is-open'); setOpen(null); if (b) b.focus(); } } },
+    var desktop = h('div', { ref: deskRef, className: 'q-nav__desktop', onMouseLeave: p.hover === false ? undefined : function () { if (open !== 'search') setOpen(null); }, onKeyDown: function (e) { if (e.key === 'Escape' && open != null) { var b = root.current && root.current.querySelector('.q-nav__link.is-open'); setOpen(null); if (b) b.focus(); } } },
       h('div', { className: cx('q-nav__inner', p.align === 'center' && 'q-nav__inner--center') },
         h('div', { className: 'q-nav__left' }, logo,
           h('ul', { className: 'q-nav__items' }, items.map(desktopItem))),
         utility.length || search || actions ? h('div', { className: 'q-nav__right' },
-          search ? h(search.href ? 'a' : 'button', { className: 'q-nav__link q-nav__search', href: search.href, type: search.href ? undefined : 'button', 'aria-label': search.label || 'Search', onClick: search.onClick }, h(Icon, { name: 'search', size: 16 })) : null,
+          search ? (search.href || search.onClick
+            ? h(search.href ? 'a' : 'button', { className: 'q-nav__link q-nav__search', href: search.href, type: search.href ? undefined : 'button', 'aria-label': search.label || 'Search', onClick: search.onClick }, h(Icon, { name: 'search', size: 16 }))
+            /* Otherwise the icon opens a search panel under the bar, like a menu */
+            : h('div', { className: 'q-nav__item q-nav__item--search' },
+                h('button', { ref: function (el) { linkRefs.current.search = el; }, type: 'button', className: cx('q-nav__link q-nav__search', open === 'search' && 'is-open'), 'aria-label': search.label || 'Search', 'aria-expanded': open === 'search' ? 'true' : 'false', 'aria-controls': id + '-search', onClick: function () { setOpen(open === 'search' ? null : 'search'); } }, h(Icon, { name: open === 'search' ? 'cross' : 'search', size: 16 })),
+                open === 'search' || closing === 'search' ? h('div', { className: cx('q-nav__panel', 'q-nav__panel--search', open === 'search' ? (how === 'open' ? 'is-opening' : how === 'switch' ? 'is-switching' : null) : 'is-closing'), id: id + '-search', 'aria-hidden': open === 'search' ? undefined : 'true' },
+                  h('div', { className: 'q-nav__panelbox' }, h(NavSearch, { search: search }))) : null)) : null,
           utility.length ? h('ul', { className: 'q-nav__items' }, utility.map(function (u, i) {
             u = navLinkObj(u);
-            return h('li', { key: i, className: 'q-nav__item' }, h('a', { className: 'q-nav__link', href: u.href || '#' }, u.label));
+            /* collapse: true hides the link when the bar gets narrow (below 1366px); it stays in the mobile menu */
+            return h('li', { key: i, className: cx('q-nav__item', u.collapse && 'q-nav__item--collapse') }, h('a', { className: 'q-nav__link', href: u.href || '#' }, u.label));
           })) : null,
           actions ? h('div', { className: 'q-nav__cta' }, actions) : null) : null),
       h('span', { className: cx('q-nav__bar', bar.show && 'is-shown', bar.slide && 'is-sliding'), style: { width: bar.width + 'px', transform: 'translateX(' + bar.left + 'px)' }, 'aria-hidden': 'true' }));
@@ -1680,6 +1732,35 @@
       items.map(function (it, i) { return h(TestimonialCard, Object.assign({ key: i, size: size === 'sm' || size === 'video' ? 'sm' : 'lg' }, it)); }));
   }
 
+  /* LogoImg — a logo sized for optical balance: every logo gets about the same area in its cell, so a square mark is not
+     dwarfed by a long wordmark (height follows the square root of the aspect ratio). `scale` nudges one logo for its visual
+     weight: below 1 for dense, dark or heavy logos, above 1 for thin, light ones. `optical={false}` just fits the cell. */
+  function LogoImg(p) {
+    var ref = React.useRef(null), ss = React.useState(null), size = ss[0];
+    function fit() {
+      var img = ref.current; if (!img || !img.naturalWidth || p.optical === false) return;
+      var cell = img.closest('.q-logos__tile, .q-logos__cell') || img.parentNode;
+      var cs = getComputedStyle(cell);
+      var W = cell.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      var H = cell.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+      if (W <= 0 || H <= 0) return;
+      var r = img.naturalWidth / img.naturalHeight, k = p.scale || 1;
+      var hh = Math.sqrt(0.5 * W * H / r) * k, ww = hh * r;
+      if (ww > W) { ww = W; hh = W / r; }
+      if (hh > H) { hh = H; ww = H * r; }
+      var next = [Math.round(ww), Math.round(hh)];
+      ss[1](function (cur) { return cur && cur[0] === next[0] && cur[1] === next[1] ? cur : next; });
+    }
+    React.useEffect(function () {
+      var img = ref.current; if (!img) return undefined;
+      if (img.complete) fit();
+      var cell = img.closest('.q-logos__tile, .q-logos__cell');
+      if (!cell || typeof ResizeObserver === 'undefined') return undefined;
+      var ro = new ResizeObserver(fit); ro.observe(cell);
+      return function () { ro.disconnect(); };
+    }, [p.src, p.scale, p.optical]);
+    return h('img', { ref: ref, src: p.src, alt: p.alt || '', onLoad: fit, style: size ? { width: size[0] + 'px', height: size[1] + 'px' } : undefined });
+  }
   /* A logo that opens its HoverCard: the logo is the button, the card repeats the logo beside its badge. */
   function logoCard(l, img, copy, onOpenChange) {
     var name = l.alt || l.card.title || 'Logo';
@@ -1693,11 +1774,14 @@
     /* A logo with a `card` opens a HoverCard; the row waits while one is open. */
     var hs = React.useState(0), held = hs[0];
     function tile(l, key, copy) {
-      var img = h('img', { src: l.src, alt: copy || l.card ? '' : (l.alt || '') });
+      var img = h(LogoImg, { src: l.src, alt: copy || l.card ? '' : (l.alt || ''), scale: l.scale, optical: p.optical });
       var inner = l.card ? logoCard(l, img, copy, function (on) { hs[1](function (c) { return Math.max(0, c + (on ? 1 : -1)); }); }) : (l.href && !copy ? h('a', { href: l.href }, img) : img);
-      return h('li', { key: key, className: cx('q-logos__tile', copy && 'q-logos__tile--copy'), 'aria-hidden': copy ? 'true' : undefined }, inner);
+      var extra = !copy && typeof key === 'number' && key >= mobileMax;
+      return h('li', { key: key, className: cx('q-logos__tile', copy && 'q-logos__tile--copy', extra && 'is-extra'), 'aria-hidden': copy ? 'true' : undefined }, inner);
     }
-    return h('section', { className: cx('q-section', 'q-logos', 'q-logos--carousel', (paused || held > 0) && 'is-paused', p.className), id: p.id },
+    /* On phones: 'stack' (default) shows up to `mobileMax` logos (8) in two still columns; 'carousel' keeps the moving row. */
+    var mobile = p.mobile === 'carousel' ? 'carousel' : 'stack', mobileMax = p.mobileMax || 8;
+    return h('section', { className: cx('q-section', 'q-logos', 'q-logos--carousel', 'q-logos--m' + mobile, (paused || held > 0) && 'is-paused', p.className), id: p.id },
       h('div', { className: 'q-section__inner q-logos__head' },
         p.title ? heading(p.titleLevel || 2, { className: 'q-copy__title q-logos__title' }, p.title) : null,
         logos.length ? h('button', { type: 'button', className: 'q-carousel__btn q-logos__toggle', 'aria-label': paused ? (p.playLabel || 'Play the logo carousel') : (p.pauseLabel || 'Pause the logo carousel'), onClick: function () { setPaused(!paused); } },
@@ -1713,11 +1797,17 @@
       h('div', { className: 'q-section__inner' },
         p.title ? heading(p.titleLevel || 2, { className: 'q-copy__title q-logos__title' }, p.title) : null,
         tiers.map(function (t, i) {
-          return h('div', { key: i, className: 'q-logos__tier' },
+          var logos = t.logos || [];
+          /* The lead tier (one or two logos above the rest) is drawn larger: the signature sponsor. */
+          var level = t.level || (i === 0 && tiers.length > 1 && logos.length <= 2 ? 'signature' : 'standard');
+          /* On phones: one column, or two; 'auto' takes one column up to four logos and two from five. */
+          var cols = level === 'signature' ? 1 : (t.mobileColumns || p.mobileColumns || 'auto');
+          if (cols === 'auto') cols = logos.length <= 4 ? 1 : 2;
+          return h('div', { key: i, className: cx('q-logos__tier', 'q-logos__tier--' + level) },
             t.label ? h('p', { className: 'q-logos__tierlabel' }, t.label) : null,
-            h('ul', { className: 'q-logos__grid' }, (t.logos || []).map(function (l, k) {
+            h('ul', { className: cx('q-logos__grid', 'q-logos__grid--m' + cols) }, logos.map(function (l, k) {
               l = typeof l === 'string' ? { src: l } : l;
-              var img = h('img', { src: l.src, alt: l.card ? '' : (l.alt || '') });
+              var img = h(LogoImg, { src: l.src, alt: l.card ? '' : (l.alt || ''), scale: l.scale, optical: p.optical });
               return h('li', { key: k, className: 'q-logos__cell' }, l.card ? logoCard(l, img) : (l.href ? h('a', { href: l.href }, img) : img));
             })));
         })));
@@ -1750,7 +1840,7 @@
   }
   function cmpMark(yes, col, red) {
     return h('span', { className: cx('q-cmp__mark', yes ? 'q-cmp__mark--yes' : (red ? 'q-cmp__mark--no-red' : 'q-cmp__mark--no')), role: 'img', 'aria-label': (col ? col + ': ' : '') + (yes ? 'Yes' : 'No') },
-      h(Icon, { name: yes ? 'check' : 'cross', size: 14 }));
+      h(Icon, { name: yes ? 'check' : 'cross', size: 'sm' }));
   }
   function cmpHeading(p, key) {
     if (!p.title && !p.subtitle) return h('div', { key: key });
@@ -2037,7 +2127,7 @@
   function SuccessConfirmation(p) {
     var id = useId(p.id), f = useModalFrame(p, true), dl = p.type === 'download';
     var panel = h('div', modalPanel(p, f, id, 'q-notice q-notice--success', 'dialog', true),
-      statusDisc('success', 'check', 'q-sdisc--lg', 36),
+      statusDisc('success', 'check', 'q-sdisc--lg', 32),
       h('div', { className: 'q-notice__text' },
         heading(p.titleLevel || 2, { className: 'q-modal__title', id: id + '-title' }, p.title || (dl ? 'Download Ready' : 'Success!')),
         h('p', { className: 'q-notice__message', id: id + '-desc' }, p.message || p.children || (dl
@@ -2128,7 +2218,7 @@
         }))),
       h('form', { className: 'q-wizard__form', noValidate: true, onSubmit: done ? function (e) { e.preventDefault(); f.close(); } : next },
         done ? h('div', { className: 'q-wizard__body q-wizard__body--done', ref: bodyRef, role: 'status' },
-            statusDisc('success', 'check', 'q-sdisc--lg', 36),
+            statusDisc('success', 'check', 'q-sdisc--lg', 32),
             h('p', { className: 'q-notice__message' }, S.message || 'Thank you for your interest in Qualys. A member of our team will contact you within 24 hours to schedule your personalized demo.'),
             S.note === false ? null : h('p', { className: 'q-wizard__note' }, S.note || 'Check your inbox for a confirmation email.'))
           : h('div', { className: 'q-wizard__body', ref: bodyRef },
@@ -2150,7 +2240,7 @@
   function Toast(p) {
     var status = TOAST_ICONS[p.status] ? p.status : 'info', urgent = status === 'error' || status === 'warning';
     return h('div', { className: cx('q-toast', 'q-toast--' + status, p.className), role: urgent ? 'alert' : 'status', 'aria-live': urgent ? 'assertive' : 'polite', onMouseEnter: p.onMouseEnter, onMouseLeave: p.onMouseLeave },
-      h('span', { className: cx('q-sdisc', 'q-sdisc--' + status, 'q-sdisc--xs'), 'aria-hidden': 'true' }, h(Icon, { name: TOAST_ICONS[status], size: status === 'success' ? 24 : 14 })),
+      h('span', { className: cx('q-sdisc', 'q-sdisc--' + status, 'q-sdisc--xs'), 'aria-hidden': 'true' }, h(Icon, { name: TOAST_ICONS[status], size: status === 'success' ? 'lg' : 'sm' })),
       h('div', { className: 'q-toast__message' }, p.message || p.children),
       p.onClose ? h('button', { type: 'button', className: 'q-toast__close', 'aria-label': p.closeLabel || 'Dismiss', onClick: p.onClose }, h(Icon, { name: 'cross', size: 16 })) : null);
   }

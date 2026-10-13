@@ -1,11 +1,11 @@
-<!-- @dsCard group="Page modules · Carousels and logos" height=1991 width=1440 subtitle="Block module · Logos in tiers under a heading: a lead sponsor, then rows of four. Placeholder logos." -->
+<!-- @dsCard group="Page modules · Carousels and logos" height=2376 width=1440 subtitle="Block module · Logos in tiers under a heading: a lead sponsor, then rows of four. Placeholder logos." -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>LogoHierarchy — preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}</style>
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}.note{max-width:820px;margin:0 var(--spacing-xl) var(--spacing-rg);font-size:16px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-secondary)}.note b{font-family:var(--font-heading);font-weight:600;color:var(--text-primary)}.cmp{display:grid;gap:var(--spacing-xs);margin:0 var(--spacing-xl) var(--spacing-xs);padding:var(--spacing-rg);border:1px solid var(--stroke-neutral-400);border-radius:var(--radius-md);background:var(--surface-neutral-100)}.cmp>b{font-family:var(--font-heading);font-weight:600;font-size:14px}.cmp .q-logos>.q-section__inner{padding-block:0}.cmp .q-logos{background:none}.cmp .q-logos__tier{margin-top:0}</style>
 </head>
 <body>
 <div id="root"></div>
@@ -13,20 +13,43 @@
 var Q = window.Qualys, h = React.createElement;
 function cap(t) { return h('div', {className: 'cap'}, t); }
 function phone(t, node) { return h('div', null, cap(t).props.children ? h('div', {className: 'cap', style: {paddingLeft: 0}}, t) : null, h('div', {className: 'phone'}, node)); }
-function logo(n) {
-  var marks = ['<circle cx="20" cy="20" r="14"/>', '<rect x="6" y="6" width="28" height="28" rx="6"/>', '<path d="M20 4L36 34H4Z"/>', '<path d="M20 4L36 20L20 36L4 20Z"/>', '<rect x="4" y="12" width="32" height="16" rx="8"/>', '<path d="M6 6H34V20A14 14 0 0 1 6 20Z"/>'];
-  var names = ['Company', 'Customer', 'Partner', 'Sponsor', 'Client', 'Brand'];
-  var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 40" width="190" height="40"><g fill="%23575757">' + marks[n % 6] + '</g><text x="48" y="27" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="20" fill="%23575757">' + names[n % 6] + ' ' + (n + 1) + '</text></svg>';
-  return 'data:image/svg+xml;utf8,' + svg.replace(/</g, '%3C').replace(/>/g, '%3E').replace(/"/g, "'");
+/* Placeholder logos in several shapes, so the optical sizing can be seen: wide wordmarks, square marks, stacked lock-ups,
+   a heavy filled logo and a thin light one. Real customer and sponsor logos are not shown here. */
+function svgUri(w, hgt, body) { var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + w + ' ' + hgt + '" width="' + w + '" height="' + hgt + '">' + body + '</svg>'; return 'data:image/svg+xml;utf8,' + svg.replace(/</g, '%3C').replace(/>/g, '%3E').replace(/"/g, "'").replace(/#/g, '%23'); }
+var MARKS = ['<circle cx="20" cy="20" r="14"/>', '<rect x="6" y="6" width="28" height="28" rx="6"/>', '<path d="M20 4L36 34H4Z"/>', '<path d="M20 4L36 20L20 36L4 20Z"/>', '<rect x="4" y="12" width="32" height="16" rx="8"/>', '<path d="M6 6H34V20A14 14 0 0 1 6 20Z"/>'];
+var NAMES = ['Company', 'Customer', 'Partner', 'Sponsor', 'Client', 'Brand', 'Vendor', 'Alliance', 'Member'];
+/* Placeholder logos, cropped tight to their artwork like real logo files, so each one centres in its tile. */
+var TW = document.createElement('canvas').getContext('2d');
+function tw(s, size, weight) { TW.font = (weight || 700) + ' ' + size + 'px Arial, Helvetica, sans-serif'; return Math.ceil(TW.measureText(s).width); }
+function shape(n) {
+  var name = NAMES[n % 9] + ' ' + (n + 1), m = MARKS[n % 6], kind = ['wide', 'square', 'stacked', 'wide', 'heavy', 'thin', 'stacked', 'wide', 'square'][n % 9];
+  var t = function (x, y, size, weight) { return '<text x="' + x + '" y="' + y + '" font-family="Arial, Helvetica, sans-serif" font-weight="' + (weight || 700) + '" font-size="' + size + '" fill="#575757">'; };
+  if (kind === 'square') { var sw = Math.max(32, tw(NAMES[n % 9], 11)); return {kind: kind, src: svgUri(sw, 56, '<g fill="#575757" transform="translate(' + (sw / 2 - 20) + ' -4)">' + m + '</g>' + t(sw / 2, 54, 11).replace('x="' + (sw / 2) + '"', 'x="' + (sw / 2) + '" text-anchor="middle"') + NAMES[n % 9] + '</text>'), alt: name}; }
+  if (kind === 'stacked') return {kind: kind, src: svgUri(42 + Math.max(tw(NAMES[n % 9], 18), tw('Systems ' + (n + 1), 13, 400)), 44, '<g fill="#575757" transform="translate(-4 2)">' + m + '</g>' + t(42, 20, 18) + NAMES[n % 9] + '</text>' + t(42, 40, 13, 400) + 'Systems ' + (n + 1) + '</text>'), alt: name};
+  if (kind === 'heavy') return {kind: kind, src: svgUri(160, 48, '<rect width="160" height="48" rx="4" fill="#262626"/>' + t(80, 31, 20).replace('x="80"', 'x="80" text-anchor="middle"').replace('#575757', '#ffffff') + name.toUpperCase() + '</text>'), alt: name};
+  if (kind === 'thin') { var tn = name.toLowerCase() + ' studio'; return {kind: kind, src: svgUri(tw(tn, 26, 300), 28, t(0, 21, 26, 300).replace('#575757', '#8a8a8a') + tn + '</text>'), alt: name}; }
+  return {kind: kind, src: svgUri(44 + tw(name, 20), 32, '<g fill="#575757" transform="translate(-4 -4)">' + m + '</g>' + t(44, 23, 20) + name + '</text>'), alt: name};
 }
-function L(n) { return {src: logo(n), alt: ['Company', 'Customer', 'Partner', 'Sponsor', 'Client', 'Brand'][n % 6] + ' ' + (n + 1)}; }
-function lh() { return h(Q.LogoHierarchy, {title: 'Partner Pavilion', tiers: [{label: 'Signature Sponsor', logos: [L(3)]}, {label: 'Standard Sponsors', logos: [0, 1, 2, 4, 5, 6, 7, 8].map(L)}]}); }
+function L(n) { var s = shape(n); return {src: s.src, alt: s.alt}; }
+function lh(cols) { return h(Q.LogoHierarchy, {title: 'Partner Pavilion', mobileColumns: cols, tiers: [{label: 'Signature Sponsor', logos: [L(3)]}, {label: 'Standard Sponsors', logos: [0, 1, 2, 4, 5, 6, 7, 8].map(L)}]}); }
 function badge() { return h('span', {style: {display: 'flex', alignItems: 'center', justifyContent: 'center', width: 44, height: 44, boxSizing: 'border-box', border: '1px dashed var(--stroke-neutral-500)', borderRadius: '50%', fontFamily: 'var(--font-heading)', fontWeight: 600, fontSize: 10, color: 'var(--text-secondary)'}}, 'Badge'); }
 function K(n) { var l = L(n); return Object.assign({card: {title: l.alt, badge: badge(), body: 'A short line on what this partner brings to Qualys customers. Two or three lines at most.', link: {label: 'View Partner', href: '#'}}}, l); }
+function note(b, t) { return h('p', {className: 'note'}, h('b', null, b), ' ', t); }
+function row(label, logos, optical) { return h('div', {className: 'cmp'}, h('b', null, label), h(Q.LogoHierarchy, {optical: optical, tiers: [{level: 'standard', logos: logos}]})); }
+var MIXED = [0, 1, 4, 5].map(L);
+var NUDGED = [0, 1, 4, 5].map(function (n) { var l = L(n); if (n === 1) l.scale = 1.1; if (n === 4) l.scale = 0.85; if (n === 5) l.scale = 1.05; return l; });
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
-  cap('Logo hierarchy'), lh(),
+  cap('Partner Pavilion: the signature sponsor is drawn larger than the standard sponsors'), lh(),
+  cap('Optical sizing'),
+  note('Equal visual size, not equal width.', 'Each logo gets about the same area in its cell: a long wordmark runs wide and short, a square mark stands taller and narrower. Fitting every logo to the full cell (top row) makes square and stacked logos look small and wide wordmarks look loud.'),
+  row('Fitted to the cell (optical off)', MIXED, false),
+  row('Optical sizing (default)', MIXED, true),
+  note('Then adjust for visual weight.', 'A dense, dark or filled logo looks bigger than its size: scale it down to about 0.85–0.95. A thin, light or airy logo looks smaller: scale it up to about 1.05–1.15. Here the filled logo is at 0.85, the small square mark at 1.1 and the light wordmark at 1.05.'),
+  row('With weight adjustments', NUDGED, true),
   cap('With hover cards: point at or click a logo'), h(Q.LogoHierarchy, {title: 'Certified Partners', tiers: [{label: 'Partners', logos: [0, 1, 2, 4].map(K)}]}),
-  cap('Mobile'), h('div', {className: 'phones'}, h('div', {className: 'phone'}, lh()))));
+  cap('Mobile: standard sponsors in one column (up to four logos) or two (five to twelve)'), h('div', {className: 'phones'},
+    h('div', {className: 'phone'}, h(Q.LogoHierarchy, {title: 'Partner Pavilion', tiers: [{label: 'Signature Sponsor', logos: [L(3)]}, {label: 'Standard Sponsors', logos: [0, 1, 2, 4].map(L)}]})),
+    h('div', {className: 'phone'}, lh(2)))));
 </script>
 </body>
 </html>

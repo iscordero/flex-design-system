@@ -8,7 +8,7 @@ The site footer from the Figma Footer file: Charcoal, with the Qualys shield in 
 - **Rules:** a 1px `stroke-neutral-500` rule under the shield (48px below it, `spacing-4xl`) and another above the legal line.
 - **Lead block (left, up to 512px):** the heading in `h3` (SemiBold 24px, `text-inverted`); 24px; the body in `paragraph-md` (18px) Rhino; 36px; the form; 36px; the social links.
 - **Form:** 472 × 54px, `radius-rg`, white at 20%, placeholder in white 16px. The submit button is 56 × 42px, `button-bg-primary-default`, `radius-media` (8px) corners, a chevron and a soft shadow; give it a `buttonLabel` for screen readers.
-- **Social links:** plain SocialButtons, 25px glyphs in Rhino, 44px touch targets 8px apart, white on hover. LinkedIn, X, Facebook, Vimeo and YouTube are in the Social Icons.
+- **Social links:** plain SocialButtons, 24px glyphs (`lg`) in Rhino, 44px touch targets 8px apart, white on hover. LinkedIn, X, Facebook, Vimeo and YouTube are in the Social Icons.
 - **Link columns (right):** 56px apart (`spacing-5xl`). Titles in IBM Plex Sans SemiBold 16px `text-inverted`; links in Medium 16px Rhino, 16px apart, white on hover.
 - **Legal line:** centred, `paragraph-sm` (14px) Rhino: the copyright, then each legal link followed by a full stop.
 - **Tablet:** the lead block stacks above the columns.

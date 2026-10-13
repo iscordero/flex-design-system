@@ -12,6 +12,6 @@ The bio modal from the Figma Avatars page. It opens when a profile card is click
 - **Motion:** fades and rises in over 300ms; no motion with reduced-motion settings.
 - **Tablet:** 300px photo, 36px gap. **Mobile:** a bottom sheet up to 95% of the viewport height, 16px padding, photo on top; the name stays at 16px and the bio is 16px.
 - **Accessibility:** `role="dialog"` named by the person's name; focus moves to the close button, stays inside the modal, and returns to the card on close. The page behind doesn't scroll while it is open.
-- `links` adds a row of social links bottom right: plain SocialButtons (15px glyphs in `text-secondary`, 16px apart) in the order LinkedIn, X, Facebook, Instagram, URL. A link with no `network` or `icon` shows as a text label.
+- `links` adds a row of social links bottom right: plain SocialButtons (16px glyphs in `text-secondary`, 16px apart) in the order LinkedIn, X, Facebook, Instagram, URL. A link with no `network` or `icon` shows as a text label.
 - `inline` shows the panel in the page flow with no backdrop or close button, as in Figma's second drawing.
 - Figma's usage note says "max-width 600px"; every drawn modal is 1128px wide (809px on tablet), so this follows the drawings.
