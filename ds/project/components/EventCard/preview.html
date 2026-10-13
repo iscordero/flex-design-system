@@ -1,0 +1,27 @@
+<!-- @dsCard group="Components · Cards" height=854 width=1180 subtitle="Component · Event card: default (in a grid) and featured (full width from 1024px). Hover for the blue bar." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>EventCard — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-300)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.cols{display:grid;gap:24px;align-items:start}.c3{grid-template-columns:repeat(3,350px)}.c4{grid-template-columns:repeat(4,260px)}.stretch{align-items:stretch}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function sec(cap, cls, kids) { return h('div', null, h('div', {className: 'cap'}, cap), h.apply(null, ['div', {className: cls}].concat(kids))); }
+var body = 'Join practitioners and Qualys experts for a day of hands-on sessions on measuring, communicating, and eliminating cyber risk across your hybrid environment.';
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
+  sec('Default', 'cols c3', [
+    h(Q.EventCard, {href: '#', external: true, flag: 'In Person', category: 'Qualys Event', format: 'Conference', title: 'Securing Your Multi-Cloud Environment with TotalCloud', date: 'Dec 10, 2026 \u2022 11a PST'}),
+    h(Q.EventCard, {href: '#', external: true, flag: 'Virtual', flagTone: 'tier-2', category: 'Industry Event', format: 'Workshop', title: 'Managing Misconfigurations to Reduce Risk', date: 'Jan 14, 2027 \u2022 9a PST'}),
+    h(Q.EventCard, {href: '#', external: true, category: 'Training', format: 'Hands-On Lab', title: 'Reduce Risk and MTTR with Patch Management', date: 'Feb 3, 2027 \u2022 1p PST'})
+  ]),
+  sec('Featured', '', [
+    h(Q.EventCard, {layout: 'featured', href: '#', external: true, flag: 'In Person', category: 'Qualys Event', format: 'Conference', title: 'Proactive Defense: Implementing Risk-Based Vulnerability Management', description: body, date: 'Dec 10, 2026 \u2022 11a PST'})
+  ])));
+</script>
+</body>
+</html>

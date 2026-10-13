@@ -1,0 +1,26 @@
+<!-- @dsCard group="Components · Filters" height=560 width=1100 subtitle="Pattern · Desktop: filter dropdowns in a row with Reset Filters. Mobile: one Filter control; tap to try." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FilterBar — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.desk{min-height:290px}.phone{max-width:335px}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function sec(cap, cls, kids) { return h('div', null, h('div', {className: 'cap'}, cap), h.apply(null, ['div', {className: cls}].concat(kids))); }
+var FILTERS = [
+  {id: 'type', label: 'Content Type', options: ['Datasheet', 'Whitepaper', 'Case Study', 'Report', 'Video']},
+  {id: 'topic', label: 'Topic', defaultOpen: true, options: ['Vulnerability Management', 'Cloud Security', 'Compliance', 'Patch Management', 'Risk Management']},
+  {id: 'industry', label: 'Industry', options: ['Financial Services', 'Healthcare', 'Government', 'Retail', 'Technology']}
+];
+var MOBILE = FILTERS.map(function (f) { return {id: f.id, label: f.label, options: f.options}; });
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
+  sec('Desktop', 'desk', [h(Q.FilterBar, {layout: 'desktop', filters: FILTERS, defaultValue: {topic: ['Cloud Security']}})]),
+  sec('Mobile', 'phone', [h(Q.FilterBar, {layout: 'mobile', filters: MOBILE, defaultValue: {topic: ['Cloud Security']}})])));
+</script>
+</body>
+</html>

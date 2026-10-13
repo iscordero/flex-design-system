@@ -1,0 +1,42 @@
+<!-- @dsCard group="Components · Forms" height=3075 width=1440 subtitle="Pattern · Lead-capture card in its four Figma variants, with errors and on mobile. Submit it empty to test." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Form — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{display:flex;flex-direction:column;gap:var(--spacing-4xl);padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-4xl)}.row{display:flex;gap:var(--spacing-4xl);align-items:flex-start}.col{flex:none;width:600px}.col--m{width:375px}.cap{margin-bottom:var(--spacing-rg);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+var SHIELD = '/_blob/1317004b4eea94a3648caf5ff41b1862', PHOTO = '/_blob/e4dd55799ef75137d2cf0fa4e5287f9d';
+var EMAIL = {name: 'email', label: 'Work Email', type: 'email', required: true, autoComplete: 'email'};
+var FIRST = {name: 'firstName', label: 'First Name', required: true, autoComplete: 'given-name'};
+var LAST = {name: 'lastName', label: 'Last Name', required: true, autoComplete: 'family-name'};
+var COMPANY = {name: 'company', label: 'Company Name', required: true, autoComplete: 'organization'};
+var PHONE = {name: 'phone', label: 'Phone Number', type: 'tel', autoComplete: 'tel'};
+function half(f) { return Object.assign({}, f, {half: true}); }
+var OPT_IN = 'I would like to receive Qualys emails.';
+var LEGAL = 'By submitting this form, you consent to Qualys’ privacy policy.';
+var SUB = 'Optional subtitle to better describe what we’re asking. After detaching, you can add or hide fields as needed.';
+var LINK = {label: 'Have an account?', href: '#'};
+var TRIAL = ['Like What You’re Seeing?', h('br', {key: 'b'}), 'Try Qualys For Free.'];
+var OFFER = 'Try Our Risk-Based VM Program For Free';
+function done(values) { window.console && console.log('submitted', values); }
+function full(extra) { return h(Q.Form, Object.assign({variant: 'full', logoSrc: SHIELD, title: TRIAL, fields: [EMAIL, FIRST, LAST, COMPANY], consent: OPT_IN, submitLabel: 'Sign Up', legal: LEGAL, onSubmit: done}, extra)); }
+function extended(extra) { return h(Q.Form, Object.assign({variant: 'extended', title: OFFER, subtitle: SUB, fields: [EMAIL, half(FIRST), half(LAST), COMPANY, PHONE, {name: 'placeholder', label: 'Placeholder Label', options: ['Item Name 1', 'Item Name 2', 'Item Name 3']}, {name: 'size', label: 'Company Size', options: ['1–49', '50–249', '250–999', '1,000–4,999', '5,000+']}], consent: OPT_IN, submitLabel: 'See the Offer', link: LINK, legal: LEGAL, onSubmit: done}, extra)); }
+function gate(extra) { return h(Q.Form, Object.assign({variant: 'gate', title: OFFER, subtitle: SUB, fields: [EMAIL, half(FIRST), half(LAST), COMPANY], submitLabel: 'Check it Out', link: LINK, legal: LEGAL, onSubmit: done}, extra)); }
+function minimal(extra) { return h(Q.Form, Object.assign({variant: 'minimal', title: OFFER, subtitle: SUB, fields: [{name: 'username', label: 'Qualys User Name', required: true, autoComplete: 'username'}], consent: OPT_IN, submitLabel: 'Check it Out', link: LINK, legal: LEGAL, onSubmit: done}, extra)); }
+function col(cap, node, m) { return h('div', {className: 'col' + (m ? ' col--m' : '')}, h('div', {className: 'cap'}, cap), node); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
+  h('div', {className: 'row'}, col('Lead capture · full', full()), col('Lead capture · extended', extended())),
+  h('div', {className: 'row'}, col('Content gate · basic', gate()), col('Email capture · minimal', minimal())),
+  h('div', {className: 'row'},
+    col('With a photo header', h(Q.Form, {variant: 'full', image: PHOTO, title: TRIAL, fields: [EMAIL, half(FIRST), half(LAST), COMPANY], consent: OPT_IN, submitLabel: 'Submit', legal: LEGAL, onSubmit: done})),
+    col('Errors', gate({fields: [Object.assign({}, EMAIL, {defaultValue: 'alex@', error: 'Enter a valid email address'}), half(Object.assign({}, FIRST, {error: 'This field is required'})), half(Object.assign({}, LAST, {defaultValue: 'Morgan'})), Object.assign({}, COMPANY, {error: 'This field is required'})]}))),
+  h('div', {className: 'row'}, col('Mobile · full', full(), true), col('Mobile · content gate', gate(), true), col('Mobile · minimal', minimal(), true))));
+</script>
+</body>
+</html>

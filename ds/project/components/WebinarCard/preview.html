@@ -1,0 +1,39 @@
+<!-- @dsCard group="Components · Cards" height=3007 width=1180 subtitle="Component · Webinar card, default and featured. Every number of speakers, from none to more than six." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WebinarCard — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-300)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.cols{display:grid;gap:24px;align-items:start}.c3{grid-template-columns:repeat(3,350px)}.c4{grid-template-columns:repeat(4,260px)}.stretch{align-items:stretch}.rule{max-width:760px;margin:0 0 var(--spacing-rg);font-family:var(--font-body);font-size:16px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-primary)}.rule b{font-family:var(--font-heading);font-weight:600}.stack{display:flex;flex-direction:column;gap:var(--spacing-rg)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function sec(cap, cls, kids) { return h('div', null, h('div', {className: 'cap'}, cap), h.apply(null, ['div', {className: cls}].concat(kids))); }
+var body = 'See how to rank findings by business risk, hand fixes to IT with context, and report progress in terms your leadership team understands.';
+var S = [{name: 'Jonathan Doe', company: 'Qualys'}, {name: 'Alex Morgan', company: 'Qualys'}, {name: 'Sam Rivera', company: 'Qualys'}, {name: 'Jamie Chen', company: 'Qualys'}, {name: 'Taylor Brooks', company: 'Qualys'}, {name: 'Priya Nair', company: 'Qualys'}, {name: 'Chris Okafor', company: 'Qualys'}, {name: 'Dana Whitlock', company: 'Qualys'}];
+var TITLES = ['Managing Misconfigurations to Reduce Risk', 'Beyond Inventory: Strategic Asset Risk Operations', 'Secure Kubernetes and Containers from Build to Runtime', 'Reduce Risk and MTTR with Patch Management', 'Securing Your Multi-Cloud Environment', 'Risk-Based Vulnerability Management in Practice', 'Measure, Communicate and Eliminate Cyber Risk', 'From Findings to Fixes: Working With IT'];
+var LABEL = {0: 'No speaker', 1: '1 speaker', 8: 'More than 6'};
+function label(n) { return LABEL[n] || n + ' speakers'; }
+function def(n, i) {
+  var extra = i === 1 ? {flag: 'On Demand'} : i === 2 ? {flag: 'Live', flagTone: 'tier-3'} : {};
+  return h('div', {key: n}, h('div', {className: 'cap'}, label(n)),
+    h(Q.WebinarCard, Object.assign({href: '#', external: true, format: i % 2 ? 'Episode' : 'Series', duration: i % 2 ? '13 min' : '45 min', title: TITLES[i], speakers: S.slice(0, n), date: 'Tue Dec 10, 2026'}, extra)));
+}
+function feat(n) {
+  return h('div', {key: n}, h('div', {className: 'cap'}, label(n)),
+    h(Q.WebinarCard, {layout: 'featured', href: '#', external: true, flag: n === 1 ? 'On Demand' : undefined, format: 'Episode', duration: '13 min', title: 'Proactive Defense: Implementing Risk-Based Vulnerability Management', speakers: S.slice(0, n), description: body, date: 'Tue Dec 10, 2026'}));
+}
+function rule(strong, text) { return h('p', {className: 'rule'}, h('b', null, strong + ' '), text); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
+  h('div', null,
+    rule('Default card.', 'One row, so cards in a row keep the same height. The first speaker is named; the others stack as headshots, three circles at most. From five speakers on, the third circle counts everyone who isn\u2019t named.'),
+    h('div', {className: 'cols c3 stretch'}, [0, 1, 2, 3, 4, 5, 6, 8].map(def))),
+  h('div', null,
+    rule('Featured card.', 'The first two speakers are named, with their company; the rest follow the same stack. From six speakers on, the third circle counts everyone who isn\u2019t named.'),
+    h('div', {className: 'stack'}, [1, 2, 4, 8].map(feat)))));
+</script>
+</body>
+</html>

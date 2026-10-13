@@ -1,0 +1,423 @@
+{
+ "families": [
+  [
+   "Buttons and links",
+   [
+    "Button",
+    "TextLink",
+    "Hyperlink",
+    "SocialButton"
+   ]
+  ],
+  [
+   "Navigation",
+   [
+    "Breadcrumbs",
+    "Tabs"
+   ]
+  ],
+  [
+   "Inputs",
+   [
+    "TextField",
+    "Select",
+    "Checkbox",
+    "Radio",
+    "Toggle",
+    "SearchBar"
+   ]
+  ],
+  [
+   "Forms",
+   [
+    "Form",
+    "FormModal",
+    "DemoRequestWizard"
+   ]
+  ],
+  [
+   "Filters",
+   [
+    "FilterButton",
+    "FilterChip",
+    "FilterDropdown",
+    "FilterChipGroup",
+    "FilterBar",
+    "AppliedFilters",
+    "FilterDrawer"
+   ]
+  ],
+  [
+   "Cards",
+   [
+    "Card",
+    "BlogCard",
+    "ResourceCard",
+    "WebinarCard",
+    "EventCard",
+    "IntegrationCard",
+    "InlinePromoCard",
+    "TestimonialCard",
+    "StatCard"
+   ]
+  ],
+  [
+   "Avatars and profiles",
+   [
+    "Avatar",
+    "ProfileCard",
+    "ProfileModal",
+    "ProfileGrid"
+   ]
+  ],
+  [
+   "Icons, tags and flags",
+   [
+    "Icon",
+    "Tag",
+    "Flag",
+    "Marker",
+    "EventType"
+   ]
+  ],
+  [
+   "Accordions and drawers",
+   [
+    "Accordion",
+    "Drawer",
+    "DrawerCard"
+   ]
+  ],
+  [
+   "Overlays and messages",
+   [
+    "Modal",
+    "AlertDialog",
+    "Overlay",
+    "Toast",
+    "ToastStack",
+    "Tooltip",
+    "HoverCard",
+    "CookieBanner",
+    "ExitIntent",
+    "SessionTimeout",
+    "SuccessConfirmation"
+   ]
+  ],
+  [
+   "Media",
+   [
+    "Media"
+   ]
+  ],
+  [
+   "Header and footer",
+   [
+    "Nav",
+    "NavBanner",
+    "NotificationBar",
+    "Footer"
+   ]
+  ],
+  [
+   "Heroes and headers",
+   [
+    "Hero",
+    "TypographicHeader"
+   ]
+  ],
+  [
+   "Content sections",
+   [
+    "GeneralContent",
+    "TabModule",
+    "AccordionModule",
+    "Stats"
+   ]
+  ],
+  [
+   "Calls to action",
+   [
+    "CtaModule",
+    "FormBanner"
+   ]
+  ],
+  [
+   "Carousels and logos",
+   [
+    "Carousel",
+    "TestimonialCarousel",
+    "LogoCarousel",
+    "LogoHierarchy"
+   ]
+  ],
+  [
+   "Events",
+   [
+    "EventCalendar"
+   ]
+  ],
+  [
+   "Tables",
+   [
+    "DetailComparison",
+    "FeatureMatrix",
+    "MarketingTable"
+   ]
+  ]
+ ],
+ "levels": {
+  "Button": "Component",
+  "TextLink": "Component",
+  "Hyperlink": "Component",
+  "SocialButton": "Component",
+  "Icon": "Component",
+  "Tag": "Component",
+  "Flag": "Component",
+  "Marker": "Component",
+  "TextField": "Component",
+  "Select": "Component",
+  "SearchBar": "Component",
+  "Checkbox": "Component",
+  "Radio": "Component",
+  "Toggle": "Component",
+  "Form": "Pattern",
+  "FormModal": "Pattern",
+  "DemoRequestWizard": "Pattern",
+  "FilterChip": "Component",
+  "FilterChipGroup": "Pattern",
+  "FilterDropdown": "Component",
+  "FilterButton": "Component",
+  "FilterBar": "Pattern",
+  "AppliedFilters": "Pattern",
+  "FilterDrawer": "Pattern",
+  "Nav": "Block module",
+  "NavBanner": "Block module",
+  "Breadcrumbs": "Component",
+  "Footer": "Block module",
+  "Tabs": "Component",
+  "TabModule": "Block module",
+  "Drawer": "Component",
+  "DrawerCard": "Component",
+  "Accordion": "Component",
+  "AccordionModule": "Block module",
+  "Card": "Component",
+  "IntegrationCard": "Component",
+  "WebinarCard": "Component",
+  "ResourceCard": "Component",
+  "BlogCard": "Component",
+  "InlinePromoCard": "Component",
+  "EventType": "Component",
+  "EventCard": "Component",
+  "EventCalendar": "Block module",
+  "Avatar": "Component",
+  "ProfileCard": "Component",
+  "ProfileModal": "Component",
+  "ProfileGrid": "Pattern",
+  "StatCard": "Component",
+  "Stats": "Block module",
+  "Carousel": "Block module",
+  "TestimonialCard": "Component",
+  "TestimonialCarousel": "Block module",
+  "LogoCarousel": "Block module",
+  "LogoHierarchy": "Block module",
+  "Media": "Component",
+  "Hero": "Block module",
+  "TypographicHeader": "Block module",
+  "GeneralContent": "Block module",
+  "CtaModule": "Block module",
+  "Overlay": "Component",
+  "Modal": "Component",
+  "AlertDialog": "Component",
+  "SessionTimeout": "Pattern",
+  "SuccessConfirmation": "Pattern",
+  "ExitIntent": "Pattern",
+  "Tooltip": "Component",
+  "Toast": "Component",
+  "ToastStack": "Pattern",
+  "NotificationBar": "Block module",
+  "CookieBanner": "Pattern",
+  "HoverCard": "Component",
+  "FormBanner": "Block module",
+  "FeatureMatrix": "Block module",
+  "DetailComparison": "Block module",
+  "MarketingTable": "Block module"
+ },
+ "sections": [
+  [
+   "Components",
+   [
+    [
+     "Buttons and links",
+     [
+      "Button",
+      "TextLink",
+      "Hyperlink",
+      "SocialButton"
+     ]
+    ],
+    [
+     "Navigation",
+     [
+      "Breadcrumbs",
+      "Tabs"
+     ]
+    ],
+    [
+     "Inputs",
+     [
+      "TextField",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Toggle",
+      "SearchBar"
+     ]
+    ],
+    [
+     "Forms",
+     [
+      "Form",
+      "FormModal",
+      "DemoRequestWizard"
+     ]
+    ],
+    [
+     "Filters",
+     [
+      "FilterButton",
+      "FilterChip",
+      "FilterDropdown",
+      "FilterChipGroup",
+      "FilterBar",
+      "AppliedFilters",
+      "FilterDrawer"
+     ]
+    ],
+    [
+     "Cards",
+     [
+      "Card",
+      "BlogCard",
+      "ResourceCard",
+      "WebinarCard",
+      "EventCard",
+      "IntegrationCard",
+      "InlinePromoCard",
+      "TestimonialCard",
+      "StatCard"
+     ]
+    ],
+    [
+     "Avatars and profiles",
+     [
+      "Avatar",
+      "ProfileCard",
+      "ProfileModal",
+      "ProfileGrid"
+     ]
+    ],
+    [
+     "Icons, tags and flags",
+     [
+      "Icon",
+      "Tag",
+      "Flag",
+      "Marker",
+      "EventType"
+     ]
+    ],
+    [
+     "Accordions and drawers",
+     [
+      "Accordion",
+      "Drawer",
+      "DrawerCard"
+     ]
+    ],
+    [
+     "Overlays and messages",
+     [
+      "Modal",
+      "AlertDialog",
+      "Overlay",
+      "Toast",
+      "ToastStack",
+      "Tooltip",
+      "HoverCard",
+      "CookieBanner",
+      "ExitIntent",
+      "SessionTimeout",
+      "SuccessConfirmation"
+     ]
+    ],
+    [
+     "Media",
+     [
+      "Media"
+     ]
+    ]
+   ]
+  ],
+  [
+   "Page modules",
+   [
+    [
+     "Header and footer",
+     [
+      "Nav",
+      "NavBanner",
+      "NotificationBar",
+      "Footer"
+     ]
+    ],
+    [
+     "Heroes and headers",
+     [
+      "Hero",
+      "TypographicHeader"
+     ]
+    ],
+    [
+     "Content sections",
+     [
+      "GeneralContent",
+      "TabModule",
+      "AccordionModule",
+      "Stats"
+     ]
+    ],
+    [
+     "Calls to action",
+     [
+      "CtaModule",
+      "FormBanner"
+     ]
+    ],
+    [
+     "Carousels and logos",
+     [
+      "Carousel",
+      "TestimonialCarousel",
+      "LogoCarousel",
+      "LogoHierarchy"
+     ]
+    ],
+    [
+     "Events",
+     [
+      "EventCalendar"
+     ]
+    ],
+    [
+     "Tables",
+     [
+      "DetailComparison",
+      "FeatureMatrix",
+      "MarketingTable"
+     ]
+    ]
+   ]
+  ]
+ ]
+}

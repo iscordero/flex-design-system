@@ -1,0 +1,585 @@
+{
+  "v": 3,
+  "assetGroups": {
+    "Event~20Icons": {
+      "files": {
+        "icon-event-qualys.svg": {
+          "blob": "2978c96d6b90ffa14a4c73e5c64bc542",
+          "name": "icon-event-qualys.svg",
+          "size": 902,
+          "type": "image/svg+xml"
+        },
+        "icon-event-webinar.svg": {
+          "blob": "6a3bfe1e97c5b8bb1d187e4146f117c4",
+          "name": "icon-event-webinar.svg",
+          "size": 929,
+          "type": "image/svg+xml"
+        },
+        "icon-event-industry.svg": {
+          "blob": "ad33588257ffc8e80380576972078f10",
+          "name": "icon-event-industry.svg",
+          "size": 2885,
+          "type": "image/svg+xml"
+        },
+        "icon-event-speaking.svg": {
+          "blob": "ff430904bd4e3a5b8542359aac54107d",
+          "name": "icon-event-speaking.svg",
+          "size": 923,
+          "type": "image/svg+xml"
+        },
+        "icon-event-training.svg": {
+          "blob": "0e3af91aa0e7da566a7cafb2cf14a20a",
+          "name": "icon-event-training.svg",
+          "size": 727,
+          "type": "image/svg+xml"
+        }
+      },
+      "name": "Event Icons",
+      "order": [
+        "icon-event-qualys.svg",
+        "icon-event-webinar.svg",
+        "icon-event-industry.svg",
+        "icon-event-speaking.svg",
+        "icon-event-training.svg"
+      ],
+      "tile": "s"
+    },
+    "Feature~20Icons": {
+      "files": {
+        "feature-agentic-ai.svg": {
+          "blob": "ab4c0b41714ffc1726347d4515429315",
+          "name": "feature-agentic-ai.svg",
+          "size": 2352,
+          "type": "image/svg+xml"
+        },
+        "feature-ai.svg": {
+          "blob": "3790ba660d0bf5ed733d37541a609589",
+          "name": "feature-ai.svg",
+          "size": 2088,
+          "type": "image/svg+xml"
+        },
+        "feature-application.svg": {
+          "blob": "2a01699869cd2a9d801cd810204d71aa",
+          "name": "feature-application.svg",
+          "size": 1582,
+          "type": "image/svg+xml"
+        },
+        "feature-applications.svg": {
+          "blob": "de7c1ac51d838d84f2fa5f592b7766d8",
+          "name": "feature-applications.svg",
+          "size": 3219,
+          "type": "image/svg+xml"
+        },
+        "feature-assets.svg": {
+          "blob": "4d860fbb512f44272b186d609529742c",
+          "name": "feature-assets.svg",
+          "size": 2963,
+          "type": "image/svg+xml"
+        },
+        "feature-cloud.svg": {
+          "blob": "dacda2a3a9a5a660aa21c4aa3d9a2578",
+          "name": "feature-cloud.svg",
+          "size": 1498,
+          "type": "image/svg+xml"
+        },
+        "feature-communication.svg": {
+          "blob": "53f920a2f2b10727a047b6fda16a5780",
+          "name": "feature-communication.svg",
+          "size": 1971,
+          "type": "image/svg+xml"
+        },
+        "feature-compliance.svg": {
+          "blob": "afc380121ab10f5f48e6152e0a616c5e",
+          "name": "feature-compliance.svg",
+          "size": 1493,
+          "type": "image/svg+xml"
+        },
+        "feature-configure.svg": {
+          "blob": "f5b76250c16d90fc667c87b00f8287b6",
+          "name": "feature-configure.svg",
+          "size": 3096,
+          "type": "image/svg+xml"
+        },
+        "feature-detect.svg": {
+          "blob": "bdcd7cc4b2bbc39f3f0aba2ee1b6ea8e",
+          "name": "feature-detect.svg",
+          "size": 1548,
+          "type": "image/svg+xml"
+        },
+        "feature-eliminate.svg": {
+          "blob": "1b73d8e9df0314acff6a2196b7893e4e",
+          "name": "feature-eliminate.svg",
+          "size": 2263,
+          "type": "image/svg+xml"
+        },
+        "feature-measure.svg": {
+          "blob": "08a9d26a3a902a648c904b65297a8cb7",
+          "name": "feature-measure.svg",
+          "size": 19199,
+          "type": "image/svg+xml"
+        },
+        "feature-prioritize.svg": {
+          "blob": "879916cd1c61396c65bde874a0e7ba08",
+          "name": "feature-prioritize.svg",
+          "size": 1138,
+          "type": "image/svg+xml"
+        },
+        "feature-remediation.svg": {
+          "blob": "0f9e5aa9047b17be8b537b8577d6408f",
+          "name": "feature-remediation.svg",
+          "size": 2179,
+          "type": "image/svg+xml"
+        },
+        "feature-response.svg": {
+          "blob": "668fb88466f24700ff876efae09f7e01",
+          "name": "feature-response.svg",
+          "size": 2060,
+          "type": "image/svg+xml"
+        },
+        "feature-risk.svg": {
+          "blob": "9c45307ba346d1999697cad5e415dc64",
+          "name": "feature-risk.svg",
+          "size": 1528,
+          "type": "image/svg+xml"
+        },
+        "feature-threat.svg": {
+          "blob": "e594a6d966d00d9ea5bb37fd3d806358",
+          "name": "feature-threat.svg",
+          "size": 2707,
+          "type": "image/svg+xml"
+        },
+        "feature-vulnerability.svg": {
+          "blob": "2278c0ac5e6973627f979d3b3e36a0ff",
+          "name": "feature-vulnerability.svg",
+          "size": 1458,
+          "type": "image/svg+xml"
+        },
+        "feature-web-application.svg": {
+          "blob": "02180f2745c08ff8a13249a4fd73387e",
+          "name": "feature-web-application.svg",
+          "size": 3275,
+          "type": "image/svg+xml"
+        }
+      },
+      "name": "Feature Icons",
+      "order": [
+        "feature-ai.svg",
+        "feature-agentic-ai.svg",
+        "feature-detect.svg",
+        "feature-response.svg",
+        "feature-remediation.svg",
+        "feature-eliminate.svg",
+        "feature-vulnerability.svg",
+        "feature-threat.svg",
+        "feature-risk.svg",
+        "feature-assets.svg",
+        "feature-communication.svg",
+        "feature-measure.svg",
+        "feature-compliance.svg",
+        "feature-application.svg",
+        "feature-applications.svg",
+        "feature-web-application.svg",
+        "feature-cloud.svg",
+        "feature-prioritize.svg",
+        "feature-configure.svg"
+      ]
+    },
+    "General~20Icons": {
+      "files": {
+        "icon-general-events.svg": {
+          "blob": "5c5336c932df85defff1118407544a19",
+          "name": "icon-general-events.svg",
+          "size": 1990,
+          "type": "image/svg+xml"
+        },
+        "icon-general-resource.svg": {
+          "blob": "82a37130b005906a195da354f079c862",
+          "name": "icon-general-resource.svg",
+          "size": 12642,
+          "type": "image/svg+xml"
+        },
+        "icon-general-webinar.svg": {
+          "blob": "422ae2353fea1bb54911b06d79ffefd2",
+          "name": "icon-general-webinar.svg",
+          "size": 8311,
+          "type": "image/svg+xml"
+        }
+      },
+      "name": "General Icons",
+      "order": [
+        "icon-general-events.svg",
+        "icon-general-webinar.svg",
+        "icon-general-resource.svg"
+      ]
+    },
+    "Icons": {
+      "files": {
+        "icon-arrow-left.svg": {
+          "blob": "e8e9e7a6b91a05919597d4e5e9ca58b5",
+          "name": "icon-arrow-left.svg",
+          "size": 903,
+          "type": "image/svg+xml"
+        },
+        "icon-arrow-right.svg": {
+          "blob": "d35350f08316afd2d766a680c281fe5c",
+          "name": "icon-arrow-right.svg",
+          "size": 859,
+          "type": "image/svg+xml"
+        },
+        "icon-cross.svg": {
+          "blob": "46bf7166d547ea21c80fd0cd4363b9b4",
+          "name": "icon-cross.svg",
+          "size": 748,
+          "type": "image/svg+xml"
+        },
+        "icon-download.svg": {
+          "blob": "904622b4ca9e947e46712713e5eb9679",
+          "name": "icon-download.svg",
+          "size": 1854,
+          "type": "image/svg+xml"
+        },
+        "icon-filter.svg": {
+          "blob": "bc166fef0d7c5398b8fdabebb359f465",
+          "name": "icon-filter.svg",
+          "size": 197,
+          "type": "image/svg+xml"
+        },
+        "icon-outlink.svg": {
+          "blob": "45924fe441c53fbec52c694cf42a943c",
+          "name": "icon-outlink.svg",
+          "size": 903,
+          "type": "image/svg+xml"
+        },
+        "icon-plus.svg": {
+          "blob": "d8b33ad34c20e9c2eca00b3e168a17d3",
+          "name": "icon-plus.svg",
+          "size": 784,
+          "type": "image/svg+xml"
+        },
+        "icon-time.svg": {
+          "blob": "ae9ba7e57de7f042bdd3d33358bf995f",
+          "name": "icon-time.svg",
+          "size": 785,
+          "type": "image/svg+xml"
+        },
+        "icon-menu.svg": {
+          "blob": "e090e1dd891a00e659de1a90e39ea3ae",
+          "name": "icon-menu.svg",
+          "size": 195,
+          "type": "image/svg+xml"
+        },
+        "icon-view-list.svg": {
+          "blob": "6c241d32b5dc9ca36f1a5c2163134e0a",
+          "name": "icon-view-list.svg",
+          "size": 238,
+          "type": "image/svg+xml"
+        },
+        "icon-view-month.svg": {
+          "blob": "9ad7aecc380f038f470334cb4cd526e8",
+          "name": "icon-view-month.svg",
+          "size": 735,
+          "type": "image/svg+xml"
+        },
+        "icon-view-grid.svg": {
+          "blob": "273ec03036dcd5af7afba85be8b07ded",
+          "name": "icon-view-grid.svg",
+          "size": 903,
+          "type": "image/svg+xml"
+        },
+        "icon-search.svg": {
+          "blob": "2014a4f915a9a02f96eb4df8a32dd2f3",
+          "name": "icon-search.svg",
+          "size": 1342,
+          "type": "image/svg+xml"
+        },
+        "icon-check.svg": {
+          "blob": "45dc8ebad393930fae69c3da09277f9a",
+          "name": "icon-check.svg",
+          "size": 729,
+          "type": "image/svg+xml"
+        },
+        "icon-chevron-right.svg": {
+          "blob": "cdce768ffd715c2941b2d18b81b2fd6a",
+          "name": "icon-chevron-right.svg",
+          "size": 788,
+          "type": "image/svg+xml"
+        },
+        "icon-chevron-left.svg": {
+          "blob": "1067540ee58531b1931322c60dac6aaf",
+          "name": "icon-chevron-left.svg",
+          "size": 787,
+          "type": "image/svg+xml"
+        },
+        "icon-chevron-up.svg": {
+          "blob": "6a94a22bcb7bcf48fc7cc5290d5520eb",
+          "name": "icon-chevron-up.svg",
+          "size": 788,
+          "type": "image/svg+xml"
+        },
+        "icon-chevron-down.svg": {
+          "blob": "6f9fe6b23f198f011cf77528e02b4b4f",
+          "name": "icon-chevron-down.svg",
+          "size": 743,
+          "type": "image/svg+xml"
+        },
+        "icon-alert-triangle.svg": {
+          "blob": "659bc21b5c0e0e69e3791117dbfa68fd",
+          "name": "icon-alert-triangle.svg",
+          "size": 749,
+          "type": "image/svg+xml"
+        },
+        "icon-alert-circle.svg": {
+          "blob": "2d02bababd76b3ff0d3be4071aadb32b",
+          "name": "icon-alert-circle.svg",
+          "size": 333,
+          "type": "image/svg+xml"
+        },
+        "icon-check-circle.svg": {
+          "blob": "3345d759405d0c1458067d2fc2811282",
+          "name": "icon-check-circle.svg",
+          "size": 548,
+          "type": "image/svg+xml"
+        },
+        "icon-x-circle.svg": {
+          "blob": "33e9684e0733361071d3c26c7dbeea1c",
+          "name": "icon-x-circle.svg",
+          "size": 327,
+          "type": "image/svg+xml"
+        },
+        "icon-file.svg": {
+          "blob": "4baf8cc8bc6fc8b3a790562ef0bf6457",
+          "name": "icon-file.svg",
+          "size": 425,
+          "type": "image/svg+xml"
+        },
+        "icon-party.svg": {
+          "blob": "1cec31819f48ca2e128ec97c4d3a0b2f",
+          "name": "icon-party.svg",
+          "size": 4369,
+          "type": "image/svg+xml"
+        },
+        "icon-cookie.svg": {
+          "blob": "a4908a99903ed0742c8a9c64983b131e",
+          "name": "icon-cookie.svg",
+          "size": 5818,
+          "type": "image/svg+xml"
+        }
+      },
+      "name": "Icons",
+      "order": [
+        "icon-download.svg",
+        "icon-arrow-right.svg",
+        "icon-arrow-left.svg",
+        "icon-outlink.svg",
+        "icon-search.svg",
+        "icon-check.svg",
+        "icon-filter.svg",
+        "icon-menu.svg",
+        "icon-time.svg",
+        "icon-chevron-right.svg",
+        "icon-chevron-left.svg",
+        "icon-chevron-up.svg",
+        "icon-chevron-down.svg",
+        "icon-plus.svg",
+        "icon-cross.svg",
+        "icon-view-list.svg",
+        "icon-view-month.svg",
+        "icon-view-grid.svg",
+        "icon-alert-triangle.svg",
+        "icon-alert-circle.svg",
+        "icon-check-circle.svg",
+        "icon-x-circle.svg",
+        "icon-file.svg",
+        "icon-party.svg",
+        "icon-cookie.svg"
+      ],
+      "tile": "s"
+    },
+    "Images": {
+      "files": {
+        "promo-laptop.png": {
+          "blob": "161a64f365cbddf79c8287b5d78440df",
+          "name": "promo-laptop.png",
+          "size": 192416,
+          "type": "image/png"
+        },
+        "form-header-meeting.jpg": {
+          "blob": "e4dd55799ef75137d2cf0fa4e5287f9d",
+          "name": "form-header-meeting.jpg",
+          "size": 61894,
+          "type": "image/jpeg"
+        },
+        "hero-bg-building.jpg": {
+          "blob": "030f664385156a91a5802ce5e6424bd4",
+          "name": "hero-bg-building.jpg",
+          "size": 175926,
+          "type": "image/jpeg"
+        },
+        "hero-bg-office.jpg": {
+          "blob": "0d022f9bddd95029144a197b97432323",
+          "name": "hero-bg-office.jpg",
+          "size": 172263,
+          "type": "image/jpeg"
+        },
+        "header-capitol.jpg": {
+          "blob": "34746d9de197742e629cf55fcd5ebc07",
+          "name": "header-capitol.jpg",
+          "size": 202232,
+          "type": "image/jpeg"
+        },
+        "visual-star.svg": {
+          "blob": "39fc51b7826334f544b74778d6f0f189",
+          "name": "visual-star.svg",
+          "size": 151485,
+          "type": "image/svg+xml"
+        }
+      },
+      "name": "Images",
+      "order": [
+        "promo-laptop.png",
+        "form-header-meeting.jpg",
+        "hero-bg-building.jpg",
+        "hero-bg-office.jpg",
+        "header-capitol.jpg",
+        "visual-star.svg"
+      ],
+      "tile": "l"
+    },
+    "Logos": {
+      "files": {
+        "qualys-logo-full-rgb.svg": {
+          "blob": "a0d4062abbce2ceb87d5be08d326359f",
+          "name": "qualys-logo-full-rgb.svg",
+          "size": 4813,
+          "type": "image/svg+xml"
+        },
+        "qualys-logo-reversed.svg": {
+          "blob": "2f12addb8d68868ae064a58fad459a07",
+          "name": "qualys-logo-reversed.svg",
+          "size": 13055,
+          "type": "image/svg+xml"
+        },
+        "qualys-shield.svg": {
+          "blob": "1317004b4eea94a3648caf5ff41b1862",
+          "name": "qualys-shield.svg",
+          "size": 1046,
+          "type": "image/svg+xml"
+        }
+      },
+      "name": "Logos",
+      "order": [
+        "qualys-logo-full-rgb.svg",
+        "qualys-logo-reversed.svg",
+        "qualys-shield.svg"
+      ],
+      "tile": "l"
+    },
+    "Social~20Icons": {
+      "files": {
+        "icon-facebook.svg": {
+          "blob": "6a3a027216824f85d9972d9ccbc7a955",
+          "name": "icon-facebook.svg",
+          "size": 393,
+          "type": "image/svg+xml"
+        },
+        "icon-instagram.svg": {
+          "blob": "44a3516da03ef549999ad3e30ef95e30",
+          "name": "icon-instagram.svg",
+          "size": 2489,
+          "type": "image/svg+xml"
+        },
+        "icon-linkedin.svg": {
+          "blob": "f963472aaa477aa0ce24c41ad15934d1",
+          "name": "icon-linkedin.svg",
+          "size": 1013,
+          "type": "image/svg+xml"
+        },
+        "icon-url.svg": {
+          "blob": "bd28b146026f99afdb20edbf45611bd3",
+          "name": "icon-url.svg",
+          "size": 1424,
+          "type": "image/svg+xml"
+        },
+        "icon-x.svg": {
+          "blob": "844c5a3b31b5ca3cadaae9585305935f",
+          "name": "icon-x.svg",
+          "size": 308,
+          "type": "image/svg+xml"
+        },
+        "icon-vimeo.svg": {
+          "blob": "ded86782a2add5585a57e8062600d172",
+          "name": "icon-vimeo.svg",
+          "size": 789,
+          "type": "image/svg+xml"
+        },
+        "icon-youtube.svg": {
+          "blob": "8962066797cb74fff1fd097a0b01b87a",
+          "name": "icon-youtube.svg",
+          "size": 706,
+          "type": "image/svg+xml"
+        }
+      },
+      "name": "Social Icons",
+      "order": [
+        "icon-linkedin.svg",
+        "icon-x.svg",
+        "icon-facebook.svg",
+        "icon-instagram.svg",
+        "icon-vimeo.svg",
+        "icon-youtube.svg",
+        "icon-url.svg"
+      ],
+      "tile": "s"
+    }
+  },
+  "blobs": {},
+  "createdOnFiles": {
+    "at": "2026-10-01T18:20:37Z",
+    "v": 1
+  },
+  "docs": {
+    "readme": "project/README.md",
+    "sections": [
+      "project/guide-1-content.md",
+      "project/guide-2-colour.md",
+      "project/guide-3-typography.md",
+      "project/guide-4-layout.md",
+      "project/guide-5-states-motion.md",
+      "project/guide-6-imagery-icons-logo.md",
+      "project/guide-8-buttons-links.md"
+    ]
+  },
+  "groups": [
+    "Logos",
+    "Icons",
+    "Social~20Icons",
+    "Feature~20Icons",
+    "Event~20Icons",
+    "General~20Icons",
+    "Images"
+  ],
+  "lastChange": {
+    "at": "2026-10-08T22:22:27Z",
+    "by": "Isabel",
+    "note": "One profile text hierarchy everywhere: name title-sm 16px, role paragraph-rg, company Medium",
+    "via": "Claude (Cowork)"
+  },
+  "layout": "files",
+  "libraries": [
+    {
+      "file": "components/lib/react.production.min.js",
+      "global": "React",
+      "name": "react",
+      "version": "18.3.1"
+    },
+    {
+      "file": "components/lib/react-dom.production.min.js",
+      "global": "ReactDOM",
+      "name": "react-dom",
+      "version": "18.3.1"
+    }
+  ],
+  "namespace": "Qualys",
+  "sections": {},
+  "title": "Qualys"
+}

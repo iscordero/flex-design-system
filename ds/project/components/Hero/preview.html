@@ -1,0 +1,43 @@
+<!-- @dsCard group="Page modules · Heroes and headers" height=6266 width=1440 subtitle="Block module · Hero in each layout: split media, text only, on a photo or video, with a lead form; then mobile." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hero — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+function phone(t, node) { return h('div', null, cap(t).props.children ? h('div', {className: 'cap', style: {paddingLeft: 0}}, t) : null, h('div', {className: 'phone'}, node)); }
+var BUILDING = '/_blob/030f664385156a91a5802ce5e6424bd4', OFFICE = '/_blob/0d022f9bddd95029144a197b97432323', STAR = '/_blob/39fc51b7826334f544b74778d6f0f189';
+var EYEBROW = 'Lorem Ipsum Dolor', TITLE = 'Lorem Ipsum Dolor Sit Amet Consectetur Sollicitudin';
+var BODY = 'Lorem ipsum dolor sit amet consectetur. Interdum natoque ullamcorper elit ipsum duis aenean neque sed volutpat facilisis.';
+function pair() { return [h(Q.Button, {key: 'p'}, 'Primary Button'), h(Q.Button, {key: 's', variant: 'secondary'}, 'Secondary Button')]; }
+function onPhoto(tone) { return [h(Q.Button, {key: 'p'}, 'Primary Button'), h(Q.TextLink, {key: 't', tone: tone === 'light' ? 'neutral' : 'inverted', arrow: true, href: '#'}, 'Button')]; }
+function hero(extra) { return h(Q.Hero, Object.assign({eyebrow: EYEBROW, title: TITLE, body: BODY, actions: pair()}, extra)); }
+var FORM = {variant: 'gate', title: 'Try Our Risk-Based VM Program For Free', subtitle: 'Optional subtitle to better describe what we’re asking. After detaching, you can add or hide fields as needed.',
+  fields: [{name: 'email', label: 'Work Email', type: 'email', required: true}, {name: 'firstName', label: 'First Name', required: true, half: true}, {name: 'lastName', label: 'Last Name', required: true, half: true}, {name: 'company', label: 'Company Name', required: true}],
+  submitLabel: 'Check it Out', link: {label: 'Have an account?', href: '#'}, legal: 'By submitting this form, you consent to Qualys’ privacy policy.', onSubmit: function () {}};
+function formHero() { return h(Q.Hero, {layout: 'form', title: ['Your VM Deserves', h('br', {key: 'b'}), 'Better Than Tenable'], body: 'Still putting up with Tenable’s blind spots and patching problems? We hear you. Other customers have admitted those same reasons for switching to Qualys. Now they can find all assets, prioritize risks, and patch automatically. And so can you.', form: FORM, visual: STAR}); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('Split media · Impact'), hero({media: {}}),
+  cap('Split media · Standard, with video'), hero({size: 'rg', media: {video: true}}),
+  cap('Left-aligned text · Impact'), hero({layout: 'left'}),
+  cap('Centre-aligned · Standard'), hero({layout: 'center', size: 'rg'}),
+  cap('Left-aligned on a photo · dark'), hero({size: 'rg', background: {src: BUILDING}, actions: onPhoto()}),
+  cap('Left-aligned on a photo · light'), hero({size: 'rg', background: {src: OFFICE, tone: 'light'}, actions: onPhoto('light')}),
+  cap('Centre-aligned on a photo'), hero({layout: 'center', size: 'rg', background: {src: BUILDING}, actions: onPhoto()}),
+  cap('Left-aligned on a video (placeholder)'), hero({size: 'rg', background: {video: true}, actions: onPhoto()}),
+  cap('Lead form'), formHero(),
+  cap('Tablet · split media'), h('div', {className: 'tablet'}, hero({media: {}})),
+  cap('Mobile'), h('div', {className: 'phones'},
+    h('div', {className: 'phone'}, hero({media: {}})),
+    h('div', {className: 'phone'}, hero({size: 'rg', background: {src: BUILDING}, actions: onPhoto()})),
+    h('div', {className: 'phone'}, formHero()))));
+</script>
+</body>
+</html>

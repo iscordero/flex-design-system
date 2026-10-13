@@ -1,0 +1,132 @@
+<!-- @dsCard group="Components · Buttons and links" height=3681 width=1440 subtitle="Component · Tertiary text link buttons: red, blue, charcoal with arrow, inverted; regular and small; every state" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TextLink — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-200)}
+.pv{padding:var(--spacing-2xl) var(--spacing-4xl) var(--spacing-4xl)}
+.sec{margin-top:var(--spacing-5xl)}.sec:first-child{margin-top:0}
+.sec__title{margin:0;font-family:var(--font-heading);font-weight:600;font-size:38px;line-height:1.1;letter-spacing:-0.02em}
+.sec__lede{margin:var(--spacing-xs) 0 0;max-width:760px;font-size:18px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-secondary)}
+.sizes{margin-top:var(--spacing-xl);border:1px solid var(--stroke-neutral-400);border-radius:var(--radius-md);background:var(--surface-neutral-100);overflow:hidden}
+.sizes table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.3}
+.sizes th{padding:var(--spacing-xs) var(--spacing-rg);text-align:left;font-family:var(--font-heading);font-weight:600;font-size:13px;color:var(--text-secondary);background:var(--surface-neutral-300)}
+.sizes td{padding:var(--spacing-xs) var(--spacing-rg);border-top:1px solid var(--stroke-neutral-400);vertical-align:top}
+.sizes td:first-child{font-family:var(--font-heading);font-weight:600}
+.sizes code,.tk code,.nm{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.sizes code{font-size:12.5px;color:var(--cobalt)}
+.mx{margin-top:var(--spacing-2xl);border:1px solid var(--stroke-neutral-400);border-radius:var(--radius-md);background:var(--surface-neutral-100);overflow:hidden}
+.mx__head{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-rg)}
+.mx__title{margin:0;font-family:var(--font-heading);font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-0.02em}
+.mx__use{margin:var(--spacing-3xs) 0 0;max-width:820px;font-size:16px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-secondary)}
+.mx__grid{display:grid;grid-template-columns:var(--mx-label,220px) repeat(var(--mx-n,4),minmax(0,1fr))}
+.mx__th{padding:var(--spacing-3xs) var(--spacing-rg);border-top:1px solid var(--stroke-neutral-400);background:var(--surface-neutral-300);font-family:var(--font-heading);font-weight:600;font-size:13px;line-height:1.3;color:var(--text-secondary)}
+.mx__th+.mx__th,.mx__cell,.mx__tok{border-left:1px solid var(--stroke-neutral-400)}
+.mx__lab,.mx__cell,.mx__tok,.mx__toklab{border-top:1px solid var(--stroke-neutral-400)}
+.mx__lab,.mx__toklab{padding:var(--spacing-rg)}
+.mx__toklab,.mx__tok{background:var(--surface-blue-100)}
+.mx__lab b,.mx__toklab b{display:block;font-family:var(--font-heading);font-weight:600;font-size:16px;line-height:1.3}
+.mx__lab span,.mx__toklab span{display:block;margin-top:var(--spacing-5xs);font-size:13px;line-height:1.3;color:var(--text-secondary)}
+.mx__band{grid-column:1/-1;padding:var(--spacing-3xs) var(--spacing-rg);border-top:1px solid var(--stroke-neutral-400);background:var(--surface-neutral-200);font-family:var(--font-heading);font-weight:600;font-size:13px;line-height:1.3}
+.mx__band span{font-family:var(--font-body);font-weight:400;color:var(--text-secondary)}
+.mx__tok{padding:var(--spacing-rg)}
+.mx__cell{display:flex;flex-direction:column;gap:var(--spacing-3xs);padding:var(--spacing-rg);min-width:0}
+.spec{display:flex;align-items:center;justify-content:center;min-height:88px;padding:var(--spacing-rg);border-radius:var(--radius-xs);background:var(--surface-neutral-200);box-sizing:border-box}
+.spec.is-dark{background:var(--surface-neutral-600)}
+.nm{font-size:12.5px;font-weight:600;line-height:1.35;overflow-wrap:anywhere;color:var(--text-primary)}
+.tk{display:flex;flex-direction:column;gap:var(--spacing-5xs);font-size:13px;line-height:1.3;color:var(--text-secondary)}
+.tk span{display:flex;flex-direction:column}
+.tk i{font-style:normal;font-size:12px}
+.tk code{font-size:12.5px;color:var(--cobalt);overflow-wrap:anywhere}
+.tk em{font-style:normal}
+.demo{display:flex;flex-wrap:wrap;align-items:center;gap:var(--spacing-xl);margin-top:var(--spacing-rg);padding:var(--spacing-xl);border:1px solid var(--stroke-neutral-400);border-radius:var(--radius-md);background:var(--surface-neutral-100)}
+.demo.is-dark{background:var(--surface-neutral-600)}
+@media (max-width:900px){.pv{padding:var(--spacing-xl) var(--spacing-rg)}.mx{overflow-x:auto}.mx__grid{min-width:860px}}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+/* States in the order the matrices list them. Pressed is drawn with the hover class as well, as a press always happens under the pointer. */
+var STATES = [['default', 'Default', ''], ['hover', 'Hover', 'is-hover'], ['active', 'Active (pressed)', 'is-hover is-pressed'], ['disabled', 'Disabled', '']];
+function tokens(t) {
+  var out = [];
+  [['fill', 'Fill'], ['border', 'Outline'], ['text', 'Label'], ['arrow', 'Arrow'], ['line', 'Underline']].forEach(function (k) { if (t[k[0]]) out.push(h('span', {key: k[0]}, h('i', null, k[1]), h('code', null, t[k[0]]))); });
+  if (t.note) out.push(h('span', {key: 'n'}, h('em', null, t.note)));
+  return h('div', {className: 'tk'}, out);
+}
+/* One matrix per variant: columns are states; a blue row lists the tokens each state uses; then one row per configuration, grouped into bands (sizes). */
+function matrix(m) {
+  var states = m.states || STATES, kids = [];
+  kids.push(h('div', {key: 'h0', className: 'mx__th'}, m.labelHead || 'Configuration'));
+  states.forEach(function (s) { kids.push(h('div', {key: 'h' + s[0], className: 'mx__th'}, s[1])); });
+  if (m.tokens) {
+    kids.push(h('div', {key: 't0', className: 'mx__toklab'}, h('b', null, 'Tokens'), h('span', null, 'The same for every configuration below')));
+    states.forEach(function (s) { kids.push(h('div', {key: 't' + s[0], className: 'mx__tok'}, tokens(m.tokens[s[0]] || {}))); });
+  }
+  m.rows.forEach(function (r, i) {
+    if (r.band) { kids.push(h('div', {key: 'b' + i, className: 'mx__band'}, r.band, r.spec ? h('span', null, ' · ' + r.spec) : null)); return; }
+    kids.push(h('div', {key: 'l' + i, className: 'mx__lab'}, h('b', null, r.label), r.use ? h('span', null, r.use) : null));
+    states.forEach(function (s) {
+      kids.push(h('div', {key: 'c' + i + s[0], className: 'mx__cell'},
+        h('div', {className: 'spec' + (r.dark || m.dark ? ' is-dark' : '')}, r.render(s[0], s[2], s[0] === 'disabled')),
+        h('code', {className: 'nm'}, r.name(s[0])),
+        r.tokens ? tokens(r.tokens[s[0]] || {}) : null));
+    });
+  });
+  return h('div', {className: 'mx', key: m.title},
+    h('div', {className: 'mx__head'}, h('h3', {className: 'mx__title'}, m.title), m.use ? h('p', {className: 'mx__use'}, m.use) : null),
+    h('div', {className: 'mx__grid', style: {'--mx-n': states.length, '--mx-label': m.labelWidth || '220px'}}, kids));
+}
+function sizes(rows) {
+  return h('div', {className: 'sizes'}, h('table', null,
+    h('thead', null, h('tr', null, rows[0].map(function (c, i) { return h('th', {key: i}, c); }))),
+    h('tbody', null, rows.slice(1).map(function (r, i) { return h('tr', {key: i}, r.map(function (c, j) { return h('td', {key: j}, c); })); }))));
+}
+function code(t) { return h('code', null, t); }
+function sec(title, lede) { return h('section', {className: 'sec'}, h('h2', {className: 'sec__title'}, title), lede ? h('p', {className: 'sec__lede'}, lede) : null, [].slice.call(arguments, 2)); }
+
+var LT = {
+  red: {default: {text: 'link-secondary-default'}, hover: {text: 'link-secondary-hover'}, active: {text: 'link-secondary-hover'}, disabled: {text: 'link-secondary-default', note: 'At 50% opacity'}},
+  blue: {default: {text: 'link-primary-default'}, hover: {text: 'link-primary-hover'}, active: {text: 'link-primary-hover'}, disabled: {text: 'link-primary-default', note: 'At 50% opacity'}},
+  neutral: {default: {text: 'text-primary', arrow: 'qualys-blue'}, hover: {text: 'text-primary', arrow: 'qualys-blue', note: 'Arrow moves 4px right (spacing-5xs)'}, active: {text: 'text-primary', arrow: 'qualys-blue', note: 'Arrow moves 4px right'}, disabled: {text: 'text-primary', note: 'At 50% opacity'}},
+  inverted: {default: {text: 'text-inverted'}, hover: {text: 'text-inverted'}, active: {text: 'text-inverted'}, disabled: {text: 'text-inverted', note: 'At 50% opacity'}}
+};
+/* (arrow notes are written in the matrix band) */
+function withArrow(t) { var o = {}; Object.keys(t).forEach(function (s) { o[s] = Object.assign({}, t[s]); if (s === 'hover' || s === 'active') o[s].note = o[s].note || 'Arrow moves 4px right (spacing-5xs)'; }); return o; }
+function linkRows(tone, arrows) {
+  var rows = [];
+  arrows.forEach(function (arrow) {
+    rows.push({band: arrow ? 'With arrow' : 'No arrow', spec: arrow ? 'the arrow moves 4px right on hover and press' : null});
+    [['rg', 'Regular', '16px'], ['sm', 'Small', '14px']].forEach(function (z) {
+      rows.push({label: z[1], use: z[2] + ' label',
+        name: function (s) { return 'textlink' + (arrow ? '-arrow' : '') + (tone === 'neutral' ? '' : '-' + tone) + (z[0] === 'sm' ? '-sm' : '') + '-' + s; },
+        render: function (s, cls, dis) { return h(Q.TextLink, {tone: tone, size: z[0], arrow: arrow, className: cls || undefined, disabled: dis, href: dis ? undefined : '#', tabIndex: -1, onClick: function (e) { e.preventDefault(); }}, 'Textlink'); }});
+    });
+  });
+  return rows;
+}
+function linkMatrix(tone, title, use, arrows) { return matrix({title: title, use: use, dark: tone === 'inverted', tokens: LT[tone], rows: linkRows(tone, arrows)}); }
+var RED = 'Lightweight call to action in red: navigation or secondary actions that should be found without competing with a primary button. Use in smaller modules such as cards, or where several items each need an action.';
+var BLUE = 'Lightweight action in blue for functional, clickable elements inside modules, such as filters ("Clear all"). With the arrow, it reinforces direction.';
+var INV = 'White text link on dark or photo grounds.';
+var NEU = 'Charcoal text link with a blue arrow: the default "go there" link in cards and modules. The arrow reinforces direction and intent.';
+var SIZES = sizes([
+  ['Size', 'Label', 'Arrow or icon', 'Use'],
+  ['Regular', 'Wix Madefor Text SemiBold 16px, line height 1', ['16px, 4px gap · ', code('spacing-5xs')], 'Cards and modules'],
+  ['Small', 'Wix Madefor Text SemiBold 14px, line height 1', ['16px, 4px gap · ', code('spacing-5xs')], 'Dense lists, small cards and mobile']
+]);
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
+  sec('Text link buttons', 'Tier 3: a text link button looks like a link but acts as a button. It stands on its own, outside a paragraph (a link inside a sentence is a Hyperlink).', SIZES,
+    linkMatrix('neutral', 'Standard (charcoal)', NEU, [true]),
+    linkMatrix('red', 'Red', RED, [false]),
+    linkMatrix('blue', 'Blue', BLUE, [false, true]),
+    linkMatrix('inverted', 'Inverted', INV, [false, true])),
+  sec('In use', null,
+    h('div', {className: 'demo'}, h(Q.TextLink, {tone: 'neutral', arrow: true, href: '#'}, 'Learn More'), h(Q.TextLink, {tone: 'red', href: '#'}, 'View All Events'), h(Q.TextLink, {tone: 'blue', href: '#'}, 'Clear All'), h(Q.TextLink, {tone: 'neutral', iconLeft: 'download', href: '#'}, 'Download the Report')),
+    h('div', {className: 'demo is-dark'}, h(Q.TextLink, {tone: 'inverted', arrow: true, href: '#'}, 'Learn More'), h(Q.TextLink, {tone: 'inverted', href: '#'}, 'Read the Story')))));
+</script>
+</body>
+</html>

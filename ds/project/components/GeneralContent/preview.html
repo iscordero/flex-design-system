@@ -1,0 +1,39 @@
+<!-- @dsCard group="Page modules · Content sections" height=4946 width=1440 subtitle="Block module · Copy beside an image or video, full-width media, and banners; then mobile. Videos play." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GeneralContent — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+function phone(t, node) { return h('div', null, cap(t).props.children ? h('div', {className: 'cap', style: {paddingLeft: 0}}, t) : null, h('div', {className: 'phone'}, node)); }
+var BUILDING = '/_blob/030f664385156a91a5802ce5e6424bd4';
+var P = {eyebrow: 'Lorem Ipsum Dolor', title: 'Lorem Ipsum Dolor Sit Amet Consectetur Ut Gravida Senectus Diam Quam Ipsum Odio Vestibulum', body: 'Lorem ipsum dolor sit amet consectetur. Interdum natoque ullamcorper elit ipsum duis aenean neque sed volutpat facilisis.'};
+var B = {title: 'Lorem Ipsum Dolor', body: 'Lorem ipsum dolor sit amet consectetur ut gravida senectus diam quam ipsum odio vestibulum'};
+function primary() { return h(Q.Button, {key: 'p'}, 'Primary Button'); }
+function secondary() { return h(Q.Button, {key: 's', variant: 'secondary'}, 'Secondary Button'); }
+function tertiary() { return h(Q.TextLink, {key: 't', tone: 'neutral', arrow: true, href: '#'}, 'Tertiary Button'); }
+function gc(extra) { return h(Q.GeneralContent, Object.assign({}, P, {media: {}}, extra)); }
+function banner(extra) { return h(Q.GeneralContent, Object.assign({layout: 'banner', actions: h(Q.Button, null, 'Button')}, B, extra)); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('Media right · primary button'), gc({actions: [primary()]}),
+  cap('Media left · primary and secondary'), gc({layout: 'media-left', actions: [primary(), secondary()]}),
+  cap('Video right · primary and tertiary'), gc({media: {video: true}, actions: [primary(), tertiary()]}),
+  cap('Video left · tertiary only'), gc({layout: 'media-left', media: {video: true}, actions: [tertiary()]}),
+  cap('Full-width media'), h(Q.GeneralContent, {layout: 'full', media: {}}),
+  cap('Full-width video (16:9)'), h(Q.GeneralContent, {layout: 'full', media: {video: true}}),
+  cap('Image banner with copy'), banner({media: {src: BUILDING}}),
+  cap('Video banner with copy (placeholder)'), banner({media: {video: true}}),
+  cap('Mobile'), h('div', {className: 'phones'},
+    h('div', {className: 'phone'}, gc({actions: [primary(), secondary()]})),
+    h('div', {className: 'phone'}, gc({media: {video: true}, actions: [primary(), tertiary()]})),
+    h('div', {className: 'phone'}, h(Q.GeneralContent, {layout: 'full', media: {}}), banner({media: {src: BUILDING}}), banner({media: {video: true}})))));
+</script>
+</body>
+</html>

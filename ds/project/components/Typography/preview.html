@@ -1,0 +1,154 @@
+<!-- @dsCard group="Foundations" height=3520 width=1200 subtitle="Every type style at desktop or mobile size — switch with the toggle" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Typography — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+html,body{margin:0}
+body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}
+.pv{padding:var(--spacing-xl) var(--spacing-3xl) var(--spacing-3xl)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:var(--spacing-rg);flex-wrap:wrap;padding-bottom:var(--spacing-xl);border-bottom:1.5px solid var(--stroke-neutral-400)}
+.bar__hint{margin:0;font-size:14px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-secondary)}
+.seg{display:inline-flex;gap:var(--spacing-5xs);padding:var(--spacing-5xs);border-radius:var(--radius-rg);background:var(--surface-neutral-300);border:1px solid var(--stroke-neutral-400)}
+.seg button{appearance:none;border:0;margin:0;min-width:104px;height:40px;padding:0 var(--spacing-rg);border-radius:8px;background:transparent;cursor:pointer;font-family:var(--font-heading);font-weight:600;font-size:16px;letter-spacing:-0.005em;color:var(--text-secondary);transition:background-color 150ms ease-in-out,color 150ms ease-in-out}
+.seg button[aria-pressed="true"]{background:var(--surface-neutral-100);color:var(--text-primary);box-shadow:var(--shadow-card)}
+.seg button:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.grp{margin-top:var(--spacing-3xl)}
+.grp__name{margin:0 0 var(--spacing-3xs);font-family:var(--font-heading);font-weight:600;font-size:12px;line-height:1;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}
+.head,.row{display:grid;grid-template-columns:200px 88px 88px 80px 104px minmax(0,1fr);column-gap:var(--spacing-xl);align-items:start}
+.head{padding:var(--spacing-3xs) 0;border-bottom:1px solid var(--stroke-neutral-400);font-size:12px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-secondary)}
+.row{padding:var(--spacing-rg) 0;border-bottom:1px solid var(--stroke-neutral-400)}
+.meta{display:flex;flex-direction:column;gap:2px}
+.meta__name{font-family:var(--font-body);font-weight:600;font-size:16px;line-height:1.3;letter-spacing:-0.01em}
+.meta__label{font-size:14px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-secondary)}
+.num{display:flex;flex-direction:column;gap:2px;font-size:14px;line-height:1.3;letter-spacing:-0.01em;font-variant-numeric:tabular-nums;padding-top:1px}
+.num small{font-size:12px;color:var(--text-secondary)}
+.grp__fam{font-family:var(--font-body);font-weight:400;letter-spacing:-0.01em;text-transform:none}
+.spec{min-width:0;overflow-wrap:break-word}
+.is-mobile .spec{max-width:335px}
+.up{text-transform:uppercase}
+.accent{color:var(--text-accent-primary)}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+(function () {
+  var GROUPS = [{"g": "Display & headings", "r": [{"n": "display-xl", "l": "Display (xl)", "s": "Detect, Prioritize, Eliminate"}, {"n": "display-lg", "l": "Display (lg)", "s": "Cloud Security"}, {"n": "h1", "l": "Heading 1 (lg)", "s": "Vulnerability Management"}, {"n": "h2", "l": "Heading 2 (md)", "s": "Platform Overview"}, {"n": "h3", "l": "Heading 3 (rg)", "s": "Asset Discovery & Inventory"}, {"n": "h4", "l": "Heading 4 (sm)", "s": "Continuous Monitoring"}, {"n": "h5", "l": "Heading 5 (xs)", "s": "Compliance"}]}, {"g": "Paragraph", "r": [{"n": "paragraph-lg", "l": "Paragraph (lg)", "s": "Qualys gives security teams full visibility across their entire attack surface."}, {"n": "paragraph-md", "l": "Paragraph (md)", "s": "One platform to see, rank, and remove risk across cloud and on-prem."}, {"n": "paragraph-rg", "l": "Paragraph (rg)", "s": "Identify, prioritize, and remediate vulnerabilities across hybrid environments."}, {"n": "paragraph-sm", "l": "Paragraph (sm)", "s": "Supporting copy for card descriptions and secondary details."}, {"n": "paragraph-xs", "l": "Paragraph (xs)", "s": "© 2026 Qualys, Inc. All rights reserved."}]}, {"g": "Title", "r": [{"n": "title-md", "l": "Title (md)", "s": "Jordan Rivera"}, {"n": "title-rg", "l": "Title (rg)", "s": "Jordan Rivera"}, {"n": "title-sm", "l": "Title (sm)", "s": "Jordan Rivera"}]}, {"g": "Tag", "r": [{"n": "tag-md", "l": "Tag (md)", "s": "Webinar"}, {"n": "tag-rg", "l": "Tag (rg)", "s": "Webinar"}, {"n": "tag-sm", "l": "Tag (sm)", "s": "Webinar"}, {"n": "tag-xs", "l": "Tag (xs)", "s": "Webinar"}]}, {"g": "Eyebrow", "r": [{"n": "eyebrow-xl", "l": "Eyebrow (xl)", "s": "TruRisk Platform"}, {"n": "eyebrow-lg", "l": "Eyebrow (lg)", "s": "CLOUD SECURITY"}, {"n": "eyebrow-md", "l": "Eyebrow (md)", "s": "CLOUD SECURITY"}, {"n": "eyebrow-sm", "l": "Eyebrow (sm)", "s": "CLOUD SECURITY"}, {"n": "eyebrow-xs", "l": "Eyebrow (xs)", "s": "CLOUD SECURITY"}]}, {"g": "Label & button", "r": [{"n": "label", "l": "Label", "s": "Email Address"}, {"n": "button-label", "l": "Button label", "s": "Get a Demo"}]}, {"g": "Quote", "r": [{"n": "quote-lg", "l": "Quote (lg)", "s": "Qualys gave us one view of risk across every cloud."}, {"n": "quote-md", "l": "Quote (md)", "s": "Qualys gave us one view of risk across every cloud."}, {"n": "quote-sm", "l": "Quote (sm)", "s": "Qualys gave us one view of risk across every cloud."}]}, {"g": "Stat", "r": [{"n": "stat-lg", "l": "Stat (lg)", "s": "99.99%"}, {"n": "stat-md", "l": "Stat (md)", "s": "3,847"}]}];
+  var FALLBACK = {"display-xl": {"fontSize": "36px"}, "display-lg": {"fontSize": "36px"}, "h1": {"fontSize": "32px", "lineHeight": "1.2"}, "h2": {"fontSize": "24px", "lineHeight": "1.25"}, "h3": {"fontSize": "20px", "lineHeight": "1.3"}, "h4": {"fontSize": "18px"}, "h5": {"fontSize": "16px"}, "paragraph-lg": {"fontSize": "18px"}, "paragraph-md": {"fontSize": "16px"}, "title-md": {"fontSize": "18px"}, "title-rg": {"fontSize": "16px", "lineHeight": "1.1"}, "title-sm": {"lineHeight": "1.1"}, "tag-md": {"fontSize": "16px"}, "eyebrow-xl": {"fontSize": "16px"}, "eyebrow-lg": {"fontSize": "16px"}, "quote-lg": {"fontSize": "20px"}, "quote-md": {"fontSize": "18px"}, "quote-sm": {"fontSize": "16px"}, "stat-lg": {"fontSize": "48px"}, "stat-md": {"fontSize": "38px"}};
+  var KEY = 'qualys-type-mode', mode = 'desktop';
+  try { if (localStorage.getItem(KEY) === 'mobile') mode = 'mobile'; } catch (e) {}
+  var UPPER = { 'eyebrow-lg': 1, 'eyebrow-md': 1, 'eyebrow-sm': 1, 'eyebrow-xs': 1, 'tag-sm': 1, 'tag-xs': 1 };
+  /* Mobile sizes come from bundle.css (its max-width: 767px rules); FALLBACK holds the same values if that stylesheet can't be read. */
+  function mobileRules() {
+    var out = {}, found = false;
+    function walk(rules, inMobile) {
+      for (var i = 0; i < rules.length; i++) {
+        var r = rules[i];
+        if (r.media && r.cssRules) { walk(r.cssRules, /max-width:\s*767px/.test(r.conditionText || r.media.mediaText)); continue; }
+        if (!inMobile || !r.selectorText || !r.style) continue;
+        r.selectorText.split(',').forEach(function (sel) {
+          var m = /^\s*\.([A-Za-z0-9_-]+)\s*$/.exec(sel); if (!m) return;
+          var o = out[m[1]] || (out[m[1]] = {});
+          ['font-size', 'line-height', 'letter-spacing', 'font-weight'].forEach(function (k) {
+            var v = r.style.getPropertyValue(k); if (v) { o[k.replace(/-(\w)/g, function (_, c) { return c.toUpperCase(); })] = v.trim(); found = true; }
+          });
+        });
+      }
+    }
+    for (var s = 0; s < document.styleSheets.length; s++) { try { walk(document.styleSheets[s].cssRules, false); } catch (e) {} }
+    return found ? out : FALLBACK;
+  }
+  var MOBILE = mobileRules();
+  /* Every weight a style comes in: its default plus the classes named style-weight in bundle.css (paragraph-rg-500). */
+  function weightClasses() {
+    var out = {};
+    function walk(rules) {
+      for (var i = 0; i < rules.length; i++) {
+        var r = rules[i];
+        if (r.cssRules) { walk(r.cssRules); continue; }
+        if (!r.selectorText) continue;
+        r.selectorText.split(',').forEach(function (sel) { var m = /^\s*\.([a-z0-9-]+?)-([1-9]00)\s*$/.exec(sel); if (m) (out[m[1]] = out[m[1]] || []).push(m[2]); });
+      }
+    }
+    for (var s = 0; s < document.styleSheets.length; s++) { try { walk(document.styleSheets[s].cssRules); } catch (e) {} }
+    return out;
+  }
+  /* The same list, for when the stylesheet can't be read. */
+  var WEIGHTS_FALLBACK = {"eyebrow-lg": ["600", "700"], "eyebrow-xl": ["600", "700"], "label": ["400", "600"], "paragraph-lg": ["400", "500", "600"], "paragraph-md": ["400", "500", "600"], "paragraph-rg": ["400", "500", "600"], "paragraph-sm": ["400", "500", "600"], "paragraph-xs": ["400", "500", "600"], "tag-md": ["500", "600"], "tag-rg": ["500", "600", "700"], "tag-sm": ["600", "700"], "tag-xs": ["600", "700"]};
+  var WEIGHTS = weightClasses();
+  if (!Object.keys(WEIGHTS).length) WEIGHTS = WEIGHTS_FALLBACK;
+  function allWeights(name, def) { var w = (WEIGHTS[name] || []).concat([String(def)]); return w.filter(function (v, i) { return w.indexOf(v) === i; }).sort().join(', '); }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function pct(n) { var r = Math.round(n * 10) / 10; return (r === 0 ? '0' : String(r).replace('-', '\u2212')) + '%'; }
+  function specOf(node) {
+    var cs = getComputedStyle(node), size = parseFloat(cs.fontSize);
+    var lh = cs.lineHeight === 'normal' ? null : parseFloat(cs.lineHeight);
+    /* Letter spacing is set in percent; a browser reports it back either as that percent or as px. */
+    var raw = cs.letterSpacing, ls = raw === 'normal' ? 0 : parseFloat(raw);
+    var track = /%$/.test(raw) ? ls : ls / size * 100;
+    return { size: Math.round(size) + 'px', line: lh ? pct(lh / size * 100) : 'normal', track: pct(track), weight: cs.fontWeight,
+      fam: cs.fontFamily.split(',')[0].replace(/["']/g, '').trim() };
+  }
+  var root = document.getElementById('root');
+  var pv = el('div', 'pv'); root.appendChild(pv);
+  var bar = el('div', 'bar'); pv.appendChild(bar);
+  var seg = el('div', 'seg'); seg.setAttribute('role', 'group'); seg.setAttribute('aria-label', 'Screen size');
+  var hint = el('p', 'bar__hint');
+  bar.appendChild(seg); bar.appendChild(hint);
+  var btns = {};
+  ['desktop', 'mobile'].forEach(function (m) {
+    var b = el('button', null, m === 'desktop' ? 'Desktop' : 'Mobile'); b.type = 'button';
+    b.addEventListener('click', function () { set(m); });
+    btns[m] = b; seg.appendChild(b);
+  });
+  var rows = [];
+  GROUPS.forEach(function (g) {
+    var sec = el('section', 'grp'); pv.appendChild(sec);
+    var h = el('h2', 'grp__name', g.g); var fam = el('span', 'grp__fam'); h.appendChild(fam); sec.appendChild(h);
+    var head = el('div', 'head'); ['Style', 'Size', 'Line', 'Tracking', 'Weight', 'Sample'].forEach(function (c) { head.appendChild(el('span', null, c)); }); sec.appendChild(head);
+    var fams = [];
+    g.r.forEach(function (r) {
+      var row = el('div', 'row'), meta = el('div', 'meta');
+      meta.appendChild(el('span', 'meta__name', r.n));
+      meta.appendChild(el('span', 'meta__label', r.l));
+      row.appendChild(meta);
+      var cells = {};
+      ['size', 'line', 'track', 'weight'].forEach(function (k) { var c = el('span', 'num'); cells[k] = c; row.appendChild(c); });
+      var s = el('div', 'spec ' + r.n, r.s);
+      if (UPPER[r.n]) s.classList.add('up');
+      if (/^eyebrow-/.test(r.n)) s.classList.add('accent');
+      row.appendChild(s); sec.appendChild(row);
+      var probe = el('span', r.n); probe.style.cssText = 'position:absolute;visibility:hidden;pointer-events:none'; probe.textContent = 'x'; root.appendChild(probe);
+      var f = specOf(probe).fam; if (fams.indexOf(f) < 0) fams.push(f);
+      rows.push({ r: r, s: s, cells: cells, probe: probe });
+    });
+    fam.textContent = ' \u00b7 ' + fams.join(' / ');
+  });
+  function set(m) {
+    mode = m;
+    try { localStorage.setItem(KEY, m); } catch (e) {}
+    pv.classList.toggle('is-mobile', m === 'mobile');
+    Object.keys(btns).forEach(function (k) { btns[k].setAttribute('aria-pressed', k === m ? 'true' : 'false'); });
+    hint.textContent = m === 'mobile'
+      ? 'Mobile: screens under 768px. Samples wrap at a 375px phone\u2019s 335px content width.'
+      : 'Desktop: screens from 768px. Switch to see each style at its mobile size.';
+    rows.forEach(function (x) {
+      var mob = MOBILE[x.r.n] || {};
+      ['fontSize', 'lineHeight', 'letterSpacing', 'fontWeight'].forEach(function (k) { x.s.style[k] = m === 'mobile' && mob[k] ? mob[k] : ''; });
+      var now = specOf(x.s), d = specOf(x.probe);
+      ['size', 'line', 'track', 'weight'].forEach(function (k) {
+        var c = x.cells[k]; c.textContent = k === 'weight' ? allWeights(x.r.n, d.weight) : now[k];
+        if (k === 'weight') return;
+        if (m === 'mobile' && now[k] !== d[k]) c.appendChild(el('small', null, d[k] + ' desktop'));
+      });
+    });
+  }
+  set(mode);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { set(mode); });
+})();
+</script>
+</body>
+</html>

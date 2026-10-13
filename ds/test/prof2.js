@@ -1,0 +1,12 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const errs=[];
+const p=await b.newPage({viewport:{width:1248,height:1000}});p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+await p.goto('file://'+process.cwd()+'/ProfileGrid.html');await p.waitForLoadState('networkidle');
+await p.focus('.q-pcard__open');
+console.log('focused btn label',await p.evaluate(()=>document.activeElement.getAttribute('aria-label')||document.activeElement.textContent),'| haspopup',await p.evaluate(()=>document.activeElement.getAttribute('aria-haspopup')));
+await p.keyboard.press('Enter');await p.waitForTimeout(400);
+console.log('open',await p.evaluate(()=>!!document.querySelector('.q-pmodal__panel')),'role',await p.evaluate(()=>{const d=document.querySelector('[role=dialog]');return d?[d.getAttribute('aria-modal'),d.getAttribute('aria-labelledby'),document.getElementById(d.getAttribute('aria-labelledby'))?.textContent]:null}));
+await p.keyboard.press('Escape');await p.waitForTimeout(100);
+console.log('focus restored to',await p.evaluate(()=>document.activeElement.className));
+await p.setViewportSize({width:834,height:1100});await p.waitForTimeout(100);
+console.log('tablet tile',await p.evaluate(()=>{const b=document.querySelector('.q-pgrid--combined .q-pcard__media').getBoundingClientRect();return [b.width,b.height]}));
+console.log('errs',errs);await b.close()})();

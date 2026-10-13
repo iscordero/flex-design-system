@@ -1,0 +1,32 @@
+<!-- @dsCard group="Page modules · Content sections" height=2671 width=1440 subtitle="Block module · A card with tabs across the top; each tab has its own copy and media. Click a tab." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TabModule — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+function phone(t, node) { return h('div', null, cap(t).props.children ? h('div', {className: 'cap', style: {paddingLeft: 0}}, t) : null, h('div', {className: 'phone'}, node)); }
+var BODY = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+function item(label, title, actions) { return {label: label, title: title, body: BODY, actions: actions, media: {}}; }
+function b1() { return [h(Q.Button, {key: 'p'}, 'Button')]; }
+function b2() { return [h(Q.Button, {key: 'p'}, 'Button'), h(Q.Button, {key: 's', variant: 'secondary'}, 'Button')]; }
+function b3() { return [h(Q.Button, {key: 'p'}, 'Button'), h(Q.TextLink, {key: 't', tone: 'neutral', arrow: true, href: '#'}, 'Button')]; }
+var THREE = [item('Measure', 'Measure Cyber Risk Across Every Attack Surface', b1()), item('Communicate', 'Communicate Cyber Risk in Business Terms', b2()), item('Eliminate', 'Eliminate the Risk That Matters Most', b3())];
+var EIGHT = ['CSPM', 'KCS', 'CWP', 'IaC', 'CIEM', 'CDR', 'CWA', 'SSPM'].map(function (l, i) { return item(l, i ? l + ': Lorem Ipsum Dolor Sit Amet' : 'Measure Cyber Risk Across Every Attack Surface', i % 2 ? b3() : b2()); });
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('Left-aligned tabs'), h(Q.TabModule, {items: THREE, label: 'TruRisk steps'}),
+  cap('Centred tabs'), h(Q.TabModule, {align: 'center', items: EIGHT, label: 'Cloud security capabilities'}),
+  cap('Autoplay: the next tab opens every six seconds; the button pauses it'), h(Q.TabModule, {align: 'center', items: THREE, autoplay: true, label: 'TruRisk steps'}),
+  cap('Mobile'), h('div', {className: 'phones'},
+    h('div', {className: 'phone'}, h(Q.TabModule, {items: THREE, label: 'TruRisk steps'})),
+    h('div', {className: 'phone'}, h(Q.TabModule, {align: 'center', items: EIGHT, defaultValue: 1, label: 'Cloud security capabilities'})))));
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!-- @dsCard group="Page modules · Header and footer" height=132 width=1440 subtitle="Block module · Event promotion above the navigation; the cross dismisses it." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>NavBanner — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-200)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+var LOGO = '/_blob/a0d4062abbce2ceb87d5be08d326359f', SHIELD = '/_blob/1317004b4eea94a3648caf5ff41b1862';
+var PLATFORM = {
+  overview: {title: 'Enterprise TruRisk Platform', description: 'Everything you need to measure, manage and reduce your cyber risk in one place', href: '#'},
+  railLabel: 'Capabilities', groupsLabel: 'Platform Apps',
+  groups: [
+    {title: 'Risk Operations Center (ROC)', links: [{label: 'Enterprise TruRisk Management/ CTEM', badge: true}, {label: 'Agentic AI', badge: true}, 'ETM Identity']},
+    {title: 'Vulnerability & Configuration Management', links: [{label: 'TotalAppSec', badge: true}, 'TotalAI', 'Vulnerability Management, Detection & Response (VMDR)']},
+    {title: 'Compliance', links: ['Policy Audit', 'File Integrity Monitoring (FIM)']},
+    {title: 'Asset Management', badge: true, links: ['Cybersecurity Asset Management (CSAM)', 'External Attack Surface Management (EASM)']},
+    {title: 'Risk Remediation', links: [{label: 'TruRisk Eliminate (TE)', badge: true}, 'Patch Management (PM)', 'Custom Assessment and Remediation (CAR)']},
+    {title: 'Threat Detection & Response', links: ['Multi-Vector EDR']},
+    {title: 'Cloud Security', links: ['TotalCloud (CNAPP)', 'Cloud Security Posture Management (CSPM)', 'Kubernetes and Container Security (KCS)', 'Cloud Workload Protection (CWP)', 'Cloud Infrastructure and Entitlement Management (CIEM)', 'Cloud Detection and Response (CDR)', 'SaaS Security Posture Management (SSPM)']}
+  ]};
+var SOLUTIONS = {columns: [
+  {title: 'Use Cases', links: ['Risk Operations Center (ROC)', 'Endpoint Security', 'Compliance', 'PCI Compliance', 'Cloud Security', 'DevOps', 'Threat Protection', 'Software Supply Chain Risk', 'NIS2']},
+  {title: 'Segments', links: ['Small Business', 'Mid-Sized Business', 'Enterprise', 'Public Sector']}]};
+var ITEMS = [{label: 'Platform', menu: PLATFORM}, {label: 'Solutions', menu: SOLUTIONS}, {label: 'Customers', href: '#'}, {label: 'Resources', href: '#'}, {label: 'Support', href: '#'}, {label: 'More', href: '#'}];
+var COMMON = {logoSrc: LOGO, items: ITEMS, utility: ['Community', 'Login', 'Contact Us'], search: true, cta: {label: 'Get Started', href: '#'}};
+function nav(extra) { return h(Q.Nav, Object.assign({}, COMMON, extra)); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  h(Q.NavBanner, {title: 'Join your peers at ROCon', meta: ['November 18-20', 'Mumbai'], cta: {label: 'Don\u2019t Miss Out', href: '#'}}),
+  nav({layout: 'desktop', hover: false})));
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!-- @dsCard group="Page modules · Events" height=8250 width=1440 subtitle="Block module · Events calendar: search and filters over a month grid, a list or cards. Switch views." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>EventCalendar — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+function phone(t, node) { return h('div', null, cap(t).props.children ? h('div', {className: 'cap', style: {paddingLeft: 0}}, t) : null, h('div', {className: 'phone'}, node)); }
+var logo = '/_blob/2f12addb8d68868ae064a58fad459a07';
+var who = [{name: 'Alex Morgan'}, {name: 'Priya Shah'}, {name: 'Sam Lee'}, {name: 'Dana Cruz'}];
+var events = [
+  {id: 'd1', type: 'qualys', format: 'In-Person', title: 'QSC EMEA', start: '2024-12-03', end: '2024-12-05', href: '#'},
+  {id: 'd2', type: 'webinar', format: 'Virtual', title: 'Year in Review: The Vulnerabilities That Mattered', start: '2024-12-12', time: '10a – 11a PST', href: '#', speakers: who},
+  {id: 'a1', type: 'industry', format: 'Virtual', title: 'Cloud Security Conference 2025', start: '2025-01-01', time: 'All day', href: '#', external: true},
+  {id: 'a2', type: 'industry', format: 'Virtual', title: 'Security Leaders Forum 2025', start: '2025-01-04', time: '9a – 5p PST', href: '#', external: true},
+  {id: 'a3', type: 'qualys', format: 'In-Person', title: 'QSC Americas', start: '2025-01-06', end: '2025-01-09', href: '#', flag: 'Upcoming'},
+  {id: 'a4', type: 'industry', format: 'Virtual', title: 'Scaling New Heights', start: '2025-01-08', time: '8a – 9a PST', href: '#', external: true},
+  {id: 'a5', type: 'webinar', format: 'Virtual', title: 'This Month in Vulnerabilities and Patches', start: '2025-01-09', time: '10a – 11a PST', href: '#', speakers: who},
+  {id: 'a6', type: 'training', format: 'In-Person', title: 'QSC Mumbai Training Day', start: '2025-01-13', time: '9a – 4p IST', href: '#'},
+  {id: 'a7', type: 'qualys', format: 'In-Person', title: 'QSC Mumbai', start: '2025-01-13', end: '2025-01-15', href: '#'},
+  {id: 'a8', type: 'webinar', format: 'Virtual', title: 'Qualys Monthly Partner Webinar: New Qualys UI Features, RBAC Enhancements & EASM Risk Reports', start: '2025-01-14', time: '11a – 12p PST', href: '#', speakers: who.slice(0, 2)},
+  {id: 'a9', type: 'speaking', format: 'In-Person', title: 'Steps to TruRisk: Leveraging Qualys to Reduce Your Risk', start: '2025-01-17', time: '9a – 10a PST', href: '#'},
+  {id: 'a10', type: 'industry', format: 'In-Person', title: 'Security Days 2025', start: '2025-01-21', end: '2025-01-23', href: '#', external: true},
+  {id: 'a11', type: 'webinar', format: 'Virtual', title: 'Beyond the Top 10: Advanced Security Strategies for Web Applications & APIs', start: '2025-01-22', time: '10:30a – 11:30a PST', href: '#', speakers: who},
+  {id: 'a12', type: 'webinar', format: 'Virtual', title: 'Securing Generative AI and LLMs with Qualys TotalAI', start: '2025-01-23', time: '4:10p – 4:50p PST', href: '#', speakers: who.slice(1), action: {label: 'Join Waitlist', variant: 'secondary-alt'}},
+  {id: 'a13', type: 'training', format: 'Virtual', title: 'VMDR Foundations Training', start: '2025-01-24', time: '9a – 12p PST', href: '#'},
+  {id: 'a14', type: 'webinar', format: 'Virtual', title: 'Accelerating Patch Remediation and Meeting SLAs', start: '2025-01-28', time: '8a – 9a PST', href: '#', speakers: who.slice(0, 3)},
+  {id: 'a15', type: 'speaking', format: 'Virtual', title: 'Measuring Cyber Risk in Business Terms', start: '2025-01-28', time: '11a – 12p PST', href: '#'},
+  {id: 'a16', type: 'webinar', format: 'Virtual', title: 'Securing Your Digital Transformation to the Cloud', start: '2025-01-29', time: '10a – 11a PST', href: '#', speakers: who},
+  {id: 'f1', type: 'qualys', format: 'In-Person', title: 'QSC Europe', start: '2025-02-04', end: '2025-02-06', href: '#', flag: 'Upcoming'},
+  {id: 'f2', type: 'webinar', format: 'Virtual', title: 'Redesigned Qualys VMDR for ITSM: ServiceNow Integration Simplified', start: '2025-02-11', time: '10a – 11:30a PST', href: '#', speakers: who}
+];
+var promo = {href: '#', logo: logo, icon: 'general-resource', title: 'Resource Center', description: 'Reports, guides and videos on measuring and reducing cyber risk.', cta: 'Visit Resource Center'};
+function cal(view, extra) {
+  return h(Q.EventCalendar, Object.assign({events: events, defaultView: view, defaultMonth: '2025-01', today: '2025-01-07', promo: promo}, extra));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('Month view'), cal('month'),
+  cap('List view'), cal('list'),
+  cap('Grid view'), cal('grid', {pageSize: 6}),
+  cap('Mobile: month, list and grid'),
+  h('div', {className: 'phones'},
+    h('div', {className: 'phone'}, cal('month')),
+    h('div', {className: 'phone'}, cal('list', {events: events.slice(4, 7)})),
+    h('div', {className: 'phone'}, cal('grid', {pageSize: 4})))));
+</script>
+</body>
+</html>

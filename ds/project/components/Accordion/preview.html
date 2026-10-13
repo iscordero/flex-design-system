@@ -1,0 +1,50 @@
+<!-- @dsCard group="Components · Accordions and drawers" height=2855 width=1180 subtitle="Component · A group of drawers: standard rows or session cards. Opening one closes the others." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Accordion — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:var(--spacing-rg)}.row{display:flex;gap:var(--spacing-xl);align-items:flex-start;flex-wrap:wrap}.cap{margin-bottom:var(--spacing-3xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.col{display:flex;flex-direction:column;gap:var(--spacing-rg);width:320px}</style>
+<style>.cols{display:flex;gap:56px;align-items:flex-start;flex-wrap:wrap}.c{flex:1 1 420px;min-width:0}.sec{display:flex;flex-direction:column;gap:var(--spacing-3xs)}.grey{margin:0 calc(var(--spacing-xl) * -1) calc(var(--spacing-xl) * -1);padding:var(--spacing-xl);background:#f1f1f1}.phones{display:flex;gap:var(--spacing-xl);align-items:flex-start;flex-wrap:wrap}.phone{flex:none;box-sizing:border-box;width:375px;padding:var(--spacing-rg);box-shadow:var(--shadow-card)}.phone.w{background:var(--surface-neutral-100)}.phone.g{background:#f1f1f1;display:flex;flex-direction:column;gap:var(--spacing-rg)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+var copy = 'The Qualys Enterprise TruRisk Platform brings asset discovery, risk scoring and remediation into one place, so security and IT work from the same picture of what to fix first.';
+function more() { return h(Q.Button, {size: 'sm'}, 'Learn More'); }
+var withIcons = [
+  {id: 'cloud', title: 'Cloud Security', icon: '/_blob/dacda2a3a9a5a660aa21c4aa3d9a2578', content: copy, cta: more()},
+  {id: 'detect', title: 'Threat Detection', icon: '/_blob/bdcd7cc4b2bbc39f3f0aba2ee1b6ea8e', content: copy, cta: more()},
+  {id: 'measure', title: 'Risk Measurement', icon: '/_blob/08a9d26a3a902a648c904b65297a8cb7', content: copy},
+  {id: 'prioritize', title: 'Prioritization', icon: '/_blob/879916cd1c61396c65bde874a0e7ba08', content: copy},
+  {id: 'eliminate', title: 'Risk Elimination', icon: '/_blob/1b73d8e9df0314acff6a2196b7893e4e', content: copy},
+  {id: 'compliance', title: 'Compliance', icon: '/_blob/afc380121ab10f5f48e6152e0a616c5e', content: copy}
+];
+var textOnly = ['How Is TruRisk Calculated?', 'Which Assets Are Covered?', 'How Do I Get Started?', 'Can I Try It First?', 'Where Is My Data Stored?', 'Who Do I Contact?'].map(function (t) { return {title: t, content: copy}; });
+var body = 'Master proactive defense strategies through comprehensive risk-based vulnerability management using Qualys TruRisk. Gain hands-on expertise in identifying, prioritizing, and mitigating security vulnerabilities to safeguard your organization\u2019s digital assets effectively.';
+var speaker = [{name: 'Sumedh Thakar', designation: 'President and CEO, Qualys'}];
+function reg() { return h(Q.Button, {variant: 'secondary'}, 'Register'); }
+function wait() { return h(Q.Button, {variant: 'secondary-alt'}, 'Join Waitlist'); }
+var sessions = [
+  ['8:00 AM \u2013 12:00 PM', 'Proactive Defense: Implementing Risk-Based Vulnerability Management with Qualys TruRisk'],
+  ['8:00 AM \u2013 12:00 PM', 'Securing your Multi-Cloud Environment with TotalCloud 2.0'],
+  ['8:00 AM \u2013 12:00 PM', 'Managing Misconfigurations: Leveraging Qualys Policy Compliance to Reduce Risk'],
+  ['1:00 PM \u2013 5:00 PM', 'Reduce Risk and MTTR everywhere using Qualys Patch Management'],
+  ['1:00 PM \u2013 5:00 PM', 'Secure Kubernetes and Containers from Build to Runtime with Qualys TotalCloud'],
+  ['1:00 PM \u2013 5:00 PM', 'Beyond Inventory: Strategic Asset Risk Operations with Qualys CSAM']
+].map(function (s, i) { return {time: s[0], title: s[1], content: body, speakers: speaker, cta: i === 2 || i === 4 ? wait() : reg()}; });
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', {className: 'pv', style: {gap: 32}},
+    h('div', {className: 'cols'},
+      h('div', {className: 'c sec'}, h('div', {className: 'cap'}, 'Standard \u2014 icon and text'), h(Q.Accordion, {items: withIcons, defaultOpen: 'cloud'})),
+      h('div', {className: 'c sec'}, h('div', {className: 'cap'}, 'Standard \u2014 text'), h(Q.Accordion, {items: textOnly, defaultOpen: 0}))),
+    h('div', {className: 'sec grey'}, h('div', {className: 'cap'}, 'Content cards \u2014 sample sessions from the Figma file'), h(Q.Accordion, {variant: 'cards', items: sessions, defaultOpen: 0})),
+    h('div', {className: 'sec'}, h('div', {className: 'cap'}, 'Mobile \u2014 375px screen, 16px page margins'),
+      h('div', {className: 'phones'},
+        h('div', {className: 'phone w'}, h(Q.Accordion, {layout: 'mobile', items: withIcons, defaultOpen: 'cloud'})),
+        h('div', {className: 'phone g'}, h(Q.Accordion, {layout: 'mobile', variant: 'cards', items: sessions.slice(0, 3), defaultOpen: 0}))))));
+</script>
+</body>
+</html>

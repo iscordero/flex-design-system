@@ -1,0 +1,25 @@
+<!-- @dsCard group="Components · Avatars and profiles" height=985 width=1248 subtitle="Pattern · Individual cards and the combined container. Click a card to open its bio; Esc closes it." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ProfileGrid — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.wrap{max-width:1200px}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function sec(cap, cls, kids) { return h('div', null, h('div', {className: 'cap'}, cap), h.apply(null, ['div', {className: cls}].concat(kids))); }
+var LOGO = '/_blob/a0d4062abbce2ceb87d5be08d326359f';
+var BIO = 'Jonathan leads the product management team and drives the product vision, helping customers assess and improve their IT, security, and compliance posture. Since joining in 2012, he has worked in security and compliance roles across endpoint protection, detection and response, and SaaS security. Before that, he focused on security research for compliance solutions. He holds a master\u2019s in computer applications and several security certifications, and is a regular speaker at industry conferences.';
+function person(n, d) { return {name: n, designation: d, logo: LOGO, logoAlt: 'Qualys', link: {href: '#', network: 'linkedin'}, bio: BIO}; }
+var names = [['Jonathan Doe', 'President and CEO'], ['Alex Morgan', 'Chief Product Officer'], ['Sam Rivera', 'Chief Technology Officer'], ['Jamie Chen', 'Chief Financial Officer'], ['Taylor Brooks', 'Chief Marketing Officer']];
+var people = names.map(function (n) { return person(n[0], n[1]); });
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
+  sec('Individual', 'wrap', [h(Q.ProfileGrid, {items: people.slice(0, 3)})]),
+  sec('Combined', 'wrap', [h(Q.ProfileGrid, {layout: 'combined', items: people})])));
+</script>
+</body>
+</html>

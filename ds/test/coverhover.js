@@ -1,0 +1,11 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:960,height:288}});
+const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('file://'+process.cwd()+'/Cover.html');await p.waitForLoadState('networkidle');await p.evaluate(()=>document.fonts.ready);
+await p.screenshot({path:'cov0.png'});
+const box=async sel=>await p.evaluate(s=>{const r=document.querySelector(s).getBoundingClientRect();return [Math.round(r.x),Math.round(r.y),Math.round(r.width),Math.round(r.height)]},sel);
+console.log('rest cloud',await box('.cloud .move'),'shield',await box('.shield .move'),'needle',await box('.needle'));
+await p.mouse.move(480+100,90);await p.waitForTimeout(450);console.log('hover cloud',await box('.cloud .move'));await p.screenshot({path:'cov1.png'});
+await p.mouse.move(480+380,100);await p.waitForTimeout(450);console.log('hover shield',await box('.shield .move'),'cloud back',await box('.cloud .move'));
+await p.mouse.move(480+220,230);await p.waitForTimeout(300);console.log('gauge mid',await box('.needle'));await p.screenshot({path:'cov2.png'});
+await p.waitForTimeout(450);console.log('gauge end',await box('.needle'),'errors',errs);
+await b.close();})();

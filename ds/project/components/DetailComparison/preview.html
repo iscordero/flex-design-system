@@ -1,0 +1,31 @@
+<!-- @dsCard group="Page modules · Tables" height=2589 width=1440 subtitle="Block module · Written comparison of Qualys with up to three competitors; on mobile, one at a time. Sample data." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DetailComparison — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone.w390{width:390px}.row{display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+var LOGO = '/_blob/a0d4062abbce2ceb87d5be08d326359f';
+var COLS = [{id: 'qualys', name: 'Qualys', logo: LOGO, subtitle: 'Optional Subheading'}, {id: 'wiz', name: 'Wiz', subtitle: 'Optional Subheading'}, {id: 'crowdstrike', name: 'CrowdStrike', subtitle: 'Optional Subheading'}, {id: 'paloalto', name: 'Palo Alto', subtitle: 'Optional Subheading'}, {id: 'rapid7', name: 'Rapid7', subtitle: 'Optional Subheading'}];
+
+var A = 'Covers the entire Hybrid IT landscape, on-premises servers (Windows, Linux, Mac), workstations, 25% of servers, workstations, network devices, web applications, cloud assets, cloud databases, network devices, containers, cloud instances, and containers, etc.';
+var B = 'Covers servers, workstations, network devices, web applications, cloud assets, cloud databases, network devices, containers, cloud instances, and containers, cloud storage, smartphones, tablets, containers, and OT infrastructure.';
+var P = '[One or two sentences on how this vendor handles the topic.]';
+function all(v) { return {qualys: v, wiz: v, crowdstrike: v, paloalto: v, rapid7: v}; }
+var SECTIONS = [{title: 'Asset Coverage', open: true, heading: 'Optional Heading', copy: {qualys: A, wiz: A, crowdstrike: B, paloalto: B, rapid7: A}},
+  {title: '[Section Title]', heading: '[Optional Heading]', copy: all(P)}, {title: '[Section Title]', heading: '[Optional Heading]', copy: all(P)}, {title: '[Section Title]', heading: '[Optional Heading]', copy: all(P)}];
+function dc(extra) { return h(Q.DetailComparison, Object.assign({title: 'Heading', subtitle: 'Optional Subheading', columns: COLS, sections: SECTIONS}, extra)); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('Desktop: two competitors picked'), dc(),
+  cap('Three competitors (the most)'), dc({defaultPicked: ['wiz', 'crowdstrike', 'rapid7'], sections: SECTIONS.slice(0, 2)}),
+  cap('Mobile: one competitor at a time'), h('div', {className: 'phones'}, h('div', {className: 'phone w390'}, dc()))));
+</script>
+</body>
+</html>

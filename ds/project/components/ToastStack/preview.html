@@ -1,0 +1,29 @@
+<!-- @dsCard group="Components · Overlays and messages" height=511 width=1100 subtitle="Pattern · Where toasts appear: bottom left, three at most, each leaving by itself. Press the buttons to add some." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ToastStack — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}.stage{display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--spacing-xl);padding:var(--spacing-2xl) var(--spacing-xl);background:var(--surface-neutral-400)}.stage>*{flex:none}.w480{width:480px}.w540{width:540px}.w600{width:600px}.w440{width:440px}.w375{width:375px}.w351{width:351px}.full{width:100%}.tsdemo{padding:0 var(--spacing-xl) var(--spacing-xl)}.row{display:flex;gap:var(--spacing-xs);margin-bottom:var(--spacing-rg)}.tspage{display:flex;align-items:flex-end;box-sizing:border-box;height:380px;padding:36px 56px;border-radius:var(--radius-lg);background:var(--surface-neutral-400)}.tspage .q-toasts{width:400px}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+function phone(t, node) { return h('div', null, cap(t).props.children ? h('div', {className: 'cap', style: {paddingLeft: 0}}, t) : null, h('div', {className: 'phone'}, node)); }
+var MSG = {success: 'Your changes were saved.', warning: 'Your trial ends in three days.', error: 'We couldn’t send the report. Try again.', info: 'A new version is available.'};
+var n = 0;
+function Demo() {
+  var s = React.useState([{id: 'a', status: 'success', message: MSG.success, duration: 0}, {id: 'b', status: 'info', message: MSG.info, duration: 0}]);
+  function add(status) { s[1](function (l) { return l.concat([{id: 'n' + (++n), status: status, message: MSG[status]}]); }); }
+  function drop(id) { s[1](function (l) { return l.filter(function (x) { return x.id !== id; }); }); }
+  return h('div', {className: 'tsdemo'},
+    h('div', {className: 'row'}, ['success', 'warning', 'error', 'info'].map(function (k) { return h(Q.Button, {key: k, size: 'sm', variant: 'secondary', onClick: function () { add(k); }}, 'Add ' + k); })),
+    h('div', {className: 'tspage'}, h(Q.ToastStack, {inline: true, items: s[0], onDismiss: drop})));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null, cap('Stack, bottom left'), h(Demo)));
+</script>
+</body>
+</html>

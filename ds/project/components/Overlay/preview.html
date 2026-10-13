@@ -1,0 +1,21 @@
+<!-- @dsCard group="Components · Overlays and messages" height=315 width=1100 subtitle="Component · The backdrop behind a modal: 25% by default, 50% when the page behind is busy." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Overlay — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}.stage{display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--spacing-xl);padding:var(--spacing-2xl) var(--spacing-xl);background:var(--surface-neutral-400)}.stage>*{flex:none}.w480{width:480px}.w540{width:540px}.w600{width:600px}.w440{width:440px}.w375{width:375px}.w351{width:351px}.full{width:100%}.ovbox{position:relative;width:480px;height:200px;overflow:hidden;border-radius:var(--radius-lg);background:var(--surface-neutral-200);box-shadow:inset 0 0 0 1px var(--stroke-neutral-400)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+function phone(t, node) { return h('div', null, cap(t).props.children ? h('div', {className: 'cap', style: {paddingLeft: 0}}, t) : null, h('div', {className: 'phone'}, node)); }
+var page = h('div', {style: {padding: 24}}, h('div', {className: 'h4'}, 'Page Content'), h('p', {className: 'paragraph-rg', style: {margin: '8px 0 16px'}}, 'The page stays visible but out of reach while a modal is open.'), h(Q.Button, {size: 'sm'}, 'Get a Demo'));
+function demo(t, tone) { return h('div', null, h('div', {className: 'cap', style: {paddingLeft: 0}}, t), h('div', {className: 'ovbox'}, page, h(Q.Overlay, {inline: true, tone: tone}))); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'stage', style: {background: 'var(--surface-neutral-100)'}}, demo('Light · 25%', 'light'), demo('Dark · 50%', 'dark')));
+</script>
+</body>
+</html>

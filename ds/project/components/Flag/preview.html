@@ -1,0 +1,20 @@
+<!-- @dsCard group="Components · Icons, tags and flags" height=168 width=1100 subtitle="Component · The three flag tiers in two sizes. Anchor one to the top left corner of a card or image." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Flag — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:var(--spacing-rg)}.row{display:flex;gap:var(--spacing-xl);align-items:flex-start;flex-wrap:wrap}.cap{margin-bottom:var(--spacing-3xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.col{display:flex;flex-direction:column;gap:var(--spacing-rg);width:320px}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', {className: 'pv'},
+    h('div', null, h('div', {className: 'cap'}, 'Tier 1, 2 and 3'), h('div', {className: 'row'}, h(Q.Flag, {tone: 'tier-1'}, 'Upcoming'), h(Q.Flag, {tone: 'tier-2'}, 'New'), h(Q.Flag, {tone: 'tier-3'}, 'Featured'))),
+    h('div', null, h('div', {className: 'cap'}, 'Small'), h('div', {className: 'row'}, h(Q.Flag, {tone: 'tier-1', size: 'sm'}, 'Upcoming'), h(Q.Flag, {tone: 'tier-2', size: 'sm'}, 'New'), h(Q.Flag, {tone: 'tier-3', size: 'sm'}, 'Featured')))));
+</script>
+</body>
+</html>

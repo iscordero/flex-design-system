@@ -1,0 +1,24 @@
+<!-- @dsCard group="Components · Filters" height=470 width=1248 subtitle="Pattern · Every filter upfront as a chip, wrapping onto new lines. Click to toggle; edge cases shown." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FilterChipGroup — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.narrow{width:280px}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function sec(cap, cls, kids) { return h('div', null, h('div', {className: 'cap'}, cap), h.apply(null, ['div', {className: cls}].concat(kids))); }
+var names = ['All Solutions', 'VMDR', 'CSAM', 'Patch Management', 'Policy Audit', 'TotalCloud', 'Web App Scanning', 'Endpoint Security', 'Container Security', 'File Integrity', 'Risk Management', 'Compliance', 'Threat Detection', 'Asset Inventory', 'Cloud Posture', 'Certificate View', 'API Security', 'AI Security', 'Remediation', 'Reporting'];
+var counts = [320, 214, 186, 142, 131, 118, 96, 88, 74, 61, 58, 52, 47, 39, 33, 27, 21, 16, 12, 8];
+var options = names.map(function (n, i) { return {value: n, label: n, count: counts[i]}; });
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
+  sec('Filter chips', 'wrap', [h(Q.FilterChipGroup, {label: 'Solutions', options: options, defaultValue: ['All Solutions']})]),
+  sec('Edge cases', 'wrap', [h(Q.FilterChipGroup, {label: 'Edge cases', defaultValue: ['Selected'], options: [{value: 'Selected', label: 'Selected', count: 320}, {value: 'big', label: 'Large count', count: 1284}, {value: 'zero', label: 'No results', count: 0}, {value: 'plain', label: 'No count'}]})]),
+  sec('Long label in a narrow space', 'narrow', [h(Q.FilterChipGroup, {label: 'Long label', options: [{value: 'long', label: 'Vulnerability Management, Detection and Response', count: 4}]})])));
+</script>
+</body>
+</html>

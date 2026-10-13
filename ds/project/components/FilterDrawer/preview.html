@@ -1,0 +1,28 @@
+<!-- @dsCard group="Components · Filters" height=760 width=880 subtitle="Pattern · The mobile filter panel, shown in place: rows with counts and Clear all, or the plain version." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FilterDrawer — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.two{display:flex;gap:48px;align-items:flex-start}.frame{box-sizing:border-box;width:375px;height:640px;padding:var(--spacing-lg);background:rgba(0,0,0,.7)}.frame .q-fdrawer,.frame .q-fdrawer__panel{height:100%}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function sec(cap, cls, kids) { return h('div', null, h('div', {className: 'cap'}, cap), h.apply(null, ['div', {className: cls}].concat(kids))); }
+var SECTIONS = [
+  {id: 'solution', title: 'Solution Category', limit: 3, options: [{value: 'all', label: 'View All', count: 340}, {value: 'learning', label: 'Essential Learning', count: 23}, {value: 'vmdr', label: 'Vulnerability Management, Detection and Response', count: 4}, {value: 'cloud', label: 'Cloud Security', count: 41}, {value: 'compliance', label: 'Compliance', count: 36}, {value: 'patch', label: 'Patch Management', count: 28}, {value: 'web', label: 'Web App Security', count: 19}, {value: 'asset', label: 'Asset Management', count: 17}, {value: 'endpoint', label: 'Endpoint Security', count: 12}, {value: 'container', label: 'Container Security', count: 9}, {value: 'risk', label: 'Risk Management', count: 8}, {value: 'policy', label: 'Policy Audit', count: 6}, {value: 'fim', label: 'File Integrity Monitoring', count: 5}, {value: 'ai', label: 'AI Security', count: 3}]},
+  {id: 'works', title: 'Works With', limit: 3, options: [{value: 'VMDR', label: 'VMDR', count: 23}, {value: 'CSAM', label: 'CSAM', count: 23}, {value: 'ETM', label: 'ETM', count: 23}, {value: 'TotalCloud', label: 'TotalCloud', count: 18}, {value: 'Patch', label: 'Patch Management', count: 14}, {value: 'Policy', label: 'Policy Audit', count: 11}]},
+  {id: 'deploy', title: 'Deployment Method', options: [{value: 'cloud', label: 'Cloud', count: 23}, {value: 'onprem', label: 'On-premise', count: 23}]},
+  {id: 'connector', title: 'Connector Type', options: [{value: 'integrations', label: 'Integrations', count: 23}, {value: 'roc', label: 'ROC Connectors', count: 23}]}
+];
+var CATS = [{id: 'type', title: 'Content Type', options: ['Datasheet', 'Whitepaper', 'Case Study', 'Report', 'Video']}, {id: 'topic', title: 'Topic', options: ['Vulnerability Management', 'Cloud Security', 'Compliance', 'Patch Management', 'Risk Management']}];
+function col(cap, node) { return h('div', null, h('div', {className: 'cap'}, cap), h('div', {className: 'frame'}, node)); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'}, h('div', {className: 'two'},
+  col('Divided, with counts', h(Q.FilterDrawer, {inline: true, sections: SECTIONS, value: {solution: ['all'], works: ['VMDR']}})),
+  col('Plain, with reset', h(Q.FilterDrawer, {inline: true, variant: 'plain', sections: CATS, value: {type: ['Whitepaper'], topic: ['Cloud Security']}})))));
+</script>
+</body>
+</html>

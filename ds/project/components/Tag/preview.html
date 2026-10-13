@@ -1,0 +1,42 @@
+<!-- @dsCard group="Components · Icons, tags and flags" height=745 width=1100 subtitle="Component · Badges in nine tones, three fills and two sizes; text, label and eyebrow tags; vulnerability metadata" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tag — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:var(--spacing-rg)}.row{display:flex;gap:var(--spacing-xl);align-items:flex-start;flex-wrap:wrap}.cap{margin-bottom:var(--spacing-3xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.col{display:flex;flex-direction:column;gap:var(--spacing-rg);width:320px}</style>
+<style>.grid{display:grid;grid-template-columns:110px repeat(9,auto);gap:var(--spacing-xs) var(--spacing-xs);align-items:center;justify-content:start;justify-items:start}.lbl{font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.meta{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:var(--spacing-rg)}.meta__set{display:flex;flex-direction:column;gap:var(--spacing-5xs);padding:var(--spacing-rg);border:1px solid var(--stroke-neutral-400);border-radius:var(--radius-lg)}.meta__name{font-family:var(--font-heading);font-weight:600;font-size:16px;line-height:1.3}.meta__desc{margin-bottom:var(--spacing-3xs);font-size:14px;line-height:1.3;color:var(--text-secondary)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+var tones = ['purple','blue','dark-red','red','green','orange','yellow','gray','slate'];
+var names = {purple:'Purple',blue:'Blue','dark-red':'Dark red',red:'Red',green:'Green',orange:'Orange',yellow:'Yellow',gray:'Gray',slate:'Slate'};
+/* The Chips & Badges Showcase: vulnerability metadata, each set with its tones. */
+var META = [
+  ['Severity', 'Classification by CVSS score.', [['Critical', 'fill', 'dark-red'], ['High', 'fill', 'red'], ['Medium', 'fill', 'orange'], ['Low', 'fill', 'yellow'], ['Informational', 'fill', 'purple']]],
+  ['Status', 'Where remediation stands.', [['Open', 'fill', 'orange'], ['In Progress', 'fill', 'yellow'], ['Fixed', 'fill', 'green'], ['Accepted Risk', 'fill', 'gray']]],
+  ['Impact', 'Whether live environments are affected.', [['Affected', 'light', 'red'], ['Not Affected', 'light', 'green']]],
+  ['Exploitability', 'Public exploit code, or a confirmed weaponised exploit.', [['Exploitable', 'fill', 'red'], ['Known Exploit', 'fill', 'orange'], ['No Known Exploit', 'fill', 'green']]],
+  ['Disclosure', 'How public the vulnerability details are.', [['Publicly Disclosed (PUB)', 'outline', 'orange'], ['Privately Disclosed (PVT)', 'outline', 'blue']]]
+];
+function row(label, variant, size) {
+  return [h('span', {className: 'lbl', key: label}, label)].concat(tones.map(function (t) { return h(Q.Tag, {key: label + t, variant: variant, tone: t, size: size}, names[t]); }));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', {className: 'pv'},
+    h('div', {className: 'grid'}, row('Fill', 'fill', 'rg'), row('Light fill', 'light', 'rg'), row('Outline', 'outline', 'rg'), row('Fill · sm', 'fill', 'sm'), row('Light · sm', 'light', 'sm'), row('Outline · sm', 'outline', 'sm')),
+    h('div', null, h('div', {className: 'cap'}, 'Text style \u2014 categories'),
+      h('div', {className: 'row'}, h(Q.Tag, {variant: 'text'}, 'Vulnerability Management'), h(Q.Tag, {variant: 'text', href: '#'}, 'Cloud Security'), h(Q.Tag, {variant: 'text'}, 'Compliance'))),
+    h('div', null, h('div', {className: 'cap'}, 'Label and eyebrow'),
+      h('div', {className: 'row'}, h(Q.Tag, {variant: 'label'}, 'Label Tag'), h(Q.Tag, {variant: 'eyebrow'}, 'Eyebrow Tag'))),
+    h('div', null, h('div', {className: 'cap'}, 'Vulnerability metadata \u2014 one tone per meaning, the word always shown'),
+      h('div', {className: 'meta'}, META.map(function (m) {
+        return h('div', {key: m[0], className: 'meta__set'}, h('div', {className: 'meta__name'}, m[0]), h('div', {className: 'meta__desc'}, m[1]),
+          h('div', {className: 'row', style: {gap: 'var(--spacing-3xs)'}}, m[2].map(function (b) { return h(Q.Tag, {key: b[0], variant: b[1], tone: b[2]}, b[0]); })));
+      })))));
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!-- @dsCard group="Components · Navigation" height=260 width=1100 subtitle="Component · Click or use the arrow keys: the indicator slides. Optional autoplay. Mobile scrolls sideways." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tabs — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:var(--spacing-rg)}.row{display:flex;gap:var(--spacing-xl);align-items:flex-start;flex-wrap:wrap}.cap{margin-bottom:var(--spacing-3xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.col{display:flex;flex-direction:column;gap:var(--spacing-rg);width:320px}</style>
+<style>.phone{width:335px;padding:var(--spacing-rg) 0}.wrap{display:flex;gap:56px;align-items:flex-start;flex-wrap:wrap}.bg{background:var(--surface-neutral-200)}</style>
+</head>
+<body class="bg">
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+var items = ['Detect', 'Measure', 'Prioritize', 'Eliminate'].map(function (l) { return {id: l.toLowerCase(), label: l}; });
+var mobileItems = ['Overview', 'Features', 'Integrations', 'Pricing', 'Resources'].map(function (l) { return {label: l}; });
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', {className: 'pv'}, h('div', {className: 'wrap'},
+    h('div', {style: {flex: '1 1 600px'}}, h('div', {className: 'cap'}, 'Desktop'), h(Q.Tabs, {label: 'Platform capabilities', items: items, defaultValue: 'measure'})),
+    h('div', null, h('div', {className: 'cap'}, 'Mobile (335px) \u2014 scrolls sideways'), h('div', {className: 'phone'}, h(Q.Tabs, {label: 'Product sections', items: mobileItems})))),
+    h('div', {style: {marginTop: 24}}, h('div', {className: 'cap'}, 'Autoplay — moves on every six seconds; the button pauses it'), h(Q.Tabs, {label: 'TruRisk steps', items: items, autoplay: true}))));
+</script>
+</body>
+</html>

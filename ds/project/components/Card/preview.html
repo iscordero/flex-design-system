@@ -1,0 +1,29 @@
+<!-- @dsCard group="Components · Cards" height=653 width=1180 subtitle="Component · Standard card: hover for the blue bar. Icon, eyebrow, tags or a badge and the link are optional." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Card — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-300)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.cols{display:grid;gap:24px;align-items:start}.c3{grid-template-columns:repeat(3,350px)}.c4{grid-template-columns:repeat(4,260px)}.stretch{align-items:stretch}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function sec(cap, cls, kids) { return h('div', null, h('div', {className: 'cap'}, cap), h.apply(null, ['div', {className: cls}].concat(kids))); }
+var copy = 'Find and inventory every asset across your hybrid environment, so nothing is left unmanaged.';
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
+  sec('With an icon', 'cols c3', [
+    h(Q.Card, {href: '#', icon: '/_blob/dacda2a3a9a5a660aa21c4aa3d9a2578', eyebrow: 'Cloud Security', title: 'See Every Asset in One Place', description: copy, tags: ['Discover', 'Inventory', 'Monitor'], cta: 'Learn More'}),
+    h(Q.Card, {href: '#', icon: '/_blob/bdcd7cc4b2bbc39f3f0aba2ee1b6ea8e', tagName: 'Detection', title: 'Detect Threats as They Emerge', description: 'Spot vulnerabilities and misconfigurations as soon as they appear across your environment.', cta: 'Learn More'}),
+    h(Q.Card, {href: '#', icon: '/_blob/879916cd1c61396c65bde874a0e7ba08', eyebrow: 'Risk', title: 'Prioritize What Matters Most', description: 'Rank findings by business risk, so your team fixes the right things first.', cta: 'Learn More'})
+  ]),
+  sec('Without an icon', 'cols c3', [
+    h(Q.Card, {href: '#', badge: 'New', title: 'Eliminate Risk Faster', description: 'Patch, mitigate, and remediate from one workflow that security and IT share.', cta: 'Learn More'}),
+    h(Q.Card, {href: '#', eyebrow: 'Compliance', title: 'Stay Audit Ready', description: 'Track controls against the frameworks you report on, with evidence in one place.', cta: 'Learn More'}),
+    h(Q.Card, {title: 'Measure Your Progress', description: 'Report risk reduction over time in terms your leadership team understands.'})
+  ])));
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!-- @dsCard group="Page modules · Header and footer" height=2085 width=1440 subtitle="Block module · Charcoal footer with the shield in a notch: lead copy, form, social and link columns." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Footer — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-200)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.pad{height:40px}.phone{width:375px;margin:0 var(--spacing-xl) var(--spacing-xl)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+var LOGO = '/_blob/a0d4062abbce2ceb87d5be08d326359f', SHIELD = '/_blob/1317004b4eea94a3648caf5ff41b1862';
+var PROPS = {
+  logoSrc: SHIELD, logoHref: '#',
+  heading: 'De-risk your business. Try the Enterprise TruRisk Platform for free.',
+  body: 'No software to download or install. Seamlessly deploy Cloud Agents and add users to measure, communicate, and eliminate cyber risk across the extended enterprise.',
+  form: {placeholder: 'Public Website URL', buttonLabel: 'Start free trial', onSubmit: function () {}},
+  social: [{network: 'linkedin', label: 'Qualys on LinkedIn'}, {network: 'x', label: 'Qualys on X'}, {network: 'facebook', label: 'Qualys on Facebook'}, {network: 'vimeo', label: 'Qualys on Vimeo'}, {network: 'youtube', label: 'Qualys on YouTube'}],
+  columns: [
+    {title: 'Company', links: ['About Us', 'Investor Relations', 'Partners', 'Events', 'Awards', 'Customers', 'Careers', 'Contact Us']},
+    {title: 'Platform', links: ['Overview', 'Use Cases', 'Segments', 'Free Trials']},
+    {title: 'Resources', links: ['Threat Research Unit', 'Blog', 'Resource Library', 'Sitemap', 'Support', 'Community', 'Release Notes']}],
+  copyright: '\u00a9 2025 Qualys, Inc. All rights reserved.',
+  legal: ['Privacy Policy', 'Accessibility', 'Notice at Collection', 'Trust', 'Cookie Consent', 'Do Not Share - Privacy Portal']
+};
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  h('div', {className: 'cap'}, 'Desktop'),
+  h(Q.Footer, PROPS),
+  h('div', {className: 'cap'}, 'Mobile'),
+  h('div', {className: 'phone'}, h(Q.Footer, PROPS))));
+</script>
+</body>
+</html>

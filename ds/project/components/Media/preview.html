@@ -1,0 +1,24 @@
+<!-- @dsCard group="Components · Media" height=270 width=1100 subtitle="Component · The media slot the modules share: image placeholder, a photo, and a video with the play button." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Media — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}.row{display:flex;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.col{flex:1;min-width:0}.col .cap{padding:var(--spacing-xl) 0 var(--spacing-xs)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+function phone(t, node) { return h('div', null, cap(t).props.children ? h('div', {className: 'cap', style: {paddingLeft: 0}}, t) : null, h('div', {className: 'phone'}, node)); }
+var OFFICE = '/_blob/0d022f9bddd95029144a197b97432323';
+function col(t, node) { return h('div', {className: 'col'}, h('div', {className: 'cap'}, t), node); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'row'},
+  col('Placeholder', h(Q.Media, {ratio: '16 / 9'})),
+  col('Image', h(Q.Media, {ratio: '16 / 9', src: OFFICE, alt: 'A presenter talking to a small audience in a bright office'})),
+  col('Video', h(Q.Media, {ratio: '16 / 9', video: true}))));
+</script>
+</body>
+</html>

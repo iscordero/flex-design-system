@@ -1,0 +1,34 @@
+<!-- @dsCard group="Page modules · Calls to action" height=3884 width=1440 subtitle="Block module · The closing call to action: a sign-up form beside or over a picture, or a dark card." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CtaModule — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+function phone(t, node) { return h('div', null, cap(t).props.children ? h('div', {className: 'cap', style: {paddingLeft: 0}}, t) : null, h('div', {className: 'phone'}, node)); }
+var SHIELD = '/_blob/1317004b4eea94a3648caf5ff41b1862', OFFICE = '/_blob/0d022f9bddd95029144a197b97432323', BUILDING = '/_blob/030f664385156a91a5802ce5e6424bd4';
+var FORM = {logoSrc: SHIELD, title: ['Like What You’re Seeing?', h('br', {key: 'b'}), 'Try Qualys For Free'],
+  fields: [{name: 'email', label: 'Work Email', type: 'email', required: true}, {name: 'firstName', label: 'First Name', required: true, half: true}, {name: 'lastName', label: 'Last Name', required: true, half: true}, {name: 'company', label: 'Company Name', required: true}],
+  consent: 'I would like to receive Qualys emails.', submitLabel: 'Sign Up', legal: 'By submitting this form, you consent to Qualys’ privacy policy.', onSubmit: function () {}};
+function cta(extra) { return h(Q.CtaModule, Object.assign({form: FORM, media: {}}, extra)); }
+function card() { return h(Q.CtaModule, {title: 'Reserve Your Spot', body: 'Space is limited for this immersive training experience. Register today and chart your course to cybersecurity excellence.', actions: [h(Q.Button, {key: 'p'}, 'Button'), h(Q.Button, {key: 's', variant: 'secondary-inverted'}, 'Button')]}); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('Form · media right'), cta(),
+  cap('Form · media left'), cta({layout: 'media-left'}),
+  cap('Form · media bleeds right'), cta({layout: 'bleed', media: {src: OFFICE, alt: ''}}),
+  cap('Form · over a picture'), cta({layout: 'background', media: {src: BUILDING}}),
+  cap('No form · card'), card(),
+  cap('Mobile'), h('div', {className: 'phones'},
+    h('div', {className: 'phone'}, cta()),
+    h('div', {className: 'phone'}, cta({layout: 'background', media: {src: BUILDING}})),
+    h('div', {className: 'phone'}, card()))));
+</script>
+</body>
+</html>

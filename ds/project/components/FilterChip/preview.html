@@ -1,0 +1,38 @@
+<!-- @dsCard group="Components · Filters" height=420 width=1100 subtitle="Component · Filter chips: rest and selected in three sizes, with a count; click to toggle. Also removable." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FilterChip — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.row{display:flex;gap:var(--spacing-2xs);align-items:center;flex-wrap:wrap}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function sec(cap, cls, kids) { return h('div', null, h('div', {className: 'cap'}, cap), h.apply(null, ['div', {className: cls}].concat(kids))); }
+var items = [['All', 1284], ['Vulnerability Detection', 320], ['Cloud Security', 214], ['Compliance', 96], ['Patch Management', 58]];
+function Demo(props) {
+  var st = React.useState(props.initial), sel = st[0], set = st[1];
+  return h('div', {className: 'row'}, items.map(function (it) {
+    return h(Q.FilterChip, {key: it[0], size: props.size, count: it[1], active: sel.indexOf(it[0]) >= 0,
+      onClick: function () { set(sel.indexOf(it[0]) >= 0 ? sel.filter(function (x) { return x !== it[0]; }) : sel.concat([it[0]])); },
+      onRemove: props.removable ? function () { set(sel.filter(function (x) { return x !== it[0]; })); } : undefined}, it[0]);
+  }));
+}
+function Applied() {
+  var st = React.useState(['All Solutions', 'VMDR', 'CSAM', 'Patch Management']), list = st[0], set = st[1];
+  return h('div', {className: 'row', style: {gap: 'var(--spacing-rg)'}}, list.map(function (n) {
+    return h(Q.FilterChip, {key: n, removable: true, onRemove: function () { set(list.filter(function (x) { return x !== n; })); }}, n);
+  }));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', {className: 'pv'},
+    h('div', null, h('div', {className: 'cap'}, 'Large (45px), the filter cloud'), h(Demo, {size: 'lg', initial: ['All']})),
+    h('div', null, h('div', {className: 'cap'}, 'Regular (36px)'), h(Demo, {size: 'rg', initial: ['Vulnerability Detection']})),
+    h('div', null, h('div', {className: 'cap'}, 'Small (30px), removable when selected'), h(Demo, {size: 'sm', initial: ['Cloud Security'], removable: true})),
+    h('div', null, h('div', {className: 'cap'}, 'Removable (applied filters)'), h(Applied))));
+</script>
+</body>
+</html>

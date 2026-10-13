@@ -1,0 +1,24 @@
+<!-- @dsCard group="Components · Cards" height=408 width=1180 subtitle="Component · Integration card with a thumbnail and name, or a logo. Extra "works with" tags fold into a count." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>IntegrationCard — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-300)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.cols{display:grid;gap:24px;align-items:start}.c3{grid-template-columns:repeat(3,350px)}.c4{grid-template-columns:repeat(4,260px)}.stretch{align-items:stretch}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function sec(cap, cls, kids) { return h('div', null, h('div', {className: 'cap'}, cap), h.apply(null, ['div', {className: cls}].concat(kids))); }
+var facts = {type: 'ROC Connectors', worksWith: ['VMDR', 'CSAM', 'TotalCloud', 'Patch', 'Policy'], dataFetched: 'Assets, Findings', category: 'OT/IoT Security', href: '#'};
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
+  sec('Thumbnail and name · logo', 'cols c4', [
+    h(Q.IntegrationCard, Object.assign({name: 'Partner Name'}, facts)),
+    h(Q.IntegrationCard, Object.assign({name: 'Another Partner'}, facts, {worksWith: ['VMDR', 'CSAM'], category: 'Cloud Security'})),
+    h(Q.IntegrationCard, Object.assign({name: 'Qualys', logo: '/_blob/a0d4062abbce2ceb87d5be08d326359f'}, facts))
+  ])));
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!-- @dsCard group="Components · Overlays and messages" height=1055 width=1440 subtitle="Pattern · A last offer as someone leaves: with an image, or centred on a resource; then mobile." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ExitIntent — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}.stage{display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--spacing-xl);padding:var(--spacing-2xl) var(--spacing-xl);background:var(--surface-neutral-400)}.stage>*{flex:none}.w480{width:480px}.w540{width:540px}.w600{width:600px}.w440{width:440px}.w375{width:375px}.w351{width:351px}.full{width:100%}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+function phone(t, node) { return h('div', null, cap(t).props.children ? h('div', {className: 'cap', style: {paddingLeft: 0}}, t) : null, h('div', {className: 'phone'}, node)); }
+var IMG = '/_blob/0d022f9bddd95029144a197b97432323';
+var OFFER = {type: 'offer', image: IMG, title: 'Wait! Before You Go…', subtitle: 'Start your free 30-day trial of the Qualys platform. No credit card required.', submitLabel: 'Start Free Trial', dismissLabel: 'No Thanks'};
+var CONTENT = {type: 'content', title: 'Don’t Miss This Resource', subtitle: 'Download our cloud security report, with insights from more than 10,000 global enterprises.', submitLabel: 'Download Free', dismissLabel: 'No Thanks'};
+function e(o) { return h(Q.ExitIntent, Object.assign({inline: true, onSubmit: function () {}}, o)); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('Offer · content'), h('div', {className: 'stage'}, h('div', {className: 'w600'}, e(OFFER)), h('div', {className: 'w480'}, e(CONTENT))),
+  cap('Mobile'), h('div', {className: 'stage'}, h('div', {className: 'w351'}, e(OFFER)), h('div', {className: 'w351'}, e(CONTENT)))));
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!-- @dsCard group="Components · Accordions and drawers" height=782 width=1100 subtitle="Component · Standard drawer: click a row to open it; with or without an icon, button or text link; desktop and mobile" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Drawer — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:var(--spacing-rg)}.row{display:flex;gap:var(--spacing-xl);align-items:flex-start;flex-wrap:wrap}.cap{margin-bottom:var(--spacing-3xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.col{display:flex;flex-direction:column;gap:var(--spacing-rg);width:320px}</style>
+<style>.cols{display:flex;gap:56px;align-items:flex-start;flex-wrap:wrap}.col2{flex:1 1 420px;max-width:556px}.bg{background:var(--surface-neutral-200)}.phones{display:flex;gap:var(--spacing-xl);align-items:flex-start;flex-wrap:wrap}.phone{flex:none;box-sizing:border-box;width:375px;padding:var(--spacing-rg);box-shadow:var(--shadow-card)}.phone.w{background:var(--surface-neutral-100)}.phone.g{background:#f1f1f1;display:flex;flex-direction:column;gap:var(--spacing-rg)}</style>
+</head>
+<body class="bg">
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+var cloud = '/_blob/dacda2a3a9a5a660aa21c4aa3d9a2578', detect = '/_blob/bdcd7cc4b2bbc39f3f0aba2ee1b6ea8e', measure = '/_blob/08a9d26a3a902a648c904b65297a8cb7';
+var body = "The Qualys Enterprise TruRisk Platform brings asset discovery, risk scoring and remediation into one place, so security and IT work from the same picture of what to fix first.";
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', {className: 'pv'}, h('div', {className: 'cols'},
+    h('div', {className: 'col2'}, h('div', {className: 'cap'}, 'With icon and button'),
+      h(Q.Drawer, {title: 'Cloud Security', icon: cloud, defaultOpen: true, cta: h(Q.Button, {size: 'sm'}, 'Learn More')}, body),
+      h(Q.Drawer, {title: 'Threat Detection', icon: detect, cta: h(Q.Button, {size: 'sm'}, 'Learn More')}, body),
+      h(Q.Drawer, {title: 'Risk Measurement', icon: measure}, body)),
+    h('div', {className: 'col2'}, h('div', {className: 'cap'}, 'Text only, with a text link'),
+      h(Q.Drawer, {title: 'How Is TruRisk Calculated?', defaultOpen: true, cta: h(Q.TextLink, {href: '#', tone: 'neutral', arrow: true}, 'Read the Guide')}, body),
+      h(Q.Drawer, {title: 'Which Assets Are Covered?'}, body),
+      h(Q.Drawer, {title: 'How Do I Get Started?'}, body))),
+    h('div', {className: 'cap', style: {marginTop: 16}}, 'Mobile \u2014 375px screen, 16px page margins: 48px rows, 24px icon, no side padding'),
+    h('div', {className: 'phones'},
+      h('div', {className: 'phone w'},
+        h(Q.Drawer, {layout: 'mobile', title: 'Cloud Security', icon: cloud, defaultOpen: true, cta: h(Q.Button, {size: 'sm'}, 'Learn More')}, body),
+        h(Q.Drawer, {layout: 'mobile', title: 'Threat Detection', icon: detect}, body),
+        h(Q.Drawer, {layout: 'mobile', title: 'Risk Measurement', icon: measure}, body)),
+      h('div', {className: 'phone w'},
+        h(Q.Drawer, {layout: 'mobile', title: 'How Is TruRisk Calculated?', defaultOpen: true, cta: h(Q.TextLink, {href: '#', tone: 'neutral', arrow: true}, 'Read the Guide')}, body),
+        h(Q.Drawer, {layout: 'mobile', title: 'Which Assets Are Covered?'}, body),
+        h(Q.Drawer, {layout: 'mobile', title: 'How Do I Get Started?'}, body)))));
+</script>
+</body>
+</html>

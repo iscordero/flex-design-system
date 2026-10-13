@@ -1,0 +1,22 @@
+<!-- @dsCard group="Components · Filters" height=330 width=1100 subtitle="Component · Ash trigger with a blue border while open. Checkboxes for several choices, radios for one." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FilterDropdown — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.row{display:flex;gap:var(--spacing-rg);align-items:flex-start}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function sec(cap, cls, kids) { return h('div', null, h('div', {className: 'cap'}, cap), h.apply(null, ['div', {className: cls}].concat(kids))); }
+var opts = ['Datasheet', 'Whitepaper', 'Case Study', 'Report', 'Video'];
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'}, h('div', {className: 'row'},
+  h(Q.FilterDropdown, {label: 'Content Type', options: opts}),
+  h(Q.FilterDropdown, {label: 'Content Type', defaultOpen: true, defaultValue: ['Whitepaper'], allLabel: null, options: opts}),
+  h(Q.FilterDropdown, {label: 'Date', single: true, defaultOpen: true, defaultValue: ['Last 12 months'], options: ['Any time', 'Last 30 days', 'Last 12 months', 'Older']}))));
+</script>
+</body>
+</html>

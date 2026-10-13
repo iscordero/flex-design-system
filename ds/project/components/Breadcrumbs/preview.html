@@ -1,0 +1,29 @@
+<!-- @dsCard group="Components · Navigation" height=654 width=1440 subtitle="Component · The trail above a page: a link per level, the page as text. Hover, long names, deep trails, mobile." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Breadcrumbs — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}.box{padding:0 var(--spacing-xl) var(--spacing-xs)}.page{margin:0 var(--spacing-xl) var(--spacing-xl);background:var(--surface-neutral-200);box-shadow:var(--shadow-card)}.narrow{width:800px}.phone{background:var(--surface-neutral-200)}.is-hover .q-crumbs__item:nth-child(2) .q-crumbs__link::after{opacity:1}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+function phone(t, node) { return h('div', null, cap(t).props.children ? h('div', {className: 'cap', style: {paddingLeft: 0}}, t) : null, h('div', {className: 'phone'}, node)); }
+var TITLE = 'The Future of Cloud Security: A New Act for Cyber Risk Operations';
+var TRAIL = [{label: 'Home', href: '#'}, {label: 'Blog', href: '#'}, TITLE];
+var DEEP = [{label: 'Home', href: '#'}, {label: 'Resources', href: '#'}, {label: 'Guides', href: '#'}, {label: 'Vulnerability Management', href: '#'}, 'Qualys Guide to Automating Patch Management'];
+function stop(e) { if (e.target.closest && e.target.closest('a')) e.preventDefault(); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {onClick: stop},
+  cap('Default'), h('div', {className: 'box'}, h(Q.Breadcrumbs, {items: TRAIL})),
+  cap('Hover on a link: a 2px bar under it'), h('div', {className: 'box is-hover'}, h(Q.Breadcrumbs, {items: TRAIL})),
+  cap('A long page name is cut to one line'), h('div', {className: 'box narrow'}, h(Q.Breadcrumbs, {items: [{label: 'Home', href: '#'}, {label: 'Resources', href: '#'}, 'Qualys Guide to Automating Patch Management Across Hybrid Environments and Multi-Cloud Workloads']})),
+  cap('More than four levels: the middle ones fold behind the dots. Press them to open.'), h('div', {className: 'box'}, h(Q.Breadcrumbs, {items: DEEP})),
+  cap('On the page: the content column, 32px above and below'), h('div', {className: 'page'}, h(Q.Breadcrumbs, {contained: true, items: TRAIL})),
+  cap('Mobile: the level above and the page itself'), h('div', {className: 'phones'}, h('div', {className: 'phone'}, h(Q.Breadcrumbs, {contained: true, items: TRAIL})))));
+</script>
+</body>
+</html>

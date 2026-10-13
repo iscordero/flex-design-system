@@ -1,0 +1,15 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const errs=[];
+async function page(w,h,f){const p=await b.newPage({viewport:{width:w,height:h}});p.on('pageerror',e=>errs.push(f+': '+e.message));p.on('console',m=>{if(m.type()==='error')errs.push(f+': '+m.text())});await p.goto('file://'+process.cwd()+'/'+f);await p.waitForLoadState('networkidle');await p.evaluate(()=>document.fonts.ready);return p;}
+const R=(p,sel,i=0)=>p.evaluate(([s,i])=>{const e=document.querySelectorAll(s)[i];if(!e)return null;const b=e.getBoundingClientRect();return [+b.x.toFixed(1),+b.y.toFixed(1),+b.width.toFixed(1),+b.height.toFixed(1)]},[sel,i]);
+let p=await page(1248,500,'FilterChipGroup.html');
+console.log('chip0 (190x45 in Figma for its label)',await R(p,'.q-chip',0),'chip1',await R(p,'.q-chip',1),'label x in chip',(await R(p,'.q-chip__label',1))[0]-(await R(p,'.q-chip',1))[0],'count gap',(await R(p,'.q-chip__count',1))[0]-((await R(p,'.q-chip__label',1))[0]+(await R(p,'.q-chip__label',1))[2]),'row pitch',(await R(p,'.q-chip',7))[1]-(await R(p,'.q-chip',0))[1]);
+console.log('styles',await p.evaluate(()=>{const c=getComputedStyle(document.querySelectorAll('.q-chip')[1]);const a=getComputedStyle(document.querySelectorAll('.q-chip')[0]);const d=[...document.querySelectorAll('.q-chip')].find(x=>x.disabled);return [c.backgroundColor,c.color,c.fontFamily.slice(0,14),c.fontWeight,a.backgroundColor,a.color,d&&d.textContent,d&&getComputedStyle(d).opacity]}));
+await p.click('.q-chip >> nth=1');console.log('after click pressed',await p.evaluate(()=>document.querySelectorAll('.q-chip')[1].getAttribute('aria-pressed')));
+await p.close();
+p=await page(1100,400,'FilterDropdown.html');
+console.log('trigger (212x56)',await R(p,'.q-filter__trigger',0),'open',await R(p,'.q-filter__trigger',1),'gap',(await R(p,'.q-filter',1))[0]-((await R(p,'.q-filter',0))[0]+(await R(p,'.q-filter',0))[2]),'label x(20)',(await R(p,'.q-filter__label',0))[0]-(await R(p,'.q-filter__trigger',0))[0],'chev',await R(p,'.q-filter__trigger svg',0),'menu (211x201 at +56)',await R(p,'.q-filter__menu'),'first box',await R(p,'.q-filter__menu .q-check__box',0),'2nd box',await R(p,'.q-filter__menu .q-check__box',1));
+console.log('styles',await p.evaluate(()=>{const c=getComputedStyle(document.querySelectorAll('.q-filter__trigger')[0]);const o=getComputedStyle(document.querySelectorAll('.q-filter__trigger')[1]);return [c.backgroundColor,c.fontFamily.slice(0,18),c.fontWeight,c.borderRadius,o.borderColor,o.borderWidth]}));
+await p.close();
+p=await page(415,700,'AppliedFilters.html');
+console.log('applied chip (136x35)',await R(p,'.q-chip--removable',0),'x btn',await R(p,'.q-chip__x',0),'x svg',await R(p,'.q-chip__x svg',0),'label',await R(p,'.q-chip--removable .q-chip__label',0),'more chip',await R(p,'.q-chip--more'),'results',await R(p,'.q-applied__results'),'filterbtn',await R(p,'.q-filterbtn'),'ficon',await R(p,'.q-filterbtn svg'),'search',await R(p,'.q-search'));
+console.log('errs',errs);await b.close()})();

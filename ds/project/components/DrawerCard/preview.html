@@ -1,0 +1,87 @@
+<!-- @dsCard group="Components · Accordions and drawers" height=9907 width=1180 subtitle="Component · Session card drawer: none to more than six profiles, with and without a button, at four widths, and on mobile." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DrawerCard — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:var(--spacing-rg)}.row{display:flex;gap:var(--spacing-xl);align-items:flex-start;flex-wrap:wrap}.cap{margin-bottom:var(--spacing-3xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.col{display:flex;flex-direction:column;gap:var(--spacing-rg);width:320px}</style>
+<style>.bg{background:#f1f1f1}.stack{display:flex;flex-direction:column;gap:var(--spacing-xl)}.phone{width:320px;display:flex;flex-direction:column;gap:var(--spacing-xl)}.grp{display:flex;flex-direction:column;gap:var(--spacing-xs)}.rule{font-family:var(--font-body);font-size:16px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-primary);margin:0 0 var(--spacing-5xs)}.rule b{font-family:var(--font-heading);font-weight:600}.phones{display:flex;gap:var(--spacing-xl);align-items:flex-start;flex-wrap:wrap}.phone{flex:none;box-sizing:border-box;width:375px;padding:var(--spacing-rg);box-shadow:var(--shadow-card)}.phone.w{background:var(--surface-neutral-100)}.phone.g{background:#f1f1f1;display:flex;flex-direction:column;gap:var(--spacing-rg)}.h{font-family:var(--font-heading);font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-0.02em;margin:var(--spacing-xl) 0 0}</style>
+</head>
+<body class="bg">
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+var P = [
+  {name: 'Kip Boyle', designation: 'Cyber Resilience Thought Leader, Cyber Risk Management Podcast Host, Cyber Risk Opportunities', company: 'Qualys'},
+  {name: 'Jonathan Trull', designation: 'CISO and SVP Customer Solutions Strategy', company: 'Qualys'},
+  {name: 'Mayuresh Ektare', designation: 'Vice President, Product Management, Enterprise TruRisk Management', company: 'Qualys'},
+  {name: 'Shailesh Athalye', designation: 'Senior Vice President, Product Management, Qualys', company: 'Qualys'},
+  {name: 'Sumedh Thakar', designation: 'President and CEO', company: 'Qualys'},
+  {name: 'Rachel Winship', company: 'Qualys'},
+  {name: 'Michael Vanderveen', company: 'Qualys'},
+  {name: 'Nikhil Kavathekar', company: 'Qualys'}
+];
+var body = 'Master proactive defense strategies through comprehensive risk-based vulnerability management using Qualys TruRisk. Gain hands-on expertise in identifying, prioritizing, and mitigating security vulnerabilities to safeguard your organization\u2019s digital assets effectively.';
+function reg() { return h(Q.Button, {variant: 'secondary'}, 'Register'); }
+function wait() { return h(Q.Button, {variant: 'secondary-alt'}, 'Join Waitlist'); }
+function card(n, extra) {
+  return h(Q.DrawerCard, Object.assign({key: n + JSON.stringify(extra || {}), time: 'Noon \u2013 12:45 PM', title: 'The Evolution of the Qualys Platform', speakers: P.slice(0, n)}, extra), body);
+}
+/* The rule for a closed card, by number of profiles. Each group shows the card without and with a button. */
+var RULES = [
+  [0, 'No profile', 'Time and title only. A button sits beside the title.'],
+  [1, '1 profile', 'First and last name, role, company.'],
+  [2, '2 profiles', 'Name, role, company, in two equal columns.'],
+  [3, '3 profiles', 'Name, role (two lines at most), company, in three equal columns.'],
+  [4, '4 profiles', 'Name and company only.'],
+  [5, '5 profiles', 'Name and company only.'],
+  [6, '6 profiles', 'First name over surname, and company. With a button, four are named and two stack as headshots.'],
+  [8, 'More than 6', 'The first four are named; the rest stack as headshots. With a button, or past eight profiles, the last circle counts everyone in the stack.']
+];
+function group(r) {
+  return h('div', {key: r[0], className: 'grp'},
+    h('p', {className: 'rule'}, h('b', null, r[1] + ': '), r[2]),
+    card(r[0]), card(r[0], {cta: reg()}));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', {className: 'pv', style: {gap: 32}},
+    h('div', {className: 'cap'}, 'Closed \u2014 every number of profiles, without and with a button. Sample names from the Figma file.'),
+    RULES.map(group),
+    h('h2', {className: 'h'}, 'Open'),
+    h('p', {className: 'rule'}, h('b', null, 'Any number: '), 'everyone is listed in two columns with name, role and company. The button takes the free cell on the last row, or a row of its own.'),
+    card(0, {cta: reg(), defaultOpen: true}),
+    card(3, {cta: reg(), defaultOpen: true}),
+    card(6, {defaultOpen: true}),
+    card(8, {cta: reg(), defaultOpen: true}),
+    h('h2', {className: 'h'}, 'Mobile'),
+    h('p', {className: 'rule'}, h('b', null, 'Under 768px of browser width: '), 'one column with 16px padding. Closed, each profile shows name and company, one under another; open, the role is added. The button spans the card at the bottom. Shown on a 375px screen with 16px page margins.'),
+    h('div', {className: 'phones'},
+      h('div', {className: 'phone g'},
+        card(0, {layout: 'mobile', cta: reg(), title: 'Networking Lunch'}),
+        card(2, {layout: 'mobile', cta: reg()}),
+        card(4, {layout: 'mobile', cta: wait(), title: 'Securing Generative AI and LLMs with Qualys TotalAI'})),
+      h('div', {className: 'phone g'},
+        card(3, {layout: 'mobile', cta: reg(), defaultOpen: true}),
+        card(1, {layout: 'mobile'}))),
+    h('h2', {className: 'h'}, 'Button width'),
+    h('p', {className: 'rule'}, h('b', null, 'One width for every card button: '), 'the button is as wide as the longest standard label, Join Waitlist (blue, secondary-alt), so Register and Join Waitlist line up down a list. Under 768px of browser width it fills the card.'),
+    card(2, {cta: reg()}),
+    card(2, {cta: wait(), title: 'Securing Generative AI and LLMs with Qualys TotalAI'}),
+    card(0, {cta: reg(), title: 'Networking Lunch'}),
+    card(0, {cta: wait(), title: 'Hands-on Lab: TotalCloud 2.0'}),
+    h('h2', {className: 'h'}, 'Shown only when open'),
+    h('p', {className: 'rule'}, h('b', null, 'ctaVisibility and speakerVisibility: '), 'set to "open-only", the closed card keeps the button or the speakers back until it opens. The first card is closed, the second open.'),
+    card(3, {cta: reg(), ctaVisibility: 'open-only', speakerVisibility: 'open-only'}),
+    card(3, {cta: reg(), ctaVisibility: 'open-only', speakerVisibility: 'open-only', defaultOpen: true}),
+    h('h2', {className: 'h'}, 'Profile hover cards'),
+    h('p', {className: 'rule'}, h('b', null, 'profileCards: '), 'every headshot opens a profile card: headshot, name, role, the company logo and the LinkedIn button. Point at a headshot to peek; click one to pin its card, and close it before opening another.'),
+    card(8, {profileCards: true, speakers: P.map(function (p) { return Object.assign({link: {href: '#'}, logo: '/_blob/a0d4062abbce2ceb87d5be08d326359f', logoAlt: 'Qualys'}, p); })}),
+    h('h2', {className: 'h'}, 'As the card gets narrower'),
+    h('p', {className: 'rule'}, h('b', null, 'From 768px of browser width up: '), 'the card fits its profile row to its own width. Five profiles with a button at 1132, 950, 700 and 560px: names split over two lines, then profiles move into the stack. Under 768px of browser width the card becomes one column.'),
+    [1132, 950, 700, 560].map(function (w) {
+      return h('div', {key: 'w' + w, style: {width: w, maxWidth: '100%'}}, h('div', {className: 'cap'}, 'Card ' + w + 'px wide'), card(5, {cta: reg()}));
+    })));
+</script>
+</body>
+</html>

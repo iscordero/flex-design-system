@@ -1,0 +1,21 @@
+const { chromium } = require('playwright');
+(async()=>{const b=await chromium.launch();
+ let p=await b.newPage({viewport:{width:1180,height:600}});
+ const errs=[]; p.on('pageerror',e=>errs.push(e.message)); p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+ await p.goto('file://'+__dirname+'/Accordion.html'); await p.waitForTimeout(900);
+ const state=()=>p.evaluate(()=>[...document.querySelectorAll('.q-accordion')].map(a=>[...a.children].map(c=>c.classList.contains('is-open')?1:0).join('')));
+ console.log('initial', await state());
+ await (await p.$$('.q-accordion--standard .q-drawer__head'))[2].click(); await p.waitForTimeout(450);
+ console.log('click 3rd standard', await state());
+ await (await p.$$('.q-accordion--standard .q-drawer__head'))[2].click(); await p.waitForTimeout(450);
+ console.log('click it again', await state());
+ await (await p.$$('.q-accordion--cards .q-dcard__head'))[3].click(); await p.waitForTimeout(450);
+ console.log('click 4th card', await state());
+ console.log('desktop rows', await p.evaluate(()=>[...document.querySelectorAll('.q-accordion--standard')].map(a=>[...a.children].map(c=>Math.round(c.getBoundingClientRect().height*10)/10).join('/')+' total '+Math.round(a.getBoundingClientRect().height))));
+ console.log('card gap', await p.evaluate(()=>{const c=document.querySelectorAll('.q-accordion--cards .q-dcard'); return c[1].getBoundingClientRect().top-c[0].getBoundingClientRect().bottom}));
+ await p.close();
+ for (const w of [834,375]) { p=await b.newPage({viewport:{width:w,height:700}}); await p.goto('file://'+__dirname+'/Accordion.html'); await p.waitForTimeout(900);
+  console.log(w, await p.evaluate(()=>{const a=document.querySelector('.q-accordion--standard'); const d=a.children[1], t=d.querySelector('.q-drawer__title').getBoundingClientRect(), r=d.getBoundingClientRect(), ic=d.querySelector('.q-drawer__icon').getBoundingClientRect(); const o=a.children[0]; return {closedRow:r.height, titleX:t.left-r.left, icon:ic.width, openH:Math.round(o.getBoundingClientRect().height), ctaGap: o.querySelector('.q-drawer__cta').getBoundingClientRect().top - o.querySelector('.q-drawer__text').getBoundingClientRect().bottom, card:Math.round(document.querySelector('.q-dcard').getBoundingClientRect().width)}}));
+  if (w===375) await p.screenshot({path:__dirname+'/acc-m.png',fullPage:false});
+  await p.close(); }
+ console.log('errors',errs); await b.close();})();

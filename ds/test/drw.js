@@ -1,0 +1,15 @@
+const { chromium } = require('playwright');
+(async()=>{const b=await chromium.launch(); const p=await b.newPage({viewport:{width:1100,height:430}});
+ const errs=[]; p.on('pageerror',e=>errs.push(e.message)); p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+ await p.goto('file://'+__dirname+'/Drawer.html'); await p.waitForTimeout(900);
+ console.log(await p.evaluate(()=>[...document.querySelectorAll('.q-drawer')].map(d=>{const r=d.getBoundingClientRect(), t=d.querySelector('.q-drawer__title').getBoundingClientRect(), b=d.querySelector('.q-drawer__head'); return Math.round(r.height*10)/10+' w'+Math.round(r.width)+' titleX '+Math.round((t.left-r.left)*10)/10+' '+b.getAttribute('aria-expanded')}).join(' | ')));
+ const second=(await p.$$('.q-drawer__head'))[1]; await second.click(); await p.waitForTimeout(500);
+ console.log('after click', await p.evaluate(()=>{const d=document.querySelectorAll('.q-drawer')[1]; return [d.getBoundingClientRect().height, d.querySelector('.q-drawer__head').getAttribute('aria-expanded'), getComputedStyle(d.querySelector('.q-collapse__inner')).visibility]}));
+ await second.focus(); await p.keyboard.press('Enter'); await p.waitForTimeout(500);
+ console.log('after Enter', await p.evaluate(()=>{const d=document.querySelectorAll('.q-drawer')[1]; return [d.getBoundingClientRect().height, d.querySelector('.q-drawer__head').getAttribute('aria-expanded'), getComputedStyle(d.querySelector('.q-collapse__inner')).visibility]}));
+ await p.goto('file://'+__dirname+'/DrawerCard.html'); await p.waitForTimeout(900);
+ const head=(await p.$$('.q-dcard__head'))[1]; await head.click(); await p.waitForTimeout(500);
+ console.log('card toggle', await p.evaluate(()=>{const d=document.querySelectorAll('.q-dcard')[1]; return [d.className, Math.round(d.getBoundingClientRect().height)]}));
+ const reg=await p.$('.q-dcard.no-people .q-dcard__cta button'); const box=await reg.boundingBox(); await p.mouse.click(box.x+box.width/2, box.y+box.height/2); await p.waitForTimeout(300);
+ console.log('clicking Register does not toggle:', await p.evaluate(()=>document.querySelector('.q-dcard.no-people').className.includes('is-open')));
+ console.log('errors',errs); await b.close();})();

@@ -1,0 +1,32 @@
+<!-- @dsCard group="Page modules · Carousels and logos" height=1991 width=1440 subtitle="Block module · Logos in tiers under a heading: a lead sponsor, then rows of four. Placeholder logos." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LogoHierarchy — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+function phone(t, node) { return h('div', null, cap(t).props.children ? h('div', {className: 'cap', style: {paddingLeft: 0}}, t) : null, h('div', {className: 'phone'}, node)); }
+function logo(n) {
+  var marks = ['<circle cx="20" cy="20" r="14"/>', '<rect x="6" y="6" width="28" height="28" rx="6"/>', '<path d="M20 4L36 34H4Z"/>', '<path d="M20 4L36 20L20 36L4 20Z"/>', '<rect x="4" y="12" width="32" height="16" rx="8"/>', '<path d="M6 6H34V20A14 14 0 0 1 6 20Z"/>'];
+  var names = ['Company', 'Customer', 'Partner', 'Sponsor', 'Client', 'Brand'];
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 40" width="190" height="40"><g fill="%23575757">' + marks[n % 6] + '</g><text x="48" y="27" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="20" fill="%23575757">' + names[n % 6] + ' ' + (n + 1) + '</text></svg>';
+  return 'data:image/svg+xml;utf8,' + svg.replace(/</g, '%3C').replace(/>/g, '%3E').replace(/"/g, "'");
+}
+function L(n) { return {src: logo(n), alt: ['Company', 'Customer', 'Partner', 'Sponsor', 'Client', 'Brand'][n % 6] + ' ' + (n + 1)}; }
+function lh() { return h(Q.LogoHierarchy, {title: 'Partner Pavilion', tiers: [{label: 'Signature Sponsor', logos: [L(3)]}, {label: 'Standard Sponsors', logos: [0, 1, 2, 4, 5, 6, 7, 8].map(L)}]}); }
+function badge() { return h('span', {style: {display: 'flex', alignItems: 'center', justifyContent: 'center', width: 44, height: 44, boxSizing: 'border-box', border: '1px dashed var(--stroke-neutral-500)', borderRadius: '50%', fontFamily: 'var(--font-heading)', fontWeight: 600, fontSize: 10, color: 'var(--text-secondary)'}}, 'Badge'); }
+function K(n) { var l = L(n); return Object.assign({card: {title: l.alt, badge: badge(), body: 'A short line on what this partner brings to Qualys customers. Two or three lines at most.', link: {label: 'View Partner', href: '#'}}}, l); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('Logo hierarchy'), lh(),
+  cap('With hover cards: point at or click a logo'), h(Q.LogoHierarchy, {title: 'Certified Partners', tiers: [{label: 'Partners', logos: [0, 1, 2, 4].map(K)}]}),
+  cap('Mobile'), h('div', {className: 'phones'}, h('div', {className: 'phone'}, lh()))));
+</script>
+</body>
+</html>

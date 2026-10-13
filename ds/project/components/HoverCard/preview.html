@@ -1,0 +1,45 @@
+<!-- @dsCard group="Components · Overlays and messages" height=1069 width=1100 subtitle="Component · A small card on hover, click or tap: a logo card and a profile card. The last row is live." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>HoverCard — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone.w390{width:390px}.row{display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.slot{display:flex;align-items:center;justify-content:center;width:44px;height:44px;box-sizing:border-box;border:1px dashed var(--stroke-neutral-500);border-radius:50%;font-family:var(--font-heading);font-weight:600;font-size:10px;color:var(--text-secondary)}.pv{background:var(--surface-neutral-300);padding-bottom:var(--spacing-xl)}.row{padding-bottom:var(--spacing-rg)}.live{align-items:center;gap:var(--spacing-4xl);min-height:330px;align-items:flex-start}.tile{display:flex;align-items:center;justify-content:center;width:200px;height:80px;padding:16px;box-sizing:border-box;border:0;border-radius:var(--radius-md);background:var(--surface-neutral-100);cursor:pointer}.tile img{display:block;max-width:100%;max-height:100%}.tile:focus-visible{outline:none;box-shadow:var(--focus-ring)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+function logo(n) {
+  var marks = ['<circle cx="20" cy="20" r="14"/>', '<rect x="6" y="6" width="28" height="28" rx="6"/>', '<path d="M20 4L36 34H4Z"/>', '<path d="M20 4L36 20L20 36L4 20Z"/>', '<rect x="4" y="12" width="32" height="16" rx="8"/>', '<path d="M6 6H34V20A14 14 0 0 1 6 20Z"/>'];
+  var names = ['Company', 'Customer', 'Partner', 'Sponsor', 'Client', 'Brand'];
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 40" width="190" height="40"><g fill="%23575757">' + marks[n % 6] + '</g><text x="48" y="27" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="20" fill="%23575757">' + names[n % 6] + ' ' + (n + 1) + '</text></svg>';
+  return 'data:image/svg+xml;utf8,' + svg.replace(/</g, '%3C').replace(/>/g, '%3E').replace(/"/g, "'");
+}
+var NAMES = ['Company', 'Customer', 'Partner', 'Sponsor', 'Client', 'Brand'];
+
+var BODY = 'A short line on what this partner brings to Qualys customers. Two or three lines at most.';
+function badge() { return h('span', {className: 'slot'}, 'Badge'); }
+function partner(n, extra) { return Object.assign({kind: 'logo', logo: logo(n), logoAlt: NAMES[n] + ' ' + (n + 1), badge: badge(), title: NAMES[n] + ' ' + (n + 1), body: BODY, link: {label: 'View Partner', href: '#'}}, extra); }
+var QLOGO = '/_blob/a0d4062abbce2ceb87d5be08d326359f';
+var JORDAN = {kind: 'profile', name: 'Jordan Rivera', designation: 'Director of Product Security, Qualys', company: 'Qualys', logo: QLOGO, logoAlt: 'Qualys', link: {href: '#'}};
+var ALEX = {kind: 'profile', name: 'Alexandra Montgomery-Whitfield', designation: 'CISO and SVP Security Solution Architecture, Qualys', company: 'Qualys', logo: QLOGO, logoAlt: 'Qualys', link: {href: '#'}};
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
+  cap('Logo card: logo, badge, name, copy, one link'), h('div', {className: 'row'},
+    h(Q.HoverCard, partner(2, {inline: true})),
+    h(Q.HoverCard, partner(0, {inline: true, badge: null})),
+    h(Q.HoverCard, partner(4, {inline: true, badge: null, link: null}))),
+  cap('Profile card: headshot, name, role; company logo and LinkedIn button in the foot; close icon top right'), h('div', {className: 'row'},
+    h(Q.HoverCard, Object.assign({inline: true}, JORDAN)),
+    h(Q.HoverCard, Object.assign({inline: true}, ALEX)),
+    h(Q.HoverCard, {inline: true, kind: 'profile', name: 'Sam Okafor', designation: 'Security Architect', company: 'Qualys'})),
+  cap('Live: point at, click or tab to these. A clicked profile card stays open, and the other headshot waits until it is closed'), h('div', {className: 'row live'},
+    h(Q.HoverCard, partner(2), h('button', {type: 'button', className: 'tile', 'aria-label': 'Partner 3: details'}, h('img', {src: logo(2), alt: ''}))),
+    h(Q.HoverCard, partner(0, {badge: null}), h('button', {type: 'button', className: 'tile', 'aria-label': 'Company 1: details'}, h('img', {src: logo(0), alt: ''}))),
+    h(Q.HoverCard, JORDAN, h(Q.Avatar, {size: 'md'})),
+    h(Q.HoverCard, Object.assign({align: 'start'}, ALEX), h(Q.Avatar, null)))));
+</script>
+</body>
+</html>

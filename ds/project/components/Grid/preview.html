@@ -1,0 +1,22 @@
+<!-- @dsCard group="Foundations" height=381 width=1440 subtitle="Container margins and 1–4 column grid; resize to see tablet and mobile" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Grid — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-200)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:var(--spacing-rg)}.row{display:flex;gap:var(--spacing-xs);align-items:center;flex-wrap:wrap}.lbl{min-width:150px;font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.dark{background:var(--surface-neutral-600);border-radius:var(--radius-lg);padding:var(--spacing-rg) var(--spacing-xl)}.dark .lbl{color:rgba(255,255,255,.75)}.stack{display:flex;flex-direction:column;gap:var(--spacing-xl);padding-block:var(--spacing-xl);background:var(--surface-neutral-100)}.cell{height:72px;border-radius:var(--radius-lg);background:var(--surface-neutral-400)}.cap{margin-bottom:var(--spacing-3xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cells(n) { var a = []; for (var i = 0; i < n; i++) a.push(h('div', {key: i, className: 'cell'})); return a; }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'stack'},
+  [2, 3, 4].map(function (n) {
+    return h('div', {key: n, className: 'q-container'}, h('div', {className: 'cap'}, n + ' columns'), h('div', {className: 'q-grid q-grid--' + n}, cells(n)));
+  })
+));
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!-- @dsCard group="Components · Icons, tags and flags" height=219 width=1100 subtitle="Component · Edge bar for unread or active items, on a left or right edge; opens into a count" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Marker — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:var(--spacing-rg)}.row{display:flex;gap:var(--spacing-xl);align-items:flex-start;flex-wrap:wrap}.cap{margin-bottom:var(--spacing-3xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.col{display:flex;flex-direction:column;gap:var(--spacing-rg);width:320px}</style>
+<style>.tabs{display:flex;flex-direction:column;gap:var(--spacing-3xs);width:300px}.tab{display:flex;align-items:center;gap:var(--spacing-xs);height:44px;padding-right:var(--spacing-rg);border-radius:var(--radius-rg);background:var(--surface-neutral-200);font-family:var(--font-heading);font-weight:600;font-size:16px}.tab .q-marker{margin-left:-0px}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function tab(m, label) { return h('div', {className: 'tab', key: label}, m, label); }
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', {className: 'pv'}, h('div', {className: 'row', style: {gap: 48, alignItems: 'flex-start'}},
+    h('div', null, h('div', {className: 'cap'}, 'Closed \u2014 1, 2, 3, blue'), h('div', {className: 'row', style: {gap: 14}}, h(Q.Marker, {tone: 1}), h(Q.Marker, {tone: 2}), h(Q.Marker, {tone: 3}), h(Q.Marker, {tone: 'blue'}))),
+    h('div', null, h('div', {className: 'cap'}, 'Open, with a count'), h('div', {className: 'row', style: {gap: 14}}, h(Q.Marker, {tone: 1, count: 88, label: '88 unread'}), h(Q.Marker, {tone: 2, count: 12, label: '12 unread'}), h(Q.Marker, {tone: 3, count: 5, label: '5 unread'}), h(Q.Marker, {tone: 'blue', count: 2, label: '2 unread'}))),
+    h('div', null, h('div', {className: 'cap'}, 'On tab edges'), h('div', {className: 'tabs'}, tab(h(Q.Marker, {tone: 1}), 'Vulnerabilities'), tab(h('span', {style: {width: 6}}), 'Assets'), tab(h(Q.Marker, {tone: 'blue'}), 'Compliance'))),
+    h('div', null, h('div', {className: 'cap'}, 'On a right edge'), h('div', {className: 'row', style: {gap: 14}}, h(Q.Marker, {tone: 'blue', side: 'right'}), h(Q.Marker, {tone: 'blue', side: 'right', count: 88, label: '88 unread'}))))));
+</script>
+</body>
+</html>

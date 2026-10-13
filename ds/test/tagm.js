@@ -1,0 +1,14 @@
+const { chromium } = require('playwright');
+(async()=>{const b=await chromium.launch(); const p=await b.newPage({viewport:{width:1100,height:400}});
+ await p.goto('file://'+__dirname+'/Tag.html'); await p.waitForTimeout(800);
+ console.log('text-box support', await p.evaluate(()=>CSS.supports('text-box','trim-both cap alphabetic')));
+ console.log(await p.evaluate(()=>[...document.querySelectorAll('.q-tag--badge')].filter((e,i)=>[0,9,18,27].includes(i)).map(e=>{const r=e.getBoundingClientRect();return e.className.replace(/q-tag /,'')+' '+r.width.toFixed(1)+'x'+r.height.toFixed(1)})));
+ await p.goto('file://'+__dirname+'/FilterChip.html'); await p.waitForTimeout(600);
+ console.log(await p.evaluate(()=>[...document.querySelectorAll('.q-chip')].slice(0,2).concat([...document.querySelectorAll('.q-chip--sm')].slice(0,1)).map(e=>{const r=e.getBoundingClientRect();return e.textContent+' '+r.width.toFixed(1)+'x'+r.height.toFixed(1)})));
+ await p.goto('file://'+__dirname+'/Flag.html'); await p.waitForTimeout(600);
+ console.log(await p.evaluate(()=>[...document.querySelectorAll('.q-flag')].slice(0,5).map(e=>{const r=e.getBoundingClientRect();return e.textContent+' '+r.width.toFixed(1)+'x'+r.height.toFixed(1)})));
+ await p.goto('file://'+__dirname+'/Marker.html'); await p.waitForTimeout(600);
+ console.log(await p.evaluate(()=>[...document.querySelectorAll('.q-marker')].slice(0,4).map(e=>{const r=e.getBoundingClientRect();return r.width.toFixed(1)+'x'+r.height.toFixed(1)})));
+ await p.goto('file://'+__dirname+'/EventType.html'); await p.waitForTimeout(600);
+ console.log(await p.evaluate(()=>[...document.querySelectorAll('.q-event')].map(e=>{const r=e.getBoundingClientRect();return e.textContent+' '+r.width.toFixed(1)+'x'+r.height.toFixed(1)})));
+ await b.close();})();

@@ -1,0 +1,31 @@
+<!-- @dsCard group="Components · Overlays and messages" height=1567 width=1440 subtitle="Component · The base modal: small, medium and large, with or without a footer; then mobile. The button opens a live one." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Modal — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}.stage{display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--spacing-xl);padding:var(--spacing-2xl) var(--spacing-xl);background:var(--surface-neutral-400)}.stage>*{flex:none}.w480{width:480px}.w540{width:540px}.w600{width:600px}.w440{width:440px}.w375{width:375px}.w351{width:351px}.full{width:100%}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+function phone(t, node) { return h('div', null, cap(t).props.children ? h('div', {className: 'cap', style: {paddingLeft: 0}}, t) : null, h('div', {className: 'phone'}, node)); }
+var copy = 'Modal body content goes here. This area supports forms, text content, images, or any nested component.';
+function acts() { return [{label: 'Cancel'}, {label: 'Confirm'}]; }
+function m(size, foot) { return h(Q.Modal, {inline: true, size: size, title: 'Modal Title', actions: foot ? acts() : null}, copy); }
+function Live() {
+  var s = React.useState(false);
+  return h('div', {style: {padding: '0 24px 24px'}}, h(Q.Button, {variant: 'secondary', onClick: function () { s[1](true); }}, 'Open a Modal'),
+    h(Q.Modal, {open: s[0], onClose: function () { s[1](false); }, title: 'Modal Title', actions: [{label: 'Cancel', onClick: function () { s[1](false); }}, {label: 'Confirm', onClick: function () { s[1](false); }}]}, copy));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('With a footer · small 480, medium 540, large 600'), h('div', {className: 'stage'}, h('div', {className: 'w480'}, m('sm', true)), h('div', {className: 'w540'}, m('md', true)), h('div', {className: 'w600'}, m('lg', true))),
+  cap('Without a footer'), h('div', {className: 'stage'}, h('div', {className: 'w480'}, m('sm')), h('div', {className: 'w540'}, m('md')), h('div', {className: 'w600'}, m('lg'))),
+  cap('Mobile'), h('div', {className: 'stage'}, h('div', {className: 'w351'}, m('md', true)), h('div', {className: 'w351'}, m('md'))),
+  cap('Live'), h(Live)));
+</script>
+</body>
+</html>

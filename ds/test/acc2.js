@@ -1,0 +1,12 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();
+const p=await b.newPage({viewport:{width:1440,height:1000}});const errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+await p.goto('file://'+process.cwd()+'/accfig.html');await p.waitForLoadState('networkidle');await p.evaluate(()=>document.fonts.ready);
+const cta=id=>p.evaluate(id=>{const c=document.querySelector('#'+id+' .q-drawer__cta > *');return c?c.tagName+'.'+c.className:null},id);
+for(const id of ['f1','f2','f4','f5','f6','f7','m2']) console.log(id, await cta(id));
+const mk=()=>p.evaluate(()=>[...document.querySelectorAll('#f7 .q-drawer')].map(d=>{const m=d.querySelector('.q-marker');if(!m)return '-';const r=m.getBoundingClientRect(),hr=d.querySelector('.q-drawer__head').getBoundingClientRect();return getComputedStyle(m).display+'@'+Math.round(r.x-hr.x)+','+Math.round(r.y-hr.y)+' '+r.width+'x'+r.height+' '+getComputedStyle(m).backgroundColor+' hidden='+m.getAttribute('aria-hidden')}).join(' | '));
+console.log('markers', await mk());
+await (await p.$$('#f7 .q-drawer__head'))[3].click(); console.log('after click 4th', await mk());
+console.log('title x', await p.evaluate(()=>[...document.querySelectorAll('#f7 .q-drawer__title')].map(t=>Math.round(t.getBoundingClientRect().x)).join(',')), 'row h', await p.evaluate(()=>[...document.querySelectorAll('#f7 .q-drawer__heading')].map(t=>Math.round(t.getBoundingClientRect().height)).join(',')));
+await p.setViewportSize({width:800,height:1000}); await p.waitForTimeout(200);
+console.log('tablet list markers', await mk());
+console.log(errs);await b.close()})();

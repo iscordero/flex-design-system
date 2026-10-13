@@ -1,0 +1,21 @@
+const { chromium } = require('playwright');
+(async()=>{const b=await chromium.launch(); const p=await b.newPage({viewport:{width:1100,height:520}});
+ const errs=[]; p.on('pageerror',e=>errs.push(e.message)); p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+ await p.goto('file://'+__dirname+'/Tabs.html'); await p.waitForTimeout(1200);
+ const geo=()=>p.evaluate(()=>{const L=document.querySelector('.q-tabs__list'); const tabs=[...L.querySelectorAll('.q-tabs__tab')].map(t=>{const r=t.getBoundingClientRect(), l=t.firstChild.getBoundingClientRect(); return t.textContent+' '+r.width.toFixed(1)+'x'+r.height.toFixed(1)+' labelX '+(l.left-r.left).toFixed(1)+' labelY '+(l.top-r.top).toFixed(1)+' h'+l.height.toFixed(1)+' '+getComputedStyle(t).color+(t.getAttribute('aria-selected')==='true'?' ACTIVE':'')});
+   const i=L.querySelector('.q-tabs__indicator').getBoundingClientRect(), a=L.querySelector('.is-active .q-tabs__label').getBoundingClientRect(), lr=L.getBoundingClientRect();
+   return {tabs, ind:[(i.left-a.left).toFixed(1),(i.width-a.width).toFixed(1),(lr.bottom-i.bottom).toFixed(1),i.height], list:[lr.width,lr.height]};});
+ console.log(JSON.stringify(await geo(),null,1));
+ await p.screenshot({path:__dirname+'/tabs-1.png'});
+ await p.focus('.q-tabs__tab.is-active'); await p.keyboard.press('ArrowRight'); await p.waitForTimeout(150);
+ await p.screenshot({path:__dirname+'/tabs-mid.png'}); await p.waitForTimeout(400);
+ const g=await geo(); console.log('after ArrowRight', g.tabs.filter(t=>t.includes('ACTIVE')), g.ind, 'focused:', await p.evaluate(()=>document.activeElement.textContent));
+ console.log('panel visible:', await p.evaluate(()=>[...document.querySelectorAll('.q-tabs__panel')].filter(x=>!x.hidden).map(x=>x.querySelector('.h4').textContent)));
+ await p.keyboard.press('End'); await p.waitForTimeout(400); console.log('End ->', await p.evaluate(()=>document.activeElement.textContent));
+ // mobile list scroll
+ const m=await p.evaluate(()=>{const L=document.querySelectorAll('.q-tabs__list')[1]; return [L.clientWidth,L.scrollWidth]});
+ console.log('mobile list client/scroll', m);
+ await p.click('text=Resources'); await p.waitForTimeout(500);
+ console.log('mobile scrollLeft after picking last', await p.evaluate(()=>document.querySelectorAll('.q-tabs__list')[1].scrollLeft));
+ await p.screenshot({path:__dirname+'/tabs-2.png'});
+ console.log('errors',errs); await b.close();})();

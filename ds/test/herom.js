@@ -1,0 +1,7 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const errs=[];
+const p=await b.newPage({viewport:{width:1440,height:1200}});p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+await p.goto('file://'+process.cwd()+'/'+(process.argv[2]||'Hero')+'.html');await p.waitForLoadState('networkidle');await p.evaluate(()=>document.fonts.ready);await p.waitForTimeout(300);
+const sel=process.argv[3]||'.q-hero';
+const M=await p.evaluate((sel)=>[...document.querySelectorAll(sel)].map(f=>{const F=f.getBoundingClientRect();const r=(s)=>{const e=f.querySelector(s);if(!e)return null;const b=e.getBoundingClientRect();return [+(b.x-F.x).toFixed(1),+(b.y-F.y).toFixed(1),+b.width.toFixed(1),+b.height.toFixed(1)].join(',')};const fs=(s)=>{const e=f.querySelector(s);return e?getComputedStyle(e).fontSize:null};return {cls:f.className.replace(/q-section |q-hero--|q-gc--|q-/g,''),size:[Math.round(F.width),+F.height.toFixed(1)].join('x'),eyebrow:r('.q-copy__eyebrow'),title:r('.q-copy__title')+' '+fs('.q-copy__title'),body:r('.q-copy__body')+' '+fs('.q-copy__body'),actions:r('.q-copy__actions'),media:r('.q-media')||r('.q-hero__panel')||r('.q-form')||r('.q-gc__banner')}}),sel);
+M.forEach((m,i)=>console.log(i,JSON.stringify(m)));
+console.log('scrollW',await p.evaluate(()=>document.documentElement.scrollWidth),'errs',errs);await b.close()})();

@@ -1,0 +1,35 @@
+<!-- @dsCard group="Components · Cards" height=1045 width=1180 subtitle="Component · Inline promo: vertical on the blue gradient or Charcoal, wide, and banner. Wide and banner stack on mobile." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>InlinePromoCard — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-300)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.cols{display:grid;gap:24px;align-items:start}.c3{grid-template-columns:repeat(3,350px)}.c4{grid-template-columns:repeat(4,260px)}.stretch{align-items:stretch}.v3{grid-template-columns:repeat(3,331px)}.one{width:331px}.wide{width:752px}.duo{display:flex;gap:24px;align-items:flex-start}.stack{display:flex;flex-direction:column;gap:24px}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function sec(cap, cls, kids) { return h('div', null, h('div', {className: 'cap'}, cap), h.apply(null, ['div', {className: cls}].concat(kids))); }
+var copy = 'As your needs change, easily and seamlessly add powerful functionality, coverage, and users.';
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
+  h('div', {className: 'duo'},
+    sec('Product: vertical', 'one', [
+      h(Q.InlinePromoCard, {href: '#', logo: '/_blob/2f12addb8d68868ae064a58fad459a07', image: '/_blob/161a64f365cbddf79c8287b5d78440df', title: 'Inline Promo Heading', description: copy, cta: 'Get a Demo'})
+    ]),
+    h('div', {className: 'stack'},
+      sec('Product: wide', 'wide', [
+        h(Q.InlinePromoCard, {layout: 'horizontal', href: '#', logo: '/_blob/2f12addb8d68868ae064a58fad459a07', image: '/_blob/161a64f365cbddf79c8287b5d78440df', title: 'Inline Promo Heading', description: copy, cta: 'Get a Demo'})
+      ]),
+      sec('Product: banner', 'wide', [
+        h(Q.InlinePromoCard, {layout: 'banner', href: '#', image: '/_blob/161a64f365cbddf79c8287b5d78440df', title: 'Inline Promo Heading', description: copy, cta: 'Learn More'})
+      ]))),
+  sec('Hub cards with an icon (Charcoal)', 'cols v3 stretch', [
+    h(Q.InlinePromoCard, {href: '#', color: 'dark', logo: '/_blob/2f12addb8d68868ae064a58fad459a07', icon: 'general-events', title: 'Events Center', description: copy, cta: 'Explore Events'}),
+    h(Q.InlinePromoCard, {href: '#', color: 'dark', logo: '/_blob/2f12addb8d68868ae064a58fad459a07', icon: 'general-webinar', title: 'Webinar Library', description: copy, cta: 'Watch Now'}),
+    h(Q.InlinePromoCard, {href: '#', color: 'dark', logo: '/_blob/2f12addb8d68868ae064a58fad459a07', icon: 'general-resource', title: 'Resource Center', description: copy, cta: 'Browse Resources'})
+  ])));
+</script>
+</body>
+</html>

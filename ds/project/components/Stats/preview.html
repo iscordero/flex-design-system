@@ -1,0 +1,32 @@
+<!-- @dsCard group="Page modules · Content sections" height=3983 width=1440 subtitle="Block module · Stats block (one panel) and stat cards three or four in a row, filled and outlined; then mobile." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Stats — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+function phone(t, node) { return h('div', null, cap(t).props.children ? h('div', {className: 'cap', style: {paddingLeft: 0}}, t) : null, h('div', {className: 'phone'}, node)); }
+var ICON = {"detect": "/_blob/bdcd7cc4b2bbc39f3f0aba2ee1b6ea8e", "threat": "/_blob/e594a6d966d00d9ea5bb37fd3d806358", "measure": "/_blob/08a9d26a3a902a648c904b65297a8cb7", "risk": "/_blob/9c45307ba346d1999697cad5e415dc64"};
+var D = 'Lorem Ipsum Dolor Sit Amet Consectetur Sollicitudin';
+var THREE = [{icon: ICON.detect, value: '150', suffix: '%', label: 'Faster Detection', description: D}, {icon: ICON.threat, value: '10', suffix: 'x', label: 'Less Zero-day Threats', description: D}, {icon: ICON.measure, value: '99.99', suffix: '%', label: 'More Accurate Scanning', description: D}];
+var FOUR = THREE.concat([{icon: ICON.risk, prefix: '#', value: '1', label: 'Risk-Management Tool', description: D}]);
+function st(extra) { return h(Q.Stats, Object.assign({items: THREE}, extra)); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('Stats block'), st(),
+  cap('Stats block · outlined'), st({tone: 'outline'}),
+  cap('Stats cards · three in a row'), st({layout: 'cards'}), st({layout: 'cards', tone: 'outline'}),
+  cap('Stats cards · four in a row'), st({layout: 'cards', items: FOUR}), st({layout: 'cards', items: FOUR, tone: 'outline'}),
+  cap('Mobile'), h('div', {className: 'phones'},
+    h('div', {className: 'phone'}, st()),
+    h('div', {className: 'phone'}, st({layout: 'cards'})),
+    h('div', {className: 'phone'}, st({layout: 'cards', items: FOUR, tone: 'outline'})))));
+</script>
+</body>
+</html>

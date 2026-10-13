@@ -1,0 +1,18 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const errs=[];
+const p=await b.newPage({viewport:{width:1440,height:1000}});p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+await p.goto('file://'+process.cwd()+'/NavHover.html');await p.waitForLoadState('networkidle');
+const st=()=>p.evaluate(()=>({exp:[...document.querySelectorAll('.q-nav__link[aria-expanded]')].map(b=>b.getAttribute('aria-expanded')).join(','),kind:(document.querySelector('.q-nav__panel')||{}).className||null}));
+console.log('mobile bar hidden at 1440',await p.evaluate(()=>getComputedStyle(document.querySelector('.q-nav__mobilebar')).display),'desktop',await p.evaluate(()=>getComputedStyle(document.querySelector('.q-nav__desktop')).display));
+await p.hover('.q-nav__link >> text=Platform');console.log('hover Platform',await st());
+await p.mouse.move(700,400,{steps:8});console.log('move into panel',await st());
+await p.hover('.q-nav__link >> text=Solutions');console.log('hover Solutions',await st());
+await p.mouse.move(700,990,{steps:8});console.log('leave',await st());
+await p.click('.q-nav__link >> text=Platform');console.log('click (after hover opened → toggles?)',await st());
+await p.mouse.move(20,600);await p.mouse.click(20,600);console.log('outside click',await st());
+await p.focus('.q-nav__link >> text=Platform');await p.keyboard.press('Enter');console.log('enter',await st());
+const seq=[];for(let i=0;i<4;i++){await p.keyboard.press('Tab');seq.push(await p.evaluate(()=>document.activeElement.className.split(' ')[0]+':'+document.activeElement.textContent.slice(0,18)));}console.log('tab',seq.join(' > '));
+await p.keyboard.press('Escape');console.log('esc',await st(),await p.evaluate(()=>document.activeElement.textContent));
+await p.setViewportSize({width:1100,height:900});console.log('1100: desktop',await p.evaluate(()=>getComputedStyle(document.querySelector('.q-nav__desktop')).display),'mobile bar',await p.evaluate(()=>getComputedStyle(document.querySelector('.q-nav__mobilebar')).display));
+await p.screenshot({path:'nav1100.png',clip:{x:0,y:0,width:1100,height:130}});
+await p.setViewportSize({width:1200,height:900});const ov=await p.evaluate(()=>{const i=document.querySelector('.q-nav__inner');return [i.scrollWidth,i.clientWidth]});console.log('1200 inner scroll/client',ov);await p.screenshot({path:'nav1200.png',clip:{x:0,y:0,width:1200,height:140}});
+console.log('errs',errs);await b.close()})();

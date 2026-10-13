@@ -1,0 +1,32 @@
+<!-- @dsCard group="Components · Forms" height=1573 width=1440 subtitle="Pattern · A lead-capture form in a modal: full, minimal and content gate; then mobile." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FormModal — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}.stage{display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--spacing-xl);padding:var(--spacing-2xl) var(--spacing-xl);background:var(--surface-neutral-400)}.stage>*{flex:none}.w480{width:480px}.w540{width:540px}.w600{width:600px}.w440{width:440px}.w375{width:375px}.w351{width:351px}.full{width:100%}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+function phone(t, node) { return h('div', null, cap(t).props.children ? h('div', {className: 'cap', style: {paddingLeft: 0}}, t) : null, h('div', {className: 'phone'}, node)); }
+var SHIELD = '/_blob/1317004b4eea94a3648caf5ff41b1862';
+var legal = 'By submitting this form, you consent to Qualys’ privacy policy.';
+var FULL = {eyebrow: 'Get Started', title: 'Try Qualys for Free', subtitle: 'Complete the form below to start your free trial.', form: {variant: 'full', logoSrc: SHIELD, title: ['Like What You’re Seeing?', h('br', {key: 'b'}), 'Try Qualys For Free.'],
+  fields: [{name: 'email', label: 'Work Email', type: 'email', required: true}, {name: 'first', label: 'First Name', required: true}, {name: 'last', label: 'Last Name', required: true}, {name: 'company', label: 'Company Name', required: true}],
+  consent: 'I would like to receive Qualys emails.', submitLabel: 'Sign Up', legal: legal, onSubmit: function () {}}};
+var MIN = {eyebrow: 'Get Started', title: 'Stay Informed', subtitle: 'Get the latest cybersecurity insights delivered to your inbox.', form: {variant: 'minimal', title: 'Try Our Risk-Based VM Program For Free', subtitle: 'Optional subtitle to better describe what we’re asking.',
+  fields: [{name: 'user', label: 'Qualys User Name', required: true}], consent: 'I would like to receive Qualys emails.', submitLabel: 'Check it Out', link: {label: 'Have an account?', href: '#'}, legal: legal, onSubmit: function () {}}};
+var GATE = {eyebrow: 'Download Resource', title: 'Download This Resource', subtitle: 'Fill in your details to access this resource.', form: {variant: 'gate', title: 'Try Our Risk-Based VM Program For Free', subtitle: 'Optional subtitle to better describe what we’re asking.',
+  fields: [{name: 'email', label: 'Work Email', type: 'email', required: true}, {name: 'first', label: 'First Name', required: true, half: true}, {name: 'last', label: 'Last Name', required: true, half: true}, {name: 'company', label: 'Company Name', required: true}],
+  submitLabel: 'Check it Out', link: {label: 'Have an account?', href: '#'}, legal: legal, onSubmit: function () {}}};
+function fm(o) { return h(Q.FormModal, Object.assign({inline: true}, o)); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('Full lead capture · minimal email'), h('div', {className: 'stage'}, h('div', {className: 'w600'}, fm(FULL)), h('div', {className: 'w600'}, fm(MIN))),
+  cap('Content gate · mobile'), h('div', {className: 'stage'}, h('div', {className: 'w600'}, fm(GATE)), h('div', {className: 'w351'}, fm(MIN)))));
+</script>
+</body>
+</html>

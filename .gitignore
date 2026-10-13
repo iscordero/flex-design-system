@@ -1,0 +1,8 @@
+node_modules/
+standalone/out/
+ds/test/*.html
+ds/test/*.png
+ds/test/tokens.css
+ds/tscheck/qualys.d.ts
+__pycache__/
+.DS_Store

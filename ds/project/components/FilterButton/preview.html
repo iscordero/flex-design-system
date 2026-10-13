@@ -1,0 +1,19 @@
+<!-- @dsCard group="Components · Filters" height=110 width=415 subtitle="Component · The Filter control beside a search field on mobile; it opens the filter drawer." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FilterButton — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.top{display:flex;align-items:center;gap:26px;max-width:335px}.top .q-search{flex:1}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function sec(cap, cls, kids) { return h('div', null, h('div', {className: 'cap'}, cap), h.apply(null, ['div', {className: cls}].concat(kids))); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
+  h('div', {className: 'top'}, h(Q.SearchBar, {placeholder: 'Search Resources'}), h(Q.FilterButton, null))));
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const errs=[];
+async function page(w,h,f){const p=await b.newPage({viewport:{width:w,height:h}});p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});await p.goto('file://'+process.cwd()+'/'+f);await p.waitForLoadState('networkidle');return p;}
+let p=await page(560,440,'SocialButton.html');
+const css=(sel,prop,i=0)=>p.evaluate(([s,pr,i])=>getComputedStyle(document.querySelectorAll(s)[i])[pr],[sel,prop,i]);
+console.log('size',await p.evaluate(()=>{const b=document.querySelector('.q-social').getBoundingClientRect();const s=document.querySelector('.q-social svg').getBoundingClientRect();return [b.width,b.height,s.width,s.height,s.x-b.x,s.y-b.y]}),'radius',await css('.q-social','borderRadius'),'bg',await css('.q-social','backgroundColor'));
+await p.hover('.q-social');await p.waitForTimeout(250);console.log('hover bg',await css('.q-social','backgroundColor'));
+await p.mouse.down();await p.waitForTimeout(250);console.log('pressed bg',await css('.q-social','backgroundColor'));await p.mouse.up();
+console.log('labels',await p.evaluate(()=>[...document.querySelectorAll('.row')[0].querySelectorAll('.q-social')].map(a=>a.getAttribute('aria-label')+'|'+a.tagName+'|'+a.target+'|'+a.rel)));
+console.log('plain',await p.evaluate(()=>{const a=document.querySelector('.q-social--plain');const b=a.getBoundingClientRect();const s=a.querySelector('svg').getBoundingClientRect();const c=getComputedStyle(a);return [b.width,b.height,s.width,s.height,c.color,c.backgroundColor]}));
+await p.hover('.q-social--plain');await p.waitForTimeout(250);console.log('plain hover',await css('.q-social--plain','color'),await css('.q-social--plain','backgroundColor'));
+await p.keyboard.press('Tab');
+await p.close();
+p=await page(1248,1200,'ProfileModal.html');
+console.log('modal row',await p.evaluate(()=>{const panel=document.querySelectorAll('.q-pmodal__panel')[1].getBoundingClientRect();return [...document.querySelectorAll('.q-pmodal__links .q-social svg')].map(s=>{const r=s.getBoundingClientRect();return [(r.x-panel.x).toFixed(1),(panel.bottom-(r.y+r.height/2)).toFixed(1)]}).join(' | ')}),'(Figma glyph boxes start ~957/988/1019/1050/1081, centre 40.1 above bottom)');
+console.log('chip',await p.evaluate(()=>{const a=document.querySelector('.q-profile__chip');const m=document.querySelector('.q-pmodal__media').getBoundingClientRect();const b=a.getBoundingClientRect();return [a.className,a.getAttribute('aria-label'),b.width,b.height,m.right-b.right,b.top-m.top]}));
+await p.close();
+p=await page(1248,1000,'ProfileGrid.html');
+await p.evaluate(()=>{document.querySelectorAll('.q-profile__chip').forEach(c=>c.addEventListener('click',e=>e.preventDefault()))});
+await p.click('.q-profile__chip');await p.waitForTimeout(150);console.log('chip click opens modal?',await p.evaluate(()=>!!document.querySelector('.q-pmodal__panel')));
+await p.click('.q-pcard .q-profile__name');await p.waitForTimeout(400);console.log('card click opens modal?',await p.evaluate(()=>!!document.querySelector('.q-pmodal__panel')));
+const seq=[];for(let i=0;i<4;i++){await p.keyboard.press('Tab');seq.push(await p.evaluate(()=>document.activeElement.className.split(' ').slice(0,2).join('.')));}console.log('tab',seq.join(' > '));
+await p.screenshot({path:'soc_grid_modal.png'});
+await p.close();
+p=await page(1248,500,'Footer.html');const el=await p.$('.q-footer__social');await el.screenshot({path:'soc_footer.png'});console.log('footer btn',await p.evaluate(()=>{const b=document.querySelector('.q-footer__socialbtn');const s=b.querySelector('svg').getBoundingClientRect();return [b.getBoundingClientRect().width,s.width,s.height,b.getAttribute('aria-label')]}));
+await p.close();
+p=await page(375,812,'ProfileModal.html');console.log('mobile plain',await p.evaluate(()=>{const b=document.querySelector('.q-pmodal__links .q-social--plain').getBoundingClientRect();return [b.width,b.height]}));await p.close();
+console.log('errs',errs);await b.close()})();

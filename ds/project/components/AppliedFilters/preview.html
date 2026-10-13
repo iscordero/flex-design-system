@@ -1,0 +1,38 @@
+<!-- @dsCard group="Components · Filters" height=700 width=415 subtitle="Pattern · Mobile: the filters in force as removable chips under the search, with the result count." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AppliedFilters — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}body{background:var(--surface-neutral-200)}.phone{box-sizing:border-box;width:100%;max-width:375px;margin:0 auto;padding:var(--spacing-xl) var(--spacing-lg);display:flex;flex-direction:column;gap:var(--spacing-rg)}.top{display:flex;align-items:center;gap:26px}.top .q-search{flex:1}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function sec(cap, cls, kids) { return h('div', null, h('div', {className: 'cap'}, cap), h.apply(null, ['div', {className: cls}].concat(kids))); }
+var SECTIONS = [
+  {id: 'solution', title: 'Solution Category', limit: 3, options: [{value: 'all', label: 'View All', count: 340}, {value: 'learning', label: 'Essential Learning', count: 23}, {value: 'vmdr', label: 'Vulnerability Management, Detection and Response', count: 4}, {value: 'cloud', label: 'Cloud Security', count: 41}, {value: 'compliance', label: 'Compliance', count: 36}, {value: 'patch', label: 'Patch Management', count: 28}, {value: 'web', label: 'Web App Security', count: 19}, {value: 'asset', label: 'Asset Management', count: 17}, {value: 'endpoint', label: 'Endpoint Security', count: 12}, {value: 'container', label: 'Container Security', count: 9}, {value: 'risk', label: 'Risk Management', count: 8}, {value: 'policy', label: 'Policy Audit', count: 6}, {value: 'fim', label: 'File Integrity Monitoring', count: 5}, {value: 'ai', label: 'AI Security', count: 3}]},
+  {id: 'works', title: 'Works With', limit: 3, options: [{value: 'VMDR', label: 'VMDR', count: 23}, {value: 'CSAM', label: 'CSAM', count: 23}, {value: 'ETM', label: 'ETM', count: 23}, {value: 'TotalCloud', label: 'TotalCloud', count: 18}, {value: 'Patch', label: 'Patch Management', count: 14}, {value: 'Policy', label: 'Policy Audit', count: 11}]},
+  {id: 'deploy', title: 'Deployment Method', options: [{value: 'cloud', label: 'Cloud', count: 23}, {value: 'onprem', label: 'On-premise', count: 23}]},
+  {id: 'connector', title: 'Connector Type', options: [{value: 'integrations', label: 'Integrations', count: 23}, {value: 'roc', label: 'ROC Connectors', count: 23}]}
+];
+var LABELS = {}; SECTIONS.forEach(function (s) { s.options.forEach(function (o) { LABELS[s.id + ':' + o.value] = o.value === 'all' ? 'All Solutions' : o.label; }); });
+function Demo() {
+  var vs = React.useState({solution: ['all', 'learning', 'cloud', 'compliance'], works: ['VMDR', 'CSAM', 'ETM'], deploy: ['cloud'], connector: []}), value = vs[0], setValue = vs[1];
+  var os = React.useState(false), open = os[0], setOpen = os[1];
+  var items = [];
+  SECTIONS.forEach(function (s) { (value[s.id] || []).forEach(function (v) { items.push({value: s.id + ':' + v, label: LABELS[s.id + ':' + v]}); }); });
+  function remove(key) { var parts = key.split(':'), n = Object.assign({}, value); n[parts[0]] = n[parts[0]].filter(function (v) { return v !== parts[1]; }); setValue(n); }
+  var results = Math.round(1284 - items.length * 80.5);
+  return h('div', {className: 'phone'},
+    h('div', {className: 'top'}, h(Q.SearchBar, {placeholder: 'Search Resources'}), h(Q.FilterButton, {onClick: function () { setOpen(true); }})),
+    h(Q.AppliedFilters, {items: items, max: 4, results: results, onRemove: remove, onMore: function () { setOpen(true); }}),
+    h(Q.IntegrationCard, {name: 'Partner Name', type: 'ROC Connectors', worksWith: ['VMDR', 'CSAM', 'TotalCloud', 'Patch', 'Policy'], dataFetched: 'Assets, Findings', category: 'OT/IoT Security', href: '#'}),
+    h(Q.FilterDrawer, {open: open, onClose: function () { setOpen(false); }, sections: SECTIONS, value: value, onApply: setValue}));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!-- @dsCard group="Components · Cards" height=931 width=1180 subtitle="Component · Blog card: default and featured (full width from 1024px). Reading time, description and author." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BlogCard — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-300)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.cols{display:grid;gap:24px;align-items:start}.c3{grid-template-columns:repeat(3,350px)}.c4{grid-template-columns:repeat(4,260px)}.stretch{align-items:stretch}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function sec(cap, cls, kids) { return h('div', null, h('div', {className: 'cap'}, cap), h.apply(null, ['div', {className: cls}].concat(kids))); }
+var body = 'As your needs change, easily and seamlessly add powerful functionality, coverage, and users.';
+var author = {name: 'Jonathan Doe'};
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
+  sec('Default', 'cols c3 stretch', [
+    h(Q.BlogCard, {href: '#', flag: 'New', duration: '13 min', title: 'When Multi-Factor Authentication Turns into Single-Factor Authentication', description: body, author: author}),
+    h(Q.BlogCard, {href: '#', duration: '8 min', title: 'Five Questions to Ask Before Your Next Compliance Audit', description: 'A short checklist for getting evidence, owners, and timelines in order before the auditors arrive.', author: author}),
+    h(Q.BlogCard, {href: '#', flag: 'Research', flagTone: 'tier-3', duration: '6 min', title: 'What Risk Scores Miss', description: 'Why context about your own environment changes which findings matter most.', author: author})
+  ]),
+  sec('Featured', '', [
+    h(Q.BlogCard, {layout: 'featured', href: '#', flag: 'New', duration: '13 min', title: 'When Multi-Factor Authentication Turns into Single-Factor Authentication', description: body, author: author})
+  ])));
+</script>
+</body>
+</html>

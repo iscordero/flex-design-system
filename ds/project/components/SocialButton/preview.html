@@ -1,0 +1,24 @@
+<!-- @dsCard group="Components · Buttons and links" height=440 width=700 subtitle="Component · LinkedIn, X, Facebook, Instagram, Vimeo, YouTube and URL, with hover and pressed states." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SocialButton — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:28px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.row{display:flex;gap:24px;align-items:center}.plain{display:flex;align-items:center}.st-hover .q-social{background:var(--icon-bg-hover)}.st-pressed .q-social{background:var(--icon-bg-pressed)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+var nets = ['linkedin', 'x', 'facebook', 'instagram', 'vimeo', 'youtube', 'url'];
+function sec(cap, cls, kids) { return h('div', null, h('div', {className: 'cap'}, cap), h.apply(null, ['div', {className: cls}].concat(kids))); }
+function row(variant) { return nets.map(function (n) { return h(Q.SocialButton, {key: n, network: n, href: '#', variant: variant, onClick: function (e) { e.preventDefault(); }}); }); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
+  sec('Default', 'row', row()),
+  sec('Hover', 'row st-hover', row()),
+  sec('Pressed', 'row st-pressed', row()),
+  sec('Plain', 'plain', row('plain'))));
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!-- @dsCard group="Components · Overlays and messages" height=809 width=1440 subtitle="Component · A decision that must be answered: destructive, warning and info; then mobile." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AlertDialog — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}.stage{display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--spacing-xl);padding:var(--spacing-2xl) var(--spacing-xl);background:var(--surface-neutral-400)}.stage>*{flex:none}.w480{width:480px}.w540{width:540px}.w600{width:600px}.w440{width:440px}.w375{width:375px}.w351{width:351px}.full{width:100%}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+function phone(t, node) { return h('div', null, cap(t).props.children ? h('div', {className: 'cap', style: {paddingLeft: 0}}, t) : null, h('div', {className: 'phone'}, node)); }
+function a(tone, title, msg, ok, cancel) { return h(Q.AlertDialog, {inline: true, tone: tone, title: title, message: msg, confirmLabel: ok, cancelLabel: cancel}); }
+function set() { return [a('destructive', 'Delete This Report?', 'This removes the report for everyone. It can’t be undone.', 'Delete', 'Cancel'), a('warning', 'Leave Without Saving?', 'Your changes to this form will be lost.', 'Leave', 'Stay'), a('info', 'Update Available', 'A new version of the dashboard is ready to load.', 'Reload', 'Later')]; }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('Destructive · warning · info'), h('div', {className: 'stage'}, set().map(function (n, i) { return h('div', {className: 'w440', key: i}, n); })),
+  cap('Mobile'), h('div', {className: 'stage'}, set().map(function (n, i) { return h('div', {className: 'w351', key: i}, n); }))));
+</script>
+</body>
+</html>

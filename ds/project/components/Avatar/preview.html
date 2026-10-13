@@ -1,0 +1,29 @@
+<!-- @dsCard group="Components · Avatars and profiles" height=375 width=1100 subtitle="Component · Small and medium are circles, large is a square. Each shows the default silhouette until a photo is set." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Avatar — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.row{display:flex;gap:72px;align-items:flex-start}.cell{display:flex}.use{display:flex;flex-direction:column;gap:24px}.who{display:flex;align-items:center;gap:12px}.nm{font-family:var(--font-heading);font-weight:600;font-size:16px;line-height:1.3}.co{margin-top:var(--spacing-5xs)}.co{font-size:16px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-secondary)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function sec(cap, cls, kids) { return h('div', null, h('div', {className: 'cap'}, cap), h.apply(null, ['div', {className: cls}].concat(kids))); }
+var LOGO = '/_blob/a0d4062abbce2ceb87d5be08d326359f';
+var BIO = 'Jonathan leads the product management team and drives the product vision, helping customers assess and improve their IT, security, and compliance posture. Since joining in 2012, he has worked in security and compliance roles across endpoint protection, detection and response, and SaaS security. Before that, he focused on security research for compliance solutions. He holds a master\u2019s in computer applications and several security certifications, and is a regular speaker at industry conferences.';
+function person(n, d) { return {name: n, designation: d, logo: LOGO, logoAlt: 'Qualys', link: {href: '#', label: 'LinkedIn'}, bio: BIO}; }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
+  h('div', {className: 'row'},
+    sec('Small \u00b7 40px', 'cell', [h(Q.Avatar, {size: 'sm'})]),
+    sec('Medium \u00b7 56px', 'cell', [h(Q.Avatar, {size: 'md'})]),
+    sec('Large \u00b7 300px', 'cell', [h(Q.Avatar, {size: 'lg'})]),
+    sec('In use', 'use', [
+      h('div', {className: 'who'}, h(Q.Avatar, {size: 'sm'}), h('div', null, h('div', {className: 'nm'}, 'Jonathan Doe'), h('div', {className: 'co'}, 'Qualys'))),
+      h('div', {className: 'who'}, h(Q.Avatar, {size: 'md'}), h('div', null, h('div', {className: 'nm'}, 'Jonathan Doe'), h('div', {className: 'co'}, 'President and CEO')))
+    ]))));
+</script>
+</body>
+</html>

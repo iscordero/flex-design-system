@@ -1,0 +1,10 @@
+const { chromium } = require('playwright');
+(async()=>{const b=await chromium.launch(); const p=await b.newPage({viewport:{width:1200,height:600}});
+ const errs=[]; p.on('pageerror',e=>errs.push(e.message)); p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+ await p.goto('file://'+__dirname+'/Typography.html'); await p.waitForTimeout(1500);
+ const h=()=>p.evaluate(()=>document.documentElement.scrollHeight);
+ console.log('desktop h',await h()); await p.screenshot({path:__dirname+'/typo-d.png',fullPage:true});
+ await p.click('text=Mobile'); await p.waitForTimeout(400);
+ console.log('mobile h',await h()); await p.screenshot({path:__dirname+'/typo-m.png',fullPage:true});
+ console.log(await p.evaluate(()=>[...document.querySelectorAll('.row')].slice(0,6).map(r=>r.innerText.replace(/\n/g,' | ')).join('\n')));
+ console.log('errors',errs); await b.close();})();

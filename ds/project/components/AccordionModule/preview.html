@@ -1,0 +1,50 @@
+<!-- @dsCard group="Page modules · Content sections" height=4664 width=1440 subtitle="Block module · An Accordion as a page section: full width, beside copy or media, or as a list. Click a row." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AccordionModule — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+var COPY = 'The Qualys Enterprise TruRisk Platform brings asset discovery, risk scoring and remediation into one place, so security and IT work from the same picture of what to fix first. Every finding is scored in the same way, whichever tool found it.';
+var ICON = {
+  cloud: '/_blob/dacda2a3a9a5a660aa21c4aa3d9a2578', ai: '/_blob/3790ba660d0bf5ed733d37541a609589', web: '/_blob/02180f2745c08ff8a13249a4fd73387e',
+  app: '/_blob/2a01699869cd2a9d801cd810204d71aa', threat: '/_blob/e594a6d966d00d9ea5bb37fd3d806358', compliance: '/_blob/afc380121ab10f5f48e6152e0a616c5e'
+};
+var TITLES = ['Cloud Security', 'Threat Detection', 'Risk Measurement', 'Prioritization', 'Risk Elimination', 'Compliance'];
+/* A row's CTA is given as { label, href }: the module draws a small Button, or a TextLink when the copy block already has the primary Button (and in the list). */
+var MORE = {label: 'Learn More', href: '#'};
+/* Six rows that share the cloud icon, as the Figma frames draw them. */
+function rows() { return TITLES.map(function (t, i) { return {id: 'r' + i, title: t, icon: ICON.cloud, content: COPY, cta: MORE}; }); }
+/* The list rows each have their own Feature Icon; the content is two paragraphs and a text link. */
+var LIST = [['AI Security', ICON.ai], ['Cloud Security', ICON.cloud], ['Web Application Scanning', ICON.web], ['Application Security', ICON.app], ['Threat Detection', ICON.threat], ['Compliance', ICON.compliance]].map(function (r, i) {
+  return {id: 'l' + i, title: r[0], icon: r[1], content: [h('p', {key: 1}, COPY), h('p', {key: 2}, COPY)], cta: MORE};
+});
+var SPLIT = {
+  eyebrow: 'Enterprise TruRisk Platform',
+  title: 'Measure, Communicate and Eliminate Cyber Risk From One Place',
+  body: 'See every asset, score every finding the same way and act on the risk that matters most to the business.'
+};
+function two() { return [h(Q.Button, {key: 'p'}, 'Get a Demo'), h(Q.Button, {key: 's', variant: 'secondary'}, 'Contact Sales')]; }
+function withLink() { return [h(Q.Button, {key: 'p'}, 'Get a Demo'), h(Q.TextLink, {key: 't', tone: 'neutral', arrow: true, href: '#'}, 'Contact Sales')]; }
+function split(actions) { return h(Q.AccordionModule, Object.assign({layout: 'split', items: rows(), defaultOpen: 0, actions: actions}, SPLIT)); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('Full width'), h(Q.AccordionModule, {title: 'One Platform for Every Attack Surface', items: rows(), defaultOpen: 0}),
+  cap('Split content — the copy block has the primary Button, so rows end in a TextLink'), split(two()),
+  cap('Split media, left — no heading: the media and the rows carry the section'), h(Q.AccordionModule, {layout: 'media-left', media: {}, items: rows(), defaultOpen: 0}),
+  cap('Split media, right'), h(Q.AccordionModule, {layout: 'media-right', media: {}, items: rows(), defaultOpen: 0}),
+  cap('List — a blue Marker slides to the open row, which also keeps the arrow; hover tints a row'), h(Q.AccordionModule, {layout: 'list', items: LIST}),
+  cap('Mobile — split content, media left, media right, list'), h('div', {className: 'phones'},
+    h('div', {className: 'phone'}, split(withLink())),
+    h('div', {className: 'phone'}, h(Q.AccordionModule, {layout: 'media-left', media: {}, items: rows(), defaultOpen: 0})),
+    h('div', {className: 'phone'}, h(Q.AccordionModule, {layout: 'media-right', media: {}, items: rows(), defaultOpen: 0})),
+    h('div', {className: 'phone'}, h(Q.AccordionModule, {layout: 'list', items: LIST})))));
+</script>
+</body>
+</html>
