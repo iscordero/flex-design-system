@@ -67,7 +67,11 @@ export interface HyperlinkProps extends React.AnchorHTMLAttributes<HTMLAnchorEle
 }
 export declare function Hyperlink(props: HyperlinkProps): React.ReactElement;
 
-export type TagTone = 'purple' | 'blue' | 'dark-red' | 'red' | 'green' | 'orange' | 'yellow' | 'gray' | 'slate';
+/** Badge tones, named for the status they carry; 'blue' is the default brand badge (New, Privately Disclosed). */
+export type TagStatusTone = 'critical' | 'high' | 'medium' | 'low' | 'informational' | 'fixed' | 'accepted-risk' | 'neutral' | 'blue';
+/** @deprecated colour names, kept as aliases: dark-red = critical, red = high, orange = medium, yellow = low, purple = informational, green = fixed, gray = accepted-risk, slate = neutral */
+export type TagColourTone = 'purple' | 'dark-red' | 'red' | 'green' | 'orange' | 'yellow' | 'gray' | 'grey' | 'slate' | 'dark';
+export type TagTone = TagStatusTone | TagColourTone;
 export interface TagProps {
   /** badge styles for status: 'fill' (default), 'light' (15% tint), 'outline'; 'text' = text-style tag for categories (18px Medium, blue, no fill);
       'label' = 16px Regular descriptor; 'eyebrow' = 12px SemiBold capitals */

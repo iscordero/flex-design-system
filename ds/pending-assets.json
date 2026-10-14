@@ -1,1 +1,19 @@
-{}
+{
+ "Event~20Icons": {
+  "icon-event-webinar.svg": [
+   "21020b6c7b5bf458b194307ab3af7a69",
+   929,
+   "image/svg+xml"
+  ],
+  "icon-event-industry.svg": [
+   "dd9364f43829966f08b8957dc6af855d",
+   2885,
+   "image/svg+xml"
+  ],
+  "icon-event-training.svg": [
+   "32d0f0f3ace7b52f420cc2b75ca357a6",
+   727,
+   "image/svg+xml"
+  ]
+ }
+}

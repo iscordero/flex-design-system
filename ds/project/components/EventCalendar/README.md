@@ -31,7 +31,7 @@ Month view:
 - **Day:** the date in IBM Plex Sans Medium 16px `text-secondary`. Today is `misty-blue`; days from the months either side are `surface-neutral-200`.
 - **Event bar:** `radius-xs`, 6px padding, white 14px text, 10px in from the column edges. A one-day event shows the type, the format and the title (Medium). An event of several days is one bar across its days: "Type | Format" over the title, 48px tall.
 - **Compact bar:** 24px tall, the title only. Used when a day has more than one event.
-- **Colours:** Qualys Event `qualys-red`, Industry Event `charcoal`, Webinar `qualys-blue`, Speaking Engagement `event-speaking`, Training `asphalt`.
+- **Colours:** the `event-*` tokens, the same as the EventType icons — Qualys Event `event-qualys` (Qualys Red), Industry Event `event-industry` (Charcoal), Webinar `event-webinar` (Qualys Blue), Speaking Engagement `event-speaking`, Training `event-training` (Asphalt).
 - **Hover or focus** on a bar shows the event's card (364px wide) beside it. Pressing the bar opens the event.
 
 List view:

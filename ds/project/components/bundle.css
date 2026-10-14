@@ -343,22 +343,23 @@
 .q-tag--sm { font-size: 12px; letter-spacing: 0.03em; letter-spacing: 3%; }
 .q-tag--badge.q-tag--sm { height: 25px; }
 .q-tag--blue { --tag: var(--qualys-blue); }
-.q-tag--purple { --tag: var(--tag-purple); }
-.q-tag--dark-red { --tag: var(--pepper); }
-.q-tag--red { --tag: var(--tag-red); }
-.q-tag--green { --tag: var(--tag-green); }
-.q-tag--orange { --tag: var(--tag-orange); }
-.q-tag--yellow { --tag: var(--tag-yellow); }
-.q-tag--gray { --tag: var(--asphalt); }
-.q-tag--slate { --tag: var(--tag-slate); }
+/* Tones are named for the status they carry (see the Tag README for every label that uses each one). */
+.q-tag--critical { --tag: var(--tag-critical); }
+.q-tag--high { --tag: var(--tag-high); }
+.q-tag--medium { --tag: var(--tag-medium); }
+.q-tag--low { --tag: var(--tag-low); }
+.q-tag--informational { --tag: var(--tag-informational); }
+.q-tag--fixed { --tag: var(--tag-fixed); }
+.q-tag--accepted-risk { --tag: var(--tag-accepted-risk); }
+.q-tag--neutral { --tag: var(--tag-neutral); }
 .q-tag--fill { background: var(--tag); border-color: var(--tag); color: var(--text-inverted); }
 .q-tag--light { background: color-mix(in srgb, var(--tag) 15%, transparent); color: var(--tag); }
 .q-tag--outline { background: transparent; border-color: var(--tag); color: var(--tag); }
-.q-tag--light.q-tag--red { background: color-mix(in srgb, var(--qualys-red) 15%, transparent); color: var(--qualys-red); }
-.q-tag--light.q-tag--gray { background: var(--ash); color: var(--asphalt); }
-.q-tag--outline.q-tag--gray { border-color: var(--rhino); color: var(--asphalt); }
-.q-tag--light.q-tag--slate { background: var(--tag-slate-tint); color: var(--asphalt); }
-.q-tag--outline.q-tag--slate { color: var(--asphalt); }
+.q-tag--light.q-tag--high { background: color-mix(in srgb, var(--qualys-red) 15%, transparent); color: var(--qualys-red); }
+.q-tag--light.q-tag--accepted-risk { background: var(--ash); color: var(--asphalt); }
+.q-tag--outline.q-tag--accepted-risk { border-color: var(--rhino); color: var(--asphalt); }
+.q-tag--light.q-tag--neutral { background: var(--tag-neutral-tint); color: var(--asphalt); }
+.q-tag--outline.q-tag--neutral { color: var(--asphalt); }
 /* Text tag: categories, no fill */
 .q-tag--text { display: inline-block; font-weight: 500; font-size: 18px; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-accent-primary); text-decoration: none; }
 /* Label tag: a plain 16px Regular label. Eyebrow tag: 12px SemiBold capitals with +5% letter spacing. */
@@ -422,11 +423,11 @@ a.q-tag--text:focus-visible { outline: none; box-shadow: var(--focus-ring); bord
 .q-event { display: inline-flex; align-items: center; gap: var(--spacing-4xs); font-family: var(--font-heading); font-weight: 600; font-size: 16px; line-height: 1.1; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-primary); }
 .q-event--qualys { gap: var(--spacing-5xs); }
 .q-event .q-icon { flex: none; }
-.q-event--qualys .q-icon { color: var(--qualys-red); }
+.q-event--qualys .q-icon { color: var(--event-qualys); }
 .q-event--webinar .q-icon { color: var(--event-webinar); }
-.q-event--industry .q-icon { color: var(--tag-slate); }
+.q-event--industry .q-icon { color: var(--event-industry); }
 .q-event--speaking .q-icon { color: var(--event-speaking); }
-.q-event--training .q-icon { color: var(--icon-default); }
+.q-event--training .q-icon { color: var(--event-training); }
 
 /* ── Inputs (Figma: Inputs sheet) ── */
 .q-field { position: relative; display: flex; flex-direction: column; gap: var(--spacing-5xs); min-width: 0; }
@@ -1721,11 +1722,11 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-cal__legend li { display: flex; }
 /* The 16px swatch sits in the same 24px slot as an event icon. */
 .q-cal__swatch { flex: none; width: 16px; height: 16px; margin: var(--spacing-5xs); border-radius: var(--radius-xs); }
-.q-cal__swatch--qualys, .q-cal__event--qualys { background: var(--qualys-red); }
-.q-cal__swatch--industry, .q-cal__event--industry { background: var(--charcoal); }
-.q-cal__swatch--webinar, .q-cal__event--webinar { background: var(--qualys-blue); }
+.q-cal__swatch--qualys, .q-cal__event--qualys { background: var(--event-qualys); }
+.q-cal__swatch--industry, .q-cal__event--industry { background: var(--event-industry); }
+.q-cal__swatch--webinar, .q-cal__event--webinar { background: var(--event-webinar); }
 .q-cal__swatch--speaking, .q-cal__event--speaking { background: var(--event-speaking); }
-.q-cal__swatch--training, .q-cal__event--training { background: var(--asphalt); }
+.q-cal__swatch--training, .q-cal__event--training { background: var(--event-training); }
 
 .q-cal__month { --q-cal-top: 41px; position: relative; margin-top: var(--spacing-3xl); padding: var(--spacing-rg); border-radius: var(--radius-lg); background: var(--surface-neutral-100); box-shadow: var(--shadow-drawer); }
 .q-cal__weekdays, .q-cal__week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }

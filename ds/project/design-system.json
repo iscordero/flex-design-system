@@ -10,13 +10,13 @@
           "type": "image/svg+xml"
         },
         "icon-event-webinar.svg": {
-          "blob": "6a3bfe1e97c5b8bb1d187e4146f117c4",
+          "blob": "21020b6c7b5bf458b194307ab3af7a69",
           "name": "icon-event-webinar.svg",
           "size": 929,
           "type": "image/svg+xml"
         },
         "icon-event-industry.svg": {
-          "blob": "ad33588257ffc8e80380576972078f10",
+          "blob": "dd9364f43829966f08b8957dc6af855d",
           "name": "icon-event-industry.svg",
           "size": 2885,
           "type": "image/svg+xml"
@@ -28,7 +28,7 @@
           "type": "image/svg+xml"
         },
         "icon-event-training.svg": {
-          "blob": "0e3af91aa0e7da566a7cafb2cf14a20a",
+          "blob": "32d0f0f3ace7b52f420cc2b75ca357a6",
           "name": "icon-event-training.svg",
           "size": 727,
           "type": "image/svg+xml"
@@ -560,9 +560,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-14T18:11:35Z",
+    "at": "2026-10-14T18:35:44Z",
     "by": "Isabel",
-    "note": "Feature matrix no longer scrolls: columns share the card width and names wrap. Detail comparison keeps sideways scroll only. Example page uses testimonial carousels.",
+    "note": "Colour tokens: removed the six brand copies; tags named by status (critical, high, medium, low, informational, fixed, accepted-risk, neutral); event colours reuse palette blues and greys; tags, flags, markers and events grouped separately.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

@@ -157,7 +157,9 @@
   }
 
   /* ── Tags (Figma: Tagging System) ── */
-  var TAG_TONES = { grey: 'gray', dark: 'slate', 'dark-red': 'dark-red' };
+  /* Badge tones are named for the status they carry. The older colour names still work and map to them. */
+  var TAG_TONES = { 'dark-red': 'critical', red: 'high', orange: 'medium', yellow: 'low', purple: 'informational', green: 'fixed',
+    gray: 'accepted-risk', grey: 'accepted-risk', slate: 'neutral', dark: 'neutral' };
   /* Tag — badge style (fill / light / outline) for status, or text style for categories. */
   function Tag(p) {
     var variant = p.variant || 'fill';

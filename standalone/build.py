@@ -240,14 +240,17 @@ for gi, (gid, title, body, toc) in enumerate(guides):
 # tokens
 COLOR_GROUPS = [
     ('Palette', lambda n: False),
-    ('Surfaces', lambda n: n.startswith(('surface-', 'brand-'))),
+    ('Surfaces', lambda n: n.startswith('surface-')),
     ('Text', lambda n: n.startswith('text-')),
     ('Strokes', lambda n: n.startswith('stroke-')),
     ('Buttons and links', lambda n: n.startswith(('button-', 'link-', 'hyperlink-'))),
     ('Icons and avatars', lambda n: n.startswith(('icon-', 'avatar-'))),
     ('Utility and overlays', lambda n: n.startswith(('utility-', 'overlay-'))),
     ('Filters and search', lambda n: n.startswith(('filter-', 'search-', 'chip-'))),
-    ('Tags, flags, markers and events', lambda n: n.startswith(('tag-', 'flag-', 'marker-', 'event-'))),
+    ('Tags', lambda n: n.startswith('tag-')),
+    ('Flags', lambda n: n.startswith('flag-')),
+    ('Markers', lambda n: n.startswith('marker-')),
+    ('Events', lambda n: n.startswith('event-')),
 ]
 buckets = {g: [] for g, _ in COLOR_GROUPS}
 for x in tok['color']['tokens']:

@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components · Tags and flags" height=745 width=1100 subtitle="Component · Badges in nine tones, three fills and two sizes; text, label and eyebrow tags; vulnerability metadata" -->
+<!-- @dsCard group="Components · Tags and flags" height=745 width=1100 subtitle="Component · Badges in nine status tones, three fills and two sizes; text, label and eyebrow tags; vulnerability metadata" -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,15 +12,15 @@
 <div id="root"></div>
 <script>
 var Q = window.Qualys, h = React.createElement;
-var tones = ['purple','blue','dark-red','red','green','orange','yellow','gray','slate'];
-var names = {purple:'Purple',blue:'Blue','dark-red':'Dark red',red:'Red',green:'Green',orange:'Orange',yellow:'Yellow',gray:'Gray',slate:'Slate'};
+var tones = ['critical','high','medium','low','informational','fixed','accepted-risk','neutral','blue'];
+var names = {critical:'Critical',high:'High',medium:'Medium',low:'Low',informational:'Info',fixed:'Fixed','accepted-risk':'Accepted',neutral:'Neutral',blue:'Blue'};
 /* The Chips & Badges Showcase: vulnerability metadata, each set with its tones. */
 var META = [
-  ['Severity', 'Classification by CVSS score.', [['Critical', 'fill', 'dark-red'], ['High', 'fill', 'red'], ['Medium', 'fill', 'orange'], ['Low', 'fill', 'yellow'], ['Informational', 'fill', 'purple']]],
-  ['Status', 'Where remediation stands.', [['Open', 'fill', 'orange'], ['In Progress', 'fill', 'yellow'], ['Fixed', 'fill', 'green'], ['Accepted Risk', 'fill', 'gray']]],
-  ['Impact', 'Whether live environments are affected.', [['Affected', 'light', 'red'], ['Not Affected', 'light', 'green']]],
-  ['Exploitability', 'Public exploit code, or a confirmed weaponised exploit.', [['Exploitable', 'fill', 'red'], ['Known Exploit', 'fill', 'orange'], ['No Known Exploit', 'fill', 'green']]],
-  ['Disclosure', 'How public the vulnerability details are.', [['Publicly Disclosed (PUB)', 'outline', 'orange'], ['Privately Disclosed (PVT)', 'outline', 'blue']]]
+  ['Severity', 'Classification by CVSS score.', [['Critical', 'fill', 'critical'], ['High', 'fill', 'high'], ['Medium', 'fill', 'medium'], ['Low', 'fill', 'low'], ['Informational', 'fill', 'informational']]],
+  ['Status', 'Where remediation stands.', [['Open', 'fill', 'medium'], ['In Progress', 'fill', 'low'], ['Fixed', 'fill', 'fixed'], ['Accepted Risk', 'fill', 'accepted-risk']]],
+  ['Impact', 'Whether live environments are affected.', [['Affected', 'light', 'high'], ['Not Affected', 'light', 'fixed']]],
+  ['Exploitability', 'Public exploit code, or a confirmed weaponised exploit.', [['Exploitable', 'fill', 'high'], ['Known Exploit', 'fill', 'medium'], ['No Known Exploit', 'fill', 'fixed']]],
+  ['Disclosure', 'How public the vulnerability details are.', [['Publicly Disclosed (PUB)', 'outline', 'medium'], ['Privately Disclosed (PVT)', 'outline', 'blue']]]
 ];
 function row(label, variant, size) {
   return [h('span', {className: 'lbl', key: label}, label)].concat(tones.map(function (t) { return h(Q.Tag, {key: label + t, variant: variant, tone: t, size: size}, names[t]); }));

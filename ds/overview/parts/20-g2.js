@@ -56,9 +56,10 @@ function ovl(tone, name, sub) { return col({gap: 6, flex: 1}, h('div', {style: {
 viz('g2-overlays', null, row({gap: 16, alignItems: 'flex-start'}, ovl('light', 'overlay-light · 25%', 'Behind modals'), ovl('dark', 'overlay-dark · 50%', 'When the page behind is busy')));
 
 viz('g2-tags', null, h('div', {className: 'grid2', style: {gridTemplateColumns: '84px 1fr', rowGap: 12}},
-  t('cap', 'Badges'), row({gap: 6, flexWrap: 'wrap'}, [['purple', 'Purple'], ['blue', 'Blue'], ['dark-red', 'Pepper'], ['red', 'Red'], ['green', 'Green'], ['orange', 'Orange'], ['yellow', 'Yellow'], ['gray', 'Asphalt'], ['slate', 'Slate']].map(function (x) { return h(Q.Tag, {key: x[0], tone: x[0], size: 'sm'}, x[1]); })),
+  t('cap', 'Badges'), row({gap: 6, flexWrap: 'wrap'}, [['critical', 'Critical'], ['high', 'High'], ['medium', 'Medium'], ['low', 'Low'], ['informational', 'Info'], ['fixed', 'Fixed'], ['accepted-risk', 'Accepted Risk'], ['neutral', 'Neutral'], ['blue', 'New']].map(function (x) { return h(Q.Tag, {key: x[0], tone: x[0], size: 'sm'}, x[1]); })),
   t('cap', 'Flags'), row({gap: 8}, h(Q.Flag, {tone: 'tier-1'}, 'Tier 1'), h(Q.Flag, {tone: 'tier-2'}, 'Tier 2'), h(Q.Flag, {tone: 'tier-3'}, 'Tier 3')),
   t('cap', 'Markers'), row({gap: 10, height: 30}, h(Q.Marker, {tone: 1, count: 3}), h(Q.Marker, {tone: 2, count: 5}), h(Q.Marker, {tone: 3, count: 8}), h(Q.Marker, {tone: 'blue', count: 2})),
+  t('cap', 'Events'), row({columnGap: 16, rowGap: 6, flexWrap: 'wrap'}, ['qualys', 'webinar', 'industry', 'speaking', 'training'].map(function (e) { return h(Q.EventType, {key: e, type: e}); })),
   t('cap', 'Filter chips'), row({gap: 6}, h(Q.FilterChip, {size: 'sm'}, 'Cloud'), h(Q.FilterChip, {size: 'sm', active: true}, 'Risk'))));
 
 viz('g2-gradient', {display: 'flex', flexDirection: 'column', gap: 8},
