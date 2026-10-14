@@ -1911,7 +1911,7 @@
                 h('span', { className: 'q-sr' }, cols[c].name + ': '), total(all.filter(function (r) { return !!r.values[c]; }).length, all.length));
             }))));
     }
-    var table = h('div', { key: 'table', className: 'q-cmp__table', style: mobile ? undefined : { minWidth: (280 + cols.length * 128) + 'px' } },
+    var table = h('div', { key: 'table', className: 'q-cmp__table' },
       h('div', { className: 'q-cmp__hl', 'aria-hidden': 'true', style: mobile ? undefined : { left: 'calc(100% * 2.2 / ' + (2.2 + cols.length) + ' + 6px)', width: 'calc(100% / ' + (2.2 + cols.length) + ' - 12px)' } }),
       h('div', { className: 'q-cmp__head', style: grid },
         mobile ? h('div') : cmpHeading(p),
@@ -1926,7 +1926,7 @@
         cmpTabs(p, own, others, cur, function (id) { cs[1](id); if (p.onCompareChange) p.onCompareChange(id); }),
         others.length ? h('div', { key: 'diff', className: 'q-cmp__diff' }, h(Toggle, { label: p.diffLabel || 'Show Differences Only', checked: diff, onChange: function (e) { ds[1](e.target.checked); } })) : null,
         table
-      ] : h('div', { className: 'q-cmp__card' }, h('div', { className: 'q-cmp__scroll' }, table))));
+      ] : h('div', { className: 'q-cmp__card' }, table)));
   }
 
   /* DetailComparison — a written comparison: Qualys beside up to three competitors picked with filter chips; each topic is a drawer with one short text per vendor.

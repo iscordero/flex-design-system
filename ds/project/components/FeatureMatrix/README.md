@@ -10,7 +10,7 @@ A yes/no comparison table: Qualys in the first, highlighted column, competitors 
 - **Totals:** the last row of each section counts the yes marks ("6 of 8") under the label "Supported". `totalLabel` renames it, `formatTotal(n, total)` reformats it, `totals={false}` removes it.
 - **Highlight:** an Ecru band (`surface-neutral-300`, `radius-md`) runs behind the first column from header to last row.
 - **Size:** a white card (`radius-lg`, `shadow-card`, 32px padding) in the content column (up to 1440px). The label column is 2.2 parts and every vendor column one part. Rows are at least 53px tall and grow with a wrapping label; the heading is `h3`.
-- **Overflow:** the table keeps a minimum width (280px plus 128px per column) and scrolls sideways inside the card rather than squeezing. Labels wrap; vendor names in a logo slot end in an ellipsis.
+- **Overflow:** the table never scrolls. The feature column takes 2.2 shares of the card's width and each vendor column one share, so the table always fits; feature labels, section titles and vendor names wrap onto more lines instead. Under 768px it switches to the mobile layout (pick one competitor).
 - **Hover:** a row takes a 3% Charcoal tint. Cursor: pointer on a section heading, default elsewhere.
 - **Mobile (the table narrower than 768px):** no card, on the page background, 20px side padding. Qualys is compared with one competitor at a time, picked with Tabs ("Compare Qualys With"); the "Show Differences Only" Toggle hides the rows where both agree, and a section with none says "No differences in this section." Columns are 96px each.
 - **Accessibility:** each section's rows are a table for screen readers, labels are row headers, marks carry the vendor name. Section headings are buttons (`aria-expanded`).

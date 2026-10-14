@@ -560,9 +560,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-14T02:33:19Z",
+    "at": "2026-10-14T18:11:35Z",
     "by": "Isabel",
-    "note": "Added the Card Module (1–4 cards in a row, 3 × 2). Headings now balance their lines and paragraphs avoid one-word last lines. Example page rebuilt in page order. Single testimonial cards stack on mobile.",
+    "note": "Feature matrix no longer scrolls: columns share the card width and names wrap. Detail comparison keeps sideways scroll only. Example page uses testimonial carousels.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

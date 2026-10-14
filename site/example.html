@@ -2147,7 +2147,8 @@ button.q-hcard__close:focus-visible { outline: none; box-shadow: var(--focus-rin
 /* Feature matrix and detail comparison: a white card (radius-lg, shadow-card) on the section ground; topics are Drawers. */
 .q-cmp__card { box-sizing: border-box; padding: var(--spacing-2xl) var(--spacing-2xl) var(--spacing-xl); border-radius: var(--radius-lg); background: var(--surface-neutral-100); box-shadow: var(--shadow-card); }
 .q-cmp--detail .q-cmp__card { padding: 0 var(--spacing-xs) var(--spacing-lg); }
-.q-cmp__scroll { overflow-x: auto; }
+/* Detail comparison only: many columns scroll sideways; closed rows never add a vertical scroll. */
+.q-cmp__scroll { overflow-x: auto; overflow-y: hidden; }
 .q-cmp__table { position: relative; }
 /* The highlighted (Qualys) column: an Ecru band, radius-md, behind every row */
 .q-cmp__hl { position: absolute; top: 0; bottom: 0; border-radius: var(--radius-md); background: var(--surface-neutral-300); pointer-events: none; }
@@ -2158,8 +2159,9 @@ button.q-hcard__close:focus-visible { outline: none; box-shadow: var(--focus-rin
 .q-cmp__col { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-3xs); min-width: 0; padding: 0 var(--spacing-xs); }
 .q-cmp__colsub { text-align: center; }
 .q-cmp__logo { display: block; width: auto; max-width: 100%; }
-.q-cmp__nologo { display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; max-width: 100%; padding: 0 var(--spacing-xs); border: 1px dashed var(--stroke-neutral-500); border-radius: var(--radius-sm); font-weight: 600; font-size: 12px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; white-space: nowrap; color: var(--text-secondary); }
-.q-cmp__nologo > span { overflow: hidden; text-overflow: ellipsis; }
+.q-cmp__nologo { display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; max-width: 100%; padding: 0 var(--spacing-xs); border: 1px dashed var(--stroke-neutral-500); border-radius: var(--radius-sm); font-weight: 600; font-size: 12px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; text-align: center; color: var(--text-secondary); }
+/* The feature matrix never scrolls: columns share the card's width and long names and labels wrap. */
+.q-cmp__nologo > span { overflow-wrap: break-word; }
 .q-cmp .q-drawer { position: relative; }
 .q-cmp .q-drawer__head { padding-right: var(--spacing-3xs); padding-left: var(--spacing-3xs); }
 .q-cmp .q-drawer__body { padding: 0; }
@@ -4543,7 +4545,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
                 h('span', { className: 'q-sr' }, cols[c].name + ': '), total(all.filter(function (r) { return !!r.values[c]; }).length, all.length));
             }))));
     }
-    var table = h('div', { key: 'table', className: 'q-cmp__table', style: mobile ? undefined : { minWidth: (280 + cols.length * 128) + 'px' } },
+    var table = h('div', { key: 'table', className: 'q-cmp__table' },
       h('div', { className: 'q-cmp__hl', 'aria-hidden': 'true', style: mobile ? undefined : { left: 'calc(100% * 2.2 / ' + (2.2 + cols.length) + ' + 6px)', width: 'calc(100% / ' + (2.2 + cols.length) + ' - 12px)' } }),
       h('div', { className: 'q-cmp__head', style: grid },
         mobile ? h('div') : cmpHeading(p),
@@ -4558,7 +4560,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
         cmpTabs(p, own, others, cur, function (id) { cs[1](id); if (p.onCompareChange) p.onCompareChange(id); }),
         others.length ? h('div', { key: 'diff', className: 'q-cmp__diff' }, h(Toggle, { label: p.diffLabel || 'Show Differences Only', checked: diff, onChange: function (e) { ds[1](e.target.checked); } })) : null,
         table
-      ] : h('div', { className: 'q-cmp__card' }, h('div', { className: 'q-cmp__scroll' }, table))));
+      ] : h('div', { className: 'q-cmp__card' }, table)));
   }
 
   /* DetailComparison — a written comparison: Qualys beside up to three competitors picked with filter chips; each topic is a drawer with one short text per vendor.
