@@ -15,10 +15,10 @@ var Q = window.Qualys, h = React.createElement;
 function tab(m, label) { return h('div', {className: 'tab', key: label}, m, label); }
 ReactDOM.createRoot(document.getElementById('root')).render(
   h('div', {className: 'pv'}, h('div', {className: 'row', style: {gap: 48, alignItems: 'flex-start'}},
-    h('div', null, h('div', {className: 'cap'}, 'Closed \u2014 1, 2, 3, blue'), h('div', {className: 'row', style: {gap: 14}}, h(Q.Marker, {tone: 1}), h(Q.Marker, {tone: 2}), h(Q.Marker, {tone: 3}), h(Q.Marker, {tone: 'blue'}))),
-    h('div', null, h('div', {className: 'cap'}, 'Open, with a count'), h('div', {className: 'row', style: {gap: 14}}, h(Q.Marker, {tone: 1, count: 88, label: '88 unread'}), h(Q.Marker, {tone: 2, count: 12, label: '12 unread'}), h(Q.Marker, {tone: 3, count: 5, label: '5 unread'}), h(Q.Marker, {tone: 'blue', count: 2, label: '2 unread'}))),
-    h('div', null, h('div', {className: 'cap'}, 'On tab edges'), h('div', {className: 'tabs'}, tab(h(Q.Marker, {tone: 1}), 'Vulnerabilities'), tab(h('span', {style: {width: 6}}), 'Assets'), tab(h(Q.Marker, {tone: 'blue'}), 'Compliance'))),
-    h('div', null, h('div', {className: 'cap'}, 'On a right edge'), h('div', {className: 'row', style: {gap: 14}}, h(Q.Marker, {tone: 'blue', side: 'right'}), h(Q.Marker, {tone: 'blue', side: 'right', count: 88, label: '88 unread'}))))));
+    h('div', null, h('div', {className: 'cap'}, 'Closed \u2014 1, 2, 3, default'), h('div', {className: 'row', style: {gap: 14}}, h(Q.Marker, {tone: 1}), h(Q.Marker, {tone: 2}), h(Q.Marker, {tone: 3}), h(Q.Marker, {tone: 'default'}))),
+    h('div', null, h('div', {className: 'cap'}, 'Open, with a count'), h('div', {className: 'row', style: {gap: 14}}, h(Q.Marker, {tone: 1, count: 88, label: '88 unread'}), h(Q.Marker, {tone: 2, count: 12, label: '12 unread'}), h(Q.Marker, {tone: 3, count: 5, label: '5 unread'}), h(Q.Marker, {tone: 'default', count: 2, label: '2 unread'}))),
+    h('div', null, h('div', {className: 'cap'}, 'On tab edges'), h('div', {className: 'tabs'}, tab(h(Q.Marker, {tone: 1}), 'Vulnerabilities'), tab(h('span', {style: {width: 6}}), 'Assets'), tab(h(Q.Marker, {tone: 'default'}), 'Compliance'))),
+    h('div', null, h('div', {className: 'cap'}, 'On a right edge'), h('div', {className: 'row', style: {gap: 14}}, h(Q.Marker, {tone: 'default', side: 'right'}), h(Q.Marker, {tone: 'default', side: 'right', count: 88, label: '88 unread'}))))));
 </script>
 </body>
 </html>

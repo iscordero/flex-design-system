@@ -59,7 +59,7 @@ G2=[(None,'g2-surfaces','Six surfaces stacked like page sections: Warm Off White
     (None,'g2-icons','An icon in charcoal on a light tile, in white on a dark tile, and a blue feature icon; below, an icon container in its default, hover and pressed blues.'),
     (None,'g2-utility','Four status discs, each an icon on a 10% tint: green success, amber warning, red error, blue info.'),
     (None,'g2-overlays','The same page content under a 25% black overlay and under a 50% black overlay.'),
-    (None,'g2-tags','Badges in their nine status tones, from Critical to Neutral and the blue New badge; the three flag tiers; the markers in the flag colours plus a blue one; the five event types; and a default and a selected filter chip.'),
+    (None,'g2-tags','Badges in their eight status tones, from Critical to Accepted Risk, and the blue New badge; the three flag tiers; the markers in the flag colours plus a blue one; the five event types; and a default and a selected filter chip.'),
     (None,'g2-gradient','A promo strip on the blue gradient, lighter blue on the left to darker on the right, with a white heading and a red button.')]
 G3=[('Families','g3-families','Wix Madefor Text in bold for display, headings, titles, tags, eyebrows, stats and button labels; IBM Plex Sans in regular for paragraphs, labels and quotes.'),
     ('Display','g3-display','Two display sizes set in bold: display-xl at 64px and display-lg at 56px.'),

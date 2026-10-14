@@ -351,15 +351,12 @@
 .q-tag--informational { --tag: var(--tag-informational); }
 .q-tag--fixed { --tag: var(--tag-fixed); }
 .q-tag--accepted-risk { --tag: var(--tag-accepted-risk); }
-.q-tag--neutral { --tag: var(--tag-neutral); }
 .q-tag--fill { background: var(--tag); border-color: var(--tag); color: var(--text-inverted); }
 .q-tag--light { background: color-mix(in srgb, var(--tag) 15%, transparent); color: var(--tag); }
 .q-tag--outline { background: transparent; border-color: var(--tag); color: var(--tag); }
 .q-tag--light.q-tag--high { background: color-mix(in srgb, var(--qualys-red) 15%, transparent); color: var(--qualys-red); }
 .q-tag--light.q-tag--accepted-risk { background: var(--ash); color: var(--asphalt); }
 .q-tag--outline.q-tag--accepted-risk { border-color: var(--rhino); color: var(--asphalt); }
-.q-tag--light.q-tag--neutral { background: var(--tag-neutral-tint); color: var(--asphalt); }
-.q-tag--outline.q-tag--neutral { color: var(--asphalt); }
 /* Text tag: categories, no fill */
 .q-tag--text { display: inline-block; font-weight: 500; font-size: 18px; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-accent-primary); text-decoration: none; }
 /* Label tag: a plain 16px Regular label. Eyebrow tag: 12px SemiBold capitals with +5% letter spacing. */
@@ -412,7 +409,7 @@ a.q-tag--text:focus-visible { outline: none; box-shadow: var(--focus-ring); bord
 .q-marker { display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; width: 6px; height: 36px; border-radius: 0 var(--radius-xs) var(--radius-xs) 0; background: var(--marker); vertical-align: middle; --marker: var(--marker-1); }
 .q-marker--2 { --marker: var(--marker-2); }
 .q-marker--3 { --marker: var(--marker-3); }
-.q-marker--blue { --marker: var(--marker-blue); }
+.q-marker--default { --marker: var(--marker-default); }
 .q-marker.is-open { width: auto; min-width: 27px; height: 34px; padding: 0 4.5px; border-radius: 0 var(--radius-media) var(--radius-media) 0; }
 /* On a right edge the rounded corners face left. */
 .q-marker--right { border-radius: var(--radius-xs) 0 0 var(--radius-xs); }
@@ -991,7 +988,7 @@ a.q-mega__title:hover, a.q-mega__heading:hover, .q-mega__link:hover { color: var
 .q-mega__item { position: relative; }
 .q-mega__item:hover { background: var(--chip-bg); }
 .q-mega__item.is-active { background: var(--surface-blue-200); }
-.q-mega__item.is-active::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 6px; border-radius: 0 var(--radius-xs) var(--radius-xs) 0; background: var(--marker-blue); }
+.q-mega__item.is-active::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 6px; border-radius: 0 var(--radius-xs) var(--radius-xs) 0; background: var(--marker-default); }
 .q-mega__item:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 .q-mega__main { flex: 1; min-width: 0; box-sizing: border-box; padding: var(--spacing-xl) var(--spacing-3xl); overflow: hidden; /* the last groups' spacing can't spill below the menu */ }
 /* The rail's warm ground runs to the bottom edge, even while a tall menu scrolls inside the panel */

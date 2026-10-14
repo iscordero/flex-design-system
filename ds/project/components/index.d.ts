@@ -68,8 +68,8 @@ export interface HyperlinkProps extends React.AnchorHTMLAttributes<HTMLAnchorEle
 export declare function Hyperlink(props: HyperlinkProps): React.ReactElement;
 
 /** Badge tones, named for the status they carry; 'blue' is the default brand badge (New, Privately Disclosed). */
-export type TagStatusTone = 'critical' | 'high' | 'medium' | 'low' | 'informational' | 'fixed' | 'accepted-risk' | 'neutral' | 'blue';
-/** @deprecated colour names, kept as aliases: dark-red = critical, red = high, orange = medium, yellow = low, purple = informational, green = fixed, gray = accepted-risk, slate = neutral */
+export type TagStatusTone = 'critical' | 'high' | 'medium' | 'low' | 'informational' | 'fixed' | 'accepted-risk' | 'blue';
+/** @deprecated colour names, kept as aliases: dark-red = critical, red = high, orange = medium, yellow = low, purple = informational, green = fixed, gray, slate and dark = accepted-risk (the one grey) */
 export type TagColourTone = 'purple' | 'dark-red' | 'red' | 'green' | 'orange' | 'yellow' | 'gray' | 'grey' | 'slate' | 'dark';
 export type TagTone = TagStatusTone | TagColourTone;
 export interface TagProps {
@@ -118,8 +118,8 @@ export interface FlagProps {
 export declare function Flag(props: FlagProps): React.ReactElement;
 
 export interface MarkerProps {
-  /** colour 1 (default), 2 or 3 (the flag tiers), or 'blue' (qualys-blue, for an active item) */
-  tone?: 1 | 2 | 3 | 'blue';
+  /** colour 1 (the default), 2 or 3 (the flag tiers), or 'default' (marker-default, Qualys Blue, for an active item); 'blue' is the old name for 'default' */
+  tone?: 1 | 2 | 3 | 'default' | 'blue';
   /** when set, the bar opens into a pill showing this number */
   count?: number | string;
   /** accessible text, e.g. "88 unread"; omit when decorative */
@@ -917,8 +917,8 @@ export interface AccordionModuleProps extends ModuleCopy {
   layout?: 'full' | 'split' | 'media-left' | 'media-right' | 'list';
   /** 4 to 12 standard drawers: { id, title, icon, content, cta } */
   items: AccordionModuleItem[];
-  /** 'list' only: tone of the Marker that slides to the open row (default 'blue'); false hides it */
-  marker?: 1 | 2 | 3 | 'blue' | false;
+  /** 'list' only: tone of the Marker that slides to the open row (default 'default'); false hides it */
+  marker?: 1 | 2 | 3 | 'default' | 'blue' | false;
   /** media-left and media-right only; shown at 546 x 460 (max 560px wide) */
   media?: MediaProps | string | React.ReactElement;
   /** item id or index to start open; 'list' opens the first */

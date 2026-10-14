@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components · Tags and flags" height=745 width=1100 subtitle="Component · Badges in nine status tones, three fills and two sizes; text, label and eyebrow tags; vulnerability metadata" -->
+<!-- @dsCard group="Components · Tags and flags" height=745 width=1100 subtitle="Component · Badges in eight status tones, three fills and two sizes; text, label and eyebrow tags; vulnerability metadata" -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,14 +6,14 @@
 <title>Tag — preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:var(--spacing-rg)}.row{display:flex;gap:var(--spacing-xl);align-items:flex-start;flex-wrap:wrap}.cap{margin-bottom:var(--spacing-3xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.col{display:flex;flex-direction:column;gap:var(--spacing-rg);width:320px}</style>
-<style>.grid{display:grid;grid-template-columns:110px repeat(9,auto);gap:var(--spacing-xs) var(--spacing-xs);align-items:center;justify-content:start;justify-items:start}.lbl{font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.meta{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:var(--spacing-rg)}.meta__set{display:flex;flex-direction:column;gap:var(--spacing-5xs);padding:var(--spacing-rg);border:1px solid var(--stroke-neutral-400);border-radius:var(--radius-lg)}.meta__name{font-family:var(--font-heading);font-weight:600;font-size:16px;line-height:1.3}.meta__desc{margin-bottom:var(--spacing-3xs);font-size:14px;line-height:1.3;color:var(--text-secondary)}</style>
+<style>.grid{display:grid;grid-template-columns:110px repeat(8,auto);gap:var(--spacing-xs) var(--spacing-xs);align-items:center;justify-content:start;justify-items:start}.lbl{font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.meta{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:var(--spacing-rg)}.meta__set{display:flex;flex-direction:column;gap:var(--spacing-5xs);padding:var(--spacing-rg);border:1px solid var(--stroke-neutral-400);border-radius:var(--radius-lg)}.meta__name{font-family:var(--font-heading);font-weight:600;font-size:16px;line-height:1.3}.meta__desc{margin-bottom:var(--spacing-3xs);font-size:14px;line-height:1.3;color:var(--text-secondary)}</style>
 </head>
 <body>
 <div id="root"></div>
 <script>
 var Q = window.Qualys, h = React.createElement;
-var tones = ['critical','high','medium','low','informational','fixed','accepted-risk','neutral','blue'];
-var names = {critical:'Critical',high:'High',medium:'Medium',low:'Low',informational:'Info',fixed:'Fixed','accepted-risk':'Accepted',neutral:'Neutral',blue:'Blue'};
+var tones = ['critical','high','medium','low','informational','fixed','accepted-risk','blue'];
+var names = {critical:'Critical',high:'High',medium:'Medium',low:'Low',informational:'Info',fixed:'Fixed','accepted-risk':'Accepted',blue:'Blue'};
 /* The Chips & Badges Showcase: vulnerability metadata, each set with its tones. */
 var META = [
   ['Severity', 'Classification by CVSS score.', [['Critical', 'fill', 'critical'], ['High', 'fill', 'high'], ['Medium', 'fill', 'medium'], ['Low', 'fill', 'low'], ['Informational', 'fill', 'informational']]],

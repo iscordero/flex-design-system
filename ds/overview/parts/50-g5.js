@@ -14,7 +14,7 @@ viz('g5-links', null, h('div', {className: 'row nowrap', style: {gap: 28, alignI
   st(h(Q.TextLink, {arrow: true, disabled: true}, 'Learn More'), 'Disabled', '50% opacity')));
 
 function lrow(state) { return h('div', {style: {position: 'relative', display: 'flex', alignItems: 'center', width: 136, height: 44, padding: '0 14px', boxSizing: 'border-box', borderTop: '1px solid var(--stroke-neutral-400)', borderBottom: '1px solid var(--stroke-neutral-400)', background: state === 'hover' ? 'var(--chip-bg)' : (state === 'active' ? 'var(--surface-blue-200)' : 'transparent'), fontFamily: 'var(--font-heading)', fontWeight: 600, fontSize: 14, whiteSpace: 'nowrap'}},
-  state === 'active' ? h(Q.Marker, {tone: 'blue', style: {position: 'absolute', left: 0, top: 3}}) : null, 'Cloud Security'); }
+  state === 'active' ? h(Q.Marker, {tone: 'default', style: {position: 'absolute', left: 0, top: 3}}) : null, 'Cloud Security'); }
 viz('g5-rows', null, h('div', {className: 'row nowrap', style: {gap: 12, alignItems: 'flex-start'}},
   st(lrow(), 'Default'), st(lrow('hover'), 'Hover', '5% Charcoal tint'), st(lrow('active'), 'Active', 'Misty Blue, blue marker')));
 

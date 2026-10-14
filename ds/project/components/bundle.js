@@ -159,7 +159,7 @@
   /* ── Tags (Figma: Tagging System) ── */
   /* Badge tones are named for the status they carry. The older colour names still work and map to them. */
   var TAG_TONES = { 'dark-red': 'critical', red: 'high', orange: 'medium', yellow: 'low', purple: 'informational', green: 'fixed',
-    gray: 'accepted-risk', grey: 'accepted-risk', slate: 'neutral', dark: 'neutral' };
+    gray: 'accepted-risk', grey: 'accepted-risk', slate: 'accepted-risk', dark: 'accepted-risk', neutral: 'accepted-risk' };
   /* Tag — badge style (fill / light / outline) for status, or text style for categories. */
   function Tag(p) {
     var variant = p.variant || 'fill';
@@ -208,7 +208,8 @@
 
   /* Marker — vertical bar on a tab or menu edge; opens into a count pill. side 'left' (default) | 'right' picks the edge it sits on. */
   function Marker(p) {
-    var tone = p.tone || 1;
+    /* 'default' is the Qualys Blue marker for an active item; 'blue' is its old name. */
+    var tone = p.tone === 'blue' ? 'default' : (p.tone || 1);
     var open = p.count != null;
     return h('span', {
       className: cx('q-marker', 'q-marker--' + tone, p.side === 'right' && 'q-marker--right', open && 'is-open', p.className), style: p.style,
@@ -1641,7 +1642,7 @@
     }
     items = items.map(function (it) { return it && it.cta != null ? Object.assign({}, it, { cta: rowCta(it.cta) }) : it; });
     /* List: one Marker on the left edge that slides to the open row, like the bar under the Nav links. */
-    var tone = list && p.marker !== false ? (p.marker || 'blue') : null;
+    var tone = list && p.marker !== false ? (p.marker || 'default') : null;
     var listRef = React.useRef(null);
     var ms = React.useState(null), markY = ms[0], setMarkY = ms[1];
     var cs = React.useState(0), changes = cs[0], setChanges = cs[1];

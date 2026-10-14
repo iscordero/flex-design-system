@@ -560,9 +560,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-14T18:35:44Z",
+    "at": "2026-10-14T19:21:53Z",
     "by": "Isabel",
-    "note": "Colour tokens: removed the six brand copies; tags named by status (critical, high, medium, low, informational, fixed, accepted-risk, neutral); event colours reuse palette blues and greys; tags, flags, markers and events grouped separately.",
+    "note": "Removed the neutral (slate) tag tone and its tokens: badges have one grey, accepted-risk. Renamed marker-blue to marker-default (tone 'default'); 'blue' still works.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",
