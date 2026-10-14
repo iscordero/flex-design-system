@@ -10,7 +10,7 @@ The stats module from the Figma Stats page: three figures in one panel, or three
 | `cards`, three items | Stats Card – 3 in a row | Impact you enable: reductions, time saved, efficiency gains |
 | `cards`, four items | Stats Card – 4 in a row | Mixed figures: counts, capabilities, rankings |
 
-- Section on `surface-neutral-200`, 48px top and bottom, content in the 1140px column.
+- Section on `surface-neutral-200`, 48px top and bottom, content in the content column (up to 1440px).
 - **Block:** one `radius-lg` panel with 56px padding (`spacing-5xl`) and the figures 48px apart. `tone="solid"` (default) is the blue gradient (`blue-gradient-start` to `blue-gradient-end`) with white figures; `tone="outline"` is a 1px `qualys-blue` outline with blue figures.
 - **Cards:** StatCards 24px apart, large for three and medium for four. Solid cards are flat `qualys-blue`.
 - Each figure: a Feature Icon (56px), the number with its unit, the label and one line of description. See StatCard for the sizes.

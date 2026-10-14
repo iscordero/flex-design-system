@@ -12,7 +12,7 @@ The trail above a page that shows where it sits in the site, from the Figma Brea
 - **Long names:** the trail stays on one line. The current page is cut with an ellipsis when it runs out of room; its full name stays available as a tooltip and to screen readers.
 - **Deep trails:** with more than four levels the middle ones fold behind "…", leaving the root and the last two: Home › … › Category › Current. Pressing the dots opens the full trail. `maxItems` changes the limit; `0` never folds.
 - **Mobile:** 14px, and only the level above and the current page show.
-- **On the page:** `contained` puts it on the 1140px content column with 32px above and below (24px on mobile), under the Nav and above the page's first module.
+- **On the page:** `contained` puts it on the content column (up to 1440px) with 32px above and below (24px on mobile), under the Nav and above the page's first module.
 - **Accessibility:** a `nav` named "Breadcrumb" holding an ordered list; the current page carries `aria-current="page"`; the chevrons are hidden from screen readers.
 
 Use it when:

@@ -21,7 +21,7 @@ The general content module from the Figma General Content Modules page (Ready fo
 
 **Full width**
 
-- An image at 60:23 (1140 × 437) or a video at 16:9, `radius-lg`.
+- An image at 60:23 (1440 × 552 at full width) or a video at 16:9, `radius-lg`.
 
 **Banner**
 
@@ -35,6 +35,6 @@ The general content module from the Figma General Content Modules page (Ready fo
 
 Notes:
 
-- Figma draws the split at 1200px wide in the component and at 1140px in the page layouts; it uses the 1140px column like the other modules.
+- Figma draws the split at 1200px wide in the component and at 1140px in the page layouts; it uses the content column like the other modules.
 - In the video banner Figma centres the play button on the panel, where it covers the end of the paragraph; it is moved clear of the copy.
 - The Figma usage notes are still placeholders ("Used for…", "Image max width: 560px").

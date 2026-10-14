@@ -7,9 +7,9 @@ The carousel module from the Figma Carousel Modules page: a row of cards you scr
 | Variant | Figma name | What it shows |
 |---|---|---|
 | `multi` (default) | Multi Card Carousel | Cards 350px wide, 24px apart; three fit the column and the next one peeks in |
-| `single` | Single Card Carousel | One card as wide as the 1140px column, such as a featured EventCard |
+| `single` | Single Card Carousel | One card as wide as the content column (up to 1440px), such as a featured EventCard |
 
-- Section on `surface-neutral-200`, 48px top and bottom. The first card starts on the 1140px column and the row runs off the right edge of the page.
+- Section on `surface-neutral-200`, 48px top and bottom. The first card starts on the content column (up to 1440px) and the row runs off the right edge of the page.
 - **Controls,** 36px under the cards and right-aligned to the column: the progress bar, 48px, then the two buttons.
 - **Progress bar:** 377 × 4px, Charcoal at 20% with a `qualys-blue` fill that grows as you move through the set.
 - **Buttons:** 48px, `radius-rg`, white with a hairline and a soft shadow, a 16px chevron each. The one that can't go further fades to 40%.

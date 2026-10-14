@@ -30,7 +30,7 @@ The card has one fixed breakpoint: 768px of browser width (`breakpoint-tablet`).
 
 | Browser width | Card width | Padding | Closed card | Open card | Button |
 | --- | --- | --- | --- | --- | --- |
-| Desktop, 1024px and up | 912px at 1024px, growing to 1140px (`content-max`) from 1252px | 24px (`spacing-xl`) | Profiles on one row, by the profile rule | Everyone in two columns with name, role and company | At the right end of the profile row; beside the title when there are no profiles |
+| Desktop, 1024px and up | 912px at 1024px, growing to 1440px (`content-max`) from 1552px | 24px (`spacing-xl`) | Profiles on one row, by the profile rule | Everyone in two columns with name, role and company | At the right end of the profile row; beside the title when there are no profiles |
 | Tablet, 768–1023px | 696–951px (the browser less the 36px page margins) | 24px | The same row. The card is narrower, so names split and profiles stack sooner (see the next table) | Two columns | The same |
 | Mobile, under 768px | The browser less the 20px page margins | 16px (`spacing-rg`) | One column: every profile under the last, name and company only. No headshot stack and no "+N" | One column; roles are added | Full width, at the bottom of the card |
 
@@ -66,7 +66,7 @@ Where each change starts, without a button (a button takes about 156px with its 
 
 **Sizes and usage**
 
-- **Width:** the card fills its container; there is no maximum. It is designed for the 1140px column. Minimum 320px; with a button on a screen of 768px or wider, keep it at least 420px wide, or the row cannot fit one name, the stack and the button.
+- **Width:** the card fills its container; there is no maximum. It is designed for the content column (up to 1440px). Minimum 320px; with a button on a screen of 768px or wider, keep it at least 420px wide, or the row cannot fit one name, the stack and the button.
 - **Height** follows the content. Closed, with the sample content: 105px with no profiles, 168 to 209px with profiles. On mobile a closed card grows by about 62px per profile (615px with eight).
 - Use the full-width column for agendas where most sessions have four or more speakers. In a column under about 560px only two profiles are named.
 - For long agendas on mobile, set `speakerVisibility="open-only"` so closed cards stay short, and let the open card list the speakers.

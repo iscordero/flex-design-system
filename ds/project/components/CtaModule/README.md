@@ -14,14 +14,14 @@ The closing call to action from the Figma CTAs page: a sign-up form beside or ov
 
 **With a form**
 
-- Section on `surface-neutral-200`, 56px top and bottom (`spacing-5xl`), content in the 1140px column.
+- Section on `surface-neutral-200`, 56px top and bottom (`spacing-5xl`), content in the content column (up to 1440px).
 - The form is the Form component without its card (`variant="full"`, `appearance="bare"`): the shield, a centred `h2` heading, the fields, the opt-in, one primary Button and the consent line, 460px wide, centred in its half.
 - The image is `radius-lg`, 56px (`spacing-5xl`) from the form. `media` is `{ src, alt }`; leave it empty for the placeholder.
 - **Mobile:** only the form shows, with 36px × 24px padding and a full-width button. The `background` picture stays behind it.
 
 **Card**
 
-- 1140px, `radius-lg`, Asphalt, 48px padding, 32px above and below it.
+- The full content column (up to 1440px), `radius-lg`, Asphalt, 48px padding, 32px above and below it.
 - Heading in `h2`, `text-inverted`; 16px; the body in `paragraph-md` (18px), 500px wide at most; 24px; the actions, 8px apart.
 - **Mobile:** 24px padding, heading 24px (`h2` on mobile), body 16px, buttons stacked full width.
 

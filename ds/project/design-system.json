@@ -560,9 +560,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-14T01:34:39Z",
+    "at": "2026-10-14T01:54:05Z",
     "by": "Isabel",
-    "note": "Modules carry the warm off-white ground themselves (photo hero around its card, footer around its notch). Preview canvases back to white.",
+    "note": "Content column widened to 1440px (content-max = container-max) for the nav, footer and every module. NavBanner: one 16px size, dividers between title, date and place. Nav logo on the labels' baseline.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

@@ -140,7 +140,7 @@
 .q-section .q-crumbs, .q-crumbs-bar .q-crumbs { container-type: normal; }
 /* On the page: the content column, 32px above and below */
 .q-crumbs-bar { container-type: inline-size; }
-.q-crumbs-bar__inner { box-sizing: border-box; max-width: calc(var(--content-max, 1140px) + 112px); margin-inline: auto; padding: var(--spacing-2xl) var(--spacing-5xl); }
+.q-crumbs-bar__inner { box-sizing: border-box; max-width: calc(var(--content-max, 1440px) + 112px); margin-inline: auto; padding: var(--spacing-2xl) var(--spacing-5xl); }
 @container (max-width: 1023px) {
   .q-crumbs-bar__inner { padding-inline: var(--spacing-3xl); }
 }
@@ -885,13 +885,14 @@ a.q-promo:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 }
 
 /* ── Navigation (Figma: Navigation) ── */
-/* Desktop bar: white, 80px, shadow-nav; content 1140px wide. Items sit on the bottom 48px so the active bar meets the edge. */
+/* Desktop bar: white, 80px, shadow-nav; content up to 1440px wide (content-max). Items sit on the bottom 48px so the active bar meets the edge. */
 .q-nav { position: sticky; top: 0; z-index: 100; background: var(--surface-neutral-100); box-shadow: var(--shadow-nav); font-family: var(--font-body); }
 .q-nav__desktop { position: relative; }
-.q-nav__inner { display: flex; align-items: stretch; justify-content: space-between; gap: var(--spacing-xl); box-sizing: border-box; height: 80px; max-width: calc(1140px + 2 * var(--margin-desktop)); margin-inline: auto; padding-inline: var(--margin-desktop); }
+.q-nav__inner { display: flex; align-items: stretch; justify-content: space-between; gap: var(--spacing-xl); box-sizing: border-box; height: 80px; max-width: calc(var(--content-max, 1440px) + 2 * var(--margin-desktop)); margin-inline: auto; padding-inline: var(--margin-desktop); }
 .q-nav__left { display: flex; align-items: stretch; gap: var(--spacing-3xl); min-width: 0; }
 .q-nav__right { display: flex; align-items: flex-end; gap: var(--spacing-rg); flex: none; }
-.q-nav__logo { display: flex; align-items: center; gap: var(--spacing-xs); flex: none; box-sizing: border-box; padding-top: var(--spacing-3xs); color: var(--text-primary); text-decoration: none; font-family: var(--font-heading); font-weight: 700; }
+/* The wordmark's baseline sits on the menu labels' baseline */
+.q-nav__logo { display: flex; align-items: center; gap: var(--spacing-xs); flex: none; box-sizing: border-box; padding-top: 0; color: var(--text-primary); text-decoration: none; font-family: var(--font-heading); font-weight: 700; }
 .q-nav__logo img { display: block; height: 37px; width: auto; }
 .q-nav__logo:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius-xs); }
 .q-nav__sitelabel { font-family: var(--font-heading); font-weight: 500; font-size: 18px; line-height: 1.1; letter-spacing: -0.01em; letter-spacing: -1%; }
@@ -916,7 +917,7 @@ a.q-promo:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 .q-nav__item--drop { position: relative; }
 .q-nav__panel--cols { left: calc(-1 * var(--spacing-3xl)); transform: none; max-width: none; padding-inline: 0; }
 /* Search panel: the width of the bar's content, under the bar */
-.q-nav__panel--search { width: calc(1140px + 2 * var(--margin-desktop)); }
+.q-nav__panel--search { width: calc(var(--content-max, 1440px) + 2 * var(--margin-desktop)); }
 .q-navsearch { padding: var(--spacing-xl) var(--spacing-3xl); }
 .q-navsearch__sug { margin-top: var(--spacing-xl); }
 .q-navsearch__sug ul { display: flex; flex-wrap: wrap; gap: var(--spacing-3xs); margin: var(--spacing-xs) 0 0; padding: 0; list-style: none; }
@@ -1030,10 +1031,12 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-navpanel .q-mega__arrow { display: none; }
 /* Promotion banner above the bar: blue gradient, white copy, one link and a close button */
 .q-navbanner { position: relative; display: flex; align-items: center; justify-content: center; box-sizing: border-box; min-height: 52px; padding: var(--spacing-4xs) var(--spacing-5xl); background: linear-gradient(to bottom right, var(--blue-gradient-end) 2%, var(--blue-gradient-start) 53%, var(--blue-gradient-end) 104%); color: var(--text-inverted); font-family: var(--font-heading); }
-.q-navbanner__content { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--spacing-5xs) var(--spacing-3xl); }
+.q-navbanner__content { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: var(--spacing-5xs) var(--spacing-xl); }
 .q-navbanner__text { display: inline-flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: var(--spacing-5xs) var(--spacing-3xs); }
-.q-navbanner__title { font-weight: 500; font-size: 16px; line-height: 1.1; letter-spacing: -0.01em; letter-spacing: -1%; }
-.q-navbanner__meta { display: inline-flex; align-items: baseline; gap: var(--spacing-3xs); font-weight: 500; font-size: 18px; line-height: 1.1; letter-spacing: -0.01em; letter-spacing: -1%; white-space: nowrap; }
+/* One size across the bar: title, date, place and link are all Wix Madefor Text 16px on one baseline (the link is SemiBold) */
+.q-navbanner__title { font-family: var(--font-heading); font-weight: 500; font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; }
+.q-navbanner__meta { display: inline-flex; align-items: baseline; gap: var(--spacing-3xs); font-family: var(--font-heading); font-weight: 500; font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; white-space: nowrap; }
+.q-navbanner .q-textlink { font-size: 16px; line-height: 1.3; }
 .q-navbanner__sep { font-size: 16px; }
 .q-navbanner__close { position: absolute; top: 50%; right: 26px; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin: 0; padding: 0; border: 0; border-radius: var(--radius-rg); background: none; color: var(--icon-inverted); cursor: pointer; transform: translateY(-50%); }
 .q-navbanner__close:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--surface-neutral-100); }
@@ -1049,10 +1052,10 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 
 /* ── Hero ── */
 /* ── Page modules: shared shell (Figma: Hero, Typographic Headers, General Content Modules) ── */
-/* Every module is a full-width section on surface-neutral-200 with its content in a 1140px column. Each one is its own container,
+/* Every module is a full-width section on surface-neutral-200 with its content in the content column (content-max, up to 1440px). Each one is its own container,
    so it takes the tablet layout under 1024px and the mobile layout under 768px of its own width. Spacing is in px for that reason. */
 .q-section { container-type: inline-size; background: var(--surface-neutral-200); color: var(--text-primary); font-family: var(--font-body); }
-.q-section__inner { box-sizing: border-box; max-width: calc(var(--content-max, 1140px) + 112px); margin-inline: auto; padding: var(--spacing-4xl) var(--spacing-5xl); }
+.q-section__inner { box-sizing: border-box; max-width: calc(var(--content-max, 1440px) + 112px); margin-inline: auto; padding: var(--spacing-4xl) var(--spacing-5xl); }
 /* Copy block: eyebrow-lg, h2, paragraph-rg, then the buttons */
 .q-copy { min-width: 0; }
 .q-copy__eyebrow { margin: 0; font-family: var(--font-heading); font-weight: 600; font-size: 18px; line-height: 1; letter-spacing: 0.05em; letter-spacing: 5%; color: var(--text-secondary); }
@@ -1122,7 +1125,7 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-hero--bleed { background: var(--surface-neutral-200); } /* the module carries its own ground, around the inset photo card */
 /* Photo hero: a rounded card inset 16px from the window (8px on phones), its copy on the page's content column */
 .q-hero--bleed > .q-section__inner { max-width: none; padding: var(--spacing-rg); }
-.q-hero--bleed .q-hero__panelin { max-width: calc(var(--content-max, 1140px) + 112px - 2 * var(--spacing-rg)); margin-inline: auto; padding: var(--spacing-5xl) calc(var(--spacing-5xl) - var(--spacing-rg)); }
+.q-hero--bleed .q-hero__panelin { max-width: calc(var(--content-max, 1440px) + 112px - 2 * var(--spacing-rg)); margin-inline: auto; padding: var(--spacing-5xl) calc(var(--spacing-5xl) - var(--spacing-rg)); }
 .q-hero--bleed .q-hero__copy { max-width: 800px; }
 .q-hero--bleed.q-hero--center .q-hero__copy { max-width: 1000px; }
 
@@ -1211,7 +1214,7 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-tabmod .q-copy__body, .q-tabmod .q-copy__actions { margin-top: var(--spacing-xl); }
 
 /* ── Accordion module (Figma: Accordion Modules) ── */
-/* An Accordion as a section: under a heading, beside a copy block or media (two 546px columns, 48px apart), or as a list with the open item beside it */
+/* An Accordion as a section: under a heading, beside a copy block or media (two equal columns, 48px apart), or as a list with the open item beside it */
 .q-accmod__row { display: flex; align-items: flex-start; gap: var(--spacing-4xl); }
 .q-accmod__row > * { flex: 1 1 0; min-width: 0; }
 .q-accmod__main > .q-copy + .q-accordion, .q-accmod__main > .q-copy + .q-accmod__list { margin-top: var(--spacing-3xl); }
@@ -1306,9 +1309,9 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 }
 
 /* ── Carousel (Figma: Carousel Modules) ── */
-/* The cards start on the 1140px column and run off the right edge; the progress bar and the two buttons sit under them, right-aligned. */
+/* The cards start on the content column and run off the right edge; the progress bar and the two buttons sit under them, right-aligned. */
 /* The section is the container, so the edge, the slide width and the top space are set on its children. */
-.q-carousel > * { --q-edge: max(56px, calc((100cqw - var(--content-max, 1140px)) / 2)); }
+.q-carousel > * { --q-edge: max(56px, calc((100cqw - var(--content-max, 1440px)) / 2)); }
 .q-carousel__viewport { overflow-x: auto; overflow-y: hidden; margin: var(--spacing-2xl) 0 -56px; padding: var(--spacing-rg) var(--q-edge) 56px; scroll-snap-type: x mandatory; scroll-padding-inline: var(--q-edge); scrollbar-width: none; }
 .q-carousel__viewport::-webkit-scrollbar { display: none; }
 .q-carousel__viewport:focus-visible { outline: 2px solid var(--qualys-blue); outline-offset: -2px; }
@@ -1542,7 +1545,7 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 /* Notification bar */
 .q-nbar { container-type: inline-size; font-family: var(--font-body); }
 .q-nbar__bar { position: relative; display: flex; align-items: center; box-sizing: border-box; min-height: 44px; margin: var(--spacing-rg) var(--spacing-rg) 0; padding: var(--spacing-4xs) var(--spacing-5xl) var(--spacing-4xs) var(--spacing-xl); border-radius: var(--radius-rg); background: var(--surface-neutral-100); box-shadow: inset 0 0 0 1px var(--surface-neutral-300); }
-.q-nbar__inner { display: flex; align-items: flex-start; gap: var(--spacing-3xs); box-sizing: border-box; width: 100%; max-width: var(--content-max, 1140px); margin: 0 auto; }
+.q-nbar__inner { display: flex; align-items: flex-start; gap: var(--spacing-3xs); box-sizing: border-box; width: 100%; max-width: var(--content-max, 1440px); margin: 0 auto; }
 .q-nbar__icon { display: flex; flex: none; margin-top: 1px; color: var(--qualys-blue); }
 .q-nbar--success .q-nbar__icon { color: var(--utility-success-default); }
 .q-nbar--warning .q-nbar__icon { color: var(--utility-warning-default); }
@@ -1554,7 +1557,7 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-cookie { container-type: inline-size; position: fixed; left: 0; right: 0; bottom: 0; z-index: var(--z-cookie); box-sizing: border-box; border-top: 1px solid var(--surface-neutral-300); background: var(--surface-neutral-100); box-shadow: var(--shadow-modal); font-family: var(--font-body); animation: q-cookie-in 400ms ease-out; }
 .q-cookie--inline { position: relative; z-index: auto; animation: none; }
 @keyframes q-cookie-in { from { transform: translateY(100%); } to { transform: none; } }
-.q-cookie__inner { display: flex; align-items: center; gap: var(--spacing-xl); box-sizing: border-box; max-width: calc(var(--content-max, 1140px) + 112px); margin: 0 auto; padding: var(--spacing-rg) var(--spacing-5xl); }
+.q-cookie__inner { display: flex; align-items: center; gap: var(--spacing-xl); box-sizing: border-box; max-width: calc(var(--content-max, 1440px) + 112px); margin: 0 auto; padding: var(--spacing-rg) var(--spacing-5xl); }
 .q-cookie__icon { display: flex; flex: none; color: var(--icon-default); }
 .q-cookie__message { flex: 1; min-width: 0; margin: 0; font-size: 14px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-secondary); }
 .q-cookie__link { font-family: var(--font-heading); font-weight: 600; color: var(--link-primary-default); text-decoration: none; white-space: nowrap; }
@@ -1806,11 +1809,11 @@ a.q-cal__rowtitle:focus-visible { outline: none; border-radius: var(--radius-xs)
 }
 
 /* ── Footer (Figma: Footer) ── */
-/* Charcoal, with a raised notch above the shield. Content 1140px wide: lead block left, link columns right, legal line centred. */
+/* Charcoal, with a raised notch above the shield. Content up to 1440px wide (content-max): lead block left, link columns right, legal line centred. */
 .q-footer { container-type: inline-size; background: var(--surface-neutral-200); /* the strip around the notch carries the page ground */ color: var(--text-inverted); font-family: var(--font-body); }
 .q-footer__notch { display: block; width: 402px; max-width: 100%; height: 41px; margin: 0 auto -1px; color: var(--surface-neutral-600); }
 .q-footer__bg { background: var(--surface-neutral-600); }
-.q-footer__inner { box-sizing: border-box; max-width: calc(1140px + 2 * var(--margin-desktop)); margin-inline: auto; padding: calc(var(--spacing-rg) - 1px) var(--margin-desktop) var(--spacing-5xl); }
+.q-footer__inner { box-sizing: border-box; max-width: calc(var(--content-max, 1440px) + 2 * var(--margin-desktop)); margin-inline: auto; padding: calc(var(--spacing-rg) - 1px) var(--margin-desktop) var(--spacing-5xl); }
 .q-footer__logo { display: block; width: 75px; margin: 0 auto; }
 .q-footer__logo img { display: block; width: 100%; height: auto; }
 .q-footer__main { display: flex; justify-content: space-between; gap: var(--spacing-4xl); margin-top: var(--spacing-4xl); padding: var(--spacing-4xl) 0 var(--spacing-5xl); border-top: 1px solid var(--stroke-neutral-500); border-bottom: 1px solid var(--stroke-neutral-500); }

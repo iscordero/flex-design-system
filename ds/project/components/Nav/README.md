@@ -11,8 +11,8 @@ The global navigation from the Figma Navigation page: the logo, the primary item
 
 **Desktop bar (1200px and up)**
 
-- White, 80px tall, `shadow-nav`. Content is 1140px wide and centred.
-- Logo 37px tall, then 36px to the items. Items and utility links are IBM Plex Sans Medium 16px `text-primary`, 16px apart; they turn `text-accent-primary` on hover.
+- White, 80px tall, `shadow-nav`. Content runs up to 1440px wide (`content-max`) between the 56px margins, centred.
+- Logo 37px tall, its wordmark sitting on the same baseline as the menu labels, then 36px to the items. Items and utility links are IBM Plex Sans Medium 16px `text-primary`, 16px apart; they turn `text-accent-primary` on hover.
 - The current or open item shows a 4px `qualys-blue` bar on the bottom edge of the nav. Set it with `current` (the item's label). It is one bar for the whole row: tapping another item slides it across (300ms ease-in-out, the same motion as Tabs), and closing a menu sends it back to the current page. With reduced motion it moves without sliding.
 - Right side: a 16px search icon (see **Search panel**), the utility links ("Community", "Login", "Contact Us") and a small primary Button ("Get Started"), each 16px apart.
 - **Narrow desktop (1200–1365px):** utility links marked `collapse: true` hide, so the row keeps its spacing. On qualys.com mark Community and Contact Us; Login, search and Get Started always stay. Both stay in the mobile menu and the footer.
@@ -49,7 +49,7 @@ Both menu kinds use the same sizes, so moving between Platform, Solutions and th
 
 **Search panel**
 
-- With `search` set and no `href` or `onClick`, the search icon opens a panel under the bar, like a menu: the width of the bar's content (1140px), `radius-lg`, `shadow-card`, 24px × 36px padding.
+- With `search` set and no `href` or `onClick`, the search icon opens a panel under the bar, like a menu: the width of the bar's content (up to 1440px), `radius-lg`, `shadow-card`, 24px × 36px padding.
 - Inside: a contained SearchBar (56px) that takes focus as the panel opens, and optional `suggestions` below it under a "Popular searches" eyebrow, as tag chips (the FilterChip style, 36px, 8px apart) that link to their results.
 - While it is open the icon becomes a cross and the blue bar sits under it. The cross, Esc or a click outside closes it, and focus returns to the icon. Pressing Enter calls `onSearch` with the query.
 - Unlike the menus, it doesn't close when the pointer leaves, and hovering an item doesn't swap it for that item's menu: someone may be typing.

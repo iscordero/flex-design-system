@@ -6,7 +6,7 @@ A branded comparison table as a page section: a Qualys Blue header row with a ph
 
 Use it to set a standard, a directive or a list of requirements beside what Qualys offers, a row at a time. The sample maps the CISA BOD 26-04 requirements to Qualys advantages and ROC capabilities.
 
-- Section on `surface-neutral-200`, 48px top and bottom, content in the 1140px column.
+- Section on `surface-neutral-200`, 48px top and bottom, content in the content column (up to 1440px).
 - **Card:** White, `radius-lg`, `shadow-card`. The header row and the columns run to its edges.
 - **Columns:** the row headings take 1.25 parts and every other column 1 part. Drawn with two columns after the row headings.
 - **Header row:** 140px tall, with 32px padding and the copy at the bottom; 1px white rules at 30% divide the columns. The ground is `qualys-blue` across the top, easing to `blue-gradient-end` at the foot, or Charcoal (`tone="dark"`). The heading is `h2` (SemiBold 38px, line height 1.1, −2%), 8px above the subtitle in `paragraph-rg` Medium; both `text-inverted`. A column with a `logo` shows it in place of the heading: the reversed Qualys logo, 37px tall.

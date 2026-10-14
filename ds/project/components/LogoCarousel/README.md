@@ -5,7 +5,7 @@ The logo carousel from the Figma Logos page: a heading over one row of customer 
 **Provide:** `title` and `logos` (`{ src, alt, href, scale }`). Optional: `mobile`, `mobileMax`, `optical`, `duration`.
 
 - Section on the page background, `surface-neutral-200`, 100px above and below.
-- **Heading:** `h2` (SemiBold 38px), on the 1140px column, 740px wide at most. A 44px pause button sits at the right.
+- **Heading:** `h2` (SemiBold 38px), on the content column (up to 1440px), 740px wide at most. A 44px pause button sits at the right.
 - **Logos,** 56px (`spacing-5xl`) under the heading: tiles 200 × 80px, `radius-md`, 56px apart, each logo sized inside with 16px to spare. The row runs edge to edge and loops.
 
 ## Mobile: stack or carousel

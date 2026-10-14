@@ -6,18 +6,18 @@ The accordion module from the Figma Accordion Modules page: an Accordion as a pa
 
 | Layout | Figma name | Looks like |
 | --- | --- | --- |
-| `full` | Accordion Module, Full Width | The heading, then the accordion across the 1140px column |
+| `full` | Accordion Module, Full Width | The heading, then the accordion across the content column (up to 1440px) |
 | `split` | Split Content, CTA + Content Block | Copy block on the left (eyebrow, heading, copy, up to two actions); accordion on the right |
 | `media-left` | Split Media Left | Media on the left; accordion on the right. No heading |
 | `media-right` | Split Media Right | Accordion on the left; media on the right. No heading |
 | `list` | The last frame (also labelled "Split Media Right") | Rows on the left; the open row's content on the right |
 
-- Section on `surface-neutral-200`, 48px top and bottom, content in the 1140px column. Two-column layouts are two equal columns (546px), 48px apart, aligned at the top.
+- Section on `surface-neutral-200`, 48px top and bottom, content in the content column (up to 1440px). Two-column layouts are two equal columns, 48px apart, aligned at the top.
 - **Heading:** `h2`, SemiBold 38px, 36px above the accordion.
 - **Copy block (`split`):** eyebrow, 4px, heading, 16px, body in `paragraph-rg`, 32px, actions 8px apart. The Figma sets: a primary and a secondary Button; a primary Button and a TextLink (`tone="neutral"`, with the arrow).
 - **Rows:** the standard Accordion (Drawer rows): Feature Icon, title, chevron; the open row shows its copy and a call to action. See Accordion and Drawer for sizes and limits (4 to 12 rows; every row has an icon or none).
 - **Row CTA:** a small primary Button. When the copy block already has a primary Button, and always in `list`, it is a TextLink instead (`tone="neutral"`, with the arrow: charcoal label, blue arrow), so the module keeps one primary action. The module does this itself: a `{ label, href }` CTA is drawn as whichever applies, and a primary Button passed as a node is redrawn as the TextLink. Other nodes are left as given.
-- **Media:** 546 × 460 with `radius-lg`; an image or a video. Supply images no wider than 560px (the one usage note Figma gives).
+- **Media:** up to 560px wide at 273:230 (546 × 460 in Figma), with `radius-lg`; an image or a video. Supply images no wider than 560px (the one usage note Figma gives).
 - **List:** rows 56px tall in a 558px column, each with a 36px icon box 16px from the left edge. The open (active) row carries the blue Marker on its left edge and a chevron pointing at its content. There is one Marker for the list: it slides to the row you open, over 300ms, like the bar under the Nav links (it jumps for people who prefer reduced motion). `marker={1}`, `{2}` or `{3}` picks a flag-tier colour instead and `marker={false}` hides it; a row under the pointer is tinted (`hyperlink-default` at 15%). The content sits 56px to the right: body copy, then a TextLink 24px below. One row is always open — the first unless `defaultOpen` says otherwise — and opening another swaps the content.
 - **Tablet and mobile (under 1024px):** everything stacks 24px apart, in reading order: copy then accordion; `media-left` keeps the media first and `media-right` puts it last; under 768px the media is 67:50. `list` becomes an ordinary accordion. Rows follow Drawer's 48px mobile rows, and buttons in the copy block go full width under 768px.
 - Each row is a heading (one level below the module heading) holding a button with `aria-expanded`. In `list` the open row's button is `aria-disabled`, because it can't be closed.
@@ -30,7 +30,7 @@ Do / Don't:
 
 Where this differs from the Figma frames:
 
-- The split frames draw the accordion 561px wide, 15px past the column; here it fills its 546px column.
+- The split frames draw the accordion 561px wide, 15px past the column; here it fills its column.
 - The full-width desktop frame leaves 32px under the last row where the others leave 48px; 48px is used.
 - Split media (`media-left`, `media-right`) has no heading, as in the Figma frames: leave out `title`, and let the media and the row titles carry the section. The mobile frame for full width drops the heading too; it is kept there.
 - Mobile row titles are 16px in these frames and 18px on the Accordion page; 18px is used, as in Accordion.

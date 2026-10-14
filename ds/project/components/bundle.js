@@ -1402,7 +1402,8 @@
         h('span', { className: 'q-navbanner__text' },
           h('span', { className: 'q-navbanner__title' }, p.title),
           meta.length ? h('span', { className: 'q-navbanner__meta' }, meta.map(function (t, i) {
-            return h(React.Fragment, { key: i }, i ? h('span', { className: 'q-navbanner__sep', 'aria-hidden': 'true' }, '|') : null, h('span', null, t));
+            /* a divider before each part, the first one included, so the title, date and place read as three separate pieces */
+            return h(React.Fragment, { key: i }, h('span', { className: 'q-navbanner__sep', 'aria-hidden': 'true' }, '|'), h('span', null, t));
           })) : null),
         p.cta ? h(TextLink, { tone: 'inverted', arrow: true, href: p.cta.href, onClick: p.cta.onClick }, p.cta.label) : null),
       p.dismissible === false ? null : h('button', { type: 'button', className: 'q-navbanner__close', 'aria-label': p.closeLabel || 'Dismiss', onClick: function () { setShown(false); if (p.onClose) p.onClose(); } },

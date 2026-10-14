@@ -17,6 +17,6 @@ Use it to open a group of modules or cards. For the first heading on a page use 
 Notes:
 
 - Figma draws the heading Bold; it uses the closest heading style, `h2` (SemiBold), like the General Content and Tab modules.
-- The left-aligned block starts 70px in from the 1140px column, because Figma centres a 1000px block. Say if it should line up with the column edge instead.
+- The left-aligned block is a 1000px block centred in the content column, as Figma draws it. Say if it should line up with the column edge instead.
 - The mobile eyebrow is uppercase in Figma and mixed case on desktop; it is left as typed on both.
 - The Figma usage notes are still placeholders ("Used for…").
