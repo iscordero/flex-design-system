@@ -11,7 +11,7 @@ A written comparison: Qualys beside up to three competitors the reader picks, on
 - **Type:** module heading `h3`; cell heading `title-sm` (16px SemiBold); copy `paragraph-rg`. Keep copy to about 250 characters so columns stay a similar height; longer copy wraps and the row grows.
 - **Size:** a white card (`radius-lg`, `shadow-card`) in the 1140px content column. Below 240px per column the table scrolls sideways inside the card.
 - **Heading and chips:** above the card, on the page ground, 24px (`spacing-xl`) over it: the heading on the left, the chips on the right, both lined up with the card's outer edges. On a narrow screen the chips wrap under the heading. The card holds only the table, starting with the vendor logos 24px from its top.
-- **Mobile (the table narrower than 768px):** no card, white ground. Tabs pick one competitor; in each section the Qualys text (Ecru card) sits above the competitor's (outlined card), each under its logo.
+- **Mobile (the table narrower than 768px):** no card, on the page background. Tabs pick one competitor; in each section the Qualys text (Ecru card) sits above the competitor's (outlined card), each under its logo.
 - **Cursor:** pointer on section headings, chips and tabs.
 - **Accessibility:** section headings are buttons (`aria-expanded`); each cell names its vendor for screen readers; chips are toggle buttons in a labelled group.
 - **Content:** describe competitors fairly and keep claims current and checked. The copy in the preview is placeholder text.

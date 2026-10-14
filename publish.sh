@@ -10,6 +10,8 @@ m = '<meta charset="utf-8">'
 assert m in s
 s = s.replace(m, m + '<meta name="robots" content="noindex, nofollow">', 1)
 open('../site/index.html', 'w').write(s)
+import shutil
+shutil.copy('out/example.html', '../site/example.html')
 PY
 rm -rf out
-echo "site/index.html updated. Commit and push to publish."
+echo "site/index.html and site/example.html updated. Commit and push to publish."

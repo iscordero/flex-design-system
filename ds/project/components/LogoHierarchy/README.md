@@ -4,7 +4,7 @@ The logo hierarchy from the Figma Logos page: logos grouped in tiers under a hea
 
 **Provide:** `title` and `tiers` — each with a `label` and `logos` (`{ src, alt, href, scale }`). Optional: a tier's `level` and `mobileColumns`, the module's `mobileColumns` and `optical`.
 
-- Section on `surface-neutral-100`, 100px above and below, everything centred.
+- Section on the page background, `surface-neutral-200`, 100px above and below, everything centred.
 - **Heading:** `h2` (SemiBold 38px) in `text-secondary`.
 - **Tier:** 36px under the heading or the tier before. The label is Wix Madefor Text Regular 20px `text-secondary`; 32px (`spacing-2xl`) below it, the logos.
 - Put the highest tier first with the fewest logos: one signature sponsor, then the standard sponsors.

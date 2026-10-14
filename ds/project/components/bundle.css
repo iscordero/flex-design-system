@@ -912,6 +912,9 @@ a.q-promo:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 /* Menu panels: radius-lg, shadow-card, centred under the bar */
 .q-nav__panel { position: absolute; top: 100%; left: 50%; z-index: 90; transform: translateX(-50%); box-sizing: border-box; max-width: 100%; padding: var(--spacing-6xs) var(--margin-desktop) 0; }
 .q-nav__panel--mega { width: calc(1249px + 2 * var(--margin-desktop)); }
+/* Column dropdowns open under their own item, the card's text lined up with the item's label */
+.q-nav__item--drop { position: relative; }
+.q-nav__panel--cols { left: calc(-1 * var(--spacing-3xl)); transform: none; max-width: none; padding-inline: 0; }
 /* Search panel: the width of the bar's content, under the bar */
 .q-nav__panel--search { width: calc(1140px + 2 * var(--margin-desktop)); }
 .q-navsearch { padding: var(--spacing-xl) var(--spacing-3xl); }
@@ -1116,9 +1119,10 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-hero__panel .q-copy__eyebrow, .q-hero__panel .q-copy__title, .q-hero__panel .q-copy__body { color: inherit; }
 .q-hero--bg .q-copy__actions { gap: var(--spacing-rg); }
 .q-hero--bg .q-copy__actions .q-textlink { margin-inline: 0; }
-.q-hero--bleed { background: none; }
-.q-hero--bleed > .q-section__inner { max-width: none; padding: 0; }
-.q-hero--bleed .q-hero__panelin { max-width: calc(var(--content-max, 1140px) + 112px); margin-inline: auto; padding: var(--spacing-5xl); }
+.q-hero--bleed { background: var(--surface-neutral-200); } /* the module carries its own ground, around the inset photo card */
+/* Photo hero: a rounded card inset 16px from the window (8px on phones), its copy on the page's content column */
+.q-hero--bleed > .q-section__inner { max-width: none; padding: var(--spacing-rg); }
+.q-hero--bleed .q-hero__panelin { max-width: calc(var(--content-max, 1140px) + 112px - 2 * var(--spacing-rg)); margin-inline: auto; padding: var(--spacing-5xl) calc(var(--spacing-5xl) - var(--spacing-rg)); }
 .q-hero--bleed .q-hero__copy { max-width: 800px; }
 .q-hero--bleed.q-hero--center .q-hero__copy { max-width: 1000px; }
 
@@ -1178,6 +1182,7 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
   .q-hero__media .q-media, .q-gc__media .q-media, .q-gc--full .q-media { aspect-ratio: 67 / 50; }
   .q-hero__media .q-media--video, .q-gc__media .q-media--video, .q-gc--full .q-media--video { aspect-ratio: 16 / 9; }
   .q-hero__visual { top: 12%; left: -27.5%; width: 184%; }
+  .q-hero--bleed > .q-section__inner { padding: var(--spacing-3xs); }
   .q-hero--bleed .q-hero__panelin { padding: 24px var(--spacing-lg); }
   .q-hero--left .q-hero__panel--light .q-hero__shade { background: color-mix(in srgb, var(--surface-neutral-100) 86%, transparent); }
   .q-hero--bg .q-copy__actions { align-items: flex-start; gap: var(--spacing-rg); margin-top: 36px; }
@@ -1349,7 +1354,7 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-tcarousel--video > * { --q-slide: 836px; }
 
 /* ── Logos (Figma: Logos) ── */
-.q-logos { background: var(--surface-neutral-100); }
+.q-logos { background: var(--surface-neutral-200); }
 .q-logos > .q-section__inner { padding-block: var(--spacing-6xl); }
 .q-logos--carousel > .q-logos__head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--spacing-5xl); padding-bottom: var(--spacing-5xl); }
 .q-logos--carousel .q-logos__title { max-width: 740px; margin: 0; }
@@ -1390,7 +1395,9 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
   .q-carousel__controls, .q-carousel--roomy .q-carousel__controls { flex-direction: column; align-items: center; gap: 24px; padding: 36px var(--spacing-lg) 24px; }
   .q-carousel__progress { flex: none; width: 100%; }
   .q-tcarousel--lg > *, .q-tcarousel--sm > *, .q-tcarousel--video > * { --q-slide: 300px; }
-  .q-tcarousel .q-tcard, .q-tcarousel .q-tcard--sm { flex-direction: column; gap: var(--spacing-rg); padding: var(--spacing-rg); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1), var(--shadow-drawer); }
+  /* Same card as desktop (shadow-drawer, no outline), stacked and with tighter padding */
+  .q-tcarousel .q-tcard, .q-tcarousel .q-tcard--sm { flex-direction: column; gap: var(--spacing-rg); padding: var(--spacing-xl); }
+  .q-tcarousel .q-tcard--image { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1), var(--shadow-drawer); }
   .q-tcarousel .q-tcard__logo { margin-bottom: var(--spacing-rg); }
   .q-tcarousel .q-tcard__quote, .q-tcarousel .q-tcard--sm .q-tcard__quote, .q-tcarousel .q-tcard--lg .q-tcard__quote { margin-bottom: 24px; font-size: 16px; letter-spacing: -0.01em; letter-spacing: -1%; }
   .q-tcarousel .q-tcard__foot { flex-direction: column; align-items: flex-start; }
@@ -1642,8 +1649,9 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 }
 
 /* ── Event calendar (Figma: Calendar) ── */
-.q-cal { background: var(--surface-neutral-300); }
-.q-cal__tools { background: var(--surface-neutral-100); }
+.q-cal { background: var(--surface-neutral-200); }
+/* One page ground everywhere: the toolbar sits on it too, set off by a rule */
+.q-cal__tools { background: var(--surface-neutral-200); border-bottom: 1px solid var(--stroke-neutral-400); }
 .q-cal__tools > .q-section__inner { display: flex; align-items: center; gap: var(--spacing-xl); padding-block: var(--spacing-3xl); }
 .q-cal__search { flex: 0 1 432px; }
 .q-cal__filters { margin-left: auto; }
@@ -1799,7 +1807,7 @@ a.q-cal__rowtitle:focus-visible { outline: none; border-radius: var(--radius-xs)
 
 /* ── Footer (Figma: Footer) ── */
 /* Charcoal, with a raised notch above the shield. Content 1140px wide: lead block left, link columns right, legal line centred. */
-.q-footer { container-type: inline-size; color: var(--text-inverted); font-family: var(--font-body); }
+.q-footer { container-type: inline-size; background: var(--surface-neutral-200); /* the strip around the notch carries the page ground */ color: var(--text-inverted); font-family: var(--font-body); }
 .q-footer__notch { display: block; width: 402px; max-width: 100%; height: 41px; margin: 0 auto -1px; color: var(--surface-neutral-600); }
 .q-footer__bg { background: var(--surface-neutral-600); }
 .q-footer__inner { box-sizing: border-box; max-width: calc(1140px + 2 * var(--margin-desktop)); margin-inline: auto; padding: calc(var(--spacing-rg) - 1px) var(--margin-desktop) var(--spacing-5xl); }
@@ -1968,7 +1976,7 @@ button.q-hcard__close:focus-visible { outline: none; box-shadow: var(--focus-rin
 .q-cmp__cellhead { font-family: var(--font-heading); font-weight: 600; font-size: 16px; line-height: 1.3; }
 .q-cmp__cellbody { margin: 0; font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; text-wrap: pretty; }
 /* Mobile (the table itself narrower than 768px): no card, white ground, Qualys beside one competitor */
-.q-cmp--mobile { background: var(--surface-neutral-100); }
+.q-cmp--mobile { background: var(--surface-neutral-200); }
 .q-cmp--mobile > .q-section__inner { padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-3xl); }
 .q-cmp--mobile .q-cmp__heading { padding: 0; }
 .q-cmp--mobile .q-cmp__title { line-height: 1.25; }

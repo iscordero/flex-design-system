@@ -385,6 +385,13 @@ def add(name):
 
 
 add('Cover')
+# Example page: the modules put together as one page, shown in a device frame at real size
+add('ExamplePage')
+DEVICES = [('desktop', 'Desktop', 1440, 900), ('laptop', 'Laptop', 1280, 800), ('tablet', 'Tablet', 768, 1024), ('mobile', 'Mobile', 375, 812)]
+views.append(('example', '''<header class="ds-head"><p class="ds-eyebrow">Start</p><h1>Example page</h1><p class="ds-lede">A page built only from the system's modules: banner, nav, hero, logos, stats, content, resources, customer stories, a form and the footer. It is drawn at each device's real width, so the modules respond as they would on qualys.com; it is only scaled down when the device is wider than this column. Scroll inside the frame, open the menus, try the search.</p></header>
+<div class="ds-devbar" role="group" aria-label="Device size">%s<a class="ds-size ds-devopen" href="example.html" target="_blank" rel="noopener">Open in a new tab</a></div>
+<p class="ds-devnote" id="ds-devnote"></p>
+<div class="ds-devstage" data-ex="ExamplePage"><div class="ds-devfit"></div></div>''' % ''.join('<button type="button" class="ds-size ds-dev" data-w="%d" data-h="%d" aria-pressed="%s">%s <span>%d × %d</span></button>' % (w, hh, 'true' if k == 'desktop' else 'false', label, w, hh) for k, label, w, hh in DEVICES)))
 LEVEL_NAME = {'Component': 'Component', 'Pattern': 'Pattern', 'Block module': 'Page module', 'Foundation': 'Foundation'}
 def family_view(fid, fname, members, eyebrow):
     cards = []
@@ -453,7 +460,7 @@ views.append(('components', ''.join(index)))
 
 
 # ---------- rail ----------
-nav = ['<div><h2>Start</h2><ul><li><a href="#overview">Overview</a></li></ul></div>',
+nav = ['<div><h2>Start</h2><ul><li><a href="#overview">Overview</a></li><li><a href="#example">Example page</a></li></ul></div>',
        '<div><h2>Guidelines</h2><ul>%s</ul></div>' % ''.join('<li><a href="#%s">%s</a></li>' % (gid, esc(t)) for gid, t, _, _ in guides),
        '<div><h2>Foundations</h2><ul><li><a href="#tokens">Design tokens</a></li><li><a href="#typography">Typography</a></li><li><a href="#grid">Grid</a></li></ul></div>']
 for k, (sname, nav_fams) in enumerate(nav_secs):
@@ -520,4 +527,14 @@ os.makedirs(OUT, exist_ok=True)
 open(OUT + '/body.html', 'w').write(body)
 full = '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>\n' + body.replace('<div class="ds-app">', '</head>\n<body>\n<div class="ds-app">', 1) + '</body>\n</html>\n'
 open(OUT + '/flex-design-system.html', 'w').write(full)
+# The example page as its own file next to the site, so "Open in a new tab" is a plain link that works everywhere
+def _blob(t):
+    return re.sub(r'/_blob/([0-9a-f]{32})', lambda m: assets.get(m.group(1), m.group(0)), t)
+_ex = card_meta('ExamplePage')[0]
+_pre = ('<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><style>' + TOKEN_CSS + '</style><style>' + _blob(open(P + '/components/bundle.css').read()) + '</style>'
+        '<script>' + open(P + '/components/lib/react.production.min.js').read() + '</script><script>' + open(P + '/components/lib/react-dom.production.min.js').read() + '</script>'
+        '<script>' + _blob(open(P + '/components/bundle.js').read()) + '</script>')
+_ex = _blob(_ex.replace('<head>', '<head>' + _pre, 1).replace('<title>Example page</title>', '<title>Example page · Flex Design System</title>'))
+_ex = _ex.replace('</body>', '<script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(\'a[href="#"]\');if(a)e.preventDefault();});</script></body>')
+open(OUT + '/example.html', 'w').write(_ex)
 print('views', len(views), 'components', len(comps), 'bytes', len(body.encode()))

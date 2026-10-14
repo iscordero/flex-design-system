@@ -1,7 +1,7 @@
-/* Layout: a fixed left rail holding the section tree, one column to its right; live previews sit on white stages cut into the warm ground. */
+/* Layout: a fixed left rail holding the section tree, one column to its right; live previews sit on white stages on a white page; the modules bring their own warm off-white. */
 :root {
   color-scheme: light;
-  --ds-ground: #fcfbf7;   /* warm off-white */
+  --ds-ground: #ffffff;   /* the doc stays plain white, so the warm off-white of the modules reads as theirs */
   --ds-paper: #ffffff;    /* stages, cards */
   --ds-sunk: #f7f6f2;     /* ecru: rail hover, table heads */
   --ds-ink: #262626;      /* charcoal */
@@ -269,3 +269,13 @@ a { color: var(--ds-link); }
   .ds-rows li { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) { .ds-nav details > summary::after { transition: none; } }
+
+/* Example page: device buttons and a frame drawn at the device's real size, scaled down only when it is wider than the column */
+.ds-devbar { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.ds-dev[aria-pressed="true"] { border-color: var(--ds-accent); color: var(--ds-accent); font-weight: 600; }
+.ds-dev span { color: var(--ds-ink-2); font-weight: 400; }
+.ds-devopen { margin-left: auto; text-decoration: none; }
+.ds-devnote { margin: 8px 0 0; font-size: 13px; color: var(--ds-ink-2); min-height: 1em; }
+.ds-devstage { margin-top: 12px; }
+.ds-devfit { position: relative; overflow: hidden; margin: 0 auto; border: 1px solid var(--ds-line); border-radius: 12px; background: #fff; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); }
+.ds-devfit iframe { position: absolute; left: 0; top: 0; border: 0; transform-origin: 0 0; background: #fff; }

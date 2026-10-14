@@ -16,7 +16,7 @@ A customer quote from the Figma Testimonials page: the customer's logo, the quot
 - **Foot,** pinned to the bottom: a 40px Avatar with the name (Wix Madefor Text SemiBold 16px) over the company (`text-secondary`), and on the right a neutral TextLink with the arrow, "Read the Story".
 - **On a photo:** the picture fills the card with a hairline edge; the content sits on a panel 62% wide, white at 90%, `radius-md`, 24px padding.
 - **With a video:** the clip is 312px wide with `radius-rg`, 24px from the copy, with the play button. The person shows without an avatar. With no video, leave `video` out and the quote takes the full width.
-- **Mobile (inside TestimonialCarousel):** 300px wide, 16px padding, a hairline edge; the quote drops to 16px; the link moves under the person. A video moves to the top at 16:9.
+- **Mobile (inside TestimonialCarousel):** the same card as on desktop (white, `radius-lg`, `shadow-drawer`, no outline, the small card's 24px padding), 300px wide; the quote drops to 16px; the link moves under the person. A video moves to the top at 16:9.
 
 Video behaviour, from the Figma usage notes:
 

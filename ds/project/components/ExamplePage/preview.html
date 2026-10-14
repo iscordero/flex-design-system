@@ -1,0 +1,91 @@
+<!-- @dsCard group="Page modules · Example page" height=4498 width=1440 subtitle="Example page · A page built only from the system’s modules: banner, nav, hero, logos, stats, content, resources, stories, a form and the footer." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Example page</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-200)}.ex-head{padding-bottom:0}.ex-head .q-copy__title{margin:0}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+/* An example page built only from the system's modules, to see them together at real sizes. Open it in the site's Example page view to try each device width. */
+var LOGO = '/_blob/a0d4062abbce2ceb87d5be08d326359f', SHIELD = '/_blob/1317004b4eea94a3648caf5ff41b1862';
+var BUILDING = '/_blob/030f664385156a91a5802ce5e6424bd4', OFFICE = '/_blob/0d022f9bddd95029144a197b97432323';
+var ICON = {"detect": "/_blob/bdcd7cc4b2bbc39f3f0aba2ee1b6ea8e", "threat": "/_blob/e594a6d966d00d9ea5bb37fd3d806358", "measure": "/_blob/08a9d26a3a902a648c904b65297a8cb7"};
+var PLATFORM = {
+  overview: {title: 'Enterprise TruRisk Platform', description: 'Everything you need to measure, manage, and reduce your cyber risk in one place', href: '#'},
+  railLabel: 'Capabilities', groupsLabel: 'Platform Apps',
+  groups: [
+    {title: 'Risk Operations Center (ROC)', links: ['Enterprise TruRisk Management / CTEM', {label: 'Agentic AI', badge: true}, 'ETM Identity', {label: 'TruConfirm', badge: true}, 'Integrations']},
+    {title: 'Vulnerability & Configuration Management', links: ['TotalAppSec', 'TotalAI', 'Vulnerability Management, Detection & Response (VMDR)']},
+    {title: 'Compliance', links: ['Policy Audit', 'File Integrity Monitoring (FIM)']},
+    {title: 'Asset Management', links: ['CyberSecurity Asset Management (CSAM)', 'External Attack Surface Management (EASM)']},
+    {title: 'Risk Remediation', links: ['TruRisk Eliminate (TE)']},
+    {title: 'Threat Detection & Response', links: ['Multi-Vector EDR']},
+    {title: 'Cloud Security', links: ['TotalCloud (CNAPP)', 'Cloud Security Posture Management (CSPM)', 'Kubernetes and Container Security (KCS)', 'Cloud Workload Protection (CWP)', 'Infrastructure as Code (IaC) Security', 'Cloud Infrastructure and Entitlement Management (CIEM)', 'Cloud Detection and Response (CDR)', 'Cloud Workflow Automation (CWA)', 'SaaS Security Posture Management (SSPM)', 'Data Security Posture Management (DSPM)']}
+  ]};
+function simple(title, links) { return {columns: [{title: title, links: links}]}; }
+var ITEMS = [{label: 'Platform', menu: PLATFORM},
+  {label: 'Solutions', menu: simple('Use Cases', ['Risk Operations Center (ROC)', 'Endpoint Security', 'Compliance', 'Cloud Security', 'Threat Protection'])},
+  {label: 'Customers', menu: simple('Customers', ['Overview', 'Success Stories', 'Video Testimonials', 'Awards'])},
+  {label: 'Resources', menu: simple('Resource Library', ['All Resources', 'Analyst Reports', 'Whitepapers', 'Webinars', 'Blog'])},
+  {label: 'Support', menu: simple('Support', ['Customer Support', 'Qualys FAQs', 'Release Notes', 'Training'])},
+  {label: 'Partners', menu: simple('Partners', ['Overview', 'MSSP Partners', 'Integration Partners'])},
+  {label: 'Company', menu: simple('Company', ['About Us', 'Careers', 'Newsroom', 'Contact Us'])}];
+function svgUri(w, hgt, body) { var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + w + ' ' + hgt + '" width="' + w + '" height="' + hgt + '">' + body + '</svg>'; return 'data:image/svg+xml;utf8,' + svg.replace(/</g, '%3C').replace(/>/g, '%3E').replace(/"/g, "'").replace(/#/g, '%23'); }
+var MARKS = ['<circle cx="20" cy="20" r="14"/>', '<rect x="6" y="6" width="28" height="28" rx="6"/>', '<path d="M20 4L36 34H4Z"/>', '<path d="M20 4L36 20L20 36L4 20Z"/>', '<rect x="4" y="12" width="32" height="16" rx="8"/>', '<path d="M6 6H34V20A14 14 0 0 1 6 20Z"/>'];
+var NAMES = ['Company', 'Customer', 'Partner', 'Sponsor', 'Client', 'Brand', 'Vendor', 'Alliance', 'Member'];
+/* Placeholder logos, cropped tight to their artwork like real logo files, so each one centres in its tile. */
+var TW = document.createElement('canvas').getContext('2d');
+function tw(s, size, weight) { TW.font = (weight || 700) + ' ' + size + 'px Arial, Helvetica, sans-serif'; return Math.ceil(TW.measureText(s).width); }
+function shape(n) {
+  var name = NAMES[n % 9] + ' ' + (n + 1), m = MARKS[n % 6], kind = ['wide', 'square', 'stacked', 'wide', 'heavy', 'thin', 'stacked', 'wide', 'square'][n % 9];
+  var t = function (x, y, size, weight) { return '<text x="' + x + '" y="' + y + '" font-family="Arial, Helvetica, sans-serif" font-weight="' + (weight || 700) + '" font-size="' + size + '" fill="#575757">'; };
+  if (kind === 'square') { var sw = Math.max(32, tw(NAMES[n % 9], 11)); return {kind: kind, src: svgUri(sw, 56, '<g fill="#575757" transform="translate(' + (sw / 2 - 20) + ' -4)">' + m + '</g>' + t(sw / 2, 54, 11).replace('x="' + (sw / 2) + '"', 'x="' + (sw / 2) + '" text-anchor="middle"') + NAMES[n % 9] + '</text>'), alt: name}; }
+  if (kind === 'stacked') return {kind: kind, src: svgUri(42 + Math.max(tw(NAMES[n % 9], 18), tw('Systems ' + (n + 1), 13, 400)), 44, '<g fill="#575757" transform="translate(-4 2)">' + m + '</g>' + t(42, 20, 18) + NAMES[n % 9] + '</text>' + t(42, 40, 13, 400) + 'Systems ' + (n + 1) + '</text>'), alt: name};
+  if (kind === 'heavy') return {kind: kind, src: svgUri(160, 48, '<rect width="160" height="48" rx="4" fill="#262626"/>' + t(80, 31, 20).replace('x="80"', 'x="80" text-anchor="middle"').replace('#575757', '#ffffff') + name.toUpperCase() + '</text>'), alt: name};
+  if (kind === 'thin') { var tn = name.toLowerCase() + ' studio'; return {kind: kind, src: svgUri(tw(tn, 26, 300), 28, t(0, 21, 26, 300).replace('#575757', '#8a8a8a') + tn + '</text>'), alt: name}; }
+  return {kind: kind, src: svgUri(44 + tw(name, 20), 32, '<g fill="#575757" transform="translate(-4 -4)">' + m + '</g>' + t(44, 23, 20) + name + '</text>'), alt: name};
+}
+function L(n) { var s = shape(n); return {src: s.src, alt: s.alt}; }
+var LOGOS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(L);
+var D = 'Lorem ipsum dolor sit amet consectetur sollicitudin.';
+var STATS = [{icon: ICON.detect, value: '150', suffix: '%', label: 'Faster Detection', description: D}, {icon: ICON.threat, value: '10', suffix: 'x', label: 'Less Zero-day Threats', description: D}, {icon: ICON.measure, value: '99.99', suffix: '%', label: 'More Accurate Scanning', description: D}];
+var QUOTE = '\u201cLorem ipsum dolor sit adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut et enim ad minim veniam.\u201d';
+var STORIES = [0, 1, 2, 3].map(function (n) { var l = L(n); return {logo: l.src, logoAlt: l.alt, quote: QUOTE, name: 'Jonathan Doe', company: 'Qualys', link: {label: 'Read the Story', href: '#'}}; });
+function res(i) { return h(Q.ResourceCard, {key: i, href: '#', flag: i === 0 ? 'New' : undefined, resourceType: ['Whitepaper', 'Analyst Report', 'Datasheet', 'Webinar', 'Blog'][i % 5], title: 'This is a Resource Title Lorem Ipsum Dolor', date: 'Dec 10, 2025'}); }
+var FORM = {logoSrc: SHIELD, title: ['Like What You\u2019re Seeing?', h('br', {key: 'b'}), 'Try Qualys For Free'],
+  fields: [{name: 'email', label: 'Work Email', type: 'email', required: true}, {name: 'firstName', label: 'First Name', required: true, half: true}, {name: 'lastName', label: 'Last Name', required: true, half: true}, {name: 'company', label: 'Company Name', required: true}],
+  consent: 'I would like to receive Qualys emails.', submitLabel: 'Sign Up', legal: 'By submitting this form, you consent to Qualys\u2019 privacy policy.', onSubmit: function () {}};
+var PROPS = {
+  logoSrc: SHIELD, logoHref: '#',
+  heading: 'De-risk your business. Try the Enterprise TruRisk Platform for free.',
+  body: 'No software to download or install. Seamlessly deploy Cloud Agents and add users to measure, communicate, and eliminate cyber risk across the extended enterprise.',
+  form: {placeholder: 'Public Website URL', buttonLabel: 'Start free trial', onSubmit: function () {}},
+  social: [{network: 'linkedin', label: 'Qualys on LinkedIn'}, {network: 'x', label: 'Qualys on X'}, {network: 'facebook', label: 'Qualys on Facebook'}, {network: 'vimeo', label: 'Qualys on Vimeo'}, {network: 'youtube', label: 'Qualys on YouTube'}],
+  columns: [
+    {title: 'Company', links: ['About Us', 'Investor Relations', 'Partners', 'Events', 'Awards', 'Customers', 'Careers', 'Contact Us']},
+    {title: 'Platform', links: ['Overview', 'Use Cases', 'Segments', 'Free Trials']},
+    {title: 'Resources', links: ['Threat Research Unit', 'Blog', 'Resource Library', 'Sitemap', 'Support', 'Community', 'Release Notes']}],
+  copyright: '\u00a9 2025 Qualys, Inc. All rights reserved.',
+  legal: ['Privacy Policy', 'Accessibility', 'Notice at Collection', 'Trust', 'Cookie Consent', 'Do Not Share - Privacy Portal']
+};
+function sectionHead(t) { return h('section', {className: 'q-section'}, h('div', {className: 'q-section__inner ex-head'}, h('h2', {className: 'q-copy__title'}, t))); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  h(Q.NavBanner, {title: 'Join your peers at ROCon', meta: ['November 18-20', 'Mumbai'], cta: {label: 'Register Now', href: '#'}}),
+  h(Q.Nav, {logoSrc: LOGO, items: ITEMS, current: 'Platform', utility: [{label: 'Community', collapse: true}, 'Login', {label: 'Contact Us', collapse: true}], search: {placeholder: 'Search qualys.com', suggestions: ['VMDR', 'TotalCloud', 'Patch Management', 'Agentic AI']}, cta: {label: 'Get Started', href: '#'}}),
+  h(Q.Hero, {size: 'rg', eyebrow: 'Enterprise TruRisk Platform', title: 'Measure, Communicate and Eliminate Cyber Risk', body: 'One platform to see every asset, prioritise what matters and fix it fast, across on-premises, cloud and endpoints.', background: {src: BUILDING}, actions: [h(Q.Button, {key: 'p'}, 'Get Started'), h(Q.TextLink, {key: 't', tone: 'inverted', arrow: true, href: '#'}, 'Watch the Demo')]}),
+  h(Q.LogoCarousel, {title: 'Trusted by Over 10,000 Customers Worldwide', logos: LOGOS}),
+  h(Q.Stats, {layout: 'cards', items: STATS}),
+  h(Q.GeneralContent, {eyebrow: 'Risk Operations Center', title: 'See Your Risk in One Place, Then Act on It', body: 'Bring vulnerability, misconfiguration and threat data together, score it by business impact and send the fixes that matter most to the right teams.', media: {}, actions: [h(Q.Button, {key: 'p'}, 'Explore ROC'), h(Q.TextLink, {key: 't', tone: 'neutral', arrow: true, href: '#'}, 'Read the Datasheet')]}),
+  sectionHead('Latest Resources'),
+  h(Q.Carousel, {label: 'Latest resources'}, [0, 1, 2, 3, 4, 5].map(res)),
+  h(Q.TestimonialCarousel, {size: 'sm', items: STORIES}),
+  h(Q.CtaModule, {form: FORM, media: {src: OFFICE}}),
+  h(Q.Footer, PROPS)));
+</script>
+</body>
+</html>

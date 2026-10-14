@@ -44,6 +44,7 @@ Both menu kinds use the same sizes, so moving between Platform, Solutions and th
 
 **Column dropdown**
 
+- **Position:** the card opens directly under its own item, with its text lined up under the item's label. Near the right edge it slides left just enough to stay 16px inside the window. (The mega menu is wider and stays centred under the bar.)
 - Each column is 340px: an eyebrow over a rule, then links 16px apart. They hover like the mega menu's links: blue label, blue arrow.
 
 **Search panel**

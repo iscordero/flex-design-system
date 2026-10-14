@@ -18,8 +18,8 @@ Each event: `{ id, title, type, format, start, end, time, href, image, flag, spe
 
 Shared parts:
 
-- **Toolbar,** on `surface-neutral-100`, 36px above and below (`spacing-3xl`): a line SearchBar (432px) on the left; on the right a FilterBar with "Event Type" and "Format" and "Reset Filters". Search and filters apply to all three views.
-- **Body,** on `surface-neutral-300`, 36px above and below, on the 1140px column.
+- **Toolbar,** on the page background (`surface-neutral-200`) with a `stroke-neutral-400` rule under it, 36px above and below (`spacing-3xl`): a line SearchBar (432px) on the left; on the right a FilterBar with "Event Type" and "Format" and "Reset Filters". Search and filters apply to all three views.
+- **Body,** on the page background, 36px above and below, on the 1140px column.
 - **Heading row:** the month in `h2` (Wix Madefor Text SemiBold 38px), then the previous / next buttons (48 × 50px, joined, white, `radius-rg`). On the right, "View" and the three-button toggle (list, month, grid); the chosen one is `qualys-blue` with a white icon.
 - The grid view has no month; its heading is "Browse Events".
 

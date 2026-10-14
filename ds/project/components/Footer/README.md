@@ -4,7 +4,7 @@ The site footer from the Figma Footer file: Charcoal, with the Qualys shield in 
 
 **Provide:** `logoSrc` (the shield from Logos), `heading`, `body`, `form` (`{ placeholder, buttonLabel, action or onSubmit }`), `social` (`{ network, href, label }`), `columns` (`{ title, links }`), `copyright` and `legal` links.
 
-- **Ground:** `surface-neutral-600`. A 402 × 40px notch rises from the top edge, centred; the shield (75px wide) sits 15px below it. Content is 1140px wide.
+- **Ground:** `surface-neutral-600`. A 402 × 40px notch rises from the top edge, centred, on a strip of the page ground (`surface-neutral-200`) built into the footer; the shield (75px wide) sits 15px below it. Content is 1140px wide.
 - **Rules:** a 1px `stroke-neutral-500` rule under the shield (48px below it, `spacing-4xl`) and another above the legal line.
 - **Lead block (left, up to 512px):** the heading in `h3` (SemiBold 24px, `text-inverted`); 24px; the body in `paragraph-md` (18px) Rhino; 36px; the form; 36px; the social links.
 - **Form:** 472 × 54px, `radius-rg`, white at 20%, placeholder in white 16px. The submit button is 56 × 42px, `button-bg-primary-default`, `radius-media` (8px) corners, a chevron and a soft shadow; give it a `buttonLabel` for screen readers.

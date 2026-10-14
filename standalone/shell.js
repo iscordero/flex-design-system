@@ -891,6 +891,39 @@
     if (u) img.src = u;
   });
 
+  /* Example page: one frame at the chosen device's size. It scrolls inside, like a browser window; it is scaled down only to fit the column. */
+  var ex = { frame: null, w: 1440, h: 900 };
+  function fitExample() {
+    var stage = document.querySelector('.ds-devstage'), box = stage && stage.querySelector('.ds-devfit');
+    if (!box || !ex.frame) return;
+    var cw = stage.clientWidth, sc = Math.min(1, cw / ex.w);
+    box.style.width = Math.round(ex.w * sc) + 'px'; box.style.height = Math.round(ex.h * sc) + 'px';
+    ex.frame.style.width = ex.w + 'px'; ex.frame.style.height = ex.h + 'px';
+    ex.frame.style.transform = sc === 1 ? 'none' : 'scale(' + sc + ')';
+    var note = document.getElementById('ds-devnote');
+    if (note) note.textContent = sc < 1 ? 'Shown at ' + Math.round(sc * 100) + '% to fit this column. Open it in a new tab to see it at full size, and resize the window to watch it respond.' : 'Shown at actual size.';
+  }
+  function showExample() {
+    var stage = document.querySelector('.ds-devstage'), c = byName.ExamplePage;
+    if (!stage || !c) return;
+    if (!ex.frame) {
+      var f = document.createElement('iframe');
+      f.title = 'Example page';
+      f.srcdoc = compose(c);
+      ex.frame = f;
+      stage.querySelector('.ds-devfit').appendChild(f);
+      Array.prototype.forEach.call(document.querySelectorAll('.ds-dev'), function (b) {
+        b.addEventListener('click', function () {
+          ex.w = +b.getAttribute('data-w'); ex.h = +b.getAttribute('data-h');
+          Array.prototype.forEach.call(document.querySelectorAll('.ds-dev'), function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+          fitExample();
+        });
+      });
+      window.addEventListener('resize', fitExample);
+    }
+    fitExample();
+  }
+
   /* Views: one section shows at a time; the address keeps a plain token (#guide-2, #c-Button). */
   var views = Array.prototype.slice.call(document.querySelectorAll('.ds-view'));
   var rail = document.getElementById('ds-rail');
@@ -910,6 +943,7 @@
     /* Size the stages now, so a jump to a card lands in the right place. */
     Array.prototype.forEach.call(view.querySelectorAll('.ds-stage[data-c]'), function (el) { var st = stages[el.getAttribute('data-c')]; if (st) fit(st); });
     if (view.querySelector('img[data-blob]')) fillAssets();
+    if (viewId === 'example') showExample();
     Array.prototype.forEach.call(rail.querySelectorAll('a[href^="#"]'), function (a) {
       var t = a.getAttribute('href').slice(1);
       if (t === token || (t === viewId && !rail.querySelector('a[href="#' + token + '"]'))) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');

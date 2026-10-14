@@ -1266,6 +1266,15 @@
       setBar(function (b) { return b.show && b.left === left && b.width === width ? b : { left: left, width: width, show: true, slide: slide }; });
     }
     React.useLayoutEffect(measureBar, [target, items.length, layout]);
+    /* A column dropdown opens under its own item; if it would run past the window's right edge, it slides left just enough to fit. */
+    React.useLayoutEffect(function () {
+      var box = deskRef.current; if (!box) return;
+      Array.prototype.forEach.call(box.querySelectorAll('.q-nav__panel--cols'), function (el) {
+        el.style.marginLeft = '';
+        var r = el.getBoundingClientRect(), vw = document.documentElement.clientWidth, edge = 16;
+        if (r.right > vw - edge) el.style.marginLeft = Math.round(vw - edge - r.right) + 'px';
+      });
+    }, [open, closing, layout]);
     React.useEffect(function () {
       window.addEventListener('resize', measureBar);
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(measureBar);
@@ -1281,7 +1290,7 @@
       if (!m) return h('li', { key: i, className: 'q-nav__item' },
         h('a', { ref: function (el) { linkRefs.current[i] = el; }, className: cx('q-nav__link', isCurrent(it) && 'is-current'), href: it.href || '#', 'aria-current': isCurrent(it) ? 'page' : undefined, onClick: function () { setPicked(i); setOpen(null); } }, it.label));
       /* Hovering an item opens its menu, unless the search panel is open: someone may be typing. */
-      return h('li', { key: i, className: 'q-nav__item', onMouseEnter: p.hover === false ? undefined : function () { if (open !== 'search') setOpen(i); } },
+      return h('li', { key: i, className: cx('q-nav__item', !m.groups && 'q-nav__item--drop'), onMouseEnter: p.hover === false ? undefined : function () { if (open !== 'search') setOpen(i); } },
         h('button', {
           ref: function (el) { linkRefs.current[i] = el; },
           type: 'button', className: cx('q-nav__link', (isOpen || isCurrent(it)) && 'is-current', isOpen && 'is-open'), 'aria-expanded': isOpen ? 'true' : 'false', 'aria-controls': pid,
