@@ -1,11 +1,11 @@
-<!-- @dsCard group="Page modules · Example page" height=4556 width=1440 subtitle="Example page · A page built only from the system’s modules: banner, nav, hero, logos, stats, content, resources, stories, a form and the footer." -->
+<!-- @dsCard group="Page modules · Example page" height=8484 width=1440 subtitle="Example page · A page built only from the system’s modules, in page order: nav, hero, logos, content, stats, tabs, accordion, cards, media, stories, banner, comparison, resources, a form and the footer." -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>Example page</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-200)}.ex-head{padding-bottom:0}.ex-head .q-copy__title{margin:0}</style>
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-200)}.ex-head{padding-bottom:0}.ex-head .q-copy__title{margin:0}.ex-story{max-width:939px;margin-inline:auto}</style>
 </head>
 <body>
 <div id="root"></div>
@@ -55,7 +55,6 @@ var LOGOS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(L);
 var D = 'Lorem ipsum dolor sit amet consectetur sollicitudin.';
 var STATS = [{icon: ICON.detect, value: '150', suffix: '%', label: 'Faster Detection', description: D}, {icon: ICON.threat, value: '10', suffix: 'x', label: 'Less Zero-day Threats', description: D}, {icon: ICON.measure, value: '99.99', suffix: '%', label: 'More Accurate Scanning', description: D}];
 var QUOTE = '\u201cLorem ipsum dolor sit adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut et enim ad minim veniam.\u201d';
-var STORIES = [0, 1, 2, 3].map(function (n) { var l = L(n); return {logo: l.src, logoAlt: l.alt, quote: QUOTE, name: 'Jonathan Doe', company: 'Qualys', link: {label: 'Read the Story', href: '#'}}; });
 function res(i) { return h(Q.ResourceCard, {key: i, href: '#', flag: i === 0 ? 'New' : undefined, resourceType: ['Whitepaper', 'Analyst Report', 'Datasheet', 'Webinar', 'Blog'][i % 5], title: 'This is a Resource Title Lorem Ipsum Dolor', date: 'Dec 10, 2025'}); }
 var FORM = {logoSrc: SHIELD, title: ['Like What You\u2019re Seeing?', h('br', {key: 'b'}), 'Try Qualys For Free'],
   fields: [{name: 'email', label: 'Work Email', type: 'email', required: true}, {name: 'firstName', label: 'First Name', required: true, half: true}, {name: 'lastName', label: 'Last Name', required: true, half: true}, {name: 'company', label: 'Company Name', required: true}],
@@ -73,17 +72,41 @@ var PROPS = {
   copyright: '\u00a9 2025 Qualys, Inc. All rights reserved.',
   legal: ['Privacy Policy', 'Accessibility', 'Notice at Collection', 'Trust', 'Cookie Consent', 'Do Not Share - Privacy Portal']
 };
+var ICONS = {cloud: '/_blob/dacda2a3a9a5a660aa21c4aa3d9a2578', risk: '/_blob/9c45307ba346d1999697cad5e415dc64', compliance: '/_blob/afc380121ab10f5f48e6152e0a616c5e'};
+var TB = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation consectetur adipiscing elit.';
+var TABS = [
+  {label: 'Measure', title: 'Measure Cyber Risk Across Every Attack Surface', body: TB, media: {}, actions: [h(Q.Button, {key: 'p'}, 'Explore VMDR')]},
+  {label: 'Communicate', title: 'Communicate Cyber Risk in Business Terms', body: TB, media: {}, actions: [h(Q.Button, {key: 'p'}, 'See TruRisk Scoring'), h(Q.Button, {key: 's', variant: 'secondary'}, 'Read the Datasheet')]},
+  {label: 'Eliminate', title: 'Eliminate the Risk That Matters Most', body: TB, media: {}, actions: [h(Q.Button, {key: 'p'}, 'Explore TruRisk Eliminate'), h(Q.TextLink, {key: 't', tone: 'neutral', arrow: true, href: '#'}, 'Watch the Demo')]}];
+var ACOPY = 'The Qualys Enterprise TruRisk Platform brings asset discovery, risk scoring and remediation into one place, so security and IT work from the same picture of what to fix first.';
+var ROWS = ['Cloud Security', 'Threat Detection', 'Risk Measurement', 'Prioritization', 'Risk Elimination', 'Compliance'].map(function (t, i) { return {id: 'r' + i, title: t, icon: ICONS.cloud, content: ACOPY, cta: {label: 'Learn More', href: '#'}}; });
+var CD = 'Lorem ipsum dolor sit amet consectetur. Faucibus nulla vitae ipsum vitae scelerisque turpis.';
+var CARDS = [[ICONS.cloud, 'See Every Asset in One Place'], [ICON.detect, 'Detect Threats as They Emerge'], [ICONS.risk, 'Prioritize the Risk That Matters'], [ICONS.compliance, 'Stay Audit Ready All Year']].map(function (c) { return {href: '#', icon: c[0], title: c[1], description: CD, cta: 'Learn More'}; });
+var COLS = [{id: 'qualys', name: 'Qualys', logo: LOGO, subtitle: 'Enterprise TruRisk'}, {id: 'a', name: 'Competitor A', subtitle: 'Optional Subheading'}, {id: 'b', name: 'Competitor B', subtitle: 'Optional Subheading'}, {id: 'c', name: 'Competitor C', subtitle: 'Optional Subheading'}];
+var SECTIONS = [
+  {title: 'Asset Coverage', open: true, rows: [['IT Assets', 1, 1, 1, 0], ['Cloud Assets', 1, 1, 1, 0], ['Containers', 1, 1, 0, 1], ['Mobile Devices', 1, 0, 0, 1], ['Web Applications', 1, 1, 1, 0], ['External Attack Surface', 1, 0, 0, 0]]},
+  {title: 'Risk Prioritization', rows: [['Business-Impact Scoring', 1, 0, 1, 0], ['Threat Intelligence', 1, 1, 1, 1], ['Exploit Prediction', 1, 0, 0, 1]]},
+  {title: 'Remediation', rows: [['Patch Management', 1, 0, 0, 1], ['Mitigation Without Patching', 1, 0, 0, 0], ['Ticketing Integrations', 1, 1, 1, 1]]}];
+var STORY = {logo: LOGOS[1].src, logoAlt: LOGOS[1].alt, quote: QUOTE, name: 'Jonathan Doe', company: 'Qualys', link: {label: 'Read the Story', href: '#'}};
+/* A single story sits centred at the Large card's width (939px), as in the Figma frames. */
+function wrap(node, label) { return h('section', {className: 'q-section', 'aria-label': label}, h('div', {className: 'q-section__inner'}, h('div', {className: 'ex-story'}, node))); }
 function sectionHead(t) { return h('section', {className: 'q-section'}, h('div', {className: 'q-section__inner ex-head'}, h('h2', {className: 'q-copy__title'}, t))); }
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
-  h(Q.NavBanner, {title: 'Join your peers at ROCon', meta: ['November 18-20', 'Mumbai'], cta: {label: 'Register Now', href: '#'}}),
   h(Q.Nav, {logoSrc: LOGO, items: ITEMS, current: 'Platform', utility: [{label: 'Community', collapse: true}, 'Login', {label: 'Contact Us', collapse: true}], search: {placeholder: 'Search qualys.com', suggestions: ['VMDR', 'TotalCloud', 'Patch Management', 'Agentic AI']}, cta: {label: 'Get Started', href: '#'}}),
   h(Q.Hero, {size: 'rg', eyebrow: 'Enterprise TruRisk Platform', title: 'Measure, Communicate and Eliminate Cyber Risk', body: 'One platform to see every asset, prioritise what matters and fix it fast, across on-premises, cloud and endpoints.', background: {src: BUILDING}, actions: [h(Q.Button, {key: 'p'}, 'Get Started'), h(Q.TextLink, {key: 't', tone: 'inverted', arrow: true, href: '#'}, 'Watch the Demo')]}),
   h(Q.LogoCarousel, {title: 'Trusted by Over 10,000 Customers Worldwide', logos: LOGOS}),
-  h(Q.Stats, {layout: 'cards', items: STATS}),
   h(Q.GeneralContent, {eyebrow: 'Risk Operations Center', title: 'See Your Risk in One Place, Then Act on It', body: 'Bring vulnerability, misconfiguration and threat data together, score it by business impact and send the fixes that matter most to the right teams.', media: {}, actions: [h(Q.Button, {key: 'p'}, 'Explore ROC'), h(Q.TextLink, {key: 't', tone: 'neutral', arrow: true, href: '#'}, 'Read the Datasheet')]}),
+  h(Q.Stats, {layout: 'cards', items: STATS}),
+  h(Q.TabModule, {items: TABS, label: 'TruRisk steps'}),
+  h(Q.AccordionModule, {title: 'One Platform for Every Attack Surface', items: ROWS, defaultOpen: 0}),
+  h(Q.CardModule, {eyebrow: 'Why Qualys', title: 'Built for Security and IT Teams', items: CARDS}),
+  h(Q.GeneralContent, {layout: 'full', media: {src: OFFICE}}),
+  wrap(h(Q.TestimonialCard, STORY), 'Customer story'),
+  h(Q.GeneralContent, {layout: 'banner', title: 'Join Your Peers at ROCon', body: 'Three days of talks, labs and roadmaps from the people who run risk operations every day.', actions: h(Q.Button, null, 'Register Now'), media: {src: BUILDING}}),
+  wrap(h(Q.TestimonialCard, Object.assign({}, STORY, {logo: LOGOS[2].src, logoAlt: LOGOS[2].alt, video: {video: true, src: OFFICE}})), 'Video story'),
+  h(Q.FeatureMatrix, {title: 'How Qualys Compares', subtitle: 'Coverage, prioritization and remediation in one platform', columns: COLS, sections: SECTIONS}),
   sectionHead('Latest Resources'),
   h(Q.Carousel, {label: 'Latest resources'}, [0, 1, 2, 3, 4, 5].map(res)),
-  h(Q.TestimonialCarousel, {size: 'sm', items: STORIES}),
   h(Q.CtaModule, {form: FORM, media: {src: OFFICE}}),
   h(Q.Footer, PROPS)));
 </script>

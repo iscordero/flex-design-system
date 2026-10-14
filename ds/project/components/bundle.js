@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"Qualys","components":[{"name":"Button"},{"name":"Hyperlink"},{"name":"SocialButton"},{"name":"TextLink"},{"name":"BlogCard"},{"name":"Card"},{"name":"InlinePromoCard"},{"name":"IntegrationCard"},{"name":"ResourceCard"},{"name":"WebinarCard"},{"name":"Carousel"},{"name":"LogoCarousel"},{"name":"LogoHierarchy"},{"name":"TestimonialCard"},{"name":"TestimonialCarousel"},{"name":"AppliedFilters"},{"name":"FilterBar"},{"name":"FilterButton"},{"name":"FilterChip"},{"name":"FilterChipGroup"},{"name":"FilterDrawer"},{"name":"FilterDropdown"},{"name":"Checkbox"},{"name":"DemoRequestWizard"},{"name":"Form"},{"name":"FormModal"},{"name":"Radio"},{"name":"SearchBar"},{"name":"Select"},{"name":"TextField"},{"name":"Toggle"},{"name":"Flag"},{"name":"Icon"},{"name":"Marker"},{"name":"Tag"},{"name":"Breadcrumbs"},{"name":"Footer"},{"name":"Nav"},{"name":"NavBanner"},{"name":"AlertDialog"},{"name":"CookieBanner"},{"name":"ExitIntent"},{"name":"HoverCard"},{"name":"Modal"},{"name":"NotificationBar"},{"name":"Overlay"},{"name":"SessionTimeout"},{"name":"SuccessConfirmation"},{"name":"Toast"},{"name":"ToastStack"},{"name":"Tooltip"},{"name":"CtaModule"},{"name":"EventCalendar"},{"name":"EventCard"},{"name":"EventType"},{"name":"FormBanner"},{"name":"GeneralContent"},{"name":"Hero"},{"name":"Media"},{"name":"TypographicHeader"},{"name":"Avatar"},{"name":"ProfileCard"},{"name":"ProfileGrid"},{"name":"ProfileModal"},{"name":"StatCard"},{"name":"Stats"},{"name":"DetailComparison"},{"name":"FeatureMatrix"},{"name":"MarketingTable"},{"name":"Accordion"},{"name":"AccordionModule"},{"name":"Drawer"},{"name":"DrawerCard"},{"name":"TabModule"},{"name":"Tabs"}]} */
+/* @ds-bundle: {"format":4,"namespace":"Qualys","components":[{"name":"Button"},{"name":"Hyperlink"},{"name":"SocialButton"},{"name":"TextLink"},{"name":"BlogCard"},{"name":"Card"},{"name":"InlinePromoCard"},{"name":"IntegrationCard"},{"name":"ResourceCard"},{"name":"WebinarCard"},{"name":"Carousel"},{"name":"LogoCarousel"},{"name":"LogoHierarchy"},{"name":"TestimonialCard"},{"name":"TestimonialCarousel"},{"name":"AppliedFilters"},{"name":"FilterBar"},{"name":"FilterButton"},{"name":"FilterChip"},{"name":"FilterChipGroup"},{"name":"FilterDrawer"},{"name":"FilterDropdown"},{"name":"Checkbox"},{"name":"DemoRequestWizard"},{"name":"Form"},{"name":"FormModal"},{"name":"Radio"},{"name":"SearchBar"},{"name":"Select"},{"name":"TextField"},{"name":"Toggle"},{"name":"Flag"},{"name":"Icon"},{"name":"Marker"},{"name":"Tag"},{"name":"Breadcrumbs"},{"name":"Footer"},{"name":"Nav"},{"name":"NavBanner"},{"name":"AlertDialog"},{"name":"CookieBanner"},{"name":"ExitIntent"},{"name":"HoverCard"},{"name":"Modal"},{"name":"NotificationBar"},{"name":"Overlay"},{"name":"SessionTimeout"},{"name":"SuccessConfirmation"},{"name":"Toast"},{"name":"ToastStack"},{"name":"Tooltip"},{"name":"CtaModule"},{"name":"EventCalendar"},{"name":"EventCard"},{"name":"EventType"},{"name":"FormBanner"},{"name":"GeneralContent"},{"name":"Hero"},{"name":"Media"},{"name":"TypographicHeader"},{"name":"Avatar"},{"name":"ProfileCard"},{"name":"ProfileGrid"},{"name":"ProfileModal"},{"name":"StatCard"},{"name":"Stats"},{"name":"CardModule"},{"name":"DetailComparison"},{"name":"FeatureMatrix"},{"name":"MarketingTable"},{"name":"Accordion"},{"name":"AccordionModule"},{"name":"Drawer"},{"name":"DrawerCard"},{"name":"TabModule"},{"name":"Tabs"}]} */
 (function () {
   var React = window.React;
   var h = React.createElement;
@@ -1104,6 +1104,21 @@
       : h('div', { className: cx('q-stats__panel', outline && 'q-stats__panel--outline') }, items.map(function (it, i) { return statBody(Object.assign({ countUp: p.countUp }, it), i); }));
     return h('section', { className: cx('q-section', 'q-stats', 'q-stats--' + size, p.className), id: p.id, 'aria-label': p.label },
       h('div', { className: 'q-section__inner' }, inner));
+  }
+
+  /* CardModule — the Figma Card Module: an optional copy block, then 1–4 Cards in a row (six make 3 × 2). Tablet: four become 2 × 2. Mobile: one column. */
+  function CardModule(p) {
+    var items = p.items || [], n = items.length;
+    var cols = p.columns || (n <= 4 ? n : n % 3 === 0 ? 3 : 4);
+    cols = Math.max(1, Math.min(4, cols));
+    var hasCopy = p.eyebrow || p.title || p.body || p.actions;
+    var level = p.titleLevel || 2;
+    return h('section', { className: cx('q-section', 'q-cardmod', p.align === 'center' && 'q-cardmod--center', p.className), id: p.id, 'aria-label': hasCopy ? undefined : p.label },
+      h('div', { className: 'q-section__inner' },
+        hasCopy ? h('div', { className: 'q-copy q-cardmod__copy' }, copyParts(p, level)) : null,
+        h('div', { className: cx('q-cardmod__grid', 'q-cardmod__grid--' + cols) }, items.map(function (it, i) {
+          return h(Card, Object.assign({ key: it.key || i, headingLevel: level + 1 }, it));
+        }))));
   }
 
   /* InlinePromoCard — promo on Charcoal or the blue gradient: logo, image or icon, heading, copy, one CTA. */
@@ -2822,7 +2837,7 @@
   window.Qualys = Object.assign(window.Qualys || {}, {
     Button: Button, TextLink: TextLink, Hyperlink: Hyperlink, Breadcrumbs: Breadcrumbs, SocialButton: SocialButton, Icon: Icon, Tag: Tag, FilterChip: FilterChip, Flag: Flag, Marker: Marker, EventType: EventType, Tabs: Tabs, Drawer: Drawer, DrawerCard: DrawerCard, Accordion: Accordion, Avatar: Avatar, ProfileCard: ProfileCard, ProfileModal: ProfileModal, ProfileGrid: ProfileGrid, TextField: TextField, Select: Select, FilterDropdown: FilterDropdown, FilterChipGroup: FilterChipGroup, AppliedFilters: AppliedFilters, FilterButton: FilterButton, FilterBar: FilterBar, FilterDrawer: FilterDrawer, SearchBar: SearchBar, Checkbox: Checkbox, Radio: Radio, Toggle: Toggle, Form: Form,
     Card: Card, IntegrationCard: IntegrationCard, EventCard: EventCard, WebinarCard: WebinarCard, ResourceCard: ResourceCard, BlogCard: BlogCard, InlinePromoCard: InlinePromoCard, StatCard: StatCard,
-    Nav: Nav, NavBanner: NavBanner, Media: Media, Hero: Hero, TypographicHeader: TypographicHeader, GeneralContent: GeneralContent, TabModule: TabModule, AccordionModule: AccordionModule, CtaModule: CtaModule, Stats: Stats, Carousel: Carousel, TestimonialCard: TestimonialCard, TestimonialCarousel: TestimonialCarousel, LogoCarousel: LogoCarousel, LogoHierarchy: LogoHierarchy, EventCalendar: EventCalendar, Footer: Footer,
+    Nav: Nav, NavBanner: NavBanner, Media: Media, Hero: Hero, TypographicHeader: TypographicHeader, GeneralContent: GeneralContent, TabModule: TabModule, AccordionModule: AccordionModule, CtaModule: CtaModule, Stats: Stats, CardModule: CardModule, Carousel: Carousel, TestimonialCard: TestimonialCard, TestimonialCarousel: TestimonialCarousel, LogoCarousel: LogoCarousel, LogoHierarchy: LogoHierarchy, EventCalendar: EventCalendar, Footer: Footer,
     FeatureMatrix: FeatureMatrix, DetailComparison: DetailComparison, MarketingTable: MarketingTable, HoverCard: HoverCard, FormBanner: FormBanner,
     Overlay: Overlay, Modal: Modal, FormModal: FormModal, AlertDialog: AlertDialog, SessionTimeout: SessionTimeout, SuccessConfirmation: SuccessConfirmation, ExitIntent: ExitIntent, DemoRequestWizard: DemoRequestWizard, Toast: Toast, ToastStack: ToastStack, NotificationBar: NotificationBar, CookieBanner: CookieBanner, Tooltip: Tooltip
   });

@@ -131,7 +131,8 @@
         "GeneralContent",
         "TabModule",
         "AccordionModule",
-        "Stats"
+        "Stats",
+        "CardModule"
       ]
     ],
     [
@@ -215,6 +216,7 @@
     "ProfileGrid": "Pattern",
     "StatCard": "Component",
     "Stats": "Block module",
+    "CardModule": "Block module",
     "Carousel": "Block module",
     "TestimonialCard": "Component",
     "TestimonialCarousel": "Block module",
@@ -382,7 +384,8 @@
             "GeneralContent",
             "TabModule",
             "AccordionModule",
-            "Stats"
+            "Stats",
+            "CardModule"
           ]
         ],
         [

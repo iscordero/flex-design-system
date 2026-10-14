@@ -560,9 +560,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-14T01:54:05Z",
+    "at": "2026-10-14T02:33:19Z",
     "by": "Isabel",
-    "note": "Content column widened to 1440px (content-max = container-max) for the nav, footer and every module. NavBanner: one 16px size, dividers between title, date and place. Nav logo on the labels' baseline.",
+    "note": "Added the Card Module (1–4 cards in a row, 3 × 2). Headings now balance their lines and paragraphs avoid one-word last lines. Example page rebuilt in page order. Single testimonial cards stack on mobile.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

@@ -24,6 +24,14 @@
   .stat-md { font-size: 38px; }
 }
 
+/* ── Line breaks ── */
+/* Headings balance their lines, so a title never ends on one short word ("…Then Act on / It"). Body copy uses pretty wrapping, which avoids a one-word last line.
+   Browsers without text-wrap fall back to normal wrapping. A <br> or a non-breaking space in the copy still wins. */
+:where([class^="q-"], [class*=" q-"]) :is(h1, h2, h3, h4, h5, h6),
+:where([class*="__title"], [class*="__heading"], [class*="__name"], .q-copy__eyebrow) { text-wrap: balance; }
+:where([class^="q-"], [class*=" q-"]) p,
+:where(.q-copy__body, [class*="__desc"], [class*="__quote"], [class*="__text"]) { text-wrap: pretty; }
+
 /* ── Layout: container and column grid (Figma layout frames) ── */
 /* The content well (inside the padding) stops growing at container-max (1440px); the 56px margins sit either side of it. */
 .q-container { box-sizing: border-box; width: 100%; max-width: calc(var(--container-max) + 2 * var(--margin-desktop)); margin-inline: auto; padding-inline: var(--margin-desktop); }
@@ -682,6 +690,32 @@ a.q-tag--text:focus-visible { outline: none; box-shadow: var(--focus-ring); bord
   .q-pmodal--inline .q-pmodal__panel { max-height: none; border-radius: var(--radius-lg); }
 }
 @media (prefers-reduced-motion: reduce) { .q-pmodal, .q-pmodal__panel { animation: none; } .q-pcard__open { transition: none; } }
+
+/* ── Card Module (Figma: Card Module) ── */
+/* Copy block, 48px, then the cards. 1–4 across; six sit 3 × 2. The cards in a row share one height, and each card's text link sits on the same line at the bottom. */
+.q-cardmod__copy { max-width: 800px; margin-bottom: var(--spacing-3xl); }
+.q-cardmod--center .q-cardmod__copy { margin-inline: auto; text-align: center; }
+.q-cardmod--center .q-copy__actions { justify-content: center; }
+.q-cardmod .q-copy__eyebrow + .q-copy__title { margin-top: var(--spacing-5xs); }
+.q-cardmod .q-copy__body { margin-top: var(--spacing-rg); }
+.q-cardmod__grid { display: grid; gap: var(--gutter, 24px); grid-template-columns: repeat(var(--q-cols, 1), minmax(0, 1fr)); }
+.q-cardmod__grid--2 { --q-cols: 2; }
+.q-cardmod__grid--3 { --q-cols: 3; }
+.q-cardmod__grid--4 { --q-cols: 4; }
+/* One card on its own takes one column of three, so its lines stay a readable length. */
+.q-cardmod__grid--1 { --q-cols: 3; }
+.q-cardmod--center .q-cardmod__grid--1 > * { grid-column: 2; }
+.q-cardmod .q-scard__text { flex: 1 1 auto; }
+@container (max-width: 1023px) {
+  .q-cardmod__grid--4 { --q-cols: 2; }
+  .q-cardmod__grid--1 { --q-cols: 2; }
+  .q-cardmod--center .q-cardmod__grid--1 > * { grid-column: 1 / -1; justify-self: center; width: calc(50% - var(--gutter, 24px) / 2); }
+}
+@container (max-width: 767px) {
+  .q-cardmod__copy { margin-bottom: var(--spacing-xl); }
+  .q-cardmod__grid { --q-cols: 1 !important; }
+  .q-cardmod--center .q-cardmod__grid--1 > * { width: auto; justify-self: stretch; }
+}
 
 /* ── Cards (Figma: Cards) ── */
 /* Shared shell: white, radius-lg, shadow-card, 16px padding. A 6px track under the padding fills with Qualys Blue on hover. */
@@ -1398,16 +1432,16 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
   .q-carousel__controls, .q-carousel--roomy .q-carousel__controls { flex-direction: column; align-items: center; gap: 24px; padding: 36px var(--spacing-lg) 24px; }
   .q-carousel__progress { flex: none; width: 100%; }
   .q-tcarousel--lg > *, .q-tcarousel--sm > *, .q-tcarousel--video > * { --q-slide: 300px; }
-  /* Same card as desktop (shadow-drawer, no outline), stacked and with tighter padding */
-  .q-tcarousel .q-tcard, .q-tcarousel .q-tcard--sm { flex-direction: column; gap: var(--spacing-rg); padding: var(--spacing-xl); }
-  .q-tcarousel .q-tcard--image { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1), var(--shadow-drawer); }
-  .q-tcarousel .q-tcard__logo { margin-bottom: var(--spacing-rg); }
-  .q-tcarousel .q-tcard__quote, .q-tcarousel .q-tcard--sm .q-tcard__quote, .q-tcarousel .q-tcard--lg .q-tcard__quote { margin-bottom: 24px; font-size: 16px; letter-spacing: -0.01em; letter-spacing: -1%; }
-  .q-tcarousel .q-tcard__foot { flex-direction: column; align-items: flex-start; }
-  .q-tcarousel .q-tcard--image { min-height: 500px; }
-  .q-tcarousel .q-tcard--image .q-tcard__content { flex: none; padding: var(--spacing-rg); }
-  .q-tcarousel .q-tcard__video { flex: none; order: -1; }
-  .q-tcarousel .q-tcard__video .q-media { min-height: 0; aspect-ratio: 16 / 9; }
+  /* Same card as desktop (shadow-drawer, no outline), stacked and with tighter padding — in the carousel or on its own in a section */
+  :is(.q-tcarousel, .q-section) .q-tcard, :is(.q-tcarousel, .q-section) .q-tcard--sm { flex-direction: column; gap: var(--spacing-rg); padding: var(--spacing-xl); }
+  :is(.q-tcarousel, .q-section) .q-tcard--image { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1), var(--shadow-drawer); }
+  :is(.q-tcarousel, .q-section) .q-tcard__logo { margin-bottom: var(--spacing-rg); }
+  :is(.q-tcarousel, .q-section) .q-tcard__quote, :is(.q-tcarousel, .q-section) .q-tcard--sm .q-tcard__quote, :is(.q-tcarousel, .q-section) .q-tcard--lg .q-tcard__quote { margin-bottom: 24px; font-size: 16px; letter-spacing: -0.01em; letter-spacing: -1%; }
+  :is(.q-tcarousel, .q-section) .q-tcard__foot { flex-direction: column; align-items: flex-start; }
+  :is(.q-tcarousel, .q-section) .q-tcard--image { min-height: 500px; }
+  :is(.q-tcarousel, .q-section) .q-tcard--image .q-tcard__content { flex: none; padding: var(--spacing-rg); }
+  :is(.q-tcarousel, .q-section) .q-tcard__video { flex: none; order: -1; }
+  :is(.q-tcarousel, .q-section) .q-tcard__video .q-media { min-height: 0; aspect-ratio: 16 / 9; }
   .q-logos > .q-section__inner { padding-block: var(--spacing-lg); }
   .q-logos--carousel > .q-logos__head { padding-bottom: 32px; }
   /* mobile="stack" (default): two still columns, up to mobileMax logos */

@@ -562,6 +562,26 @@ export interface StatsProps {
 }
 export declare function Stats(props: StatsProps): React.ReactElement;
 
+export interface CardModuleProps {
+  /** the cards: Card props, usually icon, title, description and cta */
+  items: CardProps[];
+  eyebrow?: string;
+  title?: React.ReactNode;
+  body?: React.ReactNode;
+  actions?: React.ReactNode;
+  /** cards per row on desktop; default 1–4 by count, 3 for six, 4 for eight */
+  columns?: 1 | 2 | 3 | 4;
+  /** 'left' (default) or 'center' for the copy block (and a single card) */
+  align?: 'left' | 'center';
+  /** heading level of the module title (default 2); card titles sit one below it */
+  titleLevel?: 2 | 3 | 4;
+  /** accessible name when there is no title */
+  label?: string;
+  id?: string;
+  className?: string;
+}
+export declare function CardModule(props: CardModuleProps): React.ReactElement;
+
 export interface InlinePromoCardProps {
   /** 'light' = the blue gradient (default); 'dark' = Charcoal */
   color?: 'light' | 'dark';

@@ -1,0 +1,31 @@
+<!-- @dsCard group="Page modules · Content sections" height=4429 width=1440 subtitle="Block module · Cards 1 to 4 in a row and 3 × 2, with a copy block or without; then tablet and mobile." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CardModule — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+var ICON = {cloud: '/_blob/dacda2a3a9a5a660aa21c4aa3d9a2578', detect: '/_blob/bdcd7cc4b2bbc39f3f0aba2ee1b6ea8e', threat: '/_blob/e594a6d966d00d9ea5bb37fd3d806358', measure: '/_blob/08a9d26a3a902a648c904b65297a8cb7', risk: '/_blob/9c45307ba346d1999697cad5e415dc64', compliance: '/_blob/afc380121ab10f5f48e6152e0a616c5e'};
+var D = 'Lorem ipsum dolor sit amet consectetur. Faucibus nulla vitae ipsum vitae scelerisque turpis.';
+var ICONS = [ICON.cloud, ICON.detect, ICON.threat, ICON.measure, ICON.risk, ICON.compliance];
+function cards(n) { var a = []; for (var i = 0; i < n; i++) a.push({href: '#', icon: ICONS[i % 6], title: 'This is a Heading Lorem Ipsum Dolor', description: D, cta: 'Textlink Button'}); return a; }
+var COPY = {eyebrow: 'Enterprise TruRisk Platform', title: 'One Platform for Every Attack Surface', body: 'See every asset, score every finding the same way and fix what matters most.'};
+function cm(n, extra) { return h(Q.CardModule, Object.assign({items: cards(n), label: 'Capabilities'}, extra)); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('4 in a row, with a copy block'), cm(4, COPY),
+  cap('3 in a row'), cm(3),
+  cap('2 in a row'), cm(2),
+  cap('1 card, centred copy'), cm(1, Object.assign({align: 'center'}, COPY)),
+  cap('3 × 2'), cm(6, {title: 'Built for Security and IT Teams'}),
+  cap('Tablet — four become 2 × 2'), h('div', {className: 'tablet'}, cm(4)),
+  cap('Mobile'), h('div', {className: 'phones'}, h('div', {className: 'phone'}, cm(3, COPY)))));
+</script>
+</body>
+</html>

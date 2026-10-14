@@ -208,6 +208,14 @@
   .stat-md { font-size: 38px; }
 }
 
+/* ── Line breaks ── */
+/* Headings balance their lines, so a title never ends on one short word ("…Then Act on / It"). Body copy uses pretty wrapping, which avoids a one-word last line.
+   Browsers without text-wrap fall back to normal wrapping. A <br> or a non-breaking space in the copy still wins. */
+:where([class^="q-"], [class*=" q-"]) :is(h1, h2, h3, h4, h5, h6),
+:where([class*="__title"], [class*="__heading"], [class*="__name"], .q-copy__eyebrow) { text-wrap: balance; }
+:where([class^="q-"], [class*=" q-"]) p,
+:where(.q-copy__body, [class*="__desc"], [class*="__quote"], [class*="__text"]) { text-wrap: pretty; }
+
 /* ── Layout: container and column grid (Figma layout frames) ── */
 /* The content well (inside the padding) stops growing at container-max (1440px); the 56px margins sit either side of it. */
 .q-container { box-sizing: border-box; width: 100%; max-width: calc(var(--container-max) + 2 * var(--margin-desktop)); margin-inline: auto; padding-inline: var(--margin-desktop); }
@@ -866,6 +874,32 @@ a.q-tag--text:focus-visible { outline: none; box-shadow: var(--focus-ring); bord
   .q-pmodal--inline .q-pmodal__panel { max-height: none; border-radius: var(--radius-lg); }
 }
 @media (prefers-reduced-motion: reduce) { .q-pmodal, .q-pmodal__panel { animation: none; } .q-pcard__open { transition: none; } }
+
+/* ── Card Module (Figma: Card Module) ── */
+/* Copy block, 48px, then the cards. 1–4 across; six sit 3 × 2. The cards in a row share one height, and each card's text link sits on the same line at the bottom. */
+.q-cardmod__copy { max-width: 800px; margin-bottom: var(--spacing-3xl); }
+.q-cardmod--center .q-cardmod__copy { margin-inline: auto; text-align: center; }
+.q-cardmod--center .q-copy__actions { justify-content: center; }
+.q-cardmod .q-copy__eyebrow + .q-copy__title { margin-top: var(--spacing-5xs); }
+.q-cardmod .q-copy__body { margin-top: var(--spacing-rg); }
+.q-cardmod__grid { display: grid; gap: var(--gutter, 24px); grid-template-columns: repeat(var(--q-cols, 1), minmax(0, 1fr)); }
+.q-cardmod__grid--2 { --q-cols: 2; }
+.q-cardmod__grid--3 { --q-cols: 3; }
+.q-cardmod__grid--4 { --q-cols: 4; }
+/* One card on its own takes one column of three, so its lines stay a readable length. */
+.q-cardmod__grid--1 { --q-cols: 3; }
+.q-cardmod--center .q-cardmod__grid--1 > * { grid-column: 2; }
+.q-cardmod .q-scard__text { flex: 1 1 auto; }
+@container (max-width: 1023px) {
+  .q-cardmod__grid--4 { --q-cols: 2; }
+  .q-cardmod__grid--1 { --q-cols: 2; }
+  .q-cardmod--center .q-cardmod__grid--1 > * { grid-column: 1 / -1; justify-self: center; width: calc(50% - var(--gutter, 24px) / 2); }
+}
+@container (max-width: 767px) {
+  .q-cardmod__copy { margin-bottom: var(--spacing-xl); }
+  .q-cardmod__grid { --q-cols: 1 !important; }
+  .q-cardmod--center .q-cardmod__grid--1 > * { width: auto; justify-self: stretch; }
+}
 
 /* ── Cards (Figma: Cards) ── */
 /* Shared shell: white, radius-lg, shadow-card, 16px padding. A 6px track under the padding fills with Qualys Blue on hover. */
@@ -1582,16 +1616,16 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
   .q-carousel__controls, .q-carousel--roomy .q-carousel__controls { flex-direction: column; align-items: center; gap: 24px; padding: 36px var(--spacing-lg) 24px; }
   .q-carousel__progress { flex: none; width: 100%; }
   .q-tcarousel--lg > *, .q-tcarousel--sm > *, .q-tcarousel--video > * { --q-slide: 300px; }
-  /* Same card as desktop (shadow-drawer, no outline), stacked and with tighter padding */
-  .q-tcarousel .q-tcard, .q-tcarousel .q-tcard--sm { flex-direction: column; gap: var(--spacing-rg); padding: var(--spacing-xl); }
-  .q-tcarousel .q-tcard--image { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1), var(--shadow-drawer); }
-  .q-tcarousel .q-tcard__logo { margin-bottom: var(--spacing-rg); }
-  .q-tcarousel .q-tcard__quote, .q-tcarousel .q-tcard--sm .q-tcard__quote, .q-tcarousel .q-tcard--lg .q-tcard__quote { margin-bottom: 24px; font-size: 16px; letter-spacing: -0.01em; letter-spacing: -1%; }
-  .q-tcarousel .q-tcard__foot { flex-direction: column; align-items: flex-start; }
-  .q-tcarousel .q-tcard--image { min-height: 500px; }
-  .q-tcarousel .q-tcard--image .q-tcard__content { flex: none; padding: var(--spacing-rg); }
-  .q-tcarousel .q-tcard__video { flex: none; order: -1; }
-  .q-tcarousel .q-tcard__video .q-media { min-height: 0; aspect-ratio: 16 / 9; }
+  /* Same card as desktop (shadow-drawer, no outline), stacked and with tighter padding — in the carousel or on its own in a section */
+  :is(.q-tcarousel, .q-section) .q-tcard, :is(.q-tcarousel, .q-section) .q-tcard--sm { flex-direction: column; gap: var(--spacing-rg); padding: var(--spacing-xl); }
+  :is(.q-tcarousel, .q-section) .q-tcard--image { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1), var(--shadow-drawer); }
+  :is(.q-tcarousel, .q-section) .q-tcard__logo { margin-bottom: var(--spacing-rg); }
+  :is(.q-tcarousel, .q-section) .q-tcard__quote, :is(.q-tcarousel, .q-section) .q-tcard--sm .q-tcard__quote, :is(.q-tcarousel, .q-section) .q-tcard--lg .q-tcard__quote { margin-bottom: 24px; font-size: 16px; letter-spacing: -0.01em; letter-spacing: -1%; }
+  :is(.q-tcarousel, .q-section) .q-tcard__foot { flex-direction: column; align-items: flex-start; }
+  :is(.q-tcarousel, .q-section) .q-tcard--image { min-height: 500px; }
+  :is(.q-tcarousel, .q-section) .q-tcard--image .q-tcard__content { flex: none; padding: var(--spacing-rg); }
+  :is(.q-tcarousel, .q-section) .q-tcard__video { flex: none; order: -1; }
+  :is(.q-tcarousel, .q-section) .q-tcard__video .q-media { min-height: 0; aspect-ratio: 16 / 9; }
   .q-logos > .q-section__inner { padding-block: var(--spacing-lg); }
   .q-logos--carousel > .q-logos__head { padding-bottom: 32px; }
   /* mobile="stack" (default): two still columns, up to mobileMax logos */
@@ -2596,7 +2630,7 @@ c,!1,d,e);a[Ja]=b.current;sc(8===a.nodeType?a.parentNode:a);return new Xf(b)};Q.
 var d=null!=c&&c.hydratedSources||null,e=!1,f="",g=aj;null!==c&&void 0!==c&&(!0===c.unstable_strictMode&&(e=!0),void 0!==c.identifierPrefix&&(f=c.identifierPrefix),void 0!==c.onRecoverableError&&(g=c.onRecoverableError));b=Wi(b,null,a,1,null!=c?c:null,e,!1,f,g);a[Ja]=b.current;sc(a);if(d)for(a=0;a<d.length;a++)c=d[a],e=c._getVersion,e=e(c._source),null==b.mutableSourceEagerHydrationData?b.mutableSourceEagerHydrationData=[c,e]:b.mutableSourceEagerHydrationData.push(c,e);return new Ud(b)};Q.render=
 function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmountComponentAtNode=function(a){if(!Vd(a))throw Error(m(40));return a._reactRootContainer?(yb(function(){Wd(null,null,a,!1,function(){a._reactRootContainer=null;a[Ja]=null})}),!0):!1};Q.unstable_batchedUpdates=Tf;Q.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!Vd(c))throw Error(m(200));if(null==a||void 0===a._reactInternals)throw Error(m(38));return Wd(a,b,c,!1,d)};Q.version="18.3.1-next-f1338f8080-20240426"});
 })();
-</script><script>/* @ds-bundle: {"format":4,"namespace":"Qualys","components":[{"name":"Button"},{"name":"Hyperlink"},{"name":"SocialButton"},{"name":"TextLink"},{"name":"BlogCard"},{"name":"Card"},{"name":"InlinePromoCard"},{"name":"IntegrationCard"},{"name":"ResourceCard"},{"name":"WebinarCard"},{"name":"Carousel"},{"name":"LogoCarousel"},{"name":"LogoHierarchy"},{"name":"TestimonialCard"},{"name":"TestimonialCarousel"},{"name":"AppliedFilters"},{"name":"FilterBar"},{"name":"FilterButton"},{"name":"FilterChip"},{"name":"FilterChipGroup"},{"name":"FilterDrawer"},{"name":"FilterDropdown"},{"name":"Checkbox"},{"name":"DemoRequestWizard"},{"name":"Form"},{"name":"FormModal"},{"name":"Radio"},{"name":"SearchBar"},{"name":"Select"},{"name":"TextField"},{"name":"Toggle"},{"name":"Flag"},{"name":"Icon"},{"name":"Marker"},{"name":"Tag"},{"name":"Breadcrumbs"},{"name":"Footer"},{"name":"Nav"},{"name":"NavBanner"},{"name":"AlertDialog"},{"name":"CookieBanner"},{"name":"ExitIntent"},{"name":"HoverCard"},{"name":"Modal"},{"name":"NotificationBar"},{"name":"Overlay"},{"name":"SessionTimeout"},{"name":"SuccessConfirmation"},{"name":"Toast"},{"name":"ToastStack"},{"name":"Tooltip"},{"name":"CtaModule"},{"name":"EventCalendar"},{"name":"EventCard"},{"name":"EventType"},{"name":"FormBanner"},{"name":"GeneralContent"},{"name":"Hero"},{"name":"Media"},{"name":"TypographicHeader"},{"name":"Avatar"},{"name":"ProfileCard"},{"name":"ProfileGrid"},{"name":"ProfileModal"},{"name":"StatCard"},{"name":"Stats"},{"name":"DetailComparison"},{"name":"FeatureMatrix"},{"name":"MarketingTable"},{"name":"Accordion"},{"name":"AccordionModule"},{"name":"Drawer"},{"name":"DrawerCard"},{"name":"TabModule"},{"name":"Tabs"}]} */
+</script><script>/* @ds-bundle: {"format":4,"namespace":"Qualys","components":[{"name":"Button"},{"name":"Hyperlink"},{"name":"SocialButton"},{"name":"TextLink"},{"name":"BlogCard"},{"name":"Card"},{"name":"InlinePromoCard"},{"name":"IntegrationCard"},{"name":"ResourceCard"},{"name":"WebinarCard"},{"name":"Carousel"},{"name":"LogoCarousel"},{"name":"LogoHierarchy"},{"name":"TestimonialCard"},{"name":"TestimonialCarousel"},{"name":"AppliedFilters"},{"name":"FilterBar"},{"name":"FilterButton"},{"name":"FilterChip"},{"name":"FilterChipGroup"},{"name":"FilterDrawer"},{"name":"FilterDropdown"},{"name":"Checkbox"},{"name":"DemoRequestWizard"},{"name":"Form"},{"name":"FormModal"},{"name":"Radio"},{"name":"SearchBar"},{"name":"Select"},{"name":"TextField"},{"name":"Toggle"},{"name":"Flag"},{"name":"Icon"},{"name":"Marker"},{"name":"Tag"},{"name":"Breadcrumbs"},{"name":"Footer"},{"name":"Nav"},{"name":"NavBanner"},{"name":"AlertDialog"},{"name":"CookieBanner"},{"name":"ExitIntent"},{"name":"HoverCard"},{"name":"Modal"},{"name":"NotificationBar"},{"name":"Overlay"},{"name":"SessionTimeout"},{"name":"SuccessConfirmation"},{"name":"Toast"},{"name":"ToastStack"},{"name":"Tooltip"},{"name":"CtaModule"},{"name":"EventCalendar"},{"name":"EventCard"},{"name":"EventType"},{"name":"FormBanner"},{"name":"GeneralContent"},{"name":"Hero"},{"name":"Media"},{"name":"TypographicHeader"},{"name":"Avatar"},{"name":"ProfileCard"},{"name":"ProfileGrid"},{"name":"ProfileModal"},{"name":"StatCard"},{"name":"Stats"},{"name":"CardModule"},{"name":"DetailComparison"},{"name":"FeatureMatrix"},{"name":"MarketingTable"},{"name":"Accordion"},{"name":"AccordionModule"},{"name":"Drawer"},{"name":"DrawerCard"},{"name":"TabModule"},{"name":"Tabs"}]} */
 (function () {
   var React = window.React;
   var h = React.createElement;
@@ -3702,6 +3736,21 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
       : h('div', { className: cx('q-stats__panel', outline && 'q-stats__panel--outline') }, items.map(function (it, i) { return statBody(Object.assign({ countUp: p.countUp }, it), i); }));
     return h('section', { className: cx('q-section', 'q-stats', 'q-stats--' + size, p.className), id: p.id, 'aria-label': p.label },
       h('div', { className: 'q-section__inner' }, inner));
+  }
+
+  /* CardModule — the Figma Card Module: an optional copy block, then 1–4 Cards in a row (six make 3 × 2). Tablet: four become 2 × 2. Mobile: one column. */
+  function CardModule(p) {
+    var items = p.items || [], n = items.length;
+    var cols = p.columns || (n <= 4 ? n : n % 3 === 0 ? 3 : 4);
+    cols = Math.max(1, Math.min(4, cols));
+    var hasCopy = p.eyebrow || p.title || p.body || p.actions;
+    var level = p.titleLevel || 2;
+    return h('section', { className: cx('q-section', 'q-cardmod', p.align === 'center' && 'q-cardmod--center', p.className), id: p.id, 'aria-label': hasCopy ? undefined : p.label },
+      h('div', { className: 'q-section__inner' },
+        hasCopy ? h('div', { className: 'q-copy q-cardmod__copy' }, copyParts(p, level)) : null,
+        h('div', { className: cx('q-cardmod__grid', 'q-cardmod__grid--' + cols) }, items.map(function (it, i) {
+          return h(Card, Object.assign({ key: it.key || i, headingLevel: level + 1 }, it));
+        }))));
   }
 
   /* InlinePromoCard — promo on Charcoal or the blue gradient: logo, image or icon, heading, copy, one CTA. */
@@ -5420,7 +5469,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
   window.Qualys = Object.assign(window.Qualys || {}, {
     Button: Button, TextLink: TextLink, Hyperlink: Hyperlink, Breadcrumbs: Breadcrumbs, SocialButton: SocialButton, Icon: Icon, Tag: Tag, FilterChip: FilterChip, Flag: Flag, Marker: Marker, EventType: EventType, Tabs: Tabs, Drawer: Drawer, DrawerCard: DrawerCard, Accordion: Accordion, Avatar: Avatar, ProfileCard: ProfileCard, ProfileModal: ProfileModal, ProfileGrid: ProfileGrid, TextField: TextField, Select: Select, FilterDropdown: FilterDropdown, FilterChipGroup: FilterChipGroup, AppliedFilters: AppliedFilters, FilterButton: FilterButton, FilterBar: FilterBar, FilterDrawer: FilterDrawer, SearchBar: SearchBar, Checkbox: Checkbox, Radio: Radio, Toggle: Toggle, Form: Form,
     Card: Card, IntegrationCard: IntegrationCard, EventCard: EventCard, WebinarCard: WebinarCard, ResourceCard: ResourceCard, BlogCard: BlogCard, InlinePromoCard: InlinePromoCard, StatCard: StatCard,
-    Nav: Nav, NavBanner: NavBanner, Media: Media, Hero: Hero, TypographicHeader: TypographicHeader, GeneralContent: GeneralContent, TabModule: TabModule, AccordionModule: AccordionModule, CtaModule: CtaModule, Stats: Stats, Carousel: Carousel, TestimonialCard: TestimonialCard, TestimonialCarousel: TestimonialCarousel, LogoCarousel: LogoCarousel, LogoHierarchy: LogoHierarchy, EventCalendar: EventCalendar, Footer: Footer,
+    Nav: Nav, NavBanner: NavBanner, Media: Media, Hero: Hero, TypographicHeader: TypographicHeader, GeneralContent: GeneralContent, TabModule: TabModule, AccordionModule: AccordionModule, CtaModule: CtaModule, Stats: Stats, CardModule: CardModule, Carousel: Carousel, TestimonialCard: TestimonialCard, TestimonialCarousel: TestimonialCarousel, LogoCarousel: LogoCarousel, LogoHierarchy: LogoHierarchy, EventCalendar: EventCalendar, Footer: Footer,
     FeatureMatrix: FeatureMatrix, DetailComparison: DetailComparison, MarketingTable: MarketingTable, HoverCard: HoverCard, FormBanner: FormBanner,
     Overlay: Overlay, Modal: Modal, FormModal: FormModal, AlertDialog: AlertDialog, SessionTimeout: SessionTimeout, SuccessConfirmation: SuccessConfirmation, ExitIntent: ExitIntent, DemoRequestWizard: DemoRequestWizard, Toast: Toast, ToastStack: ToastStack, NotificationBar: NotificationBar, CookieBanner: CookieBanner, Tooltip: Tooltip
   });
@@ -5429,7 +5478,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
 <meta charset="utf-8">
 <title>Example page · Flex Design System</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-200)}.ex-head{padding-bottom:0}.ex-head .q-copy__title{margin:0}</style>
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-200)}.ex-head{padding-bottom:0}.ex-head .q-copy__title{margin:0}.ex-story{max-width:939px;margin-inline:auto}</style>
 </head>
 <body>
 <div id="root"></div>
@@ -5479,7 +5528,6 @@ var LOGOS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(L);
 var D = 'Lorem ipsum dolor sit amet consectetur sollicitudin.';
 var STATS = [{icon: ICON.detect, value: '150', suffix: '%', label: 'Faster Detection', description: D}, {icon: ICON.threat, value: '10', suffix: 'x', label: 'Less Zero-day Threats', description: D}, {icon: ICON.measure, value: '99.99', suffix: '%', label: 'More Accurate Scanning', description: D}];
 var QUOTE = '\u201cLorem ipsum dolor sit adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut et enim ad minim veniam.\u201d';
-var STORIES = [0, 1, 2, 3].map(function (n) { var l = L(n); return {logo: l.src, logoAlt: l.alt, quote: QUOTE, name: 'Jonathan Doe', company: 'Qualys', link: {label: 'Read the Story', href: '#'}}; });
 function res(i) { return h(Q.ResourceCard, {key: i, href: '#', flag: i === 0 ? 'New' : undefined, resourceType: ['Whitepaper', 'Analyst Report', 'Datasheet', 'Webinar', 'Blog'][i % 5], title: 'This is a Resource Title Lorem Ipsum Dolor', date: 'Dec 10, 2025'}); }
 var FORM = {logoSrc: SHIELD, title: ['Like What You\u2019re Seeing?', h('br', {key: 'b'}), 'Try Qualys For Free'],
   fields: [{name: 'email', label: 'Work Email', type: 'email', required: true}, {name: 'firstName', label: 'First Name', required: true, half: true}, {name: 'lastName', label: 'Last Name', required: true, half: true}, {name: 'company', label: 'Company Name', required: true}],
@@ -5497,17 +5545,41 @@ var PROPS = {
   copyright: '\u00a9 2025 Qualys, Inc. All rights reserved.',
   legal: ['Privacy Policy', 'Accessibility', 'Notice at Collection', 'Trust', 'Cookie Consent', 'Do Not Share - Privacy Portal']
 };
+var ICONS = {cloud: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSI1NiIgdmlld0JveD0iMCAwIDU2IDU2IiBmaWxsPSJub25lIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImNsb2cwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAuMDAwNSIgeTE9IjEzLjQ0OCIgeDI9IjIyLjI0NTIiIHkyPSIxMy40NDgiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzJlOGJlMCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwMmE1NCIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJjbG9nMSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIwLjAwMDUiIHkxPSIzLjE3NDYiIHgyPSIxMi43MDc4IiB5Mj0iMy4xNzQ2Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyZThiZTAiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMDJhNTQiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1LjU4OCAxMS40NTU1KSIgZD0iTTE5LjQxMSAwQzEzLjg4NCAwIDkuMjc1IDMuOTI4IDguMjI3IDkuMTQyQzMuNjI2IDkuNDg0IDAgMTMuMzIyIDAgMTguMDA2QzAgMjIuNjkgMy45ODMgMjYuODk2IDguODk2IDI2Ljg5NkwyMi4yNDUgMjYuODk2TDIyLjI0NSAwLjM1NUMyMS4zMzkgMC4xMjQgMjAuMzg5IDAgMTkuNDExIDBMMTkuNDExIDBaIiBmaWxsPSJ1cmwoI2Nsb2cwKSIvPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI3LjgzMzEgMTEuODEwOCkiIGQ9Ik0xNy40NDcgMTMuOTA2QzE3LjA4OCA5LjI0NiAxMy4xOTEgNS41NzcgOC40MzYgNS41NzdDOC4wMjQgNS41NzcgNy42MTggNS42MDQgNy4yMjEgNS42NThDNS43MyAyLjg4NCAzLjEyMyAwLjc5OCAwIDBMMCAyNi41NDFMMTUuODE5IDI2LjU0MUMxOS4zNjggMjYuNTQxIDIyLjI0NSAyMy42NjYgMjIuMjQ1IDIwLjEyQzIyLjI0NSAxNy4xMzUgMjAuMjA4IDE0LjYyNiAxNy40NDggMTMuOTA2TDE3LjQ0NyAxMy45MDZaIiBmaWxsPSIjMmU4YmUwIi8+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjEuNDc5IDM4LjM1MTYpIiBkPSJNMCAwQzAgMy41MDcgMi44NDUgNi4zNDkgNi4zNTQgNi4zNDlDOS44NjMgNi4zNDkgMTIuNzA4IDMuNTA3IDEyLjcwOCAwTDAgMEwwIDBaIiBmaWxsPSJ1cmwoI2Nsb2cxKSIvPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIxLjQ3OTUgMzIuMDAyNCkiIGQ9Ik02LjM1NCAwQzIuODQ1IDAgMCAyLjg0MyAwIDYuMzQ5TDYuMzU0IDYuMzQ5TDYuMzU0IDBaIiBmaWxsPSIjOWJjMGUwIi8+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjcuODMzMSAzMi4wMDI0KSIgZD0iTTAgMEwwIDYuMzQ5TDYuMzU0IDYuMzQ5QzYuMzU0IDIuODQzIDMuNTA5IDAgMCAwWiIgZmlsbD0iI2ZmZmZmZiIvPjwvc3ZnPg==', risk: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSI1NiIgdmlld0JveD0iMCAwIDU2IDU2IiBmaWxsPSJub25lIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9InJpc2cwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjE2LjA0NjciIHkxPSIyNi42ODIyIiB4Mj0iMTYuMDQ2NyIgeTI9IjAiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzJlOGJlMCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA0MzQ3MSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEyLjAxNDMgMTguNDA2MikiIGQ9Ik0yNy4xMzMgMEw0Ljk2MSAwQzIuMjIxIDAgMCAyLjIyIDAgNC45NThMMCAyMS43MjRDMCAyNC40NjMgMi4yMjEgMjYuNjgyIDQuOTYxIDI2LjY4MkwyNy4xMzMgMjYuNjgyQzI5Ljg3MyAyNi42ODIgMzIuMDk0IDI0LjQ2MyAzMi4wOTQgMjEuNzI0TDMyLjA5NCA0Ljk1OEMzMi4wOTQgMi4yMiAyOS44NzMgMCAyNy4xMzMgMFoiIGZpbGw9InVybCgjcmlzZzApIi8+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjQuNTM0MSAyNS4wMTcxKSIgZD0iTTcuMDU0IDBMMCAwTDAgMjAuMDcxTDcuMDU0IDIwLjA3MUw3LjA1NCAwWiIgZmlsbD0iIzliYzBlMCIvPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIwLjA4MTQgMTAuNjE3MykiIGQ9Ik01LjY3NyAxLjI5NkwwLjM1MSAxMC41MTRDLTAuNjQ3IDEyLjI0MSAwLjYwMSAxNC40IDIuNTk3IDE0LjRMMTMuMjQ4IDE0LjRDMTUuMjQ1IDE0LjQgMTYuNDkyIDEyLjI0MSAxNS40OTQgMTAuNTE0TDEwLjE2OCAxLjI5NkM5LjE3IC0wLjQzMiA2LjY3NSAtMC40MzIgNS42NzcgMS4yOTZMNS42NzcgMS4yOTZaIiBmaWxsPSIjMmU4YmUwIi8+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjYuOTE3NyAxNC4xMzg5KSIgZD0iTTEuMDkxIDBMMCAwTDAgNS45ODFMMS4wOTEgNS45ODFMMi4xODEgNS45ODFMMi4xODEgMEwxLjA5MSAwWiIgZmlsbD0iI2ZmZmZmZiIvPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI2LjkxNzggMjAuOTc5MikiIGQ9Ik0xLjA5MSAwTDAgMEwwIDEuMDlMMCAyLjE3OUwxLjA5MSAyLjE3OUwyLjE4MSAyLjE3OUwyLjE4MSAxLjA5TDIuMTgxIDBMMS4wOTEgMFoiIGZpbGw9IiNmZmZmZmYiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNS4wMTA1IDM1LjIyODEpIiBkPSJNMCAwTDAgOS40NTZDMC41OTYgOS43MTYgMS4yNTMgOS44NiAxLjk0MyA5Ljg2TDYuOTc3IDkuODZMNi45NzcgMEwwIDBaIiBmaWxsPSIjOWJjMGUwIi8+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzMuODQ4OCAyOS4xOTQ1KSIgZD0iTTAgMEwwIDE1Ljg5NEw1LjAzMyAxNS44OTRDNS43MjQgMTUuODk0IDYuMzgxIDE1Ljc0OSA2Ljk3NyAxNS40ODlMNi45NzcgMEwwIDBMMCAwWiIgZmlsbD0iIzliYzBlMCIvPjwvc3ZnPg==', compliance: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSI1NiIgdmlld0JveD0iMCAwIDU2IDU2IiBmaWxsPSJub25lIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImNvbWcwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAiIHkxPSI0LjgzMzIiIHgyPSI5LjY3MjUiIHkyPSI0LjgzMzIiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzA0MzQ3MSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzJlOGJlMCIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJjb21nMSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIwIiB5MT0iMTYuNjIzMSIgeDI9IjEzLjA2MTEiIHkyPSIxNi42MjMxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyZThiZTAiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMDJhNTQiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNC44MDgzIDExLjQ1NTUpIiBkPSJNMTYuNDUgMEwwIDBMMCAzMy4yNDZMMjYuMTIyIDMzLjI0NkwyNi4xMjIgOS42NjZMMTYuNDUgMFoiIGZpbGw9IiMyZThiZTAiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMS4yNTc5IDExLjQ1NTQpIiBkPSJNMCA5LjY2Nkw5LjY3MiA5LjY2NkwwIDBMMCA5LjY2NloiIGZpbGw9InVybCgjY29tZzApIi8+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTQuODA4MyAxMS40NTU1KSIgZD0iTTEzLjA2MSAwTDAgMEwwIDMzLjI0NUwxMy4wNjEgMzMuMjQ1TDEzLjA2MSAwWiIgZmlsbD0idXJsKCNjb21nMSkiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMC44NjYyIDIxLjI3MjQpIiBkPSJNNS44MjYgMTAuNDA4TDAgNC41ODZMMi4yMzUgMi4zNTJMNS44MjYgNS45NDFMMTEuNzcxIDBMMTQuMDA2IDIuMjM0TDUuODI2IDEwLjQwOFoiIGZpbGw9IiNmZmZmZmYiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMC44NjYyIDI5LjI0NDIpIiBkPSJNNS44MjYgMTAuNDA4TDAgNC41ODZMMi4yMzUgMi4zNTJMNS44MjYgNS45NDFMMTEuNzcxIDBMMTQuMDA2IDIuMjMzTDUuODI2IDEwLjQwOFoiIGZpbGw9IiNmZmZmZmYiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMC44NjYyIDIzLjYyNDcpIiBkPSJNMi4yMzUgMEwwIDIuMjM0TDUuODI2IDguMDU1TDcuMDAzIDYuODc5TDcuMDAzIDIuNDEyTDUuODI2IDMuNTg4TDIuMjM1IDBaIiBmaWxsPSIjOWJjMGUwIi8+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjAuODY2MiAzMS41OTY1KSIgZD0iTTUuODI2IDMuNTg4TDIuMjM1IDBMMCAyLjIzNEw1LjgyNiA4LjA1NUw3LjAwMyA2Ljg3OUw3LjAwMyAyLjQxMkw1LjgyNiAzLjU4OFoiIGZpbGw9IiM5YmMwZTAiLz48L3N2Zz4='};
+var TB = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation consectetur adipiscing elit.';
+var TABS = [
+  {label: 'Measure', title: 'Measure Cyber Risk Across Every Attack Surface', body: TB, media: {}, actions: [h(Q.Button, {key: 'p'}, 'Explore VMDR')]},
+  {label: 'Communicate', title: 'Communicate Cyber Risk in Business Terms', body: TB, media: {}, actions: [h(Q.Button, {key: 'p'}, 'See TruRisk Scoring'), h(Q.Button, {key: 's', variant: 'secondary'}, 'Read the Datasheet')]},
+  {label: 'Eliminate', title: 'Eliminate the Risk That Matters Most', body: TB, media: {}, actions: [h(Q.Button, {key: 'p'}, 'Explore TruRisk Eliminate'), h(Q.TextLink, {key: 't', tone: 'neutral', arrow: true, href: '#'}, 'Watch the Demo')]}];
+var ACOPY = 'The Qualys Enterprise TruRisk Platform brings asset discovery, risk scoring and remediation into one place, so security and IT work from the same picture of what to fix first.';
+var ROWS = ['Cloud Security', 'Threat Detection', 'Risk Measurement', 'Prioritization', 'Risk Elimination', 'Compliance'].map(function (t, i) { return {id: 'r' + i, title: t, icon: ICONS.cloud, content: ACOPY, cta: {label: 'Learn More', href: '#'}}; });
+var CD = 'Lorem ipsum dolor sit amet consectetur. Faucibus nulla vitae ipsum vitae scelerisque turpis.';
+var CARDS = [[ICONS.cloud, 'See Every Asset in One Place'], [ICON.detect, 'Detect Threats as They Emerge'], [ICONS.risk, 'Prioritize the Risk That Matters'], [ICONS.compliance, 'Stay Audit Ready All Year']].map(function (c) { return {href: '#', icon: c[0], title: c[1], description: CD, cta: 'Learn More'}; });
+var COLS = [{id: 'qualys', name: 'Qualys', logo: LOGO, subtitle: 'Enterprise TruRisk'}, {id: 'a', name: 'Competitor A', subtitle: 'Optional Subheading'}, {id: 'b', name: 'Competitor B', subtitle: 'Optional Subheading'}, {id: 'c', name: 'Competitor C', subtitle: 'Optional Subheading'}];
+var SECTIONS = [
+  {title: 'Asset Coverage', open: true, rows: [['IT Assets', 1, 1, 1, 0], ['Cloud Assets', 1, 1, 1, 0], ['Containers', 1, 1, 0, 1], ['Mobile Devices', 1, 0, 0, 1], ['Web Applications', 1, 1, 1, 0], ['External Attack Surface', 1, 0, 0, 0]]},
+  {title: 'Risk Prioritization', rows: [['Business-Impact Scoring', 1, 0, 1, 0], ['Threat Intelligence', 1, 1, 1, 1], ['Exploit Prediction', 1, 0, 0, 1]]},
+  {title: 'Remediation', rows: [['Patch Management', 1, 0, 0, 1], ['Mitigation Without Patching', 1, 0, 0, 0], ['Ticketing Integrations', 1, 1, 1, 1]]}];
+var STORY = {logo: LOGOS[1].src, logoAlt: LOGOS[1].alt, quote: QUOTE, name: 'Jonathan Doe', company: 'Qualys', link: {label: 'Read the Story', href: '#'}};
+/* A single story sits centred at the Large card's width (939px), as in the Figma frames. */
+function wrap(node, label) { return h('section', {className: 'q-section', 'aria-label': label}, h('div', {className: 'q-section__inner'}, h('div', {className: 'ex-story'}, node))); }
 function sectionHead(t) { return h('section', {className: 'q-section'}, h('div', {className: 'q-section__inner ex-head'}, h('h2', {className: 'q-copy__title'}, t))); }
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
-  h(Q.NavBanner, {title: 'Join your peers at ROCon', meta: ['November 18-20', 'Mumbai'], cta: {label: 'Register Now', href: '#'}}),
   h(Q.Nav, {logoSrc: LOGO, items: ITEMS, current: 'Platform', utility: [{label: 'Community', collapse: true}, 'Login', {label: 'Contact Us', collapse: true}], search: {placeholder: 'Search qualys.com', suggestions: ['VMDR', 'TotalCloud', 'Patch Management', 'Agentic AI']}, cta: {label: 'Get Started', href: '#'}}),
   h(Q.Hero, {size: 'rg', eyebrow: 'Enterprise TruRisk Platform', title: 'Measure, Communicate and Eliminate Cyber Risk', body: 'One platform to see every asset, prioritise what matters and fix it fast, across on-premises, cloud and endpoints.', background: {src: BUILDING}, actions: [h(Q.Button, {key: 'p'}, 'Get Started'), h(Q.TextLink, {key: 't', tone: 'inverted', arrow: true, href: '#'}, 'Watch the Demo')]}),
   h(Q.LogoCarousel, {title: 'Trusted by Over 10,000 Customers Worldwide', logos: LOGOS}),
-  h(Q.Stats, {layout: 'cards', items: STATS}),
   h(Q.GeneralContent, {eyebrow: 'Risk Operations Center', title: 'See Your Risk in One Place, Then Act on It', body: 'Bring vulnerability, misconfiguration and threat data together, score it by business impact and send the fixes that matter most to the right teams.', media: {}, actions: [h(Q.Button, {key: 'p'}, 'Explore ROC'), h(Q.TextLink, {key: 't', tone: 'neutral', arrow: true, href: '#'}, 'Read the Datasheet')]}),
+  h(Q.Stats, {layout: 'cards', items: STATS}),
+  h(Q.TabModule, {items: TABS, label: 'TruRisk steps'}),
+  h(Q.AccordionModule, {title: 'One Platform for Every Attack Surface', items: ROWS, defaultOpen: 0}),
+  h(Q.CardModule, {eyebrow: 'Why Qualys', title: 'Built for Security and IT Teams', items: CARDS}),
+  h(Q.GeneralContent, {layout: 'full', media: {src: OFFICE}}),
+  wrap(h(Q.TestimonialCard, STORY), 'Customer story'),
+  h(Q.GeneralContent, {layout: 'banner', title: 'Join Your Peers at ROCon', body: 'Three days of talks, labs and roadmaps from the people who run risk operations every day.', actions: h(Q.Button, null, 'Register Now'), media: {src: BUILDING}}),
+  wrap(h(Q.TestimonialCard, Object.assign({}, STORY, {logo: LOGOS[2].src, logoAlt: LOGOS[2].alt, video: {video: true, src: OFFICE}})), 'Video story'),
+  h(Q.FeatureMatrix, {title: 'How Qualys Compares', subtitle: 'Coverage, prioritization and remediation in one platform', columns: COLS, sections: SECTIONS}),
   sectionHead('Latest Resources'),
   h(Q.Carousel, {label: 'Latest resources'}, [0, 1, 2, 3, 4, 5].map(res)),
-  h(Q.TestimonialCarousel, {size: 'sm', items: STORIES}),
   h(Q.CtaModule, {form: FORM, media: {src: OFFICE}}),
   h(Q.Footer, PROPS)));
 </script>
