@@ -1,11 +1,11 @@
-<!-- @dsCard group="Page modules · Example page" height=8484 width=1440 subtitle="Example page · A page built only from the system’s modules, in page order: nav, hero, logos, content, stats, tabs, accordion, cards, media, stories, banner, comparison, resources, a form and the footer." -->
+<!-- @dsCard group="Page modules · Example page" height=8804 width=1440 subtitle="Example page · A page built only from the system’s modules, in page order: nav, hero, logos, content, stats, tabs, accordion, cards, media, stories, banner, comparison, resources, a form and the footer." -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>Example page</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-200)}.ex-head{padding-bottom:0}.ex-head .q-copy__title{margin:0}.ex-story{max-width:939px;margin-inline:auto}</style>
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-200)}.ex-head{padding-bottom:0}.ex-head .q-copy__title{margin:0}</style>
 </head>
 <body>
 <div id="root"></div>
@@ -87,9 +87,7 @@ var SECTIONS = [
   {title: 'Asset Coverage', open: true, rows: [['IT Assets', 1, 1, 1, 0], ['Cloud Assets', 1, 1, 1, 0], ['Containers', 1, 1, 0, 1], ['Mobile Devices', 1, 0, 0, 1], ['Web Applications', 1, 1, 1, 0], ['External Attack Surface', 1, 0, 0, 0]]},
   {title: 'Risk Prioritization', rows: [['Business-Impact Scoring', 1, 0, 1, 0], ['Threat Intelligence', 1, 1, 1, 1], ['Exploit Prediction', 1, 0, 0, 1]]},
   {title: 'Remediation', rows: [['Patch Management', 1, 0, 0, 1], ['Mitigation Without Patching', 1, 0, 0, 0], ['Ticketing Integrations', 1, 1, 1, 1]]}];
-var STORY = {logo: LOGOS[1].src, logoAlt: LOGOS[1].alt, quote: QUOTE, name: 'Jonathan Doe', company: 'Qualys', link: {label: 'Read the Story', href: '#'}};
-/* A single story sits centred at the Large card's width (939px), as in the Figma frames. */
-function wrap(node, label) { return h('section', {className: 'q-section', 'aria-label': label}, h('div', {className: 'q-section__inner'}, h('div', {className: 'ex-story'}, node))); }
+function stories(extra) { return [1, 2, 3, 4].map(function (n) { return Object.assign({logo: LOGOS[n].src, logoAlt: LOGOS[n].alt, quote: QUOTE, name: 'Jonathan Doe', company: 'Qualys', link: {label: 'Read the Story', href: '#'}}, extra); }); }
 function sectionHead(t) { return h('section', {className: 'q-section'}, h('div', {className: 'q-section__inner ex-head'}, h('h2', {className: 'q-copy__title'}, t))); }
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
   h(Q.Nav, {logoSrc: LOGO, items: ITEMS, current: 'Platform', utility: [{label: 'Community', collapse: true}, 'Login', {label: 'Contact Us', collapse: true}], search: {placeholder: 'Search qualys.com', suggestions: ['VMDR', 'TotalCloud', 'Patch Management', 'Agentic AI']}, cta: {label: 'Get Started', href: '#'}}),
@@ -101,9 +99,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
   h(Q.AccordionModule, {title: 'One Platform for Every Attack Surface', items: ROWS, defaultOpen: 0}),
   h(Q.CardModule, {eyebrow: 'Why Qualys', title: 'Built for Security and IT Teams', items: CARDS}),
   h(Q.GeneralContent, {layout: 'full', media: {src: OFFICE}}),
-  wrap(h(Q.TestimonialCard, STORY), 'Customer story'),
+  h(Q.TestimonialCarousel, {size: 'lg', items: stories(), label: 'Customer stories'}),
   h(Q.GeneralContent, {layout: 'banner', title: 'Join Your Peers at ROCon', body: 'Three days of talks, labs and roadmaps from the people who run risk operations every day.', actions: h(Q.Button, null, 'Register Now'), media: {src: BUILDING}}),
-  wrap(h(Q.TestimonialCard, Object.assign({}, STORY, {logo: LOGOS[2].src, logoAlt: LOGOS[2].alt, video: {video: true, src: OFFICE}})), 'Video story'),
+  h(Q.TestimonialCarousel, {size: 'video', items: stories({video: {video: true, src: OFFICE}}), label: 'Video stories'}),
   h(Q.FeatureMatrix, {title: 'How Qualys Compares', subtitle: 'Coverage, prioritization and remediation in one platform', columns: COLS, sections: SECTIONS}),
   sectionHead('Latest Resources'),
   h(Q.Carousel, {label: 'Latest resources'}, [0, 1, 2, 3, 4, 5].map(res)),
