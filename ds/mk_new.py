@@ -1,3 +1,6 @@
+# Retired: the READMEs and previews this script once generated are now edited directly, so running it would undo later changes.
+# Kept for history only.
+raise SystemExit("Retired: edit project/components/<Name>/README.md and preview.html directly.")
 import os
 C = 'project/components'
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">'

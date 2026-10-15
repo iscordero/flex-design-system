@@ -1,4 +1,4 @@
-<!-- @dsCard group="Page modules · Heroes and headers" height=1250 width=1440 subtitle="Block module · A section opener with no media: left-aligned and centred, then both on mobile." -->
+<!-- @dsCard group="Page modules · Heroes and headers" height=1250 width=1440 subtitle="Block module · A section opener with no media: left-aligned and centered, then both on mobile." -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,7 +17,7 @@ var P = {eyebrow: 'Lorem Ipsum Dolor', title: 'Lorem Ipsum Dolor Sit Amet Consec
 function hd(extra) { return h(Q.TypographicHeader, Object.assign({}, P, {actions: [h(Q.Button, {key: 'p'}, 'Primary Button'), h(Q.Button, {key: 's', variant: 'secondary'}, 'Secondary Button')]}, extra)); }
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
   cap('Left-aligned'), hd(),
-  cap('Centred'), hd({align: 'center'}),
+  cap('Centered'), hd({align: 'center'}),
   cap('Mobile'), h('div', {className: 'phones'}, h('div', {className: 'phone'}, hd()), h('div', {className: 'phone'}, hd({align: 'center'})))));
 </script>
 </body>

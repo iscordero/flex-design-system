@@ -31,7 +31,7 @@ viz('g5-focus', {display: 'grid', gridTemplateColumns: 'auto auto 1fr', columnGa
 
 viz('g5-timing', {display: 'grid', gridTemplateColumns: '1fr 96px', columnGap: 16, alignItems: 'center'},
   h('div', {className: 'mo', style: {gridTemplateColumns: '132px 1fr'}},
-    [['Colour changes', 150], ['Buttons, inputs, cards', 200], ['Larger moves, menus', 300]].map(function (r) { return [sp('s', r[0], {key: r[0]}), h('div', {className: 'bar', key: r[1]}, h('i', {style: {width: r[1] * 0.38}}), sp('k', r[1] + 'ms', {fontSize: 12}))]; })),
+    [['Color changes', 150], ['Buttons, inputs, cards', 200], ['Larger moves, menus', 300]].map(function (r) { return [sp('s', r[0], {key: r[0]}), h('div', {className: 'bar', key: r[1]}, h('i', {style: {width: r[1] * 0.38}}), sp('k', r[1] + 'ms', {fontSize: 12}))]; })),
   col({gap: 4, alignItems: 'center'}, h('svg', {width: 72, height: 56, viewBox: '0 0 72 56', fill: 'none'}, h('path', {d: 'M4 52 C 30 52, 42 4, 68 4', stroke: 'var(--qualys-blue)', strokeWidth: 2.5, strokeLinecap: 'round'}), h('path', {d: 'M4 4 V52 H68', stroke: 'var(--stroke-neutral-500)', strokeWidth: 1})), t('cap', 'Ease-in-out')));
 
 function trk(name, segs, end) { return [sp('s', name, {key: name, color: 'var(--text-primary)'}), h('div', {className: 'trk', key: name + 't'}, segs.map(function (s, i) { return h('i', {key: i, className: s[2] ? 'wait' : '', style: {left: s[0] * 0.5, width: (s[1] - s[0]) * 0.5}}); }), h('b', {style: {left: segs[segs.length - 1][1] * 0.5 + 8}}, end))]; }

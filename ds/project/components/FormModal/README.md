@@ -1,5 +1,7 @@
 # FormModal
 
+**Status:** Ready
+
 A lead-capture Form inside a modal: an eyebrow, title and subtitle above, the form on its warm ground below.
 
 **Provide:** `open`, `onClose`, `title`, and `form` with the props of Form (`variant`, `title`, `fields`, `submitLabel`, `onSubmit`…). Optionally `eyebrow` and `subtitle`.

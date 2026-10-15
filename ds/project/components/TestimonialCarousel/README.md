@@ -1,5 +1,7 @@
 # TestimonialCarousel
 
+**Status:** Ready
+
 The testimonial modules from the Figma Testimonials page: TestimonialCards in a Carousel.
 
 **Provide:** `items` (TestimonialCard props) and `size`.
@@ -14,7 +16,7 @@ The testimonial modules from the Figma Testimonials page: TestimonialCards in a 
 - Cards 24px apart, starting on the content column (up to 1440px) and running off the right edge; the next card peeks in.
 - Progress bar and buttons as in Carousel, right-aligned, 36px under the cards.
 - **Tablet:** large and video cards become as wide as the column and the large quote drops to 24px.
-- **Mobile:** 24px × 20px padding; every card is 300px wide, 16px apart; controls stack and centre.
+- **Mobile:** 24px × 20px padding; every card is 300px wide, 16px apart; controls stack and center.
 
 Use it once per page. For a single quote, use a TestimonialCard on its own.
 

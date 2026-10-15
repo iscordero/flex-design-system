@@ -1,5 +1,7 @@
 # DemoRequestWizard
 
+**Status:** Ready
+
 A short form split into steps inside a modal, ending on a confirmation.
 
 **Provide:** `open`, `onClose`, `steps` and `onSubmit(values)`. Each step is `{ title, description, fields, consent }`; a field is `{ name, label, type, required, options }`.
@@ -10,7 +12,7 @@ A short form split into steps inside a modal, ending on a confirmation.
 - **Footer:** Back (secondary) and the primary button on the right: "Continue", then "Submit Request" on the last step.
 - **Checking:** each step is checked before moving on. Required fields and email addresses show their error under the field, and focus goes to the first one.
 - **Sending:** `onSubmit` gets every value when the last step passes. Return `false` to stay on the step (for example while a request fails).
-- **Confirmation:** a 64px green tick, a thank-you line, a note in blue and a centred Done button. Replace the wording with `success` (`{ title, message, note, actionLabel }`).
+- **Confirmation:** a 64px green tick, a thank-you line, a note in blue and a centered Done button. Replace the wording with `success` (`{ title, message, note, actionLabel }`).
 - Going back keeps what was typed. Opened again after it finished, it starts over.
 - **Mobile:** 12px from the screen edges, 16px padding, buttons stacked with the primary on top.
 - **Accessibility:** `role="dialog"`, named by the step's title. Each new step moves focus to its first field. The dots are read as "Step 2 of 3".

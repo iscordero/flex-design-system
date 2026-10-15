@@ -1,11 +1,13 @@
 # Modal
 
+**Status:** Ready
+
 The base dialog: a title with a close button, a body, and an optional footer of buttons. The other modals in this file are built on it.
 
 **Provide:** `open`, `onClose`, `title` and the body as children. Optionally `actions` (a list of `{ label, onClick, variant, href }`, or your own buttons), `size`, `eyebrow`, `subtitle`.
 
 - **Sizes:** `sm` 480px, `md` 540px (default), `lg` 600px. The height follows the content; past the viewport the body scrolls and the title and footer stay put.
-- **Panel:** white, `radius-lg`, `shadow-modal`, 24px padding, centred on an Overlay.
+- **Panel:** white, `radius-lg`, `shadow-modal`, 24px padding, centered on an Overlay.
 - **Title:** `h4` (Wix Madefor Text SemiBold 20px; `h3`, 24px, on `lg`), `text-primary`. A 1px `stroke-neutral-400` line sits under it, inset 24px.
 - **Body:** IBM Plex Sans Regular 16px, `text-secondary`.
 - **Footer:** buttons on the right, 12px apart, the primary one last. In `actions` the last item is primary unless you set `variant`.

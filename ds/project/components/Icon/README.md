@@ -1,8 +1,10 @@
 # Icon
 
-Inline SVG icons in five preset sizes and three approved colours. Two sources: **Hugeicons** (free, stroke rounded, MIT), the general stroke icon library, and the **Qualys utility icons**, the filled glyphs drawn for specific components.
+**Status:** Ready
 
-**Provide:** `name` or `icon`, a `size` and, when the icon is not simply the colour of the text beside it, a `tone`. Add `title` when the icon carries meaning on its own; otherwise it is hidden from assistive tech.
+Inline SVG icons in five preset sizes and three approved colors. Two sources: **Hugeicons** (free, stroke rounded, MIT), the general stroke icon library, and the **Qualys utility icons**, the filled glyphs drawn for specific components.
+
+**Provide:** `name` or `icon`, a `size` and, when the icon is not simply the color of the text beside it, a `tone`. Add `title` when the icon carries meaning on its own; otherwise it is hidden from assistive tech.
 
 - `name="hi:<name>"` draws a bundled Hugeicon: the **Arrows**, **Alert**, **AI**, **Bookmarks** and **Add and remove** sets (336 icons). Names are the Hugeicons names in kebab case: `Alert01Icon` is `hi:alert-01`, `ArrowRight02Icon` is `hi:arrow-right-02`.
 - `icon={Alert01Icon}` draws any other free Hugeicon, imported from `@hugeicons/core-free-icons`. Designers pick from the same library in the Hugeicons Figma plugin (Free, Stroke rounded).
@@ -27,7 +29,7 @@ Each size sets the box and the stroke weight together. The stroke is drawn at th
 - A number still works as `size` (px) for the utility icons and special cases; it scales the stroke with the box, so prefer the presets.
 - Touch targets: an icon that is a control sits in at least a 44px target on touch screens, whatever its size.
 
-## Colours
+## Colors
 
 | Tone | Token | Use it for |
 | --- | --- | --- |
@@ -35,9 +37,9 @@ Each size sets the box and the stroke weight together. The stroke is drawn at th
 | `blue` | `icon-feature` (Qualys Blue) | To draw the eye: features, links, active states. Not for small icons in running text |
 | `white` | `icon-inverted` | On Charcoal, the blue gradients and photos |
 
-- Without `tone` the icon takes the colour of the text around it (`currentColor`), which is right inside buttons and links.
-- One colour per icon. No two-tone stroke icons, gradients or opacity changes.
-- Status icons (alerts, toasts, the notification bar) take their status colour instead, as Toast and AlertDialog set it: `qualys-red` for errors and destructive actions, `utility-warning-default`, `utility-success-default`, and `qualys-blue` for information.
+- Without `tone` the icon takes the color of the text around it (`currentColor`), which is right inside buttons and links.
+- One color per icon. No two-tone stroke icons, gradients or opacity changes.
+- Status icons (alerts, toasts, the notification bar) take their status color instead, as Toast and AlertDialog set it: `qualys-red` for errors and destructive actions, `utility-warning-default`, `utility-success-default`, and `qualys-blue` for information.
 - Contrast: black and white pass on their grounds; blue on white is 3.78:1, enough for icons (3:1) but keep it off icons that carry meaning without a label.
 
 ## Qualys utility icons

@@ -1,5 +1,7 @@
 # HoverCard
 
+**Status:** Ready
+
 A small card that opens beside the thing it describes. Use it where a logo or a headshot stands for something that needs a line of explanation and one link. Two kinds: the **logo card** (Figma: Hover card) and the **profile card**.
 
 **Provide:** `kind` (`logo` or `profile`), the content for that kind, and the trigger as the child.
@@ -11,11 +13,11 @@ A small card that opens beside the thing it describes. Use it where a logo or a 
 - **Opens:** a mouse opens it on hover after 150ms and it stays open while the pointer is on the trigger or the card. A click, a tap or Enter opens it and keeps it open. Focus alone does not open it, so tabbing through a row of logos stays quiet.
 - **Closes:** when the pointer leaves (200ms grace) if hover opened it; on a click outside, on Esc, on the close icon, or on a second click of the trigger. Opened from the keyboard, focus moves into the card and returns to the trigger when it closes; Tab past the last control closes it.
 - **One profile card at a time:** a profile card opened with a click, a tap or the keyboard is pinned. It stays open when people click elsewhere, and the other headshots don't open theirs (no hover, no click, default cursor) until it is closed with the close icon, Esc or a second click of its own headshot.
-- **Position:** 8px below the trigger, centred on it (`align="start"` or `"end"` lines it up with an edge). It moves above when there is no room below (`position="top"` asks for that first) and is kept 16px inside the screen. It sits at `z-tooltip`.
+- **Position:** 8px below the trigger, centered on it (`align="start"` or `"end"` lines it up with an edge). It moves above when there is no room below (`position="top"` asks for that first) and is kept 16px inside the screen. It sits at `z-tooltip`.
 - **Cursor:** pointer on the trigger. The trigger is a button; if the child is not a button or link, HoverCard wraps it in one and names it "<name>: details" (`triggerLabel` overrides).
 - **Mobile:** the same card, opened by a tap; a tap outside or the close icon closes it. Set `closable` on a logo card that will be used on touch screens.
 - **In the logo modules:** give a logo a `card` in LogoCarousel or LogoHierarchy and the logo becomes the trigger. The carousel waits while a card is open.
 - **On headshots:** DrawerCard takes `profileCards` to give every speaker headshot a profile card.
-- **Accessibility:** the trigger has `aria-haspopup="dialog"` and `aria-expanded`; the card is a dialog labelled by its name. A tooltip is for a few words of plain text; a hover card is for content with a link.
+- **Accessibility:** the trigger has `aria-haspopup="dialog"` and `aria-expanded`; the card is a dialog labeled by its name. A tooltip is for a few words of plain text; a hover card is for content with a link.
 - `inline` draws the card in the page flow without a trigger, for documentation.
 - Partner logos and badges in the preview are placeholders.

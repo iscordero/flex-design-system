@@ -1,5 +1,7 @@
 # Tag
 
+**Status:** Ready
+
 Badges and text tags from the Figma Tagging System: a badge signals status (recency, availability, urgency); a text tag names a category.
 
 **Provide:** one or two words as children. Badge: `variant` (`fill`, `light` or `outline`), `tone`, `size`. Text tag: `variant="text"`, and `href` when it links.
@@ -13,10 +15,10 @@ Badges and text tags from the Figma Tagging System: a badge signals status (rece
 | Marker | Unread or active item in a tab or menu | No |
 
 - **Badge:** 26px tall (`rg`, `tag-sm` 14px) or 25px (`sm`, `tag-xs` 12px); 8px side padding inside a 1.5px stroke; `radius-sm` (6px); Wix Madefor Text Bold, uppercase, +5% / +3% tracking.
-- **Fill:** white text on the tone. **Light:** the tone at 15% with tone-coloured text (accepted-risk uses `ash` with `asphalt`). **Outline:** 1.5px tone stroke and tone text (accepted-risk uses a `rhino` stroke).
-- **Tones are named for the status they carry**, not their colour:
+- **Fill:** white text on the tone. **Light:** the tone at 15% with tone-colored text (accepted-risk uses `ash` with `asphalt`). **Outline:** 1.5px tone stroke and tone text (accepted-risk uses a `rhino` stroke).
+- **Tones are named for the status they carry**, not their color:
 
-| `tone` | Token | Colour | Used for |
+| `tone` | Token | Color | Used for |
 | --- | --- | --- | --- |
 | `critical` | `tag-critical` (Pepper) | Dark red | Critical |
 | `high` | `tag-high` | Red | High, Exploitable, Affected (light fill uses `qualys-red`) |
@@ -24,10 +26,10 @@ Badges and text tags from the Figma Tagging System: a badge signals status (rece
 | `low` | `tag-low` | Yellow | Low, In Progress |
 | `informational` | `tag-informational` | Purple | Informational |
 | `fixed` | `tag-fixed` | Green | Fixed, Not Affected, No Known Exploit |
-| `accepted-risk` | `tag-accepted-risk` (Asphalt) | Grey | Accepted Risk |
+| `accepted-risk` | `tag-accepted-risk` (Asphalt) | Gray | Accepted Risk |
 | `blue` (default) | `qualys-blue` | Blue | "New", Privately Disclosed, and other brand badges |
 
-- Badges have one grey, `accepted-risk` (Asphalt); there is no second grey. The old colour names still work as aliases (`dark-red`, `red`, `orange`, `yellow`, `purple`, `green`, `gray`; `slate` now draws the accepted-risk grey), but use the status names in new work. Always keep the word; never let the colour stand alone.
+- Badges have one gray, `accepted-risk` (Asphalt); there is no second gray. The old color names still work as aliases (`dark-red`, `red`, `orange`, `yellow`, `purple`, `green`, `gray`; `slate` now draws the accepted-risk gray), but use the status names in new work. Always keep the word; never let the color stand alone.
 - **Text tag:** `tag-md` (18px, 16px on mobile) Medium in `text-accent-primary`, no fill; as a link it turns Cobalt on hover.
 - **Label tag** (`variant="label"`): `label` at Regular weight, 16px IBM Plex Sans in `text-primary`. A plain descriptor beside a value or an icon.
 - **Eyebrow tag** (`variant="eyebrow"`): `eyebrow-xs`, 12px SemiBold capitals with +5% letter spacing in `text-primary`. A small overline on a card or tile. Both take `href` to become links.

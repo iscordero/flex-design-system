@@ -1,6 +1,6 @@
 import type * as React from 'react';
 
-/** Names in the Qualys utility icon set. download and the arrows come from the Figma Buttons sheet; chevrons, check and search from the Inputs sheet; event-* from the Tagging System (24px, coloured by EventType); time and general-* from the Cards page (general-* are 56 x 43: size sets the height). */
+/** Names in the Qualys utility icon set. download and the arrows come from the Figma Buttons sheet; chevrons, check and search from the Inputs sheet; event-* from the Tagging System (24px, colored by EventType); time and general-* from the Cards page (general-* are 56 x 43: size sets the height). */
 export type IconName = 'download' | 'arrow-right' | 'arrow-left' | 'outlink' | 'search' | 'check' | 'filter' | 'menu' | 'time' | 'general-events' | 'general-webinar' | 'general-resource' | 'social-linkedin' | 'social-x' | 'social-facebook' | 'social-instagram' | 'social-vimeo' | 'social-youtube' | 'social-url' | 'event-qualys' | 'event-webinar' | 'event-industry' | 'event-speaking' | 'event-training' | 'chevron-right' | 'chevron-left' | 'chevron-up' | 'chevron-down' | 'plus' | 'cross' | 'view-list' | 'view-month' | 'view-grid' | 'alert-triangle' | 'alert-circle' | 'check-circle' | 'x-circle' | 'file' | 'party' | 'cookie';
 
 /** A Hugeicons drawing as exported by @hugeicons/core-free-icons, e.g. `import { Alert01Icon } from '@hugeicons/core-free-icons'`. */
@@ -14,7 +14,7 @@ export interface IconProps {
   icon?: HugeiconData;
   /** a preset (xs–xl, recommended: sets the stroke weight too) or px; default 16 */
   size?: IconSize | number;
-  /** approved colours: black (icon-default), blue (icon-feature), white (icon-inverted); default: the surrounding text colour */
+  /** approved colors: black (icon-default), blue (icon-feature), white (icon-inverted); default: the surrounding text color */
   tone?: 'black' | 'blue' | 'white';
   /** stroke icons: override the preset's stroke weight (px) */
   strokeWidth?: number;
@@ -69,14 +69,14 @@ export declare function Hyperlink(props: HyperlinkProps): React.ReactElement;
 
 /** Badge tones, named for the status they carry; 'blue' is the default brand badge (New, Privately Disclosed). */
 export type TagStatusTone = 'critical' | 'high' | 'medium' | 'low' | 'informational' | 'fixed' | 'accepted-risk' | 'blue';
-/** @deprecated colour names, kept as aliases: dark-red = critical, red = high, orange = medium, yellow = low, purple = informational, green = fixed, gray, slate and dark = accepted-risk (the one grey) */
-export type TagColourTone = 'purple' | 'dark-red' | 'red' | 'green' | 'orange' | 'yellow' | 'gray' | 'grey' | 'slate' | 'dark';
-export type TagTone = TagStatusTone | TagColourTone;
+/** @deprecated color names, kept as aliases: dark-red = critical, red = high, orange = medium, yellow = low, purple = informational, green = fixed, gray, slate and dark = accepted-risk (the one gray) */
+export type TagColorTone = 'purple' | 'dark-red' | 'red' | 'green' | 'orange' | 'yellow' | 'gray' | 'grey' | 'slate' | 'dark';
+export type TagTone = TagStatusTone | TagColorTone;
 export interface TagProps {
   /** badge styles for status: 'fill' (default), 'light' (15% tint), 'outline'; 'text' = text-style tag for categories (18px Medium, blue, no fill);
       'label' = 16px Regular descriptor; 'eyebrow' = 12px SemiBold capitals */
   variant?: 'fill' | 'light' | 'outline' | 'text' | 'label' | 'eyebrow';
-  /** badge colour, default 'blue' (ignored by 'text') */
+  /** badge color, default 'blue' (ignored by 'text') */
   tone?: TagTone;
   /** badge size: 'rg' = 14px Bold, 26px tall (default); 'sm' = 12px Bold, 25px tall */
   size?: 'rg' | 'sm';
@@ -97,7 +97,7 @@ export interface FilterChipProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   /** when set, a selected chip shows a remove (cross) button; with `removable`, called by the cross */
   onRemove?: () => void;
-  /** an applied filter: a grey chip that isn't a toggle, with a cross button */
+  /** an applied filter: a gray chip that isn't a toggle, with a cross button */
   removable?: boolean;
   /** start of the cross button's accessible name, default "Remove" */
   removeLabel?: string;
@@ -118,7 +118,7 @@ export interface FlagProps {
 export declare function Flag(props: FlagProps): React.ReactElement;
 
 export interface MarkerProps {
-  /** colour 1 (the default), 2 or 3 (the flag tiers), or 'default' (marker-default, Qualys Blue, for an active item); 'blue' is the old name for 'default' */
+  /** color 1 (the default), 2 or 3 (the flag tiers), or 'default' (marker-default, Qualys Blue, for an active item); 'blue' is the old name for 'default' */
   tone?: 1 | 2 | 3 | 'default' | 'blue';
   /** when set, the bar opens into a pill showing this number */
   count?: number | string;
@@ -764,7 +764,7 @@ export interface NavProps {
   cta?: { label: string; href?: string; onClick?: () => void };
   /** custom right-hand buttons instead of `cta` */
   actions?: React.ReactNode;
-  /** 'center' centres the items in the space beside the logo (Community) */
+  /** 'center' centers the items in the space beside the logo (Community) */
   align?: 'start' | 'center';
   /** false makes menus open on click only; default opens on hover too */
   hover?: boolean;
@@ -838,7 +838,7 @@ export interface HeroBackground {
   video?: string | boolean;
   /** 'dark' (default): black 50% under white copy. 'light': white 25% under dark copy */
   tone?: 'dark' | 'light';
-  /** a 1140px card instead of edge to edge; default for centred heroes and videos */
+  /** a 1140px card instead of edge to edge; default for centered heroes and videos */
   contained?: boolean;
 }
 export interface HeroProps extends ModuleCopy {
@@ -956,7 +956,7 @@ export interface FormField {
   /** choices for a Select */
   options?: Array<string | { value: string; label: string }>;
   required?: boolean;
-  /** two neighbouring half fields share one row on desktop */
+  /** two neighboring half fields share one row on desktop */
   half?: boolean;
   defaultValue?: string;
   placeholder?: string;
@@ -976,13 +976,13 @@ export interface FormField {
 }
 export type FormValues = { [name: string]: string | boolean };
 export interface FormProps {
-  /** 'full' (default): centred heading with the shield. 'extended': left heading, link under the button. 'gate' and 'minimal': tighter card, link beside the button. */
+  /** 'full' (default): centered heading with the shield. 'extended': left heading, link under the button. 'gate' and 'minimal': tighter card, link beside the button. */
   variant?: 'full' | 'extended' | 'gate' | 'minimal';
   title?: React.ReactNode;
   /** heading level, default 2 */
   titleLevel?: number;
   subtitle?: React.ReactNode;
-  /** the shield from Logos, shown above a centred heading */
+  /** the shield from Logos, shown above a centered heading */
   logoSrc?: string;
   logoAlt?: string;
   /** a photo header, cropped to 30:11 */
@@ -1349,7 +1349,7 @@ export interface SuccessConfirmationProps extends Omit<ModalBase, 'closeLabel'> 
 export declare function SuccessConfirmation(props: SuccessConfirmationProps): React.ReactElement | null;
 
 export interface ExitIntentProps extends ModalBase {
-  /** 'offer' (default): image beside the form. 'content': centred, with an icon tile. */
+  /** 'offer' (default): image beside the form. 'content': centered, with an icon tile. */
   type?: 'offer' | 'content';
   title: React.ReactNode;
   subtitle?: React.ReactNode;
@@ -1543,7 +1543,7 @@ export interface FormBannerProps {
   subtitle?: React.ReactNode;
   /** the band: 'gradient' (default), 'light' (surface-blue-200) or a photo */
   background?: 'gradient' | 'light' | { src: string };
-  /** heading colour: 'inverted' (white) or 'blue'; follows the background by default */
+  /** heading color: 'inverted' (white) or 'blue'; follows the background by default */
   tone?: 'inverted' | 'blue';
   /** artwork on the right of the band, up to 460 x 150px; hidden on mobile */
   image?: string;
@@ -1633,14 +1633,14 @@ export interface MarketingTableImage {
   src: string;
   /** the photo's width as a share of the header's: "72%" (default), "100%" */
   size?: string;
-  /** how far down the photo the header is centred: "50%" (default), "54%" */
+  /** how far down the photo the header is centered: "50%" (default), "54%" */
   focus?: string;
 }
 export interface MarketingTableProps {
   /** the first column heads the rows; each further column holds one cell per row */
   columns: MarketingTableColumn[];
   rows: MarketingTableRow[];
-  /** the photo in the middle of the header row, drawn in greys and blended into the header colour: a URL, or { src, size, focus } */
+  /** the photo in the middle of the header row, drawn in grays and blended into the header color: a URL, or { src, size, focus } */
   image?: string | MarketingTableImage;
   /** header ground: 'blue' = Qualys Blue, deepening at the foot (default); 'dark' = Charcoal */
   tone?: 'blue' | 'dark';

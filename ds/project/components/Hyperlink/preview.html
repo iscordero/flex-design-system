@@ -97,7 +97,7 @@ function hyperRow(tone, label, use, toks) {
     render: function (s, cls, dis) { return h('span', {className: 'paragraph-rg', style: tone === 'inverted' ? {color: 'var(--text-inverted)'} : undefined}, h(Q.Hyperlink, {tone: tone === 'inverted' ? 'inverted' : undefined, href: dis ? undefined : '#', className: cls || undefined, disabled: dis, arrow: s === 'arrow' ? true : undefined, tabIndex: -1, onClick: function (e) { e.preventDefault(); }}, 'Hyperlink')); }};
 }
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
-  sec('Links', 'A hyperlink sits inside a sentence. Blue, SemiBold (two weights heavier than the copy around it) and always underlined, so it never relies on colour alone.',
+  sec('Links', 'A hyperlink sits inside a sentence. Blue, SemiBold (two weights heavier than the copy around it) and always underlined, so it never relies on color alone.',
     sizes([['Part', 'Value'], ['Label', 'IBM Plex Sans SemiBold, the size of the surrounding copy'], ['Underline', '1px, 3px below the text; 2px on hover when inverted'], ['Arrow', '14px, 4px gap, shown on hover']]),
     matrix({title: 'Inline hyperlink', use: 'A subtle, navigational link that shows something is clickable: in body copy such as articles and blogs, and for sources and URLs.', states: HS, labelWidth: '180px',
       rows: [hyperRow('default', 'Blue', 'On white and light grounds', HT), hyperRow('inverted', 'Inverted', 'On dark or blue grounds: white, still underlined', HI)]})),

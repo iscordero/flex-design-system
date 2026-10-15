@@ -1,5 +1,7 @@
 # Toggle
 
+**Status:** Ready
+
 From the Figma Inputs sheet: an on/off switch for settings that take effect at once.
 
 **Provide:** `label`, and `checked` + `onChange` (or `defaultChecked`).

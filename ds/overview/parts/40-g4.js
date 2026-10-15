@@ -26,7 +26,7 @@ viz('g4-content', null, col({gap: 16},
     t('k', 'Screens wider than 1440px', {fontSize: 12}),
     /* A 1920px screen at the same scale: the well stops at 1440px and sits in the middle. */
     well(328, '1440px content well'),
-    row({justifyContent: 'space-between'}, sp('s', '56px page margin'), sp('s', 'Max width 1440px, centred')))));
+    row({justifyContent: 'space-between'}, sp('s', '56px page margin'), sp('s', 'Max width 1440px, centered')))));
 
 function mod(name, bg, hh, inv) { return h('div', {key: name, className: 'row', style: {justifyContent: 'center', height: hh, background: bg}}, h('div', {className: 'row', style: {justifyContent: 'center', width: 260, height: hh - 16, borderRadius: 3, border: '1px dashed ' + (inv ? 'rgba(255,255,255,.6)' : 'var(--qualys-blue)')}}, sp('k', name, {fontSize: 12, color: inv ? '#fff' : undefined}))); }
 viz('g4-modules', {display: 'grid', gridTemplateColumns: '1fr 132px', columnGap: 16, alignItems: 'center'},
@@ -63,7 +63,7 @@ viz('g4-layers', null, col({gap: 3},
 viz('g4-modals', null, row({gap: 20, alignItems: 'flex-start'},
   col({gap: 6, flex: 1}, h('div', {className: 'row', style: {justifyContent: 'center', height: 104, borderRadius: 6, background: 'rgba(0,0,0,.25)'}},
     h('div', {style: {width: 150, padding: 10, borderRadius: 8, background: '#fff'}}, col({gap: 5}, ph(70, 8, {background: 'var(--charcoal)'}), ph(120, 5), ph(96, 5), row({gap: 4, justifyContent: 'flex-end', marginTop: 4}, h('span', {style: {width: 30, height: 12, borderRadius: 3, border: '1px solid var(--qualys-red)'}}), h('span', {style: {width: 30, height: 12, borderRadius: 3, background: 'var(--qualys-red)'}}))))),
-    lab('440 to 600px wide', 'Centred on the overlay')),
+    lab('440 to 600px wide', 'Centered on the overlay')),
   col({gap: 6, alignItems: 'center'}, h('div', {className: 'row', style: {justifyContent: 'center', width: 74, height: 104, borderRadius: 8, background: 'rgba(0,0,0,.25)'}},
     h('div', {style: {width: 66, padding: 6, borderRadius: 6, background: '#fff'}}, col({gap: 4}, ph(34, 6, {background: 'var(--charcoal)'}), ph(50, 4), ph(42, 4), h('span', {style: {height: 9, marginTop: 2, borderRadius: 3, background: 'var(--qualys-red)'}}), h('span', {style: {height: 9, borderRadius: 3, border: '1px solid var(--qualys-red)'}})))),
     h('div', {style: {textAlign: 'center'}}, t('k', '12px from the edges'), t('s', 'Buttons stack full width')))));

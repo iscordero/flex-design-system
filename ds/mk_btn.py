@@ -1,3 +1,6 @@
+# Retired: the READMEs and previews this script once generated are now edited directly, so running it would undo later changes.
+# Kept for history only.
+raise SystemExit("Retired: edit project/components/<Name>/README.md and preview.html directly.")
 """Writes the Button, TextLink and Hyperlink previews as reference tables: every configuration, each state, its name, its tokens and its usage."""
 import os
 C = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'project/components')

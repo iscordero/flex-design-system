@@ -1,5 +1,7 @@
 # AppliedFilters
 
+**Status:** Ready
+
 The "applied filters" row from the Figma Filters page (mobile): a receipt of the filters in force, placed directly under the search field, with the number of results.
 
 **Provide:** `items` (`{ value, label }`), `onRemove(value)` and `results` (a number, or your own text). Optionally `max` and `onMore` for the summary chip, and `onClearAll` to show a "Clear all" link.

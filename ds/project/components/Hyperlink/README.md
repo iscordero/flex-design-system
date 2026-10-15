@@ -1,10 +1,12 @@
 # Hyperlink
 
+**Status:** Ready
+
 Inline hyperlink for body copy, from the Figma Links sheet: a subtle, underlined navigational link.
 
 **Provide:** the linked words as children and `href`. `arrow` adds an arrow that appears on hover (Figma `hyperlink-arrow-hover`).
 
-- Colour `hyperlink-default` (#1C76C8, 4.69:1 on white), `hyperlink-hover` and `hyperlink-active` (Cobalt) on hover and press.
+- Color `hyperlink-default` (#1C76C8, 4.69:1 on white), `hyperlink-hover` and `hyperlink-active` (Cobalt) on hover and press.
 - Always underlined, 1px, offset 3px so descenders stay clear of the line. SemiBold (600), per the Figma type sheet; takes the surrounding paragraph's font and size.
 - Use inside articles, blogs and source citations. For calls to action use TextLink or Button.
 - **Arrow:** `arrow` shows a 16px arrow (icon size `sm`) on hover; `arrow="always"` keeps it in view, for a link that leaves the page or closes a paragraph.

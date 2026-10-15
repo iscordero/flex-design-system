@@ -230,7 +230,7 @@
 }
 
 .q-icon { display: inline-block; flex: none; vertical-align: middle; }
-/* Approved icon colours: black (icon-default) on light grounds, blue (icon-feature) to draw the eye, white (icon-inverted) on dark grounds. */
+/* Approved icon colors: black (icon-default) on light grounds, blue (icon-feature) to draw the eye, white (icon-inverted) on dark grounds. */
 .q-icon--black { color: var(--icon-default); }
 .q-icon--blue { color: var(--icon-feature); }
 .q-icon--white { color: var(--icon-inverted); }
@@ -383,7 +383,7 @@
 .q-collapse.is-open > .q-collapse__inner { visibility: visible; transition-delay: 0s; }
 @media (prefers-reduced-motion: reduce) { .q-collapse, .q-collapse__inner { transition: none; } }
 
-/* Standard drawer: ruled rows on a 56px pitch (rules shared between neighbours); icon 32px, title 18px SemiBold, 16px chevron */
+/* Standard drawer: ruled rows on a 56px pitch (rules shared between neighbors); icon 32px, title 18px SemiBold, 16px chevron */
 .q-drawer { border-top: 1px solid var(--stroke-neutral-400); border-bottom: 1px solid var(--stroke-neutral-400); }
 .q-drawer + .q-drawer { margin-top: -1px; }
 .q-drawer__heading { margin: 0; font: inherit; }
@@ -451,7 +451,7 @@
 .q-dcard.no-people.has-cta > .q-collapse { grid-column: 1; }
 .q-dcard.no-people > .q-dcard__cta { grid-column: 2; grid-row: 1 / span 2; align-self: end; }
 @media (min-width: 768px) {
-  /* closed: the title row grows to the button's height and the title centres on it */
+  /* closed: the title row grows to the button's height and the title centers on it */
   .q-dcard:not(.q-dcard--mobile).no-people.has-cta:not(.is-open) .q-dcard__head { grid-template-rows: 30px minmax(50px, auto); }
   .q-dcard:not(.q-dcard--mobile).no-people.has-cta:not(.is-open) .q-dcard__title { align-self: center; }
 }
@@ -1123,7 +1123,7 @@ a.q-promo:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 .q-nav__cta { display: flex; align-items: center; align-self: stretch; padding-top: var(--spacing-5xs); }
 .q-nav__inner--center .q-nav__left { flex: 1; gap: 0; }
 .q-nav__inner--center .q-nav__left > .q-nav__items { margin-inline: auto; }
-/* Menu panels: radius-lg, shadow-card, centred under the bar */
+/* Menu panels: radius-lg, shadow-card, centered under the bar */
 .q-nav__panel { position: absolute; top: 100%; left: 50%; z-index: 90; transform: translateX(-50%); box-sizing: border-box; max-width: 100%; padding: var(--spacing-6xs) var(--margin-desktop) 0; }
 .q-nav__panel--mega { width: calc(1249px + 2 * var(--margin-desktop)); }
 /* Column dropdowns open under their own item, the card's text lined up with the item's label */
@@ -1175,7 +1175,7 @@ a.q-mega__title:hover, a.q-mega__heading:hover, .q-mega__link:hover { color: var
 /* The rail's warm ground runs to the bottom edge, even while a tall menu scrolls inside the panel */
 .q-nav__panel--mega .q-nav__panelbox { background: linear-gradient(90deg, var(--surface-neutral-200) 300px, var(--surface-neutral-100) 300px); background-attachment: local; }
 /* Desktop menus share one type and spacing scale, whichever kind they are: eyebrow-xs (12px), 12px from eyebrow to rule, 20px from rule to content,
-   headings, large links, links and filter rows at 16px (headings set apart by weight and colour). (The mobile menu keeps its larger sizes for touch.) */
+   headings, large links, links and filter rows at 16px (headings set apart by weight and color). (The mobile menu keeps its larger sizes for touch.) */
 .q-nav__panel .q-nav__eyebrow { font-size: 12px; }
 .q-nav__panel .q-nav__eyebrow--rule { padding-bottom: var(--spacing-xs); }
 .q-nav__panel .q-mega__title, .q-nav__panel .q-mega__heading, .q-nav__panel .q-navdrop__link { font-size: 16px; }
@@ -1280,7 +1280,7 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-copy__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-3xs); margin-top: var(--spacing-2xl); }
 .q-copy__actions .q-textlink { margin-inline: var(--spacing-3xs); }
 .q-copy__actions .q-textlink:first-child { margin-left: 0; }
-/* Media: radius-lg, the picture covers the box; empty ones show the grey placeholder */
+/* Media: radius-lg, the picture covers the box; empty ones show the gray placeholder */
 .q-media { position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; width: 100%; border-radius: var(--radius-lg); background: var(--surface-neutral-400); color: var(--rhino); }
 .q-media > img, .q-media > video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
 .q-media--video { aspect-ratio: 16 / 9; background: var(--asphalt); }
@@ -1306,7 +1306,7 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-hero .q-copy__actions { margin-top: var(--spacing-3xl); }
 .q-hero--center .q-hero__copy { margin-inline: auto; text-align: center; }
 .q-hero--center .q-copy__actions { justify-content: center; }
-/* Split: copy 520 and media 560, 60px apart; Impact centres the copy, Standard aligns it to the top */
+/* Split: copy 520 and media 560, 60px apart; Impact centers the copy, Standard aligns it to the top */
 .q-hero__row { display: flex; align-items: center; gap: var(--spacing-5xl); }
 .q-hero--split.q-hero--rg .q-hero__row { align-items: flex-start; }
 .q-hero--split .q-hero__copy { flex: 0 1 520px; }
@@ -1328,7 +1328,7 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-hero__shade { position: absolute; inset: 0; background: var(--overlay-dark); }
 .q-hero__panel--empty .q-hero__shade { display: none; }
 .q-hero__panel--light { background: var(--surface-neutral-300); color: var(--text-primary); }
-/* Light photo: a white veil strong enough for dark copy. Left-aligned copy gets the veil under it, fading towards the far side so the photo still shows; centred copy gets it across the whole picture */
+/* Light photo: a white veil strong enough for dark copy. Left-aligned copy gets the veil under it, fading towards the far side so the photo still shows; centered copy gets it across the whole picture */
 .q-hero__panel--light .q-hero__shade { background: color-mix(in srgb, var(--surface-neutral-100) 82%, transparent); }
 .q-hero--left .q-hero__panel--light .q-hero__shade { background: linear-gradient(90deg, color-mix(in srgb, var(--surface-neutral-100) 92%, transparent) 0%, color-mix(in srgb, var(--surface-neutral-100) 88%, transparent) 50%, color-mix(in srgb, var(--surface-neutral-100) 30%, transparent) 92%); }
 .q-hero__panelin { position: relative; box-sizing: border-box; padding: var(--spacing-3xl); }
@@ -1581,18 +1581,20 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 @keyframes q-logos-run { from { transform: translateX(0); } to { transform: translateX(calc(-50% + 20px)); } }
 .q-logos__tile { display: flex; flex: none; align-items: center; justify-content: center; box-sizing: border-box; width: 200px; height: 80px; margin-right: var(--spacing-5xl); padding: var(--spacing-rg); border-radius: var(--radius-md); }
 .q-logos__tile img, .q-logos__cell img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; }
+/* Sized by LogoImg: a compact logo may stand taller than its cell (see LogoImg), so the height cap comes off. */
+.q-logos__tile img[style], .q-logos__cell img[style] { max-height: none; }
 .q-logos__tile a, .q-logos__cell a { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; border-radius: var(--radius-xs); }
 .q-logos__tile a:focus-visible, .q-logos__cell a:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 .q-logos__tile .q-hcard, .q-logos__cell .q-hcard { display: flex; width: 100%; height: 100%; }
 .q-logos__trigger { align-items: center; justify-content: center; width: 100%; height: 100%; }
-/* Tiers: a centred heading, then each tier's label over its logos, four to a row */
+/* Tiers: a centered heading, then each tier's label over its logos, four to a row */
 .q-logos--tiers .q-logos__title { margin: 0; text-align: center; color: var(--text-secondary); }
 .q-logos__tier { margin-top: var(--spacing-3xl); }
 .q-logos__tierlabel { margin: 0 0 var(--spacing-2xl); font-family: var(--font-heading); font-weight: 400; font-size: 20px; line-height: 1.3; letter-spacing: -0.005em; letter-spacing: -0.5%; text-align: center; color: var(--text-secondary); }
-.q-logos__grid { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spacing-4xl) var(--spacing-2xl); max-width: calc(840px + 3 * var(--spacing-2xl)); /* four 210px cells and three gaps */ margin: 0 auto; padding: 0; list-style: none; }
-.q-logos__cell { display: flex; flex: none; align-items: center; justify-content: center; box-sizing: border-box; width: 210px; height: 52px; padding: 0 var(--spacing-2xs); }
+.q-logos__grid { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spacing-4xl) var(--spacing-2xl); max-width: calc(960px + 3 * var(--spacing-2xl)); /* four 240px cells and three gaps */ margin: 0 auto; padding: 0; list-style: none; }
+.q-logos__cell { display: flex; flex: none; align-items: center; justify-content: center; box-sizing: border-box; width: 240px; height: 64px; padding: 0 var(--spacing-2xs); }
 /* The signature sponsor is drawn larger than the standard sponsors: a 320 × 84 cell against 210 × 52. */
-.q-logos__tier--signature .q-logos__cell { width: 320px; height: 84px; }
+.q-logos__tier--signature .q-logos__cell { width: 360px; height: 96px; }
 @media (prefers-reduced-motion: reduce) {
   .q-logos__track { animation: none; }
   .q-logos__viewport { overflow-x: auto; }
@@ -1635,11 +1637,11 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
   .q-logos--mcarousel .q-logos__tile { width: 144px; height: 56px; margin-right: var(--spacing-2xl); padding: var(--spacing-3xs); }
   .q-logos__tierlabel { font-weight: 500; font-size: 18px; }
   .q-logos__grid { flex-direction: column; align-items: center; gap: 32px; }
-  .q-logos__cell { width: 143px; height: 35px; padding: 0 var(--spacing-3xs); }
-  .q-logos__tier--signature .q-logos__cell { width: 240px; height: 64px; }
+  .q-logos__cell { width: 200px; height: 48px; padding: 0 var(--spacing-3xs); }
+  .q-logos__tier--signature .q-logos__cell { width: 280px; height: 80px; }
   /* Standard sponsors in two columns on phones */
   .q-logos__grid--m2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); justify-items: center; gap: var(--spacing-xl) var(--spacing-rg); }
-  .q-logos__grid--m2 .q-logos__cell { width: 100%; max-width: 143px; }
+  .q-logos__grid--m2 .q-logos__cell { width: 100%; max-width: 160px; height: 48px; }
 }
 
 /* ── Overlays, dialogs and notifications (Figma: Modals, Popups, Tooltips) ── */
@@ -1649,7 +1651,7 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 @keyframes q-overlay-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes q-modal-in { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: none; } }
 
-/* Status disc: an icon on a 10% tint of its status colour */
+/* Status disc: an icon on a 10% tint of its status color */
 .q-sdisc { --q-status: var(--qualys-blue); display: inline-flex; flex: none; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: color-mix(in srgb, var(--q-status) 10%, transparent); color: var(--q-status); }
 .q-sdisc--md { width: 56px; height: 56px; }
 .q-sdisc--lg { width: 64px; height: 64px; }
@@ -2022,7 +2024,7 @@ a.q-cal__rowtitle:focus-visible { outline: none; border-radius: var(--radius-xs)
 }
 
 /* ── Footer (Figma: Footer) ── */
-/* Charcoal, with a raised notch above the shield. Content up to 1440px wide (content-max): lead block left, link columns right, legal line centred. */
+/* Charcoal, with a raised notch above the shield. Content up to 1440px wide (content-max): lead block left, link columns right, legal line centered. */
 .q-footer { container-type: inline-size; background: var(--surface-neutral-200); /* the strip around the notch carries the page ground */ color: var(--text-inverted); font-family: var(--font-body); }
 .q-footer__notch { display: block; width: 402px; max-width: 100%; height: 41px; margin: 0 auto -1px; color: var(--surface-neutral-600); }
 .q-footer__bg { background: var(--surface-neutral-600); }
@@ -2226,7 +2228,7 @@ button.q-hcard__close:focus-visible { outline: none; box-shadow: var(--focus-rin
 /* Qualys Blue across the top, easing to the deeper gradient blue at the foot, where the small subtitles sit. */
 .q-mtable__head { position: relative; overflow: hidden; isolation: isolate; background: linear-gradient(180deg, var(--qualys-blue) 20%, var(--blue-gradient-end) 125%); color: var(--text-inverted); }
 .q-mtable--dark .q-mtable__head { background: var(--surface-neutral-600); }
-/* The photo sits in the middle of the header in greys and is multiplied into the header colour, so it can only darken the ground under the white copy. Its two ends fade out. */
+/* The photo sits in the middle of the header in grays and is multiplied into the header color, so it can only darken the ground under the white copy. Its two ends fade out. */
 .q-mtable__photo { position: absolute; top: 50%; left: 50%; display: block; width: var(--q-mtable-photo-size, 72%); max-width: none; height: auto; transform: translate(-50%, calc(-1 * var(--q-mtable-photo-focus, 50%))); filter: grayscale(1); mix-blend-mode: multiply; opacity: 0.5; -webkit-mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent); mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent); }
 .q-mtable--dark .q-mtable__photo { mix-blend-mode: screen; opacity: 0.16; }
 .q-mtable__row { display: grid; grid-template-columns: minmax(0, 1.25fr) repeat(var(--q-mtable-cols, 2), minmax(0, 1fr)); }
@@ -2259,7 +2261,7 @@ button.q-hcard__close:focus-visible { outline: none; box-shadow: var(--focus-rin
   .q-mtable__rowtitle { font-size: 18px; }
   .q-mtable__cell { padding: var(--spacing-lg); }
 }
-/* Under 768px the columns stack: each row is its heading, then one labelled block per column. */
+/* Under 768px the columns stack: each row is its heading, then one labeled block per column. */
 @container (max-width: 767px) {
   .q-mtable__row { display: block; }
   .q-mtable__row--head { min-height: 0; }
@@ -2747,7 +2749,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
       p.arrow ? h('span', { className: 'q-textlink__arrow' }, h(Icon, { name: 'arrow-right', size: 16 })) : null);
   }
 
-  /* Hyperlink — inline link inside body copy. arrow: true shows the arrow on hover, 'always' keeps it in view. disabled greys it out and takes it out of the tab order. tone 'inverted' is white, for dark or blue grounds; it stays underlined. */
+  /* Hyperlink — inline link inside body copy. arrow: true shows the arrow on hover, 'always' keeps it in view. disabled grays it out and takes it out of the tab order. tone 'inverted' is white, for dark or blue grounds; it stays underlined. */
   function Hyperlink(p) {
     var rest = omit(p, ['arrow', 'className', 'children', 'disabled', 'tone']);
     if (p.disabled) { rest['aria-disabled'] = 'true'; rest.tabIndex = -1; rest.href = undefined; rest.onClick = undefined; }
@@ -2786,7 +2788,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
   }
 
   /* ── Tags (Figma: Tagging System) ── */
-  /* Badge tones are named for the status they carry. The older colour names still work and map to them. */
+  /* Badge tones are named for the status they carry. The older color names still work and map to them. */
   var TAG_TONES = { 'dark-red': 'critical', red: 'high', orange: 'medium', yellow: 'low', purple: 'informational', green: 'fixed',
     gray: 'accepted-risk', grey: 'accepted-risk', slate: 'accepted-risk', dark: 'accepted-risk', neutral: 'accepted-risk' };
   /* Tag — badge style (fill / light / outline) for status, or text style for categories. */
@@ -2997,7 +2999,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
       p.label || p.children ? h('span', { className: 'q-toggle__label' }, p.label || p.children) : null);
   }
 
-  /* FilterDropdown — grey trigger, menu of checkboxes with an optional "All". */
+  /* FilterDropdown — gray trigger, menu of checkboxes with an optional "All". */
   function FilterDropdown(p) {
     var id = useId(p.id);
     var opts = optionList(p.options);
@@ -3072,7 +3074,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
     return h('button', rest, h(Icon, { name: 'filter', size: 16 }), h('span', null, p.children || p.label || 'Filter'));
   }
 
-  /* Modal behaviour for dialogs: page scroll lock, first focus, Esc to close, focus kept inside, focus returned. */
+  /* Modal behavior for dialogs: page scroll lock, first focus, Esc to close, focus kept inside, focus returned. */
   function useDialog(active, ref, closeRef, focusSel) {
     React.useEffect(function () {
       if (!active) return undefined;
@@ -3601,7 +3603,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
     ]);
   }
 
-  /* IntegrationCard — a partner integration: thumbnail and name (or a logo), then labelled facts and "works with" tags. */
+  /* IntegrationCard — a partner integration: thumbnail and name (or a logo), then labeled facts and "works with" tags. */
   function IntegrationCard(p) {
     var L = p.labels || {};
     var tags = p.worksWith || [], max = p.maxTags == null ? 2 : p.maxTags;
@@ -4058,7 +4060,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
   }
 
   /* Form — the lead-capture card from the Figma Forms page: a heading, fields, an opt-in checkbox, one primary Button and the consent line.
-     variant: 'full' (centred heading, shield) | 'extended' (left heading, link under the button) | 'gate' | 'minimal' (tighter card, link beside the button). */
+     variant: 'full' (centered heading, shield) | 'extended' (left heading, link under the button) | 'gate' | 'minimal' (tighter card, link beside the button). */
   function Form(p) {
     var variant = p.variant || 'full';
     var fields = p.fields || [];
@@ -4108,7 +4110,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
         : h(TextField, Object.assign(common, { type: f.type || 'text', value: values[f.name], required: f.required, autoComplete: f.autoComplete, inputMode: f.inputMode, maxLength: f.maxLength, onChange: function (e) { set(f.name, e.target.value); } }));
       return h('div', { key: f.name, className: 'q-form__cell', 'data-field': f.name }, control);
     }
-    /* Two neighbouring fields marked half share a row on desktop. */
+    /* Two neighboring fields marked half share a row on desktop. */
     var rows = [];
     for (var i = 0; i < fields.length; i++) {
       if (fields[i].half && fields[i + 1] && fields[i + 1].half) { rows.push(h('div', { key: 'r' + i, className: 'q-form__row' }, cell(fields[i]), cell(fields[i + 1]))); i++; }
@@ -4141,7 +4143,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
       h('svg', { viewBox: '0 0 64 64', width: 64, height: 64, 'aria-hidden': 'true' },
         h('path', { d: 'M26 19.6L46.2 32L26 44.4Z', fill: 'currentColor', stroke: 'currentColor', strokeWidth: 2, strokeLinejoin: 'round' })));
   }
-  /* Media — an image, or a video poster with the play button; with no source it shows the grey placeholder from Figma. */
+  /* Media — an image, or a video poster with the play button; with no source it shows the gray placeholder from Figma. */
   function Media(p) {
     var ps = React.useState(false), playing = ps[0], setPlaying = ps[1];
     var style = p.ratio ? Object.assign({ aspectRatio: String(p.ratio) }, p.style) : p.style;
@@ -4402,9 +4404,12 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
       var H = cell.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
       if (W <= 0 || H <= 0) return;
       var r = img.naturalWidth / img.naturalHeight, k = p.scale || 1;
+      /* Compact logos (square, or a mark stacked over a name) hit the cell's height long before they reach the shared area, so
+         they read small beside wordmarks. They may stand up to 40% taller than the cell (it overflows into the row gap, never sideways). */
+      var Hmax = r < 1.6 ? H * (1 + 0.4 * Math.min(1, (1.6 - r) / 0.6)) : H;
       var hh = Math.sqrt(0.5 * W * H / r) * k, ww = hh * r;
       if (ww > W) { ww = W; hh = W / r; }
-      if (hh > H) { hh = H; ww = H * r; }
+      if (hh > Hmax) { hh = Hmax; ww = Hmax * r; }
       var next = [Math.round(ww), Math.round(hh)];
       ss[1](function (cur) { return cur && cur[0] === next[0] && cur[1] === next[1] ? cur : next; });
     }
@@ -4457,9 +4462,9 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
           var logos = t.logos || [];
           /* The lead tier (one or two logos above the rest) is drawn larger: the signature sponsor. */
           var level = t.level || (i === 0 && tiers.length > 1 && logos.length <= 2 ? 'signature' : 'standard');
-          /* On phones: one column, or two; 'auto' takes one column up to four logos and two from five. */
+          /* On phones: one column, or two; 'auto' takes one column up to six logos and two from seven. */
           var cols = level === 'signature' ? 1 : (t.mobileColumns || p.mobileColumns || 'auto');
-          if (cols === 'auto') cols = logos.length <= 4 ? 1 : 2;
+          if (cols === 'auto') cols = logos.length <= 6 ? 1 : 2;
           return h('div', { key: i, className: cx('q-logos__tier', 'q-logos__tier--' + level) },
             t.label ? h('p', { className: 'q-logos__tierlabel' }, t.label) : null,
             h('ul', { className: cx('q-logos__grid', 'q-logos__grid--m' + cols) }, logos.map(function (l, k) {
@@ -4794,7 +4799,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
         h(Button, { href: p.href, download: dl && p.href ? (p.download === undefined ? true : p.download) : undefined, onClick: p.onAction || (p.href ? undefined : f.close) }, p.actionLabel || (dl ? 'Download Now' : 'Done'))));
     return modalFrame(p, f, { kind: 'notice', overlayCloses: true }, panel);
   }
-  /* ExitIntent — a last offer as someone leaves: 'offer' (image beside the form) or 'content' (a resource, centred). One field, one button. */
+  /* ExitIntent — a last offer as someone leaves: 'offer' (image beside the form) or 'content' (a resource, centered). One field, one button. */
   function ExitIntent(p) {
     var id = useId(p.id), f = useModalFrame(p, true), content = p.type === 'content';
     var field = Object.assign({ name: 'email', label: 'Work Email', type: 'email' }, p.field);
@@ -5110,7 +5115,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
   }
 
   /* FormBanner — a banner (a heading on the blue gradient, a tint or a photo, with optional artwork on the right) and the lead-capture Form attached under it.
-     background 'gradient' (default) | 'light' | { src }; tone 'inverted' | 'blue' sets the heading colour. */
+     background 'gradient' (default) | 'light' | { src }; tone 'inverted' | 'blue' sets the heading color. */
   function FormBanner(p) {
     var bg = p.background, src = bg && typeof bg === 'object' ? bg.src : null, form = p.form || {};
     var ground = src ? 'image' : (bg === 'light' ? 'light' : 'gradient');
@@ -5418,7 +5423,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
                 h(Icon, { name: CAL_ICONS[v], size: 20 }));
             }))) : null),
         isGrid || p.legend === false ? null : h('ul', { className: cx('q-cal__legend', 'q-cal__legend--' + view), 'aria-label': L.legend }, CAL_TYPES.map(function (t) {
-          /* Both views share one layout: a 24px mark (the icon, or the bar colour in a 24px slot) and the name, so the names stay put when the view changes. */
+          /* Both views share one layout: a 24px mark (the icon, or the bar color in a 24px slot) and the name, so the names stay put when the view changes. */
           return h('li', { key: t }, view === 'list' ? h(EventType, { type: t }, typeLabels[t])
             : h('span', { className: 'q-event q-event--' + t },
                 h('span', { className: 'q-cal__swatch q-cal__swatch--' + t, 'aria-hidden': 'true' }),
@@ -5430,7 +5435,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
 
   /* Footer */
   /* Footer — Charcoal footer with the shield in a raised notch: a lead block with a URL form and social links,
-     link columns, and a centred legal line. */
+     link columns, and a centered legal line. */
   var FOOTER_NOTCH = 'M0 40C6.4 40 12.3 37 16.1 32L31.4 12C37 4.5 45.9 0 55.4 0H346.6C356.1 0 365 4.5 370.6 12L385.9 32C389.7 37 395.6 40 402 40Z';
   function Footer(p) {
     var cols = p.columns || [], social = p.social || [], legal = p.legal || [], form = p.form;
@@ -5511,13 +5516,13 @@ var ITEMS = [{label: 'Platform', menu: PLATFORM},
 function svgUri(w, hgt, body) { var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + w + ' ' + hgt + '" width="' + w + '" height="' + hgt + '">' + body + '</svg>'; return 'data:image/svg+xml;utf8,' + svg.replace(/</g, '%3C').replace(/>/g, '%3E').replace(/"/g, "'").replace(/#/g, '%23'); }
 var MARKS = ['<circle cx="20" cy="20" r="14"/>', '<rect x="6" y="6" width="28" height="28" rx="6"/>', '<path d="M20 4L36 34H4Z"/>', '<path d="M20 4L36 20L20 36L4 20Z"/>', '<rect x="4" y="12" width="32" height="16" rx="8"/>', '<path d="M6 6H34V20A14 14 0 0 1 6 20Z"/>'];
 var NAMES = ['Company', 'Customer', 'Partner', 'Sponsor', 'Client', 'Brand', 'Vendor', 'Alliance', 'Member'];
-/* Placeholder logos, cropped tight to their artwork like real logo files, so each one centres in its tile. */
+/* Placeholder logos, cropped tight to their artwork like real logo files, so each one centers in its tile. */
 var TW = document.createElement('canvas').getContext('2d');
 function tw(s, size, weight) { TW.font = (weight || 700) + ' ' + size + 'px Arial, Helvetica, sans-serif'; return Math.ceil(TW.measureText(s).width); }
 function shape(n) {
   var name = NAMES[n % 9] + ' ' + (n + 1), m = MARKS[n % 6], kind = ['wide', 'square', 'stacked', 'wide', 'heavy', 'thin', 'stacked', 'wide', 'square'][n % 9];
   var t = function (x, y, size, weight) { return '<text x="' + x + '" y="' + y + '" font-family="Arial, Helvetica, sans-serif" font-weight="' + (weight || 700) + '" font-size="' + size + '" fill="#575757">'; };
-  if (kind === 'square') { var sw = Math.max(32, tw(NAMES[n % 9], 11)); return {kind: kind, src: svgUri(sw, 56, '<g fill="#575757" transform="translate(' + (sw / 2 - 20) + ' -4)">' + m + '</g>' + t(sw / 2, 54, 11).replace('x="' + (sw / 2) + '"', 'x="' + (sw / 2) + '" text-anchor="middle"') + NAMES[n % 9] + '</text>'), alt: name}; }
+  if (kind === 'square') { var sw = Math.max(36, tw(NAMES[n % 9], 14)); return {kind: kind, src: svgUri(sw, 54, '<g fill="#575757" transform="translate(' + (sw / 2 - 20) + ' -5)">' + m + '</g>' + t(sw / 2, 51, 14).replace('x="' + (sw / 2) + '"', 'x="' + (sw / 2) + '" text-anchor="middle"') + NAMES[n % 9] + '</text>'), alt: name}; }
   if (kind === 'stacked') return {kind: kind, src: svgUri(42 + Math.max(tw(NAMES[n % 9], 18), tw('Systems ' + (n + 1), 13, 400)), 44, '<g fill="#575757" transform="translate(-4 2)">' + m + '</g>' + t(42, 20, 18) + NAMES[n % 9] + '</text>' + t(42, 40, 13, 400) + 'Systems ' + (n + 1) + '</text>'), alt: name};
   if (kind === 'heavy') return {kind: kind, src: svgUri(160, 48, '<rect width="160" height="48" rx="4" fill="#262626"/>' + t(80, 31, 20).replace('x="80"', 'x="80" text-anchor="middle"').replace('#575757', '#ffffff') + name.toUpperCase() + '</text>'), alt: name};
   if (kind === 'thin') { var tn = name.toLowerCase() + ' studio'; return {kind: kind, src: svgUri(tw(tn, 26, 300), 28, t(0, 21, 26, 300).replace('#575757', '#8a8a8a') + tn + '</text>'), alt: name}; }
@@ -5564,7 +5569,7 @@ function stories(extra) { return [1, 2, 3, 4].map(function (n) { return Object.a
 function sectionHead(t) { return h('section', {className: 'q-section'}, h('div', {className: 'q-section__inner ex-head'}, h('h2', {className: 'q-copy__title'}, t))); }
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
   h(Q.Nav, {logoSrc: LOGO, items: ITEMS, current: 'Platform', utility: [{label: 'Community', collapse: true}, 'Login', {label: 'Contact Us', collapse: true}], search: {placeholder: 'Search qualys.com', suggestions: ['VMDR', 'TotalCloud', 'Patch Management', 'Agentic AI']}, cta: {label: 'Get Started', href: '#'}}),
-  h(Q.Hero, {size: 'rg', eyebrow: 'Enterprise TruRisk Platform', title: 'Measure, Communicate and Eliminate Cyber Risk', body: 'One platform to see every asset, prioritise what matters and fix it fast, across on-premises, cloud and endpoints.', background: {src: BUILDING}, actions: [h(Q.Button, {key: 'p'}, 'Get Started'), h(Q.TextLink, {key: 't', tone: 'inverted', arrow: true, href: '#'}, 'Watch the Demo')]}),
+  h(Q.Hero, {size: 'rg', eyebrow: 'Enterprise TruRisk Platform', title: 'Measure, Communicate and Eliminate Cyber Risk', body: 'One platform to see every asset, prioritize what matters and fix it fast, across on-premises, cloud and endpoints.', background: {src: BUILDING}, actions: [h(Q.Button, {key: 'p'}, 'Get Started'), h(Q.TextLink, {key: 't', tone: 'inverted', arrow: true, href: '#'}, 'Watch the Demo')]}),
   h(Q.LogoCarousel, {title: 'Trusted by Over 10,000 Customers Worldwide', logos: LOGOS}),
   h(Q.GeneralContent, {eyebrow: 'Risk Operations Center', title: 'See Your Risk in One Place, Then Act on It', body: 'Bring vulnerability, misconfiguration and threat data together, score it by business impact and send the fixes that matter most to the right teams.', media: {}, actions: [h(Q.Button, {key: 'p'}, 'Explore ROC'), h(Q.TextLink, {key: 't', tone: 'neutral', arrow: true, href: '#'}, 'Read the Datasheet')]}),
   h(Q.Stats, {layout: 'cards', items: STATS}),

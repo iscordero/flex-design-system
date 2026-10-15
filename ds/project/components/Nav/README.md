@@ -1,8 +1,10 @@
 # Nav
 
+**Status:** Ready
+
 The global navigation from the Figma Navigation page: the logo, the primary items with their menus, utility links, search and one call to action. Below 1200px it becomes a bar with a menu button that opens a full-screen menu.
 
-**Provide:** `logoSrc` (the full-colour logo from Logos), `items`, `utility` links, `search` and `cta` (`{ label, href }`). An item is a link (`{ label, href }`) or opens a menu (`{ label, menu }`).
+**Provide:** `logoSrc` (the full-color logo from Logos), `items`, `utility` links, `search` and `cta` (`{ label, href }`). An item is a link (`{ label, href }`) or opens a menu (`{ label, menu }`).
 
 | Menu | Give it | Looks like |
 | --- | --- | --- |
@@ -11,7 +13,7 @@ The global navigation from the Figma Navigation page: the logo, the primary item
 
 **Desktop bar (1200px and up)**
 
-- White, 80px tall, `shadow-nav`. Content runs up to 1440px wide (`content-max`) between the 56px margins, centred.
+- White, 80px tall, `shadow-nav`. Content runs up to 1440px wide (`content-max`) between the 56px margins, centered.
 - Logo 37px tall, its wordmark sitting on the same baseline as the menu labels, then 36px to the items. Items and utility links are IBM Plex Sans Medium 16px `text-primary`, 16px apart; they turn `text-accent-primary` on hover.
 - The current or open item shows a 4px `qualys-blue` bar on the bottom edge of the nav. Set it with `current` (the item's label). It is one bar for the whole row: tapping another item slides it across (300ms ease-in-out, the same motion as Tabs), and closing a menu sends it back to the current page. With reduced motion it moves without sliding.
 - Right side: a 16px search icon (see **Search panel**), the utility links ("Community", "Login", "Contact Us") and a small primary Button ("Get Started"), each 16px apart.
@@ -34,7 +36,7 @@ Both menu kinds use the same sizes, so moving between Platform, Solutions and th
 
 **Mega menu**
 
-- 1249px wide, centred under the bar.
+- 1249px wide, centered under the bar.
 - **Rail:** 300px, `surface-neutral-200`. The overview eyebrow, title and description; 24px below, a second eyebrow and the filter list: "All" plus one row per group, at least 44px tall (10px × 12px padding), **with no gap between rows**, so a hovered row sits right against the active one. Choosing a row shows only that group.
 - **Groups:** an eyebrow over a rule, then three columns 32px apart, filled in order down each column (Risk Operations Center, Vulnerability & Configuration Management and Compliance first). `groupColumns: 2` gives two columns for a menu with fewer, longer groups. On hover a link turns `text-accent-primary` and a 16px `qualys-blue` arrow slides in beside it.
 - **Long labels:** a link that wraps onto two lines keeps its arrow (and its New badge) after the last word, not beside the whole block. The last word, badge and arrow never break apart.
@@ -44,7 +46,7 @@ Both menu kinds use the same sizes, so moving between Platform, Solutions and th
 
 **Column dropdown**
 
-- **Position:** the card opens directly under its own item, with its text lined up under the item's label. Near the right edge it slides left just enough to stay 16px inside the window. (The mega menu is wider and stays centred under the bar.)
+- **Position:** the card opens directly under its own item, with its text lined up under the item's label. Near the right edge it slides left just enough to stay 16px inside the window. (The mega menu is wider and stays centered under the bar.)
 - Each column is 340px: an eyebrow over a rule, then links 16px apart. They hover like the mega menu's links: blue label, blue arrow.
 
 **Search panel**
@@ -71,7 +73,7 @@ Both menu kinds use the same sizes, so moving between Platform, Solutions and th
 
 **Community**
 
-- `label="COMMUNITY"` adds the site name beside the logo (Wix Madefor Text Medium 18px) and `align="center"` centres the items in the remaining space. No utility links or call to action.
+- `label="COMMUNITY"` adds the site name beside the logo (Wix Madefor Text Medium 18px) and `align="center"` centers the items in the remaining space. No utility links or call to action.
 
 **Notes**
 

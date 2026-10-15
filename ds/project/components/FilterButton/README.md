@@ -1,5 +1,7 @@
 # FilterButton
 
+**Status:** Ready
+
 The "Filter" control from the Figma Filters page (mobile): a filter icon and label beside the search field, opening the filter drawer.
 
 **Provide:** `onClick`; the label defaults to "Filter".

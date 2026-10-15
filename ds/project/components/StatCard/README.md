@@ -1,5 +1,7 @@
 # StatCard
 
+**Status:** Ready
+
 One figure from the Figma Stats page: a feature icon, a large number with its unit, a short label and one line of description.
 
 **Provide:** `value` and `label`; optionally `suffix` ("%", "x") or `prefix` ("#"), `icon` (a Feature Icon), `description`, `tone` and `size`.

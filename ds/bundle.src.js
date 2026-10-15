@@ -118,7 +118,7 @@
       p.arrow ? h('span', { className: 'q-textlink__arrow' }, h(Icon, { name: 'arrow-right', size: 16 })) : null);
   }
 
-  /* Hyperlink — inline link inside body copy. arrow: true shows the arrow on hover, 'always' keeps it in view. disabled greys it out and takes it out of the tab order. tone 'inverted' is white, for dark or blue grounds; it stays underlined. */
+  /* Hyperlink — inline link inside body copy. arrow: true shows the arrow on hover, 'always' keeps it in view. disabled grays it out and takes it out of the tab order. tone 'inverted' is white, for dark or blue grounds; it stays underlined. */
   function Hyperlink(p) {
     var rest = omit(p, ['arrow', 'className', 'children', 'disabled', 'tone']);
     if (p.disabled) { rest['aria-disabled'] = 'true'; rest.tabIndex = -1; rest.href = undefined; rest.onClick = undefined; }
@@ -157,7 +157,7 @@
   }
 
   /* ── Tags (Figma: Tagging System) ── */
-  /* Badge tones are named for the status they carry. The older colour names still work and map to them. */
+  /* Badge tones are named for the status they carry. The older color names still work and map to them. */
   var TAG_TONES = { 'dark-red': 'critical', red: 'high', orange: 'medium', yellow: 'low', purple: 'informational', green: 'fixed',
     gray: 'accepted-risk', grey: 'accepted-risk', slate: 'accepted-risk', dark: 'accepted-risk', neutral: 'accepted-risk' };
   /* Tag — badge style (fill / light / outline) for status, or text style for categories. */
@@ -368,7 +368,7 @@
       p.label || p.children ? h('span', { className: 'q-toggle__label' }, p.label || p.children) : null);
   }
 
-  /* FilterDropdown — grey trigger, menu of checkboxes with an optional "All". */
+  /* FilterDropdown — gray trigger, menu of checkboxes with an optional "All". */
   function FilterDropdown(p) {
     var id = useId(p.id);
     var opts = optionList(p.options);
@@ -443,7 +443,7 @@
     return h('button', rest, h(Icon, { name: 'filter', size: 16 }), h('span', null, p.children || p.label || 'Filter'));
   }
 
-  /* Modal behaviour for dialogs: page scroll lock, first focus, Esc to close, focus kept inside, focus returned. */
+  /* Modal behavior for dialogs: page scroll lock, first focus, Esc to close, focus kept inside, focus returned. */
   function useDialog(active, ref, closeRef, focusSel) {
     React.useEffect(function () {
       if (!active) return undefined;
@@ -972,7 +972,7 @@
     ]);
   }
 
-  /* IntegrationCard — a partner integration: thumbnail and name (or a logo), then labelled facts and "works with" tags. */
+  /* IntegrationCard — a partner integration: thumbnail and name (or a logo), then labeled facts and "works with" tags. */
   function IntegrationCard(p) {
     var L = p.labels || {};
     var tags = p.worksWith || [], max = p.maxTags == null ? 2 : p.maxTags;
@@ -1429,7 +1429,7 @@
   }
 
   /* Form — the lead-capture card from the Figma Forms page: a heading, fields, an opt-in checkbox, one primary Button and the consent line.
-     variant: 'full' (centred heading, shield) | 'extended' (left heading, link under the button) | 'gate' | 'minimal' (tighter card, link beside the button). */
+     variant: 'full' (centered heading, shield) | 'extended' (left heading, link under the button) | 'gate' | 'minimal' (tighter card, link beside the button). */
   function Form(p) {
     var variant = p.variant || 'full';
     var fields = p.fields || [];
@@ -1479,7 +1479,7 @@
         : h(TextField, Object.assign(common, { type: f.type || 'text', value: values[f.name], required: f.required, autoComplete: f.autoComplete, inputMode: f.inputMode, maxLength: f.maxLength, onChange: function (e) { set(f.name, e.target.value); } }));
       return h('div', { key: f.name, className: 'q-form__cell', 'data-field': f.name }, control);
     }
-    /* Two neighbouring fields marked half share a row on desktop. */
+    /* Two neighboring fields marked half share a row on desktop. */
     var rows = [];
     for (var i = 0; i < fields.length; i++) {
       if (fields[i].half && fields[i + 1] && fields[i + 1].half) { rows.push(h('div', { key: 'r' + i, className: 'q-form__row' }, cell(fields[i]), cell(fields[i + 1]))); i++; }
@@ -1512,7 +1512,7 @@
       h('svg', { viewBox: '0 0 64 64', width: 64, height: 64, 'aria-hidden': 'true' },
         h('path', { d: 'M26 19.6L46.2 32L26 44.4Z', fill: 'currentColor', stroke: 'currentColor', strokeWidth: 2, strokeLinejoin: 'round' })));
   }
-  /* Media — an image, or a video poster with the play button; with no source it shows the grey placeholder from Figma. */
+  /* Media — an image, or a video poster with the play button; with no source it shows the gray placeholder from Figma. */
   function Media(p) {
     var ps = React.useState(false), playing = ps[0], setPlaying = ps[1];
     var style = p.ratio ? Object.assign({ aspectRatio: String(p.ratio) }, p.style) : p.style;
@@ -1773,9 +1773,12 @@
       var H = cell.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
       if (W <= 0 || H <= 0) return;
       var r = img.naturalWidth / img.naturalHeight, k = p.scale || 1;
+      /* Compact logos (square, or a mark stacked over a name) hit the cell's height long before they reach the shared area, so
+         they read small beside wordmarks. They may stand up to 40% taller than the cell (it overflows into the row gap, never sideways). */
+      var Hmax = r < 1.6 ? H * (1 + 0.4 * Math.min(1, (1.6 - r) / 0.6)) : H;
       var hh = Math.sqrt(0.5 * W * H / r) * k, ww = hh * r;
       if (ww > W) { ww = W; hh = W / r; }
-      if (hh > H) { hh = H; ww = H * r; }
+      if (hh > Hmax) { hh = Hmax; ww = Hmax * r; }
       var next = [Math.round(ww), Math.round(hh)];
       ss[1](function (cur) { return cur && cur[0] === next[0] && cur[1] === next[1] ? cur : next; });
     }
@@ -1828,9 +1831,9 @@
           var logos = t.logos || [];
           /* The lead tier (one or two logos above the rest) is drawn larger: the signature sponsor. */
           var level = t.level || (i === 0 && tiers.length > 1 && logos.length <= 2 ? 'signature' : 'standard');
-          /* On phones: one column, or two; 'auto' takes one column up to four logos and two from five. */
+          /* On phones: one column, or two; 'auto' takes one column up to six logos and two from seven. */
           var cols = level === 'signature' ? 1 : (t.mobileColumns || p.mobileColumns || 'auto');
-          if (cols === 'auto') cols = logos.length <= 4 ? 1 : 2;
+          if (cols === 'auto') cols = logos.length <= 6 ? 1 : 2;
           return h('div', { key: i, className: cx('q-logos__tier', 'q-logos__tier--' + level) },
             t.label ? h('p', { className: 'q-logos__tierlabel' }, t.label) : null,
             h('ul', { className: cx('q-logos__grid', 'q-logos__grid--m' + cols) }, logos.map(function (l, k) {
@@ -2165,7 +2168,7 @@
         h(Button, { href: p.href, download: dl && p.href ? (p.download === undefined ? true : p.download) : undefined, onClick: p.onAction || (p.href ? undefined : f.close) }, p.actionLabel || (dl ? 'Download Now' : 'Done'))));
     return modalFrame(p, f, { kind: 'notice', overlayCloses: true }, panel);
   }
-  /* ExitIntent — a last offer as someone leaves: 'offer' (image beside the form) or 'content' (a resource, centred). One field, one button. */
+  /* ExitIntent — a last offer as someone leaves: 'offer' (image beside the form) or 'content' (a resource, centered). One field, one button. */
   function ExitIntent(p) {
     var id = useId(p.id), f = useModalFrame(p, true), content = p.type === 'content';
     var field = Object.assign({ name: 'email', label: 'Work Email', type: 'email' }, p.field);
@@ -2481,7 +2484,7 @@
   }
 
   /* FormBanner — a banner (a heading on the blue gradient, a tint or a photo, with optional artwork on the right) and the lead-capture Form attached under it.
-     background 'gradient' (default) | 'light' | { src }; tone 'inverted' | 'blue' sets the heading colour. */
+     background 'gradient' (default) | 'light' | { src }; tone 'inverted' | 'blue' sets the heading color. */
   function FormBanner(p) {
     var bg = p.background, src = bg && typeof bg === 'object' ? bg.src : null, form = p.form || {};
     var ground = src ? 'image' : (bg === 'light' ? 'light' : 'gradient');
@@ -2789,7 +2792,7 @@
                 h(Icon, { name: CAL_ICONS[v], size: 20 }));
             }))) : null),
         isGrid || p.legend === false ? null : h('ul', { className: cx('q-cal__legend', 'q-cal__legend--' + view), 'aria-label': L.legend }, CAL_TYPES.map(function (t) {
-          /* Both views share one layout: a 24px mark (the icon, or the bar colour in a 24px slot) and the name, so the names stay put when the view changes. */
+          /* Both views share one layout: a 24px mark (the icon, or the bar color in a 24px slot) and the name, so the names stay put when the view changes. */
           return h('li', { key: t }, view === 'list' ? h(EventType, { type: t }, typeLabels[t])
             : h('span', { className: 'q-event q-event--' + t },
                 h('span', { className: 'q-cal__swatch q-cal__swatch--' + t, 'aria-hidden': 'true' }),
@@ -2801,7 +2804,7 @@
 
   /* Footer */
   /* Footer — Charcoal footer with the shield in a raised notch: a lead block with a URL form and social links,
-     link columns, and a centred legal line. */
+     link columns, and a centered legal line. */
   var FOOTER_NOTCH = 'M0 40C6.4 40 12.3 37 16.1 32L31.4 12C37 4.5 45.9 0 55.4 0H346.6C356.1 0 365 4.5 370.6 12L385.9 32C389.7 37 395.6 40 402 40Z';
   function Footer(p) {
     var cols = p.columns || [], social = p.social || [], legal = p.legal || [], form = p.form;

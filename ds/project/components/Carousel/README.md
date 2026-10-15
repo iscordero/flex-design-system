@@ -1,5 +1,7 @@
 # Carousel
 
+**Status:** Ready
+
 The carousel module from the Figma Carousel Modules page: a row of cards you scroll sideways, with a progress bar and previous / next buttons.
 
 **Provide:** the cards as children, a `label` that names the set ("Latest resources"), and optionally `variant="single"` or `slideWidth`.
@@ -14,9 +16,9 @@ The carousel module from the Figma Carousel Modules page: a row of cards you scr
 - **Progress bar:** 377 × 4px, Charcoal at 20% with a `qualys-blue` fill that grows as you move through the set.
 - **Buttons:** 48px, `radius-rg`, white with a hairline and a soft shadow, a 16px chevron each. The one that can't go further fades to 40%.
 - Cards in a row share the tallest height.
-- **Mobile:** cards 300px wide, 16px apart, starting 20px from the edge; the progress bar spans the width and the buttons sit centred, 24px below it.
+- **Mobile:** cards 300px wide, 16px apart, starting 20px from the edge; the progress bar spans the width and the buttons sit centered, 24px below it.
 
-Behaviour:
+Behavior:
 
 - Swipe, drag the trackpad, or use the buttons; each press moves one card and cards snap into place.
 - The row can take keyboard focus and then scrolls with the arrow keys. Links inside cards stay reachable by Tab.

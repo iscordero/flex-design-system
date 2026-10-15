@@ -1,5 +1,7 @@
 # Breadcrumbs
 
+**Status:** Ready
+
 The trail above a page that shows where it sits in the site, from the Figma Breadcrumbs page: a link for each level above, then the page itself as plain text.
 
 **Provide:** `items`, from the root to the current page. Each is `{ label, href }`; the last one is the current page and can be just its name.
@@ -7,7 +9,7 @@ The trail above a page that shows where it sits in the site, from the Figma Brea
 - **Links:** IBM Plex Sans SemiBold 16px in `link-primary-default`, line height 1.3, −1%. Every item but the last is a link.
 - **Current page:** IBM Plex Sans Regular 16px in `text-primary`. It is text only, with no hover or link styles.
 - **Separator:** the 12px `chevron-right` in `stroke-neutral-500`, 6px from the labels either side.
-- **Hover:** a 2px bar in the link's colour, 1px under the label, with a 2px radius. The row is 24px tall either way, so nothing moves.
+- **Hover:** a 2px bar in the link's color, 1px under the label, with a 2px radius. The row is 24px tall either way, so nothing moves.
 - **Pressed:** the link darkens to `link-primary-hover`. **Focus:** the `focus-ring`.
 - **Long names:** the trail stays on one line. The current page is cut with an ellipsis when it runs out of room; its full name stays available as a tooltip and to screen readers.
 - **Deep trails:** with more than four levels the middle ones fold behind "…", leaving the root and the last two: Home › … › Category › Current. Pressing the dots opens the full trail. `maxItems` changes the limit; `0` never folds.

@@ -1,5 +1,7 @@
 # InlinePromoCard
 
+**Status:** Ready
+
 The Inline Promo card from the Figma Cards page: a promotion on Charcoal or the blue gradient with a white heading, one line of copy and one call to action, in a vertical, wide or banner layout.
 
 **Provide:** `title`, `description`, `cta` (the label) and `href`. Choose `color` (`light` is the blue gradient, `dark` is Charcoal) and `layout`. Optional: `logo` (the reversed Qualys logo URL), `image` (a product image), `icon` (`general-events`, `general-webinar` or `general-resource`) and `button` (`primary` or `tertiary`).
@@ -18,4 +20,4 @@ The Inline Promo card from the Figma Cards page: a promotion on Charcoal or the 
 - **Vertical:** 16px padding; the image sits between the logo and the heading. With a logo or icon and no image the card is at least 400px tall and the button sits at the bottom.
 - **Wide and banner:** 24px padding (`spacing-xl`); copy on the left 60%, the image bleeding off the right edge. The banner has no logo.
 - **Mobile (under 768px):** wide and banner stack like the vertical card, image above the heading. On tablet the vertical card just grows wider.
-- Red on the blue gradient is the Figma pairing for these cards; don't swap in other button colours.
+- Red on the blue gradient is the Figma pairing for these cards; don't swap in other button colors.

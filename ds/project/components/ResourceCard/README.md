@@ -1,5 +1,7 @@
 # ResourceCard
 
+**Status:** Ready
+
 The Resource card from the Figma Cards page: an image, the resource type and a title, ending in one of three approved actions.
 
 **Provide:** `title`, `resourceType`, `href` and an `action`; optionally `image` and `flag`.

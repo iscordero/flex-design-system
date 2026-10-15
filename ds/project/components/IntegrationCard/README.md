@@ -1,6 +1,8 @@
 # IntegrationCard
 
-The Integration card from the Figma Cards page: a partner integration with its thumbnail and name (or its logo) above a short list of labelled facts.
+**Status:** Ready
+
+The Integration card from the Figma Cards page: a partner integration with its thumbnail and name (or its logo) above a short list of labeled facts.
 
 **Provide:** `name`, and either `image` (a square thumbnail) or `logo` (a wide logo, which replaces the thumbnail and name). Then `type`, `worksWith` (a list), `dataFetched` and `category`; `href` makes the card a link. `maxTags` sets how many "works with" tags show (default 2); `labels` renames the four labels.
 

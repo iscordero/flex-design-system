@@ -1,5 +1,7 @@
 # EventCard
 
+**Status:** Ready
+
 The Event card from the Figma Cards page: an image, the event type and format, a title and the date, ending in an outlink icon.
 
 **Provide:** `title`, `category` (the event type), `format`, `date`, `href`; optionally `image`, `flag`, and for the featured layout a `description`.

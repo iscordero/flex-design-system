@@ -1,5 +1,7 @@
 # EventCalendar
 
+**Status:** Ready
+
 The events calendar from the Figma Calendar page: a search and filter bar over one of three views of the same events — a month grid, a day-by-day list or a grid of cards.
 
 **Provide:** `events` and, optionally, `defaultView`, `defaultMonth` and a `promo` card for the grid.
@@ -12,7 +14,7 @@ Each event: `{ id, title, type, format, start, end, time, href, image, flag, spe
 
 | View | Figma name | What it shows |
 |---|---|---|
-| `month` (default) | Month View | A month grid with a coloured bar for each event |
+| `month` (default) | Month View | A month grid with a colored bar for each event |
 | `list` | List View | The month's events grouped by day, each with a button |
 | `grid` | Grid View | Every event as a card, newest first, with "Load More" |
 
@@ -31,7 +33,7 @@ Month view:
 - **Day:** the date in IBM Plex Sans Medium 16px `text-secondary`. Today is `misty-blue`; days from the months either side are `surface-neutral-200`.
 - **Event bar:** `radius-xs`, 6px padding, white 14px text, 10px in from the column edges. A one-day event shows the type, the format and the title (Medium). An event of several days is one bar across its days: "Type | Format" over the title, 48px tall.
 - **Compact bar:** 24px tall, the title only. Used when a day has more than one event.
-- **Colours:** the `event-*` tokens, the same as the EventType icons — Qualys Event `event-qualys` (Qualys Red), Industry Event `event-industry` (Charcoal), Webinar `event-webinar` (Qualys Blue), Speaking Engagement `event-speaking`, Training `event-training` (Asphalt).
+- **Colors:** the `event-*` tokens, the same as the EventType icons — Qualys Event `event-qualys` (Qualys Red), Industry Event `event-industry` (Charcoal), Webinar `event-webinar` (Qualys Blue), Speaking Engagement `event-speaking`, Training `event-training` (Asphalt).
 - **Hover or focus** on a bar shows the event's card (364px wide) beside it. Pressing the bar opens the event.
 
 List view:
@@ -46,13 +48,13 @@ Grid view:
 
 - Three cards across, 24px apart, 36px between rows; each at least 440px tall. Events use EventCard, or WebinarCard when they have `speakers`.
 - `promo` (InlinePromoCard props) places a dark promo card as the sixth tile.
-- "Load More" (secondary Button), centred 36px under the grid, adds another page. `pageSize` sets how many tiles a page has (9).
+- "Load More" (secondary Button), centered 36px under the grid, adds another page. `pageSize` sets how many tiles a page has (9).
 - **Hover:** the same as every card: the blue bar slides in and the outlink arrow nudges.
 
 Responsive:
 
 - **Tablet:** the search takes its own row above the filters; weekday names shorten to "Sun"; every bar is compact; the grid has two columns.
-- **Mobile:** the filters become one "Filter" dropdown that opens the FilterDrawer. The month is centred between the two arrows (28px) and the toggle spans the width below it.
+- **Mobile:** the filters become one "Filter" dropdown that opens the FilterDrawer. The month is centered between the two arrows (28px) and the toggle spans the width below it.
 - **Mobile month:** the calendar runs edge to edge with weekday initials, 12px dates and 20px bars showing the start of the title; "Current Month" and the legend move below it. Tapping a bar shows its card; tapping the card opens the event.
 - **Mobile list:** each row stacks: time, type icon and name, title, then a full-width button. The legend is hidden.
 - **Mobile grid:** one column.
@@ -65,20 +67,20 @@ Usage, from the Figma notes:
 Do / Don't:
 
 - Do keep titles short; a bar shows one line and a list row two.
-- Do give every event a `type`; colour alone never tells types apart, so the type is also in each bar's label and card.
+- Do give every event a `type`; color alone never tells types apart, so the type is also in each bar's label and card.
 - Don't put more than about four events on one day in the month view; point people to the list instead.
 
 Accessibility:
 
 - Each bar is a link whose name gives the title, type, format, dates and time. The hover card repeats this and is hidden from screen readers.
-- The view buttons are labelled "List view", "Month view" and "Grid view" and report which is pressed. The month heading announces itself when the month changes. Esc closes the card.
+- The view buttons are labeled "List view", "Month view" and "Grid view" and report which is pressed. The month heading announces itself when the month changes. Esc closes the card.
 - White text on `qualys-blue` (3.78:1) and `qualys-red` (4.18:1) is under 4.5:1 at 14px; kept as designed.
 
 Notes:
 
 - Figma's examples mix full and compact bars on days with two events; this follows the written rule (`compact="auto"`). Set `compact={false}` to always show full bars or `compact` to always show compact ones.
 - Day lines are drawn in #D9DCE0; they use `stroke-neutral-400`. List cards are drawn with a 2% shadow; they use `shadow-card`. The hover card uses `shadow-modal` so it stands out on the white calendar.
-- The calendar file draws "Upcoming" flags in red and a blue "Multi-Day" flag, and colours each card's event type. Cards here stay as the Cards page defines them: flags in the tier colours and the type in `text-accent-primary`.
+- The calendar file draws "Upcoming" flags in red and a blue "Multi-Day" flag, and colors each card's event type. Cards here stay as the Cards page defines them: flags in the tier colors and the type in `text-accent-primary`.
 - Figma's mobile bars use 8px text; this uses 10px.
 - Figma puts the mobile view toggle in the toolbar on the list and grid and under the month on the month view; here it is always under the heading.
 - The search placeholder is "Search Resources" in Figma; here it is "Search Events" (`labels.search`).

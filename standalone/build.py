@@ -70,15 +70,15 @@ TOKEN_CSS = '\n'.join(root + classes)
 
 # ---------- lookups for the Specs view ----------
 KINDS = {}
-for f, kind in (('color', 'colour'), ('shadow', 'shadow'), ('spacing', 'spacing'), ('radius', 'radius'), ('layout', 'layout'), ('zIndex', 'layer')):
+for f, kind in (('color', 'color'), ('shadow', 'shadow'), ('spacing', 'spacing'), ('radius', 'radius'), ('layout', 'layout'), ('zIndex', 'layer')):
     for x in tok[f]['tokens']:
         KINDS[x['name']] = kind
 for k in tok['type']['families']:
     KINDS['font-' + k] = 'font'
-KINDS['surface-promo-gradient'] = 'colour'
+KINDS['surface-promo-gradient'] = 'color'
 
 
-def norm_colour(v):
+def norm_color(v):
     v = v.strip().lower()
     m = re.match(r'^#([0-9a-f]{6})$', v)
     if m:
@@ -91,11 +91,11 @@ def norm_colour(v):
     return None
 
 
-LOOK = {'colour': {}, 'spacing': {}, 'radius': {}, 'shadow': {}}
+LOOK = {'color': {}, 'spacing': {}, 'radius': {}, 'shadow': {}}
 for x in tok['color']['tokens']:
-    c = norm_colour(resolve(x['value']['light']))
+    c = norm_color(resolve(x['value']['light']))
     if c:
-        LOOK['colour'].setdefault(c, []).append(x['name'])
+        LOOK['color'].setdefault(c, []).append(x['name'])
 for x in tok['spacing']['tokens']:
     LOOK['spacing'][x['value']] = x['name']
 for x in tok['radius']['tokens']:
@@ -200,7 +200,7 @@ views = []  # (view id, html)
 last = os.environ.get('FLEX_DATE') or idx['lastChange']['at'][:10]
 y, mo, d = last.split('-')
 MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-SNAP = '%d %s %s' % (int(d), MONTHS[int(mo) - 1], y)
+SNAP = '%s %d, %s' % (MONTHS[int(mo) - 1], int(d), y)  # American date order
 ncomp = sum(len(m) for n, m in fam['families'])
 
 # overview
@@ -221,7 +221,7 @@ lede, rest = re.match(r'\s*<p>(.*?)</p>(.*)', over, re.S).groups()
 views.append(('overview', '''<div class="ds-stage" data-c="Cover"></div>
 <header class="ds-head"><h1 class="ds-sr">Flex Design System</h1>
 <p class="ds-lede">%s</p>
-<ul class="ds-facts"><li><b>%d</b> components, patterns and page modules in <b>%d</b> families</li><li><b>%d</b> guides</li><li><b>%d</b> colour tokens</li><li>Updated <b>%s</b></li></ul></header>
+<ul class="ds-facts"><li><b>%d</b> components, patterns and page modules in <b>%d</b> families</li><li><b>%d</b> guides</li><li><b>%d</b> color tokens</li><li>Updated <b>%s</b></li></ul></header>
 <article class="ds-prose">%s</article>''' % (lede, ncomp, len(fam['families']), len(guides), len(tok['color']['tokens']), SNAP, rest)))
 
 for gi, (gid, title, body, toc) in enumerate(guides):
@@ -261,8 +261,8 @@ for x in tok['color']['tokens']:
     else:
         buckets['Palette'].append(x)
 th = ['<header class="ds-head"><p class="ds-eyebrow">Tokens</p><h1>Design Tokens</h1><p class="ds-lede">Every value the components are built from. Use the token name, not the raw value, so a change to the token reaches everything that uses it.</p></header>',
-      '<ul class="ds-toc" aria-label="Token sets">' + ''.join('<li><a href="#tokens" data-jump="tk-%s">%s</a></li>' % (slug(n), n) for n in ['Colour', 'Type', 'Spacing', 'Radius', 'Shadow', 'Layout', 'Layers']) + '</ul>',
-      '<section class="ds-group"><h2 id="tk-colour">Colour</h2>']
+      '<ul class="ds-toc" aria-label="Token sets">' + ''.join('<li><a href="#tokens" data-jump="tk-%s">%s</a></li>' % (slug(n), n) for n in ['Color', 'Type', 'Spacing', 'Radius', 'Shadow', 'Layout', 'Layers']) + '</ul>',
+      '<section class="ds-group"><h2 id="tk-color">Color</h2>']
 for g, _ in COLOR_GROUPS:
     if not buckets[g]:
         continue
@@ -272,14 +272,14 @@ for g, _ in COLOR_GROUPS:
         if x['name'] == 'blue-gradient-end':
             continue
         if x['name'] == 'blue-gradient-start':
-            th.append('<li><span class="ds-chip" style="background:linear-gradient(124deg, var(--blue-gradient-start) 30%%, var(--blue-gradient-end))"></span><span class="ds-name">Blue Gradient</span><span class="ds-val">%s → %s, 124°</span><span class="ds-use">%s</span></li>' % (
+            th.append('<li id="tok-blue-gradient"><span class="ds-chip" style="background:linear-gradient(124deg, var(--blue-gradient-start) 30%%, var(--blue-gradient-end))"></span><span class="ds-name">Blue Gradient</span><span class="ds-val">%s → %s, 124°</span><span class="ds-use">%s</span></li>' % (
                 esc(resolve(x['value']['light'])), esc(resolve(next(t for t in tok['color']['tokens'] if t['name'] == 'blue-gradient-end')['value']['light'])),
                 esc('blue-gradient-start (from 30%) at the top left to blue-gradient-end at the bottom right, as in Figma\'s Blue Gradient style. In code: var(--surface-promo-gradient). The ground of the blue promo cards, the stats panel and the form banner. White text on it: 3.26:1 at the light end, 6.50:1 at the dark end.')))
             continue
         raw = x['value']['light']
         m = re.match(r'^\{(.+)\}$', raw)
         val = ('%s, same as %s' % (resolve(raw), m.group(1))) if m else raw
-        th.append('<li><span class="ds-chip" style="background:var(--%s)"></span><span class="ds-name">%s</span><span class="ds-val">%s</span><span class="ds-use">%s</span></li>' % (x['name'], esc(x['name']), esc(val), esc(x.get('usage', ''))))
+        th.append('<li id="tok-%s"><span class="ds-chip" style="background:var(--%s)"></span><span class="ds-name">%s</span><span class="ds-val">%s</span><span class="ds-use">%s</span></li>' % (x['name'], x['name'], esc(x['name']), esc(val), esc(x.get('usage', ''))))
     th.append('</ul>')
 th.append('</section><section class="ds-group"><h2 id="tk-type">Type</h2><p>Families: %s.</p>' % esc('; '.join('%s is %s' % (k, v.split(',')[0].strip('"')) for k, v in tok['type']['families'].items())))
 # Every weight a type style comes in: its default plus the style-weight classes in bundle.css (paragraph-rg-500).
@@ -292,7 +292,7 @@ for g in tok['type']['groups']:
     th.append('<h3>%s</h3>%s<ul class="ds-rows">' % (esc(g['name']), '<p>%s</p>' % esc(g['note']) if g.get('note') else ''))
     for st in g['styles']:
         spec = ' / '.join(v for v in [st['fontSize'], st.get('lineHeight') or '', ('weights ' if ',' in weights_of(st) else 'weight ') + weights_of(st), st.get('letterSpacing') or ''] if v)
-        th.append('<li><span class="ds-meta"><span class="ds-name">%s</span><span class="ds-val">%s</span></span><span class="ds-demo"><span class="ds-spec %s">%s</span><span class="ds-use">%s</span></span></li>' % (esc(st['name']), esc(spec), 'ts-' + st['name'], esc(st.get('sample') or 'Detect, Prioritize, Eliminate'), esc(st.get('usage', ''))))
+        th.append('<li id="tok-%s"><span class="ds-meta"><span class="ds-name">%s</span><span class="ds-val">%s</span></span><span class="ds-demo"><span class="ds-spec %s">%s</span><span class="ds-use">%s</span></span></li>' % (st['name'], esc(st['name']), esc(spec), 'ts-' + st['name'], esc(st.get('sample') or 'Detect, Prioritize, Eliminate'), esc(st.get('usage', ''))))
     th.append('</ul>')
 th.append('</section>')
 
@@ -305,7 +305,7 @@ def rows(key, title, demo):
     out.append('<ul class="ds-rows">')
     for x in sec['tokens']:
         v = x['value']['light'] if isinstance(x['value'], dict) else x['value']
-        out.append('<li><span class="ds-meta"><span class="ds-name">%s</span><span class="ds-val">%s</span></span><span class="ds-demo">%s<span class="ds-use">%s</span></span></li>' % (esc(x['name']), esc(str(v)), demo(x), esc(x.get('usage', ''))))
+        out.append('<li id="tok-%s"><span class="ds-meta"><span class="ds-name">%s</span><span class="ds-val">%s</span></span><span class="ds-demo">%s<span class="ds-use">%s</span></span></li>' % (x['name'], esc(x['name']), esc(str(v)), demo(x), esc(x.get('usage', ''))))
     out.append('</ul></section>')
     return ''.join(out)
 
@@ -400,20 +400,45 @@ def family_view(fid, fname, members, eyebrow):
     cards = []
     for name in members:
         sub = add(name)
+        STATUS[name] = status_of(name)
+        st, why = STATUS[name]
+        st_note = '' if st == 'Ready' else '<p class="ds-stnote ds-stnote--%s"><b>%s.</b> %s</p>' % (slug(st), esc(st), esc(why or {'In review': 'Being designed or checked: don\'t build it yet.', 'Needs fixes': 'Has a known problem: don\'t build it until it is fixed.', 'Deprecated': 'Don\'t use it in new work.'}.get(st, '')))
         rp = '%s/components/%s/README.md' % (P, name)
         notes = ''
         if os.path.exists(rp):
             _, rh = strip_h1(md(open(rp).read(), 'r-' + name)[0])
             notes = '<details class="ds-notes"><summary>Usage notes</summary><div class="ds-prose">%s</div></details>' % rh
-        ty = types_for(name)
+            README_TEXT[name] = re.sub(r'<p><strong>Status:</strong>.*?</p>', '', rh, count=1, flags=re.S)  # the status line would match every search for "status"
+        # No Code button on the cards: props and types live in the component's README and index.d.ts.
         code_btn = ''
-        if ty:
-            TYPES[name] = ty
-            code_btn = '<button type="button" class="ds-code" aria-expanded="false" aria-controls="ds-drawer" aria-haspopup="dialog" aria-label="Code for %s" title="Code for developers">%s<span>Code</span></button>' % (name, CODE_ICON)
-        cards.append('''<article class="ds-card" id="c-%s"><div class="ds-card-head"><h2>%s</h2><span class="ds-level">%s</span><span class="ds-tools"><button type="button" class="ds-specs" aria-expanded="false" aria-controls="ds-drawer" aria-haspopup="dialog" data-sp="sp-%s" title="Sizes, spacing, colour, type and tokens">%s<span>Specs</span></button>%s<button type="button" class="ds-size" aria-pressed="false" hidden>Actual size</button></span></div>
-<p class="ds-sub">%s</p><div class="ds-stage%s" data-c="%s"></div><div class="ds-specpanel" id="sp-%s" hidden></div>%s</article>''' % (name, name, LEVEL_NAME.get(LEVEL[name], LEVEL[name]), name, SPECS_ICON, code_btn, esc(sub), ' is-square' if name in SQUARE else '', name, name, notes))
+        cards.append('''<article class="ds-card" id="c-%s"><div class="ds-card-head"><h2>%s</h2><span class="ds-level">%s</span>%s<span class="ds-tools"><button type="button" class="ds-specs" aria-expanded="false" aria-controls="ds-drawer" aria-haspopup="dialog" data-sp="sp-%s" title="Sizes, spacing, color, type and tokens">%s<span>Specs</span></button>%s<button type="button" class="ds-size" aria-pressed="false" hidden>Actual size</button></span></div>
+<p class="ds-sub">%s</p>%s<div class="ds-stage%s" data-c="%s"></div><div class="ds-specpanel" id="sp-%s" hidden></div>%s</article>''' % (name, name, LEVEL_NAME.get(LEVEL[name], LEVEL[name]), status_chip(name), name, SPECS_ICON, code_btn, esc(sub), st_note, ' is-square' if name in SQUARE else '', name, name, notes))
     views.append((fid, '<header class="ds-head"><p class="ds-eyebrow">%s</p><h1>%s</h1></header><div class="ds-family">%s</div>' % (esc(eyebrow), esc(fname), ''.join(cards))))
 
+README_TEXT = {}
+FAMILY_OF = {}
+# Status: one line under each README's title, "**Status:** Ready" (or In review / Needs fixes / Deprecated, then " — why").
+STATUS = {}
+STATUS_KEYS = {'ready': 'Ready', 'in review': 'In review', 'needs fixes': 'Needs fixes', 'deprecated': 'Deprecated'}
+
+
+def status_of(name):
+    rp = '%s/components/%s/README.md' % (P, name)
+    if not os.path.exists(rp):
+        return ('Ready', '')
+    m = re.search(r'^\*\*Status:\*\*\s*([A-Za-z ]+?)\s*(?:[\u2014\u2013-]\s*(.*))?$', open(rp).read()[:600], re.M)
+    if not m:
+        return ('Ready', '')
+    return (STATUS_KEYS.get(m.group(1).strip().lower(), m.group(1).strip()), (m.group(2) or '').strip())
+
+
+def status_chip(name, small=False):
+    st, why = STATUS.get(name) or status_of(name)
+    if st == 'Ready' and small:
+        return ''
+    cls = 'ds-st ds-st--' + slug(st) + (' is-small' if small else '')
+    tip = st + (': ' + why if why else '')
+    return '<span class="%s" title="%s">%s</span>' % (cls, esc(tip), '' if small else esc(st))
 # Foundations: Typography and Grid each have their own page, next to the tokens and assets.
 for fname in ('Typography', 'Grid'):
     family_view(slug(fname), fname, [fname], 'Foundations')
@@ -428,7 +453,7 @@ def asset_html(keys):
     for key in keys:
         g = idx['assetGroups'][key]
         big = g.get('tile') == 'l'
-        out.append('<section class="ds-group"><h2>%s</h2><ul class="ds-assets %s">' % (esc(g['name']), 'is-l' if big else 'is-s'))
+        out.append('<section class="ds-group" id="as-%s"><h2>%s</h2><ul class="ds-assets %s">' % (slug(g['name']), esc(g['name']), 'is-l' if big else 'is-s'))
         for n in g['order']:
             f = g['files'][n]
             dark = 'reversed' in n
@@ -454,10 +479,18 @@ for sname, fams in SECTIONS:
     for fname, members in fams:
         fid = 'f-' + slug(fname)
         family_view(fid, fname, members, sname)
-        index.append('<section><h2><a href="#%s">%s</a></h2><ul>%s</ul></section>' % (fid, esc(fname), ''.join('<li><a href="#c-%s">%s</a></li>' % (n, n) for n in members)))
+        index.append('<section><h2><a href="#%s">%s</a></h2><ul>%s</ul></section>' % (fid, esc(fname), ''.join('<li><a href="#c-%s">%s</a>%s</li>' % (n, n, status_chip(n, True)) for n in members)))
         nav_fams.append((fid, fname, members))
+        for n in members:
+            FAMILY_OF[n] = (fid, fname, sname)
     index.append('</div></section>')
     nav_secs.append((sname, nav_fams))
+_open = [(n, STATUS[n]) for _, fams in SECTIONS for _, m in fams for n in m if STATUS.get(n, ('Ready',))[0] != 'Ready']
+_ready = sum(1 for _, fams in SECTIONS for _, m in fams for n in m if STATUS.get(n, ('Ready',))[0] == 'Ready')
+_stat = '<section class="ds-group" id="ix-status"><h2>Status</h2><p><b>%d of %d</b> are <b>Ready</b>: safe to design with and build. %s</p>%s</section>' % (
+    _ready, ncount, 'Everything else is listed here; don\'t build these until they are Ready.' if _open else 'Nothing is waiting.',
+    '<ul class="ds-stlist">%s</ul>' % ''.join('<li><a href="#c-%s">%s</a> %s%s</li>' % (n, n, status_chip(n), (' <span class="ds-stwhy">' + esc(w) + '</span>') if w else '') for n, (st, w) in _open) if _open else '')
+index.insert(1, _stat)
 views.append(('components', ''.join(index)))
 
 
@@ -471,12 +504,114 @@ for k, (sname, nav_fams) in enumerate(nav_secs):
     if k == 0:
         part.append('<ul><li><a href="#components">All</a></li></ul>')
     for fid, fname, names in nav_fams:
-        part.append('<details data-family data-view="%s"><summary>%s</summary><ul><li><a href="#%s">Whole family</a></li>%s</ul></details>' % (fid, esc(fname), fid, ''.join('<li><a href="#c-%s">%s</a></li>' % (n, n) for n in names)))
+        part.append('<details data-family data-view="%s"><summary>%s</summary><ul><li><a href="#%s">Whole family</a></li>%s</ul></details>' % (fid, esc(fname), fid, ''.join('<li><a href="#c-%s">%s%s</a></li>' % (n, n, status_chip(n, True)) for n in names)))
     part.append('</div>')
     nav.append(''.join(part))
-nav.append('<p class="ds-none" id="ds-none" hidden>No component has that name.</p>')
+# (Search results replace the rail while a query is typed; see shell.js.)
 
-data = {'types': TYPES, 'kinds': KINDS, 'look': LOOK, 'typeStyles': TYPE_STYLES, 'react': open(P + '/components/lib/react.production.min.js').read(), 'reactDom': open(P + '/components/lib/react-dom.production.min.js').read(), 'tokenCss': TOKEN_CSS, 'bundleCss': open(P + '/components/bundle.css').read(), 'bundleJs': open(P + '/components/bundle.js').read(), 'assets': assets, 'components': comps}
+# ---------- search index ----------
+def plain(h):
+    h = re.sub(r'<img[^>]*>', ' ', h)
+    h = re.sub(r'<(script|style)[^>]*>.*?</\1>', ' ', h, flags=re.S)
+    h = re.sub(r'<[^>]+>', ' ', h)
+    return re.sub(r'\s+', ' ', html.unescape(h)).strip()
+
+
+def sections_of(h):
+    """Split rendered guide HTML at its h2/h3 headings: [(id, heading, text)]."""
+    out = []
+    parts = re.split(r'(<h[23] id="[^"]+">.*?</h[23]>)', h, flags=re.S)
+    cur = None
+    for part in parts:
+        m = re.match(r'<h([23]) id="([^"]+)">(.*?)</h[23]>', part, re.S)
+        if m:
+            cur = [m.group(2), plain(m.group(3)), '', int(m.group(1))]
+            out.append(cur)
+        elif cur is not None:
+            cur[2] += ' ' + plain(part)
+    return [(i, t, x.strip(), lv) for i, t, x, lv in out]
+
+
+# Words people search with that aren't in a component's name.
+ALIASES = {
+    'Button': 'cta call to action primary secondary btn', 'TextLink': 'link arrow tertiary text button', 'Hyperlink': 'inline link anchor underline url',
+    'Select': 'dropdown picker combobox options', 'FilterDropdown': 'dropdown filter menu', 'FilterBar': 'filters toolbar', 'FilterDrawer': 'filters mobile panel',
+    'FilterChip': 'chip pill filter toggle', 'FilterChipGroup': 'chips pills filters', 'AppliedFilters': 'active filters chips clear',
+    'Modal': 'dialog popup overlay lightbox window', 'AlertDialog': 'confirm dialog warning popup', 'FormModal': 'popup form dialog gated',
+    'Tag': 'badge pill label chip status severity', 'Flag': 'ribbon label corner new upcoming featured', 'Marker': 'indicator active bar unread count',
+    'EventType': 'event icon webinar training', 'Nav': 'header navigation navbar menu mega menu top bar search',
+    'NavBanner': 'announcement bar top banner promo', 'NotificationBar': 'alert banner announcement message', 'CookieBanner': 'consent gdpr privacy',
+    'Toast': 'snackbar notification message alert', 'ToastStack': 'notifications snackbars', 'Tooltip': 'hint popover info help',
+    'HoverCard': 'popover hover preview', 'Tabs': 'tab switcher segmented', 'TabModule': 'tabs section', 'Accordion': 'collapse expand faq disclosure',
+    'Drawer': 'collapse expand row disclosure', 'DrawerCard': 'collapse expand card', 'AccordionModule': 'faq collapse expand',
+    'Carousel': 'slider swiper scroller', 'LogoCarousel': 'logos marquee customers trust bar', 'LogoHierarchy': 'sponsors partners logos tiers pavilion',
+    'TestimonialCard': 'quote review customer story', 'TestimonialCarousel': 'quotes reviews customer stories', 'Hero': 'banner header masthead top',
+    'TypographicHeader': 'page header title', 'Footer': 'bottom links legal sitemap', 'GeneralContent': 'content block media text image video banner',
+    'Stats': 'numbers metrics figures counters', 'StatCard': 'number metric figure', 'TextField': 'input text box field email',
+    'Form': 'form fields signup lead', 'Checkbox': 'check tick consent', 'Radio': 'option choice', 'Toggle': 'switch on off',
+    'SearchBar': 'search input find', 'Breadcrumbs': 'path trail navigation', 'Avatar': 'profile picture headshot photo',
+    'ProfileCard': 'person speaker bio team', 'ProfileGrid': 'people team speakers', 'ProfileModal': 'bio popup person',
+    'EventCalendar': 'calendar events schedule month', 'EventCard': 'event card', 'WebinarCard': 'webinar card speakers', 'BlogCard': 'blog post article card',
+    'ResourceCard': 'whitepaper report datasheet content card', 'IntegrationCard': 'partner integration card', 'InlinePromoCard': 'promo banner ad',
+    'FeatureMatrix': 'comparison table compare checkmarks competitors', 'DetailComparison': 'comparison table compare', 'MarketingTable': 'table pricing comparison',
+    'CtaModule': 'call to action form signup', 'FormBanner': 'cta banner form', 'Card': 'tile feature card', 'CardModule': 'cards grid row features',
+    'Media': 'image video placeholder', 'Icon': 'icons glyph svg hugeicons', 'Grid': 'columns layout breakpoints container gutter margins',
+    'Typography': 'type fonts text styles headings', 'Overlay': 'scrim backdrop', 'SessionTimeout': 'timeout warning logout', 'ExitIntent': 'popup leave exit',
+    'SuccessConfirmation': 'thank you success message', 'DemoRequestWizard': 'multi step form wizard demo', 'Cover': '',
+}
+SEARCH = []
+for i, t, x, lv in sections_of(over):
+    SEARCH.append({'k': 'Guideline', 't': t, 'g': 'Overview', 'h': 'overview', 'j': i, 'x': x[:1500]})
+for gid, title, body, toc in guides:
+    secs = sections_of(body)
+    SEARCH.append({'k': 'Guideline', 't': title, 'g': 'Guideline', 'h': gid, 'x': plain(body)[:400], 'top': 1})
+    parent = title
+    for i, t, x, lv in secs:
+        if lv == 2:
+            parent = t
+        ctx = title if lv == 2 or parent == t else title + ' › ' + parent
+        SEARCH.append({'k': 'Guideline', 't': t, 'g': ctx, 'h': gid, 'j': i, 'x': x[:1500]})
+for name, (fid, fname, sname) in FAMILY_OF.items():
+    lvl = LEVEL_NAME.get(LEVEL.get(name, ''), LEVEL.get(name, ''))
+    sub = card_meta(name)[3]
+    words = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', name)
+    _st = STATUS.get(name, ('Ready', ''))[0]
+    SEARCH.append({'k': 'Component', 't': name, 'g': '%s · %s%s' % (lvl, fname, '' if _st == 'Ready' else ' · ' + _st), 'h': 'c-' + name, 'd': sub, 'a': (words + ' ' + ALIASES.get(name, '')).lower(), 'x': plain(README_TEXT.get(name, ''))[:4000]})
+for n, label in (('Typography', 'Foundations'), ('Grid', 'Foundations'), ('Icon', 'Icons and Logos')):
+    if n not in FAMILY_OF:
+        h = 'c-' + n
+        SEARCH.append({'k': 'Component', 't': n, 'g': label, 'h': h, 'd': card_meta(n)[3], 'a': ALIASES.get(n, '').lower(), 'x': plain(README_TEXT.get(n, ''))[:4000]})
+for t, h, d in (('Overview', 'overview', 'What Flex is, governance and how to use it'), ('Example page', 'example', 'A page built from the modules, at each device size'),
+                ('Design tokens', 'tokens', 'Every color, type, spacing, radius, shadow, layout and layer value'), ('All components', 'components', 'Every component, pattern and page module')):
+    SEARCH.append({'k': 'Page', 't': t, 'g': 'Page', 'h': h, 'd': d, 'x': ''})
+for gname, test in COLOR_GROUPS:
+    for x in buckets[gname]:
+        if x['name'] == 'blue-gradient-end':
+            continue
+        nm = 'blue-gradient' if x['name'] == 'blue-gradient-start' else x['name']
+        SEARCH.append({'k': 'Token', 't': nm, 'g': 'Color · ' + gname, 'h': 'tokens', 'j': 'tok-' + nm, 'd': resolve(x['value']['light']), 'x': x.get('usage', '')})
+for g in tok['type']['groups']:
+    for st in g['styles']:
+        SEARCH.append({'k': 'Token', 't': st['name'], 'g': 'Type · ' + g['name'], 'h': 'tokens', 'j': 'tok-' + st['name'], 'd': '%s %s' % (st['fontSize'], st['fontWeight']), 'x': st.get('usage', '')})
+for key, title in (('spacing', 'Spacing'), ('radius', 'Radius'), ('shadow', 'Shadow'), ('layout', 'Layout'), ('zIndex', 'Layers')):
+    for x in tok[key]['tokens']:
+        v = x['value']['light'] if isinstance(x['value'], dict) else x['value']
+        SEARCH.append({'k': 'Token', 't': x['name'], 'g': title, 'h': 'tokens', 'j': 'tok-' + x['name'], 'd': str(v)[:40], 'x': x.get('usage', '')})
+_asset_home = {}
+for gp in idx['docs']['sections']:
+    gid = re.search(r'guide-(\d+)', gp).group(0)
+    if 'icons-logos' in gp:
+        for k in idx['groups']:
+            if k != 'Images':
+                _asset_home[k] = gid
+    elif 'media' in gp:
+        _asset_home['Images'] = gid
+for key, gid in _asset_home.items():
+    g = idx['assetGroups'][key]
+    for n in g['order']:
+        SEARCH.append({'k': 'Asset', 't': n, 'g': g['name'], 'h': gid, 'j': 'as-' + slug(g['name']), 'x': n.rsplit('.', 1)[0].replace('-', ' ')})
+
+data = {'search': SEARCH, 'types': TYPES, 'kinds': KINDS, 'look': LOOK, 'typeStyles': TYPE_STYLES, 'react': open(P + '/components/lib/react.production.min.js').read(), 'reactDom': open(P + '/components/lib/react-dom.production.min.js').read(), 'tokenCss': TOKEN_CSS, 'bundleCss': open(P + '/components/bundle.css').read(), 'bundleJs': open(P + '/components/bundle.js').read(), 'assets': assets, 'components': comps}
 blob = json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c').replace('\u2028', '\\u2028').replace('\u2029', '\\u2029')
 js = open(HERE + '/shell.js').read()
 assert '</script' not in js.lower()
@@ -502,7 +637,9 @@ body = '''<title>Flex Design System</title>
 <header class="ds-top"><img data-logo="%(logo)s" alt="Qualys" width="92" height="28"><span>Flex Design System</span><button type="button" class="ds-menu" id="ds-menu" aria-expanded="false" aria-controls="ds-rail">Menu</button></header>
 <nav class="ds-rail" id="ds-rail" aria-label="Sections">
 <a class="ds-brand" href="#overview"><img data-logo="%(logo)s" alt="Qualys" width="116" height="35"><span>Flex Design System</span></a>
-<label class="ds-find"><span class="ds-sr">Find a component</span><input type="search" id="ds-find" placeholder="Find a component" autocomplete="off"></label>
+<div class="ds-find" role="search"><label class="ds-sr" for="ds-find">Search Flex</label><input type="search" id="ds-find" placeholder="Search Flex" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="ds-results" aria-autocomplete="list"><kbd class="ds-kbd" aria-hidden="true">/</kbd></div>
+<div class="ds-results" id="ds-results" role="listbox" aria-label="Search results" hidden></div>
+<p class="ds-sr" id="ds-count" aria-live="polite"></p>
 <div class="ds-nav">%(nav)s</div>
 <p class="ds-snap">Flex is the source of truth for the Qualys website's design. Last updated %(snap)s.</p>
 </nav>

@@ -53,13 +53,13 @@ G1=[(None,'g1-address','Do: The Qualys Cloud Platform gives your team a single s
     ('Dates and times','g1-dates','Five date formats: long date Mon Dec 9, 2024; short date Dec 9, 2024; date and time Mon Dec 9, 2024 10:00 to 11:00a PST; time range 8:00 AM to 12:00 PM; event card Dec 10, 2026, bullet, 11a PST.'),
     ('No emoji',None,None)]
 G2=[(None,'g2-surfaces','Six surfaces stacked like page sections: Warm Off White page background, Ecru and White alternate sections, Polar Blue light blue sections, Qualys Blue sections, Charcoal dark sections and footer.'),
-    (None,'g2-text','Five text colours with their tokens: text-primary for headings and body, text-secondary for metadata, text-inverted on charcoal, text-accent-primary in blue for emphasis, text-accent-secondary in red for button text links.'),
-    (None,'g2-actions','A primary button in its three colours: Qualys Red by default, Crimson on hover, Pepper when pressed. Below, a blue page link that turns Cobalt on hover, an underlined inline link and a red button text link.'),
+    (None,'g2-text','Five text colors with their tokens: text-primary for headings and body, text-secondary for metadata, text-inverted on charcoal, text-accent-primary in blue for emphasis, text-accent-secondary in red for button text links.'),
+    (None,'g2-actions','A primary button in its three colors: Qualys Red by default, Crimson on hover, Pepper when pressed. Below, a blue page link that turns Cobalt on hover, an underlined inline link and a red button text link.'),
     (None,'g2-strokes','Three strokes in use: Ash around a text field, Rhino on a checkbox and a radio, White as the outline of a button on blue.'),
     (None,'g2-icons','An icon in charcoal on a light tile, in white on a dark tile, and a blue feature icon; below, an icon container in its default, hover and pressed blues.'),
     (None,'g2-utility','Four status discs, each an icon on a 10% tint: green success, amber warning, red error, blue info.'),
     (None,'g2-overlays','The same page content under a 25% black overlay and under a 50% black overlay.'),
-    (None,'g2-tags','Badges in their eight status tones, from Critical to Accepted Risk, and the blue New badge; the three flag tiers; the markers in the flag colours plus a blue one; the five event types; and a default and a selected filter chip.'),
+    (None,'g2-tags','Badges in their eight status tones, from Critical to Accepted Risk, and the blue New badge; the three flag tiers; the markers in the flag colors plus a blue one; the five event types; and a default and a selected filter chip.'),
     (None,'g2-gradient','A promo strip on the blue gradient, lighter blue on the left to darker on the right, with a white heading and a red button.')]
 G3=[('Families','g3-families','Wix Madefor Text in bold for display, headings, titles, tags, eyebrows, stats and button labels; IBM Plex Sans in regular for paragraphs, labels and quotes.'),
     ('Display','g3-display','Two display sizes set in bold: display-xl at 64px and display-lg at 56px.'),
@@ -82,13 +82,13 @@ G4=[(None,'g4-breakpoints','Four ranges on one bar: mobile under 768, tablet 768
     (None,'g4-radius','Corner radii as tiles: 16 cards and modals, 12 buttons, 10 inputs and menus, 8 card images, 6 badges, 4 checkboxes, and a flag with only two corners rounded.'),
     (None,'g4-elevation','Six shadow tokens on white tiles: shadow-card, shadow-menu, shadow-tabs, shadow-drawer, shadow-dropdown and shadow-modal.'),
     (None,'g4-layers','The nine layers from top to bottom: toasts 9000, session timeout 8500, alert dialogs 8000, modals 7000, slide-in panels 6000, cookie banner 5500, notification bar 5000, tooltips 4000, overlay 3000.'),
-    ('Modals','g4-modals','A modal centred on its overlay, 440 to 600px wide; on a phone it keeps 12px from the edges and its buttons stack full width.')]
+    ('Modals','g4-modals','A modal centered on its overlay, 440 to 600px wide; on a phone it keeps 12px from the edges and its buttons stack full width.')]
 G5=[(None,'g5-buttons','A primary button in four states: default, hover, pressed and disabled. A secondary button outlined, filled red on hover, and the alternate filled blue on hover.'),
-    (None,'g5-links','A text link by default, on hover with its arrow moved 4px and a darker colour, and disabled at 50% opacity.'),
+    (None,'g5-links','A text link by default, on hover with its arrow moved 4px and a darker color, and disabled at 50% opacity.'),
     ('Tabs, menus and list rows','g5-rows','One row in three states: default with no fill, hover with a neutral 5% Charcoal tint, and active on Misty Blue with the blue marker on its left edge.'),
     (None,'g5-cards','A card at rest with only its shadow, and on hover with a 6px blue bar along the bottom and its arrow nudged.'),
     (None,'g5-focus','The focus ring around a button and a checkbox, and a blue border on a focused text field.'),
-    (None,'g5-timing','Three durations as bars, 150ms for colour, 200ms for buttons, inputs and cards, 300ms for larger moves, beside an ease-in-out curve.'),
+    (None,'g5-timing','Three durations as bars, 150ms for color, 200ms for buttons, inputs and cards, 300ms for larger moves, beside an ease-in-out curve.'),
     (None,'g5-overlays','How long each layer takes to appear: backdrop 200ms fade, modal 200ms growing from 95%, toast 300ms slide, cookie bar 400ms rise, tooltip 150ms after a 300ms wait.'),
     ('Toasts','g5-toasts','How long toasts stay: success and info 5 seconds, warning 8 seconds, error until dismissed.'),
     ('Carousels','g5-carousel','A row of cards running off the edge, a progress bar and previous and next buttons: it moves one card at a time, only when asked.'),
@@ -97,19 +97,19 @@ G6A=[('Photography','g6-photo','Two photos of people at work in offices, cool to
      ('Heroes and video banners','g6-heroes','A hero photo under a dark overlay with a white heading and a red button, and a video banner with a white play disc.'),
      ('Aspect ratios','g6-ratios','A 16:9 frame for heroes, card images and media beside copy, and a 9:16 frame for video testimonials.'),
      ('Photo heroes','g6-photoheroes','The two hero photos with the calm area marked where the copy sits: white text on the building photo, charcoal text on the office photo.'),
-     ('Customer, partner and sponsor logos','g6-logos','Four neutral placeholders of equal size on white. Do: each company\'s own file on a clear ground at a similar size. Do not: redrawn, recoloured or cropped logos.'),
+     ('Customer, partner and sponsor logos','g6-logos','Four neutral placeholders of equal size on white. Do: each company\'s own file on a clear ground at a similar size. Do not: redrawn, recolored or cropped logos.'),
      ('Product images','g6-product','A promo strip on the blue gradient with a white heading, a red button and a transparent product image of a laptop.'),
      ('Form headers','g6-formheader','A wide photo of people shaking hands, cropped 30 to 11, 600 by 220px.'),
-     ('People photos','g6-people','A square crop with the face filling 60 to 70%, a circle crop with the face centred, and the default avatar for a missing photo.')]
-G6B=[('Custom SVG icons','g6-icons-custom','The same search icon in charcoal on a light tile, white on a dark tile and blue for interactive use.'),
+     ('People photos','g6-people','A square crop with the face filling 60 to 70%, a circle crop with the face centered, and the default avatar for a missing photo.')]
+G6B=[('Drawing and color','g6-icons-custom','The same search icon in charcoal on a light tile, white on a dark tile and blue for interactive use.'),
      ('Utility icons','g6-utility','The 25 utility icons in a grid, from download and arrows to the status icons.'),
      ('Event icons','g6-event','The five event types, each icon beside its label: Qualys Event, Webinar, Industry Event, Speaking Engagement, Training.'),
      ('General icons','g6-general','The three general line icons in white on Charcoal: Events, Webinar, Resource.'),
      ('Social icons','g6-social','The three social icon sizes: 24px in the 52px blue button, 15px in plain rows, 25px in Rhino in the footer.'),
      ('Feature icons','g6-feature','Four two-tone blue feature icons at 56px for cards, and one at 32px beside a drawer title.'),
      ('Link icons','g6-linkicons','Three icons and their meaning: outlink on a link that leaves qualys.com, arrow-right on a link that stays, download on a download button.')]
-G6C=[('Colour versions','g6-logo-colours','The logo three ways: full colour on white, all white on Charcoal, and reversed with a red shield and white wordmark on the blue gradient.'),
-     ('The shield','g6-shield','The shield alone in a square tile. Do: use it for square or tight spaces. Do not: redraw, recolour or re-letter the mark.'),
+G6C=[('Color versions','g6-logo-colors','The logo three ways: full color on white, all white on Charcoal, and reversed with a red shield and white wordmark on the blue gradient.'),
+     ('The shield','g6-shield','The shield alone in a square tile. Do: use it for square or tight spaces. Do not: redraw, recolor or re-letter the mark.'),
      ('Sizes','g6-logo-size','The logo at 37px high for the Nav, and the shield at 75px wide for the footer.')]
 G7=[('Avatars and profile cards','g7-avatars','Three avatar sizes: 40px and 56px circles and the 300px square, here shown smaller.'),
     ('Navigation and footer','g7-nav','The Nav bar: logo, up to six items, utility links, search and one call to action; a breadcrumb trail under it; and the menu button it becomes below 1200px.'),
@@ -117,7 +117,7 @@ G7=[('Avatars and profile cards','g7-avatars','Three avatar sizes: 40px and 56px
     ('Stats sections','g7-stats','Three figures in one panel, each a number, a short label and one line of support: 150% Faster Detection, 10x Less Zero-day Threats, 99.99% More Accurate Scanning.'),
     ('Carousels','g7-carousel','Three or fewer cards sit in a grid; four or more go in a carousel with a progress bar and arrows.'),
     ('Logos','g7-logos','LogoCarousel: a moving row of five or more logos with a pause button. LogoHierarchy: logos in three tiers, the largest first.'),
-    ('Events calendar','g7-calendar','The three calendar views: a month grid with coloured bars, a list grouped by day, and a grid of cards.'),
+    ('Events calendar','g7-calendar','The three calendar views: a month grid with colored bars, a list grouped by day, and a grid of cards.'),
     ('Modals and dialogs','g7-modals','A modal\'s parts: title and close button, body, and buttons on the right with the primary one last.'),
     ('Hover cards',None,''),
     ('Comparison tables',None,''),
@@ -172,7 +172,7 @@ def plan_g2(bs):
         elif b[0]=='p':
             if b[1].startswith('Contrast notes'):
                 contrast=True
-                out+=['### Contrast notes','',img('g2-contrast','Six colour pairs with their contrast: Qualys Blue on white 3.78 to 1, for 24px and larger; Cobalt 8.9 to 1 and hyperlink 4.69 to 1, fine for small text; white on Qualys Red 4.18 to 1, flagged; success 2.57 to 1 and warning 2.03 to 1, accents only.'),'',b[1],'']
+                out+=['### Contrast notes','',img('g2-contrast','Six color pairs with their contrast: Qualys Blue on white 3.78 to 1, for 24px and larger; Cobalt 8.9 to 1 and hyperlink 4.69 to 1, fine for small text; white on Qualys Red 4.18 to 1, flagged; success 2.57 to 1 and warning 2.03 to 1, accents only.'),'',b[1],'']
             else: out+=[b[1],'']
         elif b[0]=='li':
             if contrast: out+=['- '+b[1]]
@@ -212,7 +212,7 @@ def fix_lists(lines):
 
 sizes={}
 sizes['guide-1-content.md']=build('guide-1-content.md', simple(G1))
-sizes['guide-2-colour.md']=build('guide-2-colour.md', plan_g2)
+sizes['guide-2-color.md']=build('guide-2-color.md', plan_g2)
 sizes['guide-3-typography.md']=build('guide-3-typography.md', simple(G3))
 sizes['guide-4-layout.md']=build('guide-4-layout.md', simple(G4))
 sizes['guide-5-states-motion.md']=build('guide-5-states-motion.md', simple(G5))

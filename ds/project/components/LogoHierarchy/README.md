@@ -1,10 +1,12 @@
 # LogoHierarchy
 
+**Status:** Ready
+
 The logo hierarchy from the Figma Logos page: logos grouped in tiers under a heading, such as event sponsors. The first tier (the signature sponsor) is drawn larger than the rest.
 
 **Provide:** `title` and `tiers` — each with a `label` and `logos` (`{ src, alt, href, scale }`). Optional: a tier's `level` and `mobileColumns`, the module's `mobileColumns` and `optical`.
 
-- Section on the page background, `surface-neutral-200`, 100px above and below, everything centred.
+- Section on the page background, `surface-neutral-200`, 100px above and below, everything centered.
 - **Heading:** `h2` (SemiBold 38px) in `text-secondary`.
 - **Tier:** 36px under the heading or the tier before. The label is Wix Madefor Text Regular 20px `text-secondary`; 32px (`spacing-2xl`) below it, the logos.
 - Put the highest tier first with the fewest logos: one signature sponsor, then the standard sponsors.
@@ -13,11 +15,11 @@ The logo hierarchy from the Figma Logos page: logos grouped in tiers under a hea
 
 | Level | Desktop cell | Mobile cell | Use it for |
 | --- | --- | --- | --- |
-| `signature` | 320 × 84px | 240 × 64px | The lead sponsor: one logo, two at most |
-| `standard` | 210 × 52px | 143 × 35px | Everyone else, four to a row on desktop, 32px apart (`spacing-2xl`), 48px between rows (`spacing-4xl`) |
+| `signature` | 360 × 96px | 280 × 80px | The lead sponsor: one logo, two at most |
+| `standard` | 240 × 64px | 200 × 48px (one column), up to 160 × 48px (two columns) | Everyone else, four to a row on desktop, 32px apart (`spacing-2xl`), 48px between rows (`spacing-4xl`) |
 
 - A first tier of one or two logos (with more tiers below) is the signature tier by default. Set `level` on a tier to override it.
-- The signature logo is about 1.5× the standard logos, enough to read as the lead without crowding the tier below.
+- The signature logo is 1.5× the standard logos, enough to read as the lead without crowding the tier below.
 - Don't give a tier of three or more logos the signature level: it stops reading as a hierarchy.
 
 ## Mobile columns
@@ -26,11 +28,11 @@ Below 768px the section takes 20px padding, the heading 24px and the labels Medi
 
 | Logos in the tier | `mobileColumns` | Why |
 | --- | --- | --- |
-| 1–4 | `1` | One per row, 143 × 35px, 32px apart. Each logo stays big enough to read |
-| 5–12 | `2` | Two per row, 32px between rows. Keeps the list to six rows or fewer |
+| 1–6 | `1` | One per row, 200 × 48px, 32px apart. Each logo stays big enough to read |
+| 7–12 | `2` | Two per row, 32px between rows. Keeps the list to six rows or fewer |
 | More than 12 | `2`, or curate | The tier gets long on a phone: show the top 12, or use LogoCarousel |
 
-- `auto` (the default) picks 1 for up to four logos and 2 from five.
+- `auto` (the default) picks 1 for up to six logos and 2 from seven.
 - Set it per tier (`tiers[i].mobileColumns`) or for the module (`mobileColumns`).
 - Keep the same column count for tiers of the same level, so the page doesn't change rhythm halfway down.
 
@@ -39,24 +41,25 @@ Below 768px the section takes 20px padding, the heading 24px and the labels Medi
 Logos come in very different shapes, so fitting each one to the full cell makes square and stacked marks look small and long wordmarks look loud. The module sizes them for **equal visual weight** instead.
 
 1. **Equal area (automatic).** Each logo gets about the same area inside its cell: a long wordmark runs wide and short, a square mark stands taller and narrower. On by default; `optical={false}` turns it off and fits every logo to the cell.
+   - **Compact logos** (square, or a mark stacked over a name) reach the cell's height before they reach that area, so they would read small beside wordmarks. They may stand up to 40% taller than the cell, reaching into the gap between rows (never sideways), so a stacked logo carries the same weight as its neighbors.
 2. **Weight adjustments (by hand).** Area doesn't account for ink. Use a logo's `scale` to correct it:
    - Dense, dark, filled or boxed logos (solid backgrounds, heavy type) look bigger: `scale` 0.85–0.95.
    - Thin, light or airy logos (hairline type, outlines, lots of white space) look smaller: `scale` 1.05–1.15.
    - Stay inside 0.8–1.2. If a logo needs more, the file has extra padding: ask for a tightly cropped version.
-3. **Check against the neighbours.** Squint or blur the row: no logo should jump out or sink back. Compare cap heights of wordmarks and the visual mass of symbols, not their boxes.
+3. **Check against the neighbors.** Squint or blur the row: no logo should jump out or sink back. Compare cap heights of wordmarks and the visual mass of symbols, not their boxes.
 
 Supplying logo files:
 
-- Each logo is centred in its cell, both ways. A logo that looks off-centre has uneven padding in its file: crop it tight rather than nudging it.
-- SVG, cropped tight to the artwork with no padding, one colour version per ground (full colour or one-colour charcoal on light grounds).
+- Each logo is centered in its cell, both ways. A logo that looks off-center has uneven padding in its file: crop it tight rather than nudging it.
+- SVG, cropped tight to the artwork with no padding, one color version per ground (full color or one-color charcoal on light grounds).
 - Use the horizontal lockup where the brand has one; a stacked lockup only when there isn't.
-- Never stretch, recolour, outline, add a shadow to or crop a sponsor's logo to make it fit. Change its `scale` instead.
+- Never stretch, recolor, outline, add a shadow to or crop a sponsor's logo to make it fit. Change its `scale` instead.
 
 ## Do / Don't
 
 - Do give every logo `alt` text (the company name).
 - Do keep one signature sponsor where you can; two is the most the tier holds.
-- Don't mix logos in different colour treatments (full colour next to one-colour) within a tier.
+- Don't mix logos in different color treatments (full color next to one-color) within a tier.
 
 ## Notes
 

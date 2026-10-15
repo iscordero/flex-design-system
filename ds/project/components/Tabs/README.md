@@ -1,5 +1,7 @@
 # Tabs
 
+**Status:** Ready
+
 Tabs from the Figma Tabs page: one white bar of labels for content at the same level of importance; selecting a tab swaps the content below.
 
 **Provide:** `items` — 3 to 6 of `{ id, label, content }` — and a `label` naming the set for screen readers. `defaultValue` (an item's `id`) picks the starting tab; or control it with `value` + `onChange(id, index)`. Leave out `content` to render the bar alone.

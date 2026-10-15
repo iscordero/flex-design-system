@@ -1,6 +1,8 @@
 # NotificationBar
 
-One line across the top of the page for something everyone should know: maintenance, a release, an expiring licence, an event.
+**Status:** Ready
+
+One line across the top of the page for something everyone should know: maintenance, a release, an expiring license, an event.
 
 **Provide:** `type` and the `message`. Optionally `link` (`{ label, href }`) and `onClose` for the dismiss button.
 

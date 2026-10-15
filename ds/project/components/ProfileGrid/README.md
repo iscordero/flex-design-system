@@ -1,5 +1,7 @@
 # ProfileGrid
 
+**Status:** Ready
+
 The profile layouts from the Figma Avatars page: a row of profile cards that open a bio modal.
 
 **Provide:** `items` (`{ name, designation, image, logo, link, bio, links }`) and `layout`. A person with a `bio` gets the "Read Bio" hover and opens a ProfileModal; a person without one is not interactive.

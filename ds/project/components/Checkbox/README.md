@@ -1,5 +1,7 @@
 # Checkbox
 
+**Status:** Ready
+
 From the Figma Inputs sheet: a 20px box with `radius-xs` (4px) corners.
 
 **Provide:** `label` (or children) and `checked` + `onChange`, or `defaultChecked`. Other input attributes pass through.

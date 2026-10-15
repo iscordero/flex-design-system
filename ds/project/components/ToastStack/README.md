@@ -1,5 +1,7 @@
 # ToastStack
 
+**Status:** Ready
+
 Where toasts live: a corner of the screen, three at most, each leaving by itself.
 
 **Provide:** `items` (`{ id, status, message }`) and `onDismiss(id)`, which you answer by removing that item from your list.

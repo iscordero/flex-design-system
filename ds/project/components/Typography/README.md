@@ -1,5 +1,7 @@
 # Typography
 
+**Status:** Ready
+
 Every type style in one place, with a Desktop / Mobile toggle that sets each sample at the size it takes on that screen.
 
 **Provide:** nothing; the card reads the type styles from the tokens and the mobile sizes from `bundle.css`, so it updates when either changes.

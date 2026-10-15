@@ -541,13 +541,14 @@
     "readme": "project/README.md",
     "sections": [
       "project/guide-1-content.md",
-      "project/guide-2-colour.md",
+      "project/guide-2-color.md",
       "project/guide-3-typography.md",
       "project/guide-4-layout.md",
       "project/guide-5-states-motion.md",
       "project/guide-6-icons-logos.md",
       "project/guide-9-media.md",
-      "project/guide-8-buttons-links.md"
+      "project/guide-8-buttons-links.md",
+      "project/guide-10-change-management.md"
     ]
   },
   "groups": [
@@ -560,9 +561,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-14T19:21:53Z",
+    "at": "2026-10-15T17:31:30Z",
     "by": "Isabel",
-    "note": "Removed the neutral (slate) tag tone and its tokens: badges have one grey, accepted-risk. Renamed marker-blue to marker-default (tone 'default'); 'blue' still works.",
+    "note": "American spelling throughout; guide-2 renamed Color. New Change Management guide and governance without Figma; status line on every component README. Icon types defined. LogoHierarchy: bigger logos, one column up to six, compact logos boosted.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

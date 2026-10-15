@@ -72,7 +72,7 @@
       });
       return out;
     }
-    /* Text colour is usually set on a parent: find the nearest one that names a token for it. */
+    /* Text color is usually set on a parent: find the nearest one that names a token for it. */
     /* One-offs: a plain pixel length that is not on the spacing or radius scale and that no rule ties to a token. Anything under 4px is an optical nudge and is let through. */
     function plain(el, prop) {
       if (!el.computedStyleMap) return /^margin/.test(prop) ? null : px(getComputedStyle(el).getPropertyValue(prop));
@@ -108,18 +108,18 @@
       });
       return out;
     }
-    function inheritedColour(el) {
+    function inheritedColor(el) {
       for (var p = el, i = 0; p && p.nodeType === 1 && i < 12; p = p.parentElement, i++) {
         var t = (tokensOf(p).default || {}).color;
         if (t && t.length) return t;
       }
       return [];
     }
-    /* Colour: the colours a part is drawn with, and the contrast of its text on what lies behind it. */
+    /* Color: the colors a part is drawn with, and the contrast of its text on what lies behind it. */
     var SHAPES = /^(path|circle|rect|ellipse|line|polyline|polygon|text|use)$/i;
     function rgba(c) { var m = /rgba?\(\s*([\d.]+),\s*([\d.]+),\s*([\d.]+)(?:,\s*([\d.]+))?\s*\)/.exec(c || ''); return m ? [+m[1], +m[2], +m[3], m[4] === undefined ? 1 : +m[4]] : null; }
     function visible(c) { var v = rgba(c); return v && v[3] > 0; }
-    function coloursOf(el) {
+    function colorsOf(el) {
       var cs = getComputedStyle(el), out = [], svg = el instanceof SVGElement;
       var hasText = [].some.call(el.childNodes, function (n) { return n.nodeType === 3 && n.textContent.trim(); });
       if (svg && SHAPES.test(el.tagName)) {
@@ -131,7 +131,7 @@
       if (visible(cs.backgroundColor)) out.push(['Fill', cs.backgroundColor, 'background']);
       if (cs.backgroundImage !== 'none' && /gradient/.test(cs.backgroundImage)) out.push(['Gradient', cs.backgroundImage, 'background']);
       if (parseFloat(cs.borderTopWidth) > 0 && cs.borderTopStyle !== 'none' && visible(cs.borderTopColor)) out.push(['Border', cs.borderTopColor, 'border']);
-      /* An icon inside: the colour of its first drawn shape. */
+      /* An icon inside: the color of its first drawn shape. */
       var shape = el.querySelector && el.querySelector('svg path, svg circle, svg rect, svg ellipse, svg line, svg polyline, svg polygon');
       if (shape && (svg || el.querySelectorAll('svg').length === 1)) {
         var ss = getComputedStyle(shape), ic = ss.fill !== 'none' && visible(ss.fill) ? ss.fill : (ss.stroke !== 'none' && visible(ss.stroke) ? ss.stroke : null);
@@ -180,8 +180,8 @@
         shadow: cs.boxShadow !== 'none' ? cs.boxShadow : '', opacity: cs.opacity,
         font: hasText || /^(input|textarea|select|button)$/i.test(el.tagName) ? { ff: cs.fontFamily.split(',')[0].replace(/["']/g, '').trim(), fs: px(fs), fw: cs.fontWeight,
           lh: cs.lineHeight === 'normal' ? null : px(cs.lineHeight), ls: /%$/.test(raw) ? px(ls) : (fs ? Math.round(ls / fs * 1000) / 10 : 0), tt: cs.textTransform } : null,
-        tokens: tok, inherited: inheritedColour(el), off: offSpacing(el, tok), offRadius: offRadius(el, tok), inKit: !!el.closest('[class^="q-"], [class*=" q-"]'),
-        colours: coloursOf(el), contrast: contrastOf(el), mode: mode
+        tokens: tok, inherited: inheritedColor(el), off: offSpacing(el, tok), offRadius: offRadius(el, tok), inKit: !!el.closest('[class^="q-"], [class*=" q-"]'),
+        colors: colorsOf(el), contrast: contrastOf(el), mode: mode
       };
     }
     function draw(el) {
@@ -194,7 +194,7 @@
       layer.textContent = '';
       if (!el || !el.isConnected) return;
       var r = el.getBoundingClientRect(), cs = getComputedStyle(el), f = Math.max(1, 1 / (scale || 1));
-      if (mode === 'colour') { drawColour(el, r, f); return; }
+      if (mode === 'color') { drawColor(el, r, f); return; }
       function n(k) { return parseFloat(cs[k]) || 0; }
       function box(x, y, w, h, bg, extra) {
         if (w <= 0 || h <= 0) return null;
@@ -213,7 +213,7 @@
       var MAR = 'rgba(245,166,36,.38)', PAD = 'rgba(33,184,115,.34)', GAP = 'rgba(128,69,138,.30)', OFF = '#c42b1c';
       var off = offSpacing(el, tokensOf(el));
       function isOff(list, v) { return list.some(function (o) { return Math.abs(Math.abs(o) - v) < 0.6; }); }
-      function mark(v, list, colour) { return isOff(list, v) ? [num(v) + ' \u00b7 no token', OFF] : [num(v), colour]; }
+      function mark(v, list, color) { return isOff(list, v) ? [num(v) + ' \u00b7 no token', OFF] : [num(v), color]; }
       var mt = n('marginTop'), mr = n('marginRight'), mb = n('marginBottom'), ml = n('marginLeft');
       box(r.left, r.top - mt, r.width, mt, MAR); box(r.left, r.bottom, r.width, mb, MAR); box(r.left - ml, r.top, ml, r.height, MAR); box(r.right, r.top, mr, r.height, MAR);
       var bt = n('borderTopWidth'), br = n('borderRightWidth'), bb = n('borderBottomWidth'), bl = n('borderLeftWidth');
@@ -233,7 +233,7 @@
       box(r.left, r.top, r.width, r.height, 'transparent', 'outline:' + (1.5 * f) + 'px solid #2683ed;outline-offset:-' + (0.75 * f) + 'px');
       function num(v) { return String(Math.round(v * 10) / 10); }
       var min = 9 * f;
-      function lab(x, y, v, list, colour) { var m = mark(v, list, colour); label(x, y, m[0], m[1]); }
+      function lab(x, y, v, list, color) { var m = mark(v, list, color); label(x, y, m[0], m[1]); }
       if (pt >= min) lab(ix + iw / 2, iy + pt / 2, pt, off.pad, '#16812c'); if (pb >= min) lab(ix + iw / 2, iy + ih - pb / 2, pb, off.pad, '#16812c');
       if (pl >= min) lab(ix + pl / 2, iy + ih / 2, pl, off.pad, '#16812c'); if (pr >= min) lab(ix + iw - pr / 2, iy + ih / 2, pr, off.pad, '#16812c');
       if (mt >= min) lab(r.left + r.width / 2, r.top - mt / 2, mt, off.mar, '#b86a00'); if (mb >= min) lab(r.left + r.width / 2, r.bottom + mb / 2, mb, off.mar, '#b86a00');
@@ -242,12 +242,12 @@
       label(Math.max(0, r.left), Math.max(16 * f, r.top), num(r.width) + ' × ' + num(r.height), '#2683ed', 'above');
     }
     function hex(c) { var v = rgba(c); if (!v) return c; var hx = '#' + v.slice(0, 3).map(function (x) { return ('0' + Math.round(x).toString(16)).slice(-2); }).join(''); return v[3] < 1 ? hx + '/' + Math.round(v[3] * 100) / 100 : hx; }
-    function nameOf(c) { var n = (cfg.colours || {})[hex(c)]; return n && n.length ? n[0] : null; }
-    function drawColour(el, r, f) {
+    function nameOf(c) { var n = (cfg.colors || {})[hex(c)]; return n && n.length ? n[0] : null; }
+    function drawColor(el, r, f) {
       var o = document.createElement('div');
       o.style.cssText = 'position:fixed;left:' + r.left + 'px;top:' + r.top + 'px;width:' + r.width + 'px;height:' + r.height + 'px;box-sizing:border-box;outline:' + (1.5 * f) + 'px solid #2683ed;outline-offset:-' + (0.75 * f) + 'px';
       layer.appendChild(o);
-      var list = coloursOf(el);
+      var list = colorsOf(el);
       if (!list.length) return;
       var box = document.createElement('div');
       box.style.cssText = 'position:fixed;display:flex;flex-direction:column;gap:' + (3 * f) + 'px;padding:' + (5 * f) + 'px ' + (7 * f) + 'px;border-radius:' + (6 * f) + 'px;background:#262626;color:#fff;font:500 ' + (11 * f) + 'px/1.25 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.2)';
@@ -286,7 +286,7 @@
           var own = tokensOf(el), o = offSpacing(el, own);
           o.pad.concat(o.mar, o.gap).forEach(function (v) { v = Math.abs(v); offs.spacing[v] = (offs.spacing[v] || 0) + 1; });
           offRadius(el, own).forEach(function (v) { offs.radius[v] = (offs.radius[v] || 0) + 1; });
-          coloursOf(el).forEach(function (c) { if (c[0] === 'Icon' || c[0] === 'Gradient') return; var k = hex(c[1]); used[k] = (used[k] || 0) + 1; });
+          colorsOf(el).forEach(function (c) { if (c[0] === 'Icon' || c[0] === 'Gradient') return; var k = hex(c[1]); used[k] = (used[k] || 0) + 1; });
         }
         if ([].some.call(el.childNodes, function (x) { return x.nodeType === 3 && x.textContent.trim(); })) {
           var cs = getComputedStyle(el), fs = parseFloat(cs.fontSize);
@@ -295,7 +295,7 @@
           fonts[k] = (fonts[k] || 0) + 1;
         }
       }
-      parent.postMessage({ ds: cfg.name, summary: { tokens: all, fonts: fonts, off: offs, colours: used } }, '*');
+      parent.postMessage({ ds: cfg.name, summary: { tokens: all, fonts: fonts, off: offs, colors: used } }, '*');
     }
     document.addEventListener('mousemove', function (e) { if (!on || pin) return; var t = pick(e); if (t !== cur) show(t); }, true);
     document.addEventListener('focusin', function (e) { if (!on || pin) return; var t = pick(e); if (t) show(t); }, true);
@@ -325,7 +325,7 @@
     var html = c.html.replace('<head>', function () { return '<head>' + PRE; })
       .replace('<html lang="en">', '<html lang="en" data-theme="light">');
     html = blob(html);
-    var rep = reporter(c.n) + '<' + SC + '>(' + inspector.toString() + ')(' + JSON.stringify({ name: c.n, kinds: D.kinds, scale: SCALE, colours: D.look.colour }).replace(/</g, '\\u003c') + ');</' + SC + '>', i = html.lastIndexOf('</body>');
+    var rep = reporter(c.n) + '<' + SC + '>(' + inspector.toString() + ')(' + JSON.stringify({ name: c.n, kinds: D.kinds, scale: SCALE, colors: D.look.color }).replace(/</g, '\\u003c') + ');</' + SC + '>', i = html.lastIndexOf('</body>');
     return i < 0 ? html + rep : html.slice(0, i) + rep + html.slice(i);
   }
 
@@ -412,7 +412,7 @@
   });
 
   /* ── Code panel: the component's props and the code that draws its preview ── */
-  /* Light colouring only: comments, strings, and the names a developer scans for. Built from text nodes, never markup. */
+  /* Light coloring only: comments, strings, and the names a developer scans for. Built from text nodes, never markup. */
   function paint(pre, text) {
     var re = /(\/\*[\s\S]*?\*\/|\/\/[^\n]*)|('(?:[^'\\\n]|\\.)*'|"(?:[^"\\\n]|\\.)*")|\b(Q\.[A-Za-z]+|export|interface|type|declare|function|var|return)\b/g, last = 0, m;
     while ((m = re.exec(text))) {
@@ -554,10 +554,10 @@
     var h = '#' + [1, 2, 3].map(function (i) { return ('0' + (+m[i]).toString(16)).slice(-2); }).join('');
     return a === 1 ? h : h + '/' + a;
   }
-  function colourText(h) { var p = h.split('/'); return p[1] ? p[0].toUpperCase() + ' at ' + Math.round(p[1] * 100) + '%' : p[0].toUpperCase(); }
+  function colorText(h) { var p = h.split('/'); return p[1] ? p[0].toUpperCase() + ' at ' + Math.round(p[1] * 100) + '%' : p[0].toUpperCase(); }
   function token(name) {
     var t = mk('span', 'ds-tok');
-    if (D.kinds[name] === 'colour') { var dot = mk('span', 'ds-dot'); dot.style.background = 'var(--' + name + ')'; t.appendChild(dot); }
+    if (D.kinds[name] === 'color') { var dot = mk('span', 'ds-dot'); dot.style.background = 'var(--' + name + ')'; t.appendChild(dot); }
     t.appendChild(document.createTextNode(name));
     return t;
   }
@@ -624,18 +624,18 @@
   }
   var HINT = {
     measure: 'Point at any part of the preview to see its size, spacing, type and tokens. Click a part to keep it selected; click it again to let go.',
-    colour: 'Point at any part of the preview to see the colours it is drawn with, their tokens and the contrast of its text. Click a part to keep it selected.'
+    color: 'Point at any part of the preview to see the colors it is drawn with, their tokens and the contrast of its text. Click a part to keep it selected.'
   };
   function panel(st) {
     var p = st.panel;
     if (p.firstChild) return;
     st.mode = st.mode || 'measure';
-    /* Two ways to inspect: measurements, or colour. */
+    /* Two ways to inspect: measurements, or color. */
     var bar = mk('div', 'ds-modes'), group = mk('div', 'ds-seg');
     group.setAttribute('role', 'group');
     group.setAttribute('aria-label', 'Inspect');
     st.modeBtns = {};
-    [['measure', 'Measure'], ['colour', 'Colour']].forEach(function (m) {
+    [['measure', 'Measure'], ['color', 'Color']].forEach(function (m) {
       var b = mk('button', null, m[1]);
       b.type = 'button';
       b.setAttribute('aria-pressed', st.mode === m[0] ? 'true' : 'false');
@@ -646,9 +646,9 @@
     bar.appendChild(group);
     /* Chrome and Edge can pick any pixel on screen; the result is matched to the palette. */
     if (window.EyeDropper) {
-      var pickBtn = mk('button', 'ds-pickbtn', 'Pick a colour from the screen');
+      var pickBtn = mk('button', 'ds-pickbtn', 'Pick a color from the screen');
       pickBtn.type = 'button';
-      pickBtn.hidden = st.mode !== 'colour';
+      pickBtn.hidden = st.mode !== 'color';
       pickBtn.addEventListener('click', function () {
         new window.EyeDropper().open().then(function (r) { showPicked(st, r.sRGBHex); }, function () {});
       });
@@ -675,15 +675,15 @@
     Object.keys(st.modeBtns).forEach(function (k) { st.modeBtns[k].setAttribute('aria-pressed', k === m ? 'true' : 'false'); });
     st.hint.textContent = HINT[m];
     st.key.hidden = m !== 'measure';
-    if (st.pickBtn) st.pickBtn.hidden = m !== 'colour';
-    if (m !== 'colour') st.picked.hidden = true;
+    if (st.pickBtn) st.pickBtn.hidden = m !== 'color';
+    if (m !== 'color') st.picked.hidden = true;
     sendSpecs(st);
   }
   /* The palette as numbers, for the nearest match to a picked pixel. */
   var PALETTE = null;
   function palette() {
     if (PALETTE) return PALETTE;
-    PALETTE = Object.keys(D.look.colour).filter(function (k) { return k.indexOf('/') < 0; }).map(function (k) { return { hex: k, rgb: [1, 3, 5].map(function (i) { return parseInt(k.substr(i, 2), 16); }), names: D.look.colour[k] }; });
+    PALETTE = Object.keys(D.look.color).filter(function (k) { return k.indexOf('/') < 0; }).map(function (k) { return { hex: k, rgb: [1, 3, 5].map(function (i) { return parseInt(k.substr(i, 2), 16); }), names: D.look.color[k] }; });
     return PALETTE;
   }
   function showPicked(st, hx) {
@@ -692,13 +692,13 @@
     box.textContent = '';
     box.hidden = false;
     box.appendChild(mk('h3', null, 'Picked from the screen'));
-    var dl = mk('dl', 'ds-specrows'), exact = D.look.colour[hx];
-    var dd = row(dl, 'Colour', swatch(hx, hx.toUpperCase()), exact ? exact.slice(0, 4) : []);
+    var dl = mk('dl', 'ds-specrows'), exact = D.look.color[hx];
+    var dd = row(dl, 'Color', swatch(hx, hx.toUpperCase()), exact ? exact.slice(0, 4) : []);
     if (!exact) {
       var best = null;
       palette().forEach(function (c) { var d = Math.sqrt(c.rgb.reduce(function (a, v, i) { return a + Math.pow(v - rgb[i], 2); }, 0)); if (!best || d < best.d) best = { c: c, d: d }; });
       dd.appendChild(flag('no token'));
-      if (best) { var nd = row(dl, 'Nearest', swatch(best.c.hex, best.c.hex.toUpperCase()), best.c.names.slice(0, 3)); nd.appendChild(mk('span', 'ds-why', best.d < 12 ? 'almost the same: probably this token, blended or smoothed at an edge' : 'a different colour')); }
+      if (best) { var nd = row(dl, 'Nearest', swatch(best.c.hex, best.c.hex.toUpperCase()), best.c.names.slice(0, 3)); nd.appendChild(mk('span', 'ds-why', best.d < 12 ? 'almost the same: probably this token, blended or smoothed at an edge' : 'a different color')); }
     }
     box.appendChild(dl);
   }
@@ -708,26 +708,26 @@
     var need = c.big ? 3 : 4.5, pass = c.ratio >= need;
     return c.ratio.toFixed(2) + ':1 \u00b7 ' + (pass ? 'passes' : 'fails') + ' WCAG AA for ' + (c.big ? 'large' : 'normal') + ' text (' + need + ':1)';
   }
-  function renderColour(st, s, box) {
+  function renderColor(st, s, box) {
     var dl = mk('dl', 'ds-specrows'), PROPS = { color: ['color'], background: ['background', 'background-color', 'background-image'], border: sides('border').concat(['border-color', 'border-top-color', 'border-bottom-color', 'border-left-color', 'border-right-color']), fill: ['fill'], stroke: ['stroke'] };
-    (s.colours || []).forEach(function (c) {
+    (s.colors || []).forEach(function (c) {
       if (c[0] === 'Gradient') { row(dl, 'Gradient', mk('span', 'ds-grad', ''), declared(s, PROPS.background)).firstChild.style.background = c[1]; return; }
-      var hx = hexOf(c[1]) || c[1], toks = declared(s, PROPS[c[2]] || []), same = D.look.colour[hx] || [];
+      var hx = hexOf(c[1]) || c[1], toks = declared(s, PROPS[c[2]] || []), same = D.look.color[hx] || [];
       if (c[2] === 'color' && !toks.length) toks = s.inherited || [];
-      /* Rules for other states name other tokens too: keep the ones that give the colour drawn now. */
+      /* Rules for other states name other tokens too: keep the ones that give the color drawn now. */
       var match = toks.filter(function (n) { return same.indexOf(n) >= 0; });
       if (match.length) toks = match;
       else if (toks.length && same.length) toks = same.slice(0, 3);
       if (!toks.length) toks = same.slice(0, 3);
-      var dd = row(dl, c[0], swatch(hx, colourText(hx)), toks);
+      var dd = row(dl, c[0], swatch(hx, colorText(hx)), toks);
       if (s.inKit && !toks.length) dd.appendChild(flag('no token'));
     });
     if (s.contrast) {
       var t = ratioText(s.contrast), cd = row(dl, 'Contrast', t);
-      if (s.contrast.bg) { var on = hexOf(s.contrast.bg); cd.appendChild(mk('span', 'ds-why', 'on ' + on.toUpperCase() + ((D.look.colour[on] || [])[0] ? ' (' + D.look.colour[on][0] + ')' : ''))); }
+      if (s.contrast.bg) { var on = hexOf(s.contrast.bg); cd.appendChild(mk('span', 'ds-why', 'on ' + on.toUpperCase() + ((D.look.color[on] || [])[0] ? ' (' + D.look.color[on][0] + ')' : ''))); }
       if (s.contrast.ratio && s.contrast.ratio < (s.contrast.big ? 3 : 4.5)) cd.appendChild(flag('low contrast'));
     }
-    if (!dl.firstChild) row(dl, 'Colour', 'No colour of its own: what shows here comes from the parts inside it or behind it.');
+    if (!dl.firstChild) row(dl, 'Color', 'No color of its own: what shows here comes from the parts inside it or behind it.');
     box.appendChild(dl);
   }
   function renderSpec(st, s, pinned) {
@@ -739,7 +739,7 @@
     h.appendChild(mk('code', null, name));
     h.appendChild(mk('span', null, s.w + ' × ' + s.h + 'px' + (pinned ? ' · selected' : '')));
     box.appendChild(h);
-    if (s.mode === 'colour') { renderColour(st, s, box); return; }
+    if (s.mode === 'color') { renderColor(st, s, box); return; }
     var dl = mk('dl', 'ds-specrows');
     function px(a) { return a.filter(function (v) { return v; }).map(function (v) { return v + 'px'; }); }
     var off = s.off || { pad: [], mar: [], gap: [] };
@@ -754,7 +754,7 @@
     }
     if (s.bw.some(Boolean) && s.borderStyle !== 'none') {
       var bh = hexOf(s.borderColor), bt = declared(s, sides('border').concat(['border-color', 'border-top-color', 'border-bottom-color', 'border-left-color', 'border-right-color']));
-      var bl = bt.length ? bt : (bh ? (D.look.colour[bh] || []).slice(0, 3) : []), bd = row(dl, 'Border', swatch(bh && bh !== 'none' ? bh : '#000', quad(s.bw) + ' ' + s.borderStyle + (bh && bh !== 'none' ? ' ' + colourText(bh) : '')), bl);
+      var bl = bt.length ? bt : (bh ? (D.look.color[bh] || []).slice(0, 3) : []), bd = row(dl, 'Border', swatch(bh && bh !== 'none' ? bh : '#000', quad(s.bw) + ' ' + s.borderStyle + (bh && bh !== 'none' ? ' ' + colorText(bh) : '')), bl);
       if (s.inKit && bh && bh !== 'none' && !bl.length) bd.appendChild(flag('no token'));
     }
     if (s.font) {
@@ -766,11 +766,11 @@
       declared(s, ['font-family', 'font']).forEach(function (n) { td.appendChild(token(n)); });
       var ch = hexOf(s.color), ct = declared(s, ['color']);
       if (!ct.length) ct = s.inherited || [];
-      if (ch && ch !== 'none') { var cl = ct.length ? ct : (D.look.colour[ch] || []).slice(0, 3), cd = row(dl, 'Text colour', swatch(ch, colourText(ch)), cl); if (s.inKit && !cl.length) cd.appendChild(flag('no token')); }
+      if (ch && ch !== 'none') { var cl = ct.length ? ct : (D.look.color[ch] || []).slice(0, 3), cd = row(dl, 'Text color', swatch(ch, colorText(ch)), cl); if (s.inKit && !cl.length) cd.appendChild(flag('no token')); }
     }
     var gh = hexOf(s.bg), gt2 = declared(s, ['background', 'background-color', 'background-image']);
     if ((gh && gh !== 'none') || s.bgImage) {
-      var gl = gt2.length ? gt2 : (gh ? (D.look.colour[gh] || []).slice(0, 3) : []), gd = row(dl, 'Background', gh && gh !== 'none' ? swatch(gh, colourText(gh)) : (/gradient/.test(s.bgImage) ? 'Gradient' : 'Image'), gl);
+      var gl = gt2.length ? gt2 : (gh ? (D.look.color[gh] || []).slice(0, 3) : []), gd = row(dl, 'Background', gh && gh !== 'none' ? swatch(gh, colorText(gh)) : (/gradient/.test(s.bgImage) ? 'Gradient' : 'Image'), gl);
       if (s.inKit && gh && gh !== 'none' && !gl.length) gd.appendChild(flag('no token'));
     }
     if (s.shadow) { var sh = declared(s, ['box-shadow']); row(dl, 'Shadow', sh.length ? '' : 'Set on the component', sh); }
@@ -785,7 +785,7 @@
     box.appendChild(dl);
   }
   function renderSummary(st, sum) {
-    var box = st.specSum, groups = { colour: [], spacing: [], radius: [], shadow: [], font: [], layout: [], layer: [] };
+    var box = st.specSum, groups = { color: [], spacing: [], radius: [], shadow: [], font: [], layout: [], layer: [] };
     box.textContent = '';
     box.appendChild(mk('h3', null, 'Tokens this component uses'));
     Object.keys(sum.tokens || {}).forEach(function (state) {
@@ -793,7 +793,7 @@
       Object.keys(d).forEach(function (prop) { d[prop].forEach(function (n) { var g = groups[D.kinds[n]]; if (g && g.indexOf(n) < 0) g.push(n); }); });
     });
     var dl = mk('dl', 'ds-specrows');
-    [['colour', 'Colour'], ['spacing', 'Spacing'], ['radius', 'Radius'], ['shadow', 'Shadow'], ['font', 'Font'], ['layout', 'Layout'], ['layer', 'Layer']].forEach(function (g) {
+    [['color', 'Color'], ['spacing', 'Spacing'], ['radius', 'Radius'], ['shadow', 'Shadow'], ['font', 'Font'], ['layout', 'Layout'], ['layer', 'Layer']].forEach(function (g) {
       if (groups[g[0]].length) row(dl, g[1], '', groups[g[0]].sort());
     });
     var fonts = Object.keys(sum.fonts || {}).sort(function (a, b) { return sum.fonts[b] - sum.fonts[a]; }), nearType = [], noType = [];
@@ -816,16 +816,16 @@
     }
     if (!dl.firstChild) box.appendChild(mk('p', null, 'No tokens found in this preview.')); else box.appendChild(dl);
     box.appendChild(mk('p', null, 'Read from the styles of the preview as it is drawn here; rules for other screen sizes are not included.'));
-    /* Every colour the component draws with, most used first, each with its token or a flag. */
-    var used = Object.keys(sum.colours || {}).sort(function (a, b) { return sum.colours[b] - sum.colours[a]; });
+    /* Every color the component draws with, most used first, each with its token or a flag. */
+    var used = Object.keys(sum.colors || {}).sort(function (a, b) { return sum.colors[b] - sum.colors[a]; });
     if (used.length) {
-      box.appendChild(mk('h3', null, 'Colours drawn'));
+      box.appendChild(mk('h3', null, 'Colors drawn'));
       var grid = mk('ul', 'ds-cused');
       used.slice(0, 24).forEach(function (hx) {
-        var li = mk('li'), names = D.look.colour[hx] || [];
-        li.appendChild(swatch(hx, colourText(hx)));
+        var li = mk('li'), names = D.look.color[hx] || [];
+        li.appendChild(swatch(hx, colorText(hx)));
         if (names.length) li.appendChild(token(names[0])); else li.appendChild(flag('no token'));
-        li.appendChild(mk('span', 'ds-why', '\u00d7' + sum.colours[hx]));
+        li.appendChild(mk('span', 'ds-why', '\u00d7' + sum.colors[hx]));
         grid.appendChild(li);
       });
       box.appendChild(grid);
@@ -963,6 +963,7 @@
     } else { window.scrollTo(0, 0); }
     var h = view.querySelector('h1');
     if (h) { h.setAttribute('tabindex', '-1'); try { h.focus({ preventScroll: true }); } catch (err) { /* older browsers */ } }
+    window.dispatchEvent(new Event('ds-shown'));
   }
   var touched = false;
   ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (t) { window.addEventListener(t, function () { touched = true; }, { passive: true }); });
@@ -992,33 +993,139 @@
     if (el) { e.preventDefault(); el.scrollIntoView(); }
   });
 
-  /* Find a component by name. */
-  var none = document.getElementById('ds-none');
-  if (find) {
-    var groups = Array.prototype.slice.call(rail.querySelectorAll('details[data-family]'));
-    var wasOpen = null;
-    find.addEventListener('input', function () {
-      var q = find.value.trim().toLowerCase(), hits = 0;
-      if (q && !wasOpen) wasOpen = groups.map(function (g) { return g.open; });
-      groups.forEach(function (g, i) {
-        var any = false;
-        Array.prototype.forEach.call(g.querySelectorAll('li'), function (li) {
-          var ok = !q || li.textContent.toLowerCase().indexOf(q) >= 0;
-          li.hidden = !ok;
-          if (ok) { any = true; hits += 1; }
-        });
-        g.hidden = !!q && !any;
-        if (q) g.open = any; else if (wasOpen) g.open = wasOpen[i];
+  /* Search: components, guideline sections, tokens and asset files, ranked by where the words match.
+     A name or title match beats an alias ("dropdown" finds Select), which beats the text of a guide or README. */
+  var find = document.getElementById('ds-find'), results = document.getElementById('ds-results'), counter = document.getElementById('ds-count');
+  var navBox = rail.querySelector('.ds-nav');
+  /* British spellings in a query find the American text: col+our, gr+ey, cent+re and so on. */
+  var US = {}; [['col' + 'our', 'color'], ['col' + 'ours', 'colors'], ['gr' + 'ey', 'gray'], ['gr' + 'eys', 'grays'], ['cent' + 're', 'center'], ['cent' + 'red', 'centered'], ['behavi' + 'our', 'behavior'], ['fav' + 'our', 'favor'], ['lic' + 'ence', 'license'], ['organ' + 'ise', 'organize'], ['priorit' + 'ise', 'prioritize'], ['anal' + 'yse', 'analyze']].forEach(function (p) { US[p[0]] = p[1]; });
+  var KIND_ORDER = ['Page', 'Component', 'Guideline', 'Token', 'Asset'];
+  var KIND_LABEL = { Component: 'Components', Page: 'Pages', Guideline: 'Guidelines', Token: 'Tokens', Asset: 'Asset files' };
+  var KIND_MAX = { Component: 8, Page: 3, Guideline: 8, Token: 6, Asset: 4 };
+  var KIND_WEIGHT = { Component: 8, Page: 7, Guideline: 5, Token: 1, Asset: 0 };
+  var INDEX = (D.search || []).map(function (e) {
+    var t = e.t.toLowerCase();
+    var tw = t.split(/[^a-z0-9]+/).filter(Boolean);
+    return { e: e, t: t, tn: tw.length, tw: tw.concat(e.a ? e.a.split(/\s+/) : []), a: e.a || '', g: (e.g || '').toLowerCase(), d: (e.d || '').toLowerCase(), x: (e.x || '').toLowerCase() };
+  });
+  function norm(q) { return q.toLowerCase().replace(/[^a-z0-9#.\- ]+/g, ' ').split(/\s+/).filter(Boolean).map(function (w) { return US[w] || w; }); }
+  function score(r, words, whole) {
+    var sum = 0, missed = 0;
+    for (var i = 0; i < words.length; i++) {
+      var w = words[i], s = 0, k;
+      for (k = 0; k < r.tw.length; k++) { if (r.tw[k] === w) { s = Math.max(s, k < r.tn ? 40 : 34); } else if (r.tw[k].indexOf(w) === 0) { s = Math.max(s, k < r.tn ? 30 : 24); } }
+      if (!s && r.t.indexOf(w) >= 0) s = 20;
+      if (!s && (r.g.indexOf(w) >= 0 || r.d.indexOf(w) >= 0)) s = 8;
+      if (!s && w.length > 2 && r.x.indexOf(w) >= 0) s = 4 + Math.min(4, r.x.split(w).length - 1);
+      if (!s) { missed += 1; continue; }
+      sum += s;
+    }
+    /* With two or more words, one may miss ("date format" still finds Dates and Times), at a cost. */
+    if (missed && (words.length < 2 || missed * 2 > words.length || sum < 30)) return 0;
+    sum -= missed * 15;
+    if (r.t === whole) sum += 100; else if (r.t.indexOf(whole) === 0) sum += 25;
+    if (r.e.top) sum += 6;
+    return sum + KIND_WEIGHT[r.e.k];
+  }
+  function escH(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function mark(text, words) {
+    var out = escH(text);
+    words.forEach(function (w) { if (w.length < 2) return; out = out.replace(new RegExp('(' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '\u0001$1\u0002'); });
+    return out.replace(/\u0001/g, '<mark>').replace(/\u0002/g, '</mark>');
+  }
+  function snippet(r, words) {
+    var src = r.e.x || '', low = r.x, at = -1;
+    words.forEach(function (w) { var k = low.indexOf(w); if (k >= 0 && (at < 0 || k < at)) at = k; });
+    if (at < 0) return r.e.d || '';
+    var a = Math.max(0, at - 50), b = Math.min(src.length, at + 90);
+    while (a > 0 && src[a - 1] !== ' ') a--;
+    return (a > 0 ? '…' : '') + src.slice(a, b).trim() + (b < src.length ? '…' : '');
+  }
+  var hits = [], active = -1, pendingJump = null;
+  function go(r) {
+    var e = r.e;
+    pendingJump = e.j || null;
+    find.value = ''; render();
+    if ((location.hash || '').slice(1) === e.h) route(true); else location.hash = e.h;
+  }
+  function setActive(k) {
+    var opts = results.querySelectorAll('[role="option"]');
+    active = Math.max(-1, Math.min(opts.length - 1, k));
+    Array.prototype.forEach.call(opts, function (o, i) { o.setAttribute('aria-selected', i === active ? 'true' : 'false'); });
+    if (active >= 0) { find.setAttribute('aria-activedescendant', opts[active].id); opts[active].scrollIntoView({ block: 'nearest' }); } else find.removeAttribute('aria-activedescendant');
+  }
+  function render() {
+    var q = find.value.trim(), words = norm(q), whole = words.join(' ');
+    results.innerHTML = ''; hits = []; active = -1; find.removeAttribute('aria-activedescendant');
+    if (!words.length) {
+      results.hidden = true; navBox.hidden = false; find.setAttribute('aria-expanded', 'false'); counter.textContent = '';
+      return;
+    }
+    var ranked = INDEX.map(function (r) { return { r: r, s: score(r, words, whole) }; }).filter(function (o) { return o.s > 0; }).sort(function (a, b) { return b.s - a.s; });
+    var groups = {};
+    ranked.forEach(function (o) { var k = o.r.e.k; (groups[k] = groups[k] || []).push(o); });
+    /* Groups follow their best hit, leaning toward components and guides; an exact name match ("qualys-blue") always comes first. */
+    var BIAS = { Page: 10, Component: 10, Guideline: 6, Token: 0, Asset: -5 };
+    function rank(k) { var top = groups[k][0]; return (top.r.t === whole ? 1000 : 0) + top.s + BIAS[k]; }
+    var order = KIND_ORDER.filter(function (k) { return groups[k]; }).sort(function (a, b) { return rank(b) - rank(a) || KIND_ORDER.indexOf(a) - KIND_ORDER.indexOf(b); });
+    var n = 0;
+    order.forEach(function (k) {
+      var list = groups[k], box = mk('div', 'ds-rgroup'), head = mk('p', 'ds-rhead', KIND_LABEL[k] + ' ');
+      head.appendChild(mk('span', null, String(list.length)));
+      box.setAttribute('role', 'group'); box.setAttribute('aria-label', KIND_LABEL[k]);
+      box.appendChild(head);
+      list.slice(0, KIND_MAX[k]).forEach(function (o) {
+        var r = o.r, el = mk('div', 'ds-hit'), idx = hits.length;
+        el.id = 'ds-hit-' + idx; el.setAttribute('role', 'option'); el.setAttribute('aria-selected', 'false');
+        var title = mk('span', 'ds-hit-t'); title.innerHTML = mark(r.e.t, words);
+        var meta = mk('span', 'ds-hit-g', r.e.g + (k === 'Token' && r.e.d ? ' · ' + r.e.d : ''));
+        el.appendChild(title); el.appendChild(meta);
+        var hitInTitle = words.every(function (w) { return r.t.indexOf(w) >= 0; });
+        var sn = hitInTitle ? (r.e.d && k !== 'Token' ? r.e.d : '') : snippet(r, words);
+        if (sn) { var sp = mk('span', 'ds-hit-x'); sp.innerHTML = mark(sn, words); el.appendChild(sp); }
+        el.addEventListener('mousedown', function (ev) { ev.preventDefault(); });
+        el.addEventListener('click', function () { go(r); });
+        el.addEventListener('mousemove', function () { if (active !== idx) setActive(idx); });
+        box.appendChild(el); hits.push(r); n += 1;
       });
-      if (!q) wasOpen = null;
-      /* A level with no match left hides its heading too. */
-      Array.prototype.forEach.call(rail.querySelectorAll('.ds-navsec'), function (sec) { sec.hidden = !!q && !sec.querySelector('details[data-family]:not([hidden])'); });
-      if (none) none.hidden = !q || hits > 0;
+      results.appendChild(box);
     });
+    if (!n) {
+      var none = mk('div', 'ds-rnone');
+      none.appendChild(mk('p', null, 'Nothing matches “' + q + '”.'));
+      none.appendChild(mk('p', null, 'Try a component (Button, Select), what it does (dropdown, modal, badge), a token (qualys-blue, spacing-rg) or a guide topic (contrast, focus, dates).'));
+      results.appendChild(none);
+    }
+    counter.textContent = n ? ranked.length + ' results' : 'No results';
+    results.hidden = false; navBox.hidden = true; find.setAttribute('aria-expanded', 'true');
+    if (n) setActive(0);
+  }
+  if (find) {
+    find.addEventListener('input', render);
     find.addEventListener('keydown', function (e) {
-      if (e.key !== 'Enter') return;
-      var first = rail.querySelector('details[data-family]:not([hidden]) li:not([hidden]) a');
-      if (first && find.value.trim()) { e.preventDefault(); location.hash = first.getAttribute('href'); }
+      if (e.key === 'ArrowDown') { e.preventDefault(); setActive(active + 1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(active - 1); }
+      else if (e.key === 'Enter') { if (hits[active]) { e.preventDefault(); go(hits[active]); } }
+      else if (e.key === 'Escape') { if (find.value) { e.preventDefault(); find.value = ''; render(); } else find.blur(); }
+    });
+    /* "/" jumps to the search from anywhere on the page, as on most documentation sites. */
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
+      var t = e.target, tag = t && t.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable)) return;
+      e.preventDefault();
+      if (window.matchMedia('(max-width: 900px)').matches && !rail.classList.contains('is-open') && menu) menu.click();
+      find.focus(); find.select();
     });
   }
+  /* After a search result opens its page, scroll to the section, token or file group it named. */
+  window.addEventListener('ds-shown', function () {
+    if (!pendingJump) return;
+    var el = document.getElementById(pendingJump);
+    pendingJump = null;
+    if (!el) return;
+    el.scrollIntoView({ block: 'start' });
+    el.classList.add('ds-flash');
+    setTimeout(function () { el.classList.remove('ds-flash'); }, 1600);
+  });
 })();

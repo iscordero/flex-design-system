@@ -1,5 +1,7 @@
 # Stats
 
+**Status:** Ready
+
 The stats module from the Figma Stats page: three figures in one panel, or three or four StatCards in a row.
 
 **Provide:** `items` — each with `value`, `label`, and optionally `suffix`, `prefix`, `icon`, `description` — plus `layout` and `tone`.

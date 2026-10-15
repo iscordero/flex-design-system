@@ -35,8 +35,28 @@ a { color: var(--ds-link); }
 .ds-brand { display: flex; flex-direction: column; gap: 10px; text-decoration: none; color: var(--ds-ink); }
 .ds-brand img { display: block; width: 116px; height: auto; }
 .ds-brand span { font-family: var(--ds-display); font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
-.ds-find input { width: 100%; height: 40px; padding: 0 12px; border: 1px solid var(--ds-line); border-radius: 10px; background: var(--ds-ground); color: var(--ds-ink); font: inherit; font-size: 14px; }
+.ds-find { position: relative; }
+.ds-find input { width: 100%; height: 40px; box-sizing: border-box; padding: 0 34px 0 12px; border: 1px solid var(--ds-line); border-radius: 10px; background: var(--ds-ground); color: var(--ds-ink); font: inherit; font-size: 14px; }
 .ds-find input::placeholder { color: var(--ds-ink-2); }
+.ds-find input:focus-visible { outline: 2px solid var(--ds-accent); outline-offset: 1px; }
+.ds-kbd { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); min-width: 18px; height: 20px; padding: 0 4px; box-sizing: border-box; border: 1px solid var(--ds-line); border-radius: 5px; font: 500 11px/18px var(--ds-mono, ui-monospace, monospace); text-align: center; color: var(--ds-ink-2); pointer-events: none; }
+.ds-find input:focus ~ .ds-kbd, .ds-find input:not(:placeholder-shown) ~ .ds-kbd { display: none; }
+.ds-results { display: flex; flex-direction: column; gap: 14px; margin-top: -4px; }
+.ds-rhead { display: flex; justify-content: space-between; margin: 0 0 4px; padding: 0 10px; font-family: var(--ds-display); font-weight: 600; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ds-ink-2); }
+.ds-rhead span { font-weight: 500; letter-spacing: 0; }
+.ds-hit { display: flex; flex-direction: column; gap: 2px; padding: 7px 10px; border-radius: 8px; cursor: pointer; }
+.ds-hit[aria-selected="true"] { background: var(--ds-tint); }
+.ds-hit-t { font-size: 14px; font-weight: 600; line-height: 1.3; color: var(--ds-ink); overflow-wrap: anywhere; }
+.ds-hit[aria-selected="true"] .ds-hit-t { color: var(--ds-link); }
+.ds-hit-g { font-size: 12px; line-height: 1.3; color: var(--ds-ink-2); }
+.ds-hit-x { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font-size: 12.5px; line-height: 1.35; color: var(--ds-ink-2); }
+.ds-hit mark { background: none; color: inherit; font-weight: 700; text-decoration: underline; text-decoration-color: var(--ds-accent); text-underline-offset: 2px; }
+.ds-rnone { padding: 0 10px; font-size: 13.5px; line-height: 1.4; color: var(--ds-ink-2); }
+.ds-rnone p { margin: 0 0 8px; }
+.ds-rnone p:first-child { color: var(--ds-ink); font-weight: 600; }
+.ds-flash { animation: ds-flash 1.6s ease-out; border-radius: 8px; }
+@keyframes ds-flash { 0%, 30% { background: var(--ds-tint); box-shadow: 0 0 0 6px var(--ds-tint); } 100% { background: transparent; box-shadow: 0 0 0 6px transparent; } }
+@media (prefers-reduced-motion: reduce) { .ds-flash { animation: none; } }
 .ds-nav { display: flex; flex-direction: column; gap: 18px; }
 .ds-nav h2 { margin: 0 0 6px; padding: 0 10px; font-family: var(--ds-display); font-weight: 600; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ds-ink-2); }
 .ds-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; }
@@ -279,3 +299,21 @@ a { color: var(--ds-link); }
 .ds-devstage { margin-top: 12px; }
 .ds-devfit { position: relative; overflow: hidden; margin: 0 auto; border: 1px solid var(--ds-line); border-radius: 12px; background: #fff; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); }
 .ds-devfit iframe { position: absolute; left: 0; top: 0; border: 0; transform-origin: 0 0; background: #fff; }
+
+/* Status: Ready shows as a quiet chip; anything else stands out, with a dot in the rail and the index. */
+.ds-st { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; font-size: 12px; font-weight: 600; line-height: 1; white-space: nowrap; }
+.ds-st--ready { background: #e6f5ec; color: #146c3c; }
+.ds-st--in-review { background: #fff4d6; color: #7a5200; }
+.ds-st--needs-fixes { background: #fde8e5; color: #a20900; }
+.ds-st--deprecated { background: #ededed; color: #575757; text-decoration: line-through; }
+.ds-st.is-small { width: 8px; height: 8px; padding: 0; margin-left: 6px; vertical-align: middle; border-radius: 50%; }
+.ds-st--in-review.is-small { background: #d98000; }
+.ds-st--needs-fixes.is-small { background: #be0a00; }
+.ds-st--deprecated.is-small { background: #8a8a8a; }
+.ds-stnote { margin: 0 0 12px; padding: 10px 12px; border-radius: 8px; font-size: 14px; line-height: 1.4; }
+.ds-stnote--in-review { background: #fff4d6; color: #5c3d00; }
+.ds-stnote--needs-fixes { background: #fde8e5; color: #7a0700; }
+.ds-stnote--deprecated { background: #ededed; color: #3a3a3a; }
+.ds-stlist { margin: 8px 0 0; padding-left: 18px; }
+.ds-stlist li { margin: 4px 0; }
+.ds-stwhy { color: var(--ds-ink-2); font-size: 13.5px; }

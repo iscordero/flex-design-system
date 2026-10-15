@@ -1,5 +1,7 @@
 # CtaModule
 
+**Status:** Ready
+
 The closing call to action from the Figma CTAs page: a sign-up form beside or over a picture, or a dark card with a heading and buttons.
 
 **Provide:** `form` (Form props) and `media` with a `layout`; or, with no form, `title`, `body` and `actions`.
@@ -15,7 +17,7 @@ The closing call to action from the Figma CTAs page: a sign-up form beside or ov
 **With a form**
 
 - Section on `surface-neutral-200`, 56px top and bottom (`spacing-5xl`), content in the content column (up to 1440px).
-- The form is the Form component without its card (`variant="full"`, `appearance="bare"`): the shield, a centred `h2` heading, the fields, the opt-in, one primary Button and the consent line, 460px wide, centred in its half.
+- The form is the Form component without its card (`variant="full"`, `appearance="bare"`): the shield, a centered `h2` heading, the fields, the opt-in, one primary Button and the consent line, 460px wide, centered in its half.
 - The image is `radius-lg`, 56px (`spacing-5xl`) from the form. `media` is `{ src, alt }`; leave it empty for the placeholder.
 - **Mobile:** only the form shows, with 36px × 24px padding and a full-width button. The `background` picture stays behind it.
 
@@ -33,7 +35,7 @@ Do / Don't:
 
 Where the Figma frames disagree, one value is used:
 
-- The card's second button is drawn as a red outline on the grey card, which is hard to read (about 2:1). Use `variant="secondary-inverted"` (white outline) there.
+- The card's second button is drawn as a red outline on the gray card, which is hard to read (about 2:1). Use `variant="secondary-inverted"` (white outline) there.
 - Fields are drawn 50px tall; they are 56px, as TextField.
 - Every mobile frame shows the plain form; the `background` layout keeps its picture on mobile.
 - The card is Asphalt in the documented example and Rhino in the component; Asphalt is used, because white text needs it.

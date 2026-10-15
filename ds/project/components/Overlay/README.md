@@ -1,5 +1,7 @@
 # Overlay
 
+**Status:** Ready
+
 The backdrop behind a modal, from the Figma Modals, Popups & Tooltips file. Every modal in this system draws its own, so you only need this one when you build a new kind of layer.
 
 **Provide:** nothing for the default. `tone="dark"` for the stronger one; `onClick` to hear a press on the backdrop itself; `inline` to keep it inside a positioned box instead of covering the screen.

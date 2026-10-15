@@ -1,5 +1,7 @@
 # WebinarCard
 
+**Status:** Ready
+
 The Webinar card from the Figma Cards page: an image, "Webinar | format | duration", a title, the speaker and the date.
 
 **Provide:** `title`, `format`, `duration`, `date`, `href`; optionally `image`, `flag`, `speakers` (`{ name, company, image }`) and, for the featured layout, a `description`. `category` defaults to "Webinar".

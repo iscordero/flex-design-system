@@ -1,5 +1,7 @@
 # Button
 
+**Status:** Ready
+
 Primary and secondary call-to-action buttons from the Figma Buttons sheet, in large (50px) and small (40px), with an optional icon left or right.
 
 **Provide:** the label as children (Title Case, verb first: "Get a Demo", "Register Now", "Download Report"), a `variant`, a `size`, and `href` when it navigates (renders an `<a>`). `iconLeft="download"` for downloads; `iconRight="arrow-right"` for going to another page (or a play icon for media). `disabled` for the disabled state.

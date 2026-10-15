@@ -1,5 +1,7 @@
 # GeneralContent
 
+**Status:** Ready
+
 The general content module from the Figma General Content Modules page (Ready for Dev): copy beside an image or video, a full-width image or video, or a banner with the copy over the media.
 
 **Provide:** `layout`, `media`, and for the copy `eyebrow`, `title`, `body`, `actions`.
@@ -11,7 +13,7 @@ The general content module from the Figma General Content Modules page (Ready fo
 | `full` | Full width media / video | The media alone, across the column |
 | `banner` | Full width … Type overlay | Heading, one paragraph and a Button over the media |
 
-`media` is `{ src, alt }` for an image or `{ video, poster }` for a video; leave it empty to get the grey placeholder.
+`media` is `{ src, alt }` for an image or `{ video, poster }` for a video; leave it empty to get the gray placeholder.
 
 **Split**
 
@@ -31,10 +33,10 @@ The general content module from the Figma General Content Modules page (Ready fo
 
 **Tablet (under 1024px):** the split stacks, media first, 20px apart.
 
-**Mobile (under 768px):** 24px × 20px padding; images 67:50, videos 16:9; eyebrow 16px, heading 24px (`h2` on mobile); buttons stack full width with the TextLink centred under them. Banners get 16px padding and the play button moves to the bottom right corner.
+**Mobile (under 768px):** 24px × 20px padding; images 67:50, videos 16:9; eyebrow 16px, heading 24px (`h2` on mobile); buttons stack full width with the TextLink centered under them. Banners get 16px padding and the play button moves to the bottom right corner.
 
 Notes:
 
 - Figma draws the split at 1200px wide in the component and at 1140px in the page layouts; it uses the content column like the other modules.
-- In the video banner Figma centres the play button on the panel, where it covers the end of the paragraph; it is moved clear of the copy.
+- In the video banner Figma centers the play button on the panel, where it covers the end of the paragraph; it is moved clear of the copy.
 - The Figma usage notes are still placeholders ("Used for…", "Image max width: 560px").

@@ -1,5 +1,7 @@
 # ProfileCard
 
+**Status:** Ready
+
 The profile card from the Figma Avatars page: a large square photo with a profile-link chip, the name, the designation and the company logo. With a bio, hovering shows "Read Bio" and a click opens the ProfileModal.
 
 **Provide:** `name`; optionally `designation`, `image`, `logo`, `link` (`{ href, network }`) and `onOpen`. For a row of people, use ProfileGrid, which wires up the modal for you.

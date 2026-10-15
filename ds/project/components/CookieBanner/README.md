@@ -1,5 +1,7 @@
 # CookieBanner
 
+**Status:** Ready
+
 Cookie consent in two forms: a compact bar along the bottom of the screen, and a panel with a switch for each category.
 
 **Provide:** for the bar, `onAccept` and `onDecline`, plus `link` for the policy and `onManage` to open the panel. For the panel, `variant="expanded"`, `categories` (`{ id, label, description, required }`), `onSave(prefs)` and `onAccept(prefs)`.

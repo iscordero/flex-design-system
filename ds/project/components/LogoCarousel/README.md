@@ -1,5 +1,7 @@
 # LogoCarousel
 
+**Status:** Ready
+
 The logo carousel from the Figma Logos page: a heading over one row of customer logos that scrolls by itself.
 
 **Provide:** `title` and `logos` (`{ src, alt, href, scale }`). Optional: `mobile`, `mobileMax`, `optical`, `duration`.
@@ -26,9 +28,9 @@ Stacking guidelines:
 
 ## Optical sizing
 
-Logos are sized for equal visual weight, not equal width, as in LogoHierarchy: each gets about the same area in its tile (`optical={false}` turns this off). Each logo is centred in its tile; supply files cropped tight to the artwork, or a logo with padding on one side will look off-centre. Correct heavy or light logos with `scale`: 0.85–0.95 for dense, dark or boxed logos, 1.05–1.15 for thin or airy ones. See LogoHierarchy for the full guidance.
+Logos are sized for equal visual weight, not equal width, as in LogoHierarchy: each gets about the same area in its tile (`optical={false}` turns this off). Each logo is centered in its tile; supply files cropped tight to the artwork, or a logo with padding on one side will look off-center. Correct heavy or light logos with `scale`: 0.85–0.95 for dense, dark or boxed logos, 1.05–1.15 for thin or airy ones. See LogoHierarchy for the full guidance.
 
-## Behaviour
+## Behavior
 
 - The row moves slowly to the left (about four seconds per logo; set `duration` in seconds to change it).
 - It pauses when the pointer is over it, when a logo link has focus, and when the pause button is pressed. The button then becomes play.
@@ -39,10 +41,10 @@ Logos are sized for equal visual weight, not equal width, as in LogoHierarchy: e
 - Do use each company's logo as supplied, on a clear ground.
 - Do give every logo `alt` text (the company name).
 - Don't use fewer than five logos; a short row has gaps as it loops.
-- Don't alter, recolour or crop a customer's logo. Adjust `scale` instead.
+- Don't alter, recolor or crop a customer's logo. Adjust `scale` instead.
 
 ## Notes
 
-- The pause control is drawn in Figma as a grey placeholder square; it uses the Carousel button style with a pause or play glyph.
+- The pause control is drawn in Figma as a gray placeholder square; it uses the Carousel button style with a pause or play glyph.
 - **Hover cards:** give a logo a `card` (`{ title, body, badge, link }`) and it becomes a button that opens a logo HoverCard: on hover with a mouse, on click, tap or Enter otherwise. The row waits while a card is open. A logo with a card does not also take `href`; the link lives in the card.
 - The logos in the preview are placeholders.

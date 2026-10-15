@@ -6,7 +6,7 @@
 <title>Accordion — preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:var(--spacing-rg)}.row{display:flex;gap:var(--spacing-xl);align-items:flex-start;flex-wrap:wrap}.cap{margin-bottom:var(--spacing-3xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.col{display:flex;flex-direction:column;gap:var(--spacing-rg);width:320px}</style>
-<style>.cols{display:flex;gap:56px;align-items:flex-start;flex-wrap:wrap}.c{flex:1 1 420px;min-width:0}.sec{display:flex;flex-direction:column;gap:var(--spacing-3xs)}.grey{margin:0 calc(var(--spacing-xl) * -1) calc(var(--spacing-xl) * -1);padding:var(--spacing-xl);background:var(--surface-neutral-200)}.phones{display:flex;gap:var(--spacing-xl);align-items:flex-start;flex-wrap:wrap}.phone{flex:none;box-sizing:border-box;width:375px;padding:var(--spacing-rg);box-shadow:var(--shadow-card)}.phone.w{background:var(--surface-neutral-100)}.phone.g{background:var(--surface-neutral-200);display:flex;flex-direction:column;gap:var(--spacing-rg)}</style>
+<style>.cols{display:flex;gap:56px;align-items:flex-start;flex-wrap:wrap}.c{flex:1 1 420px;min-width:0}.sec{display:flex;flex-direction:column;gap:var(--spacing-3xs)}.gray{margin:0 calc(var(--spacing-xl) * -1) calc(var(--spacing-xl) * -1);padding:var(--spacing-xl);background:var(--surface-neutral-200)}.phones{display:flex;gap:var(--spacing-xl);align-items:flex-start;flex-wrap:wrap}.phone{flex:none;box-sizing:border-box;width:375px;padding:var(--spacing-rg);box-shadow:var(--shadow-card)}.phone.w{background:var(--surface-neutral-100)}.phone.g{background:var(--surface-neutral-200);display:flex;flex-direction:column;gap:var(--spacing-rg)}</style>
 </head>
 <body>
 <div id="root"></div>
@@ -40,7 +40,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     h('div', {className: 'cols'},
       h('div', {className: 'c sec'}, h('div', {className: 'cap'}, 'Standard \u2014 icon and text'), h(Q.Accordion, {items: withIcons, defaultOpen: 'cloud'})),
       h('div', {className: 'c sec'}, h('div', {className: 'cap'}, 'Standard \u2014 text'), h(Q.Accordion, {items: textOnly, defaultOpen: 0}))),
-    h('div', {className: 'sec grey'}, h('div', {className: 'cap'}, 'Content cards \u2014 sample sessions from the Figma file'), h(Q.Accordion, {variant: 'cards', items: sessions, defaultOpen: 0})),
+    h('div', {className: 'sec gray'}, h('div', {className: 'cap'}, 'Content cards \u2014 sample sessions from the Figma file'), h(Q.Accordion, {variant: 'cards', items: sessions, defaultOpen: 0})),
     h('div', {className: 'sec'}, h('div', {className: 'cap'}, 'Mobile \u2014 375px screen, 16px page margins'),
       h('div', {className: 'phones'},
         h('div', {className: 'phone w'}, h(Q.Accordion, {layout: 'mobile', items: withIcons, defaultOpen: 'cloud'})),

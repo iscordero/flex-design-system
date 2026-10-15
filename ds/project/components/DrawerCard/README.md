@@ -1,5 +1,7 @@
 # DrawerCard
 
+**Status:** Ready
+
 The card drawer from the Figma Drawers page, built for event agendas: a white card with a time, a session title and a chevron that opens to show the description, with zero to many speaker profiles and an optional call to action.
 
 **Provide:** `title`; optionally `time` (the overline), a description as children, `speakers` (`{ name, designation, company, image }`) and `cta` (a secondary Button such as "Register"). `defaultOpen`, or `open` + `onToggle`, set the state.

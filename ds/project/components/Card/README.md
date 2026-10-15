@@ -1,5 +1,7 @@
 # Card
 
+**Status:** Ready
+
 The Standard card from the Figma Cards page: a heading and short copy, with an optional feature icon, eyebrow or tag name, tags or a badge, and a text-link call to action.
 
 **Provide:** `title` and usually `description`. Optional: `icon` (a Feature Icons URL or a node), `eyebrow` or `tagName` (one or the other), `tags` (a list) or `badge` (one word), `cta` (the text-link label) and `href`.

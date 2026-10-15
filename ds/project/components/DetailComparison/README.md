@@ -1,5 +1,7 @@
 # DetailComparison
 
+**Status:** Ready
+
 A written comparison: Qualys beside up to three competitors the reader picks, one short text per vendor for each topic. Use it when yes or no is not enough and each difference needs a sentence. For a simple feature checklist use FeatureMatrix.
 
 **Provide:** `columns` (the first is Qualys), `sections` and optionally `title`, `subtitle`.
@@ -13,6 +15,6 @@ A written comparison: Qualys beside up to three competitors the reader picks, on
 - **Heading and chips:** above the card, on the page ground, 24px (`spacing-xl`) over it: the heading on the left, the chips on the right, both lined up with the card's outer edges. On a narrow screen the chips wrap under the heading. The card holds only the table, starting with the vendor logos 24px from its top.
 - **Mobile (the table narrower than 768px):** no card, on the page background. Tabs pick one competitor; in each section the Qualys text (Ecru card) sits above the competitor's (outlined card), each under its logo.
 - **Cursor:** pointer on section headings, chips and tabs.
-- **Accessibility:** section headings are buttons (`aria-expanded`); each cell names its vendor for screen readers; chips are toggle buttons in a labelled group.
+- **Accessibility:** section headings are buttons (`aria-expanded`); each cell names its vendor for screen readers; chips are toggle buttons in a labeled group.
 - **Content:** describe competitors fairly and keep claims current and checked. The copy in the preview is placeholder text.
 - From the Claude Design file "Comparison Table" (Detail Comparison, desktop and mobile).

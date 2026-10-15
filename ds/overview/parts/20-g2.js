@@ -1,4 +1,4 @@
-/* ───────── Guide 2: Colour ───────── */
+/* ───────── Guide 2: Color ───────── */
 function band(bg, token, name, use, inv) { return h('div', {key: token, className: 'row', style: {justifyContent: 'space-between', gap: 12, height: 30, padding: '0 12px', background: bg}},
   h('span', {style: {fontFamily: 'var(--font-heading)', fontWeight: 600, fontSize: 12, color: inv ? '#fff' : 'var(--text-primary)', whiteSpace: 'nowrap'}}, name),
   h('span', {style: {fontSize: 12, color: inv ? 'rgba(255,255,255,.85)' : 'var(--text-secondary)', whiteSpace: 'nowrap'}}, use)); }

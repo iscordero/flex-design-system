@@ -1,5 +1,7 @@
 # Radio
 
+**Status:** Ready
+
 From the Figma Inputs sheet: a 20px circle for picking one option from a short list.
 
 **Provide:** `label`, the same `name` on every radio in the group, a `value`, and `checked` + `onChange` (or `defaultChecked`).

@@ -7,7 +7,7 @@ function B(text, variant, extra) { return h(Q.Button, Object.assign({key: text +
 function frag() { return h.apply(null, [React.Fragment, null].concat(kids(arguments, 0))); }
 function tierRow(name, sub, node) { return h('div', {className: 'row', style: {gap: 14, padding: '12px 14px', borderTop: '1px solid var(--stroke-neutral-400)'}}, h('div', {style: {width: 128, flex: 'none'}}, t('k', name), t('s', sub)), row({gap: 8, flex: 1, flexWrap: 'nowrap'}, node)); }
 viz('g8-tiers', null, h('div', {className: 'white', style: {overflow: 'hidden'}},
-  h('div', {style: {padding: '10px 14px'}}, t('s', 'Tier decides priority · colour decides emphasis · icon decides clarity')),
+  h('div', {style: {padding: '10px 14px'}}, t('s', 'Tier decides priority · color decides emphasis · icon decides clarity')),
   tierRow('Tier 1 · Primary', 'Conversion', frag(B('Get a Demo'), B('Download', 'primary', {iconLeft: 'download'}))),
   tierRow('Tier 2 · Secondary', 'Supportive', frag(B('Learn More', 'secondary'), B('Join Waitlist', 'secondary-alt'))),
   tierRow('Tier 3 · Utility', 'Navigation and status', frag(h(Q.TextLink, {tone: 'blue', size: 'sm', href: '#'}, 'Show All'), h(Q.TextLink, {tone: 'blue', size: 'sm', arrow: true, href: '#'}, 'Next')))));
@@ -33,14 +33,14 @@ viz('g8-mobile', {display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: 14
   col({gap: 8, alignItems: 'center'}, phone(col({gap: 7},
       h('div', {className: 'k', style: {fontSize: 12, textAlign: 'center'}}, 'Try Qualys for Free'),
       ph('100%', 22, {background: '#fff', border: '1px solid var(--stroke-neutral-400)'}), ph('100%', 22, {background: '#fff', border: '1px solid var(--stroke-neutral-400)'}), ph('100%', 22, {background: '#fff', border: '1px solid var(--stroke-neutral-400)'}),
-      h('div', {style: {display: 'flex'}}, h(Q.Button, {size: 'sm', tabIndex: -1, style: {width: '100%'}}, 'Sign Up')))), lab('Tier 1', 'Full width, label centred', {textAlign: 'center'})),
+      h('div', {style: {display: 'flex'}}, h(Q.Button, {size: 'sm', tabIndex: -1, style: {width: '100%'}}, 'Sign Up')))), lab('Tier 1', 'Full width, label centered', {textAlign: 'center'})),
   col({gap: 8, alignItems: 'center'}, phone(col({gap: 7},
       h('div', {className: 'white', style: {padding: 8}}, ph('80%', 6, {background: 'var(--charcoal)'}), ph('60%', 5, {marginTop: 6})),
       h('div', {className: 'white', style: {padding: 8}}, ph('100%', 34), ph('70%', 6, {marginTop: 6, background: 'var(--charcoal)'})),
       h('div', {style: {display: 'flex', justifyContent: 'center'}}, B('Load More', 'secondary')))), lab('Tier 2', 'As wide as its label', {textAlign: 'center'})));
 var COPY = 'Organizations face millions of exposed assets. A ROC builds on the threats CTEM programs find with ';
 viz('g8-underline', null, pairDD(h('p', {className: 'paragraph-sm', style: {margin: 0}}, COPY, h(Q.Hyperlink, {href: '#'}, 'cyber risk quantification (CRQ)'), '.'), 'Blue, SemiBold and underlined.',
-  h('p', {className: 'paragraph-sm', style: {margin: 0}}, COPY, h('span', {style: {color: 'var(--hyperlink-default)', fontWeight: 600}}, 'cyber risk quantification (CRQ)'), '.'), 'Colour alone, with no underline.', {justifyContent: 'flex-start'}, {justifyContent: 'flex-start'}));
+  h('p', {className: 'paragraph-sm', style: {margin: 0}}, COPY, h('span', {style: {color: 'var(--hyperlink-default)', fontWeight: 600}}, 'cyber risk quantification (CRQ)'), '.'), 'Color alone, with no underline.', {justifyContent: 'flex-start'}, {justifyContent: 'flex-start'}));
 viz('g8-sources', null, pairDD(h('span', {className: 'paragraph-sm'}, 'Source: ', h(Q.Hyperlink, {href: '#'}, 'https://cloudsec.com/blog')), 'Sources are links too: blue and underlined.',
   h('span', {className: 'paragraph-sm'}, 'Source: ', h('b', null, 'https://cloudsec.com/blog')), 'A bold URL that doesn’t look clickable.'));
 var BLUE = {background: 'var(--qualys-blue)', border: 0};

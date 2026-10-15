@@ -1,7 +1,7 @@
 from PIL import Image
 import io,glob,os,sys,json
 LOSSY={'g6-photo','g6-heroes','g6-photoheroes','g6-product','g6-formheader'}
-MORE={'g4-elevation':128,'g6-logo-colours':128,'g2-gradient':128,'g7-notifications':96,'g5-toasts':96,'g2-overlays':96,'g5-reduced':96,'g7-modals':96}
+MORE={'g4-elevation':128,'g6-logo-colors':128,'g2-gradient':128,'g7-notifications':96,'g5-toasts':96,'g2-overlays':96,'g5-reduced':96,'g7-modals':96}
 def enc(f,name):
     im=Image.open(f).convert('RGBA')
     if name in LOSSY:

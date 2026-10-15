@@ -1,5 +1,7 @@
 # BlogCard
 
+**Status:** Ready
+
 The Blog card from the Figma Cards page: an image, "Blog | reading time", a title, a short description and the author, ending in an outlink icon.
 
 **Provide:** `title`, `duration` (reading time), `description`, `author` (`{ name, image }`), `href`; optionally `image` and `flag`. `category` defaults to "Blog".

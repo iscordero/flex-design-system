@@ -18,13 +18,13 @@ function phone(t, node) { return h('div', null, cap(t).props.children ? h('div',
 function svgUri(w, hgt, body) { var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + w + ' ' + hgt + '" width="' + w + '" height="' + hgt + '">' + body + '</svg>'; return 'data:image/svg+xml;utf8,' + svg.replace(/</g, '%3C').replace(/>/g, '%3E').replace(/"/g, "'").replace(/#/g, '%23'); }
 var MARKS = ['<circle cx="20" cy="20" r="14"/>', '<rect x="6" y="6" width="28" height="28" rx="6"/>', '<path d="M20 4L36 34H4Z"/>', '<path d="M20 4L36 20L20 36L4 20Z"/>', '<rect x="4" y="12" width="32" height="16" rx="8"/>', '<path d="M6 6H34V20A14 14 0 0 1 6 20Z"/>'];
 var NAMES = ['Company', 'Customer', 'Partner', 'Sponsor', 'Client', 'Brand', 'Vendor', 'Alliance', 'Member'];
-/* Placeholder logos, cropped tight to their artwork like real logo files, so each one centres in its tile. */
+/* Placeholder logos, cropped tight to their artwork like real logo files, so each one centers in its tile. */
 var TW = document.createElement('canvas').getContext('2d');
 function tw(s, size, weight) { TW.font = (weight || 700) + ' ' + size + 'px Arial, Helvetica, sans-serif'; return Math.ceil(TW.measureText(s).width); }
 function shape(n) {
   var name = NAMES[n % 9] + ' ' + (n + 1), m = MARKS[n % 6], kind = ['wide', 'square', 'stacked', 'wide', 'heavy', 'thin', 'stacked', 'wide', 'square'][n % 9];
   var t = function (x, y, size, weight) { return '<text x="' + x + '" y="' + y + '" font-family="Arial, Helvetica, sans-serif" font-weight="' + (weight || 700) + '" font-size="' + size + '" fill="#575757">'; };
-  if (kind === 'square') { var sw = Math.max(32, tw(NAMES[n % 9], 11)); return {kind: kind, src: svgUri(sw, 56, '<g fill="#575757" transform="translate(' + (sw / 2 - 20) + ' -4)">' + m + '</g>' + t(sw / 2, 54, 11).replace('x="' + (sw / 2) + '"', 'x="' + (sw / 2) + '" text-anchor="middle"') + NAMES[n % 9] + '</text>'), alt: name}; }
+  if (kind === 'square') { var sw = Math.max(36, tw(NAMES[n % 9], 14)); return {kind: kind, src: svgUri(sw, 54, '<g fill="#575757" transform="translate(' + (sw / 2 - 20) + ' -5)">' + m + '</g>' + t(sw / 2, 51, 14).replace('x="' + (sw / 2) + '"', 'x="' + (sw / 2) + '" text-anchor="middle"') + NAMES[n % 9] + '</text>'), alt: name}; }
   if (kind === 'stacked') return {kind: kind, src: svgUri(42 + Math.max(tw(NAMES[n % 9], 18), tw('Systems ' + (n + 1), 13, 400)), 44, '<g fill="#575757" transform="translate(-4 2)">' + m + '</g>' + t(42, 20, 18) + NAMES[n % 9] + '</text>' + t(42, 40, 13, 400) + 'Systems ' + (n + 1) + '</text>'), alt: name};
   if (kind === 'heavy') return {kind: kind, src: svgUri(160, 48, '<rect width="160" height="48" rx="4" fill="#262626"/>' + t(80, 31, 20).replace('x="80"', 'x="80" text-anchor="middle"').replace('#575757', '#ffffff') + name.toUpperCase() + '</text>'), alt: name};
   if (kind === 'thin') { var tn = name.toLowerCase() + ' studio'; return {kind: kind, src: svgUri(tw(tn, 26, 300), 28, t(0, 21, 26, 300).replace('#575757', '#8a8a8a') + tn + '</text>'), alt: name}; }
