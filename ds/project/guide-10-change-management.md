@@ -12,10 +12,11 @@ Flex is kept in one place, a GitHub repository. Everything else is made from it.
 | The site | [flex-design-system.pages.dev](https://flex-design-system.pages.dev) | What everyone reads and builds from. It updates by itself when a change is published to the repository |
 | Preview links | `<change-name>.flex-design-system.pages.dev` | A copy of the site for each change that isn't published yet, to share for approval |
 | Images and assets | Bynder (see Media) | Approved photos, video, logos and icons |
+| Claude project (optional) | A shared **Qualys Design System** project in the company's Claude account | A ready-made workspace for designers who use Claude, with Flex built in. See Setting up Claude for the team |
 
 Because the repository is the source, anyone can work on Flex with the AI agent they prefer. The agent reads the repository's instructions (`AGENTS.md`), so it knows how Flex is built and what rules to follow.
 
-Teams using Claude also have a copy of Flex as a design system in the **Qualys Design System** project, which Claude uses when it designs pages. It is refreshed from the repository, so if the two ever differ, the repository is right.
+If your team uses Claude, it can also keep a copy of Flex in a shared Claude project, so Claude designs pages with Flex's components. That copy is refreshed from the repository, so if the two ever differ, the repository is right.
 
 ## Getting set up
 
@@ -36,6 +37,36 @@ Explain what you did in plain language, and tell me if there's anything I need t
 ```
 
 That's all. You don't need to install anything else yourself. GitHub Desktop is optional: some people like it for seeing changes, but the agent can do everything without it.
+
+If your team has the shared Claude project, join it and start your tasks there instead: its instructions already point Claude to Flex.
+
+### Setting up Claude for the team
+
+Optional, and done once, by whoever manages the company's Claude account. It gives designers who use Claude a shared place to work on Flex, owned by Qualys rather than by one person, so it keeps working when people change roles.
+
+1. **Check the plan.** Projects can be shared across a company on Claude's Team and Enterprise plans.
+2. **Create the project.** Name it **Qualys Design System** and share it with the designers, with permission to edit.
+3. **Add the instructions.** Paste these into the project's instructions:
+
+```instructions
+This project is for working on Flex, the design system for the Qualys marketing website.
+- The source of truth is the GitHub repository https://github.com/iscordero/flex-design-system. The live site is https://flex-design-system.pages.dev.
+- Before working on Flex, get the latest version of the repository and follow its AGENTS.md.
+- When designing pages for qualys.com, use the Flex design system in this project: its components, tokens and guidelines. If Flex doesn't have something, say so and suggest adding it to Flex first.
+- Make each change on its own branch, preview it locally, share it as a pull request with its preview link, and publish only once it's approved.
+- After a change is published, refresh this project's Flex design system from the repository.
+- The people here are mostly designers: explain things in plain language and do any git or terminal work for them.
+```
+
+4. **Build Flex in Claude.** Start a task in the project and paste:
+
+```
+Create a design system called Flex in this project from the repository https://github.com/iscordero/flex-design-system.
+Use everything in ds/project: tokens.json, README.md, the guides, each component's README.md and preview.html, and components/bundle.js, bundle.css and index.d.ts.
+Then show me its components and tell me if anything didn't come across.
+```
+
+5. **Invite the designers.** Send them this page. They join the project and paste the setup prompt above.
 
 ## Working with your AI agent
 
@@ -162,7 +193,7 @@ Ask your agent to retire it and say what replaces it. It notes the replacement i
 
 ### Adding a collaborator
 
-- Add their GitHub account to the repository and send them this page.
+- Add their GitHub account to the repository and send them this page. If your team uses the shared Claude project, add them to it too.
 - Pair on their first change: they make it with their agent and share it, you review and approve it.
 
 ## Keeping it healthy

@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-15T18:44:24Z",
+    "at": "2026-10-15T18:56:59Z",
     "by": "Isabel",
-    "note": "Change Management rewritten for any AI agent: start from the GitHub repository, copyable setup and change prompts, preview locally, share a branch preview link and pull request for approval, merge to publish. Change Management now sits before Example page.",
+    "note": "Change Management: added Setting up Claude for the team (optional shared Qualys Design System project, project instructions and a prompt to build Flex in Claude); clarified that the Claude copy is optional.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

@@ -187,7 +187,7 @@ def md(text, prefix, paired=False):
         out = pair(out)
     out = re.sub(r'<img [^>]*>', sized, out)
     # fenced blocks in the guides are prompts to copy into an AI agent: a box with a Copy button
-    out = re.sub(r'<pre><code[^>]*>(.*?)</code></pre>', lambda m: '<div class="ds-prompt"><div class="ds-prompt-head"><span>Prompt</span><button type="button" class="ds-copybtn">Copy</button></div><pre tabindex="0">%s</pre></div>' % m.group(1).rstrip('\n'), out, flags=re.S)
+    out = re.sub(r'<pre><code[^>]*>(.*?)</code></pre>', lambda m: '<div class="ds-prompt"><div class="ds-prompt-head"><span>%s</span>' % ('Project instructions' if 'language-instructions' in m.group(0)[:60] else 'Prompt') + '<button type="button" class="ds-copybtn">Copy</button></div><pre tabindex="0">%s</pre></div>' % m.group(1).rstrip('\n'), out, flags=re.S)
     out = out.replace('<table>', '<div class="ds-table"><table>').replace('</table>', '</table></div>')
     return out, conv.toc_tokens
 
