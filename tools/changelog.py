@@ -297,7 +297,13 @@ def compare(a, b):
                 continue
             what.append('docs')
         if what:
-            items.append({'type': 'component', 'action': 'changed', 'name': n, 'what': what})
+            # how much changed, roughly: lines that differ in its code, styles, preview and props
+            def lines(x):
+                return set(l.strip() for l in us(x).split('\n') if l.strip())
+            own = [k for k, v in owner_of_class.items() if n in v]
+            weight = (len(lines(ja.get(n)) ^ lines(jb.get(n))) + len(lines(card(ca[n]['preview'])) ^ lines(card(cb[n]['preview']))) +
+                      len(lines(pa.get(n)) ^ lines(pb.get(n))) + sum(len(lines(sa.get(k)) ^ lines(sb.get(k))) for k in own))
+            items.append({'type': 'component', 'action': 'changed', 'name': n, 'what': what, 'weight': weight})
 
     ta, tb = tokens(a), tokens(b)
     for n in sorted(set(ta) | set(tb)):
@@ -443,9 +449,63 @@ def headline(items):
     return ' · '.join(parts[:3])   # the rest is in the entry's details
 
 
+def listing(lst, limit=3):
+    """'A', 'A and B', 'A, B and C', or '7, including A, B and C'."""
+    lst = list(dict.fromkeys(lst))
+    if len(lst) <= limit:
+        return lst[0] if len(lst) == 1 else ', '.join(lst[:-1]) + ' and ' + lst[-1]
+    return '%d, including %s' % (len(lst), ', '.join(lst[:limit - 1]) + ' and ' + lst[limit - 1])
+
+
+def highlights(items):
+    """The important updates in a few plain lines. Small edits are left out."""
+    big, out = major(items), []
+    def comps(act):
+        sel = [i for i in big if i['type'] == 'component' and i['action'] == act]
+        sel.sort(key=lambda i: -i.get('weight', 0))   # the biggest changes are named first
+        return [i['name'] for i in sel]
+    if comps('added'):
+        out.append(('New component: ' if len(comps('added')) == 1 else 'New components: ') + listing(comps('added'), 5))
+    if comps('removed'):
+        out.append('Removed: ' + listing(comps('removed'), 5))
+    toks = [i for i in big if i['type'] == 'token']
+    if len(toks) == 1:
+        t = toks[0]
+        out.append('%s the %s token' % ({'added': 'Added', 'removed': 'Removed'}.get(t['action'], 'Changed'), t['name']))
+    elif toks:
+        for fam, label in (('color', 'Colors'), ('type', 'Type styles'), ('spacing', 'Spacing'), ('radius', 'Corner radius'),
+                           ('shadow', 'Shadows'), ('layout', 'Layout'), ('zIndex', 'Layers')):
+            sel = [i for i in toks if i['family'] == fam]
+            if sel:
+                n = {a: sum(1 for i in sel if i['action'] == a) for a in ('added', 'changed', 'removed')}
+                out.append('%s: %s' % (label, ', '.join('%d %s' % (n[a], w) for a, w in (('added', 'added'), ('changed', 'changed'), ('removed', 'removed')) if n[a])))
+    groups = {}
+    for i in big:
+        if i['type'] == 'asset':
+            groups.setdefault(i['group'], {'added': 0, 'changed': 0, 'removed': 0})[i['action']] += 1
+    for g, n in groups.items():
+        out.append('%s: %s' % (g, ', '.join('%d %s' % (n[a], w) for a, w in (('added', 'added'), ('changed', 'updated'), ('removed', 'removed')) if n[a])))
+    if comps('changed'):
+        c = comps('changed')
+        out.append(('Updated ' if len(c) <= 3 else 'Updated components: ') + listing(c))
+    gnew = [i['guide'] for i in big if i['type'] == 'guide' and i['action'] == 'added' and 'section' not in i]
+    gold = [i['guide'] for i in big if i['type'] == 'guide' and i['action'] == 'removed' and 'section' not in i]
+    gchg = [i['guide'] for i in big if i['type'] == 'guide' and 'section' in i and i['guide'] not in gnew]
+    gchg = sorted(set(gchg), key=lambda g: (-gchg.count(g), gchg.index(g)))   # the most-changed guides first
+    if gnew:
+        out.append(('New guide: ' if len(set(gnew)) == 1 else 'New guides: ') + listing(gnew, 4))
+    if gold:
+        out.append(('Removed guide: ' if len(set(gold)) == 1 else 'Removed guides: ') + listing(gold, 4))
+    if gchg:
+        out.append(('Updated guide: ' if len(set(gchg)) == 1 else 'Updated guides: ') + listing(gchg))
+    return out
+
+
 def describe_entry(e):
     e['headline'] = headline(e['items'])
+    e['highlights'] = highlights(e['items'])
     e['minor'] = not major(e['items'])
+    e.pop('summary', None)   # commit messages and pull request titles describe sessions, not Flex: left out
     return e
 
 
@@ -480,7 +540,7 @@ def describe(it):
     return s
 
 
-def as_text(items, md=False):
+def as_full_text(items, md=False):
     if not items:
         return 'No changes to components, tokens, guides or the site.'
     lines = []
@@ -495,6 +555,16 @@ def as_text(items, md=False):
     if w:
         lines.append(('**%s**' if md else '%s') % 'Wording updates')
         lines.append('- ' + ', '.join(w))
+    return '\n'.join(lines)
+
+
+def as_text(items, md=False):
+    """What the Change Log entry will say: its headline and the important updates."""
+    if not items:
+        return 'No changes to components, tokens, guides or the site.'
+    hl = highlights(items)
+    lines = [('**%s**' if md else '%s') % headline(items)]
+    lines += ['- ' + h for h in hl] or ['- Small edits only (wording, spelling or the site\'s layout)']
     return '\n'.join(lines)
 
 
@@ -567,9 +637,9 @@ def entry(sha, parent, date=None, pr=None, items=None):
     trailers = body + ''.join(git('show', '-s', '--format=%B', c) for c in merged.split()[:50])
     with_ = [n for n in coauthors(trailers) if n != author]
     e = {'id': sha[:7], 'sha': sha, 'date': (date or when)[:10], 'author': author, 'with': with_,
-         'approvedBy': [], 'summary': subject(body), 'pr': None, 'items': items, 'shots': []}
+         'approvedBy': [], 'pr': None, 'items': items, 'shots': []}
     if pr:
-        e.update(summary=pr['title'], author=pr['author'], approvedBy=pr['approvedBy'], date=pr['merged_at'][:10],
+        e.update(author=pr['author'], approvedBy=pr['approvedBy'], date=pr['merged_at'][:10],
                  pr={'number': pr['number'], 'url': pr['url']})
         e['with'] = [n for n in with_ if n != e['author']]
     return describe_entry(e)
@@ -715,7 +785,8 @@ def cmd_comment(base, head, branch):
     items = compare(Version(base), Version(head))
     body = '<!-- flex-changelog -->\n### What this change does to Flex\n\n%s\n\n**Preview:** %s (ready a minute or two after each push)\n\n' \
            '_Written automatically. When this is merged, it becomes an entry in the Change Log, with before and after screenshots._' \
-           % (as_text(items, md=True), preview_url(branch))
+           % (as_text(items, md=True) + ('\n\n<details><summary>Every change, including small edits</summary>\n\n%s\n\n</details>' % as_full_text(items, md=True) if items else ''),
+              preview_url(branch))
     print(body)
     num = os.environ.get('PR_NUMBER')
     if not num:
@@ -759,7 +830,6 @@ def cmd_record(before, after):
             continue
         e = entry(last, parent, today, pr, items)
         if not pr and len(shas) > 1:
-            e['summary'] = ' · '.join(summaries(shas)) or e['summary']
             e['shas'] = shas
         e['order'] = int(datetime.datetime.now().timestamp()) * 100 + k
         names = visual(items)
@@ -772,23 +842,13 @@ def cmd_record(before, after):
             describe_entry(e)
         d['entries'].append(e)
         added += 1
-        print('recorded %s: %s (%d items)' % (last[:7], e['summary'], len(items)))
+        print('recorded %s: %s (%d items)' % (last[:7], e['headline'], len(items)))
     save(d)
     # what's published is no longer a draft
     if os.path.exists(DRAFT):
         os.remove(DRAFT)
     shutil.rmtree(os.path.join(SHOTS, 'draft'), ignore_errors=True)
     print('%d new entries' % added)
-
-
-def summaries(shas):
-    """The subjects of the commits that change something in Flex (a commit that only rebuilds the site doesn't)."""
-    out = []
-    for c in shas:
-        par = git('rev-parse', '--verify', '--quiet', c + '^1', check=False).strip() or None
-        if compare(Version(par), Version(c)):
-            out.append(subject(git('show', '-s', '--format=%B', c)))
-    return out
 
 
 def published_base():
@@ -815,12 +875,11 @@ def cmd_draft(shots=False):
         print('Nothing unpublished: no draft entry')
         return
     unpub = git('rev-list', '--reverse', '%s..HEAD' % base).split() if base else []
-    subjects = summaries(unpub)
     body = ''.join(git('show', '-s', '--format=%B', c) for c in unpub)
     me = git('config', 'user.name', check=False).strip() or (git('show', '-s', '--format=%an', 'HEAD').strip() if unpub else 'You')
     e = {'id': 'draft', 'sha': '', 'draft': True, 'date': datetime.date.today().isoformat(), 'author': me,
          'with': [n for n in coauthors(body) if n != me], 'approvedBy': [],
-         'summary': ' · '.join(subjects), 'commits': len(unpub),
+         'commits': len(unpub),
          'base': base or '', 'pr': None, 'items': items, 'shots': []}
     describe_entry(e)
     if shots:
@@ -862,7 +921,6 @@ def cmd_backfill(until=None):
         if not items:
             continue
         e = entry(last, parent, day, None, items)
-        e['summary'] = ' · '.join(summaries(shas)) or e['summary']
         e['shas'] = shas
         e['order'] = k
         out.append(e)

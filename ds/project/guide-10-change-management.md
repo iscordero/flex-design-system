@@ -138,7 +138,7 @@ Then open the **Change Log**. Your work shows at the top under **Not published y
 When you're happy, ask the agent to share it. It pushes the branch to GitHub, and two things are made for you:
 
 - **A preview link**, such as `pricing-card.flex-design-system.pages.dev`: the whole site with your change, for anyone to click through, including its draft Change Log entry. It updates each time the agent pushes a new version.
-- **A pull request** on GitHub: a page with the summary and every change, where reviewers can comment and approve. A comment listing what the change adds, changes or removes in Flex is added to it automatically.
+- **A pull request** on GitHub: a page with every change, where reviewers can comment and approve. A comment summarizing the important updates, the same as the draft Change Log entry, is added to it automatically.
 
 Send both links to your reviewer. If they can't open GitHub, the preview link is enough, or send them the `site/index.html` file: it's the whole site in one file and opens in any browser.
 
@@ -146,7 +146,7 @@ Send both links to your reviewer. If they can't open GitHub, the preview link is
 
 Once it's approved, ask the agent to merge the pull request, or press **Merge** on the pull request page in GitHub. The live site updates within a minute or two.
 
-A few minutes later, the draft becomes a published entry in the **Change Log** by itself: a one-line summary of the important changes, who made it and who approved it. Opening the entry shows the details, with before and after pictures of any component that looks different. Small edits, such as wording, spelling and the layout of the site itself, are folded into one line, and something added and taken out again before publishing doesn't show at all. Nobody needs to write it. The pull request's title becomes the entry's summary, so give it a clear one.
+A few minutes later, the draft becomes a published entry in the **Change Log** by itself: a one-line summary of the important changes, who made it and who approved it. Opening the entry shows a short list of the important updates, such as new or removed components, color and logo changes and new guides, with before and after pictures of any component that looks different. Small edits, such as wording, spelling and the layout of the site itself, are left out, and something added and taken out again before publishing doesn't show at all. Nobody needs to write it.
 
 If your agent can't push to GitHub, it will say so. You can then push with GitHub Desktop's **Push origin** button, or ask a teammate whose agent can. The Change Log adds its own updates to GitHub, so get the latest version before you push: if GitHub Desktop says your copy is behind, press **Pull origin** first.
 

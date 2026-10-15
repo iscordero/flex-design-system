@@ -58,7 +58,7 @@ The site is hosted on Cloudflare Pages, connected to this repository. Pages has 
 2. Push the branch. Cloudflare publishes a preview at `https://<branch>.flex-design-system.pages.dev`.
 3. Open a pull request with the preview link for review.
 4. Merge it once approved. The live site updates within a minute or two.
-5. The change log job records the change (summary, author, approvers, what changed, screenshots) and commits it to `main`; Cloudflare republishes and the Change Log page shows it. Pull before your next push.
+5. The change log job records the change (a summary of the important updates, author, approvers, screenshots) and commits it to `main`; Cloudflare republishes and the Change Log page shows it. Pull before your next push.
 
 One-time setup: in **Settings → Actions → General**, allow actions and give workflows **Read and write permissions**. If `main` is protected, let GitHub Actions push to it. Screenshots need nothing else: the job installs Pillow and Playwright itself.
 

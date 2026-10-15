@@ -8,7 +8,6 @@
    "author": "Isabel",
    "with": [],
    "approvedBy": [],
-   "summary": "Flex Design System: source, build tools and reference site · Icons, logos, guidelines, nav and tag updates · Module backgrounds, white doc, hero, nav menus, example page and figure fixes",
    "pr": null,
    "items": [
     {
@@ -2245,6 +2244,24 @@
    ],
    "shots": [],
    "headline": "Flex published: 79 components, 181 tokens, 9 guides",
+   "highlights": [
+    "New components: 79, including Accordion, AccordionModule, AlertDialog, AppliedFilters and Avatar",
+    "Colors: 92 added",
+    "Type styles: 34 added",
+    "Spacing: 16 added",
+    "Corner radius: 7 added",
+    "Shadows: 9 added",
+    "Layout: 14 added",
+    "Layers: 9 added",
+    "Event Icons: 5 added",
+    "Feature Icons: 19 added",
+    "General Icons: 3 added",
+    "Icons: 25 added",
+    "Images: 6 added",
+    "Logos: 3 added",
+    "Social Icons: 7 added",
+    "New guides: 9, including Buttons and Links, Colour, Content and Icons and Logos"
+   ],
    "minor": false,
    "shas": [
     "55faf068d39771ec92c61e061009dab9f2356173",
@@ -2262,7 +2279,6 @@
     "Claude"
    ],
    "approvedBy": [],
-   "summary": "1440px content column, banner type, logo alignment, module backgrounds, example page, nav and guideline updates · Add Card Module, balanced line breaks, example page in page order · Example page: testimonials in the carousel · Feature matrix wraps instead of scrolling · Colour tokens: status-named tags, grouped sets, no brand copies · One tag grey; marker-blue renamed marker-default",
    "pr": null,
    "items": [
     {
@@ -2273,7 +2289,8 @@
       "look",
       "props",
       "docs"
-     ]
+     ],
+     "weight": 24
     },
     {
      "type": "component",
@@ -2282,7 +2299,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 3
     },
     {
      "type": "component",
@@ -2290,7 +2308,8 @@
      "name": "Card",
      "what": [
       "look"
-     ]
+     ],
+     "weight": 1
     },
     {
      "type": "component",
@@ -2304,7 +2323,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 13
     },
     {
      "type": "component",
@@ -2312,7 +2332,8 @@
      "name": "CookieBanner",
      "what": [
       "look"
-     ]
+     ],
+     "weight": 2
     },
     {
      "type": "component",
@@ -2321,7 +2342,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 18
     },
     {
      "type": "component",
@@ -2330,7 +2352,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 17
     },
     {
      "type": "component",
@@ -2346,7 +2369,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 25
     },
     {
      "type": "component",
@@ -2355,7 +2379,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 6
     },
     {
      "type": "component",
@@ -2363,7 +2388,8 @@
      "name": "ExamplePage",
      "what": [
       "look"
-     ]
+     ],
+     "weight": 27
     },
     {
      "type": "component",
@@ -2372,7 +2398,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 21
     },
     {
      "type": "component",
@@ -2381,7 +2408,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 4
     },
     {
      "type": "component",
@@ -2390,7 +2418,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 11
     },
     {
      "type": "component",
@@ -2399,7 +2428,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 20
     },
     {
      "type": "component",
@@ -2408,7 +2438,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 20
     },
     {
      "type": "component",
@@ -2416,7 +2447,8 @@
      "name": "Icon",
      "what": [
       "look"
-     ]
+     ],
+     "weight": 6
     },
     {
      "type": "component",
@@ -2425,7 +2457,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 20
     },
     {
      "type": "component",
@@ -2433,7 +2466,8 @@
      "name": "LogoHierarchy",
      "what": [
       "look"
-     ]
+     ],
+     "weight": 18
     },
     {
      "type": "component",
@@ -2443,7 +2477,8 @@
       "look",
       "props",
       "docs"
-     ]
+     ],
+     "weight": 17
     },
     {
      "type": "component",
@@ -2452,7 +2487,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 11
     },
     {
      "type": "component",
@@ -2460,7 +2496,8 @@
      "name": "Media",
      "what": [
       "look"
-     ]
+     ],
+     "weight": 2
     },
     {
      "type": "component",
@@ -2469,7 +2506,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 8
     },
     {
      "type": "component",
@@ -2478,7 +2516,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 10
     },
     {
      "type": "component",
@@ -2486,7 +2525,8 @@
      "name": "NotificationBar",
      "what": [
       "look"
-     ]
+     ],
+     "weight": 2
     },
     {
      "type": "component",
@@ -2495,7 +2535,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 13
     },
     {
      "type": "component",
@@ -2504,7 +2545,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 18
     },
     {
      "type": "component",
@@ -2512,7 +2554,8 @@
      "name": "Tabs",
      "what": [
       "look"
-     ]
+     ],
+     "weight": 2
     },
     {
      "type": "component",
@@ -2521,7 +2564,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 39
     },
     {
      "type": "component",
@@ -2530,7 +2574,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 18
     },
     {
      "type": "component",
@@ -2539,7 +2584,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 18
     },
     {
      "type": "component",
@@ -2547,7 +2593,8 @@
      "name": "TextLink",
      "what": [
       "look"
-     ]
+     ],
+     "weight": 1
     },
     {
      "type": "component",
@@ -2556,7 +2603,8 @@
      "what": [
       "look",
       "docs"
-     ]
+     ],
+     "weight": 18
     },
     {
      "type": "token",
@@ -2849,6 +2897,14 @@
    ],
    "shots": [],
    "headline": "Added CardModule · Updated tokens (28) · Updated event icons",
+   "highlights": [
+    "New component: CardModule",
+    "Colors: 11 added, 2 changed, 14 removed",
+    "Layout: 1 changed",
+    "Event Icons: 3 updated",
+    "Updated components: 32, including Tag, ExamplePage and EventCalendar",
+    "Updated guides: Colour and Typography"
+   ],
    "minor": false,
    "shas": [
     "621f8e8a5ef7dd36560a404486a2266a936979dc",

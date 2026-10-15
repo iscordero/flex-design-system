@@ -1154,9 +1154,7 @@
     var typeBtns = Array.prototype.slice.call(document.querySelectorAll('.ds-cl-type'));
     var state = { type: '', person: '', small: false };
     var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    var GROUPS = [['component', 'Components'], ['token', 'Colors and tokens'], ['asset', 'Logos and assets'], ['guide', 'Guides']];
-    var VERB = { added: 'Added', changed: 'Updated', removed: 'Removed' };
-    var SHOW = 6, uid = 0;
+    var uid = 0;
 
     function people(e) { return [e.author].concat(e.with || []); }
     function andList(a) { return a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1]; }
@@ -1181,61 +1179,32 @@
       }
       return null;
     }
-    function link(it, text) {
-      var t = target(it), el;
-      if (t) {
-        el = mk('a', 'ds-cl-name', text);
-        el.href = t.href;
-        if (t.jump) el.setAttribute('data-goto', t.jump);
-      } else el = mk('span', 'ds-cl-name', text);
-      return el;
-    }
-    function swatch(c) { var s = mk('span', 'ds-cl-sw'); s.style.background = c; return s; }
-    function row(it, text) {
-      var li = mk('li');
-      li.appendChild(mk('span', 'ds-cl-verb ds-cl-verb--' + it.action, VERB[it.action] || it.action));
-      li.appendChild(link(it, text || it.name));
-      if (it.type === 'component' && it.what && it.what.length) li.appendChild(mk('span', 'ds-cl-note', andList(it.what.filter(function (w) { return w !== 'docs'; }).concat(it.what.indexOf('docs') >= 0 ? ['docs'] : []))));
-      if (it.type === 'token' && (it.from != null || it.to != null)) {
-        var v = mk('span', 'ds-cl-val');
-        if (it.from != null && it.action !== 'added') { if (it.fromColor) v.appendChild(swatch(it.fromColor)); v.appendChild(mk('code', null, String(it.from))); }
-        if (it.action === 'changed') v.appendChild(mk('span', 'ds-cl-arrow', '→'));
-        if (it.to != null && it.action !== 'removed') { if (it.toColor) v.appendChild(swatch(it.toColor)); v.appendChild(mk('code', null, String(it.to))); }
-        li.appendChild(v);
-      }
-      return li;
-    }
-    function list(rows) {
-      var wrap = mk('div'), ul = mk('ul', 'ds-cl-rows');
-      rows.slice(0, SHOW).forEach(function (r) { ul.appendChild(r); });
-      wrap.appendChild(ul);
-      if (rows.length > SHOW) {
-        var more = mk('details', 'ds-cl-more'), sum = mk('summary', null, 'Show ' + (rows.length - SHOW) + ' more'), ul2 = mk('ul', 'ds-cl-rows');
-        rows.slice(SHOW).forEach(function (r) { ul2.appendChild(r); });
-        more.appendChild(sum); more.appendChild(ul2); wrap.appendChild(more);
-        more.addEventListener('toggle', function () { sum.textContent = more.open ? 'Show fewer' : 'Show ' + (rows.length - SHOW) + ' more'; });
-      }
-      return wrap;
-    }
-    /* Guides read best one line per guide: "Change Management: 2 sections added, 3 updated". */
-    function guideRows(items) {
-      var by = {}, order = [];
-      items.forEach(function (it) { if (!by[it.guide]) { by[it.guide] = []; order.push(it.guide); } by[it.guide].push(it); });
-      return order.map(function (g) {
-        var its = by[g], whole = its.filter(function (i) { return !i.section; })[0];
-        if (whole && whole.action !== 'changed') return row(whole, g + ' guide');
-        var n = { added: 0, changed: 0, removed: 0 };
-        its.forEach(function (i) { if (i.section) n[i.action]++; });
-        var bits = [], total = n.added + n.changed + n.removed;
-        [['added', 'added'], ['changed', 'updated'], ['removed', 'removed']].forEach(function (a) {
-          if (n[a[0]]) bits.push(n[a[0]] + (bits.length ? '' : (total === 1 ? ' section' : ' sections')) + ' ' + a[1]);
-        });
-        var li = row({ type: 'guide', action: 'changed', guide: g, gid: its[0].gid }, g);
-        li.appendChild(mk('span', 'ds-cl-note', bits.join(', ')));
-        var names = its.filter(function (i) { return i.section; }).map(function (i) { return i.section; });
-        if (names.length) li.appendChild(mk('span', 'ds-cl-sub', names.slice(0, 4).join(' · ') + (names.length > 4 ? ' · and ' + (names.length - 4) + ' more' : '')));
-        return li;
+    /* The entry's important updates as a few plain lines, with the names linked to where they live. */
+    function linked(text, items) {
+      var cands = [];
+      items.forEach(function (it) {
+        var name = it.type === 'guide' ? it.guide : it.type === 'asset' ? null : it.name;
+        if (!name || cands.some(function (c) { return c.text === name; })) return;
+        var t = target(it.type === 'guide' ? { type: 'guide', action: it.action, guide: it.guide, gid: it.gid } : it);
+        if (t) cands.push({ text: name, t: t });
       });
+      cands.sort(function (a, b) { return b.text.length - a.text.length; });
+      var frag = document.createDocumentFragment(), k = 0, plain = '';
+      function isWord(ch) { return !!ch && /[A-Za-z0-9-]/.test(ch); }
+      while (k < text.length) {
+        var hit = null;
+        if (!isWord(text[k - 1])) cands.some(function (c) { if (text.substr(k, c.text.length) === c.text && !isWord(text[k + c.text.length])) { hit = c; return true; } return false; });
+        if (hit) {
+          if (plain) { frag.appendChild(document.createTextNode(plain)); plain = ''; }
+          var a = mk('a', 'ds-cl-name', hit.text);
+          a.href = hit.t.href;
+          if (hit.t.jump) a.setAttribute('data-goto', hit.t.jump);
+          frag.appendChild(a);
+          k += hit.text.length;
+        } else { plain += text[k]; k++; }
+      }
+      if (plain) frag.appendChild(document.createTextNode(plain));
+      return frag;
     }
     function smallLine(items) {
       var w = items.filter(function (i) { return i.minor && i.wording; }).length,
@@ -1244,27 +1213,17 @@
       if (w) bits.push('wording and spelling in ' + w + (w === 1 ? ' place' : ' places'));
       if (d) bits.push('light edits to ' + d + (d === 1 ? ' guide section or README' : ' guide sections and READMEs'));
       if (s) bits.push('the layout of this site');
-      return bits.length ? 'Also small edits: ' + andList(bits) + '.' : '';
+      return bits.length ? 'Small edits: ' + andList(bits) : '';
     }
-    function body(e, type) {
-      var b = mk('div', 'ds-cl-body');
-      if (e.summary && e.summary !== e.headline) {   // the author's own words (commit messages or the pull request title), folded away
-        var notes = e.summary.split(' · '), n = mk('details', 'ds-cl-notes'), ns = mk('summary', null, notes.length > 1 ? 'Notes from the author (' + notes.length + ')' : 'Note from the author'), nl = mk('ul');
-        notes.forEach(function (t) { nl.appendChild(mk('li', null, t)); });
-        n.appendChild(ns); n.appendChild(nl);
-        b.appendChild(n);
-      }
-      var items = (e.items || []).filter(function (it) { return (!type || it.type === type) && (state.small || !it.minor); });
-      GROUPS.forEach(function (g) {
-        var sel = items.filter(function (it) { return it.type === g[0]; });
-        if (!sel.length) return;
-        var sec = mk('div', 'ds-cl-group');
-        sec.appendChild(mk('h4', null, g[1]));
-        var rows = g[0] === 'guide' ? guideRows(sel) : sel.map(function (it) { return row(it, g[0] === 'asset' ? it.group + ' / ' + it.name : null); });
-        sec.appendChild(list(rows));
-        b.appendChild(sec);
-      });
-      var shots = (e.shots || []).filter(function () { return !type || type === 'component'; });
+    function body(e) {
+      var b = mk('div', 'ds-cl-body'), items = e.items || [], ul = mk('ul', 'ds-cl-points');
+      var lines = (e.highlights && e.highlights.length) ? e.highlights : [];
+      lines.forEach(function (t) { var li = mk('li'); li.appendChild(linked(t, items.filter(function (i) { return !i.minor; }))); ul.appendChild(li); });
+      var sm = state.small ? smallLine(items) : '';
+      if (sm) ul.appendChild(mk('li', 'ds-cl-smallpt', sm));
+      if (!lines.length && !sm) ul.appendChild(mk('li', 'ds-cl-smallpt', 'Small edits only: wording, spelling or the layout of this site.'));
+      b.appendChild(ul);
+      var shots = e.shots || [];
       if (shots.length) {
         var sh = mk('div', 'ds-cl-group');
         sh.appendChild(mk('h4', null, 'Before and after'));
@@ -1286,8 +1245,6 @@
         });
         b.appendChild(sh);
       }
-      var sm = state.small ? '' : smallLine(e.items || []);
-      if (sm) b.appendChild(mk('p', 'ds-cl-small', sm));
       if (e.pr && e.pr.url) {
         var pp = mk('p', 'ds-cl-small'), pa = mk('a', null, 'Pull request #' + e.pr.number);
         pa.href = e.pr.url; pa.target = '_blank'; pa.rel = 'noopener';
@@ -1317,12 +1274,12 @@
       var panel = mk('div', 'ds-cl-panel');
       panel.id = id;
       panel.hidden = !open;
-      if (open) panel.appendChild(body(e, type));
+      if (open) panel.appendChild(body(e));
       art.appendChild(panel);
       head.addEventListener('click', function () {
         var on = head.getAttribute('aria-expanded') !== 'true';
         head.setAttribute('aria-expanded', on ? 'true' : 'false');
-        if (on && !panel.firstChild) panel.appendChild(body(e, type));
+        if (on && !panel.firstChild) panel.appendChild(body(e));
         panel.hidden = !on;
       });
       return art;
