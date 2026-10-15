@@ -1141,31 +1141,37 @@
     }
     try { navigator.clipboard.writeText(text).then(function () { done('Copied'); }, select); } catch (err) { select(); }
   });
-  /* Change Log: entries written by tools/changelog.py. The page carries a copy from when it was built,
-     and on the live site it reads the newest site/changes.json, so an entry shows as soon as it's recorded. */
+  /* Change Log: entries written by tools/changelog.py. Each entry is one row, its headline and who made it;
+     opening it shows what changed, like a drawer. Small edits (wording, spelling, the site's own layout) stay
+     out of the way unless asked for. The page carries a copy from when it was built, and on the live site it
+     reads the newest site/changes.json, so an entry shows as soon as it's recorded. */
   (function () {
     var box = document.getElementById('ds-changelog'), dataEl = document.getElementById('ds-changes-data');
     if (!box || !dataEl) return;
     var data = { entries: [] };
     try { data = JSON.parse(dataEl.textContent); } catch (err) { /* keep empty */ }
-    var count = document.getElementById('ds-cl-count'), who = document.getElementById('ds-cl-person');
+    var count = document.getElementById('ds-cl-count'), who = document.getElementById('ds-cl-person'), small = document.getElementById('ds-cl-small');
     var typeBtns = Array.prototype.slice.call(document.querySelectorAll('.ds-cl-type'));
-    var state = { type: '', person: '' };
+    var state = { type: '', person: '', small: false };
     var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    var KIND = { component: 'Component', token: 'Token', guide: 'Guide', site: 'Site' };
-    var ACTS = [['added', 'Added'], ['changed', 'Changed'], ['removed', 'Removed']];
-    var SHOW = 6;   // items shown in a group before "Show more"
+    var GROUPS = [['component', 'Components'], ['token', 'Colors and tokens'], ['asset', 'Logos and assets'], ['guide', 'Guides']];
+    var VERB = { added: 'Added', changed: 'Updated', removed: 'Removed' };
+    var SHOW = 6, uid = 0;
 
     function people(e) { return [e.author].concat(e.with || []); }
     function andList(a) { return a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1]; }
+    function slug(t) { return String(t).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
+    function isMinor(e) { return e.minor === true || !(e.items || []).some(function (i) { return !i.minor; }); }
     function sorted() {
       return data.entries.slice().sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : (b.order || 0) - (a.order || 0); });
     }
+    function viewOf(el) { var v = el && el.closest('.ds-view'); return v ? v.getAttribute('data-view') : null; }
     /* A link to where the thing lives on this site, when it still exists. */
     function target(it) {
       if (it.action === 'removed') return null;
       if (it.type === 'component' && document.getElementById('c-' + it.name)) return { href: '#c-' + it.name };
       if (it.type === 'token' && document.getElementById('tok-' + it.name)) return { href: '#tokens', jump: 'tok-' + it.name };
+      if (it.type === 'asset') { var g = document.getElementById('as-' + slug(it.group)); return g ? { href: '#' + viewOf(g), jump: g.id } : null; }
       if (it.type === 'guide' && it.gid) {
         var view = document.querySelector('.ds-view[data-view="' + it.gid + '"]');
         if (!view) return null;
@@ -1173,29 +1179,23 @@
         if (it.section) Array.prototype.some.call(view.querySelectorAll('h2[id], h3[id]'), function (h) { if (h.textContent.trim() === it.section) { hit = h.id; return true; } return false; });
         return { href: '#' + it.gid, jump: hit };
       }
-      if (it.type === 'site') return null;
       return null;
     }
-    function label(it) {
-      if (it.type === 'guide') return it.section ? it.guide + ' › ' + it.section : it.guide;
-      return it.name;
-    }
-    function link(it) {
+    function link(it, text) {
       var t = target(it), el;
       if (t) {
-        el = mk('a', 'ds-cl-name', label(it));
+        el = mk('a', 'ds-cl-name', text);
         el.href = t.href;
         if (t.jump) el.setAttribute('data-goto', t.jump);
-      } else el = mk('span', 'ds-cl-name', label(it));
+      } else el = mk('span', 'ds-cl-name', text);
       return el;
     }
     function swatch(c) { var s = mk('span', 'ds-cl-sw'); s.style.background = c; return s; }
-    function itemLi(it) {
+    function row(it, text) {
       var li = mk('li');
-      li.setAttribute('data-type', it.type);
-      li.appendChild(mk('span', 'ds-cl-kind', KIND[it.type] || it.type));
-      li.appendChild(link(it));
-      if (it.type === 'component' && it.what && it.what.length) li.appendChild(mk('span', 'ds-cl-note', andList(it.what)));
+      li.appendChild(mk('span', 'ds-cl-verb ds-cl-verb--' + it.action, VERB[it.action] || it.action));
+      li.appendChild(link(it, text || it.name));
+      if (it.type === 'component' && it.what && it.what.length) li.appendChild(mk('span', 'ds-cl-note', andList(it.what.filter(function (w) { return w !== 'docs'; }).concat(it.what.indexOf('docs') >= 0 ? ['docs'] : []))));
       if (it.type === 'token' && (it.from != null || it.to != null)) {
         var v = mk('span', 'ds-cl-val');
         if (it.from != null && it.action !== 'added') { if (it.fromColor) v.appendChild(swatch(it.fromColor)); v.appendChild(mk('code', null, String(it.from))); }
@@ -1205,100 +1205,155 @@
       }
       return li;
     }
-    function group(title, items) {
-      var g = mk('div', 'ds-cl-group');
-      g.appendChild(mk('h4', null, title));
-      var ul = mk('ul');
-      items.slice(0, SHOW).forEach(function (it) { ul.appendChild(itemLi(it)); });
-      g.appendChild(ul);
-      if (items.length > SHOW) {
-        var more = mk('details', 'ds-cl-more'), sum = mk('summary', null, 'Show ' + (items.length - SHOW) + ' more'), ul2 = mk('ul');
-        items.slice(SHOW).forEach(function (it) { ul2.appendChild(itemLi(it)); });
-        more.appendChild(sum); more.appendChild(ul2); g.appendChild(more);
-        more.addEventListener('toggle', function () { sum.textContent = more.open ? 'Show fewer' : 'Show ' + (items.length - SHOW) + ' more'; });
+    function list(rows) {
+      var wrap = mk('div'), ul = mk('ul', 'ds-cl-rows');
+      rows.slice(0, SHOW).forEach(function (r) { ul.appendChild(r); });
+      wrap.appendChild(ul);
+      if (rows.length > SHOW) {
+        var more = mk('details', 'ds-cl-more'), sum = mk('summary', null, 'Show ' + (rows.length - SHOW) + ' more'), ul2 = mk('ul', 'ds-cl-rows');
+        rows.slice(SHOW).forEach(function (r) { ul2.appendChild(r); });
+        more.appendChild(sum); more.appendChild(ul2); wrap.appendChild(more);
+        more.addEventListener('toggle', function () { sum.textContent = more.open ? 'Show fewer' : 'Show ' + (rows.length - SHOW) + ' more'; });
       }
-      return g;
+      return wrap;
     }
-    function entryEl(e, type) {
-      var art = mk('article', 'ds-cl-entry'), d = e.date.split('-');
-      var date = mk('time', 'ds-cl-date', MONTHS[+d[1] - 1].slice(0, 3) + ' ' + (+d[2]));
-      date.setAttribute('datetime', e.date);
-      art.appendChild(date);
-      var main = mk('div', 'ds-cl-main');
-      main.appendChild(mk('h3', null, e.summary || 'Update'));
-      var meta = mk('p', 'ds-cl-meta');
-      meta.appendChild(document.createTextNode(e.author + (e.with && e.with.length ? ' with ' + andList(e.with) : '')));
-      if (e.approvedBy && e.approvedBy.length) meta.appendChild(document.createTextNode(' · Approved by ' + andList(e.approvedBy)));
-      if (e.draft) meta.appendChild(document.createTextNode(' · Waiting for approval' + (e.commits ? ' · ' + e.commits + (e.commits === 1 ? ' saved change' : ' saved changes') : '')));
-      if (e.pr && e.pr.url) {
-        meta.appendChild(document.createTextNode(' · '));
-        var pa = mk('a', null, 'Pull request #' + e.pr.number);
-        pa.href = e.pr.url; pa.target = '_blank'; pa.rel = 'noopener';
-        meta.appendChild(pa);
-      }
-      main.appendChild(meta);
-      var items = (e.items || []).filter(function (it) { return !type || it.type === type; });
-      ACTS.forEach(function (a) {
-        var sel = items.filter(function (it) { return it.action === a[0] && !it.wording; });
-        if (sel.length) main.appendChild(group(a[1], sel));
+    /* Guides read best one line per guide: "Change Management: 2 sections added, 3 updated". */
+    function guideRows(items) {
+      var by = {}, order = [];
+      items.forEach(function (it) { if (!by[it.guide]) { by[it.guide] = []; order.push(it.guide); } by[it.guide].push(it); });
+      return order.map(function (g) {
+        var its = by[g], whole = its.filter(function (i) { return !i.section; })[0];
+        if (whole && whole.action !== 'changed') return row(whole, g + ' guide');
+        var n = { added: 0, changed: 0, removed: 0 };
+        its.forEach(function (i) { if (i.section) n[i.action]++; });
+        var bits = [], total = n.added + n.changed + n.removed;
+        [['added', 'added'], ['changed', 'updated'], ['removed', 'removed']].forEach(function (a) {
+          if (n[a[0]]) bits.push(n[a[0]] + (bits.length ? '' : (total === 1 ? ' section' : ' sections')) + ' ' + a[1]);
+        });
+        var li = row({ type: 'guide', action: 'changed', guide: g, gid: its[0].gid }, g);
+        li.appendChild(mk('span', 'ds-cl-note', bits.join(', ')));
+        var names = its.filter(function (i) { return i.section; }).map(function (i) { return i.section; });
+        if (names.length) li.appendChild(mk('span', 'ds-cl-sub', names.slice(0, 4).join(' · ') + (names.length > 4 ? ' · and ' + (names.length - 4) + ' more' : '')));
+        return li;
       });
-      var w = items.filter(function (it) { return it.wording; });
-      if (w.length) {
-        var wp = mk('p', 'ds-cl-wording');
-        wp.appendChild(mk('span', 'ds-cl-kind', 'Wording'));
-        w.forEach(function (it, i) { if (i) wp.appendChild(document.createTextNode(', ')); wp.appendChild(link(it)); });
-        main.appendChild(wp);
+    }
+    function smallLine(items) {
+      var w = items.filter(function (i) { return i.minor && i.wording; }).length,
+          d = items.filter(function (i) { return i.minor && !i.wording && i.type !== 'site'; }).length,
+          s = items.some(function (i) { return i.type === 'site'; }), bits = [];
+      if (w) bits.push('wording and spelling in ' + w + (w === 1 ? ' place' : ' places'));
+      if (d) bits.push('light edits to ' + d + (d === 1 ? ' guide section or README' : ' guide sections and READMEs'));
+      if (s) bits.push('the layout of this site');
+      return bits.length ? 'Also small edits: ' + andList(bits) + '.' : '';
+    }
+    function body(e, type) {
+      var b = mk('div', 'ds-cl-body');
+      if (e.summary && e.summary !== e.headline) {
+        var n = mk('p', 'ds-cl-notes');
+        n.appendChild(mk('span', 'ds-cl-label', e.draft ? 'Saved as' : 'Notes'));
+        n.appendChild(document.createTextNode(e.summary));
+        b.appendChild(n);
       }
+      var items = (e.items || []).filter(function (it) { return (!type || it.type === type) && (state.small || !it.minor); });
+      GROUPS.forEach(function (g) {
+        var sel = items.filter(function (it) { return it.type === g[0]; });
+        if (!sel.length) return;
+        var sec = mk('div', 'ds-cl-group');
+        sec.appendChild(mk('h4', null, g[1]));
+        var rows = g[0] === 'guide' ? guideRows(sel) : sel.map(function (it) { return row(it, g[0] === 'asset' ? it.group + ' / ' + it.name : null); });
+        sec.appendChild(list(rows));
+        b.appendChild(sec);
+      });
       var shots = (e.shots || []).filter(function () { return !type || type === 'component'; });
       if (shots.length) {
-        var sh = mk('div', 'ds-cl-shots');
+        var sh = mk('div', 'ds-cl-group');
+        sh.appendChild(mk('h4', null, 'Before and after'));
         shots.forEach(function (s) {
           var f = mk('figure', 'ds-cl-shot');
           f.appendChild(mk('figcaption', null, s.name));
           var pair = mk('div', 'ds-cl-pair');
           [['before', 'Before'], ['after', 'After']].forEach(function (k) {
             if (!s[k[0]]) return;
-            var one = mk('figure'), img = mk('img');
+            var one = mk('figure'), img = mk('img'), full = mk('a');
             img.src = s[k[0]]; img.alt = s.name + ', ' + k[1].toLowerCase(); img.loading = 'lazy'; img.decoding = 'async'; img.width = 720;
             img.addEventListener('error', function () { f.hidden = true; });
-            var full = mk('a'); full.href = s[k[0]]; full.target = '_blank'; full.rel = 'noopener'; full.title = 'Open full size';
+            full.href = s[k[0]]; full.target = '_blank'; full.rel = 'noopener'; full.title = 'Open full size';
             full.appendChild(img); one.appendChild(full); one.appendChild(mk('figcaption', null, k[1]));
             pair.appendChild(one);
           });
           f.appendChild(pair);
           sh.appendChild(f);
         });
-        main.appendChild(sh);
+        b.appendChild(sh);
       }
-      art.appendChild(main);
+      var sm = state.small ? '' : smallLine(e.items || []);
+      if (sm) b.appendChild(mk('p', 'ds-cl-small', sm));
+      if (e.pr && e.pr.url) {
+        var pp = mk('p', 'ds-cl-small'), pa = mk('a', null, 'Pull request #' + e.pr.number);
+        pa.href = e.pr.url; pa.target = '_blank'; pa.rel = 'noopener';
+        pp.appendChild(document.createTextNode('Reviewed in ')); pp.appendChild(pa);
+        b.appendChild(pp);
+      }
+      return b;
+    }
+    function entryEl(e, type, open) {
+      var art = mk('article', 'ds-cl-entry' + (isMinor(e) ? ' is-minor' : '')), d = e.date.split('-'), id = 'ds-cl-b' + (++uid);
+      var head = mk('button', 'ds-cl-head');
+      head.type = 'button';
+      head.setAttribute('aria-expanded', open ? 'true' : 'false');
+      head.setAttribute('aria-controls', id);
+      var date = mk('time', 'ds-cl-date', e.draft ? 'Draft' : MONTHS[+d[1] - 1].slice(0, 3) + ' ' + (+d[2]));
+      date.setAttribute('datetime', e.date);
+      head.appendChild(date);
+      var txt = mk('span', 'ds-cl-headtext');
+      txt.appendChild(mk('span', 'ds-cl-title', e.headline || e.summary || 'Update'));
+      var meta = e.author + (e.with && e.with.length ? ' with ' + andList(e.with) : '');
+      if (e.draft) meta += ' · Waiting for approval';
+      else if (e.approvedBy && e.approvedBy.length) meta += ' · Approved by ' + andList(e.approvedBy);
+      txt.appendChild(mk('span', 'ds-cl-meta', meta));
+      head.appendChild(txt);
+      head.appendChild(mk('span', 'ds-cl-chev'));
+      art.appendChild(head);
+      var panel = mk('div', 'ds-cl-panel');
+      panel.id = id;
+      panel.hidden = !open;
+      if (open) panel.appendChild(body(e, type));
+      art.appendChild(panel);
+      head.addEventListener('click', function () {
+        var on = head.getAttribute('aria-expanded') !== 'true';
+        head.setAttribute('aria-expanded', on ? 'true' : 'false');
+        if (on && !panel.firstChild) panel.appendChild(body(e, type));
+        panel.hidden = !on;
+      });
       return art;
     }
     function render() {
       box.textContent = '';
-      var shown = 0, month = '', sec = null;
+      uid = 0;
       if (data.draft) {
         var ds = mk('section', 'ds-cl-draft');
         ds.appendChild(mk('h2', null, 'Not published yet'));
         ds.appendChild(mk('p', 'ds-cl-draftnote', 'This is what the Change Log will say when this work is published. Check it before you share or publish: if something is missing or wrong, fix the change, then preview again.'));
-        var de = entryEl(data.draft, state.type);
-        de.querySelector('.ds-cl-date').textContent = 'Draft';
-        ds.appendChild(de);
+        ds.appendChild(entryEl(data.draft, state.type, true));
         box.appendChild(ds);
       }
+      var shown = 0, hidden = 0, month = '', sec = null;
       sorted().forEach(function (e) {
         if (state.person && people(e).indexOf(state.person) < 0) return;
-        if (state.type && !(e.items || []).some(function (it) { return it.type === state.type; })) return;
+        var its = (e.items || []).filter(function (it) { return !state.type || it.type === state.type; });
+        if (!its.length) return;
+        if (!state.small && !its.some(function (i) { return !i.minor; })) { hidden++; return; }
         var d = e.date.split('-'), m = MONTHS[+d[1] - 1] + ' ' + d[0];
         if (m !== month) {
           month = m; sec = mk('section', 'ds-cl-month');
           sec.appendChild(mk('h2', null, m));
           box.appendChild(sec);
         }
-        sec.appendChild(entryEl(e, state.type));
+        sec.appendChild(entryEl(e, state.type, false));
         shown++;
       });
       if (!shown) box.appendChild(mk('p', 'ds-cl-empty', data.entries.length ? 'No changes match. Try another filter.' : 'No changes recorded yet.'));
-      count.textContent = shown + (shown === 1 ? ' change' : ' changes');
+      count.textContent = shown + (shown === 1 ? ' change' : ' changes') + (hidden ? ' · ' + hidden + ' with only small edits hidden' : '');
     }
     function fillPeople() {
       var keep = who.value, names = {};
@@ -1316,7 +1371,8 @@
       });
     });
     who.addEventListener('change', function () { state.person = who.value; render(); });
-    /* Links to a token or a guide section open that page, then scroll to the spot. */
+    if (small) small.addEventListener('change', function () { state.small = small.checked; render(); });
+    /* Links to a token, an asset or a guide section open that page, then scroll to the spot. */
     box.addEventListener('click', function (ev) {
       var a = ev.target.closest && ev.target.closest('a[data-goto]');
       if (!a) return;
@@ -1336,7 +1392,7 @@
         fetch('changes-draft.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
       ]).then(function (got) {
         if (got[0] === null && got[1] === null) return;   // a copy served without its files: keep what the page was built with
-        var fresh = got[0] && got[0].entries && got[0].entries.length >= data.entries.length ? got[0] : { entries: data.entries };
+        var fresh = got[0] && got[0].entries && got[0].entries.length ? got[0] : { entries: data.entries };
         var next = { version: 1, entries: fresh.entries, draft: got[1] || undefined };
         if (JSON.stringify(next.entries) !== JSON.stringify(data.entries) || (next.draft ? JSON.stringify(next.draft) : '') !== (draft ? JSON.stringify(draft) : '')) {
           data = next; fillPeople(); render();

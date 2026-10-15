@@ -251,13 +251,13 @@ try:   # the entry unpublished work will get (tools/changelog.py draft, run by p
     CHANGES['draft'] = json.load(open(os.path.join(os.path.dirname(os.path.abspath(DS)), 'site', 'changes-draft.json')))
 except (OSError, ValueError):
     CHANGES.pop('draft', None)
-views.append(('changelog', '''<header class="ds-head"><p class="ds-eyebrow">Start</p><h1>Change Log</h1><p class="ds-lede">Every change published to Flex, newest first: what was added, changed or removed, who made it and who approved it. It's written automatically each time a change is published, so there's nothing to fill in.</p></header>
-<div class="ds-cl"><div class="ds-cl-bar"><div class="ds-cl-types" role="group" aria-label="Show changes to">%s</div><label class="ds-cl-who"><span>Made by</span><select id="ds-cl-person"><option value="">Everyone</option></select></label></div>
+views.append(('changelog', '''<header class="ds-head"><p class="ds-eyebrow">Start</p><h1>Change Log</h1><p class="ds-lede">The important changes to Flex, newest first: new and removed components, colors, logos and guides. Open an entry to see what changed, with before and after pictures. It's written automatically each time a change is published.</p></header>
+<div class="ds-cl"><div class="ds-cl-bar"><div class="ds-cl-types" role="group" aria-label="Show changes to">%s</div><div class="ds-cl-opts"><label class="ds-cl-check"><input type="checkbox" id="ds-cl-small"><span>Show small edits</span></label><label class="ds-cl-who"><span>Made by</span><select id="ds-cl-person"><option value="">Everyone</option></select></label></div></div>
 <p class="ds-cl-count" id="ds-cl-count" aria-live="polite"></p>
 <div id="ds-changelog"></div></div>
 <script type="application/json" id="ds-changes-data">%s</script>''' % (
     ''.join('<button type="button" class="ds-size ds-cl-type" data-type="%s" aria-pressed="%s">%s</button>' % (k, 'true' if k == '' else 'false', t)
-            for k, t in (('', 'All'), ('component', 'Components'), ('token', 'Tokens'), ('guide', 'Guides'), ('site', 'Site'))),
+            for k, t in (('', 'All'), ('component', 'Components'), ('token', 'Colors and tokens'), ('asset', 'Logos and assets'), ('guide', 'Guides'))),
     json.dumps(CHANGES, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/'))))
 
 # tokens

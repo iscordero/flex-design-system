@@ -16,7 +16,8 @@ and the site's Change Log page shows them.
   python3 tools/changelog.py draft [--shots]      writes the entry this unpublished work will get (site/changes-draft.json),
                                                   so it can be checked on the Change Log before publishing.
                                                   publish.sh runs it. Compares with what's published (origin/main)
-  python3 tools/changelog.py backfill             writes entries for the whole history, without screenshots
+  python3 tools/changelog.py backfill [UNTIL]     rewrites entries for published history (to origin/main), one per day,
+                                                  without screenshots; keeps what GitHub recorded
 
 Needs Python 3 (and Pillow and Playwright for screenshots in "record").
 """
@@ -198,6 +199,26 @@ def guides(v):
     return out
 
 
+def assets(v):
+    """Logos, icons and images, by folder and file name, with a fingerprint of their content."""
+    out = {}
+    pre = P + 'assets/'
+    if v.ref is None:
+        return out
+    if v.ref == '.':
+        for f in v.files:
+            if f.startswith(pre):
+                with open(os.path.join(ROOT, f), 'rb') as fh:
+                    data = fh.read()
+                out[f[len(pre):]] = hashlib.sha1(b'blob %d\0' % len(data) + data).hexdigest()
+    else:
+        for line in git('ls-tree', '-r', v.ref, '--', pre).split('\n'):
+            m = re.match(r'^\d+ blob ([0-9a-f]+)\t(.+)$', line)
+            if m:
+                out[m.group(2)[len(pre):]] = m.group(1)
+    return out
+
+
 def site(v):
     h = hashlib.sha1()
     for f in sorted(x for x in v.files if x.startswith('standalone/') or x == 'families.json'):
@@ -296,11 +317,97 @@ def compare(a, b):
                 it['action'] = 'changed'
                 if is_wording(xa[s], xb[s]):
                     it['wording'] = True
+                elif similar(no_images(xa[s]), no_images(xb[s])) < 0.6 or re.findall(r'img:\w+', no_images(xa[s])) != re.findall(r'img:\w+', no_images(xb[s])):
+                    it['big'] = True
             items.append(it)
+
+    aa, ab = assets(a), assets(b)
+    for f in sorted(set(aa) | set(ab)):
+        if aa.get(f) == ab.get(f):
+            continue
+        folder, _, name = f.rpartition('/')
+        items.append({'type': 'asset', 'action': 'added' if f not in aa else 'removed' if f not in ab else 'changed',
+                      'name': name, 'group': folder.split('/')[0] if folder else 'Assets'})
 
     if site(a) != site(b):
         items.append({'type': 'site', 'action': 'changed', 'name': 'Reference site'})
+    return classify(items)
+
+
+# ---------- what matters ----------
+def classify(items):
+    """Mark the small stuff (spelling and wording, the site's own layout, README-only edits, light guide edits)
+    as minor, so the Change Log can lead with what changes how Flex looks or what it holds."""
+    for it in items:
+        minor = (it.get('wording') or it['type'] == 'site' or
+                 (it['type'] == 'component' and it['action'] == 'changed' and not set(it.get('what', [])) & {'look', 'props'}) or
+                 (it['type'] == 'guide' and it['action'] == 'changed' and not it.get('big')))
+        if minor:
+            it['minor'] = True
+        else:
+            it.pop('minor', None)
     return items
+
+
+def major(items):
+    return [i for i in items if not i.get('minor')]
+
+
+def names(lst, noun, plural=None):
+    lst = sorted(set(lst), key=lst.index)
+    if len(lst) == 1:
+        return lst[0]
+    if len(lst) == 2:
+        return '%s and %s' % (lst[0], lst[1])
+    return '%d %s' % (len(lst), plural or noun + 's')
+
+
+def headline(items):
+    """One plain line for the entry, from its biggest changes."""
+    big, parts = major(items), []
+    if len(items) > 40 and all(i['action'] == 'added' for i in items if i['type'] != 'site'):   # the first publish
+        c = counts(items)
+        return 'Flex published: %d components, %d tokens, %d guides' % (
+            len({i['name'] for i in items if i['type'] == 'component'}), c.get('token', 0),
+            len({i['guide'] for i in items if i['type'] == 'guide'}))
+    comp = lambda act: [i['name'] for i in big if i['type'] == 'component' and i['action'] == act]
+    if comp('added'):
+        parts.append('Added ' + names(comp('added'), 'component'))
+    if comp('removed'):
+        parts.append('Removed ' + names(comp('removed'), 'component'))
+    toks = [i for i in big if i['type'] == 'token']
+    if toks:
+        fams = {i['family'] for i in toks}
+        what = 'colors' if fams == {'color'} else 'type styles' if fams == {'type'} else 'tokens'
+        parts.append('Updated %s (%d)' % (what, len(toks)))
+    groups = []
+    for i in big:
+        if i['type'] == 'asset' and i['group'] not in groups:
+            groups.append(i['group'])
+    if groups:
+        parts.append('Updated ' + (groups[0].lower() if len(groups) == 1 else names([g.lower() for g in groups], 'asset group')))
+    if comp('changed'):
+        parts.append('Updated ' + names(comp('changed'), 'component'))
+    gnew = [i['guide'] for i in big if i['type'] == 'guide' and i['action'] == 'added' and 'section' not in i]
+    if gnew:
+        parts.append('New guide: ' + names(gnew, 'guide'))
+    gold = [i['guide'] for i in big if i['type'] == 'guide' and i['action'] == 'removed' and 'section' not in i]
+    if gold:
+        parts.append('Removed guide: ' + names(gold, 'guide'))
+    gchg = [i['guide'] for i in big if i['type'] == 'guide' and 'section' in i]
+    gchg = [g for g in gchg if g not in gnew]
+    if gchg:
+        n = len(set(gchg))
+        parts.append('Updated ' + names(gchg, 'guide') + (' guide' if n == 1 else ' guides' if n == 2 else ''))
+    if not parts:
+        return 'Small fixes and wording'
+    return ' · '.join(parts[:3])   # the rest is in the entry's details
+
+
+def describe_entry(e):
+    e['headline'] = headline(e['items'])
+    e['minor'] = not major(e['items'])
+    return e
 
 
 def counts(items):
@@ -327,6 +434,8 @@ def describe(it):
             s += ': %s' % it['to']
     elif it['type'] == 'guide':
         s = it['guide'] if it['name'] == it['guide'] else '%s › %s' % (it['guide'], it['name'])
+    elif it['type'] == 'asset':
+        s = '%s / %s' % (it['group'], it['name'])
     else:
         s = it['name']
     return s
@@ -340,7 +449,7 @@ def as_text(items, md=False):
         sel = [i for i in items if i['action'] == act and not i.get('wording')]
         if sel:
             lines.append(('**%s**' if md else '%s') % label)
-            for typ, tl in (('component', 'Component'), ('token', 'Token'), ('guide', 'Guide'), ('site', 'Site')):
+            for typ, tl in (('component', 'Component'), ('token', 'Token'), ('asset', 'Asset'), ('guide', 'Guide'), ('site', 'Site')):
                 for i in (x for x in sel if x['type'] == typ):
                     lines.append('- %s: %s' % (tl, ('`%s`' % describe(i)) if md and typ == 'token' else describe(i)))
     w = [describe(i) for i in items if i.get('wording')]
@@ -424,7 +533,7 @@ def entry(sha, parent, date=None, pr=None, items=None):
         e.update(summary=pr['title'], author=pr['author'], approvedBy=pr['approvedBy'], date=pr['merged_at'][:10],
                  pr={'number': pr['number'], 'url': pr['url']})
         e['with'] = [n for n in with_ if n != e['author']]
-    return e
+    return describe_entry(e)
 
 
 def load():
@@ -621,6 +730,7 @@ def cmd_record(before, after):
             if not e['items']:
                 shutil.rmtree(os.path.join(SHOTS, last[:7]), ignore_errors=True)
                 continue
+            describe_entry(e)
         d['entries'].append(e)
         added += 1
         print('recorded %s: %s (%d items)' % (last[:7], e['summary'], len(items)))
@@ -671,13 +781,15 @@ def cmd_draft(shots=False):
     me = git('config', 'user.name', check=False).strip() or (git('show', '-s', '--format=%an', 'HEAD').strip() if unpub else 'You')
     e = {'id': 'draft', 'sha': '', 'draft': True, 'date': datetime.date.today().isoformat(), 'author': me,
          'with': [n for n in coauthors(body) if n != me], 'approvedBy': [],
-         'summary': ' · '.join(subjects) if subjects else 'Changes not saved yet', 'commits': len(unpub),
+         'summary': ' · '.join(subjects), 'commits': len(unpub),
          'base': base or '', 'pr': None, 'items': items, 'shots': []}
+    describe_entry(e)
     if shots:
         names = visual(items)
         if names:
             e['shots'] = same_look(items, screenshots('.', base, names, shot_dir))
-            e['items'] = [i for i in items if i['type'] != 'component' or i['action'] != 'changed' or i.get('what') or i.get('wording')]
+            e['items'] = classify([i for i in items if i['type'] != 'component' or i['action'] != 'changed' or i.get('what') or i.get('wording')])
+            describe_entry(e)
     with open(DRAFT, 'w') as f:
         json.dump(e, f, ensure_ascii=False, indent=1)
         f.write('\n')
@@ -685,24 +797,37 @@ def cmd_draft(shots=False):
     print(as_text(e['items']))
 
 
-def cmd_backfill():
+def cmd_backfill(until=None):
+    """Entries for history that is already published, one per day: a day's work is one entry, so something
+    added and taken out again the same day doesn't show at all."""
+    until = until or ('origin/main' if git('rev-parse', '--verify', '--quiet', 'origin/main', check=False).strip() else 'HEAD')
     d = load()
-    keep = {e['sha']: e for e in d['entries']}
-    out = []
-    for k, sha in enumerate(published_commits(None, 'HEAD')):
+    keep = {e['sha']: e for e in d['entries'] if e.get('pr') or e.get('shots')}   # what GitHub recorded stays as it was
+    days = []
+    for sha in published_commits(None, until):
         if skip(sha):
             continue
-        parent = git('rev-parse', '--verify', '--quiet', sha + '^1', check=False).strip() or None
-        items = compare(Version(parent), Version(sha))
+        day = git('show', '-s', '--format=%aI', sha)[:10]
+        if days and days[-1][0] == day:
+            days[-1][1].append(sha)
+        else:
+            days.append((day, [sha]))
+    out = []
+    for k, (day, shas) in enumerate(days):
+        if any(s in keep for s in shas):
+            out.extend(keep[s] for s in shas if s in keep)
+            continue
+        first, last = shas[0], shas[-1]
+        parent = git('rev-parse', '--verify', '--quiet', first + '^1', check=False).strip() or None
+        items = compare(Version(parent), Version(last))
         if not items:
             continue
-        e = entry(sha, parent, None, None, items)
-        if sha in keep:  # keep what GitHub recorded (pull request, approvals, screenshots)
-            for f in ('pr', 'approvedBy', 'shots', 'date', 'author', 'summary', 'items', 'with'):
-                e[f] = keep[sha].get(f, e[f])
+        e = entry(last, parent, day, None, items)
+        e['summary'] = ' · '.join(summaries(shas)) or e['summary']
+        e['shas'] = shas
         e['order'] = k
         out.append(e)
-        print('%s %s %s' % (sha[:7], e['date'], e['summary'][:70]), counts(items))
+        print('%s %s %s' % (day, e['headline'], counts(major(items))))
     d['entries'] = out
     save(d)
 
@@ -720,7 +845,7 @@ if __name__ == '__main__':
     elif a[0] == 'draft':
         cmd_draft('--shots' in a)
     elif a[0] == 'backfill':
-        cmd_backfill()
+        cmd_backfill(a[1] if len(a) > 1 else None)
     else:
         print(__doc__)
         sys.exit(2)

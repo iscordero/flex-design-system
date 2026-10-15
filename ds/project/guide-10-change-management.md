@@ -11,7 +11,7 @@ Flex is kept in one place, a GitHub repository. Everything else is made from it.
 | The source | [github.com/iscordero/flex-design-system](https://github.com/iscordero/flex-design-system) | The single source of truth: tokens, guides, components and the full history of every change |
 | The site | [flex-design-system.pages.dev](https://flex-design-system.pages.dev) | What everyone reads and builds from. It updates by itself when a change is published to the repository |
 | Preview links | `<change-name>.flex-design-system.pages.dev` | A copy of the site for each change that isn't published yet, to share for approval |
-| Change Log | The **Change Log** page on the site, under Start | Every published change: what changed, who made it, who approved it, with before and after pictures |
+| Change Log | The **Change Log** page on the site, under Start | The important published changes (components, colors, logos, guides): who made them, who approved them, with before and after pictures |
 | Images and assets | Bynder (see Media) | Approved photos, video, logos and icons |
 | Claude project (optional) | A shared **Qualys Design System** project in the company's Claude account | A ready-made workspace for designers who use Claude, with Flex built in. See Setting up Claude for the team |
 
@@ -146,7 +146,7 @@ Send both links to your reviewer. If they can't open GitHub, the preview link is
 
 Once it's approved, ask the agent to merge the pull request, or press **Merge** on the pull request page in GitHub. The live site updates within a minute or two.
 
-A few minutes later, the draft becomes a published entry in the **Change Log** by itself: what it added, changed or removed, who made it, who approved it, and before and after pictures of any component that looks different. Nobody needs to write it. The pull request's title becomes the entry's summary, so give it a clear one.
+A few minutes later, the draft becomes a published entry in the **Change Log** by itself: a one-line summary of the important changes, who made it and who approved it. Opening the entry shows the details, with before and after pictures of any component that looks different. Small edits, such as wording, spelling and the layout of the site itself, are folded into one line, and something added and taken out again before publishing doesn't show at all. Nobody needs to write it. The pull request's title becomes the entry's summary, so give it a clear one.
 
 If your agent can't push to GitHub, it will say so. You can then push with GitHub Desktop's **Push origin** button, or ask a teammate whose agent can. The Change Log adds its own updates to GitHub, so get the latest version before you push: if GitHub Desktop says your copy is behind, press **Pull origin** first.
 

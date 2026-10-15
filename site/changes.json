@@ -2,15 +2,13 @@
  "version": 1,
  "entries": [
   {
-   "id": "55faf06",
-   "sha": "55faf068d39771ec92c61e061009dab9f2356173",
+   "id": "1d4f472",
+   "sha": "1d4f472b63b6afaf0280244f11f33b9976dabf5f",
    "date": "2026-10-13",
    "author": "Isabel",
-   "with": [
-    "Claude"
-   ],
+   "with": [],
    "approvedBy": [],
-   "summary": "Flex Design System: source, build tools and reference site",
+   "summary": "Flex Design System: source, build tools and reference site · Icons, logos, guidelines, nav and tag updates · Module backgrounds, white doc, hero, nav menus, example page and figure fixes",
    "pr": null,
    "items": [
     {
@@ -117,6 +115,11 @@
      "type": "component",
      "action": "added",
      "name": "EventType"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "ExamplePage"
     },
     {
      "type": "component",
@@ -891,6 +894,41 @@
      "action": "added",
      "to": "{white}",
      "toColor": "#ffffff"
+    },
+    {
+     "type": "token",
+     "name": "icon-lg",
+     "family": "layout",
+     "action": "added",
+     "to": "24px"
+    },
+    {
+     "type": "token",
+     "name": "icon-md",
+     "family": "layout",
+     "action": "added",
+     "to": "20px"
+    },
+    {
+     "type": "token",
+     "name": "icon-sm",
+     "family": "layout",
+     "action": "added",
+     "to": "16px"
+    },
+    {
+     "type": "token",
+     "name": "icon-xl",
+     "family": "layout",
+     "action": "added",
+     "to": "32px"
+    },
+    {
+     "type": "token",
+     "name": "icon-xs",
+     "family": "layout",
+     "action": "added",
+     "to": "12px"
     },
     {
      "type": "token",
@@ -1751,8 +1789,8 @@
     {
      "type": "guide",
      "action": "added",
-     "name": "Imagery, Iconography and Logo",
-     "guide": "Imagery, Iconography and Logo",
+     "name": "Icons and Logos",
+     "guide": "Icons and Logos",
      "gid": "guide-6"
     },
     {
@@ -1761,6 +1799,13 @@
      "name": "Layout, Spacing and Radius",
      "guide": "Layout, Spacing and Radius",
      "gid": "guide-4"
+    },
+    {
+     "type": "guide",
+     "action": "added",
+     "name": "Media",
+     "guide": "Media",
+     "gid": "guide-9"
     },
     {
      "type": "guide",
@@ -1791,1221 +1836,482 @@
      "gid": "guide-3"
     },
     {
+     "type": "asset",
+     "action": "added",
+     "name": "README.md",
+     "group": "Event Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-event-industry.svg",
+     "group": "Event Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-event-qualys.svg",
+     "group": "Event Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-event-speaking.svg",
+     "group": "Event Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-event-training.svg",
+     "group": "Event Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-event-webinar.svg",
+     "group": "Event Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "README.md",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-agentic-ai.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-ai.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-application.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-applications.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-assets.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-cloud.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-communication.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-compliance.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-configure.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-detect.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-eliminate.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-measure.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-prioritize.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-remediation.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-response.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-risk.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-threat.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-vulnerability.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "feature-web-application.svg",
+     "group": "Feature Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "README.md",
+     "group": "General Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-general-events.svg",
+     "group": "General Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-general-resource.svg",
+     "group": "General Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-general-webinar.svg",
+     "group": "General Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "README.md",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-alert-circle.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-alert-triangle.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-arrow-left.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-arrow-right.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-check-circle.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-check.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-chevron-down.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-chevron-left.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-chevron-right.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-chevron-up.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-cookie.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-cross.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-download.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-file.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-filter.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-menu.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-outlink.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-party.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-plus.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-search.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-time.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-view-grid.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-view-list.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-view-month.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-x-circle.svg",
+     "group": "Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "README.md",
+     "group": "Images"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "form-header-meeting.jpg",
+     "group": "Images"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "header-capitol.jpg",
+     "group": "Images"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "hero-bg-building.jpg",
+     "group": "Images"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "hero-bg-office.jpg",
+     "group": "Images"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "promo-laptop.png",
+     "group": "Images"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "visual-star.svg",
+     "group": "Images"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "README.md",
+     "group": "Logos"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "qualys-logo-full-rgb.svg",
+     "group": "Logos"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "qualys-logo-reversed.svg",
+     "group": "Logos"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "qualys-shield.svg",
+     "group": "Logos"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "README.md",
+     "group": "Social Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-facebook.svg",
+     "group": "Social Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-instagram.svg",
+     "group": "Social Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-linkedin.svg",
+     "group": "Social Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-url.svg",
+     "group": "Social Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-vimeo.svg",
+     "group": "Social Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-x.svg",
+     "group": "Social Icons"
+    },
+    {
+     "type": "asset",
+     "action": "added",
+     "name": "icon-youtube.svg",
+     "group": "Social Icons"
+    },
+    {
      "type": "site",
      "action": "changed",
-     "name": "Reference site"
+     "name": "Reference site",
+     "minor": true
     }
    ],
    "shots": [],
+   "headline": "Flex published: 79 components, 181 tokens, 10 guides",
+   "minor": false,
+   "shas": [
+    "55faf068d39771ec92c61e061009dab9f2356173",
+    "3cb58c1aa2802f2a77dabb15c7a8ade44001fd6d",
+    "1d4f472b63b6afaf0280244f11f33b9976dabf5f"
+   ],
    "order": 0
   },
   {
-   "id": "3cb58c1",
-   "sha": "3cb58c1aa2802f2a77dabb15c7a8ade44001fd6d",
-   "date": "2026-10-13",
-   "author": "Isabel",
-   "with": [],
-   "approvedBy": [],
-   "summary": "Icons, logos, guidelines, nav and tag updates",
-   "pr": null,
-   "items": [
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "BlogCard",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Button",
-     "what": [
-      "props"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "DemoRequestWizard",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "EventType",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FeatureMatrix",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FilterChip",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FilterDrawer",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Flag",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Footer",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Hyperlink",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Icon",
-     "what": [
-      "look",
-      "props",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "InlinePromoCard",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "LogoCarousel",
-     "what": [
-      "look",
-      "props",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "LogoHierarchy",
-     "what": [
-      "look",
-      "props",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Marker",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Nav",
-     "what": [
-      "look",
-      "props",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "ProfileModal",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "SocialButton",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "SuccessConfirmation",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Tag",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TestimonialCarousel",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Toast",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "WebinarCard",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "token",
-     "name": "icon-lg",
-     "family": "layout",
-     "action": "added",
-     "to": "24px"
-    },
-    {
-     "type": "token",
-     "name": "icon-md",
-     "family": "layout",
-     "action": "added",
-     "to": "20px"
-    },
-    {
-     "type": "token",
-     "name": "icon-sm",
-     "family": "layout",
-     "action": "added",
-     "to": "16px"
-    },
-    {
-     "type": "token",
-     "name": "icon-xl",
-     "family": "layout",
-     "action": "added",
-     "to": "32px"
-    },
-    {
-     "type": "token",
-     "name": "icon-xs",
-     "family": "layout",
-     "action": "added",
-     "to": "12px"
-    },
-    {
-     "type": "guide",
-     "action": "added",
-     "name": "Icons and Logos",
-     "guide": "Icons and Logos",
-     "gid": "guide-6"
-    },
-    {
-     "type": "guide",
-     "action": "removed",
-     "name": "Imagery, Iconography and Logo",
-     "guide": "Imagery, Iconography and Logo"
-    },
-    {
-     "type": "guide",
-     "action": "added",
-     "name": "Media",
-     "guide": "Media",
-     "gid": "guide-9"
-    },
-    {
-     "type": "guide",
-     "name": "Guidelines",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Guidelines",
-     "action": "changed"
-    },
-    {
-     "type": "site",
-     "action": "changed",
-     "name": "Reference site"
-    }
-   ],
-   "shots": [],
-   "order": 1
-  },
-  {
-   "id": "1d4f472",
-   "sha": "1d4f472b63b6afaf0280244f11f33b9976dabf5f",
-   "date": "2026-10-13",
-   "author": "Isabel",
-   "with": [],
-   "approvedBy": [],
-   "summary": "Module backgrounds, white doc, hero, nav menus, example page and figure fixes",
-   "pr": null,
-   "items": [
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Accordion",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "AccordionModule",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Carousel",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "CtaModule",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "DetailComparison",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Drawer",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "DrawerCard",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "EventCalendar",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "added",
-     "name": "ExamplePage"
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FeatureMatrix",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Footer",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FormBanner",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "GeneralContent",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Hero",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "LogoCarousel",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "LogoHierarchy",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "MarketingTable",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Nav",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Stats",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TabModule",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TestimonialCard",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TestimonialCarousel",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TypographicHeader",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "guide",
-     "name": "Tiers",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Tiers",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Title Case",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Title Case",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Space between a pair",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Space between a pair",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Short labels",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Short labels",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "One primary",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "One primary",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Two at most",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Two at most",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Verbs",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Verbs",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Hierarchy on the page",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Hierarchy on the page",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Tier 1 on mobile",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Tier 1 on mobile",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Underline",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Underline",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Sources",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Sources",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Dark grounds",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Dark grounds",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Clean URLs",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Clean URLs",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Say where it goes",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Say where it goes",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Links as navigation",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Links as navigation",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Outside the paragraph",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Outside the paragraph",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Surfaces",
-     "guide": "Colour",
-     "gid": "guide-2",
-     "section": "Surfaces",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Text",
-     "guide": "Colour",
-     "gid": "guide-2",
-     "section": "Text",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Actions",
-     "guide": "Colour",
-     "gid": "guide-2",
-     "section": "Actions",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Strokes",
-     "guide": "Colour",
-     "gid": "guide-2",
-     "section": "Strokes",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Icons",
-     "guide": "Colour",
-     "gid": "guide-2",
-     "section": "Icons",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Utility",
-     "guide": "Colour",
-     "gid": "guide-2",
-     "section": "Utility",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Overlays",
-     "guide": "Colour",
-     "gid": "guide-2",
-     "section": "Overlays",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Tags",
-     "guide": "Colour",
-     "gid": "guide-2",
-     "section": "Tags",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Gradient",
-     "guide": "Colour",
-     "gid": "guide-2",
-     "section": "Gradient",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Contrast notes",
-     "guide": "Colour",
-     "gid": "guide-2",
-     "section": "Contrast notes",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Address the reader",
-     "guide": "Content",
-     "gid": "guide-1",
-     "section": "Address the reader",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Casing",
-     "guide": "Content",
-     "gid": "guide-1",
-     "section": "Casing",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Length",
-     "guide": "Content",
-     "gid": "guide-1",
-     "section": "Length",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "CTAs",
-     "guide": "Content",
-     "gid": "guide-1",
-     "section": "CTAs",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Numbers",
-     "guide": "Content",
-     "gid": "guide-1",
-     "section": "Numbers",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Punctuation",
-     "guide": "Content",
-     "gid": "guide-1",
-     "section": "Punctuation",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Dates and times",
-     "guide": "Content",
-     "gid": "guide-1",
-     "section": "Dates and times",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Custom SVG icons",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Custom SVG icons",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Utility icons",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Utility icons",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Event icons",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Event icons",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "General icons",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "General icons",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Social icons",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Social icons",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Feature icons",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Feature icons",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Link icons",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Link icons",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Colour versions",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Colour versions",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "The shield",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "The shield",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Sizes",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Sizes",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Customer, partner and sponsor logos",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Customer, partner and sponsor logos",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Breakpoints",
-     "guide": "Layout, Spacing and Radius",
-     "gid": "guide-4",
-     "section": "Breakpoints",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Page margins and gutter",
-     "guide": "Layout, Spacing and Radius",
-     "gid": "guide-4",
-     "section": "Page margins and gutter",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Content column",
-     "guide": "Layout, Spacing and Radius",
-     "gid": "guide-4",
-     "section": "Content column",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Block modules",
-     "guide": "Layout, Spacing and Radius",
-     "gid": "guide-4",
-     "section": "Block modules",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Columns",
-     "guide": "Layout, Spacing and Radius",
-     "gid": "guide-4",
-     "section": "Columns",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Spacing",
-     "guide": "Layout, Spacing and Radius",
-     "gid": "guide-4",
-     "section": "Spacing",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Spacing in use",
-     "guide": "Layout, Spacing and Radius",
-     "gid": "guide-4",
-     "section": "Spacing in use",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Radius",
-     "guide": "Layout, Spacing and Radius",
-     "gid": "guide-4",
-     "section": "Radius",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Elevation",
-     "guide": "Layout, Spacing and Radius",
-     "gid": "guide-4",
-     "section": "Elevation",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Layers",
-     "guide": "Layout, Spacing and Radius",
-     "gid": "guide-4",
-     "section": "Layers",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Modals",
-     "guide": "Layout, Spacing and Radius",
-     "gid": "guide-4",
-     "section": "Modals",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Aspect ratios",
-     "guide": "Media",
-     "gid": "guide-9",
-     "section": "Aspect ratios",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "People photos",
-     "guide": "Media",
-     "gid": "guide-9",
-     "section": "People photos",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Avatars and profile cards",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Avatars and profile cards",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Navigation and footer",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Navigation and footer",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Block modules",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Block modules",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Stats sections",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Stats sections",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Carousels",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Carousels",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Logos",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Logos",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Events calendar",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Events calendar",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Modals and dialogs",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Modals and dialogs",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Notifications",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Notifications",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Cookie consent",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Cookie consent",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Forms",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Forms",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Filters",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Filters",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Components",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Components",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Buttons",
-     "guide": "States and Motion",
-     "gid": "guide-5",
-     "section": "Buttons",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Text links",
-     "guide": "States and Motion",
-     "gid": "guide-5",
-     "section": "Text links",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Tabs, menus and list rows",
-     "guide": "States and Motion",
-     "gid": "guide-5",
-     "section": "Tabs, menus and list rows",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Cards",
-     "guide": "States and Motion",
-     "gid": "guide-5",
-     "section": "Cards",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Focus",
-     "guide": "States and Motion",
-     "gid": "guide-5",
-     "section": "Focus",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Timing",
-     "guide": "States and Motion",
-     "gid": "guide-5",
-     "section": "Timing",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Overlays and dialogs",
-     "guide": "States and Motion",
-     "gid": "guide-5",
-     "section": "Overlays and dialogs",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Toasts",
-     "guide": "States and Motion",
-     "gid": "guide-5",
-     "section": "Toasts",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Carousels",
-     "guide": "States and Motion",
-     "gid": "guide-5",
-     "section": "Carousels",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Reduced motion",
-     "guide": "States and Motion",
-     "gid": "guide-5",
-     "section": "Reduced motion",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Families",
-     "guide": "Typography",
-     "gid": "guide-3",
-     "section": "Families",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Display",
-     "guide": "Typography",
-     "gid": "guide-3",
-     "section": "Display",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Headings",
-     "guide": "Typography",
-     "gid": "guide-3",
-     "section": "Headings",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Paragraphs",
-     "guide": "Typography",
-     "gid": "guide-3",
-     "section": "Paragraphs",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Titles",
-     "guide": "Typography",
-     "gid": "guide-3",
-     "section": "Titles",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Tags",
-     "guide": "Typography",
-     "gid": "guide-3",
-     "section": "Tags",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Eyebrows",
-     "guide": "Typography",
-     "gid": "guide-3",
-     "section": "Eyebrows",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Weights",
-     "guide": "Typography",
-     "gid": "guide-3",
-     "section": "Weights",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Labels, quotes, stats and button labels",
-     "guide": "Typography",
-     "gid": "guide-3",
-     "section": "Labels, quotes, stats and button labels",
-     "action": "changed"
-    },
-    {
-     "type": "site",
-     "action": "changed",
-     "name": "Reference site"
-    }
-   ],
-   "shots": [],
-   "order": 2
-  },
-  {
-   "id": "621f8e8",
-   "sha": "621f8e8a5ef7dd36560a404486a2266a936979dc",
+   "id": "af2c972",
+   "sha": "af2c972c6741edbded0871effeea92ea2cd801f0",
    "date": "2026-10-14",
    "author": "Isabel Cordero",
    "with": [
     "Claude"
    ],
    "approvedBy": [],
-   "summary": "1440px content column, banner type, logo alignment, module backgrounds, example page, nav and guideline updates",
+   "summary": "1440px content column, banner type, logo alignment, module backgrounds, example page, nav and guideline updates · Add Card Module, balanced line breaks, example page in page order · Example page: testimonials in the carousel · Feature matrix wraps instead of scrolling · Colour tokens: status-named tags, grouped sets, no brand copies · One tag grey; marker-blue renamed marker-default",
    "pr": null,
    "items": [
     {
@@ -3014,6 +2320,7 @@
      "name": "AccordionModule",
      "what": [
       "look",
+      "props",
       "docs"
      ]
     },
@@ -3025,6 +2332,19 @@
       "look",
       "docs"
      ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Card",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "CardModule"
     },
     {
      "type": "component",
@@ -3065,12 +2385,22 @@
      "type": "component",
      "action": "changed",
      "name": "DrawerCard",
-     "wording": true
+     "wording": true,
+     "minor": true
     },
     {
      "type": "component",
      "action": "changed",
      "name": "EventCalendar",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "EventType",
      "what": [
       "look",
       "docs"
@@ -3132,6 +2462,14 @@
     {
      "type": "component",
      "action": "changed",
+     "name": "Icon",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
      "name": "LogoCarousel",
      "what": [
       "look",
@@ -3149,10 +2487,28 @@
     {
      "type": "component",
      "action": "changed",
+     "name": "Marker",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
      "name": "MarketingTable",
      "what": [
       "look",
       "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Media",
+     "what": [
+      "look"
      ]
     },
     {
@@ -3210,205 +2566,10 @@
     {
      "type": "component",
      "action": "changed",
-     "name": "TestimonialCarousel",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TextLink",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TypographicHeader",
+     "name": "Tag",
      "what": [
       "look",
       "docs"
-     ]
-    },
-    {
-     "type": "token",
-     "name": "content-max",
-     "family": "layout",
-     "action": "changed",
-     "to": "1440px",
-     "from": "1140px"
-    },
-    {
-     "type": "guide",
-     "name": "Content column",
-     "guide": "Layout, Spacing and Radius",
-     "gid": "guide-4",
-     "section": "Content column",
-     "action": "changed"
-    }
-   ],
-   "shots": [],
-   "order": 3
-  },
-  {
-   "id": "6f81bce",
-   "sha": "6f81bce87645bbb61bf781bc3a206c42241b620c",
-   "date": "2026-10-14",
-   "author": "Isabel Cordero",
-   "with": [
-    "Claude"
-   ],
-   "approvedBy": [],
-   "summary": "Add Card Module, balanced line breaks, example page in page order",
-   "pr": null,
-   "items": [
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "AccordionModule",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Card",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "added",
-     "name": "CardModule"
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Carousel",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "CtaModule",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "DetailComparison",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "EventCalendar",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "ExamplePage",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FeatureMatrix",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Footer",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FormBanner",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "GeneralContent",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Hero",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "LogoCarousel",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "LogoHierarchy",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "MarketingTable",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Media",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Stats",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TabModule",
-     "what": [
-      "look"
      ]
     },
     {
@@ -3425,6 +2586,15 @@
      "action": "changed",
      "name": "TestimonialCarousel",
      "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TextLink",
+     "what": [
       "look"
      ]
     },
@@ -3432,134 +2602,6 @@
      "type": "component",
      "action": "changed",
      "name": "TypographicHeader",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "guide",
-     "name": "Line breaks",
-     "guide": "Typography",
-     "gid": "guide-3",
-     "section": "Line breaks",
-     "action": "added"
-    },
-    {
-     "type": "site",
-     "action": "changed",
-     "name": "Reference site"
-    }
-   ],
-   "shots": [],
-   "order": 4
-  },
-  {
-   "id": "4b10b65",
-   "sha": "4b10b653cddaa388ede80dfcece9a5f95daa2fc9",
-   "date": "2026-10-14",
-   "author": "Isabel Cordero",
-   "with": [
-    "Claude"
-   ],
-   "approvedBy": [],
-   "summary": "Example page: testimonials in the carousel",
-   "pr": null,
-   "items": [
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "ExamplePage",
-     "what": [
-      "look"
-     ]
-    }
-   ],
-   "shots": [],
-   "order": 5
-  },
-  {
-   "id": "307b9c2",
-   "sha": "307b9c2c242e33833ffc47f0f1fc0185ff665a2b",
-   "date": "2026-10-14",
-   "author": "Isabel Cordero",
-   "with": [
-    "Claude"
-   ],
-   "approvedBy": [],
-   "summary": "Feature matrix wraps instead of scrolling",
-   "pr": null,
-   "items": [
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "DetailComparison",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FeatureMatrix",
-     "what": [
-      "look",
-      "docs"
-     ]
-    }
-   ],
-   "shots": [],
-   "order": 6
-  },
-  {
-   "id": "283a851",
-   "sha": "283a851de05e74e04ab7e39258cd6adf23db2efd",
-   "date": "2026-10-14",
-   "author": "Isabel Cordero",
-   "with": [
-    "Claude"
-   ],
-   "approvedBy": [],
-   "summary": "Colour tokens: status-named tags, grouped sets, no brand copies",
-   "pr": null,
-   "items": [
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Breadcrumbs",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "EventCalendar",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "EventType",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Icon",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Tag",
      "what": [
       "look",
       "docs"
@@ -3615,6 +2657,14 @@
     },
     {
      "type": "token",
+     "name": "content-max",
+     "family": "layout",
+     "action": "changed",
+     "to": "1440px",
+     "from": "1140px"
+    },
+    {
+     "type": "token",
      "name": "event-industry",
      "family": "color",
      "action": "added",
@@ -3656,6 +2706,22 @@
      "from": "{tag-purple}",
      "fromColor": "#6613d2",
      "toColor": "#6613d2"
+    },
+    {
+     "type": "token",
+     "name": "marker-blue",
+     "family": "color",
+     "action": "removed",
+     "from": "{qualys-blue}",
+     "fromColor": "#2683ed"
+    },
+    {
+     "type": "token",
+     "name": "marker-default",
+     "family": "color",
+     "action": "added",
+     "to": "{qualys-blue}",
+     "toColor": "#2683ed"
     },
     {
      "type": "token",
@@ -3723,22 +2789,6 @@
     },
     {
      "type": "token",
-     "name": "tag-neutral",
-     "family": "color",
-     "action": "added",
-     "to": "#44536b",
-     "toColor": "#44536b"
-    },
-    {
-     "type": "token",
-     "name": "tag-neutral-tint",
-     "family": "color",
-     "action": "added",
-     "to": "#f4f5f7",
-     "toColor": "#f4f5f7"
-    },
-    {
-     "type": "token",
      "name": "tag-orange",
      "family": "color",
      "action": "removed",
@@ -3791,7 +2841,8 @@
      "guide": "Colour",
      "gid": "guide-2",
      "section": "Tags",
-     "action": "changed"
+     "action": "changed",
+     "big": true
     },
     {
      "type": "guide",
@@ -3800,914 +2851,8 @@
      "gid": "guide-2",
      "section": "Contrast notes",
      "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "site",
-     "action": "changed",
-     "name": "Reference site"
-    }
-   ],
-   "shots": [],
-   "order": 7
-  },
-  {
-   "id": "af2c972",
-   "sha": "af2c972c6741edbded0871effeea92ea2cd801f0",
-   "date": "2026-10-14",
-   "author": "Isabel Cordero",
-   "with": [
-    "Claude"
-   ],
-   "approvedBy": [],
-   "summary": "One tag grey; marker-blue renamed marker-default",
-   "pr": null,
-   "items": [
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "AccordionModule",
-     "what": [
-      "look",
-      "props"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Marker",
-     "what": [
-      "look",
-      "props",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Nav",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Tag",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "token",
-     "name": "marker-blue",
-     "family": "color",
-     "action": "removed",
-     "from": "{qualys-blue}",
-     "fromColor": "#2683ed"
-    },
-    {
-     "type": "token",
-     "name": "marker-default",
-     "family": "color",
-     "action": "added",
-     "to": "{qualys-blue}",
-     "toColor": "#2683ed"
-    },
-    {
-     "type": "token",
-     "name": "tag-neutral",
-     "family": "color",
-     "action": "removed",
-     "from": "#44536b",
-     "fromColor": "#44536b"
-    },
-    {
-     "type": "token",
-     "name": "tag-neutral-tint",
-     "family": "color",
-     "action": "removed",
-     "from": "#f4f5f7",
-     "fromColor": "#f4f5f7"
-    },
-    {
-     "type": "guide",
-     "name": "Tags",
-     "guide": "Colour",
-     "gid": "guide-2",
-     "section": "Tags",
-     "action": "changed"
-    }
-   ],
-   "shots": [],
-   "order": 8
-  },
-  {
-   "id": "98dd11c",
-   "sha": "98dd11cdc7f23c381941ac526b08905b36520ce6",
-   "date": "2026-10-15",
-   "author": "Isabel Cordero",
-   "with": [
-    "Claude"
-   ],
-   "approvedBy": [],
-   "summary": "American spelling, Change Management, statuses, search, logo sizing",
-   "pr": null,
-   "items": [
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Accordion",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "AccordionModule",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "AlertDialog",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "AppliedFilters",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Avatar",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "BlogCard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Breadcrumbs",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Button",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Card",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "CardModule",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Carousel",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Checkbox",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "CookieBanner",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Cover",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "CtaModule",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "DemoRequestWizard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "DetailComparison",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Drawer",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "DrawerCard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "EventCalendar",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "EventCard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "EventType",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "ExamplePage",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "ExitIntent",
-     "what": [
-      "look",
-      "props",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FeatureMatrix",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FilterBar",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FilterButton",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FilterChip",
-     "what": [
-      "props",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FilterChipGroup",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FilterDrawer",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FilterDropdown",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Flag",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Footer",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Form",
-     "what": [
-      "look",
-      "props",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FormBanner",
-     "what": [
-      "props",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FormModal",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "GeneralContent",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Grid",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Hero",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "HoverCard",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Hyperlink",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Icon",
-     "what": [
-      "look",
-      "props",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "InlinePromoCard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "IntegrationCard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "LogoCarousel",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "LogoHierarchy",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Marker",
-     "what": [
-      "props",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "MarketingTable",
-     "what": [
-      "look",
-      "props",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Media",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Modal",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Nav",
-     "what": [
-      "props",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "NavBanner",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "NotificationBar",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Overlay",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "ProfileCard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "ProfileGrid",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "ProfileModal",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Radio",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "ResourceCard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "SearchBar",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Select",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "SessionTimeout",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "SocialButton",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "StatCard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Stats",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "SuccessConfirmation",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TabModule",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Tabs",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Tag",
-     "what": [
-      "props",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TestimonialCard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TestimonialCarousel",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TextField",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TextLink",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Toast",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "ToastStack",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Toggle",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Tooltip",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TypographicHeader",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Typography",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "WebinarCard",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Buttons and Links",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Tiers",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Tiers",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Tier 1: primary (conversion)",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Tier 1: primary (conversion)",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Tier 2: secondary (supportive)",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Tier 2: secondary (supportive)",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Tier 3: utility (navigation, information and status)",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Tier 3: utility (navigation, information and status)",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Tier 1 on mobile",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Tier 1 on mobile",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Tier 2 on mobile",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Tier 2 on mobile",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Underline",
-     "guide": "Buttons and Links",
-     "gid": "guide-8",
-     "section": "Underline",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "action": "added",
-     "name": "Change Management",
-     "guide": "Change Management",
-     "gid": "guide-10"
-    },
-    {
-     "type": "guide",
-     "action": "added",
-     "name": "Color",
-     "guide": "Color",
-     "gid": "guide-2"
-    },
-    {
-     "type": "guide",
-     "action": "removed",
-     "name": "Colour",
-     "guide": "Colour"
-    },
-    {
-     "type": "guide",
-     "name": "Icons and Logos",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Iconography",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Iconography",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Choosing an icon",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Choosing an icon",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "Rules for every icon",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Rules for every icon",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "Drawing and color",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Drawing and color",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "Utility icons",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Utility icons",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Event icons",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Event icons",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "General icons",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "General icons",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Social icons",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Social icons",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Feature icons",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Feature icons",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Link icons",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Link icons",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Color versions",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Color versions",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "The shield",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "The shield",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Customer, partner and sponsor logos",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Customer, partner and sponsor logos",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Custom SVG icons",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Custom SVG icons",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Colour versions",
-     "guide": "Icons and Logos",
-     "gid": "guide-6",
-     "section": "Colour versions",
-     "action": "removed"
+     "wording": true,
+     "minor": true
     },
     {
      "type": "guide",
@@ -4715,1493 +2860,60 @@
      "guide": "Layout, Spacing and Radius",
      "gid": "guide-4",
      "section": "Content column",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Elevation",
-     "guide": "Layout, Spacing and Radius",
-     "gid": "guide-4",
-     "section": "Elevation",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Modals",
-     "guide": "Layout, Spacing and Radius",
-     "gid": "guide-4",
-     "section": "Modals",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "People photos",
-     "guide": "Media",
-     "gid": "guide-9",
-     "section": "People photos",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Overview",
-     "guide": "Overview",
-     "gid": "overview",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Principles and design language",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Principles and design language",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Color",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Color",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "Components",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Components",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Shape",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Shape",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Motion",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Motion",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Governance",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Governance",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Status: what is safe to build",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Status: what is safe to build",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "Who updates a status",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Who updates a status",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "Collaboration",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Collaboration",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Contribution and support",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Contribution and support",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Guidelines",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Guidelines",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Colour",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Colour",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Avatars and profile cards",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Avatars and profile cards",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Navigation and footer",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Navigation and footer",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Block modules",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Block modules",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Stats sections",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Stats sections",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Carousels",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Carousels",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Logos",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Logos",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Events calendar",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Events calendar",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Modals and dialogs",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Modals and dialogs",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Notifications",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Notifications",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Cookie consent",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Cookie consent",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Forms",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Forms",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Filters",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Filters",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Components",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Components",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Text links",
-     "guide": "States and Motion",
-     "gid": "guide-5",
-     "section": "Text links",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Timing",
-     "guide": "States and Motion",
-     "gid": "guide-5",
-     "section": "Timing",
-     "action": "changed"
-    },
-    {
-     "type": "site",
-     "action": "changed",
-     "name": "Reference site"
-    }
-   ],
-   "shots": [],
-   "order": 9
-  },
-  {
-   "id": "eab3c90",
-   "sha": "eab3c90be7734d2cd587615899fce29c8c8a2af9",
-   "date": "2026-10-15",
-   "author": "Isabel Cordero",
-   "with": [
-    "Claude"
-   ],
-   "approvedBy": [],
-   "summary": "Change Management for designers, Choosing Components, review fixes",
-   "pr": null,
-   "items": [
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Accordion",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "AccordionModule",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "AlertDialog",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "AppliedFilters",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Avatar",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "BlogCard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Breadcrumbs",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Button",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Card",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "CardModule",
-     "what": [
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Carousel",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Checkbox",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "CookieBanner",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "CtaModule",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "DemoRequestWizard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "DetailComparison",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Drawer",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "DrawerCard",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "EventCalendar",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "EventCard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "EventType",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "ExitIntent",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FeatureMatrix",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FilterBar",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FilterButton",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FilterChip",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FilterChipGroup",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FilterDrawer",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FilterDropdown",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Flag",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Footer",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Form",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "removed",
-     "name": "FormBanner"
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FormModal",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "GeneralContent",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Grid",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Hero",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "HoverCard",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Hyperlink",
-     "what": [
-      "look",
-      "props",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Icon",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "InlinePromoCard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "IntegrationCard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "LogoCarousel",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "LogoHierarchy",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Marker",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "MarketingTable",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Media",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Modal",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Nav",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "NavBanner",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "NotificationBar",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Overlay",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "ProfileCard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "ProfileGrid",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "ProfileModal",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Radio",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "ResourceCard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "SearchBar",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Select",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "SessionTimeout",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "SocialButton",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "StatCard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Stats",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "SuccessConfirmation",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TabModule",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Tabs",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Tag",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TestimonialCard",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TestimonialCarousel",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TextField",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TextLink",
-     "what": [
-      "look",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "ToastStack",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Toggle",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Tooltip",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "TypographicHeader",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Typography",
-     "wording": true
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "WebinarCard",
-     "wording": true
-    },
-    {
-     "type": "token",
-     "name": "font-brand",
-     "family": "type",
-     "action": "removed",
-     "from": "\"Gotham\", sans-serif"
-    },
-    {
-     "type": "guide",
-     "name": "Change Management",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Where Flex lives",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Where Flex lives",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "Getting set up",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Getting set up",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "Working with Claude",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Working with Claude",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "What to ask",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "What to ask",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "Experimenting safely",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Experimenting safely",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "Publishing",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Publishing",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Before you start",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Before you start",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "Before you publish",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Before you publish",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "Adding back something built outside Flex",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Adding back something built outside Flex",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Retiring a component",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Retiring a component",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "Everyone",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Everyone",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Designers",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Designers",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Developers",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Developers",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Adding a collaborator",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Adding a collaborator",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Keeping it healthy",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Keeping it healthy",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "How Flex is run",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "How Flex is run",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Principles",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Principles",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Roles",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Roles",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Statuses",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Statuses",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Steps",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Steps",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Review checklist",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Review checklist",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Deprecating and removing",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Deprecating and removing",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Updating this document",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Updating this document",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Where things live",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Where things live",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Writing for this document",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Writing for this document",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Setup",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Setup",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "What you need",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "What you need",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Get the files",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Get the files",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Build and test",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Build and test",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Hosting",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Hosting",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "action": "added",
-     "name": "Choosing Components",
-     "guide": "Choosing Components",
-     "gid": "guide-11"
-    },
-    {
-     "type": "guide",
-     "name": "Contrast notes",
-     "guide": "Color",
-     "gid": "guide-2",
-     "section": "Contrast notes",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Length",
-     "guide": "Content",
-     "gid": "guide-1",
-     "section": "Length",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "CTAs",
-     "guide": "Content",
-     "gid": "guide-1",
-     "section": "CTAs",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Dates and times",
-     "guide": "Content",
-     "gid": "guide-1",
-     "section": "Dates and times",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Block modules",
-     "guide": "Layout, Spacing and Radius",
-     "gid": "guide-4",
-     "section": "Block modules",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Finding images and assets",
-     "guide": "Media",
-     "gid": "guide-9",
-     "section": "Finding images and assets",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "Governance",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Governance",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Collaboration",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Collaboration",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Contribution and support",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Contribution and support",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Guidelines",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Guidelines",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Status: what is safe to build",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Status: what is safe to build",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Who updates a status",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Who updates a status",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Block modules",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Block modules",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Components",
-     "guide": "Patterns and Components",
-     "gid": "guide-7",
-     "section": "Components",
      "action": "changed",
-     "wording": true
+     "minor": true
     },
     {
      "type": "guide",
-     "name": "Families",
+     "name": "Line breaks",
      "guide": "Typography",
      "gid": "guide-3",
-     "section": "Families",
-     "action": "changed"
+     "section": "Line breaks",
+     "action": "added"
     },
     {
-     "type": "guide",
-     "name": "Letter spacing",
-     "guide": "Typography",
-     "gid": "guide-3",
-     "section": "Letter spacing",
+     "type": "asset",
      "action": "changed",
-     "wording": true
+     "name": "README.md",
+     "group": "Event Icons"
+    },
+    {
+     "type": "asset",
+     "action": "changed",
+     "name": "icon-event-industry.svg",
+     "group": "Event Icons"
+    },
+    {
+     "type": "asset",
+     "action": "changed",
+     "name": "icon-event-training.svg",
+     "group": "Event Icons"
+    },
+    {
+     "type": "asset",
+     "action": "changed",
+     "name": "icon-event-webinar.svg",
+     "group": "Event Icons"
     },
     {
      "type": "site",
      "action": "changed",
-     "name": "Reference site"
+     "name": "Reference site",
+     "minor": true
     }
    ],
    "shots": [],
-   "order": 10
-  },
-  {
-   "id": "35c2b57",
-   "sha": "35c2b574366d0af1150d2ea9acfe259636d25354",
-   "date": "2026-10-15",
-   "author": "Isabel Cordero",
-   "with": [
-    "Claude"
+   "headline": "Added CardModule · Updated tokens (28) · Updated event icons",
+   "minor": false,
+   "shas": [
+    "621f8e8a5ef7dd36560a404486a2266a936979dc",
+    "6f81bce87645bbb61bf781bc3a206c42241b620c",
+    "4b10b653cddaa388ede80dfcece9a5f95daa2fc9",
+    "307b9c2c242e33833ffc47f0f1fc0185ff665a2b",
+    "283a851de05e74e04ab7e39258cd6adf23db2efd",
+    "af2c972c6741edbded0871effeea92ea2cd801f0"
    ],
-   "approvedBy": [],
-   "summary": "Bigger MarketingTable check; remove FeatureMatrix red no-marks",
-   "pr": null,
-   "items": [
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "DetailComparison",
-     "what": [
-      "look"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FeatureMatrix",
-     "what": [
-      "look",
-      "props",
-      "docs"
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "MarketingTable",
-     "what": [
-      "look",
-      "docs"
-     ]
-    }
-   ],
-   "shots": [],
-   "order": 11
-  },
-  {
-   "id": "071fc51",
-   "sha": "071fc51cf4899bf711f64bb5b227c142adfa704e",
-   "date": "2026-10-15",
-   "author": "Isabel Cordero",
-   "with": [
-    "Claude"
-   ],
-   "approvedBy": [],
-   "summary": "Change Management for any AI agent; add AGENTS.md",
-   "pr": null,
-   "items": [
-    {
-     "type": "guide",
-     "name": "Change Management",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Where Flex lives",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Where Flex lives",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Getting set up",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Getting set up",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Working with your AI agent",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Working with your AI agent",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "What to ask",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "What to ask",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Prompts to copy",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Prompts to copy",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "From idea to published",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "From idea to published",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "1. Make it on its own branch",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "1. Make it on its own branch",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "2. Preview it on your computer",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "2. Preview it on your computer",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "3. Share it for approval",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "3. Share it for approval",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "4. Publish",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "4. Publish",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "Before you share",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Before you share",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "Adding back something built outside Flex",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Adding back something built outside Flex",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Retiring a component",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Retiring a component",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Adding a collaborator",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Adding a collaborator",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Keeping it healthy",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Keeping it healthy",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Working with Claude",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Working with Claude",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Experimenting safely",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Experimenting safely",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Publishing",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Publishing",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Before you publish",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Before you publish",
-     "action": "removed"
-    },
-    {
-     "type": "guide",
-     "name": "Governance",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Governance",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "guide",
-     "name": "Collaboration",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Collaboration",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Contribution and support",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Contribution and support",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Guidelines",
-     "guide": "Overview",
-     "gid": "overview",
-     "section": "Guidelines",
-     "action": "changed",
-     "wording": true
-    },
-    {
-     "type": "site",
-     "action": "changed",
-     "name": "Reference site"
-    }
-   ],
-   "shots": [],
-   "order": 12
-  },
-  {
-   "id": "2cac22c",
-   "sha": "2cac22c462a6f0e53a045296e469c0c4d3862306",
-   "date": "2026-10-15",
-   "author": "Isabel Cordero",
-   "with": [
-    "Claude"
-   ],
-   "approvedBy": [],
-   "summary": "Change Management: setting up Claude for the team",
-   "pr": null,
-   "items": [
-    {
-     "type": "guide",
-     "name": "Where Flex lives",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Where Flex lives",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Getting set up",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Getting set up",
-     "action": "changed"
-    },
-    {
-     "type": "guide",
-     "name": "Setting up Claude for the team",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Setting up Claude for the team",
-     "action": "added"
-    },
-    {
-     "type": "guide",
-     "name": "Adding a collaborator",
-     "guide": "Change Management",
-     "gid": "guide-10",
-     "section": "Adding a collaborator",
-     "action": "changed"
-    },
-    {
-     "type": "site",
-     "action": "changed",
-     "name": "Reference site"
-    }
-   ],
-   "shots": [],
-   "order": 13
+   "order": 1
   }
  ]
 }
