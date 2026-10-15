@@ -8,8 +8,7 @@
   "Claude"
  ],
  "approvedBy": [],
- "summary": "American spelling, Change Management, statuses, search, logo sizing · Change Management for designers, Choosing Components, review fixes · Bigger MarketingTable check; remove FeatureMatrix red no-marks · Change Management for any AI agent; add AGENTS.md · Change Management: setting up Claude for the team · Automatic change log, with a draft to check before publishing · Nav: 1px bottom stroke under the bar · Change Log: high-level entries that open like a drawer",
- "commits": 13,
+ "commits": 16,
  "base": "af2c972c6741edbded0871effeea92ea2cd801f0",
  "pr": null,
  "items": [
@@ -20,7 +19,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 2
   },
   {
    "type": "component",
@@ -85,7 +85,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 2
   },
   {
    "type": "component",
@@ -129,7 +130,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 1
   },
   {
    "type": "component",
@@ -145,7 +147,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 2
   },
   {
    "type": "component",
@@ -154,7 +157,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 2
   },
   {
    "type": "component",
@@ -176,7 +180,8 @@
    "name": "ExamplePage",
    "what": [
     "look"
-   ]
+   ],
+   "weight": 2
   },
   {
    "type": "component",
@@ -186,7 +191,8 @@
     "look",
     "props",
     "docs"
-   ]
+   ],
+   "weight": 4
   },
   {
    "type": "component",
@@ -196,7 +202,8 @@
     "look",
     "props",
     "docs"
-   ]
+   ],
+   "weight": 10
   },
   {
    "type": "component",
@@ -254,7 +261,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 2
   },
   {
    "type": "component",
@@ -264,7 +272,8 @@
     "look",
     "props",
     "docs"
-   ]
+   ],
+   "weight": 10
   },
   {
    "type": "component",
@@ -306,7 +315,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 3
   },
   {
    "type": "component",
@@ -316,7 +326,8 @@
     "look",
     "props",
     "docs"
-   ]
+   ],
+   "weight": 20
   },
   {
    "type": "component",
@@ -346,7 +357,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 15
   },
   {
    "type": "component",
@@ -355,7 +367,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 23
   },
   {
    "type": "component",
@@ -371,7 +384,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 4
   },
   {
    "type": "component",
@@ -394,7 +408,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 8
   },
   {
    "type": "component",
@@ -403,7 +418,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 2
   },
   {
    "type": "component",
@@ -503,7 +519,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 2
   },
   {
    "type": "component",
@@ -512,7 +529,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 2
   },
   {
    "type": "component",
@@ -521,7 +539,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 2
   },
   {
    "type": "component",
@@ -530,7 +549,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 6
   },
   {
    "type": "component",
@@ -546,7 +566,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 0
   },
   {
    "type": "component",
@@ -562,7 +583,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 2
   },
   {
    "type": "component",
@@ -599,7 +621,8 @@
    "what": [
     "look",
     "docs"
-   ]
+   ],
+   "weight": 2
   },
   {
    "type": "component",
@@ -1125,5 +1148,12 @@
  ],
  "shots": [],
  "headline": "Removed FormBanner · New guides: Change Management and Choosing Components · Removed the font-brand token",
+ "highlights": [
+  "Removed: FormBanner",
+  "Removed the font-brand token",
+  "Updated components: 24, including LogoHierarchy, Hyperlink and LogoCarousel",
+  "New guides: Change Management and Choosing Components",
+  "Updated guides: 8, including Icons and Logos, Buttons and Links and Overview"
+ ],
  "minor": false
 }
