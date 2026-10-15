@@ -1248,10 +1248,10 @@
     }
     function body(e, type) {
       var b = mk('div', 'ds-cl-body');
-      if (e.summary && e.summary !== e.headline) {
-        var n = mk('p', 'ds-cl-notes');
-        n.appendChild(mk('span', 'ds-cl-label', e.draft ? 'Saved as' : 'Notes'));
-        n.appendChild(document.createTextNode(e.summary));
+      if (e.summary && e.summary !== e.headline) {   // the author's own words (commit messages or the pull request title), folded away
+        var notes = e.summary.split(' · '), n = mk('details', 'ds-cl-notes'), ns = mk('summary', null, notes.length > 1 ? 'Notes from the author (' + notes.length + ')' : 'Note from the author'), nl = mk('ul');
+        notes.forEach(function (t) { nl.appendChild(mk('li', null, t)); });
+        n.appendChild(ns); n.appendChild(nl);
         b.appendChild(n);
       }
       var items = (e.items || []).filter(function (it) { return (!type || it.type === type) && (state.small || !it.minor); });
