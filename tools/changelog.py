@@ -295,6 +295,14 @@ def compare(a, b):
         items.append(it)
 
     ga, gb = guides(a), guides(b)
+    # a guide whose title changed (Colour to Color) is the same guide: compare it under its new title
+    old_by_gid = {g['gid']: t for t, g in ga.items()}
+    for t in [t for t in gb if t not in ga]:
+        o = old_by_gid.get(gb[t]['gid'])
+        if o and o not in gb:
+            ga[t] = ga.pop(o)
+            items.append({'type': 'guide', 'action': 'changed', 'name': t, 'guide': t, 'gid': gb[t]['gid'],
+                          'renamedFrom': o, 'wording': True})
     for t in sorted(set(ga) | set(gb)):
         if t not in ga:
             items.append({'type': 'guide', 'action': 'added', 'name': t, 'guide': t, 'gid': gb[t]['gid']})
@@ -377,7 +385,7 @@ def headline(items):
         parts.append('Removed ' + names(comp('removed'), 'component'))
     gnew = [i['guide'] for i in big if i['type'] == 'guide' and i['action'] == 'added' and 'section' not in i]
     if gnew:
-        parts.append('New guide: ' + names(gnew, 'guide'))
+        parts.append(('New guide: ' + gnew[0]) if len(set(gnew)) == 1 else ('New guides: ' + names(gnew, 'guide')) if len(set(gnew)) == 2 else '%d new guides' % len(set(gnew)))
     toks = [i for i in big if i['type'] == 'token']
     if toks:
         fams = {i['family'] for i in toks}
@@ -393,7 +401,7 @@ def headline(items):
         parts.append('Updated ' + names(comp('changed'), 'component'))
     gold = [i['guide'] for i in big if i['type'] == 'guide' and i['action'] == 'removed' and 'section' not in i]
     if gold:
-        parts.append('Removed guide: ' + names(gold, 'guide'))
+        parts.append(('Removed guide: ' if len(set(gold)) == 1 else 'Removed guides: ') + names(gold, 'guide'))
     gchg = [i['guide'] for i in big if i['type'] == 'guide' and 'section' in i]
     gchg = [g for g in gchg if g not in gnew]
     if gchg:
