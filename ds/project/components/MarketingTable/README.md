@@ -15,7 +15,7 @@ Use it to set a standard, a directive or a list of requirements beside what Qual
 - **Rows:** 104px tall or more, with 1px `stroke-neutral-400` rules between them. Cells have 24px × 32px padding and center their content vertically.
 - **Row heading:** an optional Feature Icon at 56px, 16px before the heading in `h4` (SemiBold 20px, line height 1.3, −1%), `text-primary`, Title Case.
 - **Cells:** `paragraph-rg` (16px) in `text-secondary`.
-- **Featured column:** a `surface-neutral-300` ground from under the header to the foot of the card. Its cells are Medium in `text-primary`, behind a 16px `check` icon in `icon-feature`, 10px before the text.
+- **Featured column:** a `surface-neutral-300` ground from under the header to the foot of the card. Its cells are Medium in `text-primary`, behind a 24px `check` icon (`lg`) in `icon-feature`, 10px before the text and centered on its first line.
 - **Tablet (768–1023px):** still a table, with 20px padding, a 120px header, 48px icons, 18px row headings and a 30px logo. Column headings scale down with the section's width, to 24px at the least.
 - **Mobile (under 768px):** the columns stack. The header shows the first column's heading only, over the whole photo. Each row is its heading (40px icon, 18px) followed by one block per column, labeled with that column's name in the `eyebrow-xs` style ("QUALYS ADVANTAGES"). The featured block keeps its `surface-neutral-300` ground, with `radius-md` and 12px padding.
 - Built as an ARIA table (`role="table"` with column and row headers), so each cell is announced with its headings; give it a `label`. The photo, icons and checks are decorative and hidden from assistive technology.

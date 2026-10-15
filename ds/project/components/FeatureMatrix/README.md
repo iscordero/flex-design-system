@@ -3,11 +3,11 @@
 
 A yes/no comparison table: Qualys in the first, highlighted column, competitors beside it, and features grouped into topics that open and close. Use it when the claim is "we cover this, they don't" across many features. When each cell needs a sentence, use DetailComparison; for a short list of statements, MarketingTable.
 
-**Provide:** `columns` (the first is Qualys), `sections` and optionally `title`, `subtitle`, `noMark`.
+**Provide:** `columns` (the first is Qualys), `sections` and optionally `title`, `subtitle`.
 
 - **Columns:** `[{ id, name, logo, subtitle }]`. Give every column its `logo`; without one a dashed slot holds the name (as in the preview, where competitor logos are placeholders). Two to five competitors read well on desktop.
 - **Sections:** `[{ title, open, rows }]`. Each is a Drawer; set `open` on the ones that start open. A row is `[label, 1, 0, 1, …]` or `{ label, values }`, one value per column.
-- **Marks:** yes is a white tick on `success`, 24px circle. No is a cross on `chip-bg` in `text-secondary` (`noMark="muted"`, the default) or white on `crimson` (`noMark="red"`). Color is never the only signal: the tick and cross differ, and each mark is read as "Wiz: No".
+- **Marks:** yes is a white tick on `success`, 24px circle. No is a gray cross on `chip-bg` in `text-secondary`, so the yes marks stand out; there is no red variant. Color is never the only signal: the tick and cross differ, and each mark is read as "Wiz: No".
 - **Totals:** the last row of each section counts the yes marks ("6 of 8") under the label "Supported". `totalLabel` renames it, `formatTotal(n, total)` reformats it, `totals={false}` removes it.
 - **Highlight:** an Ecru band (`surface-neutral-300`, `radius-md`) runs behind the first column from header to last row.
 - **Size:** a white card (`radius-lg`, `shadow-card`, 32px padding) in the content column (up to 1440px). The label column is 2.2 parts and every vendor column one part. Rows are at least 53px tall and grow with a wrapping label; the heading is `h3`.

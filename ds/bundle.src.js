@@ -1869,8 +1869,8 @@
     if (c.logo) return h('img', { className: 'q-cmp__logo', src: c.logo, alt: c.logoAlt || c.name || '', style: { height: size + 'px' } });
     return h('span', { className: 'q-cmp__nologo', style: { height: size + 'px' } }, h('span', null, c.name));
   }
-  function cmpMark(yes, col, red) {
-    return h('span', { className: cx('q-cmp__mark', yes ? 'q-cmp__mark--yes' : (red ? 'q-cmp__mark--no-red' : 'q-cmp__mark--no')), role: 'img', 'aria-label': (col ? col + ': ' : '') + (yes ? 'Yes' : 'No') },
+  function cmpMark(yes, col) {
+    return h('span', { className: cx('q-cmp__mark', yes ? 'q-cmp__mark--yes' : 'q-cmp__mark--no'), role: 'img', 'aria-label': (col ? col + ': ' : '') + (yes ? 'Yes' : 'No') },
       h(Icon, { name: yes ? 'check' : 'cross', size: 'sm' }));
   }
   function cmpHeading(p, key) {
@@ -1892,7 +1892,7 @@
     var ref = React.useRef(null), mobile = useNarrow(ref, 768, p.layout);
     var cols = cmpColumns(p.columns), own = cols[0] || { id: '0', name: '' }, others = cols.slice(1);
     var cs = React.useState(p.defaultCompare != null ? String(p.defaultCompare) : null), comp = p.compare !== undefined ? String(p.compare) : cs[0];
-    var ds = React.useState(!!p.defaultDiffOnly), diff = ds[0], red = p.noMark === 'red';
+    var ds = React.useState(!!p.defaultDiffOnly), diff = ds[0];
     var cur = 0;
     others.forEach(function (c, i) { if (c.id === comp) cur = i; });
     var shown = mobile ? (others.length ? [0, cur + 1] : [0]) : cols.map(function (c, i) { return i; });
@@ -1907,7 +1907,7 @@
           rows.map(function (r, i) {
             return h('div', { key: i, className: 'q-cmp__row', role: 'row', style: grid },
               h('div', { className: 'q-cmp__label', role: 'rowheader' }, r.label),
-              shown.map(function (c) { return h('div', { key: c, className: 'q-cmp__cell', role: 'cell' }, cmpMark(!!r.values[c], cols[c].name, red)); }));
+              shown.map(function (c) { return h('div', { key: c, className: 'q-cmp__cell', role: 'cell' }, cmpMark(!!r.values[c], cols[c].name)); }));
           }),
           !rows.length ? h('div', { className: 'q-cmp__none' }, p.noDiffLabel || 'No differences in this section.') : null,
           p.totals === false ? null : h('div', { className: 'q-cmp__row q-cmp__row--total', role: 'row', style: grid },
@@ -2023,7 +2023,7 @@
                   return h('div', { key: k, className: cx('q-mtable__cell', c.featured && 'is-featured'), role: 'cell' },
                     h('span', { className: 'q-mtable__label' }, colName(c), c.subtitle ? ' ' : null, c.subtitle),
                     h('span', { className: 'q-mtable__value' },
-                      c.featured ? h('span', { className: 'q-mtable__check', 'aria-hidden': 'true' }, h(Icon, { name: 'check', size: 16 })) : null,
+                      c.featured ? h('span', { className: 'q-mtable__check', 'aria-hidden': 'true' }, h(Icon, { name: 'check', size: 'lg' })) : null,
                       h('span', { className: 'q-mtable__text' }, (r.cells || [])[k])));
                 }));
             }))))));

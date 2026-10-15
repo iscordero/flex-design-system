@@ -1,4 +1,4 @@
-<!-- @dsCard group="Page modules · Tables" height=3039 width=1440 subtitle="Block module · Yes/no feature comparison with Qualys highlighted; on mobile, one competitor at a time. Sample data." -->
+<!-- @dsCard group="Page modules · Tables" height=2204 width=1440 subtitle="Block module · Yes/no feature comparison with Qualys highlighted; on mobile, one competitor at a time. Sample data." -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,8 +22,7 @@ var SECTIONS = [
   {title: '[Section Title]', rows: [['[Feature Name]', 1, 1, 1, 1, 0], ['[Feature Name]', 1, 0, 0, 1, 1], ['[Feature Name]', 1, 1, 0, 1, 0]]}];
 function fm(extra) { return h(Q.FeatureMatrix, Object.assign({title: 'Heading', subtitle: 'Optional Subheading', columns: COLS, sections: SECTIONS}, extra)); }
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
-  cap('Desktop: muted "no" marks'), fm(),
-  cap('Red "no" marks'), fm({noMark: 'red', sections: SECTIONS.slice(0, 1)}),
+  cap('Desktop'), fm(),
   cap('Mobile: pick a competitor; show differences only'), h('div', {className: 'phones'},
     h('div', {className: 'phone w390'}, fm()),
     h('div', {className: 'phone w390'}, fm({defaultCompare: 'paloalto', defaultDiffOnly: true})))));

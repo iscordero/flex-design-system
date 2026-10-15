@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-15T18:18:55Z",
+    "at": "2026-10-15T18:36:37Z",
     "by": "Isabel",
-    "note": "Change Management rewritten for designers and moved under Start; new Choosing Components guide; statuses and FormBanner removed; content length rule updated; Bynder in Media; nav menus touch the bar; tab underline matches nav; inline link arrow removed.",
+    "note": "MarketingTable check is now the 24px (lg) icon, centered on the first line. FeatureMatrix: removed the red no-mark variant (noMark prop); no is always the gray cross.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

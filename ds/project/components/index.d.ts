@@ -1547,8 +1547,6 @@ export interface FeatureMatrixProps {
   columns: Array<ComparisonColumn | string>;
   /** a row is { label, values } or [label, 1, 0, ...], one value per column */
   sections: Array<{ title: React.ReactNode; open?: boolean; rows: Array<FeatureMatrixRow | Array<React.ReactNode | boolean | number>> }>;
-  /** the "no" mark: 'muted' (default) or 'red' */
-  noMark?: 'muted' | 'red';
   /** default "Supported" */
   totalLabel?: React.ReactNode;
   formatTotal?: (count: number, total: number) => React.ReactNode;
