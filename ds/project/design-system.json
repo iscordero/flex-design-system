@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-15T18:56:59Z",
+    "at": "2026-10-15T19:22:26Z",
     "by": "Isabel",
-    "note": "Change Management: added Setting up Claude for the team (optional shared Qualys Design System project, project instructions and a prompt to build Flex in Claude); clarified that the Claude copy is optional.",
+    "note": "Nav: 1px stroke-neutral-400 bottom border separates the bar from the menus; the blue active bar sits on it and menus hang just below. Change Log shows a draft entry for unpublished work so it can be checked before publishing.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",
