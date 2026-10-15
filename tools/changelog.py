@@ -78,6 +78,11 @@ SPELLING = [('colour', 'color'), ('grey', 'gray'), ('centre', 'center'), ('behav
             ('authoris', 'authoriz'), ('normalis', 'normaliz'), ('personalis', 'personaliz'), ('centralis', 'centraliz')]
 
 
+def card(preview):
+    """A preview without its card line (height, width, group), which the site's tools adjust on their own."""
+    return us(re.sub(r'<!--\s*@dsCard[^>]*-->', '', preview or ''))
+
+
 def us(text):
     t = (text or '').lower()
     for b, a in SPELLING:
@@ -197,7 +202,7 @@ def guides(v):
     out = {}
     for f in sorted(v.files):
         m = re.match(re.escape(P) + r'(guide-(\d+)-[a-z0-9-]+|README)\.md$', f)
-        if not m:
+        if not m or m.group(2) == '7':   # guide 7 (Patterns and Components) is retired and not on the site
             continue
         text = v.read(f) or ''
         h1 = re.search(r'(?m)^# (.+)$', text)
@@ -282,7 +287,7 @@ def compare(a, b):
             items.append({'type': 'component', 'action': 'removed', 'name': n})
             continue
         what = []
-        if n in look or us(ca[n]['preview']) != us(cb[n]['preview']):
+        if n in look or card(ca[n]['preview']) != card(cb[n]['preview']):
             what.append('look')
         if us(pa.get(n)) != us(pb.get(n)):
             what.append('props')
