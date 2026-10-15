@@ -303,3 +303,10 @@ a { color: var(--ds-link); }
 .ds-devstage { margin-top: 12px; }
 .ds-devfit { position: relative; overflow: hidden; margin: 0 auto; border: 1px solid var(--ds-line); border-radius: 12px; background: #fff; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); }
 .ds-devfit iframe { position: absolute; left: 0; top: 0; border: 0; transform-origin: 0 0; background: #fff; }
+
+/* Prompts to copy into an AI agent (fenced blocks in the guides) */
+.ds-prompt { max-width: 80ch; border: 1px solid var(--ds-line); border-radius: 8px; background: var(--ds-sunk); overflow: hidden; }
+.ds-prompt-head { display: flex; align-items: center; gap: 12px; padding: 6px 8px 6px 14px; border-bottom: 1px solid var(--ds-line); }
+.ds-prompt-head span { color: var(--ds-ink-2); font-size: 12.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.ds-prompt pre { margin: 0; padding: 12px 14px; font-family: var(--ds-mono); font-size: 13px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+.ds-prompt pre:focus-visible { outline-offset: -2px; }

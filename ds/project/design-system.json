@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-15T18:36:37Z",
+    "at": "2026-10-15T18:44:24Z",
     "by": "Isabel",
-    "note": "MarketingTable check is now the 24px (lg) icon, centered on the first line. FeatureMatrix: removed the red no-mark variant (noMark prop); no is always the gray cross.",
+    "note": "Change Management rewritten for any AI agent: start from the GitHub repository, copyable setup and change prompts, preview locally, share a branch preview link and pull request for approval, merge to publish. Change Management now sits before Example page.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

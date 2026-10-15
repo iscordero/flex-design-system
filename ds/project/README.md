@@ -51,8 +51,8 @@ Second person, Title Case headings, calls to action that start with a verb.
 The live Flex site ([flex-design-system.pages.dev](https://flex-design-system.pages.dev)) is the source of truth for how the Qualys website is designed and built.
 
 - **Design here first.** New pages and changes are designed with Flex's components and tokens before they go to development. Developers build from Flex, not from one-off mockups.
-- **What's published is what to build.** Everything on the site is approved to build. New ideas and experiments stay as drafts in Claude until they are checked and published, so nothing half-finished reaches the site.
-- **The site mirrors this design system.** The site is generated from the same files (tokens, guides, component READMEs and previews). Nobody edits the site by hand: change the design system, then publish.
+- **What's published is what to build.** Everything on the site is approved to build. New ideas and experiments stay on their own branch, with a preview link, until they are reviewed, approved and published, so nothing half-finished reaches the site.
+- **One source.** Flex is kept in its GitHub repository, and the site is generated from it (tokens, guides, component READMEs and previews). Nobody edits the site by hand: change the design system, then publish.
 - **Add back anything built outside it.** If a page on qualys.com uses something Flex doesn't have, add it here (as a new component, a variant or a documented exception) so the next person finds it.
 - **Known problems are written down.** If a component has a problem that isn't fixed yet, it is described under Notes in that component's README, so designers and developers see it before they use it.
 
@@ -61,11 +61,11 @@ The live Flex site ([flex-design-system.pages.dev](https://flex-design-system.pa
 - **Designers:** start from Flex components and the Example page. Work that needs something new goes into Flex first, then into page designs.
 - **Developers:** build from the component READMEs and `index.d.ts`. If the live site differs from Flex, Flex is right: update the page, or report the difference so it can be fixed here.
 - **Content writers:** follow the Content guide; component READMEs give each part's character limits.
-- **Reviewers and stakeholders:** review in the Example page and on component cards; leave feedback on the design system as comments.
+- **Reviewers and stakeholders:** review changes on their preview link and approve them on the pull request; review what's published on the Example page and component cards.
 
 ## Contribution and support
 
-How to get access, work with Claude, make and publish a change, and bring a new collaborator up to speed is in **Change Management**, under Start. For questions, ask in the Qualys Design System project in Claude.
+How to get access, work with an AI agent, preview, approve and publish a change, and bring a new collaborator up to speed is in **Change Management**, under Start. For questions, open an issue in the [GitHub repository](https://github.com/iscordero/flex-design-system).
 
 ## Guidelines
 
@@ -80,4 +80,4 @@ The detailed rules follow this overview, one section each. Read the section for 
 - **Media** (`guide-9-media.md`): photography, video, product images and people photos, with the image files.
 - **Buttons and Links** (`guide-8-buttons-links.md`): button tiers and their labels, do's and don'ts, mobile sizing, inline hyperlinks and text link buttons.
 - **Choosing Components** (`guide-11-choosing-components.md`): which component or page module to use for each job, including which form to use where.
-- **Change Management** (`guide-10-change-management.md`): getting access, working with Claude, making and publishing a change, and onboarding.
+- **Change Management** (`guide-10-change-management.md`): getting set up with any AI agent, previewing, approving and publishing a change, and onboarding.

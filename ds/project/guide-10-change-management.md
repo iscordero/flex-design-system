@@ -1,57 +1,120 @@
 # Change Management
 
-How to look after Flex: where it lives, how to get set up, how to work with Claude to change it, and how a change goes live. You don't need to write code; Claude does the building, and you decide, check and publish.
+How to look after Flex: where it is kept, how to get set up, how to work with an AI agent to change it, and how a change is previewed, approved and published. You don't need to write code or learn commands: the agent does the building, and you decide, check and approve.
 
 ## Where Flex lives
 
+Flex is kept in one place, a GitHub repository. Everything else is made from it.
+
 | What | Where | What it's for |
 | --- | --- | --- |
-| The site | [flex-design-system.pages.dev](https://flex-design-system.pages.dev) | What everyone reads and builds from |
-| The design system in Claude | The **Qualys Design System** project in Claude, and its "Qualys" design system | Where changes are made, with Claude's help |
-| The source files | The `flex-design-system` repository on GitHub | The saved history of every change; the site is published from here |
+| The source | [github.com/iscordero/flex-design-system](https://github.com/iscordero/flex-design-system) | The single source of truth: tokens, guides, components and the full history of every change |
+| The site | [flex-design-system.pages.dev](https://flex-design-system.pages.dev) | What everyone reads and builds from. It updates by itself when a change is published to the repository |
+| Preview links | `<change-name>.flex-design-system.pages.dev` | A copy of the site for each change that isn't published yet, to share for approval |
 | Images and assets | Bynder (see Media) | Approved photos, video, logos and icons |
 
-The site, the design system in Claude and the GitHub repository always hold the same thing. Claude keeps them in step when you publish.
+Because the repository is the source, anyone can work on Flex with the AI agent they prefer. The agent reads the repository's instructions (`AGENTS.md`), so it knows how Flex is built and what rules to follow.
+
+Teams using Claude also have a copy of Flex as a design system in the **Qualys Design System** project, which Claude uses when it designs pages. It is refreshed from the repository, so if the two ever differ, the repository is right.
 
 ## Getting set up
 
-Do this once. Ask whoever manages Flex today to give you access to the first two.
+You need two things:
 
-1. **Claude:** an invitation to the Qualys Design System project.
-2. **GitHub:** access to the `flex-design-system` repository.
-3. **Install** the Claude desktop app and GitHub Desktop.
-4. **Get the files:** in GitHub Desktop, choose Clone Repository, pick `flex-design-system` and save it in your Documents folder.
-5. **Connect the folder:** in the Claude desktop app, open the Qualys Design System project, start a task and add the `flex-design-system` folder, so Claude can save changes there.
+1. **Access to the repository.** Ask whoever manages Flex today to add your GitHub account to `flex-design-system`.
+2. **An AI agent that can work with files and GitHub.** Use the one you already have, for example Claude (Cowork or Claude Code), ChatGPT Codex, Cursor, GitHub Copilot, Gemini CLI or Windsurf. Connect it to your GitHub account in its settings, or sign in when it asks.
 
-That's all. Everything else is done by asking Claude.
+Then copy this prompt into your agent:
 
-## Working with Claude
+```
+Set me up to work on the Flex Design System.
+1. Get the repository https://github.com/iscordero/flex-design-system and save it in my Documents folder. If it's already there, get the latest version instead.
+2. Read AGENTS.md and README.md, and follow them whenever we work on Flex.
+3. Install whatever the build and checks need.
+4. Build the site and open site/index.html so I can see it works.
+Explain what you did in plain language, and tell me if there's anything I need to do myself.
+```
 
-Claude knows how Flex is built: the tokens, the components, the guides and how to publish. Talk to it as you would to a designer and developer on your team. Be specific about what and where, attach a screenshot when something looks wrong, and ask to see it before it's published.
+That's all. You don't need to install anything else yourself. GitHub Desktop is optional: some people like it for seeing changes, but the agent can do everything without it.
+
+## Working with your AI agent
+
+Talk to the agent as you would to a designer and developer on your team. Be specific about what and where, attach a screenshot when something looks wrong, and ask to see it before it's shared or published.
 
 ### What to ask
 
 | You want to | Say something like |
 | --- | --- |
-| Find the right part | "Which component should I use for a gated whitepaper download?" |
+| Find the right part | "Which Flex component should I use for a gated whitepaper download?" |
 | Fix something | "The tag sections on the Tag page look cramped; add more space between them." (attach a screenshot) |
 | Change a rule | "Change the heading limit on cards to 50 characters and update the README." |
-| Add a component | "Add a Pricing Card: plan name, price, a list of features with checks and a primary button. Use our tokens, write its README and preview with desktop and mobile, and put it with the Cards." |
-| Try out ideas | "Show me three versions of a stats banner on the Example page as drafts. Don't publish." |
-| Pick an idea | "Go with version B, clean it up and publish." |
-| Check something | "Does anything on the site use a color that isn't a token?" |
-| Publish | "Publish." |
+| Add a component | "Add a Pricing Card to Flex: plan name, price, a list of features with checks and a primary button. Use our tokens, write its README and preview with desktop and mobile, and put it with the Cards." |
+| Try out ideas | "Show me three versions of a stats banner on the Example page. Keep them as drafts." |
+| Pick an idea | "Go with version B, clean it up and get it ready for review." |
+| Check something | "Does anything in Flex use a color that isn't a token?" |
+| See what changed | "What changed in Flex this month, and who changed it?" |
 
-### Experimenting safely
+These are examples, not a script. Ask in your own words, about anything in Flex.
 
-- Ask for **drafts**. Claude shows them to you without touching the site.
-- Compare options side by side on the Example page or a component's card, at desktop and mobile widths.
-- Nothing reaches the site until you say "publish".
+### Prompts to copy
 
-### Publishing
+**Start a change**
 
-1. Say **"Publish"** to Claude. It updates the design system, rebuilds the site and saves the change in your folder with a short description.
-2. Open **GitHub Desktop** and press **Push origin**. The site updates within a minute.
+```
+I want to change Flex: [describe the change, and attach screenshots if you have them].
+Get the latest version from GitHub first, then make the change on its own branch, following AGENTS.md.
+Show me a preview on my computer at desktop and mobile widths. Don't publish anything.
+```
+
+**Share it for approval**
+
+```
+This change is ready for review. Run the checks, push the branch and open a pull request with a short summary, before and after screenshots and the preview link.
+Give me the pull request and preview links to share.
+```
+
+**Publish after approval**
+
+```
+The change is approved. Merge the pull request into main and tell me when the live site shows it.
+```
+
+## From idea to published
+
+Every change goes through the same four steps. Nothing reaches the live site until the last one.
+
+### 1. Make it on its own branch
+
+The agent makes each change on a separate copy of Flex (a branch), named after the change, such as `pricing-card`. The live site and other people's work aren't affected.
+
+### 2. Preview it on your computer
+
+The agent rebuilds the site on your computer and opens it in your browser (`site/index.html`, with the Example page in `site/example.html`). Check it at desktop and mobile widths. Ask for changes until it's right.
+
+### 3. Share it for approval
+
+When you're happy, ask the agent to share it. It pushes the branch to GitHub, and two things are made for you:
+
+- **A preview link**, such as `pricing-card.flex-design-system.pages.dev`: the whole site with your change, for anyone to click through. It updates each time the agent pushes a new version.
+- **A pull request** on GitHub: a page with the summary, screenshots and every change, where reviewers can comment and approve.
+
+Send both links to your reviewer. If they can't open GitHub, the preview link is enough, or send them the `site/index.html` file: it's the whole site in one file and opens in any browser.
+
+### 4. Publish
+
+Once it's approved, ask the agent to merge the pull request, or press **Merge** on the pull request page in GitHub. The live site updates within a minute or two.
+
+If your agent can't push to GitHub, it will say so. You can then push with GitHub Desktop's **Push origin** button, or ask a teammate whose agent can.
+
+### Before you share
+
+Check the change in the preview, at desktop and mobile widths:
+
+- It uses Flex's colors, type and spacing, and nothing new without a reason.
+- It works at every width, and no text overflows or breaks badly.
+- Hover, focus and disabled states look right, and it can be used with the keyboard.
+- The README says what it's for, what to provide, its sizes and how it behaves on mobile.
+- The words follow the Content guide, in American English.
 
 ## Making a change
 
@@ -60,30 +123,18 @@ Claude knows how Flex is built: the tokens, the components, the guides and how t
 - Search Flex for what you need; reuse or extend something before adding something new.
 - Note why it's needed: the page, the content, a screenshot of the problem.
 
-### Before you publish
-
-Check the change on its card and on the Example page, at desktop and mobile widths:
-
-- It uses Flex's colors, type and spacing, and nothing new without a reason.
-- It works at every width, and no text overflows or breaks badly.
-- Hover, focus and disabled states look right, and it can be used with the keyboard.
-- The README says what it's for, what to provide, its sizes and how it behaves on mobile.
-- The words follow the Content guide, in American English.
-
-If you can, ask a colleague to look before you publish. A second pair of eyes catches most problems.
-
 ### Adding back something built outside Flex
 
 When a page on qualys.com has something Flex doesn't (a new layout, a variant, a one-off color):
 
 1. Take a screenshot and note the page.
-2. Ask Claude whether it's a variant of an existing component, a new component, or a one-off that shouldn't be repeated.
-3. Variant or new component: have Claude add it to Flex, built from Flex's tokens, and publish.
-4. One-off: have Claude note it in the closest component's README, so it isn't copied.
+2. Ask your agent whether it's a variant of an existing component, a new component, or a one-off that shouldn't be repeated.
+3. Variant or new component: have the agent add it to Flex, built from Flex's tokens, and share it for approval.
+4. One-off: have the agent note it in the closest component's README, so it isn't copied.
 
 ### Retiring a component
 
-Ask Claude to retire it and say what replaces it. It notes the replacement in the README, keeps the old name working until no page uses it, and removes it once it's gone from the site.
+Ask your agent to retire it and say what replaces it. It notes the replacement in the README, keeps the old name working until no page uses it, and removes it once it's gone from the site.
 
 ## Onboarding
 
@@ -111,13 +162,14 @@ Ask Claude to retire it and say what replaces it. It notes the replacement in th
 
 ### Adding a collaborator
 
-- Give them access to the Claude project and the GitHub repository, and send them this page.
-- Pair on their first change: they ask Claude and publish, you look it over.
+- Add their GitHub account to the repository and send them this page.
+- Pair on their first change: they make it with their agent and share it, you review and approve it.
 
 ## Keeping it healthy
 
 Once a month, or before a big launch, spend 15 minutes:
 
-- Look through the recent changes in GitHub Desktop's History for anything unexpected.
+- Ask your agent what changed in Flex recently, or look through the repository's history on GitHub, for anything unexpected.
+- Close or finish pull requests that have been waiting a long time.
 - Compare one live qualys.com page with Flex, and add back anything missing.
 - Check the Notes in the components you used most for problems that are still open.

@@ -181,11 +181,13 @@ def pair(src):
 
 
 def md(text, prefix, paired=False):
-    conv = markdown.Markdown(extensions=['tables', 'sane_lists', 'toc'], extension_configs={'toc': {'slugify': lambda v, s: prefix + '-' + slug(v)}})
+    conv = markdown.Markdown(extensions=['tables', 'sane_lists', 'toc', 'fenced_code'], extension_configs={'toc': {'slugify': lambda v, s: prefix + '-' + slug(v)}})
     out = conv.convert(text)
     if paired:
         out = pair(out)
     out = re.sub(r'<img [^>]*>', sized, out)
+    # fenced blocks in the guides are prompts to copy into an AI agent: a box with a Copy button
+    out = re.sub(r'<pre><code[^>]*>(.*?)</code></pre>', lambda m: '<div class="ds-prompt"><div class="ds-prompt-head"><span>Prompt</span><button type="button" class="ds-copybtn">Copy</button></div><pre tabindex="0">%s</pre></div>' % m.group(1).rstrip('\n'), out, flags=re.S)
     out = out.replace('<table>', '<div class="ds-table"><table>').replace('</table>', '</table></div>')
     return out, conv.toc_tokens
 
@@ -469,7 +471,7 @@ views.append(('components', ''.join(index)))
 
 
 # ---------- rail ----------
-nav = ['<div><h2>Start</h2><ul><li><a href="#overview">Overview</a></li><li><a href="#example">Example page</a></li>%s</ul></div>' % ''.join('<li><a href="#%s">%s</a></li>' % (gid, esc(t)) for gid, t, _, _ in guides if gid in START_GUIDES),
+nav = ['<div><h2>Start</h2><ul><li><a href="#overview">Overview</a></li>%s<li><a href="#example">Example page</a></li></ul></div>' % ''.join('<li><a href="#%s">%s</a></li>' % (gid, esc(t)) for gid, t, _, _ in guides if gid in START_GUIDES),
        '<div><h2>Guidelines</h2><ul>%s</ul></div>' % ''.join('<li><a href="#%s">%s</a></li>' % (gid, esc(t)) for gid, t, _, _ in guides if gid not in START_GUIDES),
        '<div><h2>Foundations</h2><ul><li><a href="#tokens">Design tokens</a></li><li><a href="#typography">Typography</a></li><li><a href="#grid">Grid</a></li></ul></div>']
 for k, (sname, nav_fams) in enumerate(nav_secs):

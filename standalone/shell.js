@@ -1128,4 +1128,17 @@
     el.classList.add('ds-flash');
     setTimeout(function () { el.classList.remove('ds-flash'); }, 1600);
   });
+  /* Prompts in the guides: copy the text to paste into an AI agent */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('.ds-prompt .ds-copybtn') : null;
+    if (!b) return;
+    var pre = b.parentNode.parentNode.querySelector('pre'), text = pre.textContent;
+    function done(msg) { b.textContent = msg; setTimeout(function () { b.textContent = 'Copy'; }, 2400); }
+    function select() {
+      var r = document.createRange(), sel = window.getSelection();
+      r.selectNodeContents(pre); sel.removeAllRanges(); sel.addRange(r);
+      done('Selected: press Ctrl or Cmd + C');
+    }
+    try { navigator.clipboard.writeText(text).then(function () { done('Copied'); }, select); } catch (err) { select(); }
+  });
 })();
