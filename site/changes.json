@@ -1838,12 +1838,6 @@
     {
      "type": "asset",
      "action": "added",
-     "name": "README.md",
-     "group": "Event Icons"
-    },
-    {
-     "type": "asset",
-     "action": "added",
      "name": "icon-event-industry.svg",
      "group": "Event Icons"
     },
@@ -1870,12 +1864,6 @@
      "action": "added",
      "name": "icon-event-webinar.svg",
      "group": "Event Icons"
-    },
-    {
-     "type": "asset",
-     "action": "added",
-     "name": "README.md",
-     "group": "Feature Icons"
     },
     {
      "type": "asset",
@@ -1994,12 +1982,6 @@
     {
      "type": "asset",
      "action": "added",
-     "name": "README.md",
-     "group": "General Icons"
-    },
-    {
-     "type": "asset",
-     "action": "added",
      "name": "icon-general-events.svg",
      "group": "General Icons"
     },
@@ -2014,12 +1996,6 @@
      "action": "added",
      "name": "icon-general-webinar.svg",
      "group": "General Icons"
-    },
-    {
-     "type": "asset",
-     "action": "added",
-     "name": "README.md",
-     "group": "Icons"
     },
     {
      "type": "asset",
@@ -2174,12 +2150,6 @@
     {
      "type": "asset",
      "action": "added",
-     "name": "README.md",
-     "group": "Images"
-    },
-    {
-     "type": "asset",
-     "action": "added",
      "name": "form-header-meeting.jpg",
      "group": "Images"
     },
@@ -2216,12 +2186,6 @@
     {
      "type": "asset",
      "action": "added",
-     "name": "README.md",
-     "group": "Logos"
-    },
-    {
-     "type": "asset",
-     "action": "added",
      "name": "qualys-logo-full-rgb.svg",
      "group": "Logos"
     },
@@ -2236,12 +2200,6 @@
      "action": "added",
      "name": "qualys-shield.svg",
      "group": "Logos"
-    },
-    {
-     "type": "asset",
-     "action": "added",
-     "name": "README.md",
-     "group": "Social Icons"
     },
     {
      "type": "asset",
@@ -2870,12 +2828,6 @@
      "gid": "guide-3",
      "section": "Line breaks",
      "action": "added"
-    },
-    {
-     "type": "asset",
-     "action": "changed",
-     "name": "README.md",
-     "group": "Event Icons"
     },
     {
      "type": "asset",

@@ -207,14 +207,14 @@ def assets(v):
         return out
     if v.ref == '.':
         for f in v.files:
-            if f.startswith(pre):
+            if f.startswith(pre) and not f.endswith('.md'):
                 with open(os.path.join(ROOT, f), 'rb') as fh:
                     data = fh.read()
                 out[f[len(pre):]] = hashlib.sha1(b'blob %d\0' % len(data) + data).hexdigest()
     else:
         for line in git('ls-tree', '-r', v.ref, '--', pre).split('\n'):
             m = re.match(r'^\d+ blob ([0-9a-f]+)\t(.+)$', line)
-            if m:
+            if m and not m.group(2).endswith('.md'):   # the folders' READMEs are notes, not assets
                 out[m.group(2)[len(pre):]] = m.group(1)
     return out
 
@@ -375,6 +375,9 @@ def headline(items):
         parts.append('Added ' + names(comp('added'), 'component'))
     if comp('removed'):
         parts.append('Removed ' + names(comp('removed'), 'component'))
+    gnew = [i['guide'] for i in big if i['type'] == 'guide' and i['action'] == 'added' and 'section' not in i]
+    if gnew:
+        parts.append('New guide: ' + names(gnew, 'guide'))
     toks = [i for i in big if i['type'] == 'token']
     if toks:
         fams = {i['family'] for i in toks}
@@ -388,9 +391,6 @@ def headline(items):
         parts.append('Updated ' + (groups[0].lower() if len(groups) == 1 else names([g.lower() for g in groups], 'asset group')))
     if comp('changed'):
         parts.append('Updated ' + names(comp('changed'), 'component'))
-    gnew = [i['guide'] for i in big if i['type'] == 'guide' and i['action'] == 'added' and 'section' not in i]
-    if gnew:
-        parts.append('New guide: ' + names(gnew, 'guide'))
     gold = [i['guide'] for i in big if i['type'] == 'guide' and i['action'] == 'removed' and 'section' not in i]
     if gold:
         parts.append('Removed guide: ' + names(gold, 'guide'))
