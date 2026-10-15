@@ -1,6 +1,5 @@
 # Flag
 
-**Status:** Ready
 
 The flag-style tag from the Figma Tagging System: a high-priority notice or promotion anchored to a container edge — "Upcoming", "New" or "Featured".
 

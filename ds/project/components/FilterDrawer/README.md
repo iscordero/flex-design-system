@@ -1,6 +1,5 @@
 # FilterDrawer
 
-**Status:** Ready
 
 The mobile filter panel from the Figma Filters page: the filters grouped in sections of checkboxes, overlaying the page. People change several at once and nothing updates until they press "Apply Filters".
 

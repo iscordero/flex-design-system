@@ -1,6 +1,5 @@
 # Button
 
-**Status:** Ready
 
 Primary and secondary call-to-action buttons from the Figma Buttons sheet, in large (50px) and small (40px), with an optional icon left or right.
 

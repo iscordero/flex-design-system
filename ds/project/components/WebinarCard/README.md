@@ -1,6 +1,5 @@
 # WebinarCard
 
-**Status:** Ready
 
 The Webinar card from the Figma Cards page: an image, "Webinar | format | duration", a title, the speaker and the date.
 

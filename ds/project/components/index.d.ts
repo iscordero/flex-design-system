@@ -57,7 +57,7 @@ export interface TextLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElem
 export declare function TextLink(props: TextLinkProps): React.ReactElement;
 
 export interface HyperlinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  /** true shows an arrow after the link on hover; 'always' keeps it in view */
+  /** @deprecated ignored: links in body copy never show an arrow (use TextLink for a link with an arrow) */
   arrow?: boolean | 'always';
   /** 50% opacity, out of the tab order, announced as unavailable */
   disabled?: boolean;
@@ -1538,25 +1538,6 @@ export interface HoverCardProps {
 }
 export declare function HoverCard(props: HoverCardProps): React.ReactElement;
 
-export interface FormBannerProps {
-  title: React.ReactNode;
-  subtitle?: React.ReactNode;
-  /** the band: 'gradient' (default), 'light' (surface-blue-200) or a photo */
-  background?: 'gradient' | 'light' | { src: string };
-  /** heading color: 'inverted' (white) or 'blue'; follows the background by default */
-  tone?: 'inverted' | 'blue';
-  /** artwork on the right of the band, up to 460 x 150px; hidden on mobile */
-  image?: string;
-  imageAlt?: string;
-  /** the Form's props (variant 'extended' by default) or a Form of your own */
-  form?: FormProps | React.ReactElement;
-  /** heading level of the banner title, default 2 */
-  titleLevel?: number;
-  id?: string;
-  className?: string;
-}
-export declare function FormBanner(props: FormBannerProps): React.ReactElement;
-
 export interface ComparisonColumn { id?: string | number; name: string; logo?: string; logoAlt?: string; subtitle?: React.ReactNode }
 export interface FeatureMatrixRow { label: React.ReactNode; values: Array<boolean | 0 | 1> }
 export interface FeatureMatrixProps {
@@ -1660,7 +1641,7 @@ declare global {
       Checkbox: typeof Checkbox; Radio: typeof Radio; Toggle: typeof Toggle; Form: typeof Form;
       Card: typeof Card; IntegrationCard: typeof IntegrationCard; EventCard: typeof EventCard; WebinarCard: typeof WebinarCard; ResourceCard: typeof ResourceCard; BlogCard: typeof BlogCard; InlinePromoCard: typeof InlinePromoCard; StatCard: typeof StatCard;
       Nav: typeof Nav; NavBanner: typeof NavBanner; Media: typeof Media; Hero: typeof Hero; TypographicHeader: typeof TypographicHeader; GeneralContent: typeof GeneralContent; TabModule: typeof TabModule; AccordionModule: typeof AccordionModule; CtaModule: typeof CtaModule; Stats: typeof Stats; Carousel: typeof Carousel; TestimonialCard: typeof TestimonialCard; TestimonialCarousel: typeof TestimonialCarousel; LogoCarousel: typeof LogoCarousel; LogoHierarchy: typeof LogoHierarchy; EventCalendar: typeof EventCalendar; Footer: typeof Footer;
-      HoverCard: typeof HoverCard; FormBanner: typeof FormBanner; FeatureMatrix: typeof FeatureMatrix; DetailComparison: typeof DetailComparison; MarketingTable: typeof MarketingTable;
+      HoverCard: typeof HoverCard; FeatureMatrix: typeof FeatureMatrix; DetailComparison: typeof DetailComparison; MarketingTable: typeof MarketingTable;
       Overlay: typeof Overlay; Modal: typeof Modal; FormModal: typeof FormModal; AlertDialog: typeof AlertDialog; SessionTimeout: typeof SessionTimeout; SuccessConfirmation: typeof SuccessConfirmation; ExitIntent: typeof ExitIntent; DemoRequestWizard: typeof DemoRequestWizard; Toast: typeof Toast; ToastStack: typeof ToastStack; NotificationBar: typeof NotificationBar; CookieBanner: typeof CookieBanner; Tooltip: typeof Tooltip;
     };
   }

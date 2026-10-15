@@ -1,6 +1,5 @@
 # TestimonialCard
 
-**Status:** Ready
 
 A customer quote from the Figma Testimonials page: the customer's logo, the quote, who said it and a link to the story.
 

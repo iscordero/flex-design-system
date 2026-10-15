@@ -1,6 +1,5 @@
 # CardModule
 
-**Status:** In review — New. Check it on a real page before building it.
 
 The Card Module from Figma: an optional copy block, then a row of standard Cards. Use it to explain a set of features, capabilities or benefits side by side.
 

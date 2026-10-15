@@ -1,6 +1,5 @@
 # DemoRequestWizard
 
-**Status:** Ready
 
 A short form split into steps inside a modal, ending on a confirmation.
 

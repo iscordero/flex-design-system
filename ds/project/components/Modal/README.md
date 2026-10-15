@@ -1,6 +1,5 @@
 # Modal
 
-**Status:** Ready
 
 The base dialog: a title with a close button, a body, and an optional footer of buttons. The other modals in this file are built on it.
 

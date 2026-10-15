@@ -48,55 +48,36 @@ Second person, Title Case headings, calls to action that start with a verb.
 
 ## Governance
 
-The live Flex site ([flex-design-system.pages.dev](https://flex-design-system.pages.dev)) is the source of truth for how the Qualys website is designed and built. There is no dedicated design system team and no single owner: everyone who designs or builds pages shares it, and the rules below keep that light.
+The live Flex site ([flex-design-system.pages.dev](https://flex-design-system.pages.dev)) is the source of truth for how the Qualys website is designed and built.
 
 - **Design here first.** New pages and changes are designed with Flex's components and tokens before they go to development. Developers build from Flex, not from one-off mockups.
+- **What's published is what to build.** Everything on the site is approved to build. New ideas and experiments stay as drafts in Claude until they are checked and published, so nothing half-finished reaches the site.
 - **The site mirrors this design system.** The site is generated from the same files (tokens, guides, component READMEs and previews). Nobody edits the site by hand: change the design system, then publish.
-- **Add back anything built outside it.** If a page on qualys.com uses something Flex doesn't have, add it here (as a new component, a variant or a documented exception) so the next person finds it. Until it is added, it is not part of the system.
-
-### Status: what is safe to build
-
-Every component shows its status on its card, in the side menu and on the All page. The status is one line at the top of the component's README:
-
-`**Status:** Ready` — or `In review`, `Needs fixes` or `Deprecated`, followed by a dash and a short reason.
-
-| Status | Meaning | Developers | Designers |
-| --- | --- | --- | --- |
-| Ready | Checked and complete | Safe to build | Use freely |
-| In review | New or changed, not yet checked | Don't build yet | Use in drafts; expect changes |
-| Needs fixes | Has a known problem, named in the reason | Don't build until it is fixed | Fix it, or pick another component |
-| Deprecated | Being retired | Don't use in new work; replace when touching a page | Don't use |
-
-### Who updates a status
-
-No one owns the statuses; whoever touches a component sets them, in the same change.
-
-- **You change a component:** set it to **In review** in the same edit.
-- **You check someone else's change:** look at it in the Example page at desktop and mobile widths and run through the checklist in Change Management, then set it to **Ready**. If no one else can look within a week, the author may check it themselves and say so in the reason.
-- **You find a problem:** set it to **Needs fixes** with one line saying what is wrong. Fixing it sets it back to **In review**.
-- It takes one line in a README. You can also ask Claude in the Qualys Design System project, for example "mark Card Module as needs fixes: the link wraps under the icon on mobile", and it will edit, publish and commit the change.
+- **Add back anything built outside it.** If a page on qualys.com uses something Flex doesn't have, add it here (as a new component, a variant or a documented exception) so the next person finds it.
+- **Known problems are written down.** If a component has a problem that isn't fixed yet, it is described under Notes in that component's README, so designers and developers see it before they use it.
 
 ## Collaboration
 
-- **Designers:** start from Flex components and the Example page. Work that needs something new goes into Flex first (as In review), then into page designs.
-- **Developers:** build only what is Ready, using the component READMEs and `index.d.ts`. If the live site differs from Flex, Flex is right: update the site, or flag the difference by setting the component to Needs fixes.
+- **Designers:** start from Flex components and the Example page. Work that needs something new goes into Flex first, then into page designs.
+- **Developers:** build from the component READMEs and `index.d.ts`. If the live site differs from Flex, Flex is right: update the page, or report the difference so it can be fixed here.
 - **Content writers:** follow the Content guide; component READMEs give each part's character limits.
-- **Reviewers and stakeholders:** review in the Example page and on component cards; leave feedback on the design system artifact as comments.
+- **Reviewers and stakeholders:** review in the Example page and on component cards; leave feedback on the design system as comments.
 
 ## Contribution and support
 
-How to make and publish a change, set up the files, and bring a new collaborator up to speed is in **Change Management**. For questions, ask in the Qualys Design System project in Claude or comment on the design system artifact.
+How to get access, work with Claude, make and publish a change, and bring a new collaborator up to speed is in **Change Management**, under Start. For questions, ask in the Qualys Design System project in Claude.
 
 ## Guidelines
 
 The detailed rules follow this overview, one section each. Read the section for what you are building before using a token or component.
 
 - **Content** (`guide-1-content.md`): voice, casing, CTAs, numbers, dates and times.
-- **Color** (`guide-2-color.md`): which token goes where, and the contrast notes.
+- **Color** (`guide-2-color.md`): which token goes where.
 - **Typography** (`guide-3-typography.md`): families, the type scale and weights.
 - **Layout, Spacing and Radius** (`guide-4-layout.md`): breakpoints, margins, columns, spacing, radius and elevation.
 - **States and Motion** (`guide-5-states-motion.md`): hover, focus, disabled and timing.
 - **Icons and Logos** (`guide-6-icons-logos.md`): the icon sets, sizes and colors, the Icon component and its library, the Qualys logo and other companies' logos, with the icon and logo files.
 - **Media** (`guide-9-media.md`): photography, video, product images and people photos, with the image files.
 - **Buttons and Links** (`guide-8-buttons-links.md`): button tiers and their labels, do's and don'ts, mobile sizing, inline hyperlinks and text link buttons.
-- **Change Management** (`guide-10-change-management.md`): roles and statuses, how to propose, check and publish a change, onboarding, and setting up the files.
+- **Choosing Components** (`guide-11-choosing-components.md`): which component or page module to use for each job, including which form to use where.
+- **Change Management** (`guide-10-change-management.md`): getting access, working with Claude, making and publishing a change, and onboarding.

@@ -1,6 +1,5 @@
 # Radio
 
-**Status:** Ready
 
 From the Figma Inputs sheet: a 20px circle for picking one option from a short list.
 

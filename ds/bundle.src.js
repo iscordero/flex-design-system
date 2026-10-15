@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"Qualys","components":[{"name":"Button"},{"name":"Hyperlink"},{"name":"SocialButton"},{"name":"TextLink"},{"name":"BlogCard"},{"name":"Card"},{"name":"InlinePromoCard"},{"name":"IntegrationCard"},{"name":"ResourceCard"},{"name":"WebinarCard"},{"name":"Carousel"},{"name":"LogoCarousel"},{"name":"LogoHierarchy"},{"name":"TestimonialCard"},{"name":"TestimonialCarousel"},{"name":"AppliedFilters"},{"name":"FilterBar"},{"name":"FilterButton"},{"name":"FilterChip"},{"name":"FilterChipGroup"},{"name":"FilterDrawer"},{"name":"FilterDropdown"},{"name":"Checkbox"},{"name":"DemoRequestWizard"},{"name":"Form"},{"name":"FormModal"},{"name":"Radio"},{"name":"SearchBar"},{"name":"Select"},{"name":"TextField"},{"name":"Toggle"},{"name":"Flag"},{"name":"Icon"},{"name":"Marker"},{"name":"Tag"},{"name":"Breadcrumbs"},{"name":"Footer"},{"name":"Nav"},{"name":"NavBanner"},{"name":"AlertDialog"},{"name":"CookieBanner"},{"name":"ExitIntent"},{"name":"HoverCard"},{"name":"Modal"},{"name":"NotificationBar"},{"name":"Overlay"},{"name":"SessionTimeout"},{"name":"SuccessConfirmation"},{"name":"Toast"},{"name":"ToastStack"},{"name":"Tooltip"},{"name":"CtaModule"},{"name":"EventCalendar"},{"name":"EventCard"},{"name":"EventType"},{"name":"FormBanner"},{"name":"GeneralContent"},{"name":"Hero"},{"name":"Media"},{"name":"TypographicHeader"},{"name":"Avatar"},{"name":"ProfileCard"},{"name":"ProfileGrid"},{"name":"ProfileModal"},{"name":"StatCard"},{"name":"Stats"},{"name":"CardModule"},{"name":"DetailComparison"},{"name":"FeatureMatrix"},{"name":"MarketingTable"},{"name":"Accordion"},{"name":"AccordionModule"},{"name":"Drawer"},{"name":"DrawerCard"},{"name":"TabModule"},{"name":"Tabs"}]} */
+/* @ds-bundle: {"format":4,"namespace":"Qualys","components":[{"name":"Button"},{"name":"Hyperlink"},{"name":"SocialButton"},{"name":"TextLink"},{"name":"BlogCard"},{"name":"Card"},{"name":"InlinePromoCard"},{"name":"IntegrationCard"},{"name":"ResourceCard"},{"name":"WebinarCard"},{"name":"Carousel"},{"name":"LogoCarousel"},{"name":"LogoHierarchy"},{"name":"TestimonialCard"},{"name":"TestimonialCarousel"},{"name":"AppliedFilters"},{"name":"FilterBar"},{"name":"FilterButton"},{"name":"FilterChip"},{"name":"FilterChipGroup"},{"name":"FilterDrawer"},{"name":"FilterDropdown"},{"name":"Checkbox"},{"name":"DemoRequestWizard"},{"name":"Form"},{"name":"FormModal"},{"name":"Radio"},{"name":"SearchBar"},{"name":"Select"},{"name":"TextField"},{"name":"Toggle"},{"name":"Flag"},{"name":"Icon"},{"name":"Marker"},{"name":"Tag"},{"name":"Breadcrumbs"},{"name":"Footer"},{"name":"Nav"},{"name":"NavBanner"},{"name":"AlertDialog"},{"name":"CookieBanner"},{"name":"ExitIntent"},{"name":"HoverCard"},{"name":"Modal"},{"name":"NotificationBar"},{"name":"Overlay"},{"name":"SessionTimeout"},{"name":"SuccessConfirmation"},{"name":"Toast"},{"name":"ToastStack"},{"name":"Tooltip"},{"name":"CtaModule"},{"name":"EventCalendar"},{"name":"EventCard"},{"name":"EventType"},{"name":"GeneralContent"},{"name":"Hero"},{"name":"Media"},{"name":"TypographicHeader"},{"name":"Avatar"},{"name":"ProfileCard"},{"name":"ProfileGrid"},{"name":"ProfileModal"},{"name":"StatCard"},{"name":"Stats"},{"name":"CardModule"},{"name":"DetailComparison"},{"name":"FeatureMatrix"},{"name":"MarketingTable"},{"name":"Accordion"},{"name":"AccordionModule"},{"name":"Drawer"},{"name":"DrawerCard"},{"name":"TabModule"},{"name":"Tabs"}]} */
 (function () {
   var React = window.React;
   var h = React.createElement;
@@ -118,12 +118,12 @@
       p.arrow ? h('span', { className: 'q-textlink__arrow' }, h(Icon, { name: 'arrow-right', size: 16 })) : null);
   }
 
-  /* Hyperlink — inline link inside body copy. arrow: true shows the arrow on hover, 'always' keeps it in view. disabled grays it out and takes it out of the tab order. tone 'inverted' is white, for dark or blue grounds; it stays underlined. */
+  /* Hyperlink — inline link inside body copy. It never carries an arrow (that belongs to TextLink). disabled grays it out and takes it out of the tab order. tone 'inverted' is white, for dark or blue grounds; it stays underlined. */
   function Hyperlink(p) {
     var rest = omit(p, ['arrow', 'className', 'children', 'disabled', 'tone']);
     if (p.disabled) { rest['aria-disabled'] = 'true'; rest.tabIndex = -1; rest.href = undefined; rest.onClick = undefined; }
-    rest.className = cx('q-hyperlink', p.tone === 'inverted' && 'q-hyperlink--inverted', p.arrow && 'q-hyperlink--arrow', p.arrow === 'always' && 'q-hyperlink--arrow-always', p.disabled && 'is-disabled', p.className);
-    return h('a', rest, p.children, p.arrow ? h('span', { className: 'q-hyperlink__arrow' }, h(Icon, { name: 'arrow-right', size: 'sm' })) : null);
+    rest.className = cx('q-hyperlink', p.tone === 'inverted' && 'q-hyperlink--inverted', p.disabled && 'is-disabled', p.className);
+    return h('a', rest, p.children);
   }
 
   /* Breadcrumbs — where the page sits in the site: a link for each level above it, then the page itself as plain text. (Figma: Breadcrumbs) */
@@ -2192,7 +2192,7 @@
         h(TextField, { name: field.name, label: field.label, type: field.type, autoComplete: field.autoComplete, value: vs[0], error: es[0], onChange: function (e) { vs[1](e.target.value); if (es[0]) es[1](null); } }),
         h('div', { className: 'q-exit__actions' },
           h(Button, { type: 'submit' }, p.submitLabel || (content ? 'Download Free' : 'Start Free Trial')),
-          h(TextLink, { tone: 'neutral', arrow: !content, onClick: p.onDismiss || f.close, className: 'q-exit__dismiss' }, p.dismissLabel || 'No Thanks'))));
+          h(TextLink, { tone: 'neutral', onClick: p.onDismiss || f.close, className: 'q-exit__dismiss' }, p.dismissLabel || 'No Thanks'))));
     return modalFrame(p, f, { kind: 'exit', overlayCloses: true }, panel);
   }
   /* DemoRequestWizard — a short form split into steps, ending on a confirmation. steps [{ title, description, fields, consent }]. */
@@ -2483,23 +2483,6 @@
     return h('span', { ref: wrapRef, className: cx('q-hcard', open && 'is-open', blocked && 'is-blocked', p.className), onPointerEnter: onEnter, onPointerLeave: onLeave }, child, layer);
   }
 
-  /* FormBanner — a banner (a heading on the blue gradient, a tint or a photo, with optional artwork on the right) and the lead-capture Form attached under it.
-     background 'gradient' (default) | 'light' | { src }; tone 'inverted' | 'blue' sets the heading color. */
-  function FormBanner(p) {
-    var bg = p.background, src = bg && typeof bg === 'object' ? bg.src : null, form = p.form || {};
-    var ground = src ? 'image' : (bg === 'light' ? 'light' : 'gradient');
-    var tone = p.tone === 'blue' || p.tone === 'inverted' ? p.tone : (ground === 'light' ? 'blue' : 'inverted');
-    return h('section', { className: cx('q-section', 'q-fbanner', p.className), id: p.id },
-      h('div', { className: 'q-section__inner' },
-        h('div', { className: 'q-fbanner__card' },
-          h('div', { className: cx('q-fbanner__band', 'q-fbanner__band--' + ground, 'q-fbanner__band--' + tone), style: src ? { backgroundImage: 'url("' + src + '")' } : undefined },
-            h('div', { className: 'q-fbanner__copy' },
-              heading(p.titleLevel || 2, { className: 'q-fbanner__title' }, p.title),
-              p.subtitle ? h('p', { className: 'q-fbanner__subtitle' }, p.subtitle) : null),
-            p.image ? h('img', { className: 'q-fbanner__art', src: p.image, alt: p.imageAlt || '' }) : null),
-          h('div', { className: 'q-fbanner__form' },
-            React.isValidElement(form) ? form : h(Form, Object.assign({ variant: 'extended', titleLevel: (p.titleLevel || 2) + 1 }, form))))));
-  }
 
   /* Tooltip — a short label for the thing it points at, on hover and on keyboard focus. position 'top' | 'bottom' | 'left' | 'right'; theme 'dark' | 'light'. */
   function Tooltip(p) {
@@ -2844,7 +2827,7 @@
     Button: Button, TextLink: TextLink, Hyperlink: Hyperlink, Breadcrumbs: Breadcrumbs, SocialButton: SocialButton, Icon: Icon, Tag: Tag, FilterChip: FilterChip, Flag: Flag, Marker: Marker, EventType: EventType, Tabs: Tabs, Drawer: Drawer, DrawerCard: DrawerCard, Accordion: Accordion, Avatar: Avatar, ProfileCard: ProfileCard, ProfileModal: ProfileModal, ProfileGrid: ProfileGrid, TextField: TextField, Select: Select, FilterDropdown: FilterDropdown, FilterChipGroup: FilterChipGroup, AppliedFilters: AppliedFilters, FilterButton: FilterButton, FilterBar: FilterBar, FilterDrawer: FilterDrawer, SearchBar: SearchBar, Checkbox: Checkbox, Radio: Radio, Toggle: Toggle, Form: Form,
     Card: Card, IntegrationCard: IntegrationCard, EventCard: EventCard, WebinarCard: WebinarCard, ResourceCard: ResourceCard, BlogCard: BlogCard, InlinePromoCard: InlinePromoCard, StatCard: StatCard,
     Nav: Nav, NavBanner: NavBanner, Media: Media, Hero: Hero, TypographicHeader: TypographicHeader, GeneralContent: GeneralContent, TabModule: TabModule, AccordionModule: AccordionModule, CtaModule: CtaModule, Stats: Stats, CardModule: CardModule, Carousel: Carousel, TestimonialCard: TestimonialCard, TestimonialCarousel: TestimonialCarousel, LogoCarousel: LogoCarousel, LogoHierarchy: LogoHierarchy, EventCalendar: EventCalendar, Footer: Footer,
-    FeatureMatrix: FeatureMatrix, DetailComparison: DetailComparison, MarketingTable: MarketingTable, HoverCard: HoverCard, FormBanner: FormBanner,
+    FeatureMatrix: FeatureMatrix, DetailComparison: DetailComparison, MarketingTable: MarketingTable, HoverCard: HoverCard,
     Overlay: Overlay, Modal: Modal, FormModal: FormModal, AlertDialog: AlertDialog, SessionTimeout: SessionTimeout, SuccessConfirmation: SuccessConfirmation, ExitIntent: ExitIntent, DemoRequestWizard: DemoRequestWizard, Toast: Toast, ToastStack: ToastStack, NotificationBar: NotificationBar, CookieBanner: CookieBanner, Tooltip: Tooltip
   });
 })();

@@ -1,6 +1,5 @@
 # LogoHierarchy
 
-**Status:** Ready
 
 The logo hierarchy from the Figma Logos page: logos grouped in tiers under a heading, such as event sponsors. The first tier (the signature sponsor) is drawn larger than the rest.
 

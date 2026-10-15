@@ -8,15 +8,15 @@ viz('g1-casing', null, h('div', {className: 'grid2', style: {gridTemplateColumns
   t('cap', 'Sentence case'), ty('paragraph-rg', 'A single source of truth for your team.', {color: 'var(--text-secondary)'}),
   t('cap', 'All caps'), row({gap: 12}, h(Q.Tag, {tone: 'blue', size: 'sm'}, 'New'), ty('eyebrow-sm', 'Cloud Platform', {textTransform: 'uppercase', color: 'var(--text-accent-primary)'}))));
 
-viz('g1-length', null, h('div', {className: 'vo', style: {gridTemplateColumns: '1fr 140px'}},
+viz('g1-length', null, h('div', {className: 'vo', style: {gridTemplateColumns: '1fr 180px'}},
   ty('h5', 'Detect, Prioritize, and Eliminate Risk', {whiteSpace: 'nowrap', fontSize: 16}),
-  t('note cap', 'Under ten words'),
+  t('note cap', '50–60 characters max', {whiteSpace: 'normal'}),
   ty('paragraph-sm', 'The Qualys Cloud Platform gives your team a single source of truth across your entire hybrid IT environment.', {color: 'var(--text-secondary)'}),
-  t('note cap', '1 to 3 sentences')));
+  t('note cap', '1–3 sentences, 175 characters max', {whiteSpace: 'normal'})));
 
 viz('g1-ctas', {display: 'flex', flexDirection: 'column', gap: 14},
   h('div', {className: 'row nowrap', style: {gap: 10}}, h(Q.Button, {size: 'sm'}, 'Get a Demo'), h(Q.Button, {size: 'sm', variant: 'secondary'}, 'Get Started'), h(Q.Button, {size: 'sm', variant: 'secondary'}, 'Register Now')),
-  h('div', {className: 'row nowrap', style: {gap: 20}}, h(Q.TextLink, {size: 'sm', arrow: true}, 'Learn More'), h(Q.TextLink, {size: 'sm', arrow: true}, 'Explore the Platform'), h(Q.TextLink, {size: 'sm', arrow: true}, 'Download Report')),
+  h('div', {className: 'row nowrap', style: {gap: 20}}, h(Q.TextLink, {size: 'sm', arrow: true}, 'Learn More'), h(Q.TextLink, {size: 'sm', arrow: true}, 'Explore the Platform'), h(Q.TextLink, {size: 'sm', iconLeft: 'download'}, 'Download Report')),
   h('div', {style: {borderTop: '1px solid var(--stroke-neutral-400)', paddingTop: 12}}, dd(false, 'Passive labels: ', bad('More Information'), ', ', bad('Demo Request'))));
 
 viz('g1-numbers', {display: 'grid', gridTemplateColumns: '1fr 1px 1fr', columnGap: 20, alignItems: 'center'},

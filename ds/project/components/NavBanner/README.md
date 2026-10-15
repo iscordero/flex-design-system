@@ -1,6 +1,5 @@
 # NavBanner
 
-**Status:** Ready
 
 The event promotion bar from the Figma Navigation page ("Event"): one line above the navigation announcing an event, with a link and a close button.
 

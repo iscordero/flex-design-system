@@ -1,6 +1,5 @@
 # ProfileModal
 
-**Status:** Ready
 
 The bio modal from the Figma Avatars page. It opens when a profile card is clicked: the photo, name, designation and logo on the left, an "About" text on the right.
 

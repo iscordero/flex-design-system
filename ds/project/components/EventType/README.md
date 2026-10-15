@@ -1,6 +1,5 @@
 # EventType
 
-**Status:** Ready
 
 The event-type label from the Figma Tagging System: a 24px icon and its name, for event listings and event cards.
 

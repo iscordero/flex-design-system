@@ -1,6 +1,5 @@
 # MarketingTable
 
-**Status:** Ready
 
 A branded comparison table as a page section: a Qualys Blue header row with a photo, row headings with Feature Icons, and one featured column for the Qualys point of view. It reworks the Figma component "Marketing Table With Image in Header Row".
 

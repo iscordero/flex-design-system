@@ -1,6 +1,5 @@
 # ProfileCard
 
-**Status:** Ready
 
 The profile card from the Figma Avatars page: a large square photo with a profile-link chip, the name, the designation and the company logo. With a bio, hovering shows "Read Bio" and a click opens the ProfileModal.
 

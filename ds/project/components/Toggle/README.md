@@ -1,6 +1,5 @@
 # Toggle
 
-**Status:** Ready
 
 From the Figma Inputs sheet: an on/off switch for settings that take effect at once.
 

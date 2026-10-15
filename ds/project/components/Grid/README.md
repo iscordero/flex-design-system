@@ -1,6 +1,5 @@
 # Grid
 
-**Status:** Ready
 
 Page container and column grid from the Figma layout frames — CSS classes in `bundle.css`, no React component.
 

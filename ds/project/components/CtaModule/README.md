@@ -1,6 +1,5 @@
 # CtaModule
 
-**Status:** Ready
 
 The closing call to action from the Figma CTAs page: a sign-up form beside or over a picture, or a dark card with a heading and buttons.
 

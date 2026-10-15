@@ -1,6 +1,5 @@
 # GeneralContent
 
-**Status:** Ready
 
 The general content module from the Figma General Content Modules page (Ready for Dev): copy beside an image or video, a full-width image or video, or a banner with the copy over the media.
 

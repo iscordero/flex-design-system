@@ -1,6 +1,5 @@
 # AlertDialog
 
-**Status:** Ready
 
 A decision that has to be answered before anything else: delete, leave without saving, reload.
 

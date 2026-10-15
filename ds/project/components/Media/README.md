@@ -1,6 +1,5 @@
 # Media
 
-**Status:** Ready
 
 The image or video slot the block modules share: Hero, GeneralContent, TabModule, AccordionModule and CtaModule all take a `media` prop and draw it with this.
 

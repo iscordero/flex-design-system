@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { HoverCard, FormBanner, FeatureMatrix, DetailComparison, MarketingTable, TextLink, Hyperlink, Tag, Flag, Marker, Tabs, TabModule, DrawerCard, LogoHierarchy, Avatar } from './qualys';
+import { HoverCard, FeatureMatrix, DetailComparison, MarketingTable, TextLink, Hyperlink, Tag, Flag, Marker, Tabs, TabModule, DrawerCard, LogoHierarchy, Avatar } from './qualys';
 export const a = <HoverCard kind="profile" name="Jordan Rivera" designation="Director" link={{ href: '#' }}><Avatar /></HoverCard>;
 export const b = <HoverCard kind="logo" logo="x.svg" title="Partner" body="Text" link={{ label: 'View', href: '#' }} inline />;
-export const c = <FormBanner title="T" background={{ src: 'a.jpg' }} tone="inverted" form={{ fields: [], submitLabel: 'Go' }} />;
 export const d = <FeatureMatrix columns={[{ id: 'q', name: 'Qualys' }, 'Other']} sections={[{ title: 'S', open: true, rows: [['A', 1, 0], { label: 'B', values: [true, false] }] }]} noMark="red" />;
 export const e = <DetailComparison columns={[{ id: 'q', name: 'Qualys' }, { id: 'o', name: 'Other' }]} sections={[{ title: 'S', heading: 'H', copy: { q: 'x', o: { heading: 'h', body: 'y' } } }]} />;
 export const f = <MarketingTable label="L" columns={[{ title: "A" }, { logo: "l.svg", logoAlt: "Qualys", subtitle: "Adv", featured: true }]} rows={[{ title: "R", cells: ["x"] }]} tone="dark" image={{ src: "a.jpg", focus: "54%" }} />;

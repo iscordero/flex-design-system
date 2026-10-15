@@ -1,6 +1,5 @@
 # FilterBar
 
-**Status:** Ready
 
 The filter dropdown pattern from the Figma Filters page: a row of filter dropdowns with a "Reset Filters" link. On mobile it becomes one "Filter" control that opens every category in a FilterDrawer.
 

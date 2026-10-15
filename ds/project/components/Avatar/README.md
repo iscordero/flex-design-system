@@ -1,6 +1,5 @@
 # Avatar
 
-**Status:** Ready
 
 The avatar from the Figma Avatars page: a person's photo, or the default silhouette when there is none.
 

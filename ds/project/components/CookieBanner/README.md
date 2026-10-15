@@ -1,6 +1,5 @@
 # CookieBanner
 
-**Status:** Ready
 
 Cookie consent in two forms: a compact bar along the bottom of the screen, and a panel with a switch for each category.
 

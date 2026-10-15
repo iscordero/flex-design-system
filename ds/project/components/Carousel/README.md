@@ -1,6 +1,5 @@
 # Carousel
 
-**Status:** Ready
 
 The carousel module from the Figma Carousel Modules page: a row of cards you scroll sideways, with a progress bar and previous / next buttons.
 

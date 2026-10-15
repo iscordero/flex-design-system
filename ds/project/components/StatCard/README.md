@@ -1,6 +1,5 @@
 # StatCard
 
-**Status:** Ready
 
 One figure from the Figma Stats page: a feature icon, a large number with its unit, a short label and one line of description.
 

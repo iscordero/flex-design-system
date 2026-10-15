@@ -1,6 +1,5 @@
 # DetailComparison
 
-**Status:** Ready
 
 A written comparison: Qualys beside up to three competitors the reader picks, one short text per vendor for each topic. Use it when yes or no is not enough and each difference needs a sentence. For a simple feature checklist use FeatureMatrix.
 

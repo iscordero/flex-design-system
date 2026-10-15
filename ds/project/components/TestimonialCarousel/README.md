@@ -1,6 +1,5 @@
 # TestimonialCarousel
 
-**Status:** Ready
 
 The testimonial modules from the Figma Testimonials page: TestimonialCards in a Carousel.
 

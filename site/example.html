@@ -147,7 +147,6 @@
 --z-toast:9000;
 --font-heading:"Wix Madefor Text", sans-serif;
 --font-body:"IBM Plex Sans", sans-serif;
---font-brand:"Gotham", sans-serif;
 }
 .display-xl{font-family:"Wix Madefor Text", sans-serif;font-size:64px;font-weight:700;line-height:1;letter-spacing:-3%}
 .display-lg{font-family:"Wix Madefor Text", sans-serif;font-size:56px;font-weight:700;line-height:1;letter-spacing:-3%}
@@ -302,8 +301,6 @@
 .q-hyperlink:hover, .q-hyperlink.is-hover { color: var(--hyperlink-hover); }
 .q-hyperlink:active, .q-hyperlink.is-pressed { color: var(--hyperlink-active); }
 .q-hyperlink:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius-xs); }
-.q-hyperlink__arrow { display: none; margin-left: var(--spacing-5xs); vertical-align: -1px; }
-.q-hyperlink--arrow:hover .q-hyperlink__arrow, .q-hyperlink--arrow-always .q-hyperlink__arrow, .q-hyperlink--arrow.is-hover .q-hyperlink__arrow { display: inline-flex; }
 .q-hyperlink.is-disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
 /* Inverted: white on dark or blue grounds, still underlined; the underline thickens on hover. */
 .q-hyperlink--inverted, .q-hyperlink--inverted:hover, .q-hyperlink--inverted.is-hover, .q-hyperlink--inverted:active, .q-hyperlink--inverted.is-pressed { color: var(--text-inverted); }
@@ -364,7 +361,7 @@
 .q-tabs__tab.is-active { color: var(--qualys-blue); }
 .q-tabs__tab:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--qualys-blue); }
 .q-tabs__label { display: inline-block; }
-.q-tabs__indicator { position: absolute; left: 0; bottom: 0; height: 4px; border-radius: var(--radius-2xs); background: var(--qualys-blue); pointer-events: none; }
+.q-tabs__indicator { position: absolute; left: 0; bottom: 0; height: 4px; border-radius: var(--radius-2xs) var(--radius-2xs) 0 0; /* the same bar as under the Nav links: flat on the edge, rounded on top */ background: var(--qualys-blue); pointer-events: none; }
 .q-tabs__indicator.is-ready { transition: transform 300ms ease-in-out, width 300ms ease-in-out; }
 @media (prefers-reduced-motion: reduce) { .q-tabs__indicator.is-ready { transition: none; } }
 /* Autoplay: the tab bar and its pause button share a row. */
@@ -1124,7 +1121,8 @@ a.q-promo:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 .q-nav__inner--center .q-nav__left { flex: 1; gap: 0; }
 .q-nav__inner--center .q-nav__left > .q-nav__items { margin-inline: auto; }
 /* Menu panels: radius-lg, shadow-card, centered under the bar */
-.q-nav__panel { position: absolute; top: 100%; left: 50%; z-index: 90; transform: translateX(-50%); box-sizing: border-box; max-width: 100%; padding: var(--spacing-6xs) var(--margin-desktop) 0; }
+/* Menus hang straight off the bar: no gap, square top corners, rounded bottom corners. */
+.q-nav__panel { position: absolute; top: 100%; left: 50%; z-index: 90; transform: translateX(-50%); box-sizing: border-box; max-width: 100%; padding: 0 var(--margin-desktop); }
 .q-nav__panel--mega { width: calc(1249px + 2 * var(--margin-desktop)); }
 /* Column dropdowns open under their own item, the card's text lined up with the item's label */
 .q-nav__item--drop { position: relative; }
@@ -1136,7 +1134,7 @@ a.q-promo:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 .q-navsearch__sug ul { display: flex; flex-wrap: wrap; gap: var(--spacing-3xs); margin: var(--spacing-xs) 0 0; padding: 0; list-style: none; }
 /* Suggested searches are FilterChip-style tag chips that link to the results */
 .q-navsearch__chip { text-decoration: none; }
-.q-nav__panelbox { max-height: calc(100vh - 120px); overflow: hidden auto; border-radius: var(--radius-lg); background: var(--surface-neutral-100); box-shadow: var(--shadow-card); }
+.q-nav__panelbox { max-height: calc(100vh - 120px); overflow: hidden auto; border-radius: 0 0 var(--radius-lg) var(--radius-lg); background: var(--surface-neutral-100); box-shadow: var(--shadow-card); }
 /* Menus slide open from under the bar and slide shut; moving from one open menu to the next only fades. */
 .q-nav__panel.is-opening .q-nav__panelbox { animation: q-nav-open 300ms ease-in-out; }
 .q-nav__panel.is-switching .q-nav__panelbox { animation: q-nav-fade 150ms ease-in-out; }
@@ -2116,30 +2114,6 @@ button.q-hcard__close:hover { color: var(--text-secondary); }
 button.q-hcard__close:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 @media (prefers-reduced-motion: reduce) { .q-hcard__card { animation: none; } .q-hcard__close { transition: none; } }
 
-/* ── Form banner (test site: Form Banner) ── */
-/* One card: a 154px band (the promo gradient, Misty Blue or a photo) with a 24px heading and optional artwork on the right; the form sits under it on the form ground. */
-.q-fbanner__card { overflow: hidden; border-radius: var(--radius-lg); background: var(--surface-neutral-200); box-shadow: var(--shadow-card); }
-.q-fbanner__band { position: relative; display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-2xl); box-sizing: border-box; min-height: 154px; padding: 0 var(--spacing-5xl); background-image: var(--surface-promo-gradient); background-position: center; background-size: cover; }
-.q-fbanner__band--light { background: var(--surface-blue-200); }
-.q-fbanner__band--image { background-color: var(--surface-neutral-600); }
-/* A photo gets the light overlay (25% black) so a white heading keeps its contrast */
-.q-fbanner__band--image::before { content: ""; position: absolute; inset: 0; background: var(--overlay-light); }
-.q-fbanner__copy, .q-fbanner__art { position: relative; }
-.q-fbanner__band--inverted { color: var(--text-inverted); }
-.q-fbanner__band--blue { color: var(--text-accent-primary); }
-.q-fbanner__copy { display: flex; flex-direction: column; gap: var(--spacing-3xs); min-width: 0; max-width: 575px; padding-block: var(--spacing-xl); }
-.q-fbanner__title { margin: 0; font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.1; letter-spacing: -0.02em; letter-spacing: -2%; color: inherit; text-wrap: balance; }
-.q-fbanner__subtitle { margin: 0; font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; }
-.q-fbanner__art { display: block; flex: none; width: auto; max-width: 460px; height: auto; max-height: 150px; object-fit: contain; }
-.q-fbanner__form .q-form { max-width: none; border-radius: 0; box-shadow: none; }
-.q-fbanner__form .q-form__body { padding: var(--spacing-3xl) var(--spacing-3xl); }
-.q-fbanner__form .q-form__title { font-size: 24px; }
-@container (max-width: 767px) {
-  .q-fbanner__band { min-height: 0; padding: 0 var(--spacing-rg); }
-  .q-fbanner__art { display: none; }
-  .q-fbanner__form .q-form__body { padding: 24px var(--spacing-rg) 36px; }
-}
-
 /* ── Comparison tables (Claude Design: Comparison Table) ── */
 /* Feature matrix and detail comparison: a white card (radius-lg, shadow-card) on the section ground; topics are Drawers. */
 .q-cmp__card { box-sizing: border-box; padding: var(--spacing-2xl) var(--spacing-2xl) var(--spacing-xl); border-radius: var(--radius-lg); background: var(--surface-neutral-100); box-shadow: var(--shadow-card); }
@@ -2629,7 +2603,7 @@ c,!1,d,e);a[Ja]=b.current;sc(8===a.nodeType?a.parentNode:a);return new Xf(b)};Q.
 var d=null!=c&&c.hydratedSources||null,e=!1,f="",g=aj;null!==c&&void 0!==c&&(!0===c.unstable_strictMode&&(e=!0),void 0!==c.identifierPrefix&&(f=c.identifierPrefix),void 0!==c.onRecoverableError&&(g=c.onRecoverableError));b=Wi(b,null,a,1,null!=c?c:null,e,!1,f,g);a[Ja]=b.current;sc(a);if(d)for(a=0;a<d.length;a++)c=d[a],e=c._getVersion,e=e(c._source),null==b.mutableSourceEagerHydrationData?b.mutableSourceEagerHydrationData=[c,e]:b.mutableSourceEagerHydrationData.push(c,e);return new Ud(b)};Q.render=
 function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmountComponentAtNode=function(a){if(!Vd(a))throw Error(m(40));return a._reactRootContainer?(yb(function(){Wd(null,null,a,!1,function(){a._reactRootContainer=null;a[Ja]=null})}),!0):!1};Q.unstable_batchedUpdates=Tf;Q.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!Vd(c))throw Error(m(200));if(null==a||void 0===a._reactInternals)throw Error(m(38));return Wd(a,b,c,!1,d)};Q.version="18.3.1-next-f1338f8080-20240426"});
 })();
-</script><script>/* @ds-bundle: {"format":4,"namespace":"Qualys","components":[{"name":"Button"},{"name":"Hyperlink"},{"name":"SocialButton"},{"name":"TextLink"},{"name":"BlogCard"},{"name":"Card"},{"name":"InlinePromoCard"},{"name":"IntegrationCard"},{"name":"ResourceCard"},{"name":"WebinarCard"},{"name":"Carousel"},{"name":"LogoCarousel"},{"name":"LogoHierarchy"},{"name":"TestimonialCard"},{"name":"TestimonialCarousel"},{"name":"AppliedFilters"},{"name":"FilterBar"},{"name":"FilterButton"},{"name":"FilterChip"},{"name":"FilterChipGroup"},{"name":"FilterDrawer"},{"name":"FilterDropdown"},{"name":"Checkbox"},{"name":"DemoRequestWizard"},{"name":"Form"},{"name":"FormModal"},{"name":"Radio"},{"name":"SearchBar"},{"name":"Select"},{"name":"TextField"},{"name":"Toggle"},{"name":"Flag"},{"name":"Icon"},{"name":"Marker"},{"name":"Tag"},{"name":"Breadcrumbs"},{"name":"Footer"},{"name":"Nav"},{"name":"NavBanner"},{"name":"AlertDialog"},{"name":"CookieBanner"},{"name":"ExitIntent"},{"name":"HoverCard"},{"name":"Modal"},{"name":"NotificationBar"},{"name":"Overlay"},{"name":"SessionTimeout"},{"name":"SuccessConfirmation"},{"name":"Toast"},{"name":"ToastStack"},{"name":"Tooltip"},{"name":"CtaModule"},{"name":"EventCalendar"},{"name":"EventCard"},{"name":"EventType"},{"name":"FormBanner"},{"name":"GeneralContent"},{"name":"Hero"},{"name":"Media"},{"name":"TypographicHeader"},{"name":"Avatar"},{"name":"ProfileCard"},{"name":"ProfileGrid"},{"name":"ProfileModal"},{"name":"StatCard"},{"name":"Stats"},{"name":"CardModule"},{"name":"DetailComparison"},{"name":"FeatureMatrix"},{"name":"MarketingTable"},{"name":"Accordion"},{"name":"AccordionModule"},{"name":"Drawer"},{"name":"DrawerCard"},{"name":"TabModule"},{"name":"Tabs"}]} */
+</script><script>/* @ds-bundle: {"format":4,"namespace":"Qualys","components":[{"name":"Button"},{"name":"Hyperlink"},{"name":"SocialButton"},{"name":"TextLink"},{"name":"BlogCard"},{"name":"Card"},{"name":"InlinePromoCard"},{"name":"IntegrationCard"},{"name":"ResourceCard"},{"name":"WebinarCard"},{"name":"Carousel"},{"name":"LogoCarousel"},{"name":"LogoHierarchy"},{"name":"TestimonialCard"},{"name":"TestimonialCarousel"},{"name":"AppliedFilters"},{"name":"FilterBar"},{"name":"FilterButton"},{"name":"FilterChip"},{"name":"FilterChipGroup"},{"name":"FilterDrawer"},{"name":"FilterDropdown"},{"name":"Checkbox"},{"name":"DemoRequestWizard"},{"name":"Form"},{"name":"FormModal"},{"name":"Radio"},{"name":"SearchBar"},{"name":"Select"},{"name":"TextField"},{"name":"Toggle"},{"name":"Flag"},{"name":"Icon"},{"name":"Marker"},{"name":"Tag"},{"name":"Breadcrumbs"},{"name":"Footer"},{"name":"Nav"},{"name":"NavBanner"},{"name":"AlertDialog"},{"name":"CookieBanner"},{"name":"ExitIntent"},{"name":"HoverCard"},{"name":"Modal"},{"name":"NotificationBar"},{"name":"Overlay"},{"name":"SessionTimeout"},{"name":"SuccessConfirmation"},{"name":"Toast"},{"name":"ToastStack"},{"name":"Tooltip"},{"name":"CtaModule"},{"name":"EventCalendar"},{"name":"EventCard"},{"name":"EventType"},{"name":"GeneralContent"},{"name":"Hero"},{"name":"Media"},{"name":"TypographicHeader"},{"name":"Avatar"},{"name":"ProfileCard"},{"name":"ProfileGrid"},{"name":"ProfileModal"},{"name":"StatCard"},{"name":"Stats"},{"name":"CardModule"},{"name":"DetailComparison"},{"name":"FeatureMatrix"},{"name":"MarketingTable"},{"name":"Accordion"},{"name":"AccordionModule"},{"name":"Drawer"},{"name":"DrawerCard"},{"name":"TabModule"},{"name":"Tabs"}]} */
 (function () {
   var React = window.React;
   var h = React.createElement;
@@ -2749,12 +2723,12 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
       p.arrow ? h('span', { className: 'q-textlink__arrow' }, h(Icon, { name: 'arrow-right', size: 16 })) : null);
   }
 
-  /* Hyperlink — inline link inside body copy. arrow: true shows the arrow on hover, 'always' keeps it in view. disabled grays it out and takes it out of the tab order. tone 'inverted' is white, for dark or blue grounds; it stays underlined. */
+  /* Hyperlink — inline link inside body copy. It never carries an arrow (that belongs to TextLink). disabled grays it out and takes it out of the tab order. tone 'inverted' is white, for dark or blue grounds; it stays underlined. */
   function Hyperlink(p) {
     var rest = omit(p, ['arrow', 'className', 'children', 'disabled', 'tone']);
     if (p.disabled) { rest['aria-disabled'] = 'true'; rest.tabIndex = -1; rest.href = undefined; rest.onClick = undefined; }
-    rest.className = cx('q-hyperlink', p.tone === 'inverted' && 'q-hyperlink--inverted', p.arrow && 'q-hyperlink--arrow', p.arrow === 'always' && 'q-hyperlink--arrow-always', p.disabled && 'is-disabled', p.className);
-    return h('a', rest, p.children, p.arrow ? h('span', { className: 'q-hyperlink__arrow' }, h(Icon, { name: 'arrow-right', size: 'sm' })) : null);
+    rest.className = cx('q-hyperlink', p.tone === 'inverted' && 'q-hyperlink--inverted', p.disabled && 'is-disabled', p.className);
+    return h('a', rest, p.children);
   }
 
   /* Breadcrumbs — where the page sits in the site: a link for each level above it, then the page itself as plain text. (Figma: Breadcrumbs) */
@@ -4823,7 +4797,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
         h(TextField, { name: field.name, label: field.label, type: field.type, autoComplete: field.autoComplete, value: vs[0], error: es[0], onChange: function (e) { vs[1](e.target.value); if (es[0]) es[1](null); } }),
         h('div', { className: 'q-exit__actions' },
           h(Button, { type: 'submit' }, p.submitLabel || (content ? 'Download Free' : 'Start Free Trial')),
-          h(TextLink, { tone: 'neutral', arrow: !content, onClick: p.onDismiss || f.close, className: 'q-exit__dismiss' }, p.dismissLabel || 'No Thanks'))));
+          h(TextLink, { tone: 'neutral', onClick: p.onDismiss || f.close, className: 'q-exit__dismiss' }, p.dismissLabel || 'No Thanks'))));
     return modalFrame(p, f, { kind: 'exit', overlayCloses: true }, panel);
   }
   /* DemoRequestWizard — a short form split into steps, ending on a confirmation. steps [{ title, description, fields, consent }]. */
@@ -5114,23 +5088,6 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
     return h('span', { ref: wrapRef, className: cx('q-hcard', open && 'is-open', blocked && 'is-blocked', p.className), onPointerEnter: onEnter, onPointerLeave: onLeave }, child, layer);
   }
 
-  /* FormBanner — a banner (a heading on the blue gradient, a tint or a photo, with optional artwork on the right) and the lead-capture Form attached under it.
-     background 'gradient' (default) | 'light' | { src }; tone 'inverted' | 'blue' sets the heading color. */
-  function FormBanner(p) {
-    var bg = p.background, src = bg && typeof bg === 'object' ? bg.src : null, form = p.form || {};
-    var ground = src ? 'image' : (bg === 'light' ? 'light' : 'gradient');
-    var tone = p.tone === 'blue' || p.tone === 'inverted' ? p.tone : (ground === 'light' ? 'blue' : 'inverted');
-    return h('section', { className: cx('q-section', 'q-fbanner', p.className), id: p.id },
-      h('div', { className: 'q-section__inner' },
-        h('div', { className: 'q-fbanner__card' },
-          h('div', { className: cx('q-fbanner__band', 'q-fbanner__band--' + ground, 'q-fbanner__band--' + tone), style: src ? { backgroundImage: 'url("' + src + '")' } : undefined },
-            h('div', { className: 'q-fbanner__copy' },
-              heading(p.titleLevel || 2, { className: 'q-fbanner__title' }, p.title),
-              p.subtitle ? h('p', { className: 'q-fbanner__subtitle' }, p.subtitle) : null),
-            p.image ? h('img', { className: 'q-fbanner__art', src: p.image, alt: p.imageAlt || '' }) : null),
-          h('div', { className: 'q-fbanner__form' },
-            React.isValidElement(form) ? form : h(Form, Object.assign({ variant: 'extended', titleLevel: (p.titleLevel || 2) + 1 }, form))))));
-  }
 
   /* Tooltip — a short label for the thing it points at, on hover and on keyboard focus. position 'top' | 'bottom' | 'left' | 'right'; theme 'dark' | 'light'. */
   function Tooltip(p) {
@@ -5475,7 +5432,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
     Button: Button, TextLink: TextLink, Hyperlink: Hyperlink, Breadcrumbs: Breadcrumbs, SocialButton: SocialButton, Icon: Icon, Tag: Tag, FilterChip: FilterChip, Flag: Flag, Marker: Marker, EventType: EventType, Tabs: Tabs, Drawer: Drawer, DrawerCard: DrawerCard, Accordion: Accordion, Avatar: Avatar, ProfileCard: ProfileCard, ProfileModal: ProfileModal, ProfileGrid: ProfileGrid, TextField: TextField, Select: Select, FilterDropdown: FilterDropdown, FilterChipGroup: FilterChipGroup, AppliedFilters: AppliedFilters, FilterButton: FilterButton, FilterBar: FilterBar, FilterDrawer: FilterDrawer, SearchBar: SearchBar, Checkbox: Checkbox, Radio: Radio, Toggle: Toggle, Form: Form,
     Card: Card, IntegrationCard: IntegrationCard, EventCard: EventCard, WebinarCard: WebinarCard, ResourceCard: ResourceCard, BlogCard: BlogCard, InlinePromoCard: InlinePromoCard, StatCard: StatCard,
     Nav: Nav, NavBanner: NavBanner, Media: Media, Hero: Hero, TypographicHeader: TypographicHeader, GeneralContent: GeneralContent, TabModule: TabModule, AccordionModule: AccordionModule, CtaModule: CtaModule, Stats: Stats, CardModule: CardModule, Carousel: Carousel, TestimonialCard: TestimonialCard, TestimonialCarousel: TestimonialCarousel, LogoCarousel: LogoCarousel, LogoHierarchy: LogoHierarchy, EventCalendar: EventCalendar, Footer: Footer,
-    FeatureMatrix: FeatureMatrix, DetailComparison: DetailComparison, MarketingTable: MarketingTable, HoverCard: HoverCard, FormBanner: FormBanner,
+    FeatureMatrix: FeatureMatrix, DetailComparison: DetailComparison, MarketingTable: MarketingTable, HoverCard: HoverCard,
     Overlay: Overlay, Modal: Modal, FormModal: FormModal, AlertDialog: AlertDialog, SessionTimeout: SessionTimeout, SuccessConfirmation: SuccessConfirmation, ExitIntent: ExitIntent, DemoRequestWizard: DemoRequestWizard, Toast: Toast, ToastStack: ToastStack, NotificationBar: NotificationBar, CookieBanner: CookieBanner, Tooltip: Tooltip
   });
 })();

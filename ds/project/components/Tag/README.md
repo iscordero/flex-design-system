@@ -1,6 +1,5 @@
 # Tag
 
-**Status:** Ready
 
 Badges and text tags from the Figma Tagging System: a badge signals status (recency, availability, urgency); a text tag names a category.
 

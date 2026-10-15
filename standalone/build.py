@@ -224,6 +224,8 @@ views.append(('overview', '''<div class="ds-stage" data-c="Cover"></div>
 <ul class="ds-facts"><li><b>%d</b> components, patterns and page modules in <b>%d</b> families</li><li><b>%d</b> guides</li><li><b>%d</b> color tokens</li><li>Updated <b>%s</b></li></ul></header>
 <article class="ds-prose">%s</article>''' % (lede, ncomp, len(fam['families']), len(guides), len(tok['color']['tokens']), SNAP, rest)))
 
+START_GUIDES = {g for g, t, _, _ in guides if t == 'Change Management'}  # shown under Start, not numbered with the guidelines
+_num = [g for g, _, _, _ in guides if g not in START_GUIDES]
 for gi, (gid, title, body, toc) in enumerate(guides):
     links = []
 
@@ -233,9 +235,10 @@ for gi, (gid, title, body, toc) in enumerate(guides):
                 links.append('<li><a href="#%s" data-jump="%s">%s</a></li>' % (gid, s['id'], esc(s['name'])))
             walk(s.get('children', []))
     walk(toc)
-    views.append((gid, '''<header class="ds-head"><p class="ds-eyebrow">Guideline %s of %d</p><h1>%s</h1></header>
+    eyebrow = 'Start' if gid in START_GUIDES else 'Guideline %d of %d' % (_num.index(gid) + 1, len(_num))
+    views.append((gid, '''<header class="ds-head"><p class="ds-eyebrow">%s</p><h1>%s</h1></header>
 <ul class="ds-toc" aria-label="In this guide">%s</ul>
-<article class="ds-prose">%s</article><!--EXTRA:%s-->''' % (gi + 1, len(guides), esc(title), ''.join(links), body, gid)))
+<article class="ds-prose">%s</article><!--EXTRA:%s-->''' % (eyebrow, esc(title), ''.join(links), body, gid)))
 
 # tokens
 COLOR_GROUPS = [
@@ -400,45 +403,21 @@ def family_view(fid, fname, members, eyebrow):
     cards = []
     for name in members:
         sub = add(name)
-        STATUS[name] = status_of(name)
-        st, why = STATUS[name]
-        st_note = '' if st == 'Ready' else '<p class="ds-stnote ds-stnote--%s"><b>%s.</b> %s</p>' % (slug(st), esc(st), esc(why or {'In review': 'Being designed or checked: don\'t build it yet.', 'Needs fixes': 'Has a known problem: don\'t build it until it is fixed.', 'Deprecated': 'Don\'t use it in new work.'}.get(st, '')))
         rp = '%s/components/%s/README.md' % (P, name)
         notes = ''
         if os.path.exists(rp):
             _, rh = strip_h1(md(open(rp).read(), 'r-' + name)[0])
             notes = '<details class="ds-notes"><summary>Usage notes</summary><div class="ds-prose">%s</div></details>' % rh
-            README_TEXT[name] = re.sub(r'<p><strong>Status:</strong>.*?</p>', '', rh, count=1, flags=re.S)  # the status line would match every search for "status"
+            README_TEXT[name] = rh
         # No Code button on the cards: props and types live in the component's README and index.d.ts.
         code_btn = ''
-        cards.append('''<article class="ds-card" id="c-%s"><div class="ds-card-head"><h2>%s</h2><span class="ds-level">%s</span>%s<span class="ds-tools"><button type="button" class="ds-specs" aria-expanded="false" aria-controls="ds-drawer" aria-haspopup="dialog" data-sp="sp-%s" title="Sizes, spacing, color, type and tokens">%s<span>Specs</span></button>%s<button type="button" class="ds-size" aria-pressed="false" hidden>Actual size</button></span></div>
-<p class="ds-sub">%s</p>%s<div class="ds-stage%s" data-c="%s"></div><div class="ds-specpanel" id="sp-%s" hidden></div>%s</article>''' % (name, name, LEVEL_NAME.get(LEVEL[name], LEVEL[name]), status_chip(name), name, SPECS_ICON, code_btn, esc(sub), st_note, ' is-square' if name in SQUARE else '', name, name, notes))
+        cards.append('''<article class="ds-card" id="c-%s"><div class="ds-card-head"><h2>%s</h2><span class="ds-level">%s</span><span class="ds-tools"><button type="button" class="ds-specs" aria-expanded="false" aria-controls="ds-drawer" aria-haspopup="dialog" data-sp="sp-%s" title="Sizes, spacing, color, type and tokens">%s<span>Specs</span></button>%s<button type="button" class="ds-size" aria-pressed="false" hidden>Actual size</button></span></div>
+<p class="ds-sub">%s</p><div class="ds-stage%s" data-c="%s"></div><div class="ds-specpanel" id="sp-%s" hidden></div>%s</article>''' % (name, name, LEVEL_NAME.get(LEVEL[name], LEVEL[name]), name, SPECS_ICON, code_btn, esc(sub), ' is-square' if name in SQUARE else '', name, name, notes))
     views.append((fid, '<header class="ds-head"><p class="ds-eyebrow">%s</p><h1>%s</h1></header><div class="ds-family">%s</div>' % (esc(eyebrow), esc(fname), ''.join(cards))))
 
 README_TEXT = {}
 FAMILY_OF = {}
-# Status: one line under each README's title, "**Status:** Ready" (or In review / Needs fixes / Deprecated, then " — why").
-STATUS = {}
-STATUS_KEYS = {'ready': 'Ready', 'in review': 'In review', 'needs fixes': 'Needs fixes', 'deprecated': 'Deprecated'}
 
-
-def status_of(name):
-    rp = '%s/components/%s/README.md' % (P, name)
-    if not os.path.exists(rp):
-        return ('Ready', '')
-    m = re.search(r'^\*\*Status:\*\*\s*([A-Za-z ]+?)\s*(?:[\u2014\u2013-]\s*(.*))?$', open(rp).read()[:600], re.M)
-    if not m:
-        return ('Ready', '')
-    return (STATUS_KEYS.get(m.group(1).strip().lower(), m.group(1).strip()), (m.group(2) or '').strip())
-
-
-def status_chip(name, small=False):
-    st, why = STATUS.get(name) or status_of(name)
-    if st == 'Ready' and small:
-        return ''
-    cls = 'ds-st ds-st--' + slug(st) + (' is-small' if small else '')
-    tip = st + (': ' + why if why else '')
-    return '<span class="%s" title="%s">%s</span>' % (cls, esc(tip), '' if small else esc(st))
 # Foundations: Typography and Grid each have their own page, next to the tokens and assets.
 for fname in ('Typography', 'Grid'):
     family_view(slug(fname), fname, [fname], 'Foundations')
@@ -479,32 +458,26 @@ for sname, fams in SECTIONS:
     for fname, members in fams:
         fid = 'f-' + slug(fname)
         family_view(fid, fname, members, sname)
-        index.append('<section><h2><a href="#%s">%s</a></h2><ul>%s</ul></section>' % (fid, esc(fname), ''.join('<li><a href="#c-%s">%s</a>%s</li>' % (n, n, status_chip(n, True)) for n in members)))
+        index.append('<section><h2><a href="#%s">%s</a></h2><ul>%s</ul></section>' % (fid, esc(fname), ''.join('<li><a href="#c-%s">%s</a></li>' % (n, n) for n in members)))
         nav_fams.append((fid, fname, members))
         for n in members:
             FAMILY_OF[n] = (fid, fname, sname)
     index.append('</div></section>')
     nav_secs.append((sname, nav_fams))
-_open = [(n, STATUS[n]) for _, fams in SECTIONS for _, m in fams for n in m if STATUS.get(n, ('Ready',))[0] != 'Ready']
-_ready = sum(1 for _, fams in SECTIONS for _, m in fams for n in m if STATUS.get(n, ('Ready',))[0] == 'Ready')
-_stat = '<section class="ds-group" id="ix-status"><h2>Status</h2><p><b>%d of %d</b> are <b>Ready</b>: safe to design with and build. %s</p>%s</section>' % (
-    _ready, ncount, 'Everything else is listed here; don\'t build these until they are Ready.' if _open else 'Nothing is waiting.',
-    '<ul class="ds-stlist">%s</ul>' % ''.join('<li><a href="#c-%s">%s</a> %s%s</li>' % (n, n, status_chip(n), (' <span class="ds-stwhy">' + esc(w) + '</span>') if w else '') for n, (st, w) in _open) if _open else '')
-index.insert(1, _stat)
 views.append(('components', ''.join(index)))
 
 
 
 # ---------- rail ----------
-nav = ['<div><h2>Start</h2><ul><li><a href="#overview">Overview</a></li><li><a href="#example">Example page</a></li></ul></div>',
-       '<div><h2>Guidelines</h2><ul>%s</ul></div>' % ''.join('<li><a href="#%s">%s</a></li>' % (gid, esc(t)) for gid, t, _, _ in guides),
+nav = ['<div><h2>Start</h2><ul><li><a href="#overview">Overview</a></li><li><a href="#example">Example page</a></li>%s</ul></div>' % ''.join('<li><a href="#%s">%s</a></li>' % (gid, esc(t)) for gid, t, _, _ in guides if gid in START_GUIDES),
+       '<div><h2>Guidelines</h2><ul>%s</ul></div>' % ''.join('<li><a href="#%s">%s</a></li>' % (gid, esc(t)) for gid, t, _, _ in guides if gid not in START_GUIDES),
        '<div><h2>Foundations</h2><ul><li><a href="#tokens">Design tokens</a></li><li><a href="#typography">Typography</a></li><li><a href="#grid">Grid</a></li></ul></div>']
 for k, (sname, nav_fams) in enumerate(nav_secs):
     part = ['<div class="ds-navsec"><h2>%s</h2>' % esc(sname)]
     if k == 0:
         part.append('<ul><li><a href="#components">All</a></li></ul>')
     for fid, fname, names in nav_fams:
-        part.append('<details data-family data-view="%s"><summary>%s</summary><ul><li><a href="#%s">Whole family</a></li>%s</ul></details>' % (fid, esc(fname), fid, ''.join('<li><a href="#c-%s">%s%s</a></li>' % (n, n, status_chip(n, True)) for n in names)))
+        part.append('<details data-family data-view="%s"><summary>%s</summary><ul><li><a href="#%s">Whole family</a></li>%s</ul></details>' % (fid, esc(fname), fid, ''.join('<li><a href="#c-%s">%s</a></li>' % (n, n) for n in names)))
     part.append('</div>')
     nav.append(''.join(part))
 # (Search results replace the rail while a query is typed; see shell.js.)
@@ -554,7 +527,7 @@ ALIASES = {
     'EventCalendar': 'calendar events schedule month', 'EventCard': 'event card', 'WebinarCard': 'webinar card speakers', 'BlogCard': 'blog post article card',
     'ResourceCard': 'whitepaper report datasheet content card', 'IntegrationCard': 'partner integration card', 'InlinePromoCard': 'promo banner ad',
     'FeatureMatrix': 'comparison table compare checkmarks competitors', 'DetailComparison': 'comparison table compare', 'MarketingTable': 'table pricing comparison',
-    'CtaModule': 'call to action form signup', 'FormBanner': 'cta banner form', 'Card': 'tile feature card', 'CardModule': 'cards grid row features',
+    'CtaModule': 'call to action form signup', 'Card': 'tile feature card', 'CardModule': 'cards grid row features',
     'Media': 'image video placeholder', 'Icon': 'icons glyph svg hugeicons', 'Grid': 'columns layout breakpoints container gutter margins',
     'Typography': 'type fonts text styles headings', 'Overlay': 'scrim backdrop', 'SessionTimeout': 'timeout warning logout', 'ExitIntent': 'popup leave exit',
     'SuccessConfirmation': 'thank you success message', 'DemoRequestWizard': 'multi step form wizard demo', 'Cover': '',
@@ -575,8 +548,7 @@ for name, (fid, fname, sname) in FAMILY_OF.items():
     lvl = LEVEL_NAME.get(LEVEL.get(name, ''), LEVEL.get(name, ''))
     sub = card_meta(name)[3]
     words = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', name)
-    _st = STATUS.get(name, ('Ready', ''))[0]
-    SEARCH.append({'k': 'Component', 't': name, 'g': '%s · %s%s' % (lvl, fname, '' if _st == 'Ready' else ' · ' + _st), 'h': 'c-' + name, 'd': sub, 'a': (words + ' ' + ALIASES.get(name, '')).lower(), 'x': plain(README_TEXT.get(name, ''))[:4000]})
+    SEARCH.append({'k': 'Component', 't': name, 'g': '%s · %s' % (lvl, fname), 'h': 'c-' + name, 'd': sub, 'a': (words + ' ' + ALIASES.get(name, '')).lower(), 'x': plain(README_TEXT.get(name, ''))[:4000]})
 for n, label in (('Typography', 'Foundations'), ('Grid', 'Foundations'), ('Icon', 'Icons and Logos')):
     if n not in FAMILY_OF:
         h = 'c-' + n

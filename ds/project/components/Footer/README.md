@@ -1,6 +1,5 @@
 # Footer
 
-**Status:** Ready
 
 The site footer from the Figma Footer file: Charcoal, with the Qualys shield in a raised notch, a lead block with a URL form and social links, three link columns and a centered legal line.
 

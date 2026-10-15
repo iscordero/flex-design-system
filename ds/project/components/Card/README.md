@@ -1,6 +1,5 @@
 # Card
 
-**Status:** Ready
 
 The Standard card from the Figma Cards page: a heading and short copy, with an optional feature icon, eyebrow or tag name, tags or a badge, and a text-link call to action.
 

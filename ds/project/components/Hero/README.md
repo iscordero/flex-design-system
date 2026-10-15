@@ -1,6 +1,5 @@
 # Hero
 
-**Status:** Ready
 
 The top-of-page module from the Figma Hero page (Ready for Dev): an eyebrow, a display heading, a short paragraph and up to two actions, on its own, beside media, over a photo or video, or beside a lead form.
 

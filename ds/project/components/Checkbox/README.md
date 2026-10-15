@@ -1,6 +1,5 @@
 # Checkbox
 
-**Status:** Ready
 
 From the Figma Inputs sheet: a 20px box with `radius-xs` (4px) corners.
 

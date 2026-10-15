@@ -1,6 +1,5 @@
 # SessionTimeout
 
-**Status:** Ready
 
 The warning before someone is signed out, with a live countdown, and the notice once they have been.
 

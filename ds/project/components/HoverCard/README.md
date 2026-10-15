@@ -1,6 +1,5 @@
 # HoverCard
 
-**Status:** Ready
 
 A small card that opens beside the thing it describes. Use it where a logo or a headshot stands for something that needs a line of explanation and one link. Two kinds: the **logo card** (Figma: Hover card) and the **profile card**.
 

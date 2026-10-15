@@ -1,6 +1,5 @@
 # TextLink
 
-**Status:** Ready
 
 Tertiary text-link buttons from the Figma Tertiary sheet: a lightweight inline call to action, with or without an arrow.
 

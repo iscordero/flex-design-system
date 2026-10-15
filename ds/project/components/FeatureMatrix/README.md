@@ -1,6 +1,5 @@
 # FeatureMatrix
 
-**Status:** Ready
 
 A yes/no comparison table: Qualys in the first, highlighted column, competitors beside it, and features grouped into topics that open and close. Use it when the claim is "we cover this, they don't" across many features. When each cell needs a sentence, use DetailComparison; for a short list of statements, MarketingTable.
 

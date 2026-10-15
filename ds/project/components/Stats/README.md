@@ -1,6 +1,5 @@
 # Stats
 
-**Status:** Ready
 
 The stats module from the Figma Stats page: three figures in one panel, or three or four StatCards in a row.
 

@@ -1,6 +1,5 @@
 # Drawer
 
-**Status:** Ready
 
 The Standard drawer from the Figma Drawers page: a ruled row with a title that expands downward to show detail — the system's accordion row. Closed it is compact; open it reveals body copy and an optional call to action.
 

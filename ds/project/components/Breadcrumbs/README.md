@@ -1,6 +1,5 @@
 # Breadcrumbs
 
-**Status:** Ready
 
 The trail above a page that shows where it sits in the site, from the Figma Breadcrumbs page: a link for each level above, then the page itself as plain text.
 

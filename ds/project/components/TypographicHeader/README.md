@@ -1,6 +1,5 @@
 # TypographicHeader
 
-**Status:** Ready
 
 The section opener from the Figma Typographic Headers page (Ready for Dev): an eyebrow, a heading, a short paragraph and up to two buttons, with no media.
 

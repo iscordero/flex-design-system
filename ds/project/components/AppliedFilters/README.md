@@ -1,6 +1,5 @@
 # AppliedFilters
 
-**Status:** Ready
 
 The "applied filters" row from the Figma Filters page (mobile): a receipt of the filters in force, placed directly under the search field, with the number of results.
 

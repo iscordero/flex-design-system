@@ -1,6 +1,5 @@
 # TextField
 
-**Status:** Ready
 
 The form text field from the Figma Inputs sheet: a white 56px box whose label sits inside as the placeholder, then floats up small when the field is focused or filled.
 

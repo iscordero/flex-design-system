@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components · Buttons and links" height=1373 width=1180 subtitle="Component · Inline link in body copy, blue or inverted: every state with its name and tokens, and in a paragraph" -->
+<!-- @dsCard group="Components · Buttons and links" height=1220 width=1180 subtitle="Component · Inline link in body copy, blue or inverted: every state with its name and tokens, and in a paragraph" -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -88,9 +88,9 @@ function sizes(rows) {
 function code(t) { return h('code', null, t); }
 function sec(title, lede) { return h('section', {className: 'sec'}, h('h2', {className: 'sec__title'}, title), lede ? h('p', {className: 'sec__lede'}, lede) : null, [].slice.call(arguments, 2)); }
 
-var HT = {default: {text: 'hyperlink-default', line: '1px, 3px below the text'}, hover: {text: 'hyperlink-hover', line: '1px'}, arrow: {text: 'hyperlink-hover', line: '1px', note: 'Arrow 14px, 4px gap, shown on hover'}, active: {text: 'hyperlink-active', line: '1px'}, disabled: {text: 'hyperlink-default', note: 'At 50% opacity, out of the tab order'}};
-var HI = {default: {text: 'text-inverted', line: '1px, 3px below the text'}, hover: {text: 'text-inverted', line: '2px'}, arrow: {text: 'text-inverted', line: '2px', note: 'Arrow 14px, 4px gap, shown on hover'}, active: {text: 'text-inverted', line: '1px'}, disabled: {text: 'text-inverted', note: 'At 50% opacity, out of the tab order'}};
-var HS = [['default', 'Default', ''], ['hover', 'Hover', 'is-hover'], ['arrow', 'Hover, with arrow', 'is-hover'], ['active', 'Active (pressed)', 'is-hover is-pressed'], ['disabled', 'Disabled', '']];
+var HT = {default: {text: 'hyperlink-default', line: '1px, 3px below the text'}, hover: {text: 'hyperlink-hover', line: '1px'}, active: {text: 'hyperlink-active', line: '1px'}, disabled: {text: 'hyperlink-default', note: 'At 50% opacity, out of the tab order'}};
+var HI = {default: {text: 'text-inverted', line: '1px, 3px below the text'}, hover: {text: 'text-inverted', line: '2px'}, active: {text: 'text-inverted', line: '1px'}, disabled: {text: 'text-inverted', note: 'At 50% opacity, out of the tab order'}};
+var HS = [['default', 'Default', ''], ['hover', 'Hover', 'is-hover'], ['active', 'Active (pressed)', 'is-hover is-pressed'], ['disabled', 'Disabled', '']];
 function hyperRow(tone, label, use, toks) {
   return {label: label, use: use, dark: tone === 'inverted', tokens: toks,
     name: function (s) { return 'hyperlink-' + (tone === 'inverted' ? 'inverted-' : '') + s.replace('arrow', 'arrow-hover'); },
@@ -98,16 +98,16 @@ function hyperRow(tone, label, use, toks) {
 }
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
   sec('Links', 'A hyperlink sits inside a sentence. Blue, SemiBold (two weights heavier than the copy around it) and always underlined, so it never relies on color alone.',
-    sizes([['Part', 'Value'], ['Label', 'IBM Plex Sans SemiBold, the size of the surrounding copy'], ['Underline', '1px, 3px below the text; 2px on hover when inverted'], ['Arrow', '14px, 4px gap, shown on hover']]),
+    sizes([['Part', 'Value'], ['Label', 'IBM Plex Sans SemiBold, the size of the surrounding copy'], ['Underline', '1px, 3px below the text; 2px on hover when inverted']]),
     matrix({title: 'Inline hyperlink', use: 'A subtle, navigational link that shows something is clickable: in body copy such as articles and blogs, and for sources and URLs.', states: HS, labelWidth: '180px',
       rows: [hyperRow('default', 'Blue', 'On white and light grounds', HT), hyperRow('inverted', 'Inverted', 'On dark or blue grounds: white, still underlined', HI)]})),
   sec('In body copy', null,
     h('div', {className: 'demo', style: {display: 'block'}},
       h('p', {className: 'paragraph-rg', style: {margin: 0, maxWidth: 640}},
         'Read the ', h(Q.Hyperlink, {href: '#'}, 'vulnerability report'), ' for the full methodology, or see the ',
-        h(Q.Hyperlink, {href: '#', arrow: true}, 'patch schedule'), ' for this quarter.'),
+        h(Q.Hyperlink, {href: '#'}, 'patch schedule'), ' for this quarter.'),
       h('p', {className: 'paragraph-rg', style: {margin: '12px 0 0', maxWidth: 640}},
-        'The arrow can stay in view, as in the ', h(Q.Hyperlink, {href: '#', arrow: 'always'}, 'release notes'), '. A link that is not available yet is ',
+        'A link that is not available yet is ',
         h(Q.Hyperlink, {href: '#', disabled: true}, 'disabled'), '.')))));
 </script>
 </body>

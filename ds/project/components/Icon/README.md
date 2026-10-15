@@ -1,6 +1,5 @@
 # Icon
 
-**Status:** Ready
 
 Inline SVG icons in five preset sizes and three approved colors. Two sources: **Hugeicons** (free, stroke rounded, MIT), the general stroke icon library, and the **Qualys utility icons**, the filled glyphs drawn for specific components.
 

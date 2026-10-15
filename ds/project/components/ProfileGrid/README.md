@@ -1,6 +1,5 @@
 # ProfileGrid
 
-**Status:** Ready
 
 The profile layouts from the Figma Avatars page: a row of profile cards that open a bio modal.
 

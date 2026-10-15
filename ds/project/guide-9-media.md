@@ -2,6 +2,15 @@
 
 Photography, video, product images and people photos: how imagery is chosen, cropped and placed. The image files are at the end of this guide.
 
+## Finding images and assets
+
+All approved photography, video, product images, icons and logos live in **Bynder**, Qualys's digital asset management (DAM) system: [Qualys Bynder portal](https://qualys.bynder.com) (placeholder link). Search there first, and download the size and format you need rather than reusing a file from an old page or a slide deck.
+
+- **What's in Bynder:** brand photography, hero and banner images, product screenshots and device mockups, video, the Qualys logos, and the icon sets in this guide.
+- **What's in Flex:** the few files the components use in their previews (at the end of this guide and in Icons and Logos), so the examples render. They are copies; Bynder holds the originals.
+- **Choosing:** filter by collection or tag (for example "Hero", "Product", "People"), check the usage rights and expiry on the asset, and keep its Bynder name in the page so it can be found and updated later.
+- **New assets:** upload them to Bynder with a clear name, tags and the usage rights before they go on a page. Don't host images only on the page.
+
 ## Imagery and video
 
 ### Photography

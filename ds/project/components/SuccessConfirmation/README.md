@@ -1,6 +1,5 @@
 # SuccessConfirmation
 
-**Status:** Ready
 
 The "it worked" notice after an action: a green tick, a line of copy and one button.
 

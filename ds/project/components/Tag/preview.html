@@ -1,12 +1,12 @@
-<!-- @dsCard group="Components · Tags and flags" height=745 width=1100 subtitle="Component · Badges in eight status tones, three fills and two sizes; text, label and eyebrow tags; vulnerability metadata" -->
+<!-- @dsCard group="Components · Tags and flags" height=925 width=1100 subtitle="Component · Badges in eight status tones, three fills and two sizes; text, label and eyebrow tags; vulnerability metadata" -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>Tag — preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:var(--spacing-rg)}.row{display:flex;gap:var(--spacing-xl);align-items:flex-start;flex-wrap:wrap}.cap{margin-bottom:var(--spacing-3xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.col{display:flex;flex-direction:column;gap:var(--spacing-rg);width:320px}</style>
-<style>.grid{display:grid;grid-template-columns:110px repeat(8,auto);gap:var(--spacing-xs) var(--spacing-xs);align-items:center;justify-content:start;justify-items:start}.lbl{font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.meta{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:var(--spacing-rg)}.meta__set{display:flex;flex-direction:column;gap:var(--spacing-5xs);padding:var(--spacing-rg);border:1px solid var(--stroke-neutral-400);border-radius:var(--radius-lg)}.meta__name{font-family:var(--font-heading);font-weight:600;font-size:16px;line-height:1.3}.meta__desc{margin-bottom:var(--spacing-3xs);font-size:14px;line-height:1.3;color:var(--text-secondary)}</style>
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:var(--spacing-4xl)}.row{display:flex;gap:var(--spacing-xl);align-items:flex-start;flex-wrap:wrap}.cap{margin-bottom:var(--spacing-3xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.col{display:flex;flex-direction:column;gap:var(--spacing-rg);width:320px}</style>
+<style>.grid{display:grid;grid-template-columns:110px repeat(8,auto);gap:var(--spacing-rg) var(--spacing-rg);align-items:center;justify-content:start;justify-items:start}.lbl{font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.meta{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:var(--spacing-xl)}.meta__set{display:flex;flex-direction:column;gap:var(--spacing-5xs);padding:var(--spacing-xl);border:1px solid var(--stroke-neutral-400);border-radius:var(--radius-lg)}.meta__name{font-family:var(--font-heading);font-weight:600;font-size:16px;line-height:1.3}.meta__desc{margin-bottom:var(--spacing-rg);font-size:14px;line-height:1.3;color:var(--text-secondary)}</style>
 </head>
 <body>
 <div id="root"></div>
@@ -35,7 +35,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     h('div', null, h('div', {className: 'cap'}, 'Vulnerability metadata \u2014 one tone per meaning, the word always shown'),
       h('div', {className: 'meta'}, META.map(function (m) {
         return h('div', {key: m[0], className: 'meta__set'}, h('div', {className: 'meta__name'}, m[0]), h('div', {className: 'meta__desc'}, m[1]),
-          h('div', {className: 'row', style: {gap: 'var(--spacing-3xs)'}}, m[2].map(function (b) { return h(Q.Tag, {key: b[0], variant: b[1], tone: b[2]}, b[0]); })));
+          h('div', {className: 'row', style: {gap: 'var(--spacing-xs)'}}, m[2].map(function (b) { return h(Q.Tag, {key: b[0], variant: b[1], tone: b[2]}, b[0]); })));
       })))));
 </script>
 </body>

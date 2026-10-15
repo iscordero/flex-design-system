@@ -1,6 +1,5 @@
 # FilterDropdown
 
-**Status:** Ready
 
 The filter dropdown from the Figma Filters page: an Ash button with a bold label, opening a menu of checkboxes. Use it above resource, event and blog listings; FilterBar lays several out with a reset link.
 

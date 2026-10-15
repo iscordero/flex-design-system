@@ -46,7 +46,7 @@ function group(r) {
 }
 ReactDOM.createRoot(document.getElementById('root')).render(
   h('div', {className: 'pv', style: {gap: 32}},
-    h('div', {className: 'cap'}, 'Closed \u2014 every number of profiles, without and with a button. Sample names from the Figma file.'),
+    h('div', {className: 'cap'}, 'Closed \u2014 every number of profiles, without and with a button.'),
     RULES.map(group),
     h('h2', {className: 'h'}, 'Open'),
     h('p', {className: 'rule'}, h('b', null, 'Any number: '), 'everyone is listed in two columns with name, role and company. The button takes the free cell on the last row, or a row of its own.'),

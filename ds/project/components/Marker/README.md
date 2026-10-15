@@ -1,6 +1,5 @@
 # Marker
 
-**Status:** Ready
 
 The marker from the Figma Tagging System: a vertical bar on the edge of a tab or menu item that marks it unread or active; it can open into a pill with a count.
 

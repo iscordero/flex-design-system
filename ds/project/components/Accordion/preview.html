@@ -40,7 +40,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     h('div', {className: 'cols'},
       h('div', {className: 'c sec'}, h('div', {className: 'cap'}, 'Standard \u2014 icon and text'), h(Q.Accordion, {items: withIcons, defaultOpen: 'cloud'})),
       h('div', {className: 'c sec'}, h('div', {className: 'cap'}, 'Standard \u2014 text'), h(Q.Accordion, {items: textOnly, defaultOpen: 0}))),
-    h('div', {className: 'sec gray'}, h('div', {className: 'cap'}, 'Content cards \u2014 sample sessions from the Figma file'), h(Q.Accordion, {variant: 'cards', items: sessions, defaultOpen: 0})),
+    h('div', {className: 'sec gray'}, h('div', {className: 'cap'}, 'Content cards'), h(Q.Accordion, {variant: 'cards', items: sessions, defaultOpen: 0})),
     h('div', {className: 'sec'}, h('div', {className: 'cap'}, 'Mobile \u2014 375px screen, 16px page margins'),
       h('div', {className: 'phones'},
         h('div', {className: 'phone w'}, h(Q.Accordion, {layout: 'mobile', items: withIcons, defaultOpen: 'cloud'})),

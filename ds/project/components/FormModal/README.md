@@ -1,6 +1,5 @@
 # FormModal
 
-**Status:** Ready
 
 A lead-capture Form inside a modal: an eyebrow, title and subtitle above, the form on its warm ground below.
 

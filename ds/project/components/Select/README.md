@@ -1,6 +1,5 @@
 # Select
 
-**Status:** Ready
 
 The form dropdown from the Figma Inputs sheet ("Drop Down – Forms"): the same 56px box as TextField with a chevron, opening a white menu with a check beside the chosen row.
 

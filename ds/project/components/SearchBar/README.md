@@ -1,6 +1,5 @@
 # SearchBar
 
-**Status:** Ready
 
 The search input from the Figma Inputs sheet, in two styles: **line** (an underline, for search on a page or in the nav) and **contained** (a soft gray box, for search inside cards, panels and filter rows).
 

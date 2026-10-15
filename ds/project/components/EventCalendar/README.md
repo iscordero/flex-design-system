@@ -1,6 +1,5 @@
 # EventCalendar
 
-**Status:** Ready
 
 The events calendar from the Figma Calendar page: a search and filter bar over one of three views of the same events — a month grid, a day-by-day list or a grid of cards.
 

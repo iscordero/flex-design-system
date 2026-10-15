@@ -1,6 +1,5 @@
 # LogoCarousel
 
-**Status:** Ready
 
 The logo carousel from the Figma Logos page: a heading over one row of customer logos that scrolls by itself.
 

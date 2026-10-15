@@ -1,6 +1,5 @@
 # FilterChip
 
-**Status:** Ready
 
 The filter-style tag from the Figma Tagging System: a pill people click to filter a list, selected or not, often with a result count.
 

@@ -1,6 +1,5 @@
 # Accordion
 
-**Status:** Ready
 
 A group of drawers from the Figma Accordion page: sections that expand and collapse so a page stays compact while the detail is one click away. Two kinds: **standard** (ruled rows) and **cards** (session cards).
 

@@ -548,6 +548,7 @@
       "project/guide-6-icons-logos.md",
       "project/guide-9-media.md",
       "project/guide-8-buttons-links.md",
+      "project/guide-11-choosing-components.md",
       "project/guide-10-change-management.md"
     ]
   },
@@ -561,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-15T17:31:30Z",
+    "at": "2026-10-15T18:18:55Z",
     "by": "Isabel",
-    "note": "American spelling throughout; guide-2 renamed Color. New Change Management guide and governance without Figma; status line on every component README. Icon types defined. LogoHierarchy: bigger logos, one column up to six, compact logos boosted.",
+    "note": "Change Management rewritten for designers and moved under Start; new Choosing Components guide; statuses and FormBanner removed; content length rule updated; Bynder in Media; nav menus touch the bar; tab underline matches nav; inline link arrow removed.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

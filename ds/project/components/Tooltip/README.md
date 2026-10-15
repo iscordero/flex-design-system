@@ -1,6 +1,5 @@
 # Tooltip
 
-**Status:** Ready
 
 A short label for the thing it points at, shown on hover and on keyboard focus.
 

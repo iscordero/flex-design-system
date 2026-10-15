@@ -1,6 +1,5 @@
 # Nav
 
-**Status:** Ready
 
 The global navigation from the Figma Navigation page: the logo, the primary items with their menus, utility links, search and one call to action. Below 1200px it becomes a bar with a menu button that opens a full-screen menu.
 
@@ -32,7 +31,7 @@ Both menu kinds use the same sizes, so moving between Platform, Solutions and th
 | Group links | IBM Plex Sans Medium 16px, `text-secondary` | 16px (`spacing-rg`) between links; 32px between groups |
 | Description | IBM Plex Sans Regular 16px | 4px under the overview title |
 | New and other badges | Tag `sm` (`tag-xs` 12px Bold, 25px tall) | 8px after the last word. A badge labels, it never asks: "New", not "Discover" or "Try" |
-| Panel | `radius-lg`, `shadow-card` | 24px top and bottom, 36px at the sides (24px in the rail) |
+| Panel | Touches the bottom of the bar: square top corners, `radius-lg` bottom corners, `shadow-card` | 24px top and bottom, 36px at the sides (24px in the rail) |
 
 **Mega menu**
 
@@ -51,7 +50,7 @@ Both menu kinds use the same sizes, so moving between Platform, Solutions and th
 
 **Search panel**
 
-- With `search` set and no `href` or `onClick`, the search icon opens a panel under the bar, like a menu: the width of the bar's content (up to 1440px), `radius-lg`, `shadow-card`, 24px × 36px padding.
+- With `search` set and no `href` or `onClick`, the search icon opens a panel under the bar, like a menu: the width of the bar's content (up to 1440px), touching the bar, bottom corners `radius-lg`, `shadow-card`, 24px × 36px padding.
 - Inside: a contained SearchBar (56px) that takes focus as the panel opens, and optional `suggestions` below it under a "Popular searches" eyebrow, as tag chips (the FilterChip style, 36px, 8px apart) that link to their results.
 - While it is open the icon becomes a cross and the blue bar sits under it. The cross, Esc or a click outside closes it, and focus returns to the icon. Pressing Enter calls `onSearch` with the query.
 - Unlike the menus, it doesn't close when the pointer leaves, and hovering an item doesn't swap it for that item's menu: someone may be typing.
@@ -83,5 +82,5 @@ Both menu kinds use the same sizes, so moving between Platform, Solutions and th
 - The Community bar has no tablet or mobile design; it uses the same mobile menu.
 - Mobile link text is drawn in #4D4D4D and desktop in Asphalt; both use `text-secondary`.
 - `layout="desktop"` or `"mobile"` forces one layout, and `inlinePanel` shows the mobile menu in the page flow, for documentation.
-- **Shape:** the bar runs edge to edge with square corners; only its menu panels are rounded (`radius-lg`).
+- **Shape:** the bar runs edge to edge with square corners. Menu panels hang straight off its bottom edge, with no gap, and round only their bottom corners (`radius-lg`).
 - **Hover and active rows:** in the mega menu's rail, hover is a neutral tint (`chip-bg`, 5% Charcoal) and the active row is Misty Blue (`surface-blue-200`) with the blue marker on its left edge. The same rule as the list AccordionModule and every list of tabs.

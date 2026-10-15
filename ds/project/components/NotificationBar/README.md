@@ -1,6 +1,5 @@
 # NotificationBar
 
-**Status:** Ready
 
 One line across the top of the page for something everyone should know: maintenance, a release, an expiring license, an event.
 

@@ -1,6 +1,5 @@
 # AccordionModule
 
-**Status:** Ready
 
 The accordion module from the Figma Accordion Modules page: an Accordion as a page section — under a heading, beside a copy block, beside media, or as a list with the open row's content beside it.
 

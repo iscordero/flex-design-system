@@ -1,6 +1,5 @@
 # IntegrationCard
 
-**Status:** Ready
 
 The Integration card from the Figma Cards page: a partner integration with its thumbnail and name (or its logo) above a short list of labeled facts.
 

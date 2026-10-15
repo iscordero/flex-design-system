@@ -1,6 +1,5 @@
 # Overlay
 
-**Status:** Ready
 
 The backdrop behind a modal, from the Figma Modals, Popups & Tooltips file. Every modal in this system draws its own, so you only need this one when you build a new kind of layer.
 

@@ -1,6 +1,5 @@
 # Form
 
-**Status:** Ready
 
 The lead-capture card from the Figma Forms page (Ready for Dev): a heading, a short stack of fields, an opt-in checkbox, one primary Button and the consent line, on a warm card.
 

@@ -1,6 +1,5 @@
 # TabModule
 
-**Status:** Ready
 
 The tab module from the Figma Tab Modules page: a white card with Tabs across the top, and under them a heading, copy, actions and media that change with the tab.
 

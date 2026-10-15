@@ -1,6 +1,5 @@
 # DrawerCard
 
-**Status:** Ready
 
 The card drawer from the Figma Drawers page, built for event agendas: a white card with a time, a session title and a chevron that opens to show the description, with zero to many speaker profiles and an optional call to action.
 

@@ -1,6 +1,5 @@
 # ToastStack
 
-**Status:** Ready
 
 Where toasts live: a corner of the screen, three at most, each leaving by itself.
 

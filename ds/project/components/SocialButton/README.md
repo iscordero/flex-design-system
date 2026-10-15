@@ -1,6 +1,5 @@
 # SocialButton
 
-**Status:** Ready
 
 The social buttons from the Figma Social page: a link to a profile on LinkedIn, X, Facebook, Instagram, Vimeo or YouTube, or to any other website.
 

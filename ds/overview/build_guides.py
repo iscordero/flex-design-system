@@ -46,8 +46,8 @@ def build(fname, plan):
 # ── specs: per bullet (title or None to take the bold lead, viz id, alt) ──
 G1=[(None,'g1-address','Do: The Qualys Cloud Platform gives your team a single source of truth across your environment. Do not: We give users a single source of truth across their environment.'),
     (None,'g1-casing','Three cases: Title Case for the heading Detect, Prioritize, and Eliminate Risk; sentence case for body copy; all caps only for a NEW tag and a CLOUD PLATFORM eyebrow.'),
-    (None,'g1-length','A five-word heading marked under ten words, above one sentence of supporting copy marked one to three sentences.'),
-    ('CTAs','g1-ctas','Buttons and text links that start with a verb: Get a Demo, Get Started, Register Now, Learn More, Explore the Platform, Download Report. Passive labels such as More Information and Demo Request are marked wrong.'),
+    (None,'g1-length','A heading marked 50 to 60 characters at most, above one sentence of supporting copy marked one to three sentences, 175 characters at most.'),
+    ('CTAs','g1-ctas','Buttons and text links that start with a verb: Get a Demo, Get Started, Register Now, Learn More, Explore the Platform, and Download Report with a download icon. Passive labels such as More Information and Demo Request are marked wrong.'),
     (None,'g1-numbers','Running copy spells the number out, Set up in three steps; a stat uses numerals, 3,847 patched.'),
     (None,'g1-punct','The Oxford comma highlighted in Detect, Prioritize, and Eliminate Risk; an em dash highlighted in One platform, every asset; the same line with a hyphen is marked wrong.'),
     ('Dates and times','g1-dates','Five date formats: long date Mon Dec 9, 2024; short date Dec 9, 2024; date and time Mon Dec 9, 2024 10:00 to 11:00a PST; time range 8:00 AM to 12:00 PM; event card Dec 10, 2026, bullet, 11a PST.'),

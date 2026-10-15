@@ -1,6 +1,5 @@
 # InlinePromoCard
 
-**Status:** Ready
 
 The Inline Promo card from the Figma Cards page: a promotion on Charcoal or the blue gradient with a white heading, one line of copy and one call to action, in a vertical, wide or banner layout.
 

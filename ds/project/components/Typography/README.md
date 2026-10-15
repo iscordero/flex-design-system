@@ -1,6 +1,5 @@
 # Typography
 
-**Status:** Ready
 
 Every type style in one place, with a Desktop / Mobile toggle that sets each sample at the size it takes on that screen.
 

@@ -1,6 +1,5 @@
 # BlogCard
 
-**Status:** Ready
 
 The Blog card from the Figma Cards page: an image, "Blog | reading time", a title, a short description and the author, ending in an outlink icon.
 

@@ -1,6 +1,5 @@
 # FilterChipGroup
 
-**Status:** Ready
 
 The desktop filter pattern from the Figma Filters page: every available filter shown upfront as a chip in a wrapping row, so people toggle criteria without opening a menu.
 

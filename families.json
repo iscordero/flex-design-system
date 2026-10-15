@@ -138,8 +138,7 @@
     [
       "Calls to action",
       [
-        "CtaModule",
-        "FormBanner"
+        "CtaModule"
       ]
     ],
     [
@@ -239,7 +238,6 @@
     "NotificationBar": "Block module",
     "CookieBanner": "Pattern",
     "HoverCard": "Component",
-    "FormBanner": "Block module",
     "FeatureMatrix": "Block module",
     "DetailComparison": "Block module",
     "MarketingTable": "Block module"
@@ -391,8 +389,7 @@
         [
           "Calls to action",
           [
-            "CtaModule",
-            "FormBanner"
+            "CtaModule"
           ]
         ],
         [
