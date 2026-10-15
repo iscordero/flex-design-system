@@ -68,6 +68,23 @@ def no_images(text):
                   lambda m: 'img:' + hashlib.sha1(m.group(0).encode()).hexdigest()[:10], text or '')
 
 
+# British and American spellings of the same word. A change that only swaps these is a spelling edit, not a design change.
+SPELLING = [('colour', 'color'), ('grey', 'gray'), ('centre', 'center'), ('behaviour', 'behavior'), ('favourite', 'favorite'),
+            ('licence', 'license'), ('catalogue', 'catalog'), ('artefact', 'artifact'), ('analyse', 'analyze'),
+            ('cancelled', 'canceled'), ('labelled', 'labeled'), ('modelling', 'modeling'), ('travelling', 'traveling'),
+            ('organis', 'organiz'), ('recognis', 'recogniz'), ('prioritis', 'prioritiz'), ('optimis', 'optimiz'),
+            ('customis', 'customiz'), ('minimis', 'minimiz'), ('maximis', 'maximiz'), ('visualis', 'visualiz'),
+            ('emphasis', 'emphasiz'), ('summaris', 'summariz'), ('standardis', 'standardiz'), ('categoris', 'categoriz'),
+            ('authoris', 'authoriz'), ('normalis', 'normaliz'), ('personalis', 'personaliz'), ('centralis', 'centraliz')]
+
+
+def us(text):
+    t = (text or '').lower()
+    for b, a in SPELLING:
+        t = t.replace(b, a)
+    return t
+
+
 def similar(a, b):
     a, b = (a or '').split(), (b or '').split()
     return difflib.SequenceMatcher(None, a, b, autojunk=False).ratio()
@@ -249,8 +266,10 @@ def compare(a, b):
 
     look = set()
     for k in set(ja) | set(jb):
-        if ja.get(k) != jb.get(k):
+        if us(ja.get(k)) != us(jb.get(k)):
             look |= {k} if k in names else users(k)
+    sa = {us(k): us(v) for k, v in sa.items()}
+    sb = {us(k): us(v) for k, v in sb.items()}
     for k in set(sa) | set(sb):
         if sa.get(k) != sb.get(k):
             look |= owner_of_class.get(k, set()) or {n for n in names if n.lower() == k.replace('-', '')}
@@ -263,12 +282,12 @@ def compare(a, b):
             items.append({'type': 'component', 'action': 'removed', 'name': n})
             continue
         what = []
-        if n in look or ca[n]['preview'] != cb[n]['preview']:
+        if n in look or us(ca[n]['preview']) != us(cb[n]['preview']):
             what.append('look')
-        if pa.get(n) != pb.get(n):
+        if us(pa.get(n)) != us(pb.get(n)):
             what.append('props')
         if ca[n]['readme'] != cb[n]['readme']:
-            if not what and is_wording(ca[n]['readme'], cb[n]['readme']):
+            if not what and (us(ca[n]['readme']) == us(cb[n]['readme']) or is_wording(ca[n]['readme'], cb[n]['readme'])):
                 items.append({'type': 'component', 'action': 'changed', 'name': n, 'wording': True})
                 continue
             what.append('docs')
@@ -310,7 +329,11 @@ def compare(a, b):
         if t not in gb:
             items.append({'type': 'guide', 'action': 'removed', 'name': t, 'guide': t})
             continue
-        xa, xb = ga[t]['sections'], gb[t]['sections']
+        xa, xb = dict(ga[t]['sections']), gb[t]['sections']
+        for s in [s for s in xb if s not in xa]:   # a heading only respelled ("Colour versions") is the same section
+            o = next((o for o in xa if o not in xb and us(o) == us(s)), None)
+            if o is not None:
+                xa[s] = xa.pop(o)
         for s in list(xb) + [s for s in xa if s not in xb]:
             if xa.get(s) == xb.get(s):
                 continue
@@ -323,7 +346,7 @@ def compare(a, b):
                 it['action'] = 'removed'
             else:
                 it['action'] = 'changed'
-                if is_wording(xa[s], xb[s]):
+                if us(xa[s]) == us(xb[s]) or is_wording(xa[s], xb[s]):
                     it['wording'] = True
                 elif similar(no_images(xa[s]), no_images(xb[s])) < 0.6 or re.findall(r'img:\w+', no_images(xa[s])) != re.findall(r'img:\w+', no_images(xb[s])):
                     it['big'] = True
