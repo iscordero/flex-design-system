@@ -1,0 +1,73 @@
+# Change log: written automatically, so nobody has to.
+# - On a pull request: comments what the change does to Flex, with its preview link.
+# - When a change reaches main: records it in site/changes.json (who, when, who approved, what changed),
+#   with before and after screenshots of components that look different, and saves that back to main.
+#   Cloudflare Pages then republishes the site, and the Change Log page shows the new entry.
+name: Change log
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: write        # save the change log back to main
+  pull-requests: write   # comment on pull requests, read approvals
+
+concurrency:
+  group: changelog-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  summary:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Describe the change on the pull request
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          BRANCH: ${{ github.head_ref }}
+        run: python3 tools/changelog.py comment "$(git merge-base "$BASE_SHA" HEAD)" HEAD "$BRANCH"
+
+  record:
+    if: github.event_name == 'push' && github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install the screenshot tools
+        run: |
+          pip install pillow playwright
+          python -m playwright install --with-deps chromium
+      - name: Record the published changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: python3 tools/changelog.py record "$BEFORE" "$AFTER"
+      - name: Save the change log to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A site/changes.json site/changes-draft.json site/changes 2>/dev/null || git add -A site
+          if git diff --cached --quiet; then echo "Nothing new to record"; exit 0; fi
+          git commit -m "Change log: record published changes"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 5
+          done
+          exit 1

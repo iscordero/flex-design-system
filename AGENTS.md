@@ -18,6 +18,8 @@ Read `README.md` for the folder layout and commands, and `ds/project/guide-10-ch
 6. **Share for approval** when asked. Commit with a short, plain message, push the branch and open a pull request with a summary, before and after screenshots, and the preview link `https://<branch>.flex-design-system.pages.dev` (Cloudflare Pages builds it from the pushed branch). Give the person both links.
 7. **Publish only when the person says it's approved.** Merge the pull request into `main`; Cloudflare updates the live site within a minute or two.
 
+The change log writes itself (`.github/workflows/changelog.yml` and `tools/changelog.py`): it comments a summary on each pull request, and records each change that reaches `main` in `site/changes.json`, with screenshots in `site/changes/`. Give pull requests and commits a clear, plain title: it becomes the entry's summary. Never edit `site/changes.json` or `site/changes/` by hand. The job commits to `main`, so pull before pushing. `./publish.sh` also writes the draft entry for unpublished work (`site/changes-draft.json`, shown under Not published yet on the Change Log page; with screenshots when Python Playwright and Pillow are installed). Before sharing or publishing, show the person that draft and confirm it lists what they meant to change. `python3 tools/changelog.py diff` prints it as text.
+
 If you can't push to GitHub, say so plainly and suggest GitHub Desktop's Push origin button, or a teammate.
 
 ## Rules

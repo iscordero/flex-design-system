@@ -11,6 +11,7 @@ Flex is kept in one place, a GitHub repository. Everything else is made from it.
 | The source | [github.com/iscordero/flex-design-system](https://github.com/iscordero/flex-design-system) | The single source of truth: tokens, guides, components and the full history of every change |
 | The site | [flex-design-system.pages.dev](https://flex-design-system.pages.dev) | What everyone reads and builds from. It updates by itself when a change is published to the repository |
 | Preview links | `<change-name>.flex-design-system.pages.dev` | A copy of the site for each change that isn't published yet, to share for approval |
+| Change Log | The **Change Log** page on the site, under Start | Every published change: what changed, who made it, who approved it, with before and after pictures |
 | Images and assets | Bynder (see Media) | Approved photos, video, logos and icons |
 | Claude project (optional) | A shared **Qualys Design System** project in the company's Claude account | A ready-made workspace for designers who use Claude, with Flex built in. See Setting up Claude for the team |
 
@@ -39,6 +40,14 @@ Explain what you did in plain language, and tell me if there's anything I need t
 That's all. You don't need to install anything else yourself. GitHub Desktop is optional: some people like it for seeing changes, but the agent can do everything without it.
 
 If your team has the shared Claude project, join it and start your tasks there instead: its instructions already point Claude to Flex.
+
+### Setting up the repository
+
+Done once, by whoever manages the repository on GitHub, so the Change Log can write itself:
+
+1. In the repository's **Settings → Actions → General**, allow actions, and under **Workflow permissions** choose **Read and write permissions**.
+2. If `main` is protected, allow GitHub Actions to push to it.
+3. In Cloudflare Pages, check that preview deployments are on for all branches (**Settings → Builds → Branch control**).
 
 ### Setting up Claude for the team
 
@@ -122,12 +131,14 @@ The agent makes each change on a separate copy of Flex (a branch), named after t
 
 The agent rebuilds the site on your computer and opens it in your browser (`site/index.html`, with the Example page in `site/example.html`). Check it at desktop and mobile widths. Ask for changes until it's right.
 
+Then open the **Change Log**. Your work shows at the top under **Not published yet**: the entry it will get when it's published, with what it adds, changes or removes and before and after pictures of components that look different. Check that it lists everything you meant to change, and nothing you didn't. If something is missing or unexpected, fix the change and preview again.
+
 ### 3. Share it for approval
 
 When you're happy, ask the agent to share it. It pushes the branch to GitHub, and two things are made for you:
 
-- **A preview link**, such as `pricing-card.flex-design-system.pages.dev`: the whole site with your change, for anyone to click through. It updates each time the agent pushes a new version.
-- **A pull request** on GitHub: a page with the summary, screenshots and every change, where reviewers can comment and approve.
+- **A preview link**, such as `pricing-card.flex-design-system.pages.dev`: the whole site with your change, for anyone to click through, including its draft Change Log entry. It updates each time the agent pushes a new version.
+- **A pull request** on GitHub: a page with the summary and every change, where reviewers can comment and approve. A comment listing what the change adds, changes or removes in Flex is added to it automatically.
 
 Send both links to your reviewer. If they can't open GitHub, the preview link is enough, or send them the `site/index.html` file: it's the whole site in one file and opens in any browser.
 
@@ -135,7 +146,9 @@ Send both links to your reviewer. If they can't open GitHub, the preview link is
 
 Once it's approved, ask the agent to merge the pull request, or press **Merge** on the pull request page in GitHub. The live site updates within a minute or two.
 
-If your agent can't push to GitHub, it will say so. You can then push with GitHub Desktop's **Push origin** button, or ask a teammate whose agent can.
+A few minutes later, the draft becomes a published entry in the **Change Log** by itself: what it added, changed or removed, who made it, who approved it, and before and after pictures of any component that looks different. Nobody needs to write it. The pull request's title becomes the entry's summary, so give it a clear one.
+
+If your agent can't push to GitHub, it will say so. You can then push with GitHub Desktop's **Push origin** button, or ask a teammate whose agent can. The Change Log adds its own updates to GitHub, so get the latest version before you push: if GitHub Desktop says your copy is behind, press **Pull origin** first.
 
 ### Before you share
 
@@ -200,7 +213,7 @@ Ask your agent to retire it and say what replaces it. It notes the replacement i
 
 Once a month, or before a big launch, spend 15 minutes:
 
-- Ask your agent what changed in Flex recently, or look through the repository's history on GitHub, for anything unexpected.
+- Read the Change Log for anything unexpected.
 - Close or finish pull requests that have been waiting a long time.
 - Compare one live qualys.com page with Flex, and add back anything missing.
 - Check the Notes in the components you used most for problems that are still open.

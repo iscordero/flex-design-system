@@ -1,0 +1,6207 @@
+{
+ "version": 1,
+ "entries": [
+  {
+   "id": "55faf06",
+   "sha": "55faf068d39771ec92c61e061009dab9f2356173",
+   "date": "2026-10-13",
+   "author": "Isabel",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "summary": "Flex Design System: source, build tools and reference site",
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Accordion"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "AccordionModule"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "AlertDialog"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "AppliedFilters"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Avatar"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "BlogCard"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Breadcrumbs"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Button"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Card"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Carousel"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Checkbox"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "CookieBanner"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Cover"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "CtaModule"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "DemoRequestWizard"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "DetailComparison"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Drawer"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "DrawerCard"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "EventCalendar"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "EventCard"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "EventType"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "ExitIntent"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "FeatureMatrix"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "FilterBar"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "FilterButton"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "FilterChip"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "FilterChipGroup"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "FilterDrawer"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "FilterDropdown"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Flag"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Footer"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Form"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "FormBanner"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "FormModal"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "GeneralContent"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Grid"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Hero"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "HoverCard"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Hyperlink"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Icon"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "InlinePromoCard"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "IntegrationCard"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "LogoCarousel"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "LogoHierarchy"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Marker"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "MarketingTable"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Media"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Modal"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Nav"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "NavBanner"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "NotificationBar"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Overlay"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "ProfileCard"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "ProfileGrid"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "ProfileModal"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Radio"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "ResourceCard"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "SearchBar"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Select"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "SessionTimeout"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "SocialButton"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "StatCard"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Stats"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "SuccessConfirmation"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "TabModule"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Tabs"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Tag"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "TestimonialCard"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "TestimonialCarousel"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "TextField"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "TextLink"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Toast"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "ToastStack"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Toggle"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Tooltip"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "TypographicHeader"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Typography"
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "WebinarCard"
+    },
+    {
+     "type": "token",
+     "name": "ash",
+     "family": "color",
+     "action": "added",
+     "to": "#e5e5e1",
+     "toColor": "#e5e5e1"
+    },
+    {
+     "type": "token",
+     "name": "asphalt",
+     "family": "color",
+     "action": "added",
+     "to": "#575757",
+     "toColor": "#575757"
+    },
+    {
+     "type": "token",
+     "name": "avatar-bg",
+     "family": "color",
+     "action": "added",
+     "to": "#e6ddcb",
+     "toColor": "#e6ddcb"
+    },
+    {
+     "type": "token",
+     "name": "avatar-icon",
+     "family": "color",
+     "action": "added",
+     "to": "#a6a094",
+     "toColor": "#a6a094"
+    },
+    {
+     "type": "token",
+     "name": "azul",
+     "family": "color",
+     "action": "added",
+     "to": "#165c9d",
+     "toColor": "#165c9d"
+    },
+    {
+     "type": "token",
+     "name": "blue-gradient-end",
+     "family": "color",
+     "action": "added",
+     "to": "#095db3",
+     "toColor": "#095db3"
+    },
+    {
+     "type": "token",
+     "name": "blue-gradient-start",
+     "family": "color",
+     "action": "added",
+     "to": "#1f90fb",
+     "toColor": "#1f90fb"
+    },
+    {
+     "type": "token",
+     "name": "brand-blue-400",
+     "family": "color",
+     "action": "added",
+     "to": "{qualys-blue}",
+     "toColor": "#2683ed"
+    },
+    {
+     "type": "token",
+     "name": "brand-blue-600",
+     "family": "color",
+     "action": "added",
+     "to": "{cobalt}",
+     "toColor": "#194c7a"
+    },
+    {
+     "type": "token",
+     "name": "brand-neutral-100",
+     "family": "color",
+     "action": "added",
+     "to": "{white}",
+     "toColor": "#ffffff"
+    },
+    {
+     "type": "token",
+     "name": "brand-neutral-200",
+     "family": "color",
+     "action": "added",
+     "to": "{warm-off-white}",
+     "toColor": "#fcfbf7"
+    },
+    {
+     "type": "token",
+     "name": "brand-neutral-600",
+     "family": "color",
+     "action": "added",
+     "to": "{charcoal}",
+     "toColor": "#262626"
+    },
+    {
+     "type": "token",
+     "name": "brand-red-100",
+     "family": "color",
+     "action": "added",
+     "to": "{qualys-red}",
+     "toColor": "#ed2e26"
+    },
+    {
+     "type": "token",
+     "name": "breakpoint-desktop",
+     "family": "layout",
+     "action": "added",
+     "to": "1024px"
+    },
+    {
+     "type": "token",
+     "name": "breakpoint-large",
+     "family": "layout",
+     "action": "added",
+     "to": "1440px"
+    },
+    {
+     "type": "token",
+     "name": "breakpoint-tablet",
+     "family": "layout",
+     "action": "added",
+     "to": "768px"
+    },
+    {
+     "type": "token",
+     "name": "button-bg-primary-default",
+     "family": "color",
+     "action": "added",
+     "to": "{qualys-red}",
+     "toColor": "#ed2e26"
+    },
+    {
+     "type": "token",
+     "name": "button-bg-primary-hover",
+     "family": "color",
+     "action": "added",
+     "to": "{crimson}",
+     "toColor": "#be0a00"
+    },
+    {
+     "type": "token",
+     "name": "button-bg-primary-pressed",
+     "family": "color",
+     "action": "added",
+     "to": "{pepper}",
+     "toColor": "#a20900"
+    },
+    {
+     "type": "token",
+     "name": "button-bg-secondary",
+     "family": "color",
+     "action": "added",
+     "to": "{off-white}",
+     "toColor": "#fafafa"
+    },
+    {
+     "type": "token",
+     "name": "button-label",
+     "family": "type",
+     "action": "added",
+     "to": "16px 600"
+    },
+    {
+     "type": "token",
+     "name": "charcoal",
+     "family": "color",
+     "action": "added",
+     "to": "#262626",
+     "toColor": "#262626"
+    },
+    {
+     "type": "token",
+     "name": "chip-bg",
+     "family": "color",
+     "action": "added",
+     "to": "rgba(38, 38, 38, 0.05)",
+     "toColor": "rgba(38, 38, 38, 0.05)"
+    },
+    {
+     "type": "token",
+     "name": "chip-bg-active",
+     "family": "color",
+     "action": "added",
+     "to": "rgba(38, 131, 237, 0.10)",
+     "toColor": "rgba(38, 131, 237, 0.10)"
+    },
+    {
+     "type": "token",
+     "name": "chip-bg-active-hover",
+     "family": "color",
+     "action": "added",
+     "to": "rgba(38, 131, 237, 0.16)",
+     "toColor": "rgba(38, 131, 237, 0.16)"
+    },
+    {
+     "type": "token",
+     "name": "chip-bg-hover",
+     "family": "color",
+     "action": "added",
+     "to": "rgba(38, 38, 38, 0.10)",
+     "toColor": "rgba(38, 38, 38, 0.10)"
+    },
+    {
+     "type": "token",
+     "name": "cobalt",
+     "family": "color",
+     "action": "added",
+     "to": "#194c7a",
+     "toColor": "#194c7a"
+    },
+    {
+     "type": "token",
+     "name": "container-max",
+     "family": "layout",
+     "action": "added",
+     "to": "1440px"
+    },
+    {
+     "type": "token",
+     "name": "content-max",
+     "family": "layout",
+     "action": "added",
+     "to": "1140px"
+    },
+    {
+     "type": "token",
+     "name": "crimson",
+     "family": "color",
+     "action": "added",
+     "to": "#be0a00",
+     "toColor": "#be0a00"
+    },
+    {
+     "type": "token",
+     "name": "display-lg",
+     "family": "type",
+     "action": "added",
+     "to": "56px 700"
+    },
+    {
+     "type": "token",
+     "name": "display-xl",
+     "family": "type",
+     "action": "added",
+     "to": "64px 700"
+    },
+    {
+     "type": "token",
+     "name": "ecru",
+     "family": "color",
+     "action": "added",
+     "to": "#f7f6f2",
+     "toColor": "#f7f6f2"
+    },
+    {
+     "type": "token",
+     "name": "event-speaking",
+     "family": "color",
+     "action": "added",
+     "to": "#6c49d1",
+     "toColor": "#6c49d1"
+    },
+    {
+     "type": "token",
+     "name": "event-webinar",
+     "family": "color",
+     "action": "added",
+     "to": "#2577ca",
+     "toColor": "#2577ca"
+    },
+    {
+     "type": "token",
+     "name": "eyebrow-lg",
+     "family": "type",
+     "action": "added",
+     "to": "18px 600"
+    },
+    {
+     "type": "token",
+     "name": "eyebrow-md",
+     "family": "type",
+     "action": "added",
+     "to": "16px 600"
+    },
+    {
+     "type": "token",
+     "name": "eyebrow-sm",
+     "family": "type",
+     "action": "added",
+     "to": "14px 600"
+    },
+    {
+     "type": "token",
+     "name": "eyebrow-xl",
+     "family": "type",
+     "action": "added",
+     "to": "22px 600"
+    },
+    {
+     "type": "token",
+     "name": "eyebrow-xs",
+     "family": "type",
+     "action": "added",
+     "to": "12px 600"
+    },
+    {
+     "type": "token",
+     "name": "filter-bg",
+     "family": "color",
+     "action": "added",
+     "to": "{ash}",
+     "toColor": "#e5e5e1"
+    },
+    {
+     "type": "token",
+     "name": "flag-tier-1",
+     "family": "color",
+     "action": "added",
+     "to": "{tag-purple}",
+     "toColor": "#6613d2"
+    },
+    {
+     "type": "token",
+     "name": "flag-tier-2",
+     "family": "color",
+     "action": "added",
+     "to": "#e45f01",
+     "toColor": "#e45f01"
+    },
+    {
+     "type": "token",
+     "name": "flag-tier-3",
+     "family": "color",
+     "action": "added",
+     "to": "#289c96",
+     "toColor": "#289c96"
+    },
+    {
+     "type": "token",
+     "name": "focus-ring",
+     "family": "shadow",
+     "action": "added",
+     "to": "0 0 0 2px #ffffff, 0 0 0 4px #2683ed"
+    },
+    {
+     "type": "token",
+     "name": "font-body",
+     "family": "type",
+     "action": "added",
+     "to": "\"IBM Plex Sans\", sans-serif"
+    },
+    {
+     "type": "token",
+     "name": "font-brand",
+     "family": "type",
+     "action": "added",
+     "to": "\"Gotham\", sans-serif"
+    },
+    {
+     "type": "token",
+     "name": "font-heading",
+     "family": "type",
+     "action": "added",
+     "to": "\"Wix Madefor Text\", sans-serif"
+    },
+    {
+     "type": "token",
+     "name": "green-tint",
+     "family": "color",
+     "action": "added",
+     "to": "#e6f5ec",
+     "toColor": "#e6f5ec"
+    },
+    {
+     "type": "token",
+     "name": "gutter",
+     "family": "layout",
+     "action": "added",
+     "to": "24px"
+    },
+    {
+     "type": "token",
+     "name": "h1",
+     "family": "type",
+     "action": "added",
+     "to": "44px 700"
+    },
+    {
+     "type": "token",
+     "name": "h2",
+     "family": "type",
+     "action": "added",
+     "to": "38px 600"
+    },
+    {
+     "type": "token",
+     "name": "h3",
+     "family": "type",
+     "action": "added",
+     "to": "24px 600"
+    },
+    {
+     "type": "token",
+     "name": "h4",
+     "family": "type",
+     "action": "added",
+     "to": "20px 600"
+    },
+    {
+     "type": "token",
+     "name": "h5",
+     "family": "type",
+     "action": "added",
+     "to": "18px 600"
+    },
+    {
+     "type": "token",
+     "name": "hyperlink-active",
+     "family": "color",
+     "action": "added",
+     "to": "{cobalt}",
+     "toColor": "#194c7a"
+    },
+    {
+     "type": "token",
+     "name": "hyperlink-default",
+     "family": "color",
+     "action": "added",
+     "to": "#1c76c8",
+     "toColor": "#1c76c8"
+    },
+    {
+     "type": "token",
+     "name": "hyperlink-hover",
+     "family": "color",
+     "action": "added",
+     "to": "{cobalt}",
+     "toColor": "#194c7a"
+    },
+    {
+     "type": "token",
+     "name": "icon-bg-default",
+     "family": "color",
+     "action": "added",
+     "to": "{qualys-blue}",
+     "toColor": "#2683ed"
+    },
+    {
+     "type": "token",
+     "name": "icon-bg-hover",
+     "family": "color",
+     "action": "added",
+     "to": "{azul}",
+     "toColor": "#165c9d"
+    },
+    {
+     "type": "token",
+     "name": "icon-bg-pressed",
+     "family": "color",
+     "action": "added",
+     "to": "#134f86",
+     "toColor": "#134f86"
+    },
+    {
+     "type": "token",
+     "name": "icon-default",
+     "family": "color",
+     "action": "added",
+     "to": "{charcoal}",
+     "toColor": "#262626"
+    },
+    {
+     "type": "token",
+     "name": "icon-feature",
+     "family": "color",
+     "action": "added",
+     "to": "{qualys-blue}",
+     "toColor": "#2683ed"
+    },
+    {
+     "type": "token",
+     "name": "icon-inverted",
+     "family": "color",
+     "action": "added",
+     "to": "{white}",
+     "toColor": "#ffffff"
+    },
+    {
+     "type": "token",
+     "name": "label",
+     "family": "type",
+     "action": "added",
+     "to": "16px 600"
+    },
+    {
+     "type": "token",
+     "name": "link-primary-default",
+     "family": "color",
+     "action": "added",
+     "to": "{qualys-blue}",
+     "toColor": "#2683ed"
+    },
+    {
+     "type": "token",
+     "name": "link-primary-hover",
+     "family": "color",
+     "action": "added",
+     "to": "{cobalt}",
+     "toColor": "#194c7a"
+    },
+    {
+     "type": "token",
+     "name": "link-secondary-default",
+     "family": "color",
+     "action": "added",
+     "to": "{qualys-red}",
+     "toColor": "#ed2e26"
+    },
+    {
+     "type": "token",
+     "name": "link-secondary-hover",
+     "family": "color",
+     "action": "added",
+     "to": "{crimson}",
+     "toColor": "#be0a00"
+    },
+    {
+     "type": "token",
+     "name": "margin-desktop",
+     "family": "layout",
+     "action": "added",
+     "to": "56px"
+    },
+    {
+     "type": "token",
+     "name": "margin-mobile",
+     "family": "layout",
+     "action": "added",
+     "to": "20px"
+    },
+    {
+     "type": "token",
+     "name": "margin-tablet",
+     "family": "layout",
+     "action": "added",
+     "to": "36px"
+    },
+    {
+     "type": "token",
+     "name": "marker-1",
+     "family": "color",
+     "action": "added",
+     "to": "{flag-tier-1}",
+     "toColor": "#6613d2"
+    },
+    {
+     "type": "token",
+     "name": "marker-2",
+     "family": "color",
+     "action": "added",
+     "to": "{flag-tier-2}",
+     "toColor": "#e45f01"
+    },
+    {
+     "type": "token",
+     "name": "marker-3",
+     "family": "color",
+     "action": "added",
+     "to": "{flag-tier-3}",
+     "toColor": "#289c96"
+    },
+    {
+     "type": "token",
+     "name": "marker-blue",
+     "family": "color",
+     "action": "added",
+     "to": "{qualys-blue}",
+     "toColor": "#2683ed"
+    },
+    {
+     "type": "token",
+     "name": "misty-blue",
+     "family": "color",
+     "action": "added",
+     "to": "#eaf3fc",
+     "toColor": "#eaf3fc"
+    },
+    {
+     "type": "token",
+     "name": "off-white",
+     "family": "color",
+     "action": "added",
+     "to": "#fafafa",
+     "toColor": "#fafafa"
+    },
+    {
+     "type": "token",
+     "name": "overlay-dark",
+     "family": "color",
+     "action": "added",
+     "to": "rgba(0, 0, 0, 0.5)",
+     "toColor": "rgba(0, 0, 0, 0.5)"
+    },
+    {
+     "type": "token",
+     "name": "overlay-light",
+     "family": "color",
+     "action": "added",
+     "to": "rgba(0, 0, 0, 0.25)",
+     "toColor": "rgba(0, 0, 0, 0.25)"
+    },
+    {
+     "type": "token",
+     "name": "paragraph-lg",
+     "family": "type",
+     "action": "added",
+     "to": "24px 400"
+    },
+    {
+     "type": "token",
+     "name": "paragraph-md",
+     "family": "type",
+     "action": "added",
+     "to": "18px 400"
+    },
+    {
+     "type": "token",
+     "name": "paragraph-rg",
+     "family": "type",
+     "action": "added",
+     "to": "16px 400"
+    },
+    {
+     "type": "token",
+     "name": "paragraph-sm",
+     "family": "type",
+     "action": "added",
+     "to": "14px 400"
+    },
+    {
+     "type": "token",
+     "name": "paragraph-xs",
+     "family": "type",
+     "action": "added",
+     "to": "12px 400"
+    },
+    {
+     "type": "token",
+     "name": "pepper",
+     "family": "color",
+     "action": "added",
+     "to": "#a20900",
+     "toColor": "#a20900"
+    },
+    {
+     "type": "token",
+     "name": "polar-blue",
+     "family": "color",
+     "action": "added",
+     "to": "#f5f9fd",
+     "toColor": "#f5f9fd"
+    },
+    {
+     "type": "token",
+     "name": "qualys-blue",
+     "family": "color",
+     "action": "added",
+     "to": "#2683ed",
+     "toColor": "#2683ed"
+    },
+    {
+     "type": "token",
+     "name": "qualys-red",
+     "family": "color",
+     "action": "added",
+     "to": "#ed2e26",
+     "toColor": "#ed2e26"
+    },
+    {
+     "type": "token",
+     "name": "quote-lg",
+     "family": "type",
+     "action": "added",
+     "to": "32px 400"
+    },
+    {
+     "type": "token",
+     "name": "quote-md",
+     "family": "type",
+     "action": "added",
+     "to": "24px 400"
+    },
+    {
+     "type": "token",
+     "name": "quote-sm",
+     "family": "type",
+     "action": "added",
+     "to": "20px 400"
+    },
+    {
+     "type": "token",
+     "name": "radius-2xs",
+     "family": "radius",
+     "action": "added",
+     "to": "2px"
+    },
+    {
+     "type": "token",
+     "name": "radius-lg",
+     "family": "radius",
+     "action": "added",
+     "to": "16px"
+    },
+    {
+     "type": "token",
+     "name": "radius-md",
+     "family": "radius",
+     "action": "added",
+     "to": "12px"
+    },
+    {
+     "type": "token",
+     "name": "radius-media",
+     "family": "radius",
+     "action": "added",
+     "to": "8px"
+    },
+    {
+     "type": "token",
+     "name": "radius-rg",
+     "family": "radius",
+     "action": "added",
+     "to": "10px"
+    },
+    {
+     "type": "token",
+     "name": "radius-sm",
+     "family": "radius",
+     "action": "added",
+     "to": "6px"
+    },
+    {
+     "type": "token",
+     "name": "radius-xs",
+     "family": "radius",
+     "action": "added",
+     "to": "4px"
+    },
+    {
+     "type": "token",
+     "name": "red-tint",
+     "family": "color",
+     "action": "added",
+     "to": "#fde8e5",
+     "toColor": "#fde8e5"
+    },
+    {
+     "type": "token",
+     "name": "rhino",
+     "family": "color",
+     "action": "added",
+     "to": "#b5b5b5",
+     "toColor": "#b5b5b5"
+    },
+    {
+     "type": "token",
+     "name": "search-bg",
+     "family": "color",
+     "action": "added",
+     "to": "rgba(87, 87, 87, 0.05)",
+     "toColor": "rgba(87, 87, 87, 0.05)"
+    },
+    {
+     "type": "token",
+     "name": "shadow-card",
+     "family": "shadow",
+     "action": "added",
+     "to": "0 16px 32px rgba(0,0,0,0.05)"
+    },
+    {
+     "type": "token",
+     "name": "shadow-card-hover",
+     "family": "shadow",
+     "action": "added",
+     "to": "0 4px 16px rgba(0,0,0,0.10)"
+    },
+    {
+     "type": "token",
+     "name": "shadow-drawer",
+     "family": "shadow",
+     "action": "added",
+     "to": "10px 15px 33px rgba(0,0,0,0.05)"
+    },
+    {
+     "type": "token",
+     "name": "shadow-dropdown",
+     "family": "shadow",
+     "action": "added",
+     "to": "0 4px 12px rgba(0,0,0,0.08)"
+    },
+    {
+     "type": "token",
+     "name": "shadow-menu",
+     "family": "shadow",
+     "action": "added",
+     "to": "0 6px 16px -4px rgba(0,0,0,0.14)"
+    },
+    {
+     "type": "token",
+     "name": "shadow-modal",
+     "family": "shadow",
+     "action": "added",
+     "to": "0 8px 32px rgba(0,0,0,0.12)"
+    },
+    {
+     "type": "token",
+     "name": "shadow-nav",
+     "family": "shadow",
+     "action": "added",
+     "to": "0 1px 4px rgba(12,12,13,0.05), 0 1px 4px rgba(12,12,13,0.10)"
+    },
+    {
+     "type": "token",
+     "name": "shadow-tabs",
+     "family": "shadow",
+     "action": "added",
+     "to": "0 4px 4px rgba(0,0,0,0.05)"
+    },
+    {
+     "type": "token",
+     "name": "spacing-2xl",
+     "family": "spacing",
+     "action": "added",
+     "to": "32px"
+    },
+    {
+     "type": "token",
+     "name": "spacing-2xs",
+     "family": "spacing",
+     "action": "added",
+     "to": "10px"
+    },
+    {
+     "type": "token",
+     "name": "spacing-3xl",
+     "family": "spacing",
+     "action": "added",
+     "to": "36px"
+    },
+    {
+     "type": "token",
+     "name": "spacing-3xs",
+     "family": "spacing",
+     "action": "added",
+     "to": "8px"
+    },
+    {
+     "type": "token",
+     "name": "spacing-4xl",
+     "family": "spacing",
+     "action": "added",
+     "to": "48px"
+    },
+    {
+     "type": "token",
+     "name": "spacing-4xs",
+     "family": "spacing",
+     "action": "added",
+     "to": "6px"
+    },
+    {
+     "type": "token",
+     "name": "spacing-5xl",
+     "family": "spacing",
+     "action": "added",
+     "to": "56px"
+    },
+    {
+     "type": "token",
+     "name": "spacing-5xs",
+     "family": "spacing",
+     "action": "added",
+     "to": "4px"
+    },
+    {
+     "type": "token",
+     "name": "spacing-6xl",
+     "family": "spacing",
+     "action": "added",
+     "to": "100px"
+    },
+    {
+     "type": "token",
+     "name": "spacing-6xs",
+     "family": "spacing",
+     "action": "added",
+     "to": "2px"
+    },
+    {
+     "type": "token",
+     "name": "spacing-lg",
+     "family": "spacing",
+     "action": "added",
+     "to": "20px"
+    },
+    {
+     "type": "token",
+     "name": "spacing-md",
+     "family": "spacing",
+     "action": "added",
+     "to": "18px"
+    },
+    {
+     "type": "token",
+     "name": "spacing-rg",
+     "family": "spacing",
+     "action": "added",
+     "to": "16px"
+    },
+    {
+     "type": "token",
+     "name": "spacing-sm",
+     "family": "spacing",
+     "action": "added",
+     "to": "14px"
+    },
+    {
+     "type": "token",
+     "name": "spacing-xl",
+     "family": "spacing",
+     "action": "added",
+     "to": "24px"
+    },
+    {
+     "type": "token",
+     "name": "spacing-xs",
+     "family": "spacing",
+     "action": "added",
+     "to": "12px"
+    },
+    {
+     "type": "token",
+     "name": "stat-lg",
+     "family": "type",
+     "action": "added",
+     "to": "86px 700"
+    },
+    {
+     "type": "token",
+     "name": "stat-md",
+     "family": "type",
+     "action": "added",
+     "to": "64px 700"
+    },
+    {
+     "type": "token",
+     "name": "stroke-neutral-100",
+     "family": "color",
+     "action": "added",
+     "to": "{white}",
+     "toColor": "#ffffff"
+    },
+    {
+     "type": "token",
+     "name": "stroke-neutral-200",
+     "family": "color",
+     "action": "added",
+     "to": "{warm-off-white}",
+     "toColor": "#fcfbf7"
+    },
+    {
+     "type": "token",
+     "name": "stroke-neutral-400",
+     "family": "color",
+     "action": "added",
+     "to": "{ash}",
+     "toColor": "#e5e5e1"
+    },
+    {
+     "type": "token",
+     "name": "stroke-neutral-500",
+     "family": "color",
+     "action": "added",
+     "to": "{rhino}",
+     "toColor": "#b5b5b5"
+    },
+    {
+     "type": "token",
+     "name": "success",
+     "family": "color",
+     "action": "added",
+     "to": "#21b873",
+     "toColor": "#21b873"
+    },
+    {
+     "type": "token",
+     "name": "surface-blue-100",
+     "family": "color",
+     "action": "added",
+     "to": "{polar-blue}",
+     "toColor": "#f5f9fd"
+    },
+    {
+     "type": "token",
+     "name": "surface-blue-200",
+     "family": "color",
+     "action": "added",
+     "to": "{misty-blue}",
+     "toColor": "#eaf3fc"
+    },
+    {
+     "type": "token",
+     "name": "surface-blue-300",
+     "family": "color",
+     "action": "added",
+     "to": "{qualys-blue}",
+     "toColor": "#2683ed"
+    },
+    {
+     "type": "token",
+     "name": "surface-neutral-100",
+     "family": "color",
+     "action": "added",
+     "to": "{white}",
+     "toColor": "#ffffff"
+    },
+    {
+     "type": "token",
+     "name": "surface-neutral-200",
+     "family": "color",
+     "action": "added",
+     "to": "{warm-off-white}",
+     "toColor": "#fcfbf7"
+    },
+    {
+     "type": "token",
+     "name": "surface-neutral-300",
+     "family": "color",
+     "action": "added",
+     "to": "{ecru}",
+     "toColor": "#f7f6f2"
+    },
+    {
+     "type": "token",
+     "name": "surface-neutral-400",
+     "family": "color",
+     "action": "added",
+     "to": "{ash}",
+     "toColor": "#e5e5e1"
+    },
+    {
+     "type": "token",
+     "name": "surface-neutral-500",
+     "family": "color",
+     "action": "added",
+     "to": "#d9d9d8",
+     "toColor": "#d9d9d8"
+    },
+    {
+     "type": "token",
+     "name": "surface-neutral-600",
+     "family": "color",
+     "action": "added",
+     "to": "{charcoal}",
+     "toColor": "#262626"
+    },
+    {
+     "type": "token",
+     "name": "tag-green",
+     "family": "color",
+     "action": "added",
+     "to": "#16a34a",
+     "toColor": "#16a34a"
+    },
+    {
+     "type": "token",
+     "name": "tag-md",
+     "family": "type",
+     "action": "added",
+     "to": "18px 600"
+    },
+    {
+     "type": "token",
+     "name": "tag-orange",
+     "family": "color",
+     "action": "added",
+     "to": "#f97316",
+     "toColor": "#f97316"
+    },
+    {
+     "type": "token",
+     "name": "tag-purple",
+     "family": "color",
+     "action": "added",
+     "to": "#6613d2",
+     "toColor": "#6613d2"
+    },
+    {
+     "type": "token",
+     "name": "tag-red",
+     "family": "color",
+     "action": "added",
+     "to": "#dc2626",
+     "toColor": "#dc2626"
+    },
+    {
+     "type": "token",
+     "name": "tag-rg",
+     "family": "type",
+     "action": "added",
+     "to": "16px 600"
+    },
+    {
+     "type": "token",
+     "name": "tag-slate",
+     "family": "color",
+     "action": "added",
+     "to": "#44536b",
+     "toColor": "#44536b"
+    },
+    {
+     "type": "token",
+     "name": "tag-slate-tint",
+     "family": "color",
+     "action": "added",
+     "to": "#f4f5f7",
+     "toColor": "#f4f5f7"
+    },
+    {
+     "type": "token",
+     "name": "tag-sm",
+     "family": "type",
+     "action": "added",
+     "to": "14px 600"
+    },
+    {
+     "type": "token",
+     "name": "tag-xs",
+     "family": "type",
+     "action": "added",
+     "to": "12px 600"
+    },
+    {
+     "type": "token",
+     "name": "tag-yellow",
+     "family": "color",
+     "action": "added",
+     "to": "#fcbf22",
+     "toColor": "#fcbf22"
+    },
+    {
+     "type": "token",
+     "name": "text-accent-primary",
+     "family": "color",
+     "action": "added",
+     "to": "{qualys-blue}",
+     "toColor": "#2683ed"
+    },
+    {
+     "type": "token",
+     "name": "text-accent-secondary",
+     "family": "color",
+     "action": "added",
+     "to": "{qualys-red}",
+     "toColor": "#ed2e26"
+    },
+    {
+     "type": "token",
+     "name": "text-inverted",
+     "family": "color",
+     "action": "added",
+     "to": "{white}",
+     "toColor": "#ffffff"
+    },
+    {
+     "type": "token",
+     "name": "text-primary",
+     "family": "color",
+     "action": "added",
+     "to": "{charcoal}",
+     "toColor": "#262626"
+    },
+    {
+     "type": "token",
+     "name": "text-secondary",
+     "family": "color",
+     "action": "added",
+     "to": "{asphalt}",
+     "toColor": "#575757"
+    },
+    {
+     "type": "token",
+     "name": "title-md",
+     "family": "type",
+     "action": "added",
+     "to": "20px 600"
+    },
+    {
+     "type": "token",
+     "name": "title-rg",
+     "family": "type",
+     "action": "added",
+     "to": "18px 600"
+    },
+    {
+     "type": "token",
+     "name": "title-sm",
+     "family": "type",
+     "action": "added",
+     "to": "16px 600"
+    },
+    {
+     "type": "token",
+     "name": "utility-success-default",
+     "family": "color",
+     "action": "added",
+     "to": "{success}",
+     "toColor": "#21b873"
+    },
+    {
+     "type": "token",
+     "name": "utility-warning-default",
+     "family": "color",
+     "action": "added",
+     "to": "{warning}",
+     "toColor": "#f5a624"
+    },
+    {
+     "type": "token",
+     "name": "warm-off-white",
+     "family": "color",
+     "action": "added",
+     "to": "#fcfbf7",
+     "toColor": "#fcfbf7"
+    },
+    {
+     "type": "token",
+     "name": "warning",
+     "family": "color",
+     "action": "added",
+     "to": "#f5a624",
+     "toColor": "#f5a624"
+    },
+    {
+     "type": "token",
+     "name": "warning-strong",
+     "family": "color",
+     "action": "added",
+     "to": "#d98000",
+     "toColor": "#d98000"
+    },
+    {
+     "type": "token",
+     "name": "white",
+     "family": "color",
+     "action": "added",
+     "to": "#ffffff",
+     "toColor": "#ffffff"
+    },
+    {
+     "type": "token",
+     "name": "z-alert",
+     "family": "zIndex",
+     "action": "added",
+     "to": "8000"
+    },
+    {
+     "type": "token",
+     "name": "z-cookie",
+     "family": "zIndex",
+     "action": "added",
+     "to": "5500"
+    },
+    {
+     "type": "token",
+     "name": "z-modal",
+     "family": "zIndex",
+     "action": "added",
+     "to": "7000"
+    },
+    {
+     "type": "token",
+     "name": "z-notification",
+     "family": "zIndex",
+     "action": "added",
+     "to": "5000"
+    },
+    {
+     "type": "token",
+     "name": "z-overlay",
+     "family": "zIndex",
+     "action": "added",
+     "to": "3000"
+    },
+    {
+     "type": "token",
+     "name": "z-panel",
+     "family": "zIndex",
+     "action": "added",
+     "to": "6000"
+    },
+    {
+     "type": "token",
+     "name": "z-session",
+     "family": "zIndex",
+     "action": "added",
+     "to": "8500"
+    },
+    {
+     "type": "token",
+     "name": "z-toast",
+     "family": "zIndex",
+     "action": "added",
+     "to": "9000"
+    },
+    {
+     "type": "token",
+     "name": "z-tooltip",
+     "family": "zIndex",
+     "action": "added",
+     "to": "4000"
+    },
+    {
+     "type": "guide",
+     "action": "added",
+     "name": "Buttons and Links",
+     "guide": "Buttons and Links",
+     "gid": "guide-8"
+    },
+    {
+     "type": "guide",
+     "action": "added",
+     "name": "Colour",
+     "guide": "Colour",
+     "gid": "guide-2"
+    },
+    {
+     "type": "guide",
+     "action": "added",
+     "name": "Content",
+     "guide": "Content",
+     "gid": "guide-1"
+    },
+    {
+     "type": "guide",
+     "action": "added",
+     "name": "Imagery, Iconography and Logo",
+     "guide": "Imagery, Iconography and Logo",
+     "gid": "guide-6"
+    },
+    {
+     "type": "guide",
+     "action": "added",
+     "name": "Layout, Spacing and Radius",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4"
+    },
+    {
+     "type": "guide",
+     "action": "added",
+     "name": "Overview",
+     "guide": "Overview",
+     "gid": "overview"
+    },
+    {
+     "type": "guide",
+     "action": "added",
+     "name": "Patterns and Components",
+     "guide": "Patterns and Components",
+     "gid": "guide-7"
+    },
+    {
+     "type": "guide",
+     "action": "added",
+     "name": "States and Motion",
+     "guide": "States and Motion",
+     "gid": "guide-5"
+    },
+    {
+     "type": "guide",
+     "action": "added",
+     "name": "Typography",
+     "guide": "Typography",
+     "gid": "guide-3"
+    },
+    {
+     "type": "site",
+     "action": "changed",
+     "name": "Reference site"
+    }
+   ],
+   "shots": [],
+   "order": 0
+  },
+  {
+   "id": "3cb58c1",
+   "sha": "3cb58c1aa2802f2a77dabb15c7a8ade44001fd6d",
+   "date": "2026-10-13",
+   "author": "Isabel",
+   "with": [],
+   "approvedBy": [],
+   "summary": "Icons, logos, guidelines, nav and tag updates",
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "BlogCard",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Button",
+     "what": [
+      "props"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DemoRequestWizard",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "EventType",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FeatureMatrix",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FilterChip",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FilterDrawer",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Flag",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Footer",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Hyperlink",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Icon",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "InlinePromoCard",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "LogoCarousel",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "LogoHierarchy",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Marker",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Nav",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ProfileModal",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "SocialButton",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "SuccessConfirmation",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Tag",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TestimonialCarousel",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Toast",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "WebinarCard",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "token",
+     "name": "icon-lg",
+     "family": "layout",
+     "action": "added",
+     "to": "24px"
+    },
+    {
+     "type": "token",
+     "name": "icon-md",
+     "family": "layout",
+     "action": "added",
+     "to": "20px"
+    },
+    {
+     "type": "token",
+     "name": "icon-sm",
+     "family": "layout",
+     "action": "added",
+     "to": "16px"
+    },
+    {
+     "type": "token",
+     "name": "icon-xl",
+     "family": "layout",
+     "action": "added",
+     "to": "32px"
+    },
+    {
+     "type": "token",
+     "name": "icon-xs",
+     "family": "layout",
+     "action": "added",
+     "to": "12px"
+    },
+    {
+     "type": "guide",
+     "action": "added",
+     "name": "Icons and Logos",
+     "guide": "Icons and Logos",
+     "gid": "guide-6"
+    },
+    {
+     "type": "guide",
+     "action": "removed",
+     "name": "Imagery, Iconography and Logo",
+     "guide": "Imagery, Iconography and Logo"
+    },
+    {
+     "type": "guide",
+     "action": "added",
+     "name": "Media",
+     "guide": "Media",
+     "gid": "guide-9"
+    },
+    {
+     "type": "guide",
+     "name": "Guidelines",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Guidelines",
+     "action": "changed"
+    },
+    {
+     "type": "site",
+     "action": "changed",
+     "name": "Reference site"
+    }
+   ],
+   "shots": [],
+   "order": 1
+  },
+  {
+   "id": "1d4f472",
+   "sha": "1d4f472b63b6afaf0280244f11f33b9976dabf5f",
+   "date": "2026-10-13",
+   "author": "Isabel",
+   "with": [],
+   "approvedBy": [],
+   "summary": "Module backgrounds, white doc, hero, nav menus, example page and figure fixes",
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Accordion",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "AccordionModule",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Carousel",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "CtaModule",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DetailComparison",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Drawer",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DrawerCard",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "EventCalendar",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "ExamplePage"
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FeatureMatrix",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Footer",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FormBanner",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "GeneralContent",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Hero",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "LogoCarousel",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "LogoHierarchy",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "MarketingTable",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Nav",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Stats",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TabModule",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TestimonialCard",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TestimonialCarousel",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TypographicHeader",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "guide",
+     "name": "Tiers",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Tiers",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Title Case",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Title Case",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Space between a pair",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Space between a pair",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Short labels",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Short labels",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "One primary",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "One primary",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Two at most",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Two at most",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Verbs",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Verbs",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Hierarchy on the page",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Hierarchy on the page",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Tier 1 on mobile",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Tier 1 on mobile",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Underline",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Underline",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Sources",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Sources",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Dark grounds",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Dark grounds",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Clean URLs",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Clean URLs",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Say where it goes",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Say where it goes",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Links as navigation",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Links as navigation",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Outside the paragraph",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Outside the paragraph",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Surfaces",
+     "guide": "Colour",
+     "gid": "guide-2",
+     "section": "Surfaces",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Text",
+     "guide": "Colour",
+     "gid": "guide-2",
+     "section": "Text",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Actions",
+     "guide": "Colour",
+     "gid": "guide-2",
+     "section": "Actions",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Strokes",
+     "guide": "Colour",
+     "gid": "guide-2",
+     "section": "Strokes",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Icons",
+     "guide": "Colour",
+     "gid": "guide-2",
+     "section": "Icons",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Utility",
+     "guide": "Colour",
+     "gid": "guide-2",
+     "section": "Utility",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Overlays",
+     "guide": "Colour",
+     "gid": "guide-2",
+     "section": "Overlays",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Tags",
+     "guide": "Colour",
+     "gid": "guide-2",
+     "section": "Tags",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Gradient",
+     "guide": "Colour",
+     "gid": "guide-2",
+     "section": "Gradient",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Contrast notes",
+     "guide": "Colour",
+     "gid": "guide-2",
+     "section": "Contrast notes",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Address the reader",
+     "guide": "Content",
+     "gid": "guide-1",
+     "section": "Address the reader",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Casing",
+     "guide": "Content",
+     "gid": "guide-1",
+     "section": "Casing",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Length",
+     "guide": "Content",
+     "gid": "guide-1",
+     "section": "Length",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "CTAs",
+     "guide": "Content",
+     "gid": "guide-1",
+     "section": "CTAs",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Numbers",
+     "guide": "Content",
+     "gid": "guide-1",
+     "section": "Numbers",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Punctuation",
+     "guide": "Content",
+     "gid": "guide-1",
+     "section": "Punctuation",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Dates and times",
+     "guide": "Content",
+     "gid": "guide-1",
+     "section": "Dates and times",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Custom SVG icons",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Custom SVG icons",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Utility icons",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Utility icons",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Event icons",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Event icons",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "General icons",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "General icons",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Social icons",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Social icons",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Feature icons",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Feature icons",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Link icons",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Link icons",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Colour versions",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Colour versions",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "The shield",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "The shield",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Sizes",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Sizes",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Customer, partner and sponsor logos",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Customer, partner and sponsor logos",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Breakpoints",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Breakpoints",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Page margins and gutter",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Page margins and gutter",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Content column",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Content column",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Block modules",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Block modules",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Columns",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Columns",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Spacing",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Spacing",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Spacing in use",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Spacing in use",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Radius",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Radius",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Elevation",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Elevation",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Layers",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Layers",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Modals",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Modals",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Aspect ratios",
+     "guide": "Media",
+     "gid": "guide-9",
+     "section": "Aspect ratios",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "People photos",
+     "guide": "Media",
+     "gid": "guide-9",
+     "section": "People photos",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Avatars and profile cards",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Avatars and profile cards",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Navigation and footer",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Navigation and footer",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Block modules",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Block modules",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Stats sections",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Stats sections",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Carousels",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Carousels",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Logos",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Logos",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Events calendar",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Events calendar",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Modals and dialogs",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Modals and dialogs",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Notifications",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Notifications",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Cookie consent",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Cookie consent",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Forms",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Forms",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Filters",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Filters",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Components",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Components",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Buttons",
+     "guide": "States and Motion",
+     "gid": "guide-5",
+     "section": "Buttons",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Text links",
+     "guide": "States and Motion",
+     "gid": "guide-5",
+     "section": "Text links",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Tabs, menus and list rows",
+     "guide": "States and Motion",
+     "gid": "guide-5",
+     "section": "Tabs, menus and list rows",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Cards",
+     "guide": "States and Motion",
+     "gid": "guide-5",
+     "section": "Cards",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Focus",
+     "guide": "States and Motion",
+     "gid": "guide-5",
+     "section": "Focus",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Timing",
+     "guide": "States and Motion",
+     "gid": "guide-5",
+     "section": "Timing",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Overlays and dialogs",
+     "guide": "States and Motion",
+     "gid": "guide-5",
+     "section": "Overlays and dialogs",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Toasts",
+     "guide": "States and Motion",
+     "gid": "guide-5",
+     "section": "Toasts",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Carousels",
+     "guide": "States and Motion",
+     "gid": "guide-5",
+     "section": "Carousels",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Reduced motion",
+     "guide": "States and Motion",
+     "gid": "guide-5",
+     "section": "Reduced motion",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Families",
+     "guide": "Typography",
+     "gid": "guide-3",
+     "section": "Families",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Display",
+     "guide": "Typography",
+     "gid": "guide-3",
+     "section": "Display",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Headings",
+     "guide": "Typography",
+     "gid": "guide-3",
+     "section": "Headings",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Paragraphs",
+     "guide": "Typography",
+     "gid": "guide-3",
+     "section": "Paragraphs",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Titles",
+     "guide": "Typography",
+     "gid": "guide-3",
+     "section": "Titles",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Tags",
+     "guide": "Typography",
+     "gid": "guide-3",
+     "section": "Tags",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Eyebrows",
+     "guide": "Typography",
+     "gid": "guide-3",
+     "section": "Eyebrows",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Weights",
+     "guide": "Typography",
+     "gid": "guide-3",
+     "section": "Weights",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Labels, quotes, stats and button labels",
+     "guide": "Typography",
+     "gid": "guide-3",
+     "section": "Labels, quotes, stats and button labels",
+     "action": "changed"
+    },
+    {
+     "type": "site",
+     "action": "changed",
+     "name": "Reference site"
+    }
+   ],
+   "shots": [],
+   "order": 2
+  },
+  {
+   "id": "621f8e8",
+   "sha": "621f8e8a5ef7dd36560a404486a2266a936979dc",
+   "date": "2026-10-14",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "summary": "1440px content column, banner type, logo alignment, module backgrounds, example page, nav and guideline updates",
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "AccordionModule",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Breadcrumbs",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Carousel",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "CookieBanner",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "CtaModule",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DetailComparison",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DrawerCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "EventCalendar",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ExamplePage",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FeatureMatrix",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Footer",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FormBanner",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "GeneralContent",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Hero",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "LogoCarousel",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "LogoHierarchy",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "MarketingTable",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Nav",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "NavBanner",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "NotificationBar",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Stats",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TabModule",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Tabs",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TestimonialCarousel",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TextLink",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TypographicHeader",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "token",
+     "name": "content-max",
+     "family": "layout",
+     "action": "changed",
+     "to": "1440px",
+     "from": "1140px"
+    },
+    {
+     "type": "guide",
+     "name": "Content column",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Content column",
+     "action": "changed"
+    }
+   ],
+   "shots": [],
+   "order": 3
+  },
+  {
+   "id": "6f81bce",
+   "sha": "6f81bce87645bbb61bf781bc3a206c42241b620c",
+   "date": "2026-10-14",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "summary": "Add Card Module, balanced line breaks, example page in page order",
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "AccordionModule",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Card",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "CardModule"
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Carousel",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "CtaModule",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DetailComparison",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "EventCalendar",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ExamplePage",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FeatureMatrix",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Footer",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FormBanner",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "GeneralContent",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Hero",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "LogoCarousel",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "LogoHierarchy",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "MarketingTable",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Media",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Stats",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TabModule",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TestimonialCard",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TestimonialCarousel",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TypographicHeader",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "guide",
+     "name": "Line breaks",
+     "guide": "Typography",
+     "gid": "guide-3",
+     "section": "Line breaks",
+     "action": "added"
+    },
+    {
+     "type": "site",
+     "action": "changed",
+     "name": "Reference site"
+    }
+   ],
+   "shots": [],
+   "order": 4
+  },
+  {
+   "id": "4b10b65",
+   "sha": "4b10b653cddaa388ede80dfcece9a5f95daa2fc9",
+   "date": "2026-10-14",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "summary": "Example page: testimonials in the carousel",
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ExamplePage",
+     "what": [
+      "look"
+     ]
+    }
+   ],
+   "shots": [],
+   "order": 5
+  },
+  {
+   "id": "307b9c2",
+   "sha": "307b9c2c242e33833ffc47f0f1fc0185ff665a2b",
+   "date": "2026-10-14",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "summary": "Feature matrix wraps instead of scrolling",
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DetailComparison",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FeatureMatrix",
+     "what": [
+      "look",
+      "docs"
+     ]
+    }
+   ],
+   "shots": [],
+   "order": 6
+  },
+  {
+   "id": "283a851",
+   "sha": "283a851de05e74e04ab7e39258cd6adf23db2efd",
+   "date": "2026-10-14",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "summary": "Colour tokens: status-named tags, grouped sets, no brand copies",
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Breadcrumbs",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "EventCalendar",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "EventType",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Icon",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Tag",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "token",
+     "name": "brand-blue-400",
+     "family": "color",
+     "action": "removed",
+     "from": "{qualys-blue}",
+     "fromColor": "#2683ed"
+    },
+    {
+     "type": "token",
+     "name": "brand-blue-600",
+     "family": "color",
+     "action": "removed",
+     "from": "{cobalt}",
+     "fromColor": "#194c7a"
+    },
+    {
+     "type": "token",
+     "name": "brand-neutral-100",
+     "family": "color",
+     "action": "removed",
+     "from": "{white}",
+     "fromColor": "#ffffff"
+    },
+    {
+     "type": "token",
+     "name": "brand-neutral-200",
+     "family": "color",
+     "action": "removed",
+     "from": "{warm-off-white}",
+     "fromColor": "#fcfbf7"
+    },
+    {
+     "type": "token",
+     "name": "brand-neutral-600",
+     "family": "color",
+     "action": "removed",
+     "from": "{charcoal}",
+     "fromColor": "#262626"
+    },
+    {
+     "type": "token",
+     "name": "brand-red-100",
+     "family": "color",
+     "action": "removed",
+     "from": "{qualys-red}",
+     "fromColor": "#ed2e26"
+    },
+    {
+     "type": "token",
+     "name": "event-industry",
+     "family": "color",
+     "action": "added",
+     "to": "{charcoal}",
+     "toColor": "#262626"
+    },
+    {
+     "type": "token",
+     "name": "event-qualys",
+     "family": "color",
+     "action": "added",
+     "to": "{qualys-red}",
+     "toColor": "#ed2e26"
+    },
+    {
+     "type": "token",
+     "name": "event-training",
+     "family": "color",
+     "action": "added",
+     "to": "{asphalt}",
+     "toColor": "#575757"
+    },
+    {
+     "type": "token",
+     "name": "event-webinar",
+     "family": "color",
+     "action": "changed",
+     "to": "{qualys-blue}",
+     "from": "#2577ca",
+     "fromColor": "#2577ca",
+     "toColor": "#2683ed"
+    },
+    {
+     "type": "token",
+     "name": "flag-tier-1",
+     "family": "color",
+     "action": "changed",
+     "to": "{tag-informational}",
+     "from": "{tag-purple}",
+     "fromColor": "#6613d2",
+     "toColor": "#6613d2"
+    },
+    {
+     "type": "token",
+     "name": "tag-accepted-risk",
+     "family": "color",
+     "action": "added",
+     "to": "{asphalt}",
+     "toColor": "#575757"
+    },
+    {
+     "type": "token",
+     "name": "tag-critical",
+     "family": "color",
+     "action": "added",
+     "to": "{pepper}",
+     "toColor": "#a20900"
+    },
+    {
+     "type": "token",
+     "name": "tag-fixed",
+     "family": "color",
+     "action": "added",
+     "to": "#16a34a",
+     "toColor": "#16a34a"
+    },
+    {
+     "type": "token",
+     "name": "tag-green",
+     "family": "color",
+     "action": "removed",
+     "from": "#16a34a",
+     "fromColor": "#16a34a"
+    },
+    {
+     "type": "token",
+     "name": "tag-high",
+     "family": "color",
+     "action": "added",
+     "to": "#dc2626",
+     "toColor": "#dc2626"
+    },
+    {
+     "type": "token",
+     "name": "tag-informational",
+     "family": "color",
+     "action": "added",
+     "to": "#6613d2",
+     "toColor": "#6613d2"
+    },
+    {
+     "type": "token",
+     "name": "tag-low",
+     "family": "color",
+     "action": "added",
+     "to": "#fcbf22",
+     "toColor": "#fcbf22"
+    },
+    {
+     "type": "token",
+     "name": "tag-medium",
+     "family": "color",
+     "action": "added",
+     "to": "#f97316",
+     "toColor": "#f97316"
+    },
+    {
+     "type": "token",
+     "name": "tag-neutral",
+     "family": "color",
+     "action": "added",
+     "to": "#44536b",
+     "toColor": "#44536b"
+    },
+    {
+     "type": "token",
+     "name": "tag-neutral-tint",
+     "family": "color",
+     "action": "added",
+     "to": "#f4f5f7",
+     "toColor": "#f4f5f7"
+    },
+    {
+     "type": "token",
+     "name": "tag-orange",
+     "family": "color",
+     "action": "removed",
+     "from": "#f97316",
+     "fromColor": "#f97316"
+    },
+    {
+     "type": "token",
+     "name": "tag-purple",
+     "family": "color",
+     "action": "removed",
+     "from": "#6613d2",
+     "fromColor": "#6613d2"
+    },
+    {
+     "type": "token",
+     "name": "tag-red",
+     "family": "color",
+     "action": "removed",
+     "from": "#dc2626",
+     "fromColor": "#dc2626"
+    },
+    {
+     "type": "token",
+     "name": "tag-slate",
+     "family": "color",
+     "action": "removed",
+     "from": "#44536b",
+     "fromColor": "#44536b"
+    },
+    {
+     "type": "token",
+     "name": "tag-slate-tint",
+     "family": "color",
+     "action": "removed",
+     "from": "#f4f5f7",
+     "fromColor": "#f4f5f7"
+    },
+    {
+     "type": "token",
+     "name": "tag-yellow",
+     "family": "color",
+     "action": "removed",
+     "from": "#fcbf22",
+     "fromColor": "#fcbf22"
+    },
+    {
+     "type": "guide",
+     "name": "Tags",
+     "guide": "Colour",
+     "gid": "guide-2",
+     "section": "Tags",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Contrast notes",
+     "guide": "Colour",
+     "gid": "guide-2",
+     "section": "Contrast notes",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "site",
+     "action": "changed",
+     "name": "Reference site"
+    }
+   ],
+   "shots": [],
+   "order": 7
+  },
+  {
+   "id": "af2c972",
+   "sha": "af2c972c6741edbded0871effeea92ea2cd801f0",
+   "date": "2026-10-14",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "summary": "One tag grey; marker-blue renamed marker-default",
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "AccordionModule",
+     "what": [
+      "look",
+      "props"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Marker",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Nav",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Tag",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "token",
+     "name": "marker-blue",
+     "family": "color",
+     "action": "removed",
+     "from": "{qualys-blue}",
+     "fromColor": "#2683ed"
+    },
+    {
+     "type": "token",
+     "name": "marker-default",
+     "family": "color",
+     "action": "added",
+     "to": "{qualys-blue}",
+     "toColor": "#2683ed"
+    },
+    {
+     "type": "token",
+     "name": "tag-neutral",
+     "family": "color",
+     "action": "removed",
+     "from": "#44536b",
+     "fromColor": "#44536b"
+    },
+    {
+     "type": "token",
+     "name": "tag-neutral-tint",
+     "family": "color",
+     "action": "removed",
+     "from": "#f4f5f7",
+     "fromColor": "#f4f5f7"
+    },
+    {
+     "type": "guide",
+     "name": "Tags",
+     "guide": "Colour",
+     "gid": "guide-2",
+     "section": "Tags",
+     "action": "changed"
+    }
+   ],
+   "shots": [],
+   "order": 8
+  },
+  {
+   "id": "98dd11c",
+   "sha": "98dd11cdc7f23c381941ac526b08905b36520ce6",
+   "date": "2026-10-15",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "summary": "American spelling, Change Management, statuses, search, logo sizing",
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Accordion",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "AccordionModule",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "AlertDialog",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "AppliedFilters",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Avatar",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "BlogCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Breadcrumbs",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Button",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Card",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "CardModule",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Carousel",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Checkbox",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "CookieBanner",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Cover",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "CtaModule",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DemoRequestWizard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DetailComparison",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Drawer",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DrawerCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "EventCalendar",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "EventCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "EventType",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ExamplePage",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ExitIntent",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FeatureMatrix",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FilterBar",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FilterButton",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FilterChip",
+     "what": [
+      "props",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FilterChipGroup",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FilterDrawer",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FilterDropdown",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Flag",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Footer",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Form",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FormBanner",
+     "what": [
+      "props",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FormModal",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "GeneralContent",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Grid",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Hero",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "HoverCard",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Hyperlink",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Icon",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "InlinePromoCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "IntegrationCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "LogoCarousel",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "LogoHierarchy",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Marker",
+     "what": [
+      "props",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "MarketingTable",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Media",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Modal",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Nav",
+     "what": [
+      "props",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "NavBanner",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "NotificationBar",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Overlay",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ProfileCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ProfileGrid",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ProfileModal",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Radio",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ResourceCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "SearchBar",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Select",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "SessionTimeout",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "SocialButton",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "StatCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Stats",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "SuccessConfirmation",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TabModule",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Tabs",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Tag",
+     "what": [
+      "props",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TestimonialCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TestimonialCarousel",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TextField",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TextLink",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Toast",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ToastStack",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Toggle",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Tooltip",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TypographicHeader",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Typography",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "WebinarCard",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Buttons and Links",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Tiers",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Tiers",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Tier 1: primary (conversion)",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Tier 1: primary (conversion)",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Tier 2: secondary (supportive)",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Tier 2: secondary (supportive)",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Tier 3: utility (navigation, information and status)",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Tier 3: utility (navigation, information and status)",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Tier 1 on mobile",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Tier 1 on mobile",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Tier 2 on mobile",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Tier 2 on mobile",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Underline",
+     "guide": "Buttons and Links",
+     "gid": "guide-8",
+     "section": "Underline",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "action": "added",
+     "name": "Change Management",
+     "guide": "Change Management",
+     "gid": "guide-10"
+    },
+    {
+     "type": "guide",
+     "action": "added",
+     "name": "Color",
+     "guide": "Color",
+     "gid": "guide-2"
+    },
+    {
+     "type": "guide",
+     "action": "removed",
+     "name": "Colour",
+     "guide": "Colour"
+    },
+    {
+     "type": "guide",
+     "name": "Icons and Logos",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Iconography",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Iconography",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Choosing an icon",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Choosing an icon",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "Rules for every icon",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Rules for every icon",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "Drawing and color",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Drawing and color",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "Utility icons",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Utility icons",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Event icons",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Event icons",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "General icons",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "General icons",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Social icons",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Social icons",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Feature icons",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Feature icons",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Link icons",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Link icons",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Color versions",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Color versions",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "The shield",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "The shield",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Customer, partner and sponsor logos",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Customer, partner and sponsor logos",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Custom SVG icons",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Custom SVG icons",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Colour versions",
+     "guide": "Icons and Logos",
+     "gid": "guide-6",
+     "section": "Colour versions",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Content column",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Content column",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Elevation",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Elevation",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Modals",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Modals",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "People photos",
+     "guide": "Media",
+     "gid": "guide-9",
+     "section": "People photos",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Overview",
+     "guide": "Overview",
+     "gid": "overview",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Principles and design language",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Principles and design language",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Color",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Color",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "Components",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Components",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Shape",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Shape",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Motion",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Motion",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Governance",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Governance",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Status: what is safe to build",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Status: what is safe to build",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "Who updates a status",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Who updates a status",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "Collaboration",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Collaboration",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Contribution and support",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Contribution and support",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Guidelines",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Guidelines",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Colour",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Colour",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Avatars and profile cards",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Avatars and profile cards",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Navigation and footer",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Navigation and footer",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Block modules",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Block modules",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Stats sections",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Stats sections",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Carousels",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Carousels",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Logos",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Logos",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Events calendar",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Events calendar",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Modals and dialogs",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Modals and dialogs",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Notifications",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Notifications",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Cookie consent",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Cookie consent",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Forms",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Forms",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Filters",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Filters",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Components",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Components",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Text links",
+     "guide": "States and Motion",
+     "gid": "guide-5",
+     "section": "Text links",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Timing",
+     "guide": "States and Motion",
+     "gid": "guide-5",
+     "section": "Timing",
+     "action": "changed"
+    },
+    {
+     "type": "site",
+     "action": "changed",
+     "name": "Reference site"
+    }
+   ],
+   "shots": [],
+   "order": 9
+  },
+  {
+   "id": "eab3c90",
+   "sha": "eab3c90be7734d2cd587615899fce29c8c8a2af9",
+   "date": "2026-10-15",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "summary": "Change Management for designers, Choosing Components, review fixes",
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Accordion",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "AccordionModule",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "AlertDialog",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "AppliedFilters",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Avatar",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "BlogCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Breadcrumbs",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Button",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Card",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "CardModule",
+     "what": [
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Carousel",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Checkbox",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "CookieBanner",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "CtaModule",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DemoRequestWizard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DetailComparison",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Drawer",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DrawerCard",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "EventCalendar",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "EventCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "EventType",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ExitIntent",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FeatureMatrix",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FilterBar",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FilterButton",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FilterChip",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FilterChipGroup",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FilterDrawer",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FilterDropdown",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Flag",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Footer",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Form",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "removed",
+     "name": "FormBanner"
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FormModal",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "GeneralContent",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Grid",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Hero",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "HoverCard",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Hyperlink",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Icon",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "InlinePromoCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "IntegrationCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "LogoCarousel",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "LogoHierarchy",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Marker",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "MarketingTable",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Media",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Modal",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Nav",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "NavBanner",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "NotificationBar",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Overlay",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ProfileCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ProfileGrid",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ProfileModal",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Radio",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ResourceCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "SearchBar",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Select",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "SessionTimeout",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "SocialButton",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "StatCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Stats",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "SuccessConfirmation",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TabModule",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Tabs",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Tag",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TestimonialCard",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TestimonialCarousel",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TextField",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TextLink",
+     "what": [
+      "look",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ToastStack",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Toggle",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Tooltip",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TypographicHeader",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Typography",
+     "wording": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "WebinarCard",
+     "wording": true
+    },
+    {
+     "type": "token",
+     "name": "font-brand",
+     "family": "type",
+     "action": "removed",
+     "from": "\"Gotham\", sans-serif"
+    },
+    {
+     "type": "guide",
+     "name": "Change Management",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Where Flex lives",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Where Flex lives",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "Getting set up",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Getting set up",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "Working with Claude",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Working with Claude",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "What to ask",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "What to ask",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "Experimenting safely",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Experimenting safely",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "Publishing",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Publishing",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Before you start",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Before you start",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "Before you publish",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Before you publish",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "Adding back something built outside Flex",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Adding back something built outside Flex",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Retiring a component",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Retiring a component",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "Everyone",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Everyone",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Designers",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Designers",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Developers",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Developers",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Adding a collaborator",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Adding a collaborator",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Keeping it healthy",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Keeping it healthy",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "How Flex is run",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "How Flex is run",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Principles",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Principles",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Roles",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Roles",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Statuses",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Statuses",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Steps",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Steps",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Review checklist",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Review checklist",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Deprecating and removing",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Deprecating and removing",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Updating this document",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Updating this document",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Where things live",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Where things live",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Writing for this document",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Writing for this document",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Setup",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Setup",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "What you need",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "What you need",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Get the files",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Get the files",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Build and test",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Build and test",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Hosting",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Hosting",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "action": "added",
+     "name": "Choosing Components",
+     "guide": "Choosing Components",
+     "gid": "guide-11"
+    },
+    {
+     "type": "guide",
+     "name": "Contrast notes",
+     "guide": "Color",
+     "gid": "guide-2",
+     "section": "Contrast notes",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Length",
+     "guide": "Content",
+     "gid": "guide-1",
+     "section": "Length",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "CTAs",
+     "guide": "Content",
+     "gid": "guide-1",
+     "section": "CTAs",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Dates and times",
+     "guide": "Content",
+     "gid": "guide-1",
+     "section": "Dates and times",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Block modules",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Block modules",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Finding images and assets",
+     "guide": "Media",
+     "gid": "guide-9",
+     "section": "Finding images and assets",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "Governance",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Governance",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Collaboration",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Collaboration",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Contribution and support",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Contribution and support",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Guidelines",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Guidelines",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Status: what is safe to build",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Status: what is safe to build",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Who updates a status",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Who updates a status",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Block modules",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Block modules",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Components",
+     "guide": "Patterns and Components",
+     "gid": "guide-7",
+     "section": "Components",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Families",
+     "guide": "Typography",
+     "gid": "guide-3",
+     "section": "Families",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Letter spacing",
+     "guide": "Typography",
+     "gid": "guide-3",
+     "section": "Letter spacing",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "site",
+     "action": "changed",
+     "name": "Reference site"
+    }
+   ],
+   "shots": [],
+   "order": 10
+  },
+  {
+   "id": "35c2b57",
+   "sha": "35c2b574366d0af1150d2ea9acfe259636d25354",
+   "date": "2026-10-15",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "summary": "Bigger MarketingTable check; remove FeatureMatrix red no-marks",
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DetailComparison",
+     "what": [
+      "look"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FeatureMatrix",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "MarketingTable",
+     "what": [
+      "look",
+      "docs"
+     ]
+    }
+   ],
+   "shots": [],
+   "order": 11
+  },
+  {
+   "id": "071fc51",
+   "sha": "071fc51cf4899bf711f64bb5b227c142adfa704e",
+   "date": "2026-10-15",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "summary": "Change Management for any AI agent; add AGENTS.md",
+   "pr": null,
+   "items": [
+    {
+     "type": "guide",
+     "name": "Change Management",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Where Flex lives",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Where Flex lives",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Getting set up",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Getting set up",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Working with your AI agent",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Working with your AI agent",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "What to ask",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "What to ask",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Prompts to copy",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Prompts to copy",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "From idea to published",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "From idea to published",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "1. Make it on its own branch",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "1. Make it on its own branch",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "2. Preview it on your computer",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "2. Preview it on your computer",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "3. Share it for approval",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "3. Share it for approval",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "4. Publish",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "4. Publish",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "Before you share",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Before you share",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "Adding back something built outside Flex",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Adding back something built outside Flex",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Retiring a component",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Retiring a component",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Adding a collaborator",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Adding a collaborator",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Keeping it healthy",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Keeping it healthy",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Working with Claude",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Working with Claude",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Experimenting safely",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Experimenting safely",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Publishing",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Publishing",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Before you publish",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Before you publish",
+     "action": "removed"
+    },
+    {
+     "type": "guide",
+     "name": "Governance",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Governance",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "guide",
+     "name": "Collaboration",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Collaboration",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Contribution and support",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Contribution and support",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Guidelines",
+     "guide": "Overview",
+     "gid": "overview",
+     "section": "Guidelines",
+     "action": "changed",
+     "wording": true
+    },
+    {
+     "type": "site",
+     "action": "changed",
+     "name": "Reference site"
+    }
+   ],
+   "shots": [],
+   "order": 12
+  },
+  {
+   "id": "2cac22c",
+   "sha": "2cac22c462a6f0e53a045296e469c0c4d3862306",
+   "date": "2026-10-15",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "summary": "Change Management: setting up Claude for the team",
+   "pr": null,
+   "items": [
+    {
+     "type": "guide",
+     "name": "Where Flex lives",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Where Flex lives",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Getting set up",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Getting set up",
+     "action": "changed"
+    },
+    {
+     "type": "guide",
+     "name": "Setting up Claude for the team",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Setting up Claude for the team",
+     "action": "added"
+    },
+    {
+     "type": "guide",
+     "name": "Adding a collaborator",
+     "guide": "Change Management",
+     "gid": "guide-10",
+     "section": "Adding a collaborator",
+     "action": "changed"
+    },
+    {
+     "type": "site",
+     "action": "changed",
+     "name": "Reference site"
+    }
+   ],
+   "shots": [],
+   "order": 13
+  }
+ ]
+}

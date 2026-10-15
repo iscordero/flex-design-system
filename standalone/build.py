@@ -242,6 +242,24 @@ for gi, (gid, title, body, toc) in enumerate(guides):
 <ul class="ds-toc" aria-label="In this guide">%s</ul>
 <article class="ds-prose">%s</article><!--EXTRA:%s-->''' % (eyebrow, esc(title), ''.join(links), body, gid)))
 
+# change log: written by tools/changelog.py into site/changes.json; the page reads the newest copy when it can
+try:
+    CHANGES = json.load(open(os.path.join(os.path.dirname(os.path.abspath(DS)), 'site', 'changes.json')))
+except (OSError, ValueError):
+    CHANGES = {'version': 1, 'entries': []}
+try:   # the entry unpublished work will get (tools/changelog.py draft, run by publish.sh)
+    CHANGES['draft'] = json.load(open(os.path.join(os.path.dirname(os.path.abspath(DS)), 'site', 'changes-draft.json')))
+except (OSError, ValueError):
+    CHANGES.pop('draft', None)
+views.append(('changelog', '''<header class="ds-head"><p class="ds-eyebrow">Start</p><h1>Change Log</h1><p class="ds-lede">Every change published to Flex, newest first: what was added, changed or removed, who made it and who approved it. It's written automatically each time a change is published, so there's nothing to fill in.</p></header>
+<div class="ds-cl"><div class="ds-cl-bar"><div class="ds-cl-types" role="group" aria-label="Show changes to">%s</div><label class="ds-cl-who"><span>Made by</span><select id="ds-cl-person"><option value="">Everyone</option></select></label></div>
+<p class="ds-cl-count" id="ds-cl-count" aria-live="polite"></p>
+<div id="ds-changelog"></div></div>
+<script type="application/json" id="ds-changes-data">%s</script>''' % (
+    ''.join('<button type="button" class="ds-size ds-cl-type" data-type="%s" aria-pressed="%s">%s</button>' % (k, 'true' if k == '' else 'false', t)
+            for k, t in (('', 'All'), ('component', 'Components'), ('token', 'Tokens'), ('guide', 'Guides'), ('site', 'Site'))),
+    json.dumps(CHANGES, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/'))))
+
 # tokens
 COLOR_GROUPS = [
     ('Palette', lambda n: False),
@@ -471,7 +489,7 @@ views.append(('components', ''.join(index)))
 
 
 # ---------- rail ----------
-nav = ['<div><h2>Start</h2><ul><li><a href="#overview">Overview</a></li>%s<li><a href="#example">Example page</a></li></ul></div>' % ''.join('<li><a href="#%s">%s</a></li>' % (gid, esc(t)) for gid, t, _, _ in guides if gid in START_GUIDES),
+nav = ['<div><h2>Start</h2><ul><li><a href="#overview">Overview</a></li>%s<li><a href="#changelog">Change Log</a></li><li><a href="#example">Example page</a></li></ul></div>' % ''.join('<li><a href="#%s">%s</a></li>' % (gid, esc(t)) for gid, t, _, _ in guides if gid in START_GUIDES),
        '<div><h2>Guidelines</h2><ul>%s</ul></div>' % ''.join('<li><a href="#%s">%s</a></li>' % (gid, esc(t)) for gid, t, _, _ in guides if gid not in START_GUIDES),
        '<div><h2>Foundations</h2><ul><li><a href="#tokens">Design tokens</a></li><li><a href="#typography">Typography</a></li><li><a href="#grid">Grid</a></li></ul></div>']
 for k, (sname, nav_fams) in enumerate(nav_secs):
@@ -555,7 +573,7 @@ for n, label in (('Typography', 'Foundations'), ('Grid', 'Foundations'), ('Icon'
     if n not in FAMILY_OF:
         h = 'c-' + n
         SEARCH.append({'k': 'Component', 't': n, 'g': label, 'h': h, 'd': card_meta(n)[3], 'a': ALIASES.get(n, '').lower(), 'x': plain(README_TEXT.get(n, ''))[:4000]})
-for t, h, d in (('Overview', 'overview', 'What Flex is, governance and how to use it'), ('Example page', 'example', 'A page built from the modules, at each device size'),
+for t, h, d in (('Overview', 'overview', 'What Flex is, governance and how to use it'), ('Example page', 'example', 'A page built from the modules, at each device size'), ('Change Log', 'changelog', 'Every published change: what changed, who made it and who approved it'),
                 ('Design tokens', 'tokens', 'Every color, type, spacing, radius, shadow, layout and layer value'), ('All components', 'components', 'Every component, pattern and page module')):
     SEARCH.append({'k': 'Page', 't': t, 'g': 'Page', 'h': h, 'd': d, 'x': ''})
 for gname, test in COLOR_GROUPS:

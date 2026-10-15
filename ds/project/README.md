@@ -54,6 +54,7 @@ The live Flex site ([flex-design-system.pages.dev](https://flex-design-system.pa
 - **What's published is what to build.** Everything on the site is approved to build. New ideas and experiments stay on their own branch, with a preview link, until they are reviewed, approved and published, so nothing half-finished reaches the site.
 - **One source.** Flex is kept in its GitHub repository, and the site is generated from it (tokens, guides, component READMEs and previews). Nobody edits the site by hand: change the design system, then publish.
 - **Add back anything built outside it.** If a page on qualys.com uses something Flex doesn't have, add it here (as a new component, a variant or a documented exception) so the next person finds it.
+- **Every change is on record.** The Change Log on the site lists each published change, who made it and who approved it, written automatically from GitHub.
 - **Known problems are written down.** If a component has a problem that isn't fixed yet, it is described under Notes in that component's README, so designers and developers see it before they use it.
 
 ## Collaboration

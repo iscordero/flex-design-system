@@ -17,6 +17,7 @@ Working with an AI agent? Start with `AGENTS.md`. The process people follow is *
 | `standalone/` | Builds the one-file reference site (`build.py`, `shell.js`, `shell.css`, icons) |
 | `site/` | The published site: `index.html` plus `_headers`, `robots.txt` and `favicon.ico`. Cloudflare Pages serves this folder as it is |
 | `publish.sh` | Rebuilds `site/index.html` from the source |
+| `tools/changelog.py`, `.github/workflows/changelog.yml` | The change log: works out what each change does and records it in `site/changes.json` (screenshots in `site/changes/`). Runs on GitHub; don't edit its files by hand |
 | `AGENTS.md` | Instructions for any AI agent working on Flex (`CLAUDE.md` points to it) |
 | `merge_index.py` | Used by Claude to update the Claude design system's index; not needed for the site |
 | `families.json` | How the site groups components: Components and Page modules, by family |
@@ -47,7 +48,7 @@ npx tsc --noEmit --jsx react --skipLibCheck --strict use.tsx use2.tsx use3.tsx q
 
 ## Requirements
 
-Python 3 with `markdown` and `Pillow` (`pip install markdown pillow`) to build the site; Node with Playwright and TypeScript for the checks.
+Python 3 with `markdown` and `Pillow` (`pip install markdown pillow`) to build the site; Node with Playwright and TypeScript for the checks. `python3 tools/changelog.py diff` shows what your change does to Flex before you share it.
 
 ## Publishing
 
@@ -57,6 +58,9 @@ The site is hosted on Cloudflare Pages, connected to this repository. Pages has 
 2. Push the branch. Cloudflare publishes a preview at `https://<branch>.flex-design-system.pages.dev`.
 3. Open a pull request with the preview link for review.
 4. Merge it once approved. The live site updates within a minute or two.
+5. The change log job records the change (summary, author, approvers, what changed, screenshots) and commits it to `main`; Cloudflare republishes and the Change Log page shows it. Pull before your next push.
+
+One-time setup: in **Settings → Actions → General**, allow actions and give workflows **Read and write permissions**. If `main` is protected, let GitHub Actions push to it. Screenshots need nothing else: the job installs Pillow and Playwright itself.
 
 Cloudflare Pages settings: framework preset **None**, build command **empty**, build output directory **site**, preview deployments on for all non-production branches.
 

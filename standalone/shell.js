@@ -1141,4 +1141,207 @@
     }
     try { navigator.clipboard.writeText(text).then(function () { done('Copied'); }, select); } catch (err) { select(); }
   });
+  /* Change Log: entries written by tools/changelog.py. The page carries a copy from when it was built,
+     and on the live site it reads the newest site/changes.json, so an entry shows as soon as it's recorded. */
+  (function () {
+    var box = document.getElementById('ds-changelog'), dataEl = document.getElementById('ds-changes-data');
+    if (!box || !dataEl) return;
+    var data = { entries: [] };
+    try { data = JSON.parse(dataEl.textContent); } catch (err) { /* keep empty */ }
+    var count = document.getElementById('ds-cl-count'), who = document.getElementById('ds-cl-person');
+    var typeBtns = Array.prototype.slice.call(document.querySelectorAll('.ds-cl-type'));
+    var state = { type: '', person: '' };
+    var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var KIND = { component: 'Component', token: 'Token', guide: 'Guide', site: 'Site' };
+    var ACTS = [['added', 'Added'], ['changed', 'Changed'], ['removed', 'Removed']];
+    var SHOW = 6;   // items shown in a group before "Show more"
+
+    function people(e) { return [e.author].concat(e.with || []); }
+    function andList(a) { return a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1]; }
+    function sorted() {
+      return data.entries.slice().sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : (b.order || 0) - (a.order || 0); });
+    }
+    /* A link to where the thing lives on this site, when it still exists. */
+    function target(it) {
+      if (it.action === 'removed') return null;
+      if (it.type === 'component' && document.getElementById('c-' + it.name)) return { href: '#c-' + it.name };
+      if (it.type === 'token' && document.getElementById('tok-' + it.name)) return { href: '#tokens', jump: 'tok-' + it.name };
+      if (it.type === 'guide' && it.gid) {
+        var view = document.querySelector('.ds-view[data-view="' + it.gid + '"]');
+        if (!view) return null;
+        var hit = null;
+        if (it.section) Array.prototype.some.call(view.querySelectorAll('h2[id], h3[id]'), function (h) { if (h.textContent.trim() === it.section) { hit = h.id; return true; } return false; });
+        return { href: '#' + it.gid, jump: hit };
+      }
+      if (it.type === 'site') return null;
+      return null;
+    }
+    function label(it) {
+      if (it.type === 'guide') return it.section ? it.guide + ' › ' + it.section : it.guide;
+      return it.name;
+    }
+    function link(it) {
+      var t = target(it), el;
+      if (t) {
+        el = mk('a', 'ds-cl-name', label(it));
+        el.href = t.href;
+        if (t.jump) el.setAttribute('data-goto', t.jump);
+      } else el = mk('span', 'ds-cl-name', label(it));
+      return el;
+    }
+    function swatch(c) { var s = mk('span', 'ds-cl-sw'); s.style.background = c; return s; }
+    function itemLi(it) {
+      var li = mk('li');
+      li.setAttribute('data-type', it.type);
+      li.appendChild(mk('span', 'ds-cl-kind', KIND[it.type] || it.type));
+      li.appendChild(link(it));
+      if (it.type === 'component' && it.what && it.what.length) li.appendChild(mk('span', 'ds-cl-note', andList(it.what)));
+      if (it.type === 'token' && (it.from != null || it.to != null)) {
+        var v = mk('span', 'ds-cl-val');
+        if (it.from != null && it.action !== 'added') { if (it.fromColor) v.appendChild(swatch(it.fromColor)); v.appendChild(mk('code', null, String(it.from))); }
+        if (it.action === 'changed') v.appendChild(mk('span', 'ds-cl-arrow', '→'));
+        if (it.to != null && it.action !== 'removed') { if (it.toColor) v.appendChild(swatch(it.toColor)); v.appendChild(mk('code', null, String(it.to))); }
+        li.appendChild(v);
+      }
+      return li;
+    }
+    function group(title, items) {
+      var g = mk('div', 'ds-cl-group');
+      g.appendChild(mk('h4', null, title));
+      var ul = mk('ul');
+      items.slice(0, SHOW).forEach(function (it) { ul.appendChild(itemLi(it)); });
+      g.appendChild(ul);
+      if (items.length > SHOW) {
+        var more = mk('details', 'ds-cl-more'), sum = mk('summary', null, 'Show ' + (items.length - SHOW) + ' more'), ul2 = mk('ul');
+        items.slice(SHOW).forEach(function (it) { ul2.appendChild(itemLi(it)); });
+        more.appendChild(sum); more.appendChild(ul2); g.appendChild(more);
+        more.addEventListener('toggle', function () { sum.textContent = more.open ? 'Show fewer' : 'Show ' + (items.length - SHOW) + ' more'; });
+      }
+      return g;
+    }
+    function entryEl(e, type) {
+      var art = mk('article', 'ds-cl-entry'), d = e.date.split('-');
+      var date = mk('time', 'ds-cl-date', MONTHS[+d[1] - 1].slice(0, 3) + ' ' + (+d[2]));
+      date.setAttribute('datetime', e.date);
+      art.appendChild(date);
+      var main = mk('div', 'ds-cl-main');
+      main.appendChild(mk('h3', null, e.summary || 'Update'));
+      var meta = mk('p', 'ds-cl-meta');
+      meta.appendChild(document.createTextNode(e.author + (e.with && e.with.length ? ' with ' + andList(e.with) : '')));
+      if (e.approvedBy && e.approvedBy.length) meta.appendChild(document.createTextNode(' · Approved by ' + andList(e.approvedBy)));
+      if (e.draft) meta.appendChild(document.createTextNode(' · Waiting for approval' + (e.commits ? ' · ' + e.commits + (e.commits === 1 ? ' saved change' : ' saved changes') : '')));
+      if (e.pr && e.pr.url) {
+        meta.appendChild(document.createTextNode(' · '));
+        var pa = mk('a', null, 'Pull request #' + e.pr.number);
+        pa.href = e.pr.url; pa.target = '_blank'; pa.rel = 'noopener';
+        meta.appendChild(pa);
+      }
+      main.appendChild(meta);
+      var items = (e.items || []).filter(function (it) { return !type || it.type === type; });
+      ACTS.forEach(function (a) {
+        var sel = items.filter(function (it) { return it.action === a[0] && !it.wording; });
+        if (sel.length) main.appendChild(group(a[1], sel));
+      });
+      var w = items.filter(function (it) { return it.wording; });
+      if (w.length) {
+        var wp = mk('p', 'ds-cl-wording');
+        wp.appendChild(mk('span', 'ds-cl-kind', 'Wording'));
+        w.forEach(function (it, i) { if (i) wp.appendChild(document.createTextNode(', ')); wp.appendChild(link(it)); });
+        main.appendChild(wp);
+      }
+      var shots = (e.shots || []).filter(function () { return !type || type === 'component'; });
+      if (shots.length) {
+        var sh = mk('div', 'ds-cl-shots');
+        shots.forEach(function (s) {
+          var f = mk('figure', 'ds-cl-shot');
+          f.appendChild(mk('figcaption', null, s.name));
+          var pair = mk('div', 'ds-cl-pair');
+          [['before', 'Before'], ['after', 'After']].forEach(function (k) {
+            if (!s[k[0]]) return;
+            var one = mk('figure'), img = mk('img');
+            img.src = s[k[0]]; img.alt = s.name + ', ' + k[1].toLowerCase(); img.loading = 'lazy'; img.decoding = 'async'; img.width = 720;
+            img.addEventListener('error', function () { f.hidden = true; });
+            var full = mk('a'); full.href = s[k[0]]; full.target = '_blank'; full.rel = 'noopener'; full.title = 'Open full size';
+            full.appendChild(img); one.appendChild(full); one.appendChild(mk('figcaption', null, k[1]));
+            pair.appendChild(one);
+          });
+          f.appendChild(pair);
+          sh.appendChild(f);
+        });
+        main.appendChild(sh);
+      }
+      art.appendChild(main);
+      return art;
+    }
+    function render() {
+      box.textContent = '';
+      var shown = 0, month = '', sec = null;
+      if (data.draft) {
+        var ds = mk('section', 'ds-cl-draft');
+        ds.appendChild(mk('h2', null, 'Not published yet'));
+        ds.appendChild(mk('p', 'ds-cl-draftnote', 'This is what the Change Log will say when this work is published. Check it before you share or publish: if something is missing or wrong, fix the change, then preview again.'));
+        var de = entryEl(data.draft, state.type);
+        de.querySelector('.ds-cl-date').textContent = 'Draft';
+        ds.appendChild(de);
+        box.appendChild(ds);
+      }
+      sorted().forEach(function (e) {
+        if (state.person && people(e).indexOf(state.person) < 0) return;
+        if (state.type && !(e.items || []).some(function (it) { return it.type === state.type; })) return;
+        var d = e.date.split('-'), m = MONTHS[+d[1] - 1] + ' ' + d[0];
+        if (m !== month) {
+          month = m; sec = mk('section', 'ds-cl-month');
+          sec.appendChild(mk('h2', null, m));
+          box.appendChild(sec);
+        }
+        sec.appendChild(entryEl(e, state.type));
+        shown++;
+      });
+      if (!shown) box.appendChild(mk('p', 'ds-cl-empty', data.entries.length ? 'No changes match. Try another filter.' : 'No changes recorded yet.'));
+      count.textContent = shown + (shown === 1 ? ' change' : ' changes');
+    }
+    function fillPeople() {
+      var keep = who.value, names = {};
+      data.entries.forEach(function (e) { people(e).forEach(function (n) { if (n) names[n] = 1; }); });
+      while (who.options.length > 1) who.remove(1);
+      Object.keys(names).sort().forEach(function (n) { var o = mk('option', null, n); o.value = n; who.appendChild(o); });
+      who.value = names[keep] ? keep : '';
+      state.person = who.value;
+    }
+    typeBtns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        state.type = b.getAttribute('data-type');
+        typeBtns.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+        render();
+      });
+    });
+    who.addEventListener('change', function () { state.person = who.value; render(); });
+    /* Links to a token or a guide section open that page, then scroll to the spot. */
+    box.addEventListener('click', function (ev) {
+      var a = ev.target.closest && ev.target.closest('a[data-goto]');
+      if (!a) return;
+      var id = a.getAttribute('data-goto');
+      setTimeout(function () {
+        var el = document.getElementById(id);
+        if (el) { el.scrollIntoView({ block: 'start' }); el.classList.add('ds-flash'); setTimeout(function () { el.classList.remove('ds-flash'); }, 1600); }
+      }, 60);
+    });
+    fillPeople();
+    render();
+    if (/^https?:$/.test(location.protocol)) {
+      var draft = data.draft;
+      /* A draft is only shown while its file is still there: once the change is recorded, the job removes it. */
+      Promise.all([
+        fetch('changes.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
+        fetch('changes-draft.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+      ]).then(function (got) {
+        if (got[0] === null && got[1] === null) return;   // a copy served without its files: keep what the page was built with
+        var fresh = got[0] && got[0].entries && got[0].entries.length >= data.entries.length ? got[0] : { entries: data.entries };
+        var next = { version: 1, entries: fresh.entries, draft: got[1] || undefined };
+        if (JSON.stringify(next.entries) !== JSON.stringify(data.entries) || (next.draft ? JSON.stringify(next.draft) : '') !== (draft ? JSON.stringify(draft) : '')) {
+          data = next; fillPeople(); render();
+        }
+      });
+    }
+  })();
 })();
