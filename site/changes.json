@@ -1817,13 +1817,6 @@
     {
      "type": "guide",
      "action": "added",
-     "name": "Patterns and Components",
-     "guide": "Patterns and Components",
-     "gid": "guide-7"
-    },
-    {
-     "type": "guide",
-     "action": "added",
      "name": "States and Motion",
      "guide": "States and Motion",
      "gid": "guide-5"
@@ -2251,7 +2244,7 @@
     }
    ],
    "shots": [],
-   "headline": "Flex published: 79 components, 181 tokens, 10 guides",
+   "headline": "Flex published: 79 components, 181 tokens, 9 guides",
    "minor": false,
    "shas": [
     "55faf068d39771ec92c61e061009dab9f2356173",

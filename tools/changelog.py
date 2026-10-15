@@ -418,7 +418,10 @@ def headline(items):
     if toks:
         fams = {i['family'] for i in toks}
         what = 'colors' if fams == {'color'} else 'type styles' if fams == {'type'} else 'tokens'
-        parts.append('Updated %s (%d)' % (what, len(toks)))
+        if len(toks) == 1:
+            parts.append('%s the %s token' % ({'added': 'Added', 'removed': 'Removed'}.get(toks[0]['action'], 'Changed'), toks[0]['name']))
+        else:
+            parts.append('Updated %s (%d)' % (what, len(toks)))
     groups = []
     for i in big:
         if i['type'] == 'asset' and i['group'] not in groups:
