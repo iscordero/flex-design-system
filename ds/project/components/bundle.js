@@ -718,8 +718,8 @@
        A card too narrow for its row first splits the names over two lines, then moves profiles into the stack one at a time. */
     var cap = n > (hasCta ? 5 : 6) ? 4 : n;
     var ruleKey = n + (hasCta ? 'c' : '');
-    var fs = React.useState({ key: ruleKey, named: cap, two: false }), fit = fs[0], setFit = fs[1];
-    if (fit.key !== ruleKey) fit = { key: ruleKey, named: cap, two: false };
+    var fs = React.useState({ key: ruleKey, named: cap, two: false, squeeze: false }), fit = fs[0], setFit = fs[1];
+    if (fit.key !== ruleKey) fit = { key: ruleKey, named: cap, two: false, squeeze: false };
     var named = Math.min(fit.named, cap), stacked = named < n, compact = n >= 4, two = compact && (fit.two || n >= 6);
     var extras = stacked ? people.slice(named) : [];
     var rootRef = React.useRef(null), listRef = React.useRef(null);
@@ -727,9 +727,13 @@
       var list = listRef.current;
       if (!list || open || !compact) return;
       if (getComputedStyle(list).flexDirection === 'column') return; /* mobile lists every profile */
-      if (list.scrollWidth <= list.clientWidth + 1) return;
-      if (!two) setFit({ key: ruleKey, named: named, two: true });
-      else if (named > 1) setFit({ key: ruleKey, named: named - 1, two: true });
+      /* A name cut short on one line goes over two lines before anything else, so it can be read in full */
+      var cut = !two && Array.prototype.some.call(list.querySelectorAll('.q-person__name'), function (el) { return el.offsetParent && el.scrollWidth > el.clientWidth + 1; });
+      if (!cut && list.scrollWidth <= list.clientWidth + 1) return;
+      if (!two) setFit({ key: ruleKey, named: named, two: true, squeeze: false });
+      else if (named > 1) setFit({ key: ruleKey, named: named - 1, two: true, squeeze: false });
+      /* One named profile and still too wide (a very long name or company in a narrow card): it gives up width and its lines end in "…" */
+      else if (!fit.squeeze) setFit({ key: ruleKey, named: 1, two: true, squeeze: true });
     });
     React.useEffect(function () {
       var el = rootRef.current;
@@ -747,17 +751,29 @@
       if (fonts && fonts.addEventListener) fonts.addEventListener('loadingdone', refit);
       return function () { live = false; ro.disconnect(); if (fonts && fonts.removeEventListener) fonts.removeEventListener('loadingdone', refit); };
     }, [ruleKey, cap]);
+    /* A name over two lines splits where the lines come out most even ("Maximiliano Alessandro" over "Fernández-Castellanos"),
+       so a long first name or a double surname doesn't leave one line much longer than the other. */
+    function splitName(name) {
+      var w = String(name || '').trim().split(/\s+/);
+      if (w.length < 2 || w.join(' ').length <= 14) return [w.join(' '), ''];   /* a short name ("Li Wei") stays on one line */
+      var best = 1, worst = Infinity;
+      for (var k = 1; k < w.length; k++) {
+        var m = Math.max(w.slice(0, k).join(' ').length, w.slice(k).join(' ').length);
+        if (m < worst) { worst = m; best = k; }
+      }
+      return [w.slice(0, best).join(' '), w.slice(best).join(' ')];
+    }
     function person(sp, i) {
-      var parts = String(sp.name || '').split(' '), first = parts.shift(), rest = parts.join(' ');
+      var parts = splitName(sp.name), first = parts[0], rest = parts[1];
       return h('div', { key: i, className: cx('q-person', stacked && i >= named && 'is-extra'), role: 'listitem' },
         face(sp),
         h('div', { className: 'q-person__text' },
-          h('div', { className: 'q-person__name' }, h('span', null, first), rest ? ' ' : null, rest ? h('span', null, rest) : null),
-          sp.designation ? h('div', { className: 'q-person__role' }, sp.designation) : null,
-          sp.company ? h('div', { className: 'q-person__company' }, sp.company) : null));
+          h('div', { className: 'q-person__name', title: sp.name }, h('span', null, first), rest ? ' ' : null, rest ? h('span', null, rest) : null),
+          sp.designation ? h('div', { className: 'q-person__role', title: sp.designation }, sp.designation) : null,
+          sp.company ? h('div', { className: 'q-person__company', title: sp.company }, sp.company) : null));
     }
     var cta = hasCta ? h('div', { className: 'q-dcard__cta' }, p.cta) : null;
-    return h('div', { ref: rootRef, className: cx('q-dcard', open && 'is-open', n ? 'has-people' : 'no-people', hasCta && 'has-cta', 'q-dcard--n' + Math.min(n, 7), compact && 'is-compact', two && 'is-two', stacked && 'is-stacked', p.layout === 'mobile' && 'q-dcard--mobile', p.className) },
+    return h('div', { ref: rootRef, className: cx('q-dcard', open && 'is-open', n ? 'has-people' : 'no-people', hasCta && 'has-cta', 'q-dcard--n' + Math.min(n, 7), compact && 'is-compact', two && 'is-two', stacked && 'is-stacked', compact && fit.squeeze && named === 1 && 'is-squeezed', p.layout === 'mobile' && 'q-dcard--mobile', p.className) },
       heading(p.headingLevel, { className: 'q-dcard__heading' },
         h('button', { type: 'button', id: id + '-btn', className: 'q-dcard__head', 'aria-expanded': open ? 'true' : 'false', 'aria-controls': id + '-panel', 'aria-disabled': p.locked && open ? 'true' : undefined, onClick: o[1] },
           p.time ? h('span', { className: 'q-dcard__time' }, p.time) : null,
@@ -871,13 +887,48 @@
   }
 
   /* ProfileGrid — profile cards laid out individually or combined in one container; opens each bio in a modal. */
+  /* How many profiles go on each row. Rows fill up to the most a row can hold; a row that would hold one profile
+     on its own takes one from the row above (six across five becomes four and two). Every row is centered. */
+  function pgridRows(n, max) {
+    if (n <= 0) return [];
+    if (max <= 1) return Array.apply(null, Array(n)).map(function () { return 1; });
+    var rows = [];
+    for (var left = n; left > 0; left -= max) rows.push(Math.min(max, left));
+    if (rows.length > 1 && rows[rows.length - 1] === 1) { rows[rows.length - 2] -= 1; rows[rows.length - 1] = 2; }
+    return rows;
+  }
+  /* The most a row holds follows the grid's own width: 5 from 880px, 3 from 540px, then 1. maxPerRow lowers it. */
+  function pgridMax(w, cap) { return Math.min(cap, w >= 880 ? 5 : w >= 540 ? 3 : 1); }
   function ProfileGrid(p) {
     var items = p.items || [], combined = p.layout === 'combined';
+    var cap = Math.max(1, Math.min(5, p.maxPerRow || 5));
     var st = React.useState(null), active = st[0], setActive = st[1];
     var cur = active != null ? items[active] : null;
-    return h('div', { className: cx('q-pgrid', combined ? 'q-pgrid--combined' : 'q-pgrid--individual', p.className) },
-      items.map(function (it, i) {
-        return h(ProfileCard, Object.assign({}, it, { key: it.id || i, bare: combined, bioLabel: p.bioLabel, onOpen: it.bio ? function () { setActive(i); } : undefined }));
+    var ref = React.useRef(null);
+    var ms = React.useState(function () { return pgridMax(typeof window !== 'undefined' ? window.innerWidth - 112 : 1200, cap); }), max = ms[0], setMax = ms[1];
+    React.useLayoutEffect(function () {
+      var el = ref.current;
+      if (!el) return undefined;
+      function measure() {
+        var cs = getComputedStyle(el), w = el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+        setMax(pgridMax(w, cap));
+      }
+      measure();
+      if (typeof ResizeObserver === 'undefined') return undefined;
+      var ro = new ResizeObserver(measure);
+      ro.observe(el);
+      return function () { ro.disconnect(); };
+    }, [cap]);
+    var at = 0;
+    return h('div', { ref: ref, className: cx('q-pgrid', combined ? 'q-pgrid--combined' : 'q-pgrid--individual', p.className), style: { '--q-pgrid-cols': max }, role: 'list' },
+      pgridRows(items.length, max).map(function (count, r) {
+        var start = at;
+        at += count;
+        return h('div', { key: r, className: 'q-pgrid__row' }, items.slice(start, start + count).map(function (it, k) {
+          var i = start + k;
+          return h('div', { key: it.id || i, className: 'q-pgrid__cell', role: 'listitem' },
+            h(ProfileCard, Object.assign({}, it, { bare: combined, bioLabel: p.bioLabel, onOpen: it.bio ? function () { setActive(i); } : undefined })));
+        }));
       }),
       cur ? h(ProfileModal, { open: true, onClose: function () { setActive(null); }, name: cur.name, designation: cur.designation, image: cur.image, imageAlt: cur.imageAlt, logo: cur.logo, logoAlt: cur.logoAlt, link: cur.link, links: cur.links, aboutLabel: p.aboutLabel, closeLabel: p.closeLabel }, cur.bio) : null);
   }

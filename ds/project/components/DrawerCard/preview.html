@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components · Accordions and drawers" height=9907 width=1180 subtitle="Component · Session card drawer: none to more than six profiles, with and without a button, at four widths, and on mobile." -->
+<!-- @dsCard group="Components · Accordions and drawers" height=15620 width=1180 subtitle="Component · Session card drawer: none to more than six profiles, with and without a button, at four widths, and on mobile." -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,6 +21,17 @@ var P = [
   {name: 'Rachel Winship', company: 'Qualys'},
   {name: 'Michael Vanderveen', company: 'Qualys'},
   {name: 'Nikhil Kavathekar', company: 'Qualys'}
+];
+/* Long text: long names (several words, hyphenated, one long word), long roles and long company names, mixed with short ones. */
+var L = [
+  {name: 'Maximiliano Alessandro Fern\u00e1ndez-Castellanos', designation: 'Global Head of Cloud Security Architecture and Threat Intelligence Programs, EMEA and Asia Pacific', company: 'International Business Machines Corporation'},
+  {name: 'Anna-Katharina Schwarzenberger-M\u00fcller', designation: 'Chief Information Security Officer', company: 'Cybersecurity and Infrastructure Security Agency'},
+  {name: 'Srinivasaraghavan Venkataraghavan', designation: 'Director, Vulnerability Management', company: 'Tata Consultancy Services'},
+  {name: 'Li Wei', designation: 'Security Analyst', company: 'Qualys'},
+  {name: 'Jean-Baptiste Delacroix-Beaumont', designation: 'Head of Infrastructure', company: 'Soci\u00e9t\u00e9 G\u00e9n\u00e9rale Corporate and Investment Banking'},
+  {name: 'Oluwaseun Adebayo-Ogunleye', designation: 'Security Architect', company: 'Standard Chartered'},
+  {name: 'Christopher Alexander Worthington', designation: 'VP, Engineering', company: 'Qualys'},
+  {name: 'Ana Silva', designation: 'CISO', company: 'Banco do Brasil'}
 ];
 var body = 'Master proactive defense strategies through comprehensive risk-based vulnerability management using Qualys TruRisk. Gain hands-on expertise in identifying, prioritizing, and mitigating security vulnerabilities to safeguard your organization\u2019s digital assets effectively.';
 function reg() { return h(Q.Button, {variant: 'secondary'}, 'Register'); }
@@ -77,6 +88,24 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     h('h2', {className: 'h'}, 'Profile hover cards'),
     h('p', {className: 'rule'}, h('b', null, 'profileCards: '), 'every headshot opens a profile card: headshot, name, role, the company logo and the LinkedIn button. Point at a headshot to peek; click one to pin its card, and close it before opening another.'),
     card(8, {profileCards: true, speakers: P.map(function (p) { return Object.assign({link: {href: '#'}, logo: '/_blob/a0d4062abbce2ceb87d5be08d326359f', logoAlt: 'Qualys'}, p); })}),
+    h('h2', {className: 'h'}, 'Long names and company names'),
+    h('p', {className: 'rule'}, h('b', null, 'Closed: '), 'names, roles and companies keep to their lines and end in \u201c\u2026\u201d when they run long; the full text is in the open card, on mobile and in the tooltip. Long names take more room, so the row splits names and stacks profiles sooner.'),
+    [1, 2, 3, 4, 5, 6, 8].map(function (k) {
+      return h('div', {key: 'L' + k, className: 'grp'},
+        h('p', {className: 'rule'}, h('b', null, k + (k === 1 ? ' profile' : ' profiles') + ', long text')),
+        card(k, {speakers: L.slice(0, k), title: 'Securing the Hybrid Enterprise: Cloud, Containers and Operational Technology at Scale'}),
+        card(k, {speakers: L.slice(0, k), cta: wait()}));
+    }),
+    h('p', {className: 'rule'}, h('b', null, 'Open: '), 'everything is shown in full, wrapping over as many lines as it needs.'),
+    card(5, {speakers: L.slice(0, 5), cta: reg(), defaultOpen: true}),
+    h('p', {className: 'rule'}, h('b', null, 'Narrower cards: '), 'long names reach the stack sooner. Six long profiles with a button at 950, 700 and 560px.'),
+    [950, 700, 560].map(function (w) {
+      return h('div', {key: 'Lw' + w, style: {width: w, maxWidth: '100%'}}, h('div', {className: 'cap'}, 'Card ' + w + 'px wide'), card(6, {speakers: L.slice(0, 6), cta: reg()}));
+    }),
+    h('p', {className: 'rule'}, h('b', null, 'Mobile: '), 'names and companies wrap in full; nothing is cut.'),
+    h('div', {className: 'phones'},
+      h('div', {className: 'phone g'}, card(4, {layout: 'mobile', speakers: L.slice(0, 4), cta: reg()})),
+      h('div', {className: 'phone g'}, card(3, {layout: 'mobile', speakers: L.slice(0, 3), cta: reg(), defaultOpen: true}))),
     h('h2', {className: 'h'}, 'As the card gets narrower'),
     h('p', {className: 'rule'}, h('b', null, 'From 768px of browser width up: '), 'the card fits its profile row to its own width. Five profiles with a button at 1132, 950, 700 and 560px: names split over two lines, then profiles move into the stack. Under 768px of browser width the card becomes one column.'),
     [1132, 950, 700, 560].map(function (w) {

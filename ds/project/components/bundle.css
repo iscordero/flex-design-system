@@ -276,7 +276,7 @@
 .q-dcard__people { grid-column: 1 / -1; grid-row: 3; display: flex; align-items: flex-end; gap: var(--spacing-lg); margin-top: var(--spacing-lg); }
 .q-dcard__list { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; gap: var(--spacing-lg); }
 .q-person { display: flex; gap: var(--spacing-rg); min-width: 0; max-width: 100%; }
-.q-person__text { min-width: 0; }
+.q-person__text { min-width: 0; overflow-wrap: anywhere; }   /* open and mobile: long names and companies wrap in full, even one long word */
 .q-person__name { font-family: var(--font-heading); font-weight: 600; font-size: 16px; line-height: 1.3; letter-spacing: 0; color: var(--text-primary); margin-bottom: var(--spacing-5xs); }
 .q-person__role, .q-person__company { font-family: var(--font-body); font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-secondary); }
 .q-person__company { font-weight: 500; }
@@ -291,13 +291,20 @@
   .q-dcard--n3 { --q-dcard-n: 3; }
   .q-dcard:not(.q-dcard--mobile):not(.is-open) .q-person__role { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
   .q-dcard:not(.q-dcard--mobile):not(.is-open) .q-person__text { overflow-wrap: anywhere; }
+  /* Long text, closed: the name stops at two lines and the company at one, ending in "…"; the full text is in the tooltip and the open card */
+  .q-dcard:not(.q-dcard--mobile):not(.is-open) .q-person__name { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+  .q-dcard:not(.q-dcard--mobile):not(.is-open) .q-person__company { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
   /* Four or more: name and company only, each profile as wide as its text; DrawerCard measures the row and stacks what doesn't fit */
   .q-dcard:not(.q-dcard--mobile):not(.is-open).is-compact .q-dcard__list { display: flex; flex-wrap: nowrap; }
   .q-dcard:not(.q-dcard--mobile):not(.is-open).is-compact .q-person { flex: none; }
   .q-dcard:not(.q-dcard--mobile):not(.is-open).is-compact .q-person__role { display: none; }
-  .q-dcard:not(.q-dcard--mobile):not(.is-open).is-compact .q-person__name, .q-dcard:not(.q-dcard--mobile):not(.is-open).is-compact .q-person__company { white-space: nowrap; }
+  .q-dcard:not(.q-dcard--mobile):not(.is-open).is-compact .q-person__name, .q-dcard:not(.q-dcard--mobile):not(.is-open).is-compact .q-person__company { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  /* A profile's text is 200px at most, so one long name or company can't crowd out the others; it ends in "…" instead */
+  .q-dcard:not(.q-dcard--mobile):not(.is-open).is-compact .q-person__text { max-width: var(--q-dcard-text-max, 200px); }
+  /* The last named profile in a card too narrow for it: it shrinks rather than overlapping the stack or the button */
+  .q-dcard:not(.q-dcard--mobile):not(.is-open).is-squeezed .q-person { flex: 0 1 auto; }
   /* Six or more, or a tight row: first name over surname */
-  .q-dcard:not(.q-dcard--mobile):not(.is-open).is-two .q-person__name span { display: block; }
+  .q-dcard:not(.q-dcard--mobile):not(.is-open).is-two .q-person__name span { display: block; overflow: hidden; text-overflow: ellipsis; }
   /* Past the limit, or when the row is full: the rest stack as headshots */
   .q-dcard:not(.q-dcard--mobile):not(.is-open).is-stacked .q-person.is-extra { display: none; }
   .q-dcard:not(.q-dcard--mobile):not(.is-open).is-stacked .q-dcard__stack { display: flex; flex: none; }
@@ -633,17 +640,20 @@ a.q-tag--text:focus-visible { outline: none; box-shadow: var(--focus-ring); bord
   .q-pcard--bare .q-pcard__media { aspect-ratio: 1 / 1; }
 }
 
-/* Profile grid: individual cards (1, 2, 3 across) or one combined container (1, 3, 5 across) */
-.q-pgrid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--spacing-rg); }
+/* Profile grid: rows of up to 5 profiles (3 in a narrower grid, 1 on a phone), each row centered. ProfileGrid sets
+   --q-pgrid-cols and splits the rows so no profile sits alone on one (6 = 4 + 2). Every profile keeps the same width. */
+.q-pgrid { --q-pgrid-gap: var(--spacing-rg); display: flex; flex-direction: column; gap: var(--q-pgrid-gap); }
+.q-pgrid__row { display: flex; justify-content: center; gap: var(--q-pgrid-gap); }
+.q-pgrid__cell { display: flex; flex: 0 0 calc((100% - (var(--q-pgrid-cols, 1) - 1) * var(--q-pgrid-gap)) / var(--q-pgrid-cols, 1)); min-width: 0; }
+.q-pgrid__cell > .q-pcard { flex: 1; }
+/* In the grid the photo keeps its shape at any card width (five across makes the cards narrower) */
+.q-pgrid--individual .q-pcard__media { height: auto; aspect-ratio: 303 / 287; }
+/* Logos line up along a row, even when a role runs to two lines */
+.q-pgrid .q-pcard .q-profile__logo { margin-top: auto; padding-top: var(--spacing-lg); box-sizing: content-box; }
 .q-pgrid--combined { box-sizing: border-box; padding: var(--spacing-rg); border-radius: var(--radius-lg); background: var(--surface-neutral-300); }
-@media (min-width: 768px) {
-  .q-pgrid--individual { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .q-pgrid--combined { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
 @media (min-width: 1024px) {
-  .q-pgrid { gap: var(--spacing-xl); }
-  .q-pgrid--individual { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .q-pgrid--combined { grid-template-columns: repeat(5, minmax(0, 1fr)); padding: var(--spacing-xl); }
+  .q-pgrid { --q-pgrid-gap: var(--spacing-xl); }
+  .q-pgrid--combined { padding: var(--spacing-xl); }
 }
 
 /* Profile modal: white panel, radius-lg, 24px padding, up to 1128px wide and 80vh tall, over the dark overlay (`overlay-dark`, 50%) */

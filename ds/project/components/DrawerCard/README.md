@@ -25,6 +25,26 @@ The card drawer from the Figma Drawers page, built for event agendas: a white ca
 - **"+N"** counts everyone in the stack (every profile that isn't named). It shows with a button, or when the stack holds more than four people.
 - **Open (any number):** everyone is listed in two columns with name, role and company.
 
+**Long names and company names**
+
+Names, roles and company names vary a lot in length. The card keeps its shape whatever it's given:
+
+| Where | Name | Role | Company |
+| --- | --- | --- | --- |
+| Closed, 1 to 3 profiles | Two lines at most | Two lines at most | One line |
+| Closed, 4 or more | One line, or two when it's long (see below) | Not shown | One line |
+| Open | In full | In full | In full |
+| Mobile, under 768px | In full | In full (open only) | In full |
+
+- **Cut text** ends in "…", and the full text shows as a tooltip when the pointer rests on it. Screen readers always read the full text.
+- **Four or more profiles:** each profile's text is 200px wide at most, so one long name or company can't push the others into the stack.
+- **Two-line names** split where the two lines come out most even: "Maximiliano Alessandro" over "Fernández-Castellanos", not "Maximiliano" over a long remainder. Names of 14 characters or fewer, such as "Li Wei", stay on one line.
+- **A name that's cut on one line goes over two lines first**, before any profile moves into the stack.
+- **Long text fills the row sooner**, so profiles stack sooner. With the long sample names, a 1140px card names four profiles; six long profiles with a button name two at 950px and one at 700px.
+- **A very narrow card:** if even one named profile doesn't fit beside the stack and the button, it gives up width and its lines end in "…". Nothing overlaps.
+- **Open and mobile cut nothing.** Text wraps over as many lines as it needs, and a single very long word breaks across lines rather than running out of the card.
+- **Content:** in a closed card with four or more profiles, about 22 characters of a name line and of a company name show in full. Use the company's everyday name ("IBM", not "International Business Machines Corporation") and a person's usual name.
+
 **How the layout changes with the browser size**
 
 The card has one fixed breakpoint: 768px of browser width (`breakpoint-tablet`). There is no separate tablet layout. From 768px up, the card fits its profile row to its own width, so the same rules apply in the full content column, on a tablet and in a narrow column.

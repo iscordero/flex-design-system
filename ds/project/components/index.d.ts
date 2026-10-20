@@ -708,8 +708,10 @@ export interface ProfileItem extends ProfileBase {
 }
 export interface ProfileGridProps {
   items: ProfileItem[];
-  /** "individual" (default): one card each, 1 / 2 / 3 across. "combined": one container, 1 / 3 / 5 across */
+  /** "individual" (default): one card each. "combined": one container. Both put up to 5 in a row (3 in a narrower grid, 1 on a phone), rows centered, never one alone on a row */
   layout?: 'individual' | 'combined';
+  /** the most profiles in a row, 1 to 5 (default 5) */
+  maxPerRow?: number;
   bioLabel?: string;
   aboutLabel?: string;
   closeLabel?: string;

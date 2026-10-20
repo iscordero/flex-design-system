@@ -1,11 +1,11 @@
-<!-- @dsCard group="Components · Avatars and profiles" height=985 width=1248 subtitle="Pattern · Individual cards and the combined container. Click a card to open its bio; Esc closes it." -->
+<!-- @dsCard group="Components · Avatars and profiles" height=13159 width=1248 subtitle="Pattern · Individual cards and the combined container: up to five in a row, rows centered, never one alone. Click a card to open its bio; Esc closes it." -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>ProfileGrid — preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.wrap{max-width:1200px}</style>
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.wrap{max-width:1200px}.stack{display:flex;flex-direction:column;gap:32px}.row{display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap}.h{font-family:var(--font-heading);font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-0.02em;margin:16px 0 0}.rule{margin:0;max-width:72ch;font-size:16px;line-height:1.4;color:var(--text-primary)}.rule b{font-family:var(--font-heading);font-weight:600}</style>
 </head>
 <body>
 <div id="root"></div>
@@ -15,11 +15,38 @@ function sec(cap, cls, kids) { return h('div', null, h('div', {className: 'cap'}
 var LOGO = '/_blob/a0d4062abbce2ceb87d5be08d326359f';
 var BIO = 'Jonathan leads the product management team and drives the product vision, helping customers assess and improve their IT, security, and compliance posture. Since joining in 2012, he has worked in security and compliance roles across endpoint protection, detection and response, and SaaS security. Before that, he focused on security research for compliance solutions. He holds a master\u2019s in computer applications and several security certifications, and is a regular speaker at industry conferences.';
 function person(n, d) { return {name: n, designation: d, logo: LOGO, logoAlt: 'Qualys', link: {href: '#', network: 'linkedin'}, bio: BIO}; }
-var names = [['Jonathan Doe', 'President and CEO'], ['Alex Morgan', 'Chief Product Officer'], ['Sam Rivera', 'Chief Technology Officer'], ['Jamie Chen', 'Chief Financial Officer'], ['Taylor Brooks', 'Chief Marketing Officer']];
+var names = [['Jonathan Doe', 'President and CEO'], ['Alex Morgan', 'Chief Product Officer'], ['Sam Rivera', 'Chief Technology Officer'], ['Jamie Chen', 'Chief Financial Officer'], ['Taylor Brooks', 'Chief Marketing Officer'],
+  ['Jordan Lee', 'Chief Operating Officer'], ['Casey Patel', 'Chief People Officer'], ['Riley Novak', 'General Counsel'], ['Morgan Diaz', 'Chief Revenue Officer'], ['Avery Kim', 'Chief Information Security Officer'], ['Drew Okafor', 'SVP, Engineering']];
 var people = names.map(function (n) { return person(n[0], n[1]); });
+/* The same split ProfileGrid makes: rows of up to `max`; a lone profile on the last row takes one from the row above. */
+function rows(n, max) {
+  if (max <= 1) return Array.apply(null, Array(n)).map(function () { return 1; });
+  var r = [];
+  for (var left = n; left > 0; left -= max) r.push(Math.min(max, left));
+  if (r.length > 1 && r[r.length - 1] === 1) { r[r.length - 2] -= 1; r[r.length - 1] = 2; }
+  return r;
+}
+function grid(n, layout, max, width) {
+  var label = n + (n === 1 ? ' profile' : ' profiles') + (rows(n, max).length > 1 || n > 1 ? ': ' + rows(n, max).join(' + ') : '') + (n < 4 && max > 1 ? ', centered' : '');
+  return h('div', {key: layout + n + '-' + max, style: width ? {width: width, maxWidth: '100%'} : null},
+    h('div', {className: 'cap'}, label),
+    h(Q.ProfileGrid, {layout: layout, items: people.slice(0, n)}));
+}
+function rule(t, d) { return h('p', {className: 'rule'}, h('b', null, t), ' ', d); }
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
+  h('h2', {className: 'h'}, 'How many in a row'),
+  rule('Up to five in a row.', 'Fewer than four sit centered. A row is never left with one profile: six become four and two, eleven become five, four and two. Every profile keeps the same width, and shorter rows are centered.'),
   sec('Individual', 'wrap', [h(Q.ProfileGrid, {items: people.slice(0, 3)})]),
-  sec('Combined', 'wrap', [h(Q.ProfileGrid, {layout: 'combined', items: people})])));
+  sec('Combined', 'wrap', [h(Q.ProfileGrid, {layout: 'combined', items: people.slice(0, 5)})]),
+  h('h2', {className: 'h'}, 'Combined: from 1 to 11 profiles'),
+  h('div', {className: 'wrap stack'}, [1, 2, 3, 4, 5, 6, 7, 8, 11].map(function (n) { return grid(n, 'combined', 5); })),
+  h('h2', {className: 'h'}, 'Individual cards follow the same rule'),
+  h('div', {className: 'wrap stack'}, [4, 6, 7].map(function (n) { return grid(n, 'individual', 5); })),
+  h('h2', {className: 'h'}, 'Narrower grids'),
+  rule('Tablet and narrow columns (540 to 879px wide):', 'up to three in a row, by the same rule: four become two and two, seven become three, two and two.'),
+  h('div', {className: 'stack'}, [4, 5, 7].map(function (n) { return grid(n, 'combined', 3, 720); })),
+  rule('Phone (under 540px):', 'one profile per row, full width.'),
+  h('div', {className: 'row'}, grid(3, 'combined', 1, 343), grid(2, 'individual', 1, 343))));
 </script>
 </body>
 </html>

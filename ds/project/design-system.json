@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-15T19:22:26Z",
+    "at": "2026-10-20T23:33:06Z",
     "by": "Isabel",
-    "note": "Nav: 1px stroke-neutral-400 bottom border separates the bar from the menus; the blue active bar sits on it and menus hang just below. Change Log shows a draft entry for unpublished work so it can be checked before publishing.",
+    "note": "DrawerCard handles long names, roles and company names (clamped closed, in full open and on mobile, balanced two-line names, earlier stacking). ProfileGrid: up to five a row, rows centered, never one alone (6 = 4 + 2). Site: Open in page button on every card.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",
