@@ -1150,6 +1150,10 @@
     if (!box || !dataEl) return;
     var data = { entries: [] };
     try { data = JSON.parse(dataEl.textContent); } catch (err) { /* keep empty */ }
+    /* Drafts are for checking work before it's published: on your computer and on a change's preview link
+       (<branch>.flex-design-system.pages.dev). The live site itself never shows one. */
+    var LIVE = location.hostname === 'flex-design-system.pages.dev';
+    if (LIVE) delete data.draft;
     var count = document.getElementById('ds-cl-count'), who = document.getElementById('ds-cl-person'), small = document.getElementById('ds-cl-small');
     var typeBtns = Array.prototype.slice.call(document.querySelectorAll('.ds-cl-type'));
     var state = { type: '', person: '', small: false };
@@ -1350,7 +1354,7 @@
       ]).then(function (got) {
         if (got[0] === null && got[1] === null) return;   // a copy served without its files: keep what the page was built with
         var fresh = got[0] && got[0].entries && got[0].entries.length ? got[0] : { entries: data.entries };
-        var next = { version: 1, entries: fresh.entries, draft: got[1] || undefined };
+        var next = { version: 1, entries: fresh.entries, draft: (!LIVE && got[1]) || undefined };
         if (JSON.stringify(next.entries) !== JSON.stringify(data.entries) || (next.draft ? JSON.stringify(next.draft) : '') !== (draft ? JSON.stringify(draft) : '')) {
           data = next; fillPeople(); render();
         }
