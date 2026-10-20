@@ -321,6 +321,15 @@
       else { pin = cur = null; draw(null); }
     });
   }
+  function openPage(c) {
+    var html = blob(c.html.replace('<head>', function () { return '<head><meta name="viewport" content="width=device-width, initial-scale=1">' + PRE; })
+      .replace('<html lang="en">', '<html lang="en" data-theme="light">')
+      .replace(/<title>[^<]*<\/title>/, '<title>' + c.n + ' \u00b7 Flex Design System</title>'));
+    var url = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
+    var w = window.open(url, '_blank');
+    if (w) { try { w.opener = null; } catch (err) { /* already separate */ } }
+    setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
+  }
   function compose(c) {
     var html = c.html.replace('<head>', function () { return '<head>' + PRE; })
       .replace('<html lang="en">', '<html lang="en" data-theme="light">');
@@ -393,7 +402,10 @@
     var st = { el: el, wrap: wrap, wait: wait, c: c, w: c.w || 0, h: c.h || 300, n: 0, actual: false, frame: null, btn: null };
     stages[c.n] = st;
     var card = el.closest('.ds-card');
-    st.btn = card ? card.querySelector('.ds-size') : null;
+    st.btn = card ? card.querySelector('.ds-size:not(.ds-open)') : null;
+    /* Open in page: the preview on a page of its own in a new tab, at its real size, to resize the window and watch it respond */
+    var openBtn = card ? card.querySelector('.ds-open') : null;
+    if (openBtn) openBtn.addEventListener('click', function () { openPage(c); });
     st.spec = card ? card.querySelector('.ds-specs') : null;
     st.panel = card ? card.querySelector('.ds-specpanel') : null;
     if (st.spec && st.panel) st.spec.addEventListener('click', function () { toggleDrawer(st, 'specs'); });

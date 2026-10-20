@@ -431,7 +431,7 @@ def family_view(fid, fname, members, eyebrow):
             README_TEXT[name] = rh
         # No Code button on the cards: props and types live in the component's README and index.d.ts.
         code_btn = ''
-        cards.append('''<article class="ds-card" id="c-%s"><div class="ds-card-head"><h2>%s</h2><span class="ds-level">%s</span><span class="ds-tools"><button type="button" class="ds-specs" aria-expanded="false" aria-controls="ds-drawer" aria-haspopup="dialog" data-sp="sp-%s" title="Sizes, spacing, color, type and tokens">%s<span>Specs</span></button>%s<button type="button" class="ds-size" aria-pressed="false" hidden>Actual size</button></span></div>
+        cards.append('''<article class="ds-card" id="c-%s"><div class="ds-card-head"><h2>%s</h2><span class="ds-level">%s</span><span class="ds-tools"><button type="button" class="ds-specs" aria-expanded="false" aria-controls="ds-drawer" aria-haspopup="dialog" data-sp="sp-%s" title="Sizes, spacing, color, type and tokens">%s<span>Specs</span></button>%s<button type="button" class="ds-size" aria-pressed="false" hidden>Actual size</button><button type="button" class="ds-size ds-open" title="Open this preview on a page of its own, at full size">Open in page</button></span></div>
 <p class="ds-sub">%s</p><div class="ds-stage%s" data-c="%s"></div><div class="ds-specpanel" id="sp-%s" hidden></div>%s</article>''' % (name, name, LEVEL_NAME.get(LEVEL[name], LEVEL[name]), name, SPECS_ICON, code_btn, esc(sub), ' is-square' if name in SQUARE else '', name, name, notes))
     views.append((fid, '<header class="ds-head"><p class="ds-eyebrow">%s</p><h1>%s</h1></header><div class="ds-family">%s</div>' % (esc(eyebrow), esc(fname), ''.join(cards))))
 
