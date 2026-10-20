@@ -1,0 +1,67 @@
+{
+ "id": "draft",
+ "sha": "",
+ "draft": true,
+ "date": "2026-10-20",
+ "author": "Isabel",
+ "with": [
+  "Claude"
+ ],
+ "approvedBy": [],
+ "commits": 4,
+ "base": "b877ff26f284406cbd5914e83ec28db5c5cc4896",
+ "pr": null,
+ "items": [
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "DrawerCard",
+   "what": [
+    "look",
+    "docs"
+   ],
+   "weight": 78
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "ProfileCard",
+   "what": [
+    "look"
+   ],
+   "weight": 3
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "ProfileGrid",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 78
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "ProfileModal",
+   "what": [
+    "look"
+   ],
+   "weight": 2
+  },
+  {
+   "type": "site",
+   "action": "changed",
+   "name": "Reference site",
+   "minor": true
+  }
+ ],
+ "shots": [],
+ "headline": "Updated 4 components",
+ "highlights": [
+  "Updated components: 4, including DrawerCard, ProfileGrid and ProfileCard"
+ ],
+ "minor": false
+}
