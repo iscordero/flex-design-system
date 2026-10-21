@@ -897,37 +897,39 @@
     if (rows.length > 1 && rows[rows.length - 1] === 1) { rows[rows.length - 2] -= 1; rows[rows.length - 1] = 2; }
     return rows;
   }
-  /* The most a row holds follows the grid's own width: 5 from 880px, 3 from 540px, then 1. maxPerRow lowers it. */
-  function pgridMax(w, cap) { return Math.min(cap, w >= 880 ? 5 : w >= 540 ? 3 : 1); }
+  /* ProfileGrid sizes: keynote speakers are 384px wide, three at most in a row; featured speakers 200px, five at most.
+     The row holds as many as fit the container (up to that most); under two, the profiles stack in one column. */
+  var PGRID = { keynote: { w: 384, most: 3 }, featured: { w: 200, most: 5 } };
   function ProfileGrid(p) {
-    var items = p.items || [], combined = p.layout === 'combined';
-    var cap = Math.max(1, Math.min(5, p.maxPerRow || 5));
+    var items = p.items || [], size = p.size === 'keynote' ? 'keynote' : 'featured', spec = PGRID[size];
+    var cap = Math.max(1, Math.min(spec.most, p.maxPerRow || spec.most));
     var st = React.useState(null), active = st[0], setActive = st[1];
     var cur = active != null ? items[active] : null;
     var ref = React.useRef(null);
-    var ms = React.useState(function () { return pgridMax(typeof window !== 'undefined' ? window.innerWidth - 112 : 1200, cap); }), max = ms[0], setMax = ms[1];
+    function fits(w, gap) { var n = Math.floor((w + gap) / (spec.w + gap)); return n >= 2 ? Math.min(cap, n) : 1; }
+    var ms = React.useState(function () { return fits(typeof window !== 'undefined' ? Math.min(1440, window.innerWidth - 112) - 48 : 1152, 24); }), max = ms[0], setMax = ms[1];
     React.useLayoutEffect(function () {
       var el = ref.current;
       if (!el) return undefined;
       function measure() {
         var cs = getComputedStyle(el), w = el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
-        setMax(pgridMax(w, cap));
+        setMax(fits(w, parseFloat(cs.rowGap) || 16));
       }
       measure();
       if (typeof ResizeObserver === 'undefined') return undefined;
       var ro = new ResizeObserver(measure);
       ro.observe(el);
       return function () { ro.disconnect(); };
-    }, [cap]);
+    }, [cap, size]);
     var at = 0;
-    return h('div', { ref: ref, className: cx('q-pgrid', combined ? 'q-pgrid--combined' : 'q-pgrid--individual', p.className), style: { '--q-pgrid-cols': max }, role: 'list' },
+    return h('div', { ref: ref, className: cx('q-pgrid', 'q-pgrid--' + size, max === 1 && 'is-column', p.className), style: { '--q-pgrid-w': spec.w + 'px' }, role: 'list' },
       pgridRows(items.length, max).map(function (count, r) {
         var start = at;
         at += count;
         return h('div', { key: r, className: 'q-pgrid__row' }, items.slice(start, start + count).map(function (it, k) {
           var i = start + k;
           return h('div', { key: it.id || i, className: 'q-pgrid__cell', role: 'listitem' },
-            h(ProfileCard, Object.assign({}, it, { bare: combined, bioLabel: p.bioLabel, onOpen: it.bio ? function () { setActive(i); } : undefined })));
+            h(ProfileCard, Object.assign({}, it, { bare: true, bioLabel: p.bioLabel, onOpen: it.bio ? function () { setActive(i); } : undefined })));
         }));
       }),
       cur ? h(ProfileModal, { open: true, onClose: function () { setActive(null); }, name: cur.name, designation: cur.designation, image: cur.image, imageAlt: cur.imageAlt, logo: cur.logo, logoAlt: cur.logoAlt, link: cur.link, links: cur.links, aboutLabel: p.aboutLabel, closeLabel: p.closeLabel }, cur.bio) : null);

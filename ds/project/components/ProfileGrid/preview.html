@@ -1,11 +1,11 @@
-<!-- @dsCard group="Components · Avatars and profiles" height=13159 width=1248 subtitle="Pattern · Individual cards and the combined container: up to five in a row, rows centered, never one alone. Click a card to open its bio; Esc closes it." -->
+<!-- @dsCard group="Components · Avatars and profiles" height=13413 width=1488 subtitle="Pattern · Keynote (384px, up to three a row) and featured (200px, up to five) speakers in one container. Rows are centered and never leave one alone. Click a profile to open its bio; Esc closes it." -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>ProfileGrid — preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.wrap{max-width:1200px}.stack{display:flex;flex-direction:column;gap:32px}.row{display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap}.h{font-family:var(--font-heading);font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-0.02em;margin:16px 0 0}.rule{margin:0;max-width:72ch;font-size:16px;line-height:1.4;color:var(--text-primary)}.rule b{font-family:var(--font-heading);font-weight:600}</style>
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{padding:var(--spacing-xl);display:flex;flex-direction:column;gap:32px}.cap{margin-bottom:var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.wrap{max-width:1200px}.wide{max-width:1440px}.stack{display:flex;flex-direction:column;gap:32px}.row{display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap}.h{font-family:var(--font-heading);font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-0.02em;margin:16px 0 0}.rule{margin:0;max-width:72ch;font-size:16px;line-height:1.4;color:var(--text-primary)}.rule b{font-family:var(--font-heading);font-weight:600}</style>
 </head>
 <body>
 <div id="root"></div>
@@ -26,27 +26,29 @@ function rows(n, max) {
   if (r.length > 1 && r[r.length - 1] === 1) { r[r.length - 2] -= 1; r[r.length - 1] = 2; }
   return r;
 }
-function grid(n, layout, max, width) {
-  var label = n + (n === 1 ? ' profile' : ' profiles') + (rows(n, max).length > 1 || n > 1 ? ': ' + rows(n, max).join(' + ') : '') + (n < 4 && max > 1 ? ', centered' : '');
-  return h('div', {key: layout + n + '-' + max, style: width ? {width: width, maxWidth: '100%'} : null},
-    h('div', {className: 'cap'}, label),
-    h(Q.ProfileGrid, {layout: layout, items: people.slice(0, n)}));
+function grid(n, size, max, width, label) {
+  var r = rows(n, max);
+  var text = label || (n + (n === 1 ? ' profile' : ' profiles') + (n > 1 && max > 1 ? ': ' + r.join(' + ') : '') + (max > 1 && r[0] < max ? ', centered' : ''));
+  return h('div', {key: size + n + '-' + max + (width || ''), style: width ? {width: width, maxWidth: '100%'} : null},
+    h('div', {className: 'cap'}, text),
+    h(Q.ProfileGrid, {size: size, items: people.slice(0, n)}));
 }
 function rule(t, d) { return h('p', {className: 'rule'}, h('b', null, t), ' ', d); }
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},
-  h('h2', {className: 'h'}, 'How many in a row'),
-  rule('Up to five in a row.', 'Fewer than four sit centered. A row is never left with one profile: six become four and two, eleven become five, four and two. Every profile keeps the same width, and shorter rows are centered.'),
-  sec('Individual', 'wrap', [h(Q.ProfileGrid, {items: people.slice(0, 3)})]),
-  sec('Combined', 'wrap', [h(Q.ProfileGrid, {layout: 'combined', items: people.slice(0, 5)})]),
-  h('h2', {className: 'h'}, 'Combined: from 1 to 11 profiles'),
-  h('div', {className: 'wrap stack'}, [1, 2, 3, 4, 5, 6, 7, 8, 11].map(function (n) { return grid(n, 'combined', 5); })),
-  h('h2', {className: 'h'}, 'Individual cards follow the same rule'),
-  h('div', {className: 'wrap stack'}, [4, 6, 7].map(function (n) { return grid(n, 'individual', 5); })),
-  h('h2', {className: 'h'}, 'Narrower grids'),
-  rule('Tablet and narrow columns (540 to 879px wide):', 'up to three in a row, by the same rule: four become two and two, seven become three, two and two.'),
-  h('div', {className: 'stack'}, [4, 5, 7].map(function (n) { return grid(n, 'combined', 3, 720); })),
-  rule('Phone (under 540px):', 'one profile per row, full width.'),
-  h('div', {className: 'row'}, grid(3, 'combined', 1, 343), grid(2, 'individual', 1, 343))));
+  h('h2', {className: 'h'}, 'Two sizes, one container'),
+  rule('Keynote speakers:', '384px profiles with a larger name and role, up to three in a row.'),
+  rule('Featured speakers:', '200px profiles, up to five in a row.'),
+  rule('Every row is centered, and none is left with one profile:', 'six featured speakers become four and two; four keynote speakers become two and two. The container is up to 1440px wide.'),
+  h('div', {className: 'wide stack'}, grid(3, 'keynote', 3, null, 'Keynote: 3'), grid(5, 'featured', 5, null, 'Featured: 5')),
+  h('h2', {className: 'h'}, 'Keynote: 1 to 5 profiles'),
+  h('div', {className: 'wide stack'}, [1, 2, 4, 5].map(function (n) { return grid(n, 'keynote', 3); })),
+  h('h2', {className: 'h'}, 'Featured: 1 to 11 profiles'),
+  h('div', {className: 'wide stack'}, [1, 2, 3, 4, 6, 7, 8, 11].map(function (n) { return grid(n, 'featured', 5); })),
+  h('h2', {className: 'h'}, 'Narrower containers'),
+  rule('Rows hold as many as fit:', 'in a 720px container, three featured or one keynote per row. When fewer than two fit, the profiles stack in one column.'),
+  h('div', {className: 'stack'}, grid(4, 'featured', 3, 720), grid(7, 'featured', 3, 720)),
+  rule('Phone:', 'one column, each profile at its own width, centered.'),
+  h('div', {className: 'row'}, grid(3, 'featured', 1, 343), grid(2, 'keynote', 1, 343))));
 </script>
 </body>
 </html>

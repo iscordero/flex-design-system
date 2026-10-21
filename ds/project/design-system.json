@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-20T23:33:06Z",
+    "at": "2026-10-21T16:36:26Z",
     "by": "Isabel",
-    "note": "DrawerCard handles long names, roles and company names (clamped closed, in full open and on mobile, balanced two-line names, earlier stacking). ProfileGrid: up to five a row, rows centered, never one alone (6 = 4 + 2). Site: Open in page button on every card.",
+    "note": "ProfileGrid: one container only (separate cards retired), in two sizes: keynote 384px (up to three a row) and featured 200px (up to five), rows centered, never one alone.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",
