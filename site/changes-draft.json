@@ -2,13 +2,13 @@
  "id": "draft",
  "sha": "",
  "draft": true,
- "date": "2026-10-20",
+ "date": "2026-10-21",
  "author": "Isabel",
  "with": [
   "Claude"
  ],
  "approvedBy": [],
- "commits": 4,
+ "commits": 6,
  "base": "b877ff26f284406cbd5914e83ec28db5c5cc4896",
  "pr": null,
  "items": [
@@ -40,7 +40,7 @@
     "props",
     "docs"
    ],
-   "weight": 78
+   "weight": 89
   },
   {
    "type": "component",
@@ -61,7 +61,7 @@
  "shots": [],
  "headline": "Updated 4 components",
  "highlights": [
-  "Updated components: 4, including DrawerCard, ProfileGrid and ProfileCard"
+  "Updated components: 4, including ProfileGrid, DrawerCard and ProfileCard"
  ],
  "minor": false
 }
