@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-22T19:03:14Z",
+    "at": "2026-10-22T19:35:25Z",
     "by": "Isabel",
-    "note": "DrawerCard roles shrink to their own text, so profiles hug their content with even gaps. Stat cards wrap in centered rows: a card alone on the last row is centered.",
+    "note": "Card Module rows: the column count avoids a lone card (five are 3 + 2) and a short last row is centered. Layout guide: rule for rows of cards.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

@@ -1187,14 +1187,23 @@
   /* CardModule — the Figma Card Module: an optional copy block, then 1–4 Cards in a row (six make 3 × 2). Tablet: four become 2 × 2. Mobile: one column. */
   function CardModule(p) {
     var items = p.items || [], n = items.length;
-    var cols = p.columns || (n <= 4 ? n : n % 3 === 0 ? 3 : 4);
-    cols = Math.max(1, Math.min(4, cols));
+    /* Columns from the count: full rows where possible, and never a card alone on a row when another count avoids it
+       (five are 3 + 2, not 4 + 1). Tablet allows three across; four there become 2 × 2. A short last row is centered. */
+    function fitCols(max) {
+      if (n <= max) return n;
+      if (n % max === 0) return max;
+      if (max > 3 && n % (max - 1) === 0) return max - 1;
+      for (var c = max; c >= 2; c--) if (n % c !== 1) return c;
+      return max;
+    }
+    var cols = n === 1 ? 3 : Math.max(1, Math.min(4, p.columns || fitCols(4)));
+    var tcols = n === 1 ? 2 : Math.min(cols, fitCols(3));
     var hasCopy = p.eyebrow || p.title || p.body || p.actions;
     var level = p.titleLevel || 2;
     return h('section', { className: cx('q-section', 'q-cardmod', p.align === 'center' && 'q-cardmod--center', p.className), id: p.id, 'aria-label': hasCopy ? undefined : p.label },
       h('div', { className: 'q-section__inner' },
         hasCopy ? h('div', { className: 'q-copy q-cardmod__copy' }, copyParts(p, level)) : null,
-        h('div', { className: cx('q-cardmod__grid', 'q-cardmod__grid--' + cols) }, items.map(function (it, i) {
+        h('div', { className: cx('q-cardmod__grid', n === 1 && 'q-cardmod__grid--1'), style: { '--q-cols-d': cols, '--q-cols-t': tcols } }, items.map(function (it, i) {
           return h(Card, Object.assign({ key: it.key || i, headingLevel: level + 1 }, it));
         }))));
   }

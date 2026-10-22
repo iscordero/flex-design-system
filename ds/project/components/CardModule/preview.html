@@ -1,4 +1,4 @@
-<!-- @dsCard group="Page modules · Content sections" height=4429 width=1440 subtitle="Block module · Cards 1 to 4 in a row and 3 × 2, with a copy block or without; then tablet and mobile." -->
+<!-- @dsCard group="Page modules · Content sections" height=5896 width=1440 subtitle="Block module · Cards 1 to 4 in a row, 3 × 2 and 3 + 2 with the short row centered, with a copy block or without; then tablet and mobile." -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,7 +24,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
   cap('2 in a row'), cm(2),
   cap('1 card, centered copy'), cm(1, Object.assign({align: 'center'}, COPY)),
   cap('3 × 2'), cm(6, {title: 'Built for Security and IT Teams'}),
+  cap('5 cards — 3 + 2, the short row centered (never 4 + 1)'), cm(5),
   cap('Tablet — four become 2 × 2'), h('div', {className: 'tablet'}, cm(4)),
+  cap('Tablet — five become 3 + 2, the short row centered'), h('div', {className: 'tablet'}, cm(5)),
   cap('Mobile'), h('div', {className: 'phones'}, h('div', {className: 'phone'}, cm(3, COPY)))));
 </script>
 </body>

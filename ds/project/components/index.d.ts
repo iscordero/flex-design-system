@@ -575,7 +575,7 @@ export interface CardModuleProps {
   title?: React.ReactNode;
   body?: React.ReactNode;
   actions?: React.ReactNode;
-  /** cards per row on desktop; default 1–4 by count, 3 for six, 4 for eight */
+  /** cards per row on desktop; default from the count: full rows, never one card alone (five are 3 + 2). A short last row is centered. */
   columns?: 1 | 2 | 3 | 4;
   /** 'left' (default) or 'center' for the copy block (and a single card) */
   align?: 'left' | 'center';

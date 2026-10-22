@@ -703,23 +703,19 @@ a.q-tag--text:focus-visible { outline: none; box-shadow: var(--focus-ring); bord
 .q-cardmod--center .q-copy__actions { justify-content: center; }
 .q-cardmod .q-copy__eyebrow + .q-copy__title { margin-top: var(--spacing-5xs); }
 .q-cardmod .q-copy__body { margin-top: var(--spacing-rg); }
-.q-cardmod__grid { display: grid; gap: var(--gutter, 24px); grid-template-columns: repeat(var(--q-cols, 1), minmax(0, 1fr)); }
-.q-cardmod__grid--2 { --q-cols: 2; }
-.q-cardmod__grid--3 { --q-cols: 3; }
-.q-cardmod__grid--4 { --q-cols: 4; }
-/* One card on its own takes one column of three, so its lines stay a readable length. */
-.q-cardmod__grid--1 { --q-cols: 3; }
-.q-cardmod--center .q-cardmod__grid--1 > * { grid-column: 2; }
+/* Cards wrap in centered rows, all one width: a short last row sits in the middle, and the column count avoids a card alone on a row (see CardModule). */
+.q-cardmod__grid { --q-cols: var(--q-cols-d, 1); display: flex; flex-wrap: wrap; justify-content: center; gap: var(--gutter, 24px); }
+.q-cardmod__grid > * { flex: none; box-sizing: border-box; width: calc((100% - (var(--q-cols) - 1) * var(--gutter, 24px)) / var(--q-cols)); }
+/* One card on its own takes one column of three (two on tablet), so its lines stay a readable length; it lines up with the copy block. */
+.q-cardmod__grid--1 { justify-content: flex-start; }
+.q-cardmod--center .q-cardmod__grid--1 { justify-content: center; }
 .q-cardmod .q-scard__text { flex: 1 1 auto; }
 @container (max-width: 1023px) {
-  .q-cardmod__grid--4 { --q-cols: 2; }
-  .q-cardmod__grid--1 { --q-cols: 2; }
-  .q-cardmod--center .q-cardmod__grid--1 > * { grid-column: 1 / -1; justify-self: center; width: calc(50% - var(--gutter, 24px) / 2); }
+  .q-cardmod__grid { --q-cols: var(--q-cols-t, 1); }
 }
 @container (max-width: 767px) {
   .q-cardmod__copy { margin-bottom: var(--spacing-xl); }
-  .q-cardmod__grid { --q-cols: 1 !important; }
-  .q-cardmod--center .q-cardmod__grid--1 > * { width: auto; justify-self: stretch; }
+  .q-cardmod__grid { --q-cols: 1; }
 }
 
 /* ── Cards (Figma: Cards) ── */
