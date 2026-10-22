@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-22T18:56:35Z",
+    "at": "2026-10-22T19:03:14Z",
     "by": "Isabel",
-    "note": "Search is off in the Nav for now: no search icon on desktop and no search field in the mobile menu.",
+    "note": "DrawerCard roles shrink to their own text, so profiles hug their content with even gaps. Stat cards wrap in centered rows: a card alone on the last row is centered.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

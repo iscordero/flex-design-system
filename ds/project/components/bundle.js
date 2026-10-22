@@ -726,8 +726,15 @@
     var rootRef = React.useRef(null), listRef = React.useRef(null);
     React.useLayoutEffect(function () {
       var list = listRef.current;
-      if (!list || open) return;
+      if (!list) return;
+      var roles = list.querySelectorAll('.q-person__role');
+      for (var r = 0; r < roles.length; r++) roles[r].style.width = '';
+      if (open) return;
       if (getComputedStyle(list).flexDirection === 'column') return; /* mobile lists every profile */
+      /* Each role hugs its own text, so a profile is only as wide as what it shows and the row has no gaps:
+         one line when it fits under the cap, otherwise the narrowest width that still fits two lines (balanced),
+         and the full cap, cut off after two lines, only when even that isn't enough. */
+      if (!fit.squeeze) for (var k = 0; k < roles.length; k++) hugRole(roles[k]);
       if (list.scrollWidth <= list.clientWidth + 1) return;
       /* Too wide: first every name goes over two lines (all of them, so the row stays consistent), then profiles move
          into the stack one at a time, last first. Names are never shortened. */
@@ -752,6 +759,20 @@
       if (fonts && fonts.addEventListener) fonts.addEventListener('loadingdone', refit);
       return function () { live = false; ro.disconnect(); if (fonts && fonts.removeEventListener) fonts.removeEventListener('loadingdone', refit); };
     }, [ruleKey, cap]);
+    function hugRole(el) {
+      var cs = getComputedStyle(el);
+      if (cs.display === 'none') return;
+      var cap = parseFloat(cs.maxWidth) || Infinity, lh = parseFloat(cs.lineHeight) || 21;
+      el.style.maxWidth = 'none'; el.style.width = 'max-content';
+      var natural = Math.ceil(el.getBoundingClientRect().width) + 1;
+      el.style.maxWidth = ''; el.style.width = '';
+      if (natural <= cap) { el.style.width = natural + 'px'; return; }
+      function fits(w) { el.style.width = w + 'px'; return el.scrollHeight <= 2 * lh + 2; }
+      if (!fits(cap)) { el.style.width = cap + 'px'; return; }
+      var lo = Math.ceil(natural / 2), hi = cap;
+      while (hi - lo > 1) { var mid = (lo + hi) >> 1; if (fits(mid)) hi = mid; else lo = mid; }
+      el.style.width = hi + 'px';
+    }
     /* A name over two lines splits where the lines come out most even ("Maximiliano Alessandro" over "Fernández-Castellanos"),
        so a long first name or a double surname doesn't leave one line much longer than the other. */
     function splitName(name) {
@@ -1155,7 +1176,7 @@
     var items = p.items || [], outline = p.tone === 'outline';
     var size = p.size || (items.length >= 4 ? 'md' : 'lg');
     var inner = p.layout === 'cards'
-      ? h('div', { className: cx('q-stats__cards', 'q-stats__cards--' + size) }, items.map(function (it, i) {
+      ? h('div', { className: cx('q-stats__cards', 'q-stats__cards--' + size), style: { '--q-n': items.length } }, items.map(function (it, i) {
           return h(StatCard, Object.assign({ key: i, tone: outline ? 'outline' : 'solid', size: size, countUp: p.countUp }, it));
         }))
       : h('div', { className: cx('q-stats__panel', outline && 'q-stats__panel--outline') }, items.map(function (it, i) { return statBody(Object.assign({ countUp: p.countUp }, it), i); }));

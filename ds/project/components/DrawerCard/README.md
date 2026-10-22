@@ -27,7 +27,7 @@ The card drawer from the Figma Drawers page, built for event agendas: a white ca
 
 **Names, roles and companies**
 
-- **Profiles hug their content.** Each profile is as wide as its longest line, with 20px to the next. There are no equal columns, so short names don't leave gaps.
+- **Profiles hug their content.** Each profile is as wide as its longest line, with 20px to the next. There are no equal columns, so short names don't leave gaps. A role shrinks to its own text: one line when it fits under its cap, otherwise the narrowest width that holds it on two even lines; only a role too long for two lines at the cap fills the cap and ends in "…".
 - **Names are never shortened.** A closed card shows every name on one line, or, when the row is too wide, every name on two lines: the same for the whole row, never a mix. A name splits where its two lines come out most even ("Maximiliano Alessandro" over "Fernández-Castellanos"); a one-word name stays on one line.
 - **Roles and companies are limited** so a long one can't crowd the row:
 

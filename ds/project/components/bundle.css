@@ -834,8 +834,15 @@ a.q-card:hover .q-card__out, a.q-card:focus-visible .q-card__out { transform: tr
 /* Module: one panel on the blue gradient (light top left to dark bottom right), or three or four cards in a row */
 .q-stats__panel { display: flex; gap: var(--spacing-4xl); box-sizing: border-box; padding: var(--spacing-5xl); border-radius: var(--radius-lg); background: var(--surface-promo-gradient); color: var(--text-inverted); }
 .q-stats__panel > .q-stat { flex: 1 1 0; }
-.q-stats__cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--spacing-xl); }
-.q-stats__cards--md { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+/* Stat cards wrap in centered rows: a card left on its own row sits in the middle, at the same width as the others.
+   Columns follow the row's own width: three (cards at least 280px), else two, else one; four for the smaller cards,
+   which skip three across so four cards never leave one alone. Never more columns than cards. */
+.q-stats__cards { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spacing-xl); container-type: inline-size; }
+.q-stats__cards > * { --q-cols: 1; --q-c: min(var(--q-cols), var(--q-n, 99)); flex: none; width: calc((100% - (var(--q-c) - 1) * var(--spacing-xl)) / var(--q-c)); }
+@container (min-width: 592px) { .q-stats__cards > * { --q-cols: 2; } }
+@container (min-width: 904px) { .q-stats__cards:not(.q-stats__cards--md) > * { --q-cols: 3; } }
+@container (min-width: 472px) { .q-stats__cards--md > * { --q-cols: 2; } }
+@container (min-width: 976px) { .q-stats__cards--md > * { --q-cols: 4; } }
 .q-stats--lg .q-stat__num { font-size: clamp(48px, 6.4cqw, 86px); }
 @container (max-width: 1023px) {
   .q-stats__panel { gap: var(--spacing-xl); padding: var(--spacing-3xl); }

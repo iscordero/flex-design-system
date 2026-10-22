@@ -16,7 +16,7 @@ The stats module from the Figma Stats page: three figures in one panel, or three
 - **Cards:** StatCards 24px apart, large for three and medium for four. Solid cards are flat `qualys-blue`.
 - Each figure: a Feature Icon (56px), the number with its unit, the label and one line of description. See StatCard for the sizes.
 - **Count up:** every figure runs from 0 to its value once, when it first scrolls into view (1.2 seconds, easing out; not for people who prefer reduced motion). `countUp={false}` turns it off for the module. See StatCard.
-- **Tablet:** the panel tightens to 36px padding; cards wrap to two across.
+- **Tablet:** the panel tightens to 36px padding; cards wrap to two across. A card left alone on the last row is centered, at the same width as the cards above it. Four smaller cards go from four across straight to two by two, never three and one.
 - **Mobile:** everything stacks, 24px apart, with 24px padding; numbers drop to 48px (38px for four).
 
 Content, from the Figma usage notes:
