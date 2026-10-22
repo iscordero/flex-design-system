@@ -2,16 +2,65 @@
  "id": "draft",
  "sha": "",
  "draft": true,
- "date": "2026-10-21",
+ "date": "2026-10-22",
  "author": "Isabel",
  "with": [
   "Claude"
  ],
  "approvedBy": [],
- "commits": 6,
+ "commits": 8,
  "base": "b877ff26f284406cbd5914e83ec28db5c5cc4896",
  "pr": null,
  "items": [
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "AlertDialog",
+   "what": [
+    "look"
+   ],
+   "weight": 1
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Avatar",
+   "what": [
+    "docs"
+   ],
+   "weight": 0,
+   "minor": true
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "CookieBanner",
+   "what": [
+    "look"
+   ],
+   "weight": 1
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "CtaModule",
+   "what": [
+    "docs"
+   ],
+   "weight": 0,
+   "minor": true
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "DemoRequestWizard",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 5
+  },
   {
    "type": "component",
    "action": "changed",
@@ -20,7 +69,65 @@
     "look",
     "docs"
    ],
-   "weight": 78
+   "weight": 99
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "ExitIntent",
+   "what": [
+    "look"
+   ],
+   "weight": 1
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Form",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 29
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "FormModal",
+   "what": [
+    "docs"
+   ],
+   "weight": 0,
+   "minor": true
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Hero",
+   "what": [
+    "docs"
+   ],
+   "weight": 0,
+   "minor": true
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Modal",
+   "what": [
+    "look"
+   ],
+   "weight": 1
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "NavBanner",
+   "what": [
+    "look"
+   ],
+   "weight": 3
   },
   {
    "type": "component",
@@ -52,6 +159,60 @@
    "weight": 2
   },
   {
+   "type": "component",
+   "action": "changed",
+   "name": "SearchBar",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 9
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "SessionTimeout",
+   "what": [
+    "look"
+   ],
+   "weight": 1
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "SuccessConfirmation",
+   "what": [
+    "look"
+   ],
+   "weight": 1
+  },
+  {
+   "type": "token",
+   "name": "avatar-container-bg",
+   "family": "color",
+   "action": "added",
+   "to": "{linen}",
+   "toColor": "#f1f0e9"
+  },
+  {
+   "type": "token",
+   "name": "linen",
+   "family": "color",
+   "action": "added",
+   "to": "#f1f0e9",
+   "toColor": "#f1f0e9"
+  },
+  {
+   "type": "guide",
+   "name": "Surfaces",
+   "guide": "Color",
+   "gid": "guide-2",
+   "section": "Surfaces",
+   "action": "changed",
+   "minor": true
+  },
+  {
    "type": "site",
    "action": "changed",
    "name": "Reference site",
@@ -59,9 +220,10 @@
   }
  ],
  "shots": [],
- "headline": "Updated 4 components",
+ "headline": "Updated colors (2) · Updated 14 components",
  "highlights": [
-  "Updated components: 4, including ProfileGrid, DrawerCard and ProfileCard"
+  "Colors: 2 added",
+  "Updated components: 14, including DrawerCard, ProfileGrid and Form"
  ],
  "minor": false
 }
