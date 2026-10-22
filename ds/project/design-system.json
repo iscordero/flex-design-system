@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-22T17:41:32Z",
+    "at": "2026-10-22T18:56:35Z",
     "by": "Isabel",
-    "note": "New token avatar-container-bg (Linen #F1F0E9) for the ProfileGrid panel. SearchBar without its icon for now. DrawerCard: profiles hug their content, names never cut and all one or all two lines. Form banners on every form. Navigation and footer family.",
+    "note": "Search is off in the Nav for now: no search icon on desktop and no search field in the mobile menu.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

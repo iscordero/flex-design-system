@@ -1,9 +1,9 @@
 # Nav
 
 
-The global navigation from the Figma Navigation page: the logo, the primary items with their menus, utility links, search and one call to action. Below 1200px it becomes a bar with a menu button that opens a full-screen menu.
+The global navigation from the Figma Navigation page: the logo, the primary items with their menus, utility links and one call to action. Below 1200px it becomes a bar with a menu button that opens a full-screen menu.
 
-**Provide:** `logoSrc` (the full-color logo from Logos), `items`, `utility` links, `search` and `cta` (`{ label, href }`). An item is a link (`{ label, href }`) or opens a menu (`{ label, menu }`).
+**Provide:** `logoSrc` (the full-color logo from Logos), `items`, `utility` links and `cta` (`{ label, href }`). An item is a link (`{ label, href }`) or opens a menu (`{ label, menu }`).
 
 | Menu | Give it | Looks like |
 | --- | --- | --- |
@@ -15,8 +15,8 @@ The global navigation from the Figma Navigation page: the logo, the primary item
 - White, 80px tall, with a 1px `stroke-neutral-400` bottom border and `shadow-nav`. The border separates the bar from the menus below it. Content runs up to 1440px wide (`content-max`) between the 56px margins, centered.
 - Logo 37px tall, its wordmark sitting on the same baseline as the menu labels, then 36px to the items. Items and utility links are IBM Plex Sans Medium 16px `text-primary`, 16px apart; they turn `text-accent-primary` on hover.
 - The current or open item shows a 4px `qualys-blue` bar on the bottom edge of the nav, sitting on the bottom border so it reads as part of the bar. Set it with `current` (the item's label). It is one bar for the whole row: tapping another item slides it across (300ms ease-in-out, the same motion as Tabs), and closing a menu sends it back to the current page. With reduced motion it moves without sliding.
-- Right side: a 16px search icon (see **Search panel**), the utility links ("Community", "Login", "Contact Us") and a small primary Button ("Get Started"), each 16px apart.
-- **Narrow desktop (1200–1365px):** utility links marked `collapse: true` hide, so the row keeps its spacing. On qualys.com mark Community and Contact Us; Login, search and Get Started always stay. Both stay in the mobile menu and the footer.
+- Right side: the utility links ("Community", "Login", "Contact Us") and a small primary Button ("Get Started"), each 16px apart.
+- **Narrow desktop (1200–1365px):** utility links marked `collapse: true` hide, so the row keeps its spacing. On qualys.com mark Community and Contact Us; Login and Get Started always stay. Both stay in the mobile menu and the footer.
 - Menus open on hover and on click, Enter or Space. Esc, a click outside or moving the pointer away closes them. `hover={false}` makes them click-only.
 - Menus slide open downwards from under the bar (300ms ease-in-out) and slide shut the same way (250ms). Moving from one open menu to the next only fades, so the panel doesn't drop twice.
 
@@ -48,8 +48,9 @@ Both menu kinds use the same sizes, so moving between Platform, Solutions and th
 - **Position:** the card opens directly under its own item, with its text lined up under the item's label. Near the right edge it slides left just enough to stay 16px inside the window. (The mega menu is wider and stays centered under the bar.)
 - Each column is 340px: an eyebrow over a rule, then links 16px apart. They hover like the mega menu's links: blue label, blue arrow.
 
-**Search panel**
+**Search panel (off for now)**
 
+- Search is left out of the nav for now: no icon on desktop and no search field in the mobile menu. Pass `search` to bring both back as described here; nothing else changes.
 - With `search` set and no `href` or `onClick`, the search icon opens a panel under the bar, like a menu: the width of the bar's content (up to 1440px), just below the bar's bottom border, bottom corners `radius-lg`, `shadow-card`, 24px × 36px padding.
 - Inside: a contained SearchBar (56px) that takes focus as the panel opens, and optional `suggestions` below it under a "Popular searches" eyebrow, as tag chips (the FilterChip style, 36px, 8px apart) that link to their results.
 - While it is open the icon becomes a cross and the blue bar sits under it. The cross, Esc or a click outside closes it, and focus returns to the icon. Pressing Enter calls `onSearch` with the query.
@@ -59,7 +60,7 @@ Both menu kinds use the same sizes, so moving between Platform, Solutions and th
 **Mobile and tablet (below 1200px)**
 
 - A 64px bar with the logo and a menu button. It opens a full-screen white menu with the logo and a close button on top.
-- **First level:** a contained SearchBar, then one row per item (Medium 16px, a `qualys-blue` arrow, `stroke-neutral-500` rules). The utility links (`text-secondary`) and a full-width primary Button sit at the bottom.
+- **First level:** one row per item (with `search` set, a contained SearchBar comes first) (Medium 16px, a `qualys-blue` arrow, `stroke-neutral-500` rules). The utility links (`text-secondary`) and a full-width primary Button sit at the bottom.
 - **Drilling in:** an item with a menu opens its own level. A mega menu shows the overview and the filter list as rows; choosing "All" or a group shows its links. The blue link at the top names the current level and goes back one step.
 - The menu slides in from the right edge and slides back out when it closes (300ms ease-in-out). Each level slides in from the side it came from: from the right when drilling in, from the left when going back.
 - Esc or the close button closes the menu and returns focus to the menu button; focus stays inside while it is open, and moves to the back link after each step.
