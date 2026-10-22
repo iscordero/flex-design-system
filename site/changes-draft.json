@@ -8,7 +8,7 @@
   "Claude"
  ],
  "approvedBy": [],
- "commits": 16,
+ "commits": 18,
  "base": "b877ff26f284406cbd5914e83ec28db5c5cc4896",
  "pr": null,
  "items": [
@@ -230,12 +230,23 @@
   {
    "type": "component",
    "action": "changed",
+   "name": "TabModule",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 8
+  },
+  {
+   "type": "component",
+   "action": "changed",
    "name": "Tabs",
    "what": [
     "look",
     "docs"
    ],
-   "weight": 2
+   "weight": 20
   },
   {
    "type": "token",
@@ -279,10 +290,10 @@
   }
  ],
  "shots": [],
- "headline": "Updated colors (2) · Updated 19 components · Updated Layout, Spacing and Radius guide",
+ "headline": "Updated colors (2) · Updated 20 components · Updated Layout, Spacing and Radius guide",
  "highlights": [
   "Colors: 2 added",
-  "Updated components: 19, including DrawerCard, ProfileGrid and CardModule",
+  "Updated components: 20, including DrawerCard, ProfileGrid and CardModule",
   "Updated guide: Layout, Spacing and Radius"
  ],
  "minor": false
