@@ -599,7 +599,7 @@
       else if (t.offsetLeft + t.offsetWidth > list.scrollLeft + list.clientWidth) list.scrollLeft = t.offsetLeft + t.offsetWidth - list.clientWidth;
     }
     /* Autoplay: the next tab opens by itself every few seconds. It waits while the pointer or the focus is on the tabs,
-       stops for good once the reader picks a tab, has its own pause button, and never starts under reduced motion. */
+       stops for good once the reader picks a tab, and never starts under reduced motion. There is no pause button. */
     var every = p.autoplay ? (typeof p.autoplay === 'number' ? Math.max(3000, p.autoplay) : 6000) : 0;
     var pl = React.useState(function () { return !!every && !prefersStill(); }), playing = pl[0], setPlaying = pl[1];
     var hd = React.useState(false), held = hd[0], setHeld = hd[1];
@@ -630,14 +630,8 @@
     var hasPanels = items.some(function (it) { return it.content != null; });
     var hold = every ? { onMouseEnter: function () { setHeld(true); }, onMouseLeave: function () { setHeld(false); }, onFocus: function () { setHeld(true); },
       onBlur: function (e) { if (!e.currentTarget.contains(e.relatedTarget)) setHeld(false); } } : {};
-    function bar(list) {
-      if (!every) return list;
-      return h('div', { className: 'q-tabs__head' }, list,
-        h('button', { type: 'button', className: 'q-carousel__btn q-tabs__auto', 'aria-label': playing ? (p.pauseLabel || 'Pause the tabs') : (p.playLabel || 'Play the tabs'), 'aria-pressed': playing ? 'false' : 'true', onClick: function () { setPlaying(!playing); } },
-          h('svg', { viewBox: '0 0 16 16', width: 16, height: 16, 'aria-hidden': 'true' }, h('path', { d: playing ? 'M3.5 2.5H6.5V13.5H3.5ZM9.5 2.5H12.5V13.5H9.5Z' : 'M4 2.5L13 8L4 13.5Z', fill: 'currentColor' }))));
-    }
     return h('div', Object.assign({ className: cx('q-tabs', every && 'q-tabs--auto', every && playing && !held && 'is-playing', p.className), style: every ? { '--q-tabs-every': every + 'ms' } : undefined }, hold),
-      bar(h('div', { className: 'q-tabs__list', role: 'tablist', 'aria-label': p.label, ref: listRef },
+      h('div', { className: 'q-tabs__list', role: 'tablist', 'aria-label': p.label, ref: listRef },
         items.map(function (it, i) {
           var sel = i === active;
           return h('button', {
@@ -646,7 +640,7 @@
             className: cx('q-tabs__tab', sel && 'is-active'), onClick: function () { select(i, false); }, onKeyDown: onKey
           }, h('span', { className: 'q-tabs__label' }, it.label));
         }),
-        h('span', { className: cx('q-tabs__indicator', ready && 'is-ready'), style: { width: ind.width + 'px', transform: 'translateX(' + ind.left + 'px)' }, 'aria-hidden': 'true' }))),
+        h('span', { className: cx('q-tabs__indicator', ready && 'is-ready'), style: { width: ind.width + 'px', transform: 'translateX(' + ind.left + 'px)' }, 'aria-hidden': 'true' })),
       hasPanels ? items.map(function (it, i) {
         return h('div', { key: keyOf(it, i), role: 'tabpanel', id: id + '-panel-' + i, 'aria-labelledby': id + '-tab-' + i, hidden: i !== active, tabIndex: 0, className: 'q-tabs__panel' }, it.content);
       }) : null);
@@ -1722,7 +1716,7 @@
     return h('section', { className: cx('q-section', 'q-tabmod', p.align === 'center' && 'q-tabmod--center', p.className), id: p.id },
       h('div', { className: 'q-section__inner' },
         h('div', { className: 'q-tabmod__card' },
-          h(Tabs, { items: items, value: p.value, defaultValue: p.defaultValue, onChange: p.onChange, label: p.label, autoplay: p.autoplay, pauseLabel: p.pauseLabel, playLabel: p.playLabel }))));
+          h(Tabs, { items: items, value: p.value, defaultValue: p.defaultValue, onChange: p.onChange, label: p.label, autoplay: p.autoplay }))));
   }
 
   /* AccordionModule — an Accordion as a page section: on its own under a heading, beside a copy block, beside media,

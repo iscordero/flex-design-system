@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-22T23:44:20Z",
+    "at": "2026-10-22T23:52:39Z",
     "by": "Isabel",
-    "note": "Tabs: labels centered top to bottom in the bar, with even space above and below.",
+    "note": "Tabs: the autoplay pause/play button is removed; autoplay still waits on hover and focus and stops once a tab is picked.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

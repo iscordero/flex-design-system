@@ -313,9 +313,6 @@ export interface TabsProps {
   onChange?: (id: string, index: number) => void;
   /** opens the next tab by itself: true = every 6 seconds, or a time in ms (3000 at least). Waits on hover and focus, stops once the reader picks a tab, off under reduced motion */
   autoplay?: boolean | number;
-  /** names of the pause/play button, default "Pause the tabs" / "Play the tabs" */
-  pauseLabel?: string;
-  playLabel?: string;
   id?: string;
   className?: string;
 }
@@ -901,8 +898,6 @@ export interface TabModuleProps {
   media?: MediaProps | string | React.ReactElement;
   /** passed to Tabs: true = every 6 seconds, or a time in ms */
   autoplay?: boolean | number;
-  pauseLabel?: string;
-  playLabel?: string;
   id?: string;
   className?: string;
 }

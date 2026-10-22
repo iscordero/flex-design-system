@@ -18,7 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   h('div', {className: 'pv'}, h('div', {className: 'wrap'},
     h('div', {style: {flex: '1 1 600px'}}, h('div', {className: 'cap'}, 'Desktop'), h(Q.Tabs, {label: 'Platform capabilities', items: items, defaultValue: 'measure'})),
     h('div', null, h('div', {className: 'cap'}, 'Mobile (335px) \u2014 scrolls sideways'), h('div', {className: 'phone'}, h(Q.Tabs, {label: 'Product sections', items: mobileItems})))),
-    h('div', {style: {marginTop: 24}}, h('div', {className: 'cap'}, 'Autoplay — moves on every six seconds; the button pauses it'), h(Q.Tabs, {label: 'TruRisk steps', items: items, autoplay: true}))));
+    h('div', {style: {marginTop: 24}}, h('div', {className: 'cap'}, 'Autoplay — moves on every six seconds; picking a tab stops it'), h(Q.Tabs, {label: 'TruRisk steps', items: items, autoplay: true}))));
 </script>
 </body>
 </html>

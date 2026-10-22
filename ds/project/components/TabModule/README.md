@@ -16,7 +16,7 @@ The tab module from the Figma Tab Modules page: a white card with Tabs across th
 Do / Don't:
 
 - Do keep every tab to the same structure, so the card doesn't jump in height.
-- **Autoplay:** `autoplay` passes straight to Tabs: the tabs advance every six seconds (or the time given), wait on hover and focus, stop when the reader picks a tab, and show a pause button beside the bar.
+- **Autoplay:** `autoplay` passes straight to Tabs: the tabs advance every six seconds (or the time given), wait on hover and focus and stop when the reader picks a tab. There is no pause button.
 - Don't put more than one primary Button in a tab.
 
 The Figma usage notes are still placeholders ("Used for…").

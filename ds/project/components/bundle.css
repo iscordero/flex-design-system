@@ -184,10 +184,6 @@
 .q-tabs__indicator { position: absolute; left: 0; bottom: 0; height: 4px; border-radius: var(--radius-2xs) var(--radius-2xs) 0 0; /* the same bar as under the Nav links: flat on the edge, rounded on top */ background: var(--qualys-blue); pointer-events: none; }
 .q-tabs__indicator.is-ready { transition: transform 300ms ease-in-out, width 300ms ease-in-out; }
 @media (prefers-reduced-motion: reduce) { .q-tabs__indicator.is-ready { transition: none; } }
-/* Autoplay: the tab bar and its pause button share a row. */
-.q-tabs__head { display: flex; align-items: center; gap: var(--spacing-xs); max-width: 100%; }
-.q-tabs__head .q-tabs__list { min-width: 0; }
-.q-tabs__auto { flex: none; width: 44px; height: 44px; }
 .q-tabs__panel { width: 100%; }
 .q-tabs__panel:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius-lg); }
 
@@ -1266,8 +1262,6 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-tabmod .q-tabs { align-items: stretch; gap: var(--spacing-4xl); }
 .q-tabmod .q-tabs__list { align-self: flex-start; }
 .q-tabmod--center .q-tabs__list { align-self: center; }
-.q-tabmod .q-tabs__head { align-self: flex-start; }
-.q-tabmod--center .q-tabs__head { align-self: center; }
 .q-tabmod__row { display: flex; align-items: center; gap: var(--spacing-4xl); }
 .q-tabmod__row > * { flex: 1 1 0; min-width: 0; }
 .q-tabmod__media .q-media { aspect-ratio: 16 / 9; }

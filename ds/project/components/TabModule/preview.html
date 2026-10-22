@@ -23,7 +23,7 @@ var EIGHT = ['CSPM', 'KCS', 'CWP', 'IaC', 'CIEM', 'CDR', 'CWA', 'SSPM'].map(func
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
   cap('Left-aligned tabs'), h(Q.TabModule, {items: THREE, label: 'TruRisk steps'}),
   cap('Centered tabs'), h(Q.TabModule, {align: 'center', items: EIGHT, label: 'Cloud security capabilities'}),
-  cap('Autoplay: the next tab opens every six seconds; the button pauses it'), h(Q.TabModule, {align: 'center', items: THREE, autoplay: true, label: 'TruRisk steps'}),
+  cap('Autoplay: the next tab opens every six seconds; picking a tab stops it'), h(Q.TabModule, {align: 'center', items: THREE, autoplay: true, label: 'TruRisk steps'}),
   cap('Mobile'), h('div', {className: 'phones'},
     h('div', {className: 'phone'}, h(Q.TabModule, {items: THREE, label: 'TruRisk steps'})),
     h('div', {className: 'phone'}, h(Q.TabModule, {align: 'center', items: EIGHT, defaultValue: 1, label: 'Cloud security capabilities'})))));
