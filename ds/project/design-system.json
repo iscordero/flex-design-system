@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-22T19:35:25Z",
+    "at": "2026-10-22T23:44:20Z",
     "by": "Isabel",
-    "note": "Card Module rows: the column count avoids a lone card (five are 3 + 2) and a short last row is centered. Layout guide: rule for rows of cards.",
+    "note": "Tabs: labels centered top to bottom in the bar, with even space above and below.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",
