@@ -345,7 +345,7 @@
 
 /* ── Tag ── */
 /* ── Tabs (Figma: Tabs) ── */
-/* White 46px bar, radius-rg, 1px Ash outline and a soft drop shadow; tabs hug their labels (20px outer, 10px inner padding). */
+/* White 46px bar, radius-rg, 1px Ash outline and a soft drop shadow; tabs hug their labels (20px outer, 10px inner padding), centered top to bottom. */
 .q-tabs { display: flex; flex-direction: column; align-items: flex-start; gap: var(--spacing-xl); max-width: 100%; }
 .q-tabs__list {
   position: relative; display: inline-flex; max-width: 100%; box-sizing: border-box; overflow-x: auto; overflow-y: hidden; scrollbar-width: none;
@@ -353,7 +353,7 @@
 }
 .q-tabs__list::-webkit-scrollbar { display: none; }
 .q-tabs__tab {
-  position: relative; display: flex; align-items: flex-start; flex: none; box-sizing: border-box; height: 46px; margin: 0; padding: var(--spacing-2xs) var(--spacing-2xs) 0; border: 0; background: transparent; cursor: pointer; text-align: left; white-space: nowrap;
+  position: relative; display: flex; align-items: center; flex: none; box-sizing: border-box; height: 46px; margin: 0; padding: 0 var(--spacing-2xs); border: 0; background: transparent; cursor: pointer; text-align: left; white-space: nowrap;
   font-family: var(--font-body); font-weight: 600; font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-secondary); transition: color 150ms ease-in-out;
 }
 .q-tabs__tab:first-of-type { padding-left: var(--spacing-lg); }
