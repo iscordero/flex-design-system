@@ -13,7 +13,7 @@ Speakers or people in one Ecru container, in centered rows, from the Figma Avata
 | `featured` (default) | 200px wide, square photo | `title-sm` 16px and `paragraph-rg` 16px | 5 |
 
 - Use `keynote` for the few headline speakers, then a `featured` grid for everyone else, one grid under the other.
-- **Container:** `surface-neutral-300`, `radius-lg`, 24px padding and gaps (16px under 1024px of browser width), up to 1440px wide (`content-max`), centered. Five featured profiles take 1096px and three keynote profiles 1200px, so both fit with room to spare.
+- **Container:** `avatar-container-bg` (Linen, #F1F0E9), `radius-lg`, 24px padding and gaps (16px under 1024px of browser width), up to 1440px wide (`content-max`), centered. Five featured profiles take 1096px and three keynote profiles 1200px, so both fit with room to spare.
 
 **How many in a row**
 

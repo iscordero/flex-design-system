@@ -290,6 +290,8 @@ export interface SearchBarProps extends React.InputHTMLAttributes<HTMLInputEleme
   variant?: 'line' | 'contained';
   /** accessible name if different from the placeholder */
   label?: string;
+  /** show the 16px search icon before the text (off for now) */
+  icon?: boolean;
 }
 export declare function SearchBar(props: SearchBarProps): React.ReactElement;
 
@@ -977,6 +979,19 @@ export interface FormField {
   disabled?: boolean;
 }
 export type FormValues = { [name: string]: string | boolean };
+/** The banner on top of a form: a photo; a headline on a color; a headline with an image on the right; or a headline over a photo. */
+export interface FormBanner {
+  /** the headline on the left; up to about 50 characters */
+  title?: React.ReactNode;
+  image?: string;
+  imageAlt?: string;
+  /** with a title: 'right' (default) puts the image on the right; 'background' puts the headline over it */
+  imagePosition?: 'right' | 'background';
+  /** 'white' (default with an image on the right), 'gradient' (default otherwise), 'blue', 'polar', 'dark', or any color or var(--token) */
+  background?: 'white' | 'polar' | 'blue' | 'gradient' | 'dark' | string;
+  /** white text on a custom background */
+  inverted?: boolean;
+}
 export interface FormProps {
   /** 'full' (default): centered heading with the shield. 'extended': left heading, link under the button. 'gate' and 'minimal': tighter card, link beside the button. */
   variant?: 'full' | 'extended' | 'gate' | 'minimal';
@@ -990,6 +1005,8 @@ export interface FormProps {
   /** a photo header, cropped to 30:11 */
   image?: string;
   imageAlt?: string;
+  /** a banner on top of the card: an image URL (a photo), or a headline with an optional image and background */
+  banner?: string | FormBanner;
   fields?: FormField[];
   /** the opt-in checkbox: its label, or `{ label, name (default 'optIn'), defaultChecked, required }` */
   consent?: string | { label: React.ReactNode; name?: string; value?: string; defaultChecked?: boolean; required?: boolean; requiredMessage?: string };
@@ -1376,6 +1393,8 @@ export interface WizardField { name: string; label: string; type?: string; requi
 export interface WizardStep { title: React.ReactNode; description?: string; fields?: WizardField[]; /** an opt-in checkbox under the fields */ consent?: string | { name?: string; label: React.ReactNode } }
 export interface DemoRequestWizardProps extends ModalBase {
   steps: WizardStep[];
+  /** a banner across the top of the panel, as on a Form */
+  banner?: string | FormBanner;
   /** every value, once the last step passes; return false to stay on it */
   onSubmit?: (values: { [name: string]: string | boolean }) => boolean | void;
   /** the confirmation's wording; note false hides the blue line */

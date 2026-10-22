@@ -406,7 +406,7 @@ def add(name):
         a = body.index('/* Links to qualys.com open in a new tab')
         b = body.index('var COMMON')
         body = body[:a] + body[b:]
-    comps.append({'n': name, 'h': h, 'w': w, 'html': body})
+    comps.append({'n': name, 'h': h, 'w': w, 'html': body, 'lv': LEVEL.get(name, '')})
     return sub
 
 

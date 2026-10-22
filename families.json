@@ -110,7 +110,7 @@
       ]
     ],
     [
-      "Header and footer",
+      "Navigation and footer",
       [
         "Nav",
         "NavBanner",
@@ -361,7 +361,7 @@
       "Page modules",
       [
         [
-          "Header and footer",
+          "Navigation and footer",
           [
             "Nav",
             "NavBanner",

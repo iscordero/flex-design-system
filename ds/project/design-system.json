@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-21T16:36:26Z",
+    "at": "2026-10-22T17:41:32Z",
     "by": "Isabel",
-    "note": "ProfileGrid: one container only (separate cards retired), in two sizes: keynote 384px (up to three a row) and featured 200px (up to five), rows centered, never one alone.",
+    "note": "New token avatar-container-bg (Linen #F1F0E9) for the ProfileGrid panel. SearchBar without its icon for now. DrawerCard: profiles hug their content, names never cut and all one or all two lines. Form banners on every form. Navigation and footer family.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

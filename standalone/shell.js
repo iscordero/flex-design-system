@@ -321,13 +321,34 @@
       else { pin = cur = null; draw(null); }
     });
   }
+  /* Open in page: the preview on a page of its own, laid out as on qualys.com. Components and patterns sit in the
+     content column (up to content-max, 1440px) between the page margins (56px, 36px on tablets, 20px on phones) on the
+     page background; block modules run the full width of the window, as they would on a page. A slim bar names the
+     component and shows the window width, so resizing shows how it responds. */
   function openPage(c) {
-    var html = blob(c.html.replace('<head>', function () { return '<head><meta name="viewport" content="width=device-width, initial-scale=1">' + PRE; })
+    var full = c.lv === 'Block module';
+    var css = '<style>' +
+      'html{background:var(--surface-neutral-200)}body{margin:0;background:var(--surface-neutral-200)}' +
+      '.dspage-bar{position:sticky;top:0;z-index:9999;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px;padding:10px var(--margin-desktop);background:var(--surface-neutral-100);border-bottom:1px solid var(--stroke-neutral-400);font:500 13px/1.4 var(--font-body);color:var(--text-secondary)}' +
+      '.dspage-bar b{font:600 14px/1.4 var(--font-heading);color:var(--text-primary)}.dspage-bar span:last-child{margin-left:auto}' +
+      (full ? '.dspage{width:100%}' :
+        '.dspage{box-sizing:border-box;width:100%;max-width:calc(var(--content-max) + 2 * var(--margin-desktop));margin-inline:auto;padding:var(--spacing-3xl) var(--margin-desktop)}' +
+        '.dspage .pv{padding-inline:0}.dspage .wrap,.dspage .wide{width:100%;margin-inline:auto}' +
+        '@media (max-width:1023px){.dspage{padding-inline:var(--margin-tablet)}.dspage-bar{padding-inline:var(--margin-tablet)}}' +
+        '@media (max-width:767px){.dspage{padding-inline:var(--margin-mobile)}.dspage-bar{padding-inline:var(--margin-mobile)}}') +
+      '</style>';
+    var note = full ? 'Block module: full width of the window' : 'In the content column (up to 1440px) between the page margins';
+    var bar = '<header class="dspage-bar"><b>' + c.n + '</b><span>' + note + '</span><span id="dspage-w"></span></header>' +
+      '<' + SC + '>(function(){function w(){var e=document.getElementById("dspage-w");if(e)e.textContent="Window "+window.innerWidth+"px";}window.addEventListener("resize",w);document.addEventListener("DOMContentLoaded",w);w();})();</' + SC + '>';
+    var html = c.html.replace('<head>', function () { return '<head><meta name="viewport" content="width=device-width, initial-scale=1">' + PRE + css; })
       .replace('<html lang="en">', '<html lang="en" data-theme="light">')
-      .replace(/<title>[^<]*<\/title>/, '<title>' + c.n + ' \u00b7 Flex Design System</title>'));
+      .replace(/<title>[^<]*<\/title>/, '<title>' + c.n + ' · Flex Design System</title>')
+      .replace(/<body([^>]*)>/, function (m) { return m + bar + '<main class="dspage">'; })
+      .replace(/<\/body>/, '</main></body>');
+    html = blob(html);
     var url = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
-    var w = window.open(url, '_blank');
-    if (w) { try { w.opener = null; } catch (err) { /* already separate */ } }
+    var win = window.open(url, '_blank');
+    if (win) { try { win.opener = null; } catch (err) { /* already separate */ } }
     setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
   }
   function compose(c) {

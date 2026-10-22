@@ -13,6 +13,7 @@ The avatar from the Figma Avatars page: a person's photo, or the default silhoue
 
 - **Shape follows size:** circles are for small, inline avatars; the square is for large, profile contexts (over 56px). Never mix shapes at the same size. The default avatar takes the same shape.
 - **Default avatar:** an `avatar-bg` ground with the `avatar-icon` silhouette (15px, 24px and 80px wide). It shows when no photo was uploaded, the data is missing or anonymised, the image fails to load, or it was removed. Never show a broken-image icon, and always keep the space reserved.
+- **Avatar container:** a ProfileGrid sits on `avatar-container-bg` (Linen, #F1F0E9), a soft panel a step darker than the page, so the `avatar-bg` placeholders still stand out.
 - **Cropping:** square photos keep the face at 60 to 70% of the frame (never over 80% or under 50%). Circular photos keep the face centered with no features cut off.
 - **Backgrounds:** clean, simple and professional. Solid colors, subtle gradients, a soft-focus office or a neutral indoor setting are fine. Avoid busy patterns, high contrast, distracting elements, uneven lighting and heavy shadows.
 - **Use avatars** for authors, review and testimonial quotes, user, team and member lists, and speaker profiles and bios: wherever a person speaks, acts or contributes.

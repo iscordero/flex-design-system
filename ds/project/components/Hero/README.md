@@ -55,3 +55,5 @@ Where the Figma frames disagree, one value is used:
 - In the Lead Form hero the star visual is drawn on top of the form; here it sits behind, so the form stays usable.
 - The mobile Standard split hero is drawn with a 32px heading; every mobile hero uses 36px.
 - The tablet frames squeeze the media to a sliver; here copy and media share the row 60/40.
+
+- **Banner:** the form can open with a banner (`form.banner`): a photo, a headline on a color, a headline with an image, or a headline over a photo. See Form for the variants.

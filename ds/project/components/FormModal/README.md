@@ -12,3 +12,5 @@ A lead-capture Form inside a modal: an eyebrow, title and subtitle above, the fo
 - Closes and behaves like Modal: cross, Esc, backdrop; focus stays inside and returns on close.
 - **Mobile:** 12px from the screen edges, 16px padding, the form in one column.
 - Keep the header short. If the form already has a heading that says the same thing, drop one of them.
+
+- **Banner:** the form can open with a banner (`form.banner`): a photo, a headline on a color, a headline with an image, or a headline over a photo. See Form for the variants.

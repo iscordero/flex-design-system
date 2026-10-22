@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components · Accordions and drawers" height=15620 width=1180 subtitle="Component · Session card drawer: none to more than six profiles, with and without a button, at four widths, and on mobile." -->
+<!-- @dsCard group="Components · Accordions and drawers" height=15778 width=1180 subtitle="Component · Session card drawer: none to more than six profiles, with and without a button, at four widths, and on mobile." -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -43,8 +43,8 @@ function card(n, extra) {
 var RULES = [
   [0, 'No profile', 'Time and title only. A button sits beside the title.'],
   [1, '1 profile', 'First and last name, role, company.'],
-  [2, '2 profiles', 'Name, role, company, in two equal columns.'],
-  [3, '3 profiles', 'Name, role (two lines at most), company, in three equal columns.'],
+  [2, '2 profiles', 'Name, role, company. Each profile is as wide as its content.'],
+  [3, '3 profiles', 'Name, role (two lines at most), company.'],
   [4, '4 profiles', 'Name and company only.'],
   [5, '5 profiles', 'Name and company only.'],
   [6, '6 profiles', 'First name over surname, and company. With a button, four are named and two stack as headshots.'],
@@ -89,7 +89,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     h('p', {className: 'rule'}, h('b', null, 'profileCards: '), 'every headshot opens a profile card: headshot, name, role, the company logo and the LinkedIn button. Point at a headshot to peek; click one to pin its card, and close it before opening another.'),
     card(8, {profileCards: true, speakers: P.map(function (p) { return Object.assign({link: {href: '#'}, logo: '/_blob/a0d4062abbce2ceb87d5be08d326359f', logoAlt: 'Qualys'}, p); })}),
     h('h2', {className: 'h'}, 'Long names and company names'),
-    h('p', {className: 'rule'}, h('b', null, 'Closed: '), 'names, roles and companies keep to their lines and end in \u201c\u2026\u201d when they run long; the full text is in the open card, on mobile and in the tooltip. Long names take more room, so the row splits names and stacks profiles sooner.'),
+    h('p', {className: 'rule'}, h('b', null, 'Closed: '), 'names are never shortened: every name in the row is on one line, or every name on two. Roles stop at two lines and companies at one, ending in \u201c\u2026\u201d; the full text is in the open card, on mobile and in the tooltip. Long names fill the row sooner, so profiles stack sooner.'),
     [1, 2, 3, 4, 5, 6, 8].map(function (k) {
       return h('div', {key: 'L' + k, className: 'grp'},
         h('p', {className: 'rule'}, h('b', null, k + (k === 1 ? ' profile' : ' profiles') + ', long text')),

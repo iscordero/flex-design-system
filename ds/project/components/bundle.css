@@ -285,29 +285,27 @@
 .q-dcard__stackitem:first-child { margin-left: 0; }
 .q-dcard__more { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--avatar-bg); font-family: var(--font-body); font-weight: 500; font-size: 14px; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-primary); }
 @media (min-width: 768px) {
-  /* Closed, one row. One to three profiles: equal columns with name, role (two lines at most) and company */
-  .q-dcard:not(.q-dcard--mobile):not(.is-open) .q-dcard__list { display: grid; grid-template-columns: repeat(var(--q-dcard-n, 1), minmax(0, 1fr)); }
-  .q-dcard--n2 { --q-dcard-n: 2; }
-  .q-dcard--n3 { --q-dcard-n: 3; }
-  .q-dcard:not(.q-dcard--mobile):not(.is-open) .q-person__role { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
-  .q-dcard:not(.q-dcard--mobile):not(.is-open) .q-person__text { overflow-wrap: anywhere; }
-  /* Long text, closed: the name stops at two lines and the company at one, ending in "…"; the full text is in the tooltip and the open card */
-  .q-dcard:not(.q-dcard--mobile):not(.is-open) .q-person__name { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
-  .q-dcard:not(.q-dcard--mobile):not(.is-open) .q-person__company { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-  /* Four or more: name and company only, each profile as wide as its text; DrawerCard measures the row and stacks what doesn't fit */
-  .q-dcard:not(.q-dcard--mobile):not(.is-open).is-compact .q-dcard__list { display: flex; flex-wrap: nowrap; }
-  .q-dcard:not(.q-dcard--mobile):not(.is-open).is-compact .q-person { flex: none; }
+  /* Closed, one row. Each profile is as wide as its content, 20px from the next: no equal columns, no gaps inside.
+     One to three profiles show name, role and company; four or more name and company. */
+  .q-dcard:not(.q-dcard--mobile):not(.is-open) .q-dcard__list { display: flex; flex-wrap: nowrap; }
+  .q-dcard:not(.q-dcard--mobile):not(.is-open) .q-person { flex: none; }
+  /* Names are never shortened: one line each, or (all of them together) two lines */
+  .q-dcard:not(.q-dcard--mobile):not(.is-open) .q-person__name { white-space: nowrap; }
+  .q-dcard:not(.q-dcard--mobile):not(.is-open).is-two .q-person__name span { display: block; }
+  /* Role and company are limited: the role to 240px and two lines, the company to 200px and one line, ending in "…" */
+  .q-dcard:not(.q-dcard--mobile):not(.is-open) .q-person__role { max-width: 240px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+  .q-dcard:not(.q-dcard--mobile):not(.is-open) .q-person__company { max-width: 200px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  /* With fewer profiles there is room for more of the role: 480px for one, 320px for two */
+  .q-dcard--n1:not(.q-dcard--mobile):not(.is-open) .q-person__role { max-width: 480px; }
+  .q-dcard--n2:not(.q-dcard--mobile):not(.is-open) .q-person__role { max-width: 320px; }
   .q-dcard:not(.q-dcard--mobile):not(.is-open).is-compact .q-person__role { display: none; }
-  .q-dcard:not(.q-dcard--mobile):not(.is-open).is-compact .q-person__name, .q-dcard:not(.q-dcard--mobile):not(.is-open).is-compact .q-person__company { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-  /* A profile's text is 200px at most, so one long name or company can't crowd out the others; it ends in "…" instead */
-  .q-dcard:not(.q-dcard--mobile):not(.is-open).is-compact .q-person__text { max-width: var(--q-dcard-text-max, 200px); }
-  /* The last named profile in a card too narrow for it: it shrinks rather than overlapping the stack or the button */
-  .q-dcard:not(.q-dcard--mobile):not(.is-open).is-squeezed .q-person { flex: 0 1 auto; }
-  /* Six or more, or a tight row: first name over surname */
-  .q-dcard:not(.q-dcard--mobile):not(.is-open).is-two .q-person__name span { display: block; overflow: hidden; text-overflow: ellipsis; }
-  /* Past the limit, or when the row is full: the rest stack as headshots */
+  /* When the row is too wide, the rest stack as headshots */
   .q-dcard:not(.q-dcard--mobile):not(.is-open).is-stacked .q-person.is-extra { display: none; }
   .q-dcard:not(.q-dcard--mobile):not(.is-open).is-stacked .q-dcard__stack { display: flex; flex: none; }
+  /* A very narrow card with one named profile: the name wraps onto more lines rather than being cut */
+  .q-dcard:not(.q-dcard--mobile):not(.is-open).is-squeezed .q-person { flex: 0 1 auto; }
+  .q-dcard:not(.q-dcard--mobile):not(.is-open).is-squeezed .q-person__name { white-space: normal; }
+  .q-dcard:not(.q-dcard--mobile):not(.is-open).is-squeezed .q-person__name span { display: inline; }
   /* Open: two columns; the CTA takes the free cell on the last row, or a row of its own */
   .q-dcard:not(.q-dcard--mobile).is-open .q-dcard__people { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
   .q-dcard:not(.q-dcard--mobile).is-open.q-dcard--n1 .q-dcard__people { grid-template-columns: minmax(0, 1fr) auto; }
@@ -643,7 +641,7 @@ a.q-tag--text:focus-visible { outline: none; box-shadow: var(--focus-ring); bord
 /* Profile grid: one Ecru container (radius-lg, 24px padding; 16px under 1024px) up to 1440px wide, holding rows of
    profiles. Keynote profiles are 384px wide (three at most a row), featured 200px (five at most). Rows are centered,
    and ProfileGrid splits them so no profile sits alone on one (6 = 4 + 2). Too narrow for two, they stack in one column. */
-.q-pgrid { --q-pgrid-gap: var(--spacing-rg); display: flex; flex-direction: column; gap: var(--q-pgrid-gap); box-sizing: border-box; max-width: var(--content-max, 1440px); margin-inline: auto; padding: var(--spacing-rg); border-radius: var(--radius-lg); background: var(--surface-neutral-300); }
+.q-pgrid { --q-pgrid-gap: var(--spacing-rg); display: flex; flex-direction: column; gap: var(--q-pgrid-gap); box-sizing: border-box; max-width: var(--content-max, 1440px); margin-inline: auto; padding: var(--spacing-rg); border-radius: var(--radius-lg); background: var(--avatar-container-bg); }
 .q-pgrid__row { display: flex; justify-content: center; gap: var(--q-pgrid-gap); }
 .q-pgrid__cell { display: flex; flex: 0 0 var(--q-pgrid-w, 200px); max-width: 100%; min-width: 0; }
 .q-pgrid__cell > .q-pcard { flex: 1; }
@@ -891,8 +889,25 @@ a.q-promo:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 .q-form--bare.q-form--full .q-form__head { margin-bottom: var(--spacing-lg); }
 .q-form--inverted, .q-form--inverted .q-check { color: var(--text-inverted); }
 .q-form--inverted .q-form__legal a:hover { color: inherit; }
-.q-form__media { overflow: hidden; aspect-ratio: 30 / 11; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
-.q-form__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* Form banner: the top of the form card, 30:11 (600 × 220px in a full form), with the card's top corners.
+   photo: an image only. text: a headline on a color. split: the headline left, an image right. overlay: the headline over a photo. */
+.q-fbanner { container-type: inline-size; position: relative; display: flex; align-items: center; overflow: hidden; box-sizing: border-box; aspect-ratio: 30 / 11; border-radius: var(--radius-lg) var(--radius-lg) 0 0; background: var(--surface-neutral-300); color: var(--text-primary); }
+.q-fbanner.is-inverted { color: var(--text-inverted); }
+.q-fbanner__img { display: block; }
+.q-fbanner--photo .q-fbanner__img, .q-fbanner--overlay .q-fbanner__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* A dark wash from the left keeps white text readable over any photo */
+.q-fbanner--overlay::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, color-mix(in srgb, var(--charcoal) 80%, transparent) 0%, color-mix(in srgb, var(--charcoal) 45%, transparent) 55%, transparent 85%); }
+.q-fbanner--split .q-fbanner__img { position: absolute; top: 0; right: 0; bottom: 0; width: 45%; height: 100%; object-fit: contain; object-position: right center; }
+.q-fbanner__title { position: relative; z-index: 2; box-sizing: border-box; max-width: 62%; margin: 0; padding: var(--spacing-xl); font-family: var(--font-heading); font-weight: 700; font-size: 38px; line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+.q-fbanner--text .q-fbanner__title { max-width: 75%; }
+.q-fbanner--split .q-fbanner__title { max-width: 58%; }
+.q-form--bare .q-fbanner { border-radius: var(--radius-lg); margin-bottom: var(--spacing-xl); }
+.q-wizard__banner { flex: none; }
+/* In a FormModal the banner sits under the modal's title bar, so it is square */
+.q-modal--form .q-fbanner { border-radius: 0; }
+@container (max-width: 479px) {
+  .q-fbanner__title { padding: var(--spacing-rg); font-size: 24px; line-height: 1.1; }
+}
 .q-form__body { display: flex; flex-direction: column; gap: var(--spacing-rg); box-sizing: border-box; margin: 0; padding: var(--spacing-3xl) var(--spacing-xl); }
 .q-form--gate .q-form__body, .q-form--minimal .q-form__body { padding-block: var(--spacing-xl); }
 .q-form__head { display: flex; flex-direction: column; gap: var(--spacing-rg); margin-bottom: var(--spacing-3xs); }

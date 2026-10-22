@@ -18,3 +18,5 @@ A short form split into steps inside a modal, ending on a confirmation.
 - `step` and `onStepChange` let you control the step; `stepLabel(n, total)`, `nextLabel`, `backLabel` and `submitLabel` change the wording.
 - Keep it to two steps of four fields or fewer. Longer than that, use a page.
 - **Ground:** the whole panel sits on the form ground, `surface-neutral-200`, the same as Form; fields stay white.
+
+- **Banner:** `banner` puts a banner across the top of the panel: a photo, a headline on a color, a headline with an image, or a headline over a photo. See Form for the variants.

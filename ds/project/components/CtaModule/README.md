@@ -39,3 +39,5 @@ Where the Figma frames disagree, one value is used:
 - Every mobile frame shows the plain form; the `background` layout keeps its picture on mobile.
 - The card is Asphalt in the documented example and Rhino in the component; Asphalt is used, because white text needs it.
 - The Figma usage notes are still placeholders ("Used for…").
+
+- **Banner:** the form can open with a banner (`form.banner`): a photo, a headline on a color, a headline with an image, or a headline over a photo. See Form for the variants.

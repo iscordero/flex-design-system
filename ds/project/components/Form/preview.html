@@ -1,17 +1,18 @@
-<!-- @dsCard group="Components · Forms" height=3075 width=1440 subtitle="Pattern · Lead-capture card in its four Figma variants, with errors and on mobile. Submit it empty to test." -->
+<!-- @dsCard group="Components · Forms" height=6834 width=1440 subtitle="Pattern · Lead-capture card in its four Figma variants, with errors, on mobile, and with banners: photo, headline on a color, headline with an image, headline over a photo. Submit it empty to test." -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>Form — preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{display:flex;flex-direction:column;gap:var(--spacing-4xl);padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-4xl)}.row{display:flex;gap:var(--spacing-4xl);align-items:flex-start}.col{flex:none;width:600px}.col--m{width:375px}.cap{margin-bottom:var(--spacing-rg);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}</style>
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.pv{display:flex;flex-direction:column;gap:var(--spacing-4xl);padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-4xl)}.row{display:flex;gap:var(--spacing-4xl);align-items:flex-start}.col{flex:none;width:600px}.col--m{width:375px}.stack{display:flex;flex-direction:column;gap:var(--spacing-xl)}.h{font-family:var(--font-heading);font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-0.02em;margin:0}.rule{margin:0;max-width:72ch;font-size:16px;line-height:1.4}.rule b{font-family:var(--font-heading);font-weight:600}.cap{margin-bottom:var(--spacing-rg);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}</style>
 </head>
 <body>
 <div id="root"></div>
 <script>
 var Q = window.Qualys, h = React.createElement;
 var SHIELD = '/_blob/1317004b4eea94a3648caf5ff41b1862', PHOTO = '/_blob/e4dd55799ef75137d2cf0fa4e5287f9d';
+var LAPTOP = '/_blob/161a64f365cbddf79c8287b5d78440df', OFFICE = '/_blob/0d022f9bddd95029144a197b97432323';
 var EMAIL = {name: 'email', label: 'Work Email', type: 'email', required: true, autoComplete: 'email'};
 var FIRST = {name: 'firstName', label: 'First Name', required: true, autoComplete: 'given-name'};
 var LAST = {name: 'lastName', label: 'Last Name', required: true, autoComplete: 'family-name'};
@@ -36,7 +37,24 @@ ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className:
   h('div', {className: 'row'},
     col('With a photo header', h(Q.Form, {variant: 'full', image: PHOTO, title: TRIAL, fields: [EMAIL, half(FIRST), half(LAST), COMPANY], consent: OPT_IN, submitLabel: 'Submit', legal: LEGAL, onSubmit: done})),
     col('Errors', gate({fields: [Object.assign({}, EMAIL, {defaultValue: 'alex@', error: 'Enter a valid email address'}), half(Object.assign({}, FIRST, {error: 'This field is required'})), half(Object.assign({}, LAST, {defaultValue: 'Morgan'})), Object.assign({}, COMPANY, {error: 'This field is required'})]}))),
-  h('div', {className: 'row'}, col('Mobile · full', full(), true), col('Mobile · content gate', gate(), true), col('Mobile · minimal', minimal(), true))));
+  h('div', {className: 'row'}, col('Mobile · full', full(), true), col('Mobile · content gate', gate(), true), col('Mobile · minimal', minimal(), true)),
+  h('h2', {className: 'h'}, 'Banners'),
+  h('p', {className: 'rule'}, h('b', null, 'Any form can open with a banner: '), 'a photo; a headline on a color; a headline with an image on the right; or a headline over a photo. It sits on top of the card at 30:11 (600 \u00d7 220px), and works the same on a Hero or CTA form, in a FormModal and in the demo request wizard.'),
+  h('div', {className: 'row'},
+    col('Photo', gate({banner: PHOTO})),
+    col('Headline on a color \u00b7 gradient (default)', gate({banner: {title: 'See Qualys in Action. Secure Your Enterprise.'}}))),
+  h('div', {className: 'row'},
+    col('Headline with an image on the right \u00b7 white (default)', gate({banner: {title: 'See Qualys in Action. Secure Your Enterprise.', image: LAPTOP, imageAlt: 'Qualys on a laptop'}})),
+    col('Headline over a photo', gate({banner: {title: 'De-Risk Your Business', image: OFFICE, imagePosition: 'background'}}))),
+  h('div', {className: 'row'},
+    col('Background colors', h('div', {className: 'stack'},
+      [['blue', 'Qualys Blue'], ['dark', 'Charcoal'], ['polar', 'Polar Blue']].map(function (b) {
+        return h(Q.Form, {key: b[0], variant: 'minimal', banner: {title: 'Try Qualys For Free', background: b[0]}, title: b[1] + ' banner', fields: [{name: 'email' + b[0], label: 'Work Email', type: 'email'}], submitLabel: 'Submit', onSubmit: done});
+      }))),
+    col('Mobile', h('div', {className: 'stack'},
+      h('div', {className: 'col--m'}, minimal({banner: {title: 'See Qualys in Action. Secure Your Enterprise.', image: LAPTOP}})),
+      h('div', {className: 'col--m'}, minimal({banner: {title: 'De-Risk Your Business', image: OFFICE, imagePosition: 'background'}})),
+      h('div', {className: 'col--m'}, minimal({banner: {title: 'See Qualys in Action. Secure Your Enterprise.'}})))))));
 </script>
 </body>
 </html>

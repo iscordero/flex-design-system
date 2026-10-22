@@ -555,11 +555,12 @@
   /* SearchBar — line or contained. */
   function SearchBar(p) {
     var variant = p.variant || 'line';
-    var rest = omit(p, ['variant', 'className', 'label']);
+    var rest = omit(p, ['variant', 'className', 'label', 'icon']);
     rest.type = 'search'; rest.className = 'q-search__input';
     if (!rest['aria-label']) rest['aria-label'] = p.label || p.placeholder || 'Search';
-    return h('div', { className: cx('q-search', 'q-search--' + variant, p.className), role: 'search' },
-      h('span', { className: 'q-search__icon' }, h(Icon, { name: 'search', size: 16 })),
+    /* No search icon for now: the field and its placeholder say "search". icon={true} brings it back. */
+    return h('div', { className: cx('q-search', 'q-search--' + variant, p.icon && 'has-icon', p.className), role: 'search' },
+      p.icon ? h('span', { className: 'q-search__icon' }, h(Icon, { name: 'search', size: 16 })) : null,
       h('input', rest));
   }
 
@@ -720,19 +721,19 @@
     var ruleKey = n + (hasCta ? 'c' : '');
     var fs = React.useState({ key: ruleKey, named: cap, two: false, squeeze: false }), fit = fs[0], setFit = fs[1];
     if (fit.key !== ruleKey) fit = { key: ruleKey, named: cap, two: false, squeeze: false };
-    var named = Math.min(fit.named, cap), stacked = named < n, compact = n >= 4, two = compact && (fit.two || n >= 6);
+    var named = Math.min(fit.named, cap), stacked = named < n, compact = n >= 4, two = fit.two || n >= 6;
     var extras = stacked ? people.slice(named) : [];
     var rootRef = React.useRef(null), listRef = React.useRef(null);
     React.useLayoutEffect(function () {
       var list = listRef.current;
-      if (!list || open || !compact) return;
+      if (!list || open) return;
       if (getComputedStyle(list).flexDirection === 'column') return; /* mobile lists every profile */
-      /* A name cut short on one line goes over two lines before anything else, so it can be read in full */
-      var cut = !two && Array.prototype.some.call(list.querySelectorAll('.q-person__name'), function (el) { return el.offsetParent && el.scrollWidth > el.clientWidth + 1; });
-      if (!cut && list.scrollWidth <= list.clientWidth + 1) return;
+      if (list.scrollWidth <= list.clientWidth + 1) return;
+      /* Too wide: first every name goes over two lines (all of them, so the row stays consistent), then profiles move
+         into the stack one at a time, last first. Names are never shortened. */
       if (!two) setFit({ key: ruleKey, named: named, two: true, squeeze: false });
       else if (named > 1) setFit({ key: ruleKey, named: named - 1, two: true, squeeze: false });
-      /* One named profile and still too wide (a very long name or company in a narrow card): it gives up width and its lines end in "…" */
+      /* One named profile and still too wide (a very narrow card): its name wraps onto more lines and role and company give up width */
       else if (!fit.squeeze) setFit({ key: ruleKey, named: 1, two: true, squeeze: true });
     });
     React.useEffect(function () {
@@ -755,7 +756,7 @@
        so a long first name or a double surname doesn't leave one line much longer than the other. */
     function splitName(name) {
       var w = String(name || '').trim().split(/\s+/);
-      if (w.length < 2 || w.join(' ').length <= 14) return [w.join(' '), ''];   /* a short name ("Li Wei") stays on one line */
+      if (w.length < 2) return [w.join(' '), ''];
       var best = 1, worst = Infinity;
       for (var k = 1; k < w.length; k++) {
         var m = Math.max(w.slice(0, k).join(' ').length, w.slice(k).join(' ').length);
@@ -773,7 +774,7 @@
           sp.company ? h('div', { className: 'q-person__company', title: sp.company }, sp.company) : null));
     }
     var cta = hasCta ? h('div', { className: 'q-dcard__cta' }, p.cta) : null;
-    return h('div', { ref: rootRef, className: cx('q-dcard', open && 'is-open', n ? 'has-people' : 'no-people', hasCta && 'has-cta', 'q-dcard--n' + Math.min(n, 7), compact && 'is-compact', two && 'is-two', stacked && 'is-stacked', compact && fit.squeeze && named === 1 && 'is-squeezed', p.layout === 'mobile' && 'q-dcard--mobile', p.className) },
+    return h('div', { ref: rootRef, className: cx('q-dcard', open && 'is-open', n ? 'has-people' : 'no-people', hasCta && 'has-cta', 'q-dcard--n' + Math.min(n, 7), compact && 'is-compact', two && 'is-two', stacked && 'is-stacked', fit.squeeze && named === 1 && 'is-squeezed', p.layout === 'mobile' && 'q-dcard--mobile', p.className) },
       heading(p.headingLevel, { className: 'q-dcard__heading' },
         h('button', { type: 'button', id: id + '-btn', className: 'q-dcard__head', 'aria-expanded': open ? 'true' : 'false', 'aria-controls': id + '-panel', 'aria-disabled': p.locked && open ? 'true' : undefined, onClick: o[1] },
           p.time ? h('span', { className: 'q-dcard__time' }, p.time) : null,
@@ -1483,6 +1484,24 @@
 
   /* Form — the lead-capture card from the Figma Forms page: a heading, fields, an opt-in checkbox, one primary Button and the consent line.
      variant: 'full' (centered heading, shield) | 'extended' (left heading, link under the button) | 'gate' | 'minimal' (tighter card, link beside the button). */
+  /* The banner on top of a form card: a photo; text on a color; text with an image on the right; or text over a photo.
+     banner: an image URL, or { title, image, imageAlt, imagePosition: 'right' | 'background', background }.
+     background: 'white' | 'polar' | 'blue' | 'gradient' | 'dark', or any color or var(--token). */
+  var BANNER_BG = { white: 'var(--surface-neutral-100)', light: 'var(--surface-neutral-100)', polar: 'var(--surface-blue-100)', blue: 'var(--surface-blue-300)',
+    gradient: 'linear-gradient(124deg, var(--blue-gradient-start) 30%, var(--blue-gradient-end))', dark: 'var(--surface-neutral-600)' };
+  var BANNER_DARK = { blue: 1, gradient: 1, dark: 1 };
+  function formBanner(b, className) {
+    if (!b) return null;
+    if (typeof b === 'string') b = { image: b };
+    var hasText = b.title != null && b.title !== '', pos = b.imagePosition === 'background' ? 'background' : 'right';
+    var kind = !hasText ? 'photo' : !b.image ? 'text' : pos === 'background' ? 'overlay' : 'split';
+    var bgKey = b.background || (kind === 'split' ? 'white' : 'gradient');
+    var bg = BANNER_BG[bgKey] || (/^(#|rgb|hsl|var\(|linear-gradient)/.test(bgKey) ? bgKey : 'var(--' + bgKey + ')');
+    var inverted = kind === 'overlay' || (kind !== 'photo' && (b.inverted != null ? !!b.inverted : !!BANNER_DARK[bgKey]));
+    return h('div', { className: cx('q-fbanner', 'q-fbanner--' + kind, inverted && 'is-inverted', className), style: kind === 'photo' || kind === 'overlay' ? undefined : { background: bg } },
+      b.image ? h('img', { className: 'q-fbanner__img', src: b.image, alt: hasText ? (b.imageAlt || '') : (b.imageAlt || '') }) : null,
+      hasText ? h('p', { className: 'q-fbanner__title' }, b.title) : null);
+  }
   function Form(p) {
     var variant = p.variant || 'full';
     var fields = p.fields || [];
@@ -1539,8 +1558,9 @@
       else rows.push(cell(fields[i]));
     }
     var consentErr = consent ? errors[consentName] : null;
-    return h('div', { className: cx('q-form', 'q-form--' + variant, p.image && 'q-form--media', p.appearance === 'bare' && 'q-form--bare', p.tone === 'inverted' && 'q-form--inverted', p.className) },
-      p.image ? h('div', { className: 'q-form__media' }, h('img', { src: p.image, alt: p.imageAlt || '' })) : null,
+    var banner = p.banner || (p.image ? { image: p.image, imageAlt: p.imageAlt } : null);
+    return h('div', { className: cx('q-form', 'q-form--' + variant, banner && 'q-form--media', p.appearance === 'bare' && 'q-form--bare', p.tone === 'inverted' && 'q-form--inverted', p.className) },
+      formBanner(banner, 'q-form__banner'),
       h('form', { ref: formRef, className: 'q-form__body', action: p.action, method: p.method, noValidate: true, onSubmit: submit, 'aria-labelledby': p.title ? id + '-title' : undefined, 'aria-label': p.title ? undefined : p.label },
         p.logoSrc || p.title || p.subtitle ? h('div', { className: 'q-form__head' },
           p.logoSrc ? h('img', { className: 'q-form__logo', src: p.logoSrc, alt: p.logoAlt || '' }) : null,
@@ -2292,6 +2312,7 @@
     }
     var consent = cur.consent ? (typeof cur.consent === 'string' ? { label: cur.consent } : cur.consent) : null;
     var panel = h('div', modalPanel(p, f, id, 'q-wizard', 'dialog', false),
+      p.banner ? formBanner(p.banner, 'q-wizard__banner') : null,
       h('div', { className: 'q-wizard__head' },
         heading(p.titleLevel || 2, { className: 'q-modal__title q-modal__title--lg', id: id + '-title' }, done ? (S.title || 'Request Submitted!') : cur.title),
         modalClose(p, f)),

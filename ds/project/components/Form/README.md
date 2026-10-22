@@ -23,6 +23,23 @@ The lead-capture card from the Figma Forms page (Ready for Dev): a heading, a sh
 - **Consent line:** `paragraph-sm` (14px) `text-primary`, last. Pass a node to link the privacy policy.
 - **Photo header:** `image` adds a photo on top, cropped to 30:11 (600 × 220px), with the card's top corners. Use it without the shield.
 
+**Banners**
+
+Any form can open with a banner: `banner` on a Form, which also works for the form in a Hero, a CtaModule and a FormModal, and on the DemoRequestWizard. The banner spans the top of the card at 30:11 (600 × 220px in a full-width form), with the card's top corners. In a bare form, such as a CTA module's, it has all four corners rounded and 24px below it.
+
+| Variant | Give it | Looks like |
+| --- | --- | --- |
+| Photo | `banner="photo.jpg"` (or `image`) | The photo fills the banner, cropped to fit |
+| Headline on a color | `{ title }` | The headline on the left, on the background color (`gradient` by default) |
+| Headline with an image | `{ title, image }` | The headline on the left (58% of the width), the image on the right (45%), whole and not cropped. White by default |
+| Headline over a photo | `{ title, image, imagePosition: 'background' }` | The photo fills the banner, with a Charcoal wash from the left so the white headline reads on any photo |
+
+- **Background:** `background` is `white`, `polar` (Polar Blue), `blue` (Qualys Blue), `gradient` (the blue gradient) or `dark` (Charcoal), or any color or `var(--token)`. The headline is white on `blue`, `gradient`, `dark` and over a photo, and Charcoal otherwise; set `inverted` for white text on a custom dark color.
+- **Headline:** Wix Madefor Text Bold, 38px (24px when the form is narrower than 480px), line height 1.1, three lines at most. Keep it to about 50 characters, such as "See Qualys in Action. Secure Your Enterprise."
+- **Images:** for "with an image", use a product image or screenshot with a transparent or matching background; for the other two, a photo. Give `imageAlt` when the image says something the headline doesn't.
+- The banner is decoration plus a headline: the form's own `title` still names the form for screen readers. Don't repeat the form's title in the banner.
+- Use one banner per form, and leave out the shield (`logoSrc`) when there is a banner.
+
 **Mobile (card narrower than 420px)**
 
 - 16px side padding; the heading drops to 24px (`h2` on mobile); paired fields stack; the button spans the width; the link moves under the button.
