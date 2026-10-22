@@ -8,7 +8,7 @@
   "Claude"
  ],
  "approvedBy": [],
- "commits": 12,
+ "commits": 14,
  "base": "b877ff26f284406cbd5914e83ec28db5c5cc4896",
  "pr": null,
  "items": [
@@ -30,6 +30,17 @@
    ],
    "weight": 0,
    "minor": true
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "CardModule",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 35
   },
   {
    "type": "component",
@@ -242,6 +253,15 @@
    "minor": true
   },
   {
+   "type": "guide",
+   "name": "Columns",
+   "guide": "Layout, Spacing and Radius",
+   "gid": "guide-4",
+   "section": "Columns",
+   "action": "changed",
+   "big": true
+  },
+  {
    "type": "site",
    "action": "changed",
    "name": "Reference site",
@@ -249,10 +269,11 @@
   }
  ],
  "shots": [],
- "headline": "Updated colors (2) · Updated 17 components",
+ "headline": "Updated colors (2) · Updated 18 components · Updated Layout, Spacing and Radius guide",
  "highlights": [
   "Colors: 2 added",
-  "Updated components: 17, including DrawerCard, ProfileGrid and Form"
+  "Updated components: 18, including DrawerCard, ProfileGrid and CardModule",
+  "Updated guide: Layout, Spacing and Radius"
  ],
  "minor": false
 }
