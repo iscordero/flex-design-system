@@ -8,7 +8,7 @@
   "Claude"
  ],
  "approvedBy": [],
- "commits": 8,
+ "commits": 10,
  "base": "b877ff26f284406cbd5914e83ec28db5c5cc4896",
  "pr": null,
  "items": [
@@ -74,6 +74,15 @@
   {
    "type": "component",
    "action": "changed",
+   "name": "ExamplePage",
+   "what": [
+    "look"
+   ],
+   "weight": 2
+  },
+  {
+   "type": "component",
+   "action": "changed",
    "name": "ExitIntent",
    "what": [
     "look"
@@ -123,11 +132,21 @@
   {
    "type": "component",
    "action": "changed",
+   "name": "Nav",
+   "what": [
+    "look",
+    "docs"
+   ],
+   "weight": 6
+  },
+  {
+   "type": "component",
+   "action": "changed",
    "name": "NavBanner",
    "what": [
     "look"
    ],
-   "weight": 3
+   "weight": 5
   },
   {
    "type": "component",
@@ -220,10 +239,10 @@
   }
  ],
  "shots": [],
- "headline": "Updated colors (2) · Updated 14 components",
+ "headline": "Updated colors (2) · Updated 16 components",
  "highlights": [
   "Colors: 2 added",
-  "Updated components: 14, including DrawerCard, ProfileGrid and Form"
+  "Updated components: 16, including DrawerCard, ProfileGrid and Form"
  ],
  "minor": false
 }
