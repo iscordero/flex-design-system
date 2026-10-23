@@ -4112,6 +4112,312 @@
     "1c2a939493e786115f233b3e42c16773766d9e8c"
    ],
    "order": 179251815300
+  },
+  {
+   "id": "0e6f9ff",
+   "sha": "0e6f9ff4480a86cc931f6b8b2bbf455c85153265",
+   "date": "2026-10-23",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Avatar",
+     "what": [
+      "docs"
+     ],
+     "weight": 0,
+     "minor": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "CardModule",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ],
+     "weight": 35
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "CtaModule",
+     "what": [
+      "docs"
+     ],
+     "weight": 0,
+     "minor": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DemoRequestWizard",
+     "what": [
+      "props",
+      "docs"
+     ],
+     "weight": 5
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DrawerCard",
+     "what": [
+      "look",
+      "docs"
+     ],
+     "weight": 119
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ExamplePage",
+     "what": [
+      "look"
+     ],
+     "weight": 2
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ExitIntent",
+     "what": [
+      "look"
+     ],
+     "weight": 1
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Form",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ],
+     "weight": 29
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FormModal",
+     "what": [
+      "docs"
+     ],
+     "weight": 0,
+     "minor": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Hero",
+     "what": [
+      "docs"
+     ],
+     "weight": 0,
+     "minor": true
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Modal",
+     "what": [
+      "look"
+     ],
+     "weight": 1
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Nav",
+     "what": [
+      "look",
+      "docs"
+     ],
+     "weight": 6
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "NavBanner",
+     "what": [
+      "look"
+     ],
+     "weight": 5
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ProfileCard",
+     "what": [
+      "look"
+     ],
+     "weight": 3
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ProfileGrid",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ],
+     "weight": 89
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ProfileModal",
+     "what": [
+      "look"
+     ],
+     "weight": 2
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "SearchBar",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ],
+     "weight": 9
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "SessionTimeout",
+     "what": [
+      "look"
+     ],
+     "weight": 1
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Stats",
+     "what": [
+      "look",
+      "docs"
+     ],
+     "weight": 10
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "SuccessConfirmation",
+     "what": [
+      "look"
+     ],
+     "weight": 1
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "TabModule",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ],
+     "weight": 8
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Tabs",
+     "what": [
+      "look",
+      "docs"
+     ],
+     "weight": 20
+    },
+    {
+     "type": "token",
+     "name": "avatar-container-bg",
+     "family": "color",
+     "action": "added",
+     "to": "{linen}",
+     "toColor": "#f1f0e9"
+    },
+    {
+     "type": "token",
+     "name": "linen",
+     "family": "color",
+     "action": "added",
+     "to": "#f1f0e9",
+     "toColor": "#f1f0e9"
+    },
+    {
+     "type": "guide",
+     "name": "Surfaces",
+     "guide": "Color",
+     "gid": "guide-2",
+     "section": "Surfaces",
+     "action": "changed",
+     "minor": true
+    },
+    {
+     "type": "guide",
+     "name": "Columns",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Columns",
+     "action": "changed",
+     "big": true
+    },
+    {
+     "type": "site",
+     "action": "changed",
+     "name": "Reference site",
+     "minor": true
+    }
+   ],
+   "shots": [
+    {
+     "name": "CardModule",
+     "before": "changes/0e6f9ff/CardModule-before.webp",
+     "after": "changes/0e6f9ff/CardModule-after.webp"
+    }
+   ],
+   "headline": "Updated colors (2) · Updated 18 components · Updated Layout, Spacing and Radius guide",
+   "highlights": [
+    "Colors: 2 added",
+    "Updated components: 18, including DrawerCard, ProfileGrid and CardModule",
+    "Updated guide: Layout, Spacing and Radius"
+   ],
+   "minor": false,
+   "shas": [
+    "84c2957bbcf486474ba596ede170c9b754370796",
+    "7bd383908352300b55fcba4e0dafff707cbefc56",
+    "79719bfe574acd3cf2c9de062da64833b3d29a2f",
+    "d919b16740a8a1eda2b280f8b86d3c49ed378806",
+    "e107d0b77e874d65d8baf14ac06f9e19b3ad48dc",
+    "627c9090491b58131165bbe1ad8c37dd73138f03",
+    "76a031c41326d50d53d954e33b6755517bcc0d8f",
+    "eb235e972dff8ff9effd8b87fdc2568684eb74bc",
+    "e530e28561e59c3c5c3c14ea4968444ffb96ced1",
+    "3a1ba51971ef58f2f19ac9e5f5ca3b1c75c9c7aa",
+    "12e56c0f9cb713e946adf8564f5425c201751c5d",
+    "b64e266dd92e24f2ac9488d22198d3a5dd85b520",
+    "8f86cb0c1ca923cbc2ea85a915fc081978e77322",
+    "25f2b14452ae2d909eb9e2db154515c2d8fc4452",
+    "5290ca0079eb5a12344ea517922c3955e874274f",
+    "2f056ef20ef3653d4cf4d32c7bf734f4c17a7680",
+    "7a5c07de1db9a4105ae8b380613ba17eec94f8ff",
+    "befbca10abf84dfb03b08ebcf69813c753537688",
+    "0e6f9ff4480a86cc931f6b8b2bbf455c85153265"
+   ],
+   "order": 179271365000
   }
  ]
 }
