@@ -24,6 +24,8 @@ Each entry says what changed in plain words: tokens with their values and where 
 and guides the statements their docs added, changed or removed. A line starting "Why:" in a commit message or the
 pull request description is shown as the reason ("Why: DrawerCard: ..." is shown with DrawerCard). A reason can be
 given later: "Why: DrawerCard: ..." in a later commit is shown with the newest published entry that changed DrawerCard.
+A change that was a mistake and is reverted doesn't show: add "Undo: SearchBar" to the commit that reverts it, and
+both that change and the published entry it reverts leave SearchBar out.
 Changes to the reference site or these tools alone don't make an entry.
 
 Needs Python 3 (and Pillow and Playwright for screenshots in "record").
@@ -718,16 +720,64 @@ def late_reasons(d, commits):
                 continue
             about, text = m.group(1).strip(), m.group(2).strip()
             for e in reversed(entries):
-                if e.get('draft') or about not in ({i['name'] for i in e['items']} | {i.get('guide') for i in e['items']}):
+                gone = set(e.get('undone', [])) | set(e.get('reverts', []))
+                if e.get('draft') or about not in ({i['name'] for i in e['items']} | {i.get('guide') for i in e['items']} | gone):
                     continue
                 if subprocess.run(['git', '-C', ROOT, 'merge-base', '--is-ancestor', e['sha'], c], capture_output=True).returncode:
                     continue   # that entry came later than the reason
+                if about in gone:
+                    break   # a mistake that was undone: no reason to show
                 why = e.setdefault('why', [])
                 if not any(w.get('text') == text for w in why):
                     why.append({'about': about, 'text': text})
                     added += 1
                 break
     return added
+
+
+def undo_lines(text):
+    """Names in "Undo: Name, Name" lines: changes that were a mistake and are reverted, so they don't show."""
+    out = []
+    for m in re.finditer(r'(?im)^\s*undo:\s*(.+?)\s*$', text or ''):
+        out += [n.strip() for n in re.split(r',|\band\b', m.group(1)) if n.strip()]
+    return out
+
+
+def without(items, names):
+    """Items minus the ones named (a component, token or guide section)."""
+    return [i for i in items if i['name'] not in names and not (i.get('section') is None and i.get('guide') in names)]
+
+
+def apply_undos(d, commits):
+    """An "Undo: Name" line marks a change to Name as a mistake: the change that reverts it (the entry holding that
+    commit) and the newest earlier entry that changed Name both leave it out, with its pictures and reasons."""
+    entries, done = d['entries'], 0
+    for c in commits:
+        for name in undo_lines(git('show', '-s', '--format=%B', c, check=False)):
+            for e in reversed(entries):
+                if e.get('draft') or subprocess.run(['git', '-C', ROOT, 'merge-base', '--is-ancestor', e['sha'], c],
+                                                    capture_output=True).returncode:
+                    continue
+                if name in e.get('undone', []):
+                    break   # already left out (this runs again on later pushes)
+                if name not in {i['name'] for i in e['items']} | {i.get('guide') for i in e['items']}:
+                    continue
+                e['items'] = without(e['items'], {name})
+                for s in [s for s in e.get('shots', []) if s['name'] == name]:
+                    for k in ('before', 'after'):
+                        if s.get(k) and os.path.exists(os.path.join(ROOT, 'site', s[k])):
+                            os.remove(os.path.join(ROOT, 'site', s[k]))
+                e['shots'] = [s for s in e.get('shots', []) if s['name'] != name]
+                e['why'] = [w for w in e.get('why', []) if w.get('about') != name]
+                if not e['why']:
+                    e.pop('why')
+                e['undone'] = sorted(set(e.get('undone', [])) | {name})
+                describe_entry(e)
+                done += 1
+                break
+    # an entry left with nothing but the site's own changes is dropped
+    d['entries'] = [e for e in entries if design_change(e['items']) or not (e.get('undone') or e.get('reverts'))]
+    return done
 
 
 def design_change(items):
@@ -1205,9 +1255,13 @@ def cmd_record(before, after):
         first, last = shas[0], shas[-1]
         parent = (git('rev-parse', '--verify', '--quiet', first + '^1', check=False).strip() or None)
         items = compare(Version(parent), Version(last))
+        undone = set(undo_lines(''.join(git('show', '-s', '--format=%B', c) for c in shas) + ((pr or {}).get('body') or '')))
+        items = without(items, undone)
         if not design_change(items):
             continue
         e = entry(last, parent, today, pr, items)
+        if undone:
+            e['reverts'] = sorted(undone)   # left out of this entry; apply_undos leaves it out of the one it reverts
         if not pr and len(shas) > 1:
             e['shas'] = shas
         e['order'] = int(datetime.datetime.now().timestamp()) * 100 + k
@@ -1222,7 +1276,9 @@ def cmd_record(before, after):
         d['entries'].append(e)
         added += 1
         print('recorded %s: %s (%d items)' % (last[:7], e['headline'], len(items)))
-    late_reasons(d, [c for c in published_commits(before, after) if not skip(c)])
+    pushed = [c for c in published_commits(before, after) if not skip(c)]
+    late_reasons(d, pushed)
+    apply_undos(d, pushed)
     save(d)
     # what's published is no longer a draft
     if os.path.exists(DRAFT):
@@ -1246,7 +1302,9 @@ def published_base():
 
 def cmd_draft(shots=False):
     base = published_base()
-    items = compare(Version(base), Version('.'))
+    unpub = git('rev-list', '--reverse', '%s..HEAD' % base).split() if base else []
+    body = ''.join(git('show', '-s', '--format=%B', c) for c in unpub)
+    items = without(compare(Version(base), Version('.')), set(undo_lines(body)))
     shot_dir = os.path.join(SHOTS, 'draft')
     shutil.rmtree(shot_dir, ignore_errors=True)
     if not design_change(items):
@@ -1254,8 +1312,6 @@ def cmd_draft(shots=False):
             os.remove(DRAFT)
         print('Nothing unpublished: no draft entry')
         return
-    unpub = git('rev-list', '--reverse', '%s..HEAD' % base).split() if base else []
-    body = ''.join(git('show', '-s', '--format=%B', c) for c in unpub)
     me = git('config', 'user.name', check=False).strip() or (git('show', '-s', '--format=%an', 'HEAD').strip() if unpub else 'You')
     e = {'id': 'draft', 'sha': '', 'draft': True, 'date': datetime.date.today().isoformat(), 'author': me,
          'with': [n for n in coauthors(body) if n != me], 'approvedBy': [],
@@ -1319,7 +1375,9 @@ def cmd_upgrade():
         done += 1
         print('redid %s: %s' % (e['id'], e['headline']))
     if done:
-        late_reasons(d, [c for c in git('rev-list', '--reverse', 'HEAD').split() if not skip(c)])
+        history = [c for c in git('rev-list', '--reverse', 'HEAD').split() if not skip(c)]
+        late_reasons(d, history)
+        apply_undos(d, history)
     save(d)
     print('%d entries brought up to date' % done)
 
