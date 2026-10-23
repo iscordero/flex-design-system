@@ -690,13 +690,16 @@ def why_lines(text):
 def attach_why(e, text):
     """"Why: DrawerCard: ..." is shown with DrawerCard; a reason without a name is shown for the whole entry."""
     known = {i['name'] for i in e['items']} | {i['guide'] for i in e['items'] if i.get('guide')}
-    out = []
-    for t in why_lines(text):
+    named, general = {}, []
+    for t in why_lines(text):   # oldest first, so a newer reason for the same name replaces an older one
         m = re.match(r'^([^:]{2,60}):\s+(.+)$', t)
         if m and m.group(1).strip() in known:
-            out.append({'about': m.group(1).strip(), 'text': m.group(2).strip()})
+            named[m.group(1).strip()] = m.group(2).strip()
+        elif m and len(m.group(1).split()) <= 4:
+            continue   # about something this change doesn't touch: a reason for an earlier entry (see late_reasons)
         else:
-            out.append({'text': t})
+            general.append(t)
+    out = [{'about': k, 'text': v} for k, v in named.items()] + [{'text': t} for t in general]
     if out:
         e['why'] = out
     else:
@@ -869,7 +872,8 @@ def entry(sha, parent, date=None, pr=None, items=None):
     info = git('show', '-s', '--format=%an%x00%aI%x00%B', sha).split('\x00')
     author, when, body = info[0], info[1], info[2] if len(info) > 2 else ''
     merged = git('rev-list', '--no-merges', '%s..%s' % (parent, sha)) if parent else ''
-    trailers = body + ''.join(git('show', '-s', '--format=%B', c) for c in merged.split()[:50])
+    # oldest first, so the newest reason for a name wins
+    trailers = ''.join(git('show', '-s', '--format=%B', c) for c in reversed(merged.split()[:50])) if merged.split() else body
     with_ = [n for n in coauthors(trailers) if n != author]
     e = {'id': sha[:7], 'sha': sha, 'date': (date or when)[:10], 'author': author, 'with': with_,
          'approvedBy': [], 'pr': None, 'items': items, 'shots': [], 'v': FORMAT}
@@ -1298,7 +1302,7 @@ def cmd_upgrade():
                 for k in ('notes', 'moreNotes', 'propsAdded', 'propsRemoved', 'usage'):
                     i.pop(k, None)
         e['items'] = items
-        text = git('log', '--format=%B', (parent + '..' + last) if parent else last, check=False)
+        text = git('log', '--reverse', '--format=%B', (parent + '..' + last) if parent else last, check=False)
         attach_why(e, text)
         names = [] if whole else visual(items)
         if names and not can_shoot:
