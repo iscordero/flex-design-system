@@ -53,6 +53,8 @@ jobs:
         run: |
           pip install pillow playwright
           python -m playwright install --with-deps chromium
+      - name: Redo entries written in an older format
+        run: python3 tools/changelog.py upgrade
       - name: Record the published changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1252,35 +1252,209 @@
       if (s) bits.push('the layout of this site');
       return bits.length ? 'Small edits: ' + andList(bits) : '';
     }
+    /* Inline Markdown from the docs: `code`, **bold** and [links](…) (shown as their text). */
+    function inl(text) {
+      var frag = document.createDocumentFragment(), re = /`([^`]+)`|\*\*([^*]+)\*\*|\[([^\]]+)\]\([^)]*\)/g, last = 0, m;
+      text = String(text || '');
+      while ((m = re.exec(text))) {
+        if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+        frag.appendChild(m[1] ? mk('code', null, m[1]) : m[2] ? mk('strong', null, m[2]) : document.createTextNode(m[3]));
+        last = re.lastIndex;
+      }
+      if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+      return frag;
+    }
+    function clip(t, n) { t = String(t || ''); return t.length > n ? t.slice(0, n - 1).replace(/\s+\S*$/, '') + '…' : t; }
+    function nameLink(it, text) {
+      var t = target(it);
+      if (!t) return mk('span', 'ds-cl-iname', text);
+      var a = mk('a', 'ds-cl-iname', text);
+      a.href = t.href; if (t.jump) a.setAttribute('data-goto', t.jump);
+      return a;
+    }
+    var KIND = { added: 'New', changed: 'Now', removed: 'Removed' };
+    /* What the docs say now: new and changed statements (with what they said before) and removed ones. */
+    function notesList(it) {
+      var ul = mk('ul', 'ds-cl-dnotes');
+      (it.notes || []).forEach(function (n) {
+        var li = mk('li', 'ds-cl-dnote ds-cl-dnote--' + n.kind);
+        li.appendChild(mk('span', 'ds-cl-kind ds-cl-kind--' + n.kind, KIND[n.kind] || n.kind));
+        var tx = mk('span', 'ds-cl-dtext');
+        tx.appendChild(inl(clip(n.text, 420)));
+        if (n.was) { var w = mk('span', 'ds-cl-was'); w.appendChild(document.createTextNode('Before: ')); w.appendChild(inl(clip(n.was, 260))); tx.appendChild(w); }
+        li.appendChild(tx);
+        ul.appendChild(li);
+      });
+      (it.propsAdded || []).forEach(function (pr) {
+        var li = mk('li', 'ds-cl-dnote'), tx = mk('span', 'ds-cl-dtext');
+        li.appendChild(mk('span', 'ds-cl-kind ds-cl-kind--added', 'New option'));
+        tx.appendChild(mk('code', null, pr.name));
+        if (pr.doc) { tx.appendChild(document.createTextNode(': ')); tx.appendChild(inl(pr.doc)); }
+        li.appendChild(tx); ul.appendChild(li);
+      });
+      if (it.propsRemoved && it.propsRemoved.length) {
+        var li = mk('li', 'ds-cl-dnote'), tx = mk('span', 'ds-cl-dtext');
+        li.appendChild(mk('span', 'ds-cl-kind ds-cl-kind--removed', it.propsRemoved.length > 1 ? 'Removed options' : 'Removed option'));
+        it.propsRemoved.forEach(function (n, k) { if (k) tx.appendChild(document.createTextNode(', ')); tx.appendChild(mk('code', null, n)); });
+        li.appendChild(tx); ul.appendChild(li);
+      }
+      if (it.moreNotes) {
+        var t = target(it), li2 = mk('li', 'ds-cl-dmore');
+        if (t) { var a = mk('a', null, it.moreNotes + ' more ' + (it.moreNotes === 1 ? 'change' : 'changes') + ' in its docs'); a.href = t.href; if (t.jump) a.setAttribute('data-goto', t.jump); li2.appendChild(a); }
+        else li2.textContent = it.moreNotes + ' more ' + (it.moreNotes === 1 ? 'change' : 'changes') + ' in its docs';
+        ul.appendChild(li2);
+      }
+      return ul.childNodes.length ? ul : null;
+    }
+    function whyEl(list) {
+      if (!list.length) return null;
+      var d = mk('div', 'ds-cl-why');
+      list.forEach(function (w) { var p = mk('p'); p.appendChild(mk('strong', null, 'Why: ')); p.appendChild(inl(w.text)); d.appendChild(p); });
+      return d;
+    }
+    function shotEl(s) {
+      var f = mk('figure', 'ds-cl-shot');
+      if (s.label) f.appendChild(mk('figcaption', null, (s['new'] ? 'New: ' : s.removed ? 'Removed: ' : '') + s.label));
+      else if (s['new']) f.appendChild(mk('figcaption', null, 'New'));
+      var pair = mk('div', 'ds-cl-pair' + (s.before && s.after ? '' : ' ds-cl-pair--one'));
+      [['before', 'Before'], ['after', 'After']].forEach(function (k) {
+        if (!s[k[0]]) return;
+        var one = mk('figure'), img = mk('img'), full = mk('a');
+        img.src = s[k[0]]; img.alt = s.name + (s.label ? ', ' + s.label : '') + ', ' + k[1].toLowerCase(); img.loading = 'lazy'; img.decoding = 'async';
+        img.addEventListener('error', function () { f.hidden = true; });
+        full.href = s[k[0]]; full.target = '_blank'; full.rel = 'noopener'; full.title = 'Open full size';
+        one.appendChild(mk('figcaption', null, k[1])); full.appendChild(img); one.appendChild(full);
+        pair.appendChild(one);
+      });
+      f.appendChild(pair);
+      if (s.moreParts) f.appendChild(mk('p', 'ds-cl-small', s.moreParts + ' more ' + (s.moreParts === 1 ? 'part of its preview changed' : 'parts of its preview changed') + '.'));
+      return f;
+    }
+    function verbOf(it) { return it.action === 'added' ? 'New' : it.action === 'removed' ? 'Removed' : 'Updated'; }
     function body(e) {
       var b = mk('div', 'ds-cl-body'), items = e.items || [], ul = mk('ul', 'ds-cl-points');
+      var show = items.filter(function (i) { return state.small || !i.minor; });
       var lines = (e.highlights && e.highlights.length) ? e.highlights : [];
       lines.forEach(function (t) { var li = mk('li'); li.appendChild(linked(t, items.filter(function (i) { return !i.minor; }))); ul.appendChild(li); });
       var sm = state.small ? smallLine(items) : '';
       if (sm) ul.appendChild(mk('li', 'ds-cl-smallpt', sm));
       if (!lines.length && !sm) ul.appendChild(mk('li', 'ds-cl-smallpt', 'Small edits only: wording, spelling or the layout of this site.'));
       b.appendChild(ul);
-      var shots = e.shots || [];
-      if (shots.length) {
-        var sh = mk('div', 'ds-cl-group');
-        sh.appendChild(mk('h4', null, 'Before and after'));
-        shots.forEach(function (s) {
-          var f = mk('figure', 'ds-cl-shot');
-          f.appendChild(mk('figcaption', null, s.name));
-          var pair = mk('div', 'ds-cl-pair');
-          [['before', 'Before'], ['after', 'After']].forEach(function (k) {
-            if (!s[k[0]]) return;
-            var one = mk('figure'), img = mk('img'), full = mk('a');
-            img.src = s[k[0]]; img.alt = s.name + ', ' + k[1].toLowerCase(); img.loading = 'lazy'; img.decoding = 'async'; img.width = 720;
-            img.addEventListener('error', function () { f.hidden = true; });
-            full.href = s[k[0]]; full.target = '_blank'; full.rel = 'noopener'; full.title = 'Open full size';
-            full.appendChild(img); one.appendChild(full); one.appendChild(mk('figcaption', null, k[1]));
-            pair.appendChild(one);
-          });
-          f.appendChild(pair);
-          sh.appendChild(f);
+      var why = (e.why || []).filter(function (w) { return !w.about; }), wEl = whyEl(why);
+      if (wEl) b.appendChild(wEl);
+      var whyFor = function (name) { return (e.why || []).filter(function (w) { return w.about === name; }); };
+
+      /* Tokens: what each one is and where it's used */
+      var toks = show.filter(function (i) { return i.type === 'token'; });
+      if (toks.length) {
+        var g = mk('section', 'ds-cl-group');
+        g.appendChild(mk('h4', null, toks.every(function (t) { return t.family === 'color'; }) ? 'Colors' : 'Tokens'));
+        var rows = mk('ul', 'ds-cl-rows');
+        toks.forEach(function (t) {
+          var li = mk('li', 'ds-cl-tok');
+          var val = mk('span', 'ds-cl-val');
+          val.appendChild(mk('span', 'ds-cl-verb ds-cl-verb--' + t.action, verbOf(t)));
+          if (t.fromColor && t.action !== 'added') { var s1 = mk('span', 'ds-cl-sw'); s1.style.background = t.fromColor; val.appendChild(s1); }
+          if (t.fromColor && t.toColor && t.action === 'changed') val.appendChild(mk('span', 'ds-cl-arrow', '→'));
+          if (t.toColor) { var s2 = mk('span', 'ds-cl-sw'); s2.style.background = t.toColor; val.appendChild(s2); }
+          val.appendChild(nameLink(t, t.name));
+          var shown = t.action === 'changed' ? (t.from + ' → ' + t.to) : (t.to != null ? t.to : t.from);
+          var ref = /^\{(.+)\}$/.exec(String(shown || ''));
+          val.appendChild(mk('code', null, ref ? ref[1] + (t.toColor ? ', ' + t.toColor : '') : String(shown)));
+          li.appendChild(val);
+          if (t.usage) { var u = mk('span', 'ds-cl-sub'); u.appendChild(mk('strong', null, 'Where: ')); u.appendChild(inl(t.usage)); li.appendChild(u); }
+          whyFor(t.name).forEach(function (w) { var u2 = mk('span', 'ds-cl-sub'); u2.appendChild(mk('strong', null, 'Why: ')); u2.appendChild(inl(w.text)); li.appendChild(u2); });
+          rows.appendChild(li);
         });
-        b.appendChild(sh);
+        g.appendChild(rows);
+        b.appendChild(g);
+      }
+
+      /* Components: what changed, why, and pictures of the parts that look different */
+      var comps = show.filter(function (i) { return i.type === 'component'; });
+      if (comps.length) {
+        var shotsBy = {};
+        (e.shots || []).forEach(function (s) { (shotsBy[s.name] = shotsBy[s.name] || []).push(s); });
+        comps.sort(function (x, y) { return (x.action === 'changed') - (y.action === 'changed') || !!shotsBy[y.name] - !!shotsBy[x.name] || (y.weight || 0) - (x.weight || 0); });
+        var gc = mk('section', 'ds-cl-group');
+        gc.appendChild(mk('h4', null, 'Components'));
+        var quiet = [];
+        comps.forEach(function (c) {
+          var nl = notesList(c), sh = shotsBy[c.name] || [], wy = whyEl(whyFor(c.name)), fl = null;
+          if (c.follows && c.follows.length) {   /* it changed because it shows another component that changed */
+            fl = mk('p', 'ds-cl-follows');
+            fl.appendChild(document.createTextNode('Shows the changes to '));
+            c.follows.forEach(function (n, k) {
+              if (k) fl.appendChild(document.createTextNode(k === c.follows.length - 1 ? ' and ' : ', '));
+              var f2 = comps.filter(function (x) { return x.name === n; })[0];
+              fl.appendChild(f2 ? nameLink(f2, n) : mk('span', null, n));
+            });
+            fl.appendChild(document.createTextNode(', which it uses.'));
+          }
+          if (!nl && !sh.length && !wy && !fl) { quiet.push(c); return; }
+          var box2 = mk('div', 'ds-cl-item');
+          var h = mk('h5');
+          h.appendChild(mk('span', 'ds-cl-verb ds-cl-verb--' + c.action, verbOf(c)));
+          h.appendChild(nameLink(c, c.name));
+          box2.appendChild(h);
+          if (nl) box2.appendChild(nl);
+          if (fl) box2.appendChild(fl);
+          if (wy) box2.appendChild(wy);
+          sh.forEach(function (s) { box2.appendChild(shotEl(s)); });
+          gc.appendChild(box2);
+        });
+        if (quiet.length) {
+          var q = mk('p', 'ds-cl-small');
+          q.appendChild(document.createTextNode('Also updated, through code they share with the above: '));
+          quiet.forEach(function (c, k) { if (k) q.appendChild(document.createTextNode(k === quiet.length - 1 ? ' and ' : ', ')); q.appendChild(nameLink(c, c.name)); });
+          q.appendChild(document.createTextNode('.'));
+          gc.appendChild(q);
+        }
+        b.appendChild(gc);
+      }
+
+      /* Guides: the sections that changed and what they say now */
+      var gds = show.filter(function (i) { return i.type === 'guide'; });
+      if (gds.length) {
+        var gg = mk('section', 'ds-cl-group');
+        gg.appendChild(mk('h4', null, 'Guides'));
+        var byGuide = {}, order = [];
+        gds.forEach(function (it) { if (!byGuide[it.guide]) { byGuide[it.guide] = []; order.push(it.guide); } byGuide[it.guide].push(it); });
+        order.forEach(function (gname) {
+          var box3 = mk('div', 'ds-cl-item'), h3 = mk('h5');
+          var whole = byGuide[gname].filter(function (it) { return !it.section; })[0];
+          h3.appendChild(mk('span', 'ds-cl-verb ds-cl-verb--' + (whole ? whole.action : 'changed'), whole ? verbOf(whole) : 'Updated'));
+          h3.appendChild(nameLink({ type: 'guide', action: whole ? whole.action : 'changed', guide: gname, gid: byGuide[gname][0].gid }, gname));
+          box3.appendChild(h3);
+          if (whole) { var wn = notesList(whole); if (wn) box3.appendChild(wn); }
+          byGuide[gname].filter(function (it) { return it.section; }).forEach(function (it) {
+            var sec = mk('div', 'ds-cl-gsec'), sh = mk('p', 'ds-cl-gsech');
+            sh.appendChild(mk('span', 'ds-cl-verb ds-cl-verb--' + it.action, it.action === 'added' ? 'New section' : it.action === 'removed' ? 'Removed section' : 'Section'));
+            sh.appendChild(nameLink(it, it.section));
+            sec.appendChild(sh);
+            var nl2 = notesList(it); if (nl2) sec.appendChild(nl2);
+            var wy2 = whyEl(whyFor(it.section)); if (wy2) sec.appendChild(wy2);
+            box3.appendChild(sec);
+          });
+          gg.appendChild(box3);
+        });
+        b.appendChild(gg);
+      }
+
+      /* Logos, icons and images */
+      var ass = show.filter(function (i) { return i.type === 'asset'; });
+      if (ass.length) {
+        var ga = mk('section', 'ds-cl-group');
+        ga.appendChild(mk('h4', null, 'Logos, icons and images'));
+        var ra = mk('ul', 'ds-cl-rows');
+        ass.forEach(function (a) {
+          var li = mk('li');
+          li.appendChild(mk('span', 'ds-cl-verb ds-cl-verb--' + a.action, verbOf(a)));
+          li.appendChild(nameLink(a, a.group + ' / ' + a.name));
+          ra.appendChild(li);
+        });
+        ga.appendChild(ra);
+        b.appendChild(ga);
       }
       if (e.pr && e.pr.url) {
         var pp = mk('p', 'ds-cl-small'), pa = mk('a', null, 'Pull request #' + e.pr.number);
