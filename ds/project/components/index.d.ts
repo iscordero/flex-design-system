@@ -290,8 +290,6 @@ export interface SearchBarProps extends React.InputHTMLAttributes<HTMLInputEleme
   variant?: 'line' | 'contained';
   /** accessible name if different from the placeholder */
   label?: string;
-  /** show the 16px search icon before the text (off for now) */
-  icon?: boolean;
 }
 export declare function SearchBar(props: SearchBarProps): React.ReactElement;
 

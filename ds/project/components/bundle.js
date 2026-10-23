@@ -555,12 +555,11 @@
   /* SearchBar — line or contained. */
   function SearchBar(p) {
     var variant = p.variant || 'line';
-    var rest = omit(p, ['variant', 'className', 'label', 'icon']);
+    var rest = omit(p, ['variant', 'className', 'label']);
     rest.type = 'search'; rest.className = 'q-search__input';
     if (!rest['aria-label']) rest['aria-label'] = p.label || p.placeholder || 'Search';
-    /* No search icon for now: the field and its placeholder say "search". icon={true} brings it back. */
-    return h('div', { className: cx('q-search', 'q-search--' + variant, p.icon && 'has-icon', p.className), role: 'search' },
-      p.icon ? h('span', { className: 'q-search__icon' }, h(Icon, { name: 'search', size: 16 })) : null,
+    return h('div', { className: cx('q-search', 'q-search--' + variant, p.className), role: 'search' },
+      h('span', { className: 'q-search__icon' }, h(Icon, { name: 'search', size: 16 })),
       h('input', rest));
   }
 
