@@ -1,0 +1,99 @@
+{
+ "id": "draft",
+ "sha": "",
+ "draft": true,
+ "date": "2026-10-23",
+ "author": "Isabel",
+ "with": [
+  "Claude"
+ ],
+ "approvedBy": [],
+ "commits": 3,
+ "base": "0e6f9ff4480a86cc931f6b8b2bbf455c85153265",
+ "pr": null,
+ "items": [
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "SearchBar",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 9,
+   "notes": [
+    {
+     "kind": "added",
+     "text": "Both: 16px search icon, 8px from 16px text; placeholder `text-secondary`. On focus the icon turns `qualys-blue`."
+    },
+    {
+     "kind": "removed",
+     "text": "Both: 16px text; placeholder `text-secondary`. **No search icon for now:** the placeholder and the field say what it is. `icon` brings back the 16px search icon, 8px from the text, turning `qualys-blue` on focus."
+    }
+   ],
+   "propsRemoved": [
+    "icon"
+   ]
+  },
+  {
+   "type": "site",
+   "action": "changed",
+   "name": "Reference site",
+   "minor": true
+  }
+ ],
+ "shots": [],
+ "v": 2,
+ "why": [
+  {
+   "text": "linen: The profile grid needed its own panel color, #F1F0E9, so it reads as a soft panel and the placeholder avatars still stand out from it."
+  },
+  {
+   "text": "avatar-container-bg: Names the profile grid's panel color as a token, so it isn't a one-off value."
+  },
+  {
+   "text": "DrawerCard: Names of different lengths gave mixed layouts (some on one line, some stacked), and equal-width columns left gaps after short names. Profiles now hug their text, all names share one layout, and names are never shortened."
+  },
+  {
+   "text": "ProfileGrid: The grid sits on its own panel in the new Linen color (avatar-container-bg)."
+  },
+  {
+   "text": "CardModule: Five cards left one card alone on the last row, on the left. Rows now avoid a lone card and center a short last row, like the profile grids."
+  },
+  {
+   "text": "Stats: On tablet the third stat card sat alone on the left; a lone card is now centered."
+  },
+  {
+   "text": "Form: Forms needed the banners from the Figma form designs: a photo, a headline on a color, a headline with an image, or a headline over a photo, on any form."
+  },
+  {
+   "text": "DemoRequestWizard: The same banner options as the forms."
+  },
+  {
+   "about": "SearchBar",
+   "text": "The search icon is removed for now, at the design review's request."
+  },
+  {
+   "text": "Nav: Search is left out of the nav for now, at the design review's request."
+  },
+  {
+   "text": "Tabs: Labels sat 10px from the top, with more space below them than above; they're now centered. The autoplay pause button was removed at the design review's request."
+  },
+  {
+   "text": "TabModule: The autoplay pause button was removed, as in Tabs."
+  },
+  {
+   "text": "Columns: So every row of cards behaves the same: no card alone on a row, and a short last row centered."
+  },
+  {
+   "about": "SearchBar",
+   "text": "The icon was removed by mistake; only the search in the nav bar was meant to go."
+  }
+ ],
+ "headline": "Updated SearchBar",
+ "highlights": [
+  "Updated SearchBar"
+ ],
+ "minor": false
+}
