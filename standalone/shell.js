@@ -1340,11 +1340,11 @@
       if (sm) ul.appendChild(mk('li', 'ds-cl-smallpt', sm));
       if (!lines.length && !sm) ul.appendChild(mk('li', 'ds-cl-smallpt', 'Small edits only: wording, spelling or the layout of this site.'));
       b.appendChild(ul);
-      /* An entry recorded before entries explained each change: its highlights and pictures, and a note that the
-         details come with the next publish (the GitHub Action rebuilds it with "changelog.py upgrade"). */
+      /* An entry recorded before entries explained each change: its highlights, and a note that the details come
+         with the next publish (the GitHub Action rebuilds it with "changelog.py upgrade"). */
       if (!(e.v >= 2) && !e.draft) {
-        b.appendChild(mk('p', 'ds-cl-oldnote', 'This entry was recorded before the Change Log explained each change. Its explanations and reasons are added automatically the next time a change is published.'));
-        (e.shots || []).forEach(function (s) { b.appendChild(shotEl(Object.assign({ label: s.name }, s))); });
+        /* its old pictures showed the top of each preview, often not the part that changed: left out until it's rebuilt */
+        b.appendChild(mk('p', 'ds-cl-oldnote', 'This entry was recorded before the Change Log explained each change. Its explanations, reasons and before and after pictures of what changed are added automatically the next time a change is published.'));
         return b;
       }
       var why = (e.why || []).filter(function (w) { return !w.about; }), wEl = whyEl(why);
