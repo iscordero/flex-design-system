@@ -24,7 +24,7 @@ The top-of-page module from the Figma Hero page (Ready for Dev): an eyebrow, a d
 - **Body size:** 24px (`paragraph-lg`) in the left-aligned and centered Impact heroes; 18px beside media or a form and in the centered Standard hero; 16px in the split Standard hero.
 - **Split:** copy up to 520px, 56px (`spacing-5xl`), media. Images are 14:9 (560 × 360) and videos 16:9, both `radius-lg`. Impact centers the copy on the media; Standard aligns both to the top.
 - **Left and center:** the copy block is 1000px at most; centered heroes center everything.
-- **On a photo or video:** `radius-lg`. `tone: 'dark'` (default) puts black at 50% over the picture, with white copy; `tone: 'light'` puts a white veil over it, with `text-primary` copy: 82% under centered copy; under left-aligned copy 92% fading to 30% at the far side, so the photo still shows there (a flat 86% on mobile). The left-aligned photo is a rounded card (`radius-lg`) inset 16px (`spacing-rg`) from the window on every side, 8px on phones, on the module's own `surface-neutral-200` ground, with its copy on the page's content column (up to 1440px) at every width: 56px top and bottom inside the card, and 24px × 20px on phones; centered photos and all videos sit in a card as wide as the content column, with 36px padding. Actions are a primary Button and an inverted TextLink with an arrow, 16px apart.
+- **On a photo or video:** `radius-lg`. `tone: 'dark'` (default) puts black at 50% over the picture, with white copy; `tone: 'light'` puts a white veil over it, with `text-primary` copy: 82% under centered copy; under left-aligned copy 92% fading to 30% at the far side, so the photo still shows there (a flat 86% on mobile). The left-aligned photo is a rounded card (`radius-lg`) inset 16px (`spacing-rg`) from the window on every side, 8px on phones, on the module's own `surface-neutral-200` ground, with its copy 56px from the top and bottom and 36px (`spacing-3xl`) from the sides inside the card, and 24px × 20px on phones; centered photos and all videos sit in a card as wide as the content column, with 36px padding. Actions are a primary Button and an inverted TextLink with an arrow, 16px apart.
 - **Lead form:** copy on the left, the Form (`variant="gate"`) on the right on `surface-blue-100` with a deeper shadow. `visual` places a decorative graphic behind the form.
 
 **Tablet (768–1023px):** split heroes stay side by side, copy 60% and media 40%, and the heading scales down. The lead form drops under the copy.
@@ -51,7 +51,7 @@ Eyebrow: about 20 characters.
 
 Where the Figma frames disagree, one value is used:
 
-- The left-aligned photo hero follows the Layout Implementation frames (mobile, tablet, desktop and large desktop): an inset rounded card with the copy on the content column.
+- The left-aligned photo hero follows the Layout Implementation frames (mobile, tablet, desktop and large desktop): an inset rounded card. The frames line its copy up with the content column (40px in from the card); it uses 36px (`spacing-3xl`), a token, so the copy sits 4px further left.
 - In the Lead Form hero the star visual is drawn on top of the form; here it sits behind, so the form stays usable.
 - The mobile Standard split hero is drawn with a 32px heading; every mobile hero uses 36px.
 - The tablet frames squeeze the media to a sliver; here copy and media share the row 60/40.

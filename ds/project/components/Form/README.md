@@ -35,12 +35,12 @@ Any form can open with a banner: `banner` on a Form, which also works for the fo
 | Headline over a photo | `{ title, image, imagePosition: 'background' }` | The photo fills the banner, with a Charcoal wash from the left so the white headline reads on any photo |
 
 - **Background:** `background` is `white`, `polar` (Polar Blue), `blue` (Qualys Blue), `gradient` (the blue gradient) or `dark` (Charcoal), or any color or `var(--token)`. The headline is white on `blue`, `gradient`, `dark` and over a photo, and Charcoal otherwise; set `inverted` for white text on a custom dark color.
-- **Headline:** Wix Madefor Text Bold, 38px (24px when the form is narrower than 480px), line height 1.1, three lines at most. Keep it to about 50 characters, such as "See Qualys in Action. Secure Your Enterprise."
+- **Headline:** Wix Madefor Text Bold, 38px (24px when the banner is narrower than 480px, `container-banner-compact`), line height 1.1, three lines at most. Keep it to about 50 characters, such as "See Qualys in Action. Secure Your Enterprise."
 - **Images:** for "with an image", use a product image or screenshot with a transparent or matching background; for the other two, a photo. Give `imageAlt` when the image says something the headline doesn't.
 - The banner is decoration plus a headline: the form's own `title` still names the form for screen readers. Don't repeat the form's title in the banner.
 - Use one banner per form, and leave out the shield (`logoSrc`) when there is a banner.
 
-**Mobile (card narrower than 420px)**
+**Mobile (card narrower than 440px, `container-compact`)**
 
 - 16px side padding; the heading drops to 24px (`h2` on mobile); paired fields stack; the button spans the width; the link moves under the button.
 - The card follows its own width, not the screen's, so it also adapts in a narrow column.

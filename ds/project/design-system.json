@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-23T18:30:26Z",
+    "at": "2026-10-27T16:54:00Z",
     "by": "Isabel",
-    "note": "SearchBar shows its search icon again; search stays off in the Nav only.",
+    "note": "Token clean-up: typed-in values swapped for tokens; new static spacing, pill radius, two overlay colors, Nav and dropdown layers, and Nav and compact-layout breakpoints; decimals rounded to the nearest token; Tag badges 6px side padding; photo hero 36px side padding.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

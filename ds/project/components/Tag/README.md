@@ -13,7 +13,7 @@ Badges and text tags from the Figma Tagging System: a badge signals status (rece
 | Flag | Notices anchored to a container edge | No |
 | Marker | Unread or active item in a tab or menu | No |
 
-- **Badge:** 26px tall (`rg`, `tag-sm` 14px) or 25px (`sm`, `tag-xs` 12px); 8px side padding inside a 1.5px stroke; `radius-sm` (6px); Wix Madefor Text Bold, uppercase, +5% / +3% tracking.
+- **Badge:** 26px tall (`rg`, `tag-sm` 14px) or 25px (`sm`, `tag-xs` 12px); 6px side padding (`spacing-4xs`) inside a 1.5px stroke; `radius-sm` (6px); Wix Madefor Text Bold, uppercase, +5% / +3% tracking.
 - **Fill:** white text on the tone. **Light:** the tone at 15% with tone-colored text (accepted-risk uses `ash` with `asphalt`). **Outline:** 1.5px tone stroke and tone text (accepted-risk uses a `rhino` stroke).
 - **Tones are named for the status they carry**, not their color:
 

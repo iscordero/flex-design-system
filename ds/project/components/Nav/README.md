@@ -1,7 +1,7 @@
 # Nav
 
 
-The global navigation from the Figma Navigation page: the logo, the primary items with their menus, utility links and one call to action. Below 1200px it becomes a bar with a menu button that opens a full-screen menu.
+The global navigation from the Figma Navigation page: the logo, the primary items with their menus, utility links and one call to action. Below 1200px (`breakpoint-nav`) it becomes a bar with a menu button that opens a full-screen menu.
 
 **Provide:** `logoSrc` (the full-color logo from Logos), `items`, `utility` links and `cta` (`{ label, href }`). An item is a link (`{ label, href }`) or opens a menu (`{ label, menu }`).
 
@@ -16,7 +16,7 @@ The global navigation from the Figma Navigation page: the logo, the primary item
 - Logo 37px tall, its wordmark sitting on the same baseline as the menu labels, then 36px to the items. Items and utility links are IBM Plex Sans Medium 16px `text-primary`, 16px apart; they turn `text-accent-primary` on hover.
 - The current or open item shows a 4px `qualys-blue` bar on the bottom edge of the nav, sitting on the bottom border so it reads as part of the bar. Set it with `current` (the item's label). It is one bar for the whole row: tapping another item slides it across (300ms ease-in-out, the same motion as Tabs), and closing a menu sends it back to the current page. With reduced motion it moves without sliding.
 - Right side: the utility links ("Community", "Login", "Contact Us") and a small primary Button ("Get Started"), each 16px apart.
-- **Narrow desktop (1200–1365px):** utility links marked `collapse: true` hide, so the row keeps its spacing. On qualys.com mark Community and Contact Us; Login and Get Started always stay. Both stay in the mobile menu and the footer.
+- **Narrow desktop (1200–1365px, under `breakpoint-nav-full`):** utility links marked `collapse: true` hide, so the row keeps its spacing. On qualys.com mark Community and Contact Us; Login and Get Started always stay. Both stay in the mobile menu and the footer.
 - Menus open on hover and on click, Enter or Space. Esc, a click outside or moving the pointer away closes them. `hover={false}` makes them click-only.
 - Menus slide open downwards from under the bar (300ms ease-in-out) and slide shut the same way (250ms). Moving from one open menu to the next only fades, so the panel doesn't drop twice.
 
