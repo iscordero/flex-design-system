@@ -1196,11 +1196,11 @@ def same_look(items, result):
 
 
 def visual(items):
-    """Components to check and picture: new ones first, then the biggest changes. All of them are checked (up to 30),
+    """Components to check and picture: new ones first, then the biggest changes. All of them are checked (up to 80),
     so one that only shares code with a changed one, and looks the same, drops out; MAX_SHOTS of them are pictured."""
     sel = [i for i in items if i['type'] == 'component' and (i['action'] == 'added' or 'look' in i.get('what', []))]
     sel.sort(key=lambda i: (i['action'] != 'added', not (i.get('notes') or i.get('propsAdded')), 'follows' in i, -i.get('weight', 0)))
-    return [i['name'] for i in sel][:30]
+    return [i["name"] for i in sel][:80]
 
 
 # ---------- commands ----------
