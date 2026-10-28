@@ -8,7 +8,7 @@
   "Claude"
  ],
  "approvedBy": [],
- "commits": 3,
+ "commits": 5,
  "base": "3ce88ca51ca39682378879d1b4f9328490fdfaa2",
  "pr": null,
  "items": [
@@ -57,6 +57,10 @@
  "shots": [],
  "v": 2,
  "why": [
+  {
+   "about": "Hero",
+   "text": "The photo card ran almost to the window edges; it now has a 1440px maximum and lines up with the Nav and the content of the page."
+  },
   {
    "about": "Hero",
    "text": "The split hero's text column is wider, up to 600px (was 520px), set in review."
