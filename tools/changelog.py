@@ -1282,10 +1282,8 @@ def cmd_record(before, after):
     late_reasons(d, pushed)
     apply_undos(d, pushed)
     save(d)
-    # what's published is no longer a draft
-    if os.path.exists(DRAFT):
-        os.remove(DRAFT)
-    shutil.rmtree(os.path.join(SHOTS, 'draft'), ignore_errors=True)
+    # The draft file is left alone: deleting it here clashed with drafts written on people's computers for their next
+    # change (a modify/delete conflict on pull). The live site never shows a draft, and publish.sh rewrites it.
     print('%d new entries' % added)
 
 
