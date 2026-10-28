@@ -1152,10 +1152,10 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-hero .q-copy__actions { margin-top: var(--spacing-3xl); }
 .q-hero--center .q-hero__copy { margin-inline: auto; text-align: center; }
 .q-hero--center .q-copy__actions { justify-content: center; }
-/* Split: copy 520 and media 560, 60px apart; Impact centers the copy, Standard aligns it to the top */
+/* Split: copy up to 600px, then the media, 56px apart; Impact centers the copy, Standard aligns it to the top */
 .q-hero__row { display: flex; align-items: center; gap: var(--spacing-5xl); }
 .q-hero--split.q-hero--rg .q-hero__row { align-items: flex-start; }
-.q-hero--split .q-hero__copy { flex: 0 1 520px; }
+.q-hero--split .q-hero__copy { flex: 0 1 600px; max-width: 600px; }
 .q-hero--form .q-hero__copy { flex: 520 1 0; }
 .q-hero__media { flex: 1 1 0; min-width: 0; }
 .q-hero__form { flex: 560 1 0; min-width: 0; }

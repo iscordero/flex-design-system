@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-10-28T19:15:35Z",
+    "at": "2026-10-28T19:19:22Z",
     "by": "Isabel",
-    "note": "Hero on a photo or video: the card is the content column (up to 1440px), lined up with the Nav; contained: false gives the older inset card.",
+    "note": "Hero split media: the copy column is up to 600px wide.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",
