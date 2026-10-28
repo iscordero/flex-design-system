@@ -693,15 +693,17 @@ def attach_why(e, text):
     """"Why: DrawerCard: ..." is shown with DrawerCard; a reason without a name is shown for the whole entry."""
     known = {i['name'] for i in e['items']} | {i['guide'] for i in e['items'] if i.get('guide')}
     named, general = {}, []
-    for t in why_lines(text):   # oldest first, so a newer reason for the same name replaces an older one
+    for t in why_lines(text):   # oldest first; a name can have several reasons (a mistake is left out with "Undo:")
         m = re.match(r'^([^:]{2,60}):\s+(.+)$', t)
         if m and m.group(1).strip() in known:
-            named[m.group(1).strip()] = m.group(2).strip()
+            lst = named.setdefault(m.group(1).strip(), [])
+            if m.group(2).strip() not in lst:
+                lst.append(m.group(2).strip())
         elif m and len(m.group(1).split()) <= 4:
             continue   # about something this change doesn't touch: a reason for an earlier entry (see late_reasons)
         else:
             general.append(t)
-    out = [{'about': k, 'text': v} for k, v in named.items()] + [{'text': t} for t in general]
+    out = [{'about': k, 'text': v} for k, lst in named.items() for v in lst] + [{'text': t} for t in general]
     if out:
         e['why'] = out
     else:
