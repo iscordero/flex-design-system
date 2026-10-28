@@ -1385,6 +1385,9 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-hero--bleed > .q-section__inner { max-width: none; padding: var(--spacing-rg); }
 .q-hero--bleed .q-hero__panelin { max-width: calc(var(--content-max, 1440px) + 112px - 2 * var(--spacing-rg)); margin-inline: auto; padding: var(--spacing-5xl) var(--spacing-3xl); }
 .q-hero--bleed .q-hero__copy { max-width: 800px; }
+/* Left-aligned on a photo, in the content column: 56px above and below the copy, 36px at the sides */
+.q-hero--contained.q-hero--left .q-hero__panelin { padding: var(--spacing-5xl) var(--spacing-3xl); }
+.q-hero--contained.q-hero--left .q-hero__copy { max-width: 800px; }
 .q-hero--bleed.q-hero--center .q-hero__copy { max-width: 1000px; }
 
 /* ── Typographic header (Figma: Typographic Headers) ── */
@@ -1444,7 +1447,7 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
   .q-hero__media .q-media--video, .q-gc__media .q-media--video, .q-gc--full .q-media--video { aspect-ratio: 16 / 9; }
   .q-hero__visual { top: 12%; left: -27.5%; width: 184%; }
   .q-hero--bleed > .q-section__inner { padding: var(--spacing-3xs); }
-  .q-hero--bleed .q-hero__panelin { padding: var(--spacing-xl-static) var(--spacing-lg); }
+  .q-hero--bleed .q-hero__panelin, .q-hero--contained.q-hero--left .q-hero__panelin { padding: var(--spacing-xl-static) var(--spacing-lg); }
   .q-hero--left .q-hero__panel--light .q-hero__shade { background: color-mix(in srgb, var(--surface-neutral-100) 86%, transparent); }
   .q-hero--bg .q-copy__actions { align-items: flex-start; gap: var(--spacing-rg); margin-top: var(--spacing-3xl-static); }
   .q-hero--bg.q-hero--center .q-copy__actions { align-items: center; }
@@ -4303,7 +4306,8 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
     var inner = copy, mod = null;
     if (bg) {
       var tone = bg.tone === 'light' ? 'light' : 'dark';
-      var contained = bg.contained != null ? !!bg.contained : (layout === 'center' || !!bg.video);
+      /* Photo and video heroes sit in a card as wide as the content column (up to 1440px), lined up with the Nav. contained: false gives the older card inset 16px from the window. */
+      var contained = bg.contained != null ? !!bg.contained : true;
       mod = cx('q-hero--bg', contained ? 'q-hero--contained' : 'q-hero--bleed');
       if (layout !== 'center') layout = 'left';
       inner = h('div', { className: cx('q-hero__panel', 'q-hero__panel--' + tone, !(bg.src || typeof bg.video === 'string') && 'q-hero__panel--empty') },
