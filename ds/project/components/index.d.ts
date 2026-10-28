@@ -837,7 +837,7 @@ export interface HeroBackground {
   video?: string | boolean;
   /** 'dark' (default): black 50% under white copy. 'light': white 25% under dark copy */
   tone?: 'dark' | 'light';
-  /** a 1140px card instead of edge to edge; default for centered heroes and videos */
+  /** true (default): a card as wide as the content column (up to 1440px), lined up with the Nav. false: a card inset 16px from the window */
   contained?: boolean;
 }
 export interface HeroProps extends ModuleCopy {

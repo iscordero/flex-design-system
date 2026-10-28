@@ -1654,7 +1654,8 @@
     var inner = copy, mod = null;
     if (bg) {
       var tone = bg.tone === 'light' ? 'light' : 'dark';
-      var contained = bg.contained != null ? !!bg.contained : (layout === 'center' || !!bg.video);
+      /* Photo and video heroes sit in a card as wide as the content column (up to 1440px), lined up with the Nav. contained: false gives the older card inset 16px from the window. */
+      var contained = bg.contained != null ? !!bg.contained : true;
       mod = cx('q-hero--bg', contained ? 'q-hero--contained' : 'q-hero--bleed');
       if (layout !== 'center') layout = 'left';
       inner = h('div', { className: cx('q-hero__panel', 'q-hero__panel--' + tone, !(bg.src || typeof bg.video === 'string') && 'q-hero__panel--empty') },
