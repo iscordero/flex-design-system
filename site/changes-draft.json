@@ -8,7 +8,7 @@
   "Claude"
  ],
  "approvedBy": [],
- "commits": 1,
+ "commits": 3,
  "base": "3ce88ca51ca39682378879d1b4f9328490fdfaa2",
  "pr": null,
  "items": [
@@ -20,12 +20,17 @@
     "look",
     "docs"
    ],
-   "weight": 7,
+   "weight": 9,
    "notes": [
     {
      "kind": "changed",
      "text": "Figma name: Left-Aligned Image Background Hero · Use it for: The same, over a photo on a rounded card as wide as the content column",
      "was": "Use it for: The same, over a photo on a rounded card inset from the window"
+    },
+    {
+     "kind": "changed",
+     "text": "**Split:** copy up to 600px (at every width above mobile), 56px (`spacing-5xl`), media. Images are 14:9 (560 × 360) and videos 16:9, both `radius-lg`. Impact centers the copy on the media; Standard aligns both to the top.",
+     "was": "**Split:** copy up to 520px, 56px (`spacing-5xl`), media. Images are 14:9 (560 × 360) and videos 16:9, both `radius-lg`. Impact centers the copy on the media; Standard aligns both to the top."
     },
     {
      "kind": "changed",
@@ -54,7 +59,7 @@
  "why": [
   {
    "about": "Hero",
-   "text": "The photo card ran almost to the window edges; it now has a 1440px maximum and lines up with the Nav and the content of the page."
+   "text": "The split hero's text column is wider, up to 600px (was 520px), set in review."
   }
  ],
  "headline": "Updated Hero",
