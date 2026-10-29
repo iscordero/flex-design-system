@@ -1069,6 +1069,7 @@ export interface TestimonialCardProps {
 export declare function TestimonialCard(props: TestimonialCardProps): React.ReactElement;
 
 export interface TestimonialCarouselProps {
+  /** three or more scroll in a carousel; one or two sit in a row that fills the content column, with no controls */
   items: TestimonialCardProps[];
   /** card width and quote size: 'lg' 939px, 'sm' 500px, 'video' 836px */
   size?: 'lg' | 'sm' | 'video';

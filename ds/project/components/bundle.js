@@ -1854,6 +1854,13 @@
   /* TestimonialCarousel — TestimonialCards in the Carousel, with the roomier 100px section padding. */
   function TestimonialCarousel(p) {
     var items = p.items || [], size = p.size || 'lg';
+    /* Fewer than three quotes: no carousel (Flex rule). The cards share one row and fill the content column. */
+    if (items.length < 3) {
+      return h('section', { className: cx('q-section', 'q-tcarousel', 'q-tcarousel--' + size, 'q-tcarousel--row', p.className), id: p.id, 'aria-label': p.label || 'Customer stories' },
+        h('div', { className: 'q-section__inner' },
+          h('div', { className: 'q-tcarousel__row' },
+            items.map(function (it, i) { return h(TestimonialCard, Object.assign({ key: i, size: size === 'sm' || size === 'video' ? 'sm' : 'lg' }, it)); }))));
+    }
     return h(Carousel, { className: cx('q-tcarousel', 'q-tcarousel--' + size, p.className), spacing: 'lg', label: p.label || 'Customer stories', id: p.id, prevLabel: p.prevLabel, nextLabel: p.nextLabel },
       items.map(function (it, i) { return h(TestimonialCard, Object.assign({ key: i, size: size === 'sm' || size === 'video' ? 'sm' : 'lg' }, it)); }));
   }

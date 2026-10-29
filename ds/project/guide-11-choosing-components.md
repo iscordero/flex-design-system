@@ -32,7 +32,7 @@ Choosing between them: if every item deserves to be seen, use cards; if people o
 | --- | --- |
 | **LogoCarousel** | A strip of customer logos near the top, to say "trusted by". |
 | **LogoHierarchy** | Sponsors or partners in tiers, such as an event's partner pavilion. |
-| **TestimonialCarousel** | Customer quotes or video stories. Use the video version when you have recordings. |
+| **TestimonialCarousel** | Customer quotes or video stories. Use the video version when you have recordings. With fewer than three quotes it shows them as cards that fill the row instead of a carousel. |
 | **Carousel** | A row of resources, events or blog posts people browse sideways ("Latest Resources"). |
 
 ### Comparing

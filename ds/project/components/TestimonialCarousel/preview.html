@@ -1,4 +1,4 @@
-<!-- @dsCard group="Page modules · Carousels and logos" height=3824 width=1440 subtitle="Block module · Testimonial cards in a carousel: large, on a photo, small and with video. Placeholders." -->
+<!-- @dsCard group="Page modules · Carousels and logos" height=4402 width=1440 subtitle="Block module · Testimonial cards in a carousel: large, on a photo, small and with video. Placeholders." -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -28,6 +28,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
   cap('Large, on a photo'), tc('lg', {image: OFFICE}),
   cap('Small'), tc('sm'),
   cap('Video'), tc('video', {video: true}),
+  cap('Two quotes: no carousel, the cards fill the row'), h(Q.TestimonialCarousel, {size: 'sm', items: [0, 1].map(function (n) { return item(n); })}),
   cap('Mobile'), h('div', {className: 'phones'},
     h('div', {className: 'phone'}, tc('sm')),
     h('div', {className: 'phone'}, tc('lg', {image: OFFICE})),

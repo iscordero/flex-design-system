@@ -6,10 +6,22 @@
  "author": "Claude",
  "with": [],
  "approvedBy": [],
- "commits": 3,
+ "commits": 4,
  "base": "f01b7bb35e6be5a1bb2cd1071f7e6978468a2efb",
  "pr": null,
  "items": [
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "AccordionModule",
+   "what": [
+    "look"
+   ],
+   "weight": 2,
+   "follows": [
+    "TextLink"
+   ]
+  },
   {
    "type": "component",
    "action": "changed",
@@ -38,9 +50,81 @@
    "what": [
     "look"
    ],
-   "weight": 1,
+   "weight": 3,
    "follows": [
     "Card"
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Carousel",
+   "what": [
+    "look"
+   ],
+   "weight": 2,
+   "follows": [
+    "ResourceCard"
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "CtaModule",
+   "what": [
+    "look"
+   ],
+   "weight": 2
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "DetailComparison",
+   "what": [
+    "look"
+   ],
+   "weight": 2
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "EventCalendar",
+   "what": [
+    "look"
+   ],
+   "weight": 2
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "FeatureMatrix",
+   "what": [
+    "look"
+   ],
+   "weight": 2
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "GeneralContent",
+   "what": [
+    "look"
+   ],
+   "weight": 2,
+   "follows": [
+    "TextLink"
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Hero",
+   "what": [
+    "look"
+   ],
+   "weight": 2,
+   "follows": [
+    "TextLink"
    ]
   },
   {
@@ -78,7 +162,7 @@
     "props",
     "docs"
    ],
-   "weight": 6,
+   "weight": 8,
    "notes": [
     {
      "kind": "changed",
@@ -121,7 +205,16 @@
    "what": [
     "look"
    ],
-   "weight": 1
+   "weight": 3
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "MarketingTable",
+   "what": [
+    "look"
+   ],
+   "weight": 2
   },
   {
    "type": "component",
@@ -143,6 +236,27 @@
   {
    "type": "component",
    "action": "changed",
+   "name": "Stats",
+   "what": [
+    "look"
+   ],
+   "weight": 2
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "TabModule",
+   "what": [
+    "look"
+   ],
+   "weight": 2,
+   "follows": [
+    "TextLink"
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
    "name": "TestimonialCard",
    "what": [
     "look",
@@ -151,6 +265,28 @@
    "weight": 2,
    "follows": [
     "TextLink"
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "TestimonialCarousel",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 14,
+   "notes": [
+    {
+     "kind": "added",
+     "text": "With one or two items there is nothing to scroll to, so the module drops the carousel. The cards share one row and fill the content column (two at half width each, 24px apart; one at the full width), with no progress bar or buttons, and 100px above and below. Each card keeps its size (`lg`, `sm` or `video`) and its height matches the tallest. On phones the cards stack, 16px apart. Three or more quotes always use the carousel."
+    },
+    {
+     "kind": "changed",
+     "text": "Use it once per page. A single quote can also be a TestimonialCard on its own in a section.",
+     "was": "Use it once per page. For a single quote, use a TestimonialCard on its own."
+    }
    ]
   },
   {
@@ -176,6 +312,15 @@
    ]
   },
   {
+   "type": "component",
+   "action": "changed",
+   "name": "TypographicHeader",
+   "what": [
+    "look"
+   ],
+   "weight": 2
+  },
+  {
    "type": "guide",
    "name": "Text link buttons",
    "guide": "Buttons and Links",
@@ -186,6 +331,22 @@
     {
      "kind": "added",
      "text": "**On cards, it's blue.** The call to action that ends a card (Card, ResourceCard, TestimonialCard, HoverCard) is always the blue text link with its arrow, never the neutral one, so links read the same across every row of cards."
+    }
+   ],
+   "minor": true
+  },
+  {
+   "type": "guide",
+   "name": "Proof and social proof",
+   "guide": "Choosing Components",
+   "gid": "guide-11",
+   "section": "Proof and social proof",
+   "action": "changed",
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "Use: **TestimonialCarousel** · When: Customer quotes or video stories. Use the video version when you have recordings. With fewer than three quotes it shows them as cards that fill the row instead of a carousel.",
+     "was": "When: Customer quotes or video stories. Use the video version when you have recordings."
     }
    ],
    "minor": true
@@ -237,13 +398,29 @@
    "text": "CTAs must line up along the bottom of every row of cards, not only inside a Card Module, so rows read as one level."
   },
   {
+   "about": "Card",
+   "text": "card CTAs use blue text so links read the same across every row of cards."
+  },
+  {
    "about": "LogoCarousel",
    "text": "the homepage logo row needs a clean heading row without the pause button, so designers can turn it off per page."
+  },
+  {
+   "about": "ResourceCard",
+   "text": "card CTAs use blue text so links read the same across every row of cards."
+  },
+  {
+   "about": "TestimonialCard",
+   "text": "card CTAs use blue text so links read the same across every row of cards."
+  },
+  {
+   "about": "HoverCard",
+   "text": "card CTAs use blue text so links read the same across every row of cards."
   }
  ],
- "headline": "Updated 9 components",
+ "headline": "Updated 22 components",
  "highlights": [
-  "Updated components: 9, including LogoCarousel, Card and HoverCard"
+  "Updated components: 22, including TestimonialCarousel, LogoCarousel and Card"
  ],
  "minor": false
 }

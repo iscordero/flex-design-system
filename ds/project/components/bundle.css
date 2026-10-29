@@ -1418,6 +1418,9 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-tcard__video { flex: 0 0 312px; min-width: 0; }
 .q-tcard__video .q-media { height: 100%; min-height: 416px; aspect-ratio: auto; border-radius: var(--radius-rg); background: var(--rhino); }
 .q-tcarousel--lg > * { --q-slide: 939px; }
+/* Fewer than three quotes: no carousel. One or two cards share the row and fill the content column, 24px apart */
+.q-tcarousel--row > .q-section__inner { padding-block: var(--spacing-6xl); }
+.q-tcarousel__row { display: grid; grid-auto-columns: minmax(0, 1fr); grid-auto-flow: column; gap: var(--gutter); }
 .q-tcarousel--sm > * { --q-slide: 500px; }
 .q-tcarousel--video > * { --q-slide: 836px; }
 
@@ -1467,6 +1470,8 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
   .q-carousel__controls, .q-carousel--roomy .q-carousel__controls { flex-direction: column; align-items: center; gap: var(--spacing-xl-static); padding: var(--spacing-3xl-static) var(--spacing-lg) var(--spacing-xl-static); }
   .q-carousel__progress { flex: none; width: 100%; }
   .q-tcarousel--lg > *, .q-tcarousel--sm > *, .q-tcarousel--video > * { --q-slide: 300px; }
+  .q-tcarousel--row > .q-section__inner { padding-block: var(--spacing-xl-static); }
+  .q-tcarousel__row { grid-auto-flow: row; gap: var(--spacing-rg); }
   /* Same card as desktop (shadow-drawer, no outline), stacked and with tighter padding — in the carousel or on its own in a section */
   :is(.q-tcarousel, .q-section) .q-tcard, :is(.q-tcarousel, .q-section) .q-tcard--sm { flex-direction: column; gap: var(--spacing-rg); padding: var(--spacing-xl); }
   :is(.q-tcarousel, .q-section) .q-tcard--image { box-shadow: inset 0 0 0 1px var(--image-outline), var(--shadow-drawer); }
