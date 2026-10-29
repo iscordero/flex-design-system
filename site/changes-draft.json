@@ -2,50 +2,73 @@
  "id": "draft",
  "sha": "",
  "draft": true,
- "date": "2026-10-28",
- "author": "Isabel",
- "with": [
-  "Claude"
- ],
+ "date": "2026-10-29",
+ "author": "Claude",
+ "with": [],
  "approvedBy": [],
- "commits": 8,
- "base": "cfd15ad198e7e78564feba395ebd9fd388f0ed58",
+ "commits": 1,
+ "base": "f01b7bb35e6be5a1bb2cd1071f7e6978468a2efb",
  "pr": null,
  "items": [
   {
    "type": "component",
    "action": "changed",
-   "name": "Hero",
+   "name": "Card",
    "what": [
     "look",
     "docs"
    ],
-   "weight": 9,
+   "weight": 3,
+   "notes": [
+    {
+     "kind": "added",
+     "text": "**In a row:** cards share the row's height, and the CTA (with the tags or badge above it) sits on the bottom edge, so the links line up across the row however long each card's copy is. This holds in any row (a CardModule, a `.q-grid` in a page, a carousel, or a card in its own wrapper), not only in CardModule."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "CardModule",
+   "what": [
+    "look"
+   ],
+   "weight": 1,
+   "follows": [
+    "Card"
+   ]
+  },
+  {
+   "type": "guide",
+   "name": "Cards",
+   "guide": "Choosing Components",
+   "gid": "guide-11",
+   "section": "Cards",
+   "action": "changed",
    "notes": [
     {
      "kind": "changed",
-     "text": "Figma name: Left-Aligned Image Background Hero · Use it for: The same, over a photo on a rounded card as wide as the content column",
-     "was": "Use it for: The same, over a photo on a rounded card inset from the window"
-    },
-    {
-     "kind": "changed",
-     "text": "**Split:** copy up to 600px (at every width above mobile), 56px (`spacing-5xl`), media. Images are 14:9 (560 × 360) and videos 16:9, both `radius-lg`. Impact centers the copy on the media; Standard aligns both to the top.",
-     "was": "**Split:** copy up to 520px, 56px (`spacing-5xl`), media. Images are 14:9 (560 × 360) and videos 16:9, both `radius-lg`. Impact centers the copy on the media; Standard aligns both to the top."
-    },
-    {
-     "kind": "changed",
-     "text": "**On a photo or video:** `radius-lg`. `tone: 'dark'` (default) puts black at 50% over the picture, with white copy; `tone: 'light'` puts a white veil over it, with `text-primary` copy: 82% under centered copy; under left-aligned copy 92% fading to 30% at the far side, so the photo still shows there (a flat 86% on mobile). Every photo and video sits in a rounded card as wide as the content column (up to 1440px), with its edges lined up with the Nav and the other modules. Left-aligned copy is 56px from the top and bottom and 36px (`spacing-3xl`) from the sides inside the card; centered copy has 36px all round; 24px × 20px on phones. `background.contained: false` gives the older card instead, inset 16px (`spacing-rg`) from the window on every side (8px on phones). Actions are a primary Button and an inverted TextLink with an arrow, 16px apart.",
-     "was": "**On a photo or video:** `radius-lg`. `tone: 'dark'` (default) puts black at 50% over the picture, with white copy; `tone: 'light'` puts a white veil over it, with `text-primary` copy: 82% under centered copy; under left-aligned copy 92% fading to 30% at the far side, so the photo still shows there (a flat 86% on mobile). The left-aligned photo is a rounded card (`radius-lg`) inset 16px (`spacing-rg`) from the window on every side, 8px on phones, on the module's own `surface-neutral-200` ground, with its copy 56px from the top and bottom and 36px (`spacing-3xl`) from the sides inside the card, and 24px × 20px on phones; centered photos and all videos sit in a card as wide as the content column, with 36px padding. Actions are a primary Button and an inverted TextLink with an arrow, 16px apart."
-    },
-    {
-     "kind": "added",
-     "text": "The Layout Implementation frames draw the left-aligned photo hero as a card inset 16px from the window, with its copy on the content column. From review, the card is the content column instead (up to 1440px), lined up with the Nav, with the copy 36px (`spacing-3xl`) inside it. The inset card is still available with `background.contained: false`."
-    },
-    {
-     "kind": "removed",
-     "text": "The left-aligned photo hero follows the Layout Implementation frames (mobile, tablet, desktop and large desktop): an inset rounded card. The frames line its copy up with the content column (40px in from the card); it uses 36px (`spacing-3xl`), a token, so the copy sits 4px further left."
+     "text": "Keep one kind of card per row. Mixing a ResourceCard and a BlogCard in one carousel is fine; mixing a Card with a ResourceCard is not. Cards in a row share one height, with their calls to action lined up along the bottom.",
+     "was": "Keep one kind of card per row. Mixing a ResourceCard and a BlogCard in one carousel is fine; mixing a Card with a ResourceCard is not."
     }
-   ]
+   ],
+   "minor": true
+  },
+  {
+   "type": "guide",
+   "name": "Columns",
+   "guide": "Layout, Spacing and Radius",
+   "gid": "guide-4",
+   "section": "Columns",
+   "action": "changed",
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "**Rows of cards** (stat cards, Card Module, profile grids): pick the number across so rows come out full, and never leave one card alone on a row when another number avoids it: five are 3 + 2, not 4 + 1; four on tablet are 2 × 2, not 3 + 1. A row that still comes out short is centered, with its cards at the same width as the rows above. Listings that grow, such as search results or the events grid with Load More, keep their reading order and start each row on the left. Cards in a row share one height, and each card's call to action (text link, button or footer) sits on its bottom edge, so the calls to action line up across the row however long each card's copy is, wherever the row sits: a Card Module, a grid in a page or a carousel.",
+     "was": "**Rows of cards** (stat cards, Card Module, profile grids): pick the number across so rows come out full, and never leave one card alone on a row when another number avoids it: five are 3 + 2, not 4 + 1; four on tablet are 2 × 2, not 3 + 1. A row that still comes out short is centered, with its cards at the same width as the rows above. Listings that grow, such as search results or the events grid with Load More, keep their reading order and start each row on the left."
+    }
+   ],
+   "minor": true
   },
   {
    "type": "site",
@@ -58,17 +81,13 @@
  "v": 2,
  "why": [
   {
-   "about": "Hero",
-   "text": "The photo card ran almost to the window edges; it now has a 1440px maximum and lines up with the Nav and the content of the page."
-  },
-  {
-   "about": "Hero",
-   "text": "The split hero's text column is wider, up to 600px (was 520px), set in review."
+   "about": "Card",
+   "text": "CTAs must line up along the bottom of every row of cards, not only inside a Card Module, so rows read as one level."
   }
  ],
- "headline": "Updated Hero",
+ "headline": "Updated Card and CardModule",
  "highlights": [
-  "Updated Hero"
+  "Updated Card and CardModule"
  ],
  "minor": false
 }
