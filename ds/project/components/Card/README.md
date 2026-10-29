@@ -14,4 +14,5 @@ The Standard card from the Figma Cards page: a heading and short copy, with an o
 - **CTA:** the neutral text link (charcoal label, blue arrow), 24px under the content (16px on a card with no icon and no badge).
 - Icon and CTA are optional. Use tags or a badge, not both.
 - **Layout:** 350px wide in the Figma desktop frames, 512px on tablet; cards fill their grid column. On mobile they stack at full width.
+- **In a row:** cards share the row's height, and the CTA (with the tags or badge above it) sits on the bottom edge, so the links line up across the row however long each card's copy is. This holds in any row (a CardModule, a `.q-grid` in a page, a carousel, or a card in its own wrapper), not only in CardModule.
 - **Many cards:** when a section has more than eight, mobile shows the first five and a "Load More" button reveals the next set.

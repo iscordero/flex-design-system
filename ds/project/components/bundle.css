@@ -705,7 +705,6 @@ a.q-tag--text:focus-visible { outline: none; box-shadow: var(--focus-ring); bord
 /* One card on its own takes one column of three (two on tablet), so its lines stay a readable length; it lines up with the copy block. */
 .q-cardmod__grid--1 { justify-content: flex-start; }
 .q-cardmod--center .q-cardmod__grid--1 { justify-content: center; }
-.q-cardmod .q-scard__text { flex: 1 1 auto; }
 @container (max-width: 1023px) {
   .q-cardmod__grid { --q-cols: var(--q-cols-t, 1); }
 }
@@ -722,6 +721,9 @@ a.q-tag--text:focus-visible { outline: none; box-shadow: var(--focus-ring); bord
   background: var(--surface-neutral-100); border-radius: var(--radius-lg); box-shadow: var(--shadow-card);
   color: var(--text-primary); text-decoration: none; overflow: hidden;
 }
+/* Cards in a row share one height. A card straight in a grid or flex row stretches already; a card alone in a cell or wrapper fills that wrapper's height.
+   (Only a card on its own: a set height would stop sibling cards in a flex row from stretching.) */
+.q-card:only-child { height: 100%; }
 a.q-card:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 .q-card__bar { position: absolute; left: 0; right: 0; bottom: 0; height: 6px; border-radius: var(--radius-2xs); background: var(--qualys-blue); transform: scaleX(0); transform-origin: left center; transition: transform 300ms ease-in-out; }
 a.q-card:hover .q-card__bar, a.q-card:focus-visible .q-card__bar { transform: scaleX(1); }
@@ -733,7 +735,8 @@ a.q-card:hover .q-btn--primary, a.q-promo:hover .q-btn--primary, a.q-card.is-hov
 .q-scard { gap: var(--spacing-rg); }
 .q-scard__icon { width: 56px; height: 56px; }
 .q-scard__icon img, .q-scard__icon svg { display: block; width: 56px; height: 56px; }
-.q-scard__text { display: flex; flex-direction: column; }
+/* The text grows, so tags, badge and CTA sit on the bottom edge and line up across a row in any layout. */
+.q-scard__text { display: flex; flex-direction: column; flex: 1 1 auto; }
 .q-scard__eyebrow { margin-bottom: var(--spacing-2xs); font-family: var(--font-heading); font-weight: 600; font-size: 14px; line-height: 1; letter-spacing: 0.05em; letter-spacing: 5%; text-transform: uppercase; color: var(--text-secondary); }
 .q-scard__tagname { margin-bottom: var(--spacing-2xs); font-family: var(--font-heading); font-weight: 500; font-size: 16px; line-height: 1; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-accent-primary); }
 .q-scard__tagname span { display: block; }
