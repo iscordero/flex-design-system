@@ -1895,7 +1895,8 @@
     return h(HoverCard, Object.assign({ kind: 'logo', logo: l.src, label: name }, l.card, { onOpenChange: onOpenChange }),
       h('button', { type: 'button', className: 'q-hcard__trigger q-logos__trigger', 'aria-label': name + ': details', tabIndex: copy ? -1 : undefined }, img));
   }
-  /* LogoCarousel — a heading over a row of customer logos that scrolls by itself, with a pause button. */
+  /* LogoCarousel — a heading over a row of customer logos that scrolls by itself, with a pause button.
+     pauseButton={false} hides the button until it gets keyboard focus; the row still pauses on hover and focus. */
   function LogoCarousel(p) {
     var logos = (p.logos || []).map(function (l) { return typeof l === 'string' ? { src: l } : l; });
     var ps = React.useState(function () { return !!p.paused || prefersStill(); }), paused = ps[0], setPaused = ps[1];
@@ -1912,7 +1913,7 @@
     return h('section', { className: cx('q-section', 'q-logos', 'q-logos--carousel', 'q-logos--m' + mobile, (paused || held > 0) && 'is-paused', p.className), id: p.id },
       h('div', { className: 'q-section__inner q-logos__head' },
         p.title ? heading(p.titleLevel || 2, { className: 'q-copy__title q-logos__title' }, p.title) : null,
-        logos.length ? h('button', { type: 'button', className: 'q-carousel__btn q-logos__toggle', 'aria-label': paused ? (p.playLabel || 'Play the logo carousel') : (p.pauseLabel || 'Pause the logo carousel'), onClick: function () { setPaused(!paused); } },
+        logos.length ? h('button', { type: 'button', className: cx('q-carousel__btn', 'q-logos__toggle', p.pauseButton === false && 'q-logos__toggle--hidden'), 'aria-label': paused ? (p.playLabel || 'Play the logo carousel') : (p.pauseLabel || 'Pause the logo carousel'), onClick: function () { setPaused(!paused); } },
           h('svg', { viewBox: '0 0 16 16', width: 16, height: 16, 'aria-hidden': 'true' }, h('path', { d: paused ? 'M4 2.5L13 8L4 13.5Z' : 'M3.5 2.5H6.5V13.5H3.5ZM9.5 2.5H12.5V13.5H9.5Z', fill: 'currentColor' }))) : null),
       h('div', { className: 'q-logos__viewport' },
         h('ul', { className: 'q-logos__track', style: { animationDuration: (p.duration || Math.max(12, logos.length * 4)) + 's' } },

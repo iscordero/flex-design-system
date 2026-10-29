@@ -6,7 +6,7 @@
  "author": "Claude",
  "with": [],
  "approvedBy": [],
- "commits": 1,
+ "commits": 2,
  "base": "f01b7bb35e6be5a1bb2cd1071f7e6978468a2efb",
  "pr": null,
  "items": [
@@ -37,6 +37,60 @@
    "follows": [
     "Card"
    ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "LogoCarousel",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 6,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "**Provide:** `title` and `logos` (`{ src, alt, href, scale }`). Optional: `mobile`, `mobileMax`, `optical`, `duration`, `pauseButton`.",
+     "was": "**Provide:** `title` and `logos` (`{ src, alt, href, scale }`). Optional: `mobile`, `mobileMax`, `optical`, `duration`."
+    },
+    {
+     "kind": "changed",
+     "text": "**Heading:** `h2` (SemiBold 38px), on the content column (up to 1440px), 740px wide at most. A 44px pause button sits at the right; `pauseButton={false}` hides it (see Pause button).",
+     "was": "**Heading:** `h2` (SemiBold 38px), on the content column (up to 1440px), 740px wide at most. A 44px pause button sits at the right."
+    },
+    {
+     "kind": "added",
+     "text": "`pauseButton`: `true` (default) · What shows: The 44px pause button at the right of the heading · Use it when: Every page, unless the design calls for a clean heading row"
+    },
+    {
+     "kind": "added",
+     "text": "`pauseButton`: `false` · What shows: No button. It comes into view only when it gets keyboard focus, so keyboard and screen reader users can still stop the row · Use it when: The heading row must stay clear, such as a centered heading"
+    },
+    {
+     "kind": "added",
+     "text": "With the button hidden, the row still pauses under the pointer and when a logo link has focus, and it stays still for anyone who has reduced motion turned on."
+    },
+    {
+     "kind": "added",
+     "text": "**Hidden pause button (known problem):** WCAG 2.2.2 asks for a visible way to pause anything that moves on its own for more than five seconds. With `pauseButton={false}` the row pauses on hover and stays still with reduced motion, and keyboard users can reach the button, but a mouse user who only wants it to stop has to keep the pointer on it. Keep the button wherever you can."
+    }
+   ],
+   "propsAdded": [
+    {
+     "name": "pauseButton",
+     "doc": "false hides the pause button until it gets keyboard focus; the row still pauses on hover and focus. Default true"
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "LogoHierarchy",
+   "what": [
+    "look"
+   ],
+   "weight": 1
   },
   {
    "type": "guide",
@@ -85,9 +139,9 @@
    "text": "CTAs must line up along the bottom of every row of cards, not only inside a Card Module, so rows read as one level."
   }
  ],
- "headline": "Updated Card and CardModule",
+ "headline": "Updated 4 components",
  "highlights": [
-  "Updated Card and CardModule"
+  "Updated components: 4, including LogoCarousel, Card and CardModule"
  ],
  "minor": false
 }

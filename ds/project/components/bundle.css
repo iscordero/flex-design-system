@@ -1425,6 +1425,8 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-logos--carousel > .q-logos__head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--spacing-5xl); padding-bottom: var(--spacing-5xl); }
 .q-logos--carousel .q-logos__title { max-width: 740px; margin: 0; }
 .q-logos__toggle { flex: none; width: 44px; height: 44px; }
+/* pauseButton={false}: out of sight until it takes keyboard focus, so keyboard and screen reader users can still stop the row */
+.q-logos__toggle--hidden:not(:focus-visible) { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .q-logos__viewport { overflow: hidden; padding-bottom: var(--spacing-6xl); }
 .q-logos__track { display: flex; width: max-content; margin: 0; padding: 0 0 0 var(--spacing-3xl); list-style: none; animation: q-logos-run 24s linear infinite; }
 .q-logos.is-paused .q-logos__track, .q-logos__viewport:hover .q-logos__track, .q-logos__viewport:focus-within .q-logos__track { animation-play-state: paused; }

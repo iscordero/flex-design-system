@@ -1,4 +1,4 @@
-<!-- @dsCard group="Page modules · Carousels and logos" height=1441 width=1440 subtitle="Block module · A row of customer logos that scrolls by itself; pause by button or pointer. Placeholders." -->
+<!-- @dsCard group="Page modules · Carousels and logos" height=1912 width=1440 subtitle="Block module · A row of customer logos that scrolls by itself; pause by button or pointer. Placeholders." -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -36,6 +36,7 @@ var CARDS = LOGOS.slice(0, 6).map(function (l) { return Object.assign({card: {ti
 function lc(extra) { return h(Q.LogoCarousel, Object.assign({title: ['These Companies Switched to', h('br', {key: 'b'}), 'Qualys VMDR. So Can You.'], logos: LOGOS}, extra)); }
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
   cap('Logo carousel'), lc(),
+  cap('Pause button hidden: pauseButton={false} (Tab to it to bring it back)'), lc({pauseButton: false}),
   cap('With hover cards: point at or click a logo'), h(Q.LogoCarousel, {title: 'Trusted Across Every Industry', logos: CARDS}),
   cap('Mobile: mobile="stack" (default, up to 8 logos) · mobile="carousel"'), h('div', {className: 'phones'},
     h('div', {className: 'phone'}, h(Q.LogoCarousel, {title: 'These Companies Switched to Qualys VMDR. So Can You.', logos: LOGOS})),

@@ -1090,6 +1090,8 @@ export interface LogoCarouselProps {
   duration?: number;
   /** start paused */
   paused?: boolean;
+  /** false hides the pause button until it gets keyboard focus; the row still pauses on hover and focus. Default true */
+  pauseButton?: boolean;
   pauseLabel?: string;
   playLabel?: string;
   /** on phones: 'stack' (default) shows up to `mobileMax` logos in two still columns; 'carousel' keeps the moving row */
