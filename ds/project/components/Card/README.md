@@ -11,7 +11,7 @@ The Standard card from the Figma Cards page: a heading and short copy, with an o
 - **Heading:** SemiBold 24px, line height 1.1, −2%; Title Case, at most 60 characters.
 - **Copy:** IBM Plex Sans Regular 16px, `text-secondary`, 16px under the heading; at most 120 characters, so the icon stays the focal point.
 - **Tags:** light blue small badges, 8px apart, 16px under the copy. **Badge:** one fill badge, 24px under the copy; with no icon it moves to the top of the card.
-- **CTA:** the neutral text link (charcoal label, blue arrow), 24px under the content (16px on a card with no icon and no badge).
+- **CTA:** the blue text link (blue label and arrow, `link-primary`), 24px under the content (16px on a card with no icon and no badge). Every card's CTA is blue, so links read the same in any row of cards.
 - Icon and CTA are optional. Use tags or a badge, not both.
 - **Layout:** 350px wide in the Figma desktop frames, 512px on tablet; cards fill their grid column. On mobile they stack at full width.
 - **In a row:** cards share the row's height, and the CTA (with the tags or badge above it) sits on the bottom edge, so the links line up across the row however long each card's copy is. This holds in any row (a CardModule, a `.q-grid` in a page, a carousel, or a card in its own wrapper), not only in CardModule.

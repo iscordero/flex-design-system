@@ -960,6 +960,7 @@
     return h.apply(null, [el, props].concat(children, [h('span', { className: 'q-card__bar', 'aria-hidden': 'true' })]));
   }
   /* A text-link or button look for the card's call to action; the card itself is the link. */
+  /* Card CTAs are blue text links (Flex rule): pass 'blue' from every card. */
   function linkLabel(label, tone, download) {
     return h('span', { className: cx('q-textlink', 'q-textlink--' + (tone || 'neutral'), 'q-textlink--rg', 'q-card__cta') },
       download ? h(Icon, { name: 'download', size: 20 }) : null,
@@ -1036,7 +1037,7 @@
         p.description ? h('p', { className: 'q-scard__desc' }, p.description) : null),
       chips,
       badge && icon ? badge : null,
-      p.cta ? h('div', { className: 'q-scard__cta' }, linkLabel(p.cta)) : null
+      p.cta ? h('div', { className: 'q-scard__cta' }, linkLabel(p.cta, 'blue')) : null
     ]);
   }
 
@@ -1094,7 +1095,7 @@
   function ResourceCard(p) {
     var action = p.action || 'link';
     var foot = action === 'download' ? cardFoot(linkLabel(p.cta || 'Get the Report', 'blue', true))
-      : action === 'cta' ? cardFoot(linkLabel(p.cta || 'Learn More'))
+      : action === 'cta' ? cardFoot(linkLabel(p.cta || 'Learn More', 'blue'))
       : cardFoot(cardDate(p.date), outlink());
     return contentCard(p, 'resource', [
       cardMeta([metaText(p.resourceType)]),
@@ -1843,7 +1844,7 @@
         p.name ? h('figcaption', { className: 'q-tcard__person' },
           p.avatar === false || video ? null : h(Avatar, { image: typeof p.avatar === 'string' ? p.avatar : undefined }),
           h('div', { className: 'q-tcard__who' }, h('span', { className: 'q-tcard__name' }, p.name), p.company ? h('span', { className: 'q-tcard__company' }, p.company) : null)) : null,
-        link ? h(TextLink, { tone: 'neutral', arrow: true, href: link.href, onClick: link.onClick }, link.label || 'Read the Story') : null)
+        link ? h(TextLink, { tone: 'blue', arrow: true, href: link.href, onClick: link.onClick }, link.label || 'Read the Story') : null)
     ];
     var content = h('div', { className: 'q-tcard__content' }, body);
     return h('figure', { className: cx('q-tcard', 'q-tcard--' + size, p.image && 'q-tcard--image', video && 'q-tcard--video', p.className), style: p.image ? { backgroundImage: 'url("' + p.image + '")' } : undefined },
@@ -2556,7 +2557,7 @@
         badge ? h('span', { className: 'q-hcard__badge' }, badge) : null) : null,
       p.title ? h('div', { key: 'n', className: 'q-hcard__name', id: id + '-name' }, p.title) : null,
       body ? h(typeof body === 'string' ? 'p' : 'div', { key: 'b', className: 'q-hcard__body' }, body) : null,
-      link && link.href ? h(TextLink, { key: 'l', tone: 'neutral', arrow: true, href: link.href, onClick: link.onClick }, link.label || 'Learn More') : null
+      link && link.href ? h(TextLink, { key: 'l', tone: 'blue', arrow: true, href: link.href, onClick: link.onClick }, link.label || 'Learn More') : null
     ];
     function card(extra) {
       return h('div', Object.assign({ ref: cardRef, id: id, className: cx('q-hcard__card', 'q-hcard__card--' + kind, closable && 'has-close', p.cardClassName), 'aria-labelledby': name ? id + '-name' : undefined, 'aria-label': name ? undefined : p.label }, extra),

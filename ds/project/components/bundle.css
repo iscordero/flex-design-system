@@ -728,6 +728,8 @@ a.q-card:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 .q-card__bar { position: absolute; left: 0; right: 0; bottom: 0; height: 6px; border-radius: var(--radius-2xs); background: var(--qualys-blue); transform: scaleX(0); transform-origin: left center; transition: transform 300ms ease-in-out; }
 a.q-card:hover .q-card__bar, a.q-card:focus-visible .q-card__bar { transform: scaleX(1); }
 a.q-card:hover .q-textlink__arrow, a.q-promo:hover .q-textlink__arrow, a.q-card.is-hover .q-textlink__arrow, a.q-promo.is-hover .q-textlink__arrow { transform: translateX(var(--spacing-5xs)); }
+/* A card's CTA is a blue text link; it takes the link hover color while the card is hovered */
+a.q-card:hover .q-textlink--blue, a.q-card.is-hover .q-textlink--blue { color: var(--link-primary-hover); }
 a.q-card:hover .q-btn--primary, a.q-promo:hover .q-btn--primary, a.q-card.is-hover .q-btn--primary, a.q-promo.is-hover .q-btn--primary { background: var(--button-bg-primary-hover); }
 .q-card__cta { pointer-events: none; }
 

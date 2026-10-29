@@ -81,7 +81,7 @@ Choosing between them: if every item deserves to be seen, use cards; if people o
 | **InlinePromoCard** | A promotion for something else on the site, in a dark or blue card. |
 | **ProfileCard** | A person: a speaker, an executive, a team member. Several make a ProfileGrid. |
 
-Keep one kind of card per row. Mixing a ResourceCard and a BlogCard in one carousel is fine; mixing a Card with a ResourceCard is not. Cards in a row share one height, with their calls to action lined up along the bottom.
+Keep one kind of card per row. Mixing a ResourceCard and a BlogCard in one carousel is fine; mixing a Card with a ResourceCard is not. Cards in a row share one height, with their calls to action lined up along the bottom, and a card's text-link CTA is always blue.
 
 ## Buttons and links
 

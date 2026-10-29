@@ -8,8 +8,8 @@ Tertiary text-link buttons from the Figma Tertiary sheet: a lightweight inline c
 | Tone | Color | Use |
 | --- | --- | --- |
 | `red` | `link-secondary-default` → `link-secondary-hover` | Lesser CTAs or dismiss actions, in cards, standalone, or among several adjacent CTAs. |
-| `blue` | `link-primary-default` → `link-primary-hover` | Functional clickable elements such as filters; with an arrow, CTAs in banners, modals and dense text. |
-| `neutral` | `text-primary` label, `qualys-blue` arrow (use with `arrow`) | Lesser CTAs inside cards and other small modules. |
+| `blue` | `link-primary-default` → `link-primary-hover` | Functional clickable elements such as filters; with an arrow, the CTA that ends a card (Card, ResourceCard, TestimonialCard, HoverCard) and CTAs in banners, modals and dense text. |
+| `neutral` | `text-primary` label, `qualys-blue` arrow (use with `arrow`) | Lesser CTAs in small modules that aren't cards, such as an accordion row or a copy block. |
 | `inverted` | `text-inverted` | On dark surfaces. |
 
 - Label in Wix Madefor Text SemiBold (16 or 14px, −0.5%); arrow 16px, `spacing-5xs` gap.

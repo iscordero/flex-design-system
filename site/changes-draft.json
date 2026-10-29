@@ -6,7 +6,7 @@
  "author": "Claude",
  "with": [],
  "approvedBy": [],
- "commits": 2,
+ "commits": 3,
  "base": "f01b7bb35e6be5a1bb2cd1071f7e6978468a2efb",
  "pr": null,
  "items": [
@@ -18,8 +18,13 @@
     "look",
     "docs"
    ],
-   "weight": 3,
+   "weight": 5,
    "notes": [
+    {
+     "kind": "changed",
+     "text": "**CTA:** the blue text link (blue label and arrow, `link-primary`), 24px under the content (16px on a card with no icon and no badge). Every card's CTA is blue, so links read the same in any row of cards.",
+     "was": "**CTA:** the neutral text link (charcoal label, blue arrow), 24px under the content (16px on a card with no icon and no badge)."
+    },
     {
      "kind": "added",
      "text": "**In a row:** cards share the row's height, and the CTA (with the tags or badge above it) sits on the bottom edge, so the links line up across the row however long each card's copy is. This holds in any row (a CardModule, a `.q-grid` in a page, a carousel, or a card in its own wrapper), not only in CardModule."
@@ -37,6 +42,32 @@
    "follows": [
     "Card"
    ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "HoverCard",
+   "what": [
+    "look",
+    "docs"
+   ],
+   "weight": 2,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "**Logo card** (`kind=\"logo\"`): `logo` (and `logoAlt`), optional `badge` (an image address or your own node, for a partner or certification badge), `title`, `body` and `link` (`{ label, href }`). The link is a blue TextLink with the arrow, like every card CTA. One link only.",
+     "was": "**Logo card** (`kind=\"logo\"`): `logo` (and `logoAlt`), optional `badge` (an image address or your own node, for a partner or certification badge), `title`, `body` and `link` (`{ label, href }`). The link is a neutral TextLink with the blue arrow. One link only."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "IntegrationCard",
+   "what": [
+    "look"
+   ],
+   "weight": 0
   },
   {
    "type": "component",
@@ -93,6 +124,73 @@
    "weight": 1
   },
   {
+   "type": "component",
+   "action": "changed",
+   "name": "ResourceCard",
+   "what": [
+    "look",
+    "docs"
+   ],
+   "weight": 2,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "`action`: `cta` · Footer: The blue text link with an arrow",
+     "was": "Footer: The neutral text link with an arrow"
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "TestimonialCard",
+   "what": [
+    "look",
+    "docs"
+   ],
+   "weight": 2,
+   "follows": [
+    "TextLink"
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "TextLink",
+   "what": [
+    "look",
+    "docs"
+   ],
+   "weight": 1,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "Tone: `blue` · Use: Functional clickable elements such as filters; with an arrow, the CTA that ends a card (Card, ResourceCard, TestimonialCard, HoverCard) and CTAs in banners, modals and dense text.",
+     "was": "Use: Functional clickable elements such as filters; with an arrow, CTAs in banners, modals and dense text."
+    },
+    {
+     "kind": "changed",
+     "text": "Tone: `neutral` · Use: Lesser CTAs in small modules that aren't cards, such as an accordion row or a copy block.",
+     "was": "Use: Lesser CTAs inside cards and other small modules."
+    }
+   ]
+  },
+  {
+   "type": "guide",
+   "name": "Text link buttons",
+   "guide": "Buttons and Links",
+   "gid": "guide-8",
+   "section": "Text link buttons",
+   "action": "changed",
+   "notes": [
+    {
+     "kind": "added",
+     "text": "**On cards, it's blue.** The call to action that ends a card (Card, ResourceCard, TestimonialCard, HoverCard) is always the blue text link with its arrow, never the neutral one, so links read the same across every row of cards."
+    }
+   ],
+   "minor": true
+  },
+  {
    "type": "guide",
    "name": "Cards",
    "guide": "Choosing Components",
@@ -102,7 +200,7 @@
    "notes": [
     {
      "kind": "changed",
-     "text": "Keep one kind of card per row. Mixing a ResourceCard and a BlogCard in one carousel is fine; mixing a Card with a ResourceCard is not. Cards in a row share one height, with their calls to action lined up along the bottom.",
+     "text": "Keep one kind of card per row. Mixing a ResourceCard and a BlogCard in one carousel is fine; mixing a Card with a ResourceCard is not. Cards in a row share one height, with their calls to action lined up along the bottom, and a card's text-link CTA is always blue.",
      "was": "Keep one kind of card per row. Mixing a ResourceCard and a BlogCard in one carousel is fine; mixing a Card with a ResourceCard is not."
     }
    ],
@@ -118,7 +216,7 @@
    "notes": [
     {
      "kind": "changed",
-     "text": "**Rows of cards** (stat cards, Card Module, profile grids): pick the number across so rows come out full, and never leave one card alone on a row when another number avoids it: five are 3 + 2, not 4 + 1; four on tablet are 2 × 2, not 3 + 1. A row that still comes out short is centered, with its cards at the same width as the rows above. Listings that grow, such as search results or the events grid with Load More, keep their reading order and start each row on the left. Cards in a row share one height, and each card's call to action (text link, button or footer) sits on its bottom edge, so the calls to action line up across the row however long each card's copy is, wherever the row sits: a Card Module, a grid in a page or a carousel.",
+     "text": "**Rows of cards** (stat cards, Card Module, profile grids): pick the number across so rows come out full, and never leave one card alone on a row when another number avoids it: five are 3 + 2, not 4 + 1; four on tablet are 2 × 2, not 3 + 1. A row that still comes out short is centered, with its cards at the same width as the rows above. Listings that grow, such as search results or the events grid with Load More, keep their reading order and start each row on the left. Cards in a row share one height, and each card's call to action (text link, button or footer) sits on its bottom edge, so the calls to action line up across the row however long each card's copy is, wherever the row sits: a Card Module, a grid in a page or a carousel. A card's text link is always blue (see Buttons and links).",
      "was": "**Rows of cards** (stat cards, Card Module, profile grids): pick the number across so rows come out full, and never leave one card alone on a row when another number avoids it: five are 3 + 2, not 4 + 1; four on tablet are 2 × 2, not 3 + 1. A row that still comes out short is centered, with its cards at the same width as the rows above. Listings that grow, such as search results or the events grid with Load More, keep their reading order and start each row on the left."
     }
    ],
@@ -137,11 +235,15 @@
   {
    "about": "Card",
    "text": "CTAs must line up along the bottom of every row of cards, not only inside a Card Module, so rows read as one level."
+  },
+  {
+   "about": "LogoCarousel",
+   "text": "the homepage logo row needs a clean heading row without the pause button, so designers can turn it off per page."
   }
  ],
- "headline": "Updated 4 components",
+ "headline": "Updated 9 components",
  "highlights": [
-  "Updated components: 4, including LogoCarousel, Card and CardModule"
+  "Updated components: 9, including LogoCarousel, Card and HoverCard"
  ],
  "minor": false
 }
