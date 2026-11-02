@@ -9,7 +9,7 @@ The closing call to action from the Figma CTAs page: a sign-up form beside or ov
 |---|---|---|
 | `media-right` (default with a form) | CTA Form Module – Media Right | The form on the left, a 14:9 image on the right |
 | `media-left` | CTA Form Module – Media Left | The same, mirrored |
-| `bleed` | CTA Form Module – Media Bleed Right | The picture runs off the right edge behind a rounded, cloud-shaped edge |
+| `bleed` | CTA Form Module – Media Bleed Right | The picture runs off the right edge behind a rounded, cloud-shaped edge. It starts 56px (`spacing-5xl`) below the top of the section, so its rounded top shows, and runs off the bottom |
 | `background` | CTA Form Module – Media Full Bleed | The picture fills the section under black at 50%; the form turns white |
 | `card` (default without a form) | CTA Module | A dark card: heading, one paragraph, buttons |
 
@@ -38,6 +38,7 @@ Where the Figma frames disagree, one value is used:
 - Fields are drawn 50px tall; they are 56px, as TextField.
 - Every mobile frame shows the plain form; the `background` layout keeps its picture on mobile.
 - The card is Asphalt in the documented example and Rhino in the component; Asphalt is used, because white text needs it.
+- The bleed picture is drawn flush with the top of the section, which reads as a hard, straight crop; it starts 56px down, level with the section's padding.
 - The Figma usage notes are still placeholders ("Used for…").
 
 - **Banner:** the form can open with a banner (`form.banner`): a photo, a headline on a color, a headline with an image, or a headline over a photo. See Form for the variants.

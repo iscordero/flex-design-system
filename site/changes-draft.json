@@ -2,11 +2,11 @@
  "id": "draft",
  "sha": "",
  "draft": true,
- "date": "2026-10-29",
+ "date": "2026-11-02",
  "author": "Claude",
  "with": [],
  "approvedBy": [],
- "commits": 4,
+ "commits": 5,
  "base": "f01b7bb35e6be5a1bb2cd1071f7e6978468a2efb",
  "pr": null,
  "items": [
@@ -72,9 +72,21 @@
    "action": "changed",
    "name": "CtaModule",
    "what": [
-    "look"
+    "look",
+    "docs"
    ],
-   "weight": 2
+   "weight": 4,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "Layout: `bleed` · What it shows: The picture runs off the right edge behind a rounded, cloud-shaped edge. It starts 56px (`spacing-5xl`) below the top of the section, so its rounded top shows, and runs off the bottom",
+     "was": "What it shows: The picture runs off the right edge behind a rounded, cloud-shaped edge"
+    },
+    {
+     "kind": "added",
+     "text": "The bleed picture is drawn flush with the top of the section, which reads as a hard, straight crop; it starts 56px down, level with the section's padding."
+    }
+   ]
   },
   {
    "type": "component",
@@ -416,6 +428,10 @@
   {
    "about": "HoverCard",
    "text": "card CTAs use blue text so links read the same across every row of cards."
+  },
+  {
+   "about": "TestimonialCarousel",
+   "text": "with fewer than three quotes there is nothing to scroll to, so the cards fill the width of the container instead."
   }
  ],
  "headline": "Updated 22 components",

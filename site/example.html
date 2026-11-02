@@ -1538,8 +1538,9 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-cta__media { flex: 560 1 0; min-width: 0; }
 .q-cta--media-left .q-cta__media { order: -1; }
 .q-cta__media .q-media { aspect-ratio: 14 / 9; }
-/* Bleed: the picture runs off the right edge behind a rounded, cloud-like edge */
-.q-cta__bleed { position: absolute; inset: 0 0 0 46%; background: var(--surface-neutral-400) center / cover no-repeat;
+/* Bleed: the picture runs off the right edge behind a rounded, cloud-like edge. It starts 56px down (the section's padding), so its
+   rounded top shows instead of a straight crop along the section's top edge; it still runs off the bottom. */
+.q-cta__bleed { position: absolute; inset: var(--spacing-5xl) 0 0 46%; background: var(--surface-neutral-400) center / cover no-repeat;
   -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1730.74 694.26"><path d="M446.3 0C281.99 0 148.77 133.22 148.77 297.54C148.77 299.86 149.41 302.03 149.46 304.35C63.69 326.22 0 403.32 0 495.9C0 497.21 0.18 498.46 0.2 499.75C0.18 501.2 0 502.59 0 504.04C0 594.04 59.98 669.9 142.06 694.26L1730.74 694.26L1730.74 0L446.3 0Z"/></svg>') left center / auto 105.2% no-repeat;
   mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1730.74 694.26"><path d="M446.3 0C281.99 0 148.77 133.22 148.77 297.54C148.77 299.86 149.41 302.03 149.46 304.35C63.69 326.22 0 403.32 0 495.9C0 497.21 0.18 498.46 0.2 499.75C0.18 501.2 0 502.59 0 504.04C0 594.04 59.98 669.9 142.06 694.26L1730.74 694.26L1730.74 0L446.3 0Z"/></svg>') left center / auto 105.2% no-repeat; }
 /* Background: the picture fills the section under black 50%; the form turns white */
