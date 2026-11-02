@@ -6,7 +6,7 @@
  "author": "Claude",
  "with": [],
  "approvedBy": [],
- "commits": 5,
+ "commits": 6,
  "base": "f01b7bb35e6be5a1bb2cd1071f7e6978468a2efb",
  "pr": null,
  "items": [
@@ -75,7 +75,7 @@
     "look",
     "docs"
    ],
-   "weight": 4,
+   "weight": 8,
    "notes": [
     {
      "kind": "changed",
@@ -432,11 +432,15 @@
   {
    "about": "TestimonialCarousel",
    "text": "with fewer than three quotes there is nothing to scroll to, so the cards fill the width of the container instead."
+  },
+  {
+   "about": "CtaModule",
+   "text": "the bleed picture was cropped flat along the section's top edge, so it now starts lower and shows its rounded top."
   }
  ],
  "headline": "Updated 22 components",
  "highlights": [
-  "Updated components: 22, including TestimonialCarousel, LogoCarousel and Card"
+  "Updated components: 22, including TestimonialCarousel, CtaModule and LogoCarousel"
  ],
  "minor": false
 }
