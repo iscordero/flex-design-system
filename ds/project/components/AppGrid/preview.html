@@ -1,0 +1,28 @@
+<!-- @dsCard group="Page modules · Content sections" height=2032 width=1440 subtitle="Block module · The app suite: a card per product family, its apps as links, under centered copy." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AppGrid — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card);background:var(--surface-neutral-200);container-type:inline-size}.pad{padding:0 var(--spacing-xl) var(--spacing-xl)}.ground{background:var(--surface-neutral-200);container-type:inline-size}.dark{display:inline-block;padding:var(--spacing-xl);border-radius:var(--radius-lg);background:var(--asphalt)}.pair{display:flex;gap:var(--spacing-4xl);align-items:flex-start}.w{width:600px}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+var I = {assets: '/_blob/4d860fbb512f44272b186d609529742c', detect: '/_blob/bdcd7cc4b2bbc39f3f0aba2ee1b6ea8e', compliance: '/_blob/afc380121ab10f5f48e6152e0a616c5e', eliminate: '/_blob/1b73d8e9df0314acff6a2196b7893e4e', cloud: '/_blob/dacda2a3a9a5a660aa21c4aa3d9a2578'};
+var G = [
+  {title: 'Asset Management', icon: I.assets, links: ['CyberSecurity Asset Management (CSAM)', 'External Attack Surface Management (EASM)']},
+  {title: 'Vulnerability & Configuration Management', icon: I.detect, links: ['Vulnerability Management, Detection and Response (VMDR)', 'Container Security (CS)', 'TotalAppSec', 'Infrastructure as Code Security (IaC)']},
+  {title: 'Risk Remediation', icon: I.eliminate, links: ['TruRisk Eliminate (TE)', 'Patch Management (PM)']},
+  {title: 'Compliance', icon: I.compliance, links: ['Policy Audit', 'File Integrity Monitoring (FIM)']},
+  {title: 'Cloud Security', icon: I.cloud, links: ['TotalCloud (CNAPP)', 'Cloud Detection and Response (CDR)', 'Kubernetes and Container Security (KCS)']}];
+var COPY = {title: 'A Powerful Suite of Apps on a Single, Unified Platform', body: 'Enterprise TruRisk Platform apps are fully integrated and natively share the data they collect, so you can articulate the financial impact of your security posture in real time.', link: {label: 'Explore the Platform', href: '#'}};
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('Five product families under centered copy (hover an app)'), h('div', {className: 'ground'}, h(Q.AppGrid, Object.assign({groups: G, label: 'Enterprise TruRisk Platform apps'}, COPY))),
+  cap('Mobile'), h('div', {className: 'phones'}, h('div', {className: 'phone'}, h(Q.AppGrid, Object.assign({groups: G.slice(0, 3), label: 'Enterprise TruRisk Platform apps'}, COPY))))));
+</script>
+</body>
+</html>

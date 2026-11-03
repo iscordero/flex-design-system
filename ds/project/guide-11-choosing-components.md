@@ -23,6 +23,9 @@ A page is a stack of page modules, top to bottom. Most pages use this order, lea
 | **TabModule** | Three to eight related views of one subject, where people pick the one that applies to them (by role, step or product). |
 | **AccordionModule** | Four to twelve items people scan and open one at a time: FAQs, capability lists, specifications. |
 | **Stats** | Three or four figures that prove a claim. Usually one Stats section per page, so the numbers keep their weight. |
+| **AppGrid** | The app suite: a card per product family with its apps as links, under centered copy. For platform and overview pages. |
+| **FeatureList** | A checklist of what a product or plan includes, beside a copy block and one button. |
+| **StatCard** (plain) | One or two figures inside a copy block, beside a picture, with no card. |
 
 Choosing between them: if every item deserves to be seen, use cards; if people only need one at a time, use tabs (few, visual) or an accordion (many, text).
 
@@ -32,8 +35,8 @@ Choosing between them: if every item deserves to be seen, use cards; if people o
 | --- | --- |
 | **LogoCarousel** | A strip of customer logos near the top, to say "trusted by". |
 | **LogoHierarchy** | Sponsors or partners in tiers, such as an event's partner pavilion. |
-| **TestimonialCarousel** | Customer quotes or video stories. Use the video version when you have recordings. |
-| **Carousel** | A row of resources, events or blog posts people browse sideways ("Latest Resources"). |
+| **TestimonialCarousel** | Customer quotes or video stories. Use the video version when you have recordings. With fewer than three quotes it shows them as cards that fill the row instead of a carousel. |
+| **Carousel** | A row of resources, events or blog posts people browse sideways ("Latest Resources"). Give it a `title` and a "View All" `link` for the heading row above the cards. |
 
 ### Comparing
 
@@ -64,7 +67,7 @@ Choosing between them: if every item deserves to be seen, use cards; if people o
 
 - Ask for as little as possible: an email address is often enough. Each extra field loses sign-ups.
 - One form per page. A page with a lead-form Hero doesn't need one in the CtaModule as well.
-- After a form, show **SuccessConfirmation** in its place, rather than sending people to a new page.
+- After a form, show **SuccessConfirmation** in its place, rather than sending people to a new page. A Form's `submitted` state does this inside the card and keeps its banner.
 
 ## Cards
 
@@ -80,8 +83,9 @@ Choosing between them: if every item deserves to be seen, use cards; if people o
 | **TestimonialCard** | One customer quote; usually inside TestimonialCarousel. |
 | **InlinePromoCard** | A promotion for something else on the site, in a dark or blue card. |
 | **ProfileCard** | A person: a speaker, an executive, a team member. Several make a ProfileGrid. |
+| **SpeakerList** | Who is speaking, as small photos with names and roles, inside a Hero, an EventBanner or a copy block. Not a card: use ProfileCard when people need a bio or a link. |
 
-Keep one kind of card per row. Mixing a ResourceCard and a BlogCard in one carousel is fine; mixing a Card with a ResourceCard is not.
+Keep one kind of card per row. Mixing a ResourceCard and a BlogCard in one carousel is fine; mixing a Card with a ResourceCard is not. Cards in a row share one height, with their calls to action lined up along the bottom, and a card's text-link CTA is always blue.
 
 ## Buttons and links
 
@@ -100,6 +104,7 @@ Keep one kind of card per row. Mixing a ResourceCard and a BlogCard in one carou
 | **Toast** | A short confirmation that something happened ("Saved"). It disappears by itself. |
 | **NotificationBar** | Something everyone on the site should know: maintenance, a release, an event. One line across the top. |
 | **NavBanner** | Promoting one event above the Nav. |
+| **EventBanner** | Promoting an event or a series inside the page: series name, a tag, the title and one button, over a light picture or video. |
 | **SuccessConfirmation** | The result of a form or action, in place of the form. |
 | **Modal** | Content that needs focus without leaving the page: a video, a short form, details. |
 | **AlertDialog** | A decision that must be answered before going on: delete, leave without saving. |

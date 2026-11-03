@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components · Cards" height=439 width=1440 subtitle="Component · One figure with its label: large and medium, filled and outlined." -->
+<!-- @dsCard group="Components · Cards" height=658 width=1440 subtitle="Component · One figure with its label: large and medium, filled and outlined." -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,7 +22,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
     box('w3', h(Q.StatCard, {icon: ICON.detect, value: '150', suffix: '%', label: 'Faster Detection', description: D})),
     box('w3', h(Q.StatCard, {tone: 'outline', icon: ICON.measure, value: '99.99', suffix: '%', label: 'More Accurate Scanning', description: D})),
     box('w4', h(Q.StatCard, {size: 'md', icon: ICON.threat, value: '10', suffix: 'x', label: 'Less Zero-day Threats', description: D})),
-    box('w4', h(Q.StatCard, {size: 'md', tone: 'outline', icon: ICON.risk, prefix: '#', value: '1', label: 'Risk-Management Tool', description: D})))));
+    box('w4', h(Q.StatCard, {size: 'md', tone: 'outline', icon: ICON.risk, prefix: '#', value: '1', label: 'Risk-Management Tool', description: D}))),
+  cap('Plain (no card): figures beside each other under copy'),
+  h('div', {className: 'row'},
+    box('w4', h(Q.StatCard, {size: 'md', tone: 'plain', value: '99', suffix: '%+', label: 'Still Unpatched', description: D})),
+    box('w4', h(Q.StatCard, {size: 'md', tone: 'plain', value: '43', suffix: ' days', label: 'To Remediate', description: D})))));
 </script>
 </body>
 </html>

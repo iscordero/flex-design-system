@@ -705,7 +705,6 @@ a.q-tag--text:focus-visible { outline: none; box-shadow: var(--focus-ring); bord
 /* One card on its own takes one column of three (two on tablet), so its lines stay a readable length; it lines up with the copy block. */
 .q-cardmod__grid--1 { justify-content: flex-start; }
 .q-cardmod--center .q-cardmod__grid--1 { justify-content: center; }
-.q-cardmod .q-scard__text { flex: 1 1 auto; }
 @container (max-width: 1023px) {
   .q-cardmod__grid { --q-cols: var(--q-cols-t, 1); }
 }
@@ -722,10 +721,15 @@ a.q-tag--text:focus-visible { outline: none; box-shadow: var(--focus-ring); bord
   background: var(--surface-neutral-100); border-radius: var(--radius-lg); box-shadow: var(--shadow-card);
   color: var(--text-primary); text-decoration: none; overflow: hidden;
 }
+/* Cards in a row share one height. A card straight in a grid or flex row stretches already; a card alone in a cell or wrapper fills that wrapper's height.
+   (Only a card on its own: a set height would stop sibling cards in a flex row from stretching.) */
+.q-card:only-child { height: 100%; }
 a.q-card:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 .q-card__bar { position: absolute; left: 0; right: 0; bottom: 0; height: 6px; border-radius: var(--radius-2xs); background: var(--qualys-blue); transform: scaleX(0); transform-origin: left center; transition: transform 300ms ease-in-out; }
 a.q-card:hover .q-card__bar, a.q-card:focus-visible .q-card__bar { transform: scaleX(1); }
 a.q-card:hover .q-textlink__arrow, a.q-promo:hover .q-textlink__arrow, a.q-card.is-hover .q-textlink__arrow, a.q-promo.is-hover .q-textlink__arrow { transform: translateX(var(--spacing-5xs)); }
+/* A card's CTA is a blue text link; it takes the link hover color while the card is hovered */
+a.q-card:hover .q-textlink--blue, a.q-card.is-hover .q-textlink--blue { color: var(--link-primary-hover); }
 a.q-card:hover .q-btn--primary, a.q-promo:hover .q-btn--primary, a.q-card.is-hover .q-btn--primary, a.q-promo.is-hover .q-btn--primary { background: var(--button-bg-primary-hover); }
 .q-card__cta { pointer-events: none; }
 
@@ -733,7 +737,8 @@ a.q-card:hover .q-btn--primary, a.q-promo:hover .q-btn--primary, a.q-card.is-hov
 .q-scard { gap: var(--spacing-rg); }
 .q-scard__icon { width: 56px; height: 56px; }
 .q-scard__icon img, .q-scard__icon svg { display: block; width: 56px; height: 56px; }
-.q-scard__text { display: flex; flex-direction: column; }
+/* The text grows, so tags, badge and CTA sit on the bottom edge and line up across a row in any layout. */
+.q-scard__text { display: flex; flex-direction: column; flex: 1 1 auto; }
 .q-scard__eyebrow { margin-bottom: var(--spacing-2xs); font-family: var(--font-heading); font-weight: 600; font-size: 14px; line-height: 1; letter-spacing: 0.05em; letter-spacing: 5%; text-transform: uppercase; color: var(--text-secondary); }
 .q-scard__tagname { margin-bottom: var(--spacing-2xs); font-family: var(--font-heading); font-weight: 500; font-size: 16px; line-height: 1; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-accent-primary); }
 .q-scard__tagname span { display: block; }
@@ -1211,7 +1216,7 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-gc__bannerimg { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
 .q-gc__shade { position: absolute; inset: 0; background: var(--overlay-dark); }
 .q-gc__bannercopy { position: relative; flex: 0 1 600px; }
-.q-gc__banner .q-copy__title, .q-gc__banner .q-copy__body { color: inherit; }
+.q-gc__banner .q-copy__eyebrow, .q-gc__banner .q-copy__title, .q-gc__banner .q-copy__body { color: inherit; }
 .q-gc__banner .q-copy__actions { margin-top: var(--spacing-xl); }
 .q-gc__play { margin: auto; }
 
@@ -1330,14 +1335,16 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-cta--form { overflow: hidden; }
 .q-cta--form > .q-section__inner { position: relative; padding-block: var(--spacing-5xl); }
 .q-cta__row { display: flex; align-items: center; gap: var(--spacing-5xl); }
-.q-cta__formcol { display: flex; flex: 520 1 0; justify-content: center; min-width: 0; }
+.q-cta__formcol { display: flex; flex: 520 1 0; justify-content: flex-start; min-width: 0; }
+.q-cta--media-left .q-cta__formcol { justify-content: flex-end; }
 .q-cta__media { flex: 560 1 0; min-width: 0; }
 .q-cta--media-left .q-cta__media { order: -1; }
 .q-cta__media .q-media { aspect-ratio: 14 / 9; }
-/* Bleed: the picture runs off the right edge behind a rounded, cloud-like edge */
-.q-cta__bleed { position: absolute; inset: 0 0 0 46%; background: var(--surface-neutral-400) center / cover no-repeat;
-  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1730.74 694.26"><path d="M446.3 0C281.99 0 148.77 133.22 148.77 297.54C148.77 299.86 149.41 302.03 149.46 304.35C63.69 326.22 0 403.32 0 495.9C0 497.21 0.18 498.46 0.2 499.75C0.18 501.2 0 502.59 0 504.04C0 594.04 59.98 669.9 142.06 694.26L1730.74 694.26L1730.74 0L446.3 0Z"/></svg>') left center / auto 105.2% no-repeat;
-  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1730.74 694.26"><path d="M446.3 0C281.99 0 148.77 133.22 148.77 297.54C148.77 299.86 149.41 302.03 149.46 304.35C63.69 326.22 0 403.32 0 495.9C0 497.21 0.18 498.46 0.2 499.75C0.18 501.2 0 502.59 0 504.04C0 594.04 59.98 669.9 142.06 694.26L1730.74 694.26L1730.74 0L446.3 0Z"/></svg>') left center / auto 105.2% no-repeat; }
+/* Bleed: the picture runs off the right edge behind a rounded, cloud-like edge. It starts 56px down (the section's padding), and the
+   cloud shape fits its height from the top, so the rounded top corner shows whole instead of being cropped flat; it runs off the bottom. */
+.q-cta__bleed { position: absolute; inset: var(--spacing-5xl) 0 0 46%; background: var(--surface-neutral-400) center / cover no-repeat;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1730.74 694.26"><path d="M446.3 0C281.99 0 148.77 133.22 148.77 297.54C148.77 299.86 149.41 302.03 149.46 304.35C63.69 326.22 0 403.32 0 495.9C0 497.21 0.18 498.46 0.2 499.75C0.18 501.2 0 502.59 0 504.04C0 594.04 59.98 669.9 142.06 694.26L1730.74 694.26L1730.74 0L446.3 0Z"/></svg>') left top / auto 100% no-repeat;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1730.74 694.26"><path d="M446.3 0C281.99 0 148.77 133.22 148.77 297.54C148.77 299.86 149.41 302.03 149.46 304.35C63.69 326.22 0 403.32 0 495.9C0 497.21 0.18 498.46 0.2 499.75C0.18 501.2 0 502.59 0 504.04C0 594.04 59.98 669.9 142.06 694.26L1730.74 694.26L1730.74 0L446.3 0Z"/></svg>') left top / auto 100% no-repeat; }
 /* Background: the picture fills the section under black 50%; the form turns white */
 .q-cta__bg { position: absolute; inset: 0; background: var(--surface-neutral-600); }
 .q-cta__bg--empty { background: var(--asphalt); }
@@ -1403,7 +1410,7 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-tcard__name { font-family: var(--font-heading); font-weight: 600; font-size: 16px; line-height: 1.3; letter-spacing: 0; }
 .q-tcard__company { font-family: var(--font-body); font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-secondary); }
 .q-tcard__foot .q-textlink { flex: none; }
-.q-tcard--lg { min-height: 500px; }
+.q-tcard--lg { min-height: calc(var(--spacing-6xl) * 4); }
 .q-tcard--sm { padding: var(--spacing-xl); }
 .q-tcard--sm .q-tcard__quote { margin-bottom: var(--spacing-xl); font-size: 24px; letter-spacing: -0.02em; letter-spacing: -2%; }
 /* On a photo: the quote sits on a white 90% panel, 580 of 939 wide */
@@ -1413,6 +1420,9 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-tcard__video { flex: 0 0 312px; min-width: 0; }
 .q-tcard__video .q-media { height: 100%; min-height: 416px; aspect-ratio: auto; border-radius: var(--radius-rg); background: var(--rhino); }
 .q-tcarousel--lg > * { --q-slide: 939px; }
+/* Fewer than three quotes: no carousel. One or two cards share the row and fill the content column, 24px apart */
+.q-tcarousel--row > .q-section__inner { padding-block: var(--spacing-6xl); }
+.q-tcarousel__row { display: grid; grid-auto-columns: minmax(0, 1fr); grid-auto-flow: column; gap: var(--gutter); }
 .q-tcarousel--sm > * { --q-slide: 500px; }
 .q-tcarousel--video > * { --q-slide: 836px; }
 
@@ -1422,6 +1432,8 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-logos--carousel > .q-logos__head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--spacing-5xl); padding-bottom: var(--spacing-5xl); }
 .q-logos--carousel .q-logos__title { max-width: 740px; margin: 0; }
 .q-logos__toggle { flex: none; width: 44px; height: 44px; }
+/* pauseButton={false}: out of sight until it takes keyboard focus, so keyboard and screen reader users can still stop the row */
+.q-logos__toggle--hidden:not(:focus-visible) { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .q-logos__viewport { overflow: hidden; padding-bottom: var(--spacing-6xl); }
 .q-logos__track { display: flex; width: max-content; margin: 0; padding: 0 0 0 var(--spacing-3xl); list-style: none; animation: q-logos-run 24s linear infinite; }
 .q-logos.is-paused .q-logos__track, .q-logos__viewport:hover .q-logos__track, .q-logos__viewport:focus-within .q-logos__track { animation-play-state: paused; }
@@ -1460,6 +1472,8 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
   .q-carousel__controls, .q-carousel--roomy .q-carousel__controls { flex-direction: column; align-items: center; gap: var(--spacing-xl-static); padding: var(--spacing-3xl-static) var(--spacing-lg) var(--spacing-xl-static); }
   .q-carousel__progress { flex: none; width: 100%; }
   .q-tcarousel--lg > *, .q-tcarousel--sm > *, .q-tcarousel--video > * { --q-slide: 300px; }
+  .q-tcarousel--row > .q-section__inner { padding-block: var(--spacing-xl-static); }
+  .q-tcarousel__row { grid-auto-flow: row; gap: var(--spacing-rg); }
   /* Same card as desktop (shadow-drawer, no outline), stacked and with tighter padding — in the carousel or on its own in a section */
   :is(.q-tcarousel, .q-section) .q-tcard, :is(.q-tcarousel, .q-section) .q-tcard--sm { flex-direction: column; gap: var(--spacing-rg); padding: var(--spacing-xl); }
   :is(.q-tcarousel, .q-section) .q-tcard--image { box-shadow: inset 0 0 0 1px var(--image-outline), var(--shadow-drawer); }
@@ -2152,4 +2166,77 @@ button.q-hcard__close:focus-visible { outline: none; box-shadow: var(--focus-rin
   .tag-sm, .eyebrow-lg, .eyebrow-md, .eyebrow-sm, .eyebrow-xs { letter-spacing: 0.05em; }
   .tag-xs { letter-spacing: 0.03em; }
   .button-label, .stat-lg, .stat-md { letter-spacing: -0.005em; }
+}
+
+/* ── StatCard: plain (no card): the figure and label in Qualys blue, the description in text-primary ── */
+.q-statcard--plain { padding: 0; border-radius: 0; background: none; box-shadow: none; color: var(--qualys-blue); }
+.q-statcard--plain .q-stat__desc { margin-top: var(--spacing-xs); color: var(--text-primary); }
+
+/* ── Carousel: heading row with a "View All" link above the cards ── */
+.q-carousel__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--spacing-rg); padding-bottom: 0; }
+.q-carousel__title { max-width: 740px; margin: 0; }
+
+/* ── Form: submitted. The card keeps its banner; the inline SuccessConfirmation fills the rest on the card's own ground ── */
+.q-form__done > .q-modal--inline { width: 100%; }
+.q-form__done > .q-modal--inline > .q-modal__panel { max-width: none; border-radius: 0; background: none; box-shadow: none; }
+
+/* ── SpeakerList: a round photo, the name and the role; side by side or stacked ── */
+.q-speakers { display: flex; flex-wrap: wrap; gap: var(--spacing-rg) var(--spacing-xl); margin: 0; padding: 0; list-style: none; }
+.q-speakers--vertical { flex-direction: column; gap: var(--spacing-rg); }
+.q-speaker { display: flex; align-items: center; gap: var(--spacing-2xs); min-width: 0; }
+.q-speaker__text { min-width: 0; }
+.q-speaker__name { margin: 0; font-family: var(--font-heading); font-weight: 600; font-size: 16px; line-height: 1.3; color: var(--text-primary); }
+.q-speaker__role { margin: 0; font-family: var(--font-body); font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-secondary); }
+.q-speakers--inverted .q-speaker__name, .q-speakers--inverted .q-speaker__role { color: var(--text-inverted); }
+
+/* ── FeatureList: a blue check before each item, in columns, on a white card ── */
+.q-featurelist { display: grid; grid-template-columns: repeat(var(--q-cols, auto-fit), minmax(min(100%, 250px), 1fr)); gap: var(--spacing-lg) var(--spacing-xl); margin: 0; padding: 0; list-style: none; }
+.q-featurelist--card { padding: var(--spacing-xl); border-radius: var(--radius-lg); background: var(--surface-neutral-100); box-shadow: var(--shadow-card); }
+.q-featurelist__item { display: flex; align-items: flex-start; gap: var(--spacing-2xs); }
+.q-featurelist__icon { flex: none; }
+.q-featurelist__label { font-family: var(--font-body); font-weight: 500; font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-primary); }
+.q-featurelist__label a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.q-featurelist__label a:hover { color: var(--hyperlink-default); }
+
+/* ── AppGrid: one card per product family, apps as links that turn into hyperlinks on hover ── */
+.q-appgrid__copy { max-width: 800px; margin: 0 auto var(--spacing-4xl); text-align: center; }
+.q-appgrid__copy .q-copy__body { margin-top: var(--spacing-rg); }
+.q-appgrid__copy .q-copy__actions { flex-direction: row; justify-content: center; }
+.q-appgrid__list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
+.q-appgrid__item { display: flex; flex-direction: column; box-sizing: border-box; padding: var(--spacing-xl); border-radius: var(--radius-lg); background: var(--surface-neutral-100); box-shadow: var(--shadow-card); }
+.q-appgrid__head { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-rg); }
+.q-appgrid__icon { display: block; flex: none; width: calc(var(--spacing-2xl) + var(--spacing-4xl)); height: calc(var(--spacing-2xl) + var(--spacing-4xl)); }
+.q-appgrid__title { min-height: 3.3em; margin: 0; font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.1; letter-spacing: -0.02em; letter-spacing: -2%; text-align: center; color: var(--text-primary); }
+.q-appgrid__rule { height: var(--spacing-5xs); margin: var(--spacing-xl) calc(var(--spacing-xl) * -1); background: var(--qualys-blue); }
+.q-appgrid__links { display: flex; flex-direction: column; gap: var(--spacing-rg); margin: 0; padding: 0; list-style: none; }
+.q-appgrid__link { font-family: var(--font-body); font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-primary); text-decoration: none; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.q-appgrid__link:hover, .q-appgrid__link:focus-visible { color: var(--hyperlink-default); text-decoration-line: underline; }
+
+/* ── EventBanner: series name beside a rule, a blue Tag and the title, one Button at the right, over a light picture or video ── */
+.q-eventbanner__card { position: relative; isolation: isolate; display: flex; align-items: center; overflow: hidden; box-sizing: border-box; min-height: 230px; padding: var(--spacing-xl); border-radius: var(--radius-lg); background: var(--surface-neutral-100); box-shadow: var(--shadow-card); color: var(--text-primary); }
+.q-eventbanner__media { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+.q-eventbanner--dark .q-eventbanner__card { background: var(--asphalt); color: var(--text-inverted); }
+.q-eventbanner--dark .q-eventbanner__card::before { content: ""; position: absolute; inset: 0; z-index: 1; background: var(--overlay-dark); }
+.q-eventbanner__row { position: relative; z-index: 2; flex: 1; display: flex; align-items: center; gap: var(--spacing-2xl); min-width: 0; }
+.q-eventbanner__series { flex: none; width: min-content; margin: 0; padding: var(--spacing-xs) var(--spacing-2xl) var(--spacing-xs) var(--spacing-rg); border-right: 1px solid var(--stroke-neutral-500); font-family: var(--font-heading); font-weight: 500; font-size: 24px; line-height: 1.25; letter-spacing: 0.2em; text-align: right; text-transform: uppercase; }
+.q-eventbanner--dark .q-eventbanner__series { border-right-color: currentColor; }
+.q-eventbanner__copy { flex: 0 1 600px; min-width: 0; }
+.q-eventbanner__tag { margin-bottom: var(--spacing-rg); }
+.q-eventbanner__title { margin: 0; color: inherit; }
+.q-eventbanner__action { flex: none; margin: 0 var(--spacing-rg) 0 auto; }
+
+@container (max-width: 767px) {
+  .q-stats .q-statcard--plain { padding: 0; }
+  .q-featurelist { grid-template-columns: minmax(0, 1fr); }
+  .q-featurelist--card { padding: var(--spacing-lg); }
+  .q-appgrid__copy { margin-bottom: var(--spacing-xl-static); }
+  .q-appgrid__copy .q-copy__actions { flex-direction: row; justify-content: center; }
+  .q-appgrid__head { flex-direction: row; }
+  .q-appgrid__icon { width: var(--spacing-4xl-static); height: var(--spacing-4xl-static); }
+  .q-appgrid__title { min-height: 0; text-align: left; }
+  .q-eventbanner__card { min-height: 220px; padding: var(--spacing-rg); }
+  .q-eventbanner__row { flex-direction: column; align-items: flex-start; align-self: stretch; gap: var(--spacing-rg); }
+  .q-eventbanner__copy { flex: none; }
+  .q-eventbanner__series { width: auto; padding: 0; border-right: 0; font-size: 14px; letter-spacing: 0.15em; text-align: left; }
+  .q-eventbanner__action { margin: calc(var(--spacing-xl) - var(--spacing-rg)) 0 0; }
 }

@@ -1,0 +1,25 @@
+<!-- @dsCard group="Components · Avatars and profiles" height=621 width=1440 subtitle="Component · Who is speaking: photo, name and role, side by side or stacked." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SpeakerList — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card);background:var(--surface-neutral-200);container-type:inline-size}.pad{padding:0 var(--spacing-xl) var(--spacing-xl)}.ground{background:var(--surface-neutral-200);container-type:inline-size}.dark{display:inline-block;padding:var(--spacing-xl);border-radius:var(--radius-lg);background:var(--asphalt)}.pair{display:flex;gap:var(--spacing-4xl);align-items:flex-start}.w{width:600px}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+var S = [{name: 'Alex Morgan', role: 'Head of Threat Research'}, {name: 'Sam Lee', role: 'Senior Manager, Product Management'}, {name: 'Jordan Rivera', role: 'Director, Security Operations'}];
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('Horizontal (default): side by side, wrapping'), h('div', {className: 'pad'}, h(Q.SpeakerList, {speakers: S})),
+  h('div', {className: 'pair'},
+    h('div', null, cap('Vertical'), h('div', {className: 'pad'}, h(Q.SpeakerList, {speakers: S, layout: 'vertical'}))),
+    h('div', null, cap('Vertical, medium photos'), h('div', {className: 'pad'}, h(Q.SpeakerList, {speakers: S.slice(0, 2), layout: 'vertical', size: 'md'}))),
+    h('div', null, cap('Inverted, on a dark ground'), h('div', {className: 'pad'}, h('div', {className: 'dark'}, h(Q.SpeakerList, {speakers: S.slice(0, 2), layout: 'vertical', tone: 'inverted'}))))),
+  cap('Mobile'), h('div', {className: 'phones'}, h('div', {className: 'phone', style: {padding: 'var(--spacing-lg)'}}, h(Q.SpeakerList, {speakers: S})))));
+</script>
+</body>
+</html>

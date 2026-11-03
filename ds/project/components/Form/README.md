@@ -23,6 +23,12 @@ The lead-capture card from the Figma Forms page (Ready for Dev): a heading, a sh
 - **Consent line:** `paragraph-sm` (14px) `text-primary`, last. Pass a node to link the privacy policy.
 - **Photo header:** `image` adds a photo on top, cropped to 30:11 (600 × 220px), with the card's top corners. Use it without the shield.
 
+**Submitted**
+
+- `submitted` swaps the card's heading, fields, opt-in, button and consent line for an inline SuccessConfirmation: the green tick, the title, the message and one button. Any `banner` stays, so the card keeps its look before and after. Give the confirmation's text in `success` (`{ title, message, actionLabel, href }`; `type` is `download` unless you say `general`).
+- The confirmation sits on the card's own ground, with no second panel or shadow, and the card keeps its width. It is announced to screen readers as a status.
+- `submitted` is yours to set: show it from `onSubmit` once the request has gone through. For a popup instead, use SuccessConfirmation on its own.
+
 **Banners**
 
 Any form can open with a banner: `banner` on a Form, which also works for the form in a Hero, a CtaModule and a FormModal, and on the DemoRequestWizard. The banner spans the top of the card at 30:11 (600 × 220px in a full-width form), with the card's top corners. In a bare form, such as a CTA module's, it has all four corners rounded and 24px below it.

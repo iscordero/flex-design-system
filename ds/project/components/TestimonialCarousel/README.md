@@ -17,6 +17,10 @@ The testimonial modules from the Figma Testimonials page: TestimonialCards in a 
 - **Tablet:** large and video cards become as wide as the column and the large quote drops to 24px.
 - **Mobile:** 24px × 20px padding; every card is 300px wide, 16px apart; controls stack and center.
 
-Use it once per page. For a single quote, use a TestimonialCard on its own.
+## Fewer than three quotes: no carousel
+
+With one or two items there is nothing to scroll to, so the module drops the carousel. The cards share one row and fill the content column (two at half width each, 24px apart; one at the full width), with no progress bar or buttons, and 100px above and below. Each card keeps its size (`lg`, `sm` or `video`) and its height matches the tallest. On phones the cards stack, 16px apart. Three or more quotes always use the carousel.
+
+Use it once per page. A single quote can also be a TestimonialCard on its own in a section.
 
 The logos in the preview are placeholders; use each customer's own logo file as they supply it.
