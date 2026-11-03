@@ -26,7 +26,7 @@ The general content module from the Figma General Content Modules page (Ready fo
 
 **Banner**
 
-- A `radius-lg` panel, 230px tall at least, 24px padding. The copy is 600px wide at most: heading in `h2`, 12px, the body, 24px, one primary Button, all in `text-inverted`.
+- A `radius-lg` panel, 230px tall at least, 24px padding. The copy is 600px wide at most: an optional eyebrow, the heading in `h2`, 12px, the body, 24px, one primary Button, all in `text-inverted` (the eyebrow too, not the gray it has elsewhere).
 - A photo gets black at 50% over it. With no picture the panel is Asphalt.
 - A video banner adds the play button in the space right of the copy. If `media.video` is a file address, pressing play swaps the banner for the video player; otherwise handle `media.onPlay`.
 

@@ -539,8 +539,8 @@ export interface StatItem {
   countUp?: boolean;
 }
 export interface StatCardProps extends StatItem {
-  /** 'solid' = qualys-blue with white figures (default); 'outline' = blue outline and figures */
-  tone?: 'solid' | 'outline';
+  /** 'solid' = qualys-blue with white figures (default); 'outline' = blue outline and figures; 'plain' = no card: blue figure and label, text-primary description */
+  tone?: 'solid' | 'outline' | 'plain';
   /** lg = stat-lg 86px (three in a row), md = stat-md 64px (four in a row) */
   size?: 'lg' | 'md';
   className?: string;
@@ -551,7 +551,8 @@ export interface StatsProps {
   items: StatItem[];
   /** 'block' = one panel (default); 'cards' = separate StatCards */
   layout?: 'block' | 'cards';
-  tone?: 'solid' | 'outline';
+  /** 'plain' applies to the cards layout only */
+  tone?: 'solid' | 'outline' | 'plain';
   /** default: lg for up to three items, md for four */
   size?: 'lg' | 'md';
   /** false stops every figure counting up from 0; default true */
@@ -1009,6 +1010,10 @@ export interface FormProps {
   link?: string | { label: string; href?: string; onClick?: React.MouseEventHandler };
   /** the consent line under the button */
   legal?: React.ReactNode;
+  /** true shows the submitted state: the banner stays, and the heading, fields and button give way to an inline SuccessConfirmation */
+  submitted?: boolean;
+  /** the confirmation's props for the submitted state (title, message, actionLabel, href, type; type defaults to 'download') */
+  success?: Omit<SuccessConfirmationProps, 'inline' | 'open'>;
   /** called with the values once every field passes; the page doesn't reload */
   onSubmit?: (values: FormValues, event: React.FormEvent) => void;
   /** where the form posts when there is no onSubmit */
@@ -1041,6 +1046,12 @@ export interface CarouselProps {
   slideWidth?: number | string;
   /** 'lg' gives 100px above and below instead of 48px */
   spacing?: 'rg' | 'lg';
+  /** a heading above the cards, on the content column (it also names the carousel when there is no label) */
+  title?: React.ReactNode;
+  /** heading level, default 2 */
+  titleLevel?: number;
+  /** a "View All" text link at the right of the heading: a label, or { label, href, onClick } */
+  link?: string | { label: React.ReactNode; href?: string; onClick?: (event: React.MouseEvent) => void };
   prevLabel?: string;
   nextLabel?: string;
   id?: string;
@@ -1363,6 +1374,91 @@ export interface SuccessConfirmationProps extends Omit<ModalBase, 'closeLabel'> 
 }
 export declare function SuccessConfirmation(props: SuccessConfirmationProps): React.ReactElement | null;
 
+export interface Speaker {
+  name: React.ReactNode;
+  role?: React.ReactNode;
+  /** the photo's address; without one the Avatar placeholder shows */
+  image?: string;
+}
+export interface SpeakerListProps {
+  speakers: Speaker[];
+  /** 'horizontal' = side by side, wrapping (default); 'vertical' = stacked */
+  layout?: 'horizontal' | 'vertical';
+  /** Avatar size: 'sm' 40px (default) or 'md' 56px */
+  size?: 'sm' | 'md';
+  /** 'inverted' = white type, for dark grounds */
+  tone?: 'default' | 'inverted';
+  /** names the list, default "Speakers" */
+  label?: string;
+  className?: string;
+}
+export declare function SpeakerList(props: SpeakerListProps): React.ReactElement;
+
+export interface FeatureItem {
+  label: React.ReactNode;
+  href?: string;
+  /** an Icon name, default 'check' */
+  icon?: string;
+}
+export interface FeatureListProps {
+  items: Array<React.ReactNode | FeatureItem>;
+  /** a fixed number of columns; default: as many 250px columns as fit */
+  columns?: number;
+  /** false drops the white card (default true) */
+  card?: boolean;
+  /** an Icon name for every item, default 'check' */
+  icon?: string;
+  /** names the list, for screen readers */
+  label?: string;
+  className?: string;
+}
+export declare function FeatureList(props: FeatureListProps): React.ReactElement;
+
+export interface AppGroup {
+  title: React.ReactNode;
+  /** a Feature Icon's address */
+  icon?: string;
+  links: Array<string | { label: React.ReactNode; href?: string }>;
+}
+export interface AppGridProps {
+  groups: AppGroup[];
+  eyebrow?: React.ReactNode;
+  title?: React.ReactNode;
+  /** heading level of the title, default 2; card titles are one level below */
+  titleLevel?: number;
+  body?: React.ReactNode;
+  /** a text link under the copy: a label, or { label, href, onClick } */
+  link?: string | { label: React.ReactNode; href?: string; onClick?: (event: React.MouseEvent) => void };
+  /** names the list of apps, default "Apps" */
+  label?: string;
+  id?: string;
+  className?: string;
+}
+export declare function AppGrid(props: AppGridProps): React.ReactElement;
+
+export interface EventBannerProps {
+  /** the series name, set in spaced capitals beside a rule */
+  series?: React.ReactNode;
+  /** a blue Tag above the title, such as "Live Virtual Event" */
+  tag?: React.ReactNode;
+  title: React.ReactNode;
+  /** heading level, default 2 */
+  titleLevel?: number;
+  /** the Button at the right: a label, or { label, href, onClick, variant } */
+  action?: string | { label: React.ReactNode; href?: string; onClick?: (event: React.MouseEvent) => void; variant?: string };
+  /** your own action node in place of action */
+  actions?: React.ReactNode;
+  /** the background picture (also the video's poster) */
+  image?: string;
+  /** a silent, looping background video */
+  video?: string;
+  /** 'light' (default) = dark type on a light picture; 'dark' = black at 50% over the picture, white type */
+  tone?: 'light' | 'dark';
+  id?: string;
+  className?: string;
+}
+export declare function EventBanner(props: EventBannerProps): React.ReactElement;
+
 export interface ExitIntentProps extends ModalBase {
   /** 'offer' (default): image beside the form. 'content': centered, with an icon tile. */
   type?: 'offer' | 'content';
@@ -1655,7 +1751,7 @@ declare global {
       TextField: typeof TextField; Select: typeof Select; FilterDropdown: typeof FilterDropdown; FilterChipGroup: typeof FilterChipGroup; AppliedFilters: typeof AppliedFilters; FilterButton: typeof FilterButton; FilterBar: typeof FilterBar; FilterDrawer: typeof FilterDrawer; SearchBar: typeof SearchBar;
       Checkbox: typeof Checkbox; Radio: typeof Radio; Toggle: typeof Toggle; Form: typeof Form;
       Card: typeof Card; IntegrationCard: typeof IntegrationCard; EventCard: typeof EventCard; WebinarCard: typeof WebinarCard; ResourceCard: typeof ResourceCard; BlogCard: typeof BlogCard; InlinePromoCard: typeof InlinePromoCard; StatCard: typeof StatCard;
-      Nav: typeof Nav; NavBanner: typeof NavBanner; Media: typeof Media; Hero: typeof Hero; TypographicHeader: typeof TypographicHeader; GeneralContent: typeof GeneralContent; TabModule: typeof TabModule; AccordionModule: typeof AccordionModule; CtaModule: typeof CtaModule; Stats: typeof Stats; Carousel: typeof Carousel; TestimonialCard: typeof TestimonialCard; TestimonialCarousel: typeof TestimonialCarousel; LogoCarousel: typeof LogoCarousel; LogoHierarchy: typeof LogoHierarchy; EventCalendar: typeof EventCalendar; Footer: typeof Footer;
+      Nav: typeof Nav; NavBanner: typeof NavBanner; Media: typeof Media; Hero: typeof Hero; TypographicHeader: typeof TypographicHeader; GeneralContent: typeof GeneralContent; TabModule: typeof TabModule; AccordionModule: typeof AccordionModule; CtaModule: typeof CtaModule; Stats: typeof Stats; Carousel: typeof Carousel; TestimonialCard: typeof TestimonialCard; TestimonialCarousel: typeof TestimonialCarousel; LogoCarousel: typeof LogoCarousel; LogoHierarchy: typeof LogoHierarchy; EventCalendar: typeof EventCalendar; Footer: typeof Footer; SpeakerList: typeof SpeakerList; FeatureList: typeof FeatureList; AppGrid: typeof AppGrid; EventBanner: typeof EventBanner;
       HoverCard: typeof HoverCard; FeatureMatrix: typeof FeatureMatrix; DetailComparison: typeof DetailComparison; MarketingTable: typeof MarketingTable;
       Overlay: typeof Overlay; Modal: typeof Modal; FormModal: typeof FormModal; AlertDialog: typeof AlertDialog; SessionTimeout: typeof SessionTimeout; SuccessConfirmation: typeof SuccessConfirmation; ExitIntent: typeof ExitIntent; DemoRequestWizard: typeof DemoRequestWizard; Toast: typeof Toast; ToastStack: typeof ToastStack; NotificationBar: typeof NotificationBar; CookieBanner: typeof CookieBanner; Tooltip: typeof Tooltip;
     };

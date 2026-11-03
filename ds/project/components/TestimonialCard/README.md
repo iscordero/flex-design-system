@@ -7,7 +7,7 @@ A customer quote from the Figma Testimonials page: the customer's logo, the quot
 
 | Figma name | Props | What it shows |
 |---|---|---|
-| Large Testimonial Card | default | 939 × 500px, the quote in `quote-lg` (32px) |
+| Large Testimonial Card | default | 939px wide and 400px tall at least (taller for a long quote; cards in a row match the tallest), the quote in `quote-lg` (32px) |
 | Full Image Background Large Testimonial Card | `image` | The same over a photo, with the quote on a white panel |
 | Small Testimonial Card | `size="sm"` | 500px wide, the quote in `quote-md` (24px) |
 | Video Testimonial Card | `video` | The small card with a portrait clip on the right |

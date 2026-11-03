@@ -16,7 +16,7 @@ The closing call to action from the Figma CTAs page: a sign-up form beside or ov
 **With a form**
 
 - Section on `surface-neutral-200`, 56px top and bottom (`spacing-5xl`), content in the content column (up to 1440px).
-- The form is the Form component without its card (`variant="full"`, `appearance="bare"`): the shield, a centered `h2` heading, the fields, the opt-in, one primary Button and the consent line, 460px wide, centered in its half.
+- The form is the Form component without its card (`variant="full"`, `appearance="bare"`): the shield, a centered `h2` heading, the fields, the opt-in, one primary Button and the consent line, 460px wide, starting on the content's left edge in line with the sections above (on the right edge in `media-left`).
 - The image is `radius-lg`, 56px (`spacing-5xl`) from the form. `media` is `{ src, alt }`; leave it empty for the placeholder.
 - **Mobile:** only the form shows, with 36px × 24px padding and a full-width button. The `background` picture stays behind it.
 

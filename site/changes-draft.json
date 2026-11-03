@@ -2,11 +2,11 @@
  "id": "draft",
  "sha": "",
  "draft": true,
- "date": "2026-11-02",
+ "date": "2026-11-03",
  "author": "Claude",
  "with": [],
  "approvedBy": [],
- "commits": 6,
+ "commits": 7,
  "base": "f01b7bb35e6be5a1bb2cd1071f7e6978468a2efb",
  "pr": null,
  "items": [
@@ -17,9 +17,29 @@
    "what": [
     "look"
    ],
-   "weight": 2,
+   "weight": 7,
    "follows": [
     "TextLink"
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "AlertDialog",
+   "what": [
+    "look"
+   ],
+   "weight": 2
+  },
+  {
+   "type": "component",
+   "action": "added",
+   "name": "AppGrid",
+   "notes": [
+    {
+     "kind": "added",
+     "text": "The app suite: one card per product family, each with its icon and name over a blue rule and its apps listed as links. An optional centered copy block (title, paragraph, text link) sits above the cards."
+    }
    ]
   },
   {
@@ -50,7 +70,7 @@
    "what": [
     "look"
    ],
-   "weight": 3,
+   "weight": 8,
    "follows": [
     "Card"
    ]
@@ -60,11 +80,47 @@
    "action": "changed",
    "name": "Carousel",
    "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 27,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "**Provide:** the cards as children, a `label` that names the set (\"Latest resources\"), and optionally `variant=\"single\"`, `slideWidth`, a `title` and a `link`.",
+     "was": "**Provide:** the cards as children, a `label` that names the set (\"Latest resources\"), and optionally `variant=\"single\"` or `slideWidth`."
+    },
+    {
+     "kind": "added",
+     "text": "**Heading:** `title` puts a heading over the cards in `h2` (SemiBold 38px, 740px wide at most) on the content column, 100px from the top of the section. `link` (`\"View All Resources\"` or `{ label, href }`) adds a neutral TextLink with an arrow at its right, on the heading's last line; on phones it wraps under the heading. The cards start 32px below. The heading also names the carousel for screen readers when there is no `label`."
+    }
+   ],
+   "propsAdded": [
+    {
+     "name": "title",
+     "doc": "a heading above the cards, on the content column (it also names the carousel when there is no label)"
+    },
+    {
+     "name": "titleLevel",
+     "doc": "heading level, default 2"
+    },
+    {
+     "name": "link",
+     "doc": "a \"View All\" text link at the right of the heading: a label, or { label, href, onClick }"
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "CookieBanner",
+   "what": [
     "look"
    ],
    "weight": 2,
    "follows": [
-    "ResourceCard"
+    "TextLink"
    ]
   },
   {
@@ -75,12 +131,17 @@
     "look",
     "docs"
    ],
-   "weight": 8,
+   "weight": 16,
    "notes": [
     {
      "kind": "changed",
      "text": "Layout: `bleed` · What it shows: The picture runs off the right edge behind a rounded, cloud-shaped edge. It starts 56px (`spacing-5xl`) below the top of the section, so its rounded top shows, and runs off the bottom",
      "was": "What it shows: The picture runs off the right edge behind a rounded, cloud-shaped edge"
+    },
+    {
+     "kind": "changed",
+     "text": "The form is the Form component without its card (`variant=\"full\"`, `appearance=\"bare\"`): the shield, a centered `h2` heading, the fields, the opt-in, one primary Button and the consent line, 460px wide, starting on the content's left edge in line with the sections above (on the right edge in `media-left`).",
+     "was": "The form is the Form component without its card (`variant=\"full\"`, `appearance=\"bare\"`): the shield, a centered `h2` heading, the fields, the opt-in, one primary Button and the consent line, 460px wide, centered in its half."
     },
     {
      "kind": "added",
@@ -91,11 +152,31 @@
   {
    "type": "component",
    "action": "changed",
+   "name": "DemoRequestWizard",
+   "what": [
+    "look"
+   ],
+   "weight": 2
+  },
+  {
+   "type": "component",
+   "action": "changed",
    "name": "DetailComparison",
    "what": [
     "look"
    ],
    "weight": 2
+  },
+  {
+   "type": "component",
+   "action": "added",
+   "name": "EventBanner",
+   "notes": [
+    {
+     "kind": "added",
+     "text": "A banner for an event or a series of them: the series name in spaced capitals beside a thin rule, then a blue Tag (\"Live Virtual Event\") and the title, with one Button at the right. It sits over a light picture or a silent, looping video."
+    }
+   ]
   },
   {
    "type": "component",
@@ -109,16 +190,7 @@
   {
    "type": "component",
    "action": "changed",
-   "name": "FeatureMatrix",
-   "what": [
-    "look"
-   ],
-   "weight": 2
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "GeneralContent",
+   "name": "ExitIntent",
    "what": [
     "look"
    ],
@@ -129,13 +201,95 @@
   },
   {
    "type": "component",
+   "action": "added",
+   "name": "FeatureList",
+   "notes": [
+    {
+     "kind": "added",
+     "text": "A checklist of what a product or plan includes: a blue check before each item, in columns, usually on a white card beside a copy block (\"More Than Just a License to Scan\")."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "FeatureMatrix",
+   "what": [
+    "look"
+   ],
+   "weight": 2
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Footer",
+   "what": [
+    "look"
+   ],
+   "weight": 10
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Form",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 18,
+   "notes": [
+    {
+     "kind": "added",
+     "text": "`submitted` swaps the card's heading, fields, opt-in, button and consent line for an inline SuccessConfirmation: the green tick, the title, the message and one button. Any `banner` stays, so the card keeps its look before and after. Give the confirmation's text in `success` (`{ title, message, actionLabel, href }`; `type` is `download` unless you say `general`)."
+    },
+    {
+     "kind": "added",
+     "text": "The confirmation sits on the card's own ground, with no second panel or shadow, and the card keeps its width. It is announced to screen readers as a status."
+    },
+    {
+     "kind": "added",
+     "text": "`submitted` is yours to set: show it from `onSubmit` once the request has gone through. For a popup instead, use SuccessConfirmation on its own."
+    }
+   ],
+   "propsAdded": [
+    {
+     "name": "submitted",
+     "doc": "true shows the submitted state: the banner stays, and the heading, fields and button give way to an inline SuccessConfirmation"
+    },
+    {
+     "name": "success",
+     "doc": "the confirmation's props for the submitted state (title, message, actionLabel, href, type; type defaults to 'download')"
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "GeneralContent",
+   "what": [
+    "look",
+    "docs"
+   ],
+   "weight": 9,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "A `radius-lg` panel, 230px tall at least, 24px padding. The copy is 600px wide at most: an optional eyebrow, the heading in `h2`, 12px, the body, 24px, one primary Button, all in `text-inverted` (the eyebrow too, not the gray it has elsewhere).",
+     "was": "A `radius-lg` panel, 230px tall at least, 24px padding. The copy is 600px wide at most: heading in `h2`, 12px, the body, 24px, one primary Button, all in `text-inverted`."
+    }
+   ]
+  },
+  {
+   "type": "component",
    "action": "changed",
    "name": "Hero",
    "what": [
     "look"
    ],
-   "weight": 2,
+   "weight": 7,
    "follows": [
+    "Form",
     "TextLink"
    ]
   },
@@ -174,7 +328,7 @@
     "props",
     "docs"
    ],
-   "weight": 8,
+   "weight": 15,
    "notes": [
     {
      "kind": "changed",
@@ -217,12 +371,21 @@
    "what": [
     "look"
    ],
-   "weight": 3
+   "weight": 8
   },
   {
    "type": "component",
    "action": "changed",
    "name": "MarketingTable",
+   "what": [
+    "look"
+   ],
+   "weight": 2
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Modal",
    "what": [
     "look"
    ],
@@ -248,7 +411,62 @@
   {
    "type": "component",
    "action": "changed",
+   "name": "SessionTimeout",
+   "what": [
+    "look"
+   ],
+   "weight": 2
+  },
+  {
+   "type": "component",
+   "action": "added",
+   "name": "SpeakerList",
+   "notes": [
+    {
+     "kind": "added",
+     "text": "Who is speaking at a webinar, briefing or event: a round photo, the person's name and their role, for each speaker. It sits in a Hero's body, an EventBanner, a DrawerCard or any copy block."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "StatCard",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 15,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "**Tone:** `solid` (default) is `qualys-blue` with white figures and a `misty-blue` description; `outline` is a 1px `qualys-blue` outline with blue figures and a `text-secondary` description; `plain` has no card at all: the figure and its label in `qualys-blue`, the description in `text-primary`, 12px below.",
+     "was": "**Tone:** `solid` (default) is `qualys-blue` with white figures and a `misty-blue` description; `outline` is a 1px `qualys-blue` outline with blue figures and a `text-secondary` description."
+    },
+    {
+     "kind": "added",
+     "text": "**Plain:** for figures that sit in a copy block or beside a picture rather than in a row of cards, such as two figures under a paragraph. No padding, so it lines up with the text around it. Two side by side, 24px apart; they stack on phones. Stats takes `tone=\"plain\"` with `layout=\"cards\"`."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
    "name": "Stats",
+   "what": [
+    "look",
+    "props"
+   ],
+   "weight": 10,
+   "follows": [
+    "StatCard"
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "SuccessConfirmation",
    "what": [
     "look"
    ],
@@ -261,7 +479,7 @@
    "what": [
     "look"
    ],
-   "weight": 2,
+   "weight": 7,
    "follows": [
     "TextLink"
    ]
@@ -274,9 +492,13 @@
     "look",
     "docs"
    ],
-   "weight": 2,
-   "follows": [
-    "TextLink"
+   "weight": 4,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "Figma name: Large Testimonial Card · What it shows: 939px wide and 400px tall at least (taller for a long quote; cards in a row match the tallest), the quote in `quote-lg` (32px)",
+     "was": "What it shows: 939 × 500px, the quote in `quote-lg` (32px)"
+    }
    ]
   },
   {
@@ -330,7 +552,7 @@
    "what": [
     "look"
    ],
-   "weight": 2
+   "weight": 7
   },
   {
    "type": "guide",
@@ -349,6 +571,29 @@
   },
   {
    "type": "guide",
+   "name": "Explaining the product",
+   "guide": "Choosing Components",
+   "gid": "guide-11",
+   "section": "Explaining the product",
+   "action": "changed",
+   "notes": [
+    {
+     "kind": "added",
+     "text": "Use: **AppGrid** · When: The app suite: a card per product family with its apps as links, under centered copy. For platform and overview pages."
+    },
+    {
+     "kind": "added",
+     "text": "Use: **FeatureList** · When: A checklist of what a product or plan includes, beside a copy block and one button."
+    },
+    {
+     "kind": "added",
+     "text": "Use: **StatCard** (plain) · When: One or two figures inside a copy block, beside a picture, with no card."
+    }
+   ],
+   "minor": true
+  },
+  {
+   "type": "guide",
    "name": "Proof and social proof",
    "guide": "Choosing Components",
    "gid": "guide-11",
@@ -359,6 +604,27 @@
      "kind": "changed",
      "text": "Use: **TestimonialCarousel** · When: Customer quotes or video stories. Use the video version when you have recordings. With fewer than three quotes it shows them as cards that fill the row instead of a carousel.",
      "was": "When: Customer quotes or video stories. Use the video version when you have recordings."
+    },
+    {
+     "kind": "changed",
+     "text": "Use: **Carousel** · When: A row of resources, events or blog posts people browse sideways (\"Latest Resources\"). Give it a `title` and a \"View All\" `link` for the heading row above the cards.",
+     "was": "When: A row of resources, events or blog posts people browse sideways (\"Latest Resources\")."
+    }
+   ],
+   "minor": true
+  },
+  {
+   "type": "guide",
+   "name": "Forms",
+   "guide": "Choosing Components",
+   "gid": "guide-11",
+   "section": "Forms",
+   "action": "changed",
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "After a form, show **SuccessConfirmation** in its place, rather than sending people to a new page. A Form's `submitted` state does this inside the card and keeps its banner.",
+     "was": "After a form, show **SuccessConfirmation** in its place, rather than sending people to a new page."
     }
    ],
    "minor": true
@@ -372,9 +638,28 @@
    "action": "changed",
    "notes": [
     {
+     "kind": "added",
+     "text": "Use: **SpeakerList** · When: Who is speaking, as small photos with names and roles, inside a Hero, an EventBanner or a copy block. Not a card: use ProfileCard when people need a bio or a link."
+    },
+    {
      "kind": "changed",
      "text": "Keep one kind of card per row. Mixing a ResourceCard and a BlogCard in one carousel is fine; mixing a Card with a ResourceCard is not. Cards in a row share one height, with their calls to action lined up along the bottom, and a card's text-link CTA is always blue.",
      "was": "Keep one kind of card per row. Mixing a ResourceCard and a BlogCard in one carousel is fine; mixing a Card with a ResourceCard is not."
+    }
+   ],
+   "minor": true
+  },
+  {
+   "type": "guide",
+   "name": "Messages and overlays",
+   "guide": "Choosing Components",
+   "gid": "guide-11",
+   "section": "Messages and overlays",
+   "action": "changed",
+   "notes": [
+    {
+     "kind": "added",
+     "text": "Use: **EventBanner** · When: Promoting an event or a series inside the page: series name, a tag, the title and one button, over a light picture or video."
     }
    ],
    "minor": true
@@ -436,11 +721,16 @@
   {
    "about": "CtaModule",
    "text": "the bleed picture was cropped flat along the section's top edge, so it now starts lower and shows its rounded top."
+  },
+  {
+   "about": "CtaModule",
+   "text": "the bleed picture's rounded top corner was clipped flat, so the shape now fits the picture and the corner shows whole."
   }
  ],
- "headline": "Updated 22 components",
+ "headline": "Added 4 components · Updated 32 components",
  "highlights": [
-  "Updated components: 22, including TestimonialCarousel, CtaModule and LogoCarousel"
+  "New components: AppGrid, EventBanner, FeatureList and SpeakerList",
+  "Updated components: 32, including Carousel, Form and CtaModule"
  ],
  "minor": false
 }

@@ -1415,7 +1415,7 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-gc__bannerimg { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
 .q-gc__shade { position: absolute; inset: 0; background: var(--overlay-dark); }
 .q-gc__bannercopy { position: relative; flex: 0 1 600px; }
-.q-gc__banner .q-copy__title, .q-gc__banner .q-copy__body { color: inherit; }
+.q-gc__banner .q-copy__eyebrow, .q-gc__banner .q-copy__title, .q-gc__banner .q-copy__body { color: inherit; }
 .q-gc__banner .q-copy__actions { margin-top: var(--spacing-xl); }
 .q-gc__play { margin: auto; }
 
@@ -1534,7 +1534,8 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-cta--form { overflow: hidden; }
 .q-cta--form > .q-section__inner { position: relative; padding-block: var(--spacing-5xl); }
 .q-cta__row { display: flex; align-items: center; gap: var(--spacing-5xl); }
-.q-cta__formcol { display: flex; flex: 520 1 0; justify-content: center; min-width: 0; }
+.q-cta__formcol { display: flex; flex: 520 1 0; justify-content: flex-start; min-width: 0; }
+.q-cta--media-left .q-cta__formcol { justify-content: flex-end; }
 .q-cta__media { flex: 560 1 0; min-width: 0; }
 .q-cta--media-left .q-cta__media { order: -1; }
 .q-cta__media .q-media { aspect-ratio: 14 / 9; }
@@ -1608,7 +1609,7 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-tcard__name { font-family: var(--font-heading); font-weight: 600; font-size: 16px; line-height: 1.3; letter-spacing: 0; }
 .q-tcard__company { font-family: var(--font-body); font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-secondary); }
 .q-tcard__foot .q-textlink { flex: none; }
-.q-tcard--lg { min-height: 500px; }
+.q-tcard--lg { min-height: calc(var(--spacing-6xl) * 4); }
 .q-tcard--sm { padding: var(--spacing-xl); }
 .q-tcard--sm .q-tcard__quote { margin-bottom: var(--spacing-xl); font-size: 24px; letter-spacing: -0.02em; letter-spacing: -2%; }
 /* On a photo: the quote sits on a white 90% panel, 580 of 939 wide */
@@ -2365,6 +2366,79 @@ button.q-hcard__close:focus-visible { outline: none; box-shadow: var(--focus-rin
   .tag-xs { letter-spacing: 0.03em; }
   .button-label, .stat-lg, .stat-md { letter-spacing: -0.005em; }
 }
+
+/* ── StatCard: plain (no card): the figure and label in Qualys blue, the description in text-primary ── */
+.q-statcard--plain { padding: 0; border-radius: 0; background: none; box-shadow: none; color: var(--qualys-blue); }
+.q-statcard--plain .q-stat__desc { margin-top: var(--spacing-xs); color: var(--text-primary); }
+
+/* ── Carousel: heading row with a "View All" link above the cards ── */
+.q-carousel__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--spacing-rg); padding-bottom: 0; }
+.q-carousel__title { max-width: 740px; margin: 0; }
+
+/* ── Form: submitted. The card keeps its banner; the inline SuccessConfirmation fills the rest on the card's own ground ── */
+.q-form__done > .q-modal--inline { width: 100%; }
+.q-form__done > .q-modal--inline > .q-modal__panel { max-width: none; border-radius: 0; background: none; box-shadow: none; }
+
+/* ── SpeakerList: a round photo, the name and the role; side by side or stacked ── */
+.q-speakers { display: flex; flex-wrap: wrap; gap: var(--spacing-rg) var(--spacing-xl); margin: 0; padding: 0; list-style: none; }
+.q-speakers--vertical { flex-direction: column; gap: var(--spacing-rg); }
+.q-speaker { display: flex; align-items: center; gap: var(--spacing-2xs); min-width: 0; }
+.q-speaker__text { min-width: 0; }
+.q-speaker__name { margin: 0; font-family: var(--font-heading); font-weight: 600; font-size: 16px; line-height: 1.3; color: var(--text-primary); }
+.q-speaker__role { margin: 0; font-family: var(--font-body); font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-secondary); }
+.q-speakers--inverted .q-speaker__name, .q-speakers--inverted .q-speaker__role { color: var(--text-inverted); }
+
+/* ── FeatureList: a blue check before each item, in columns, on a white card ── */
+.q-featurelist { display: grid; grid-template-columns: repeat(var(--q-cols, auto-fit), minmax(min(100%, 250px), 1fr)); gap: var(--spacing-lg) var(--spacing-xl); margin: 0; padding: 0; list-style: none; }
+.q-featurelist--card { padding: var(--spacing-xl); border-radius: var(--radius-lg); background: var(--surface-neutral-100); box-shadow: var(--shadow-card); }
+.q-featurelist__item { display: flex; align-items: flex-start; gap: var(--spacing-2xs); }
+.q-featurelist__icon { flex: none; }
+.q-featurelist__label { font-family: var(--font-body); font-weight: 500; font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-primary); }
+.q-featurelist__label a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.q-featurelist__label a:hover { color: var(--hyperlink-default); }
+
+/* ── AppGrid: one card per product family, apps as links that turn into hyperlinks on hover ── */
+.q-appgrid__copy { max-width: 800px; margin: 0 auto var(--spacing-4xl); text-align: center; }
+.q-appgrid__copy .q-copy__body { margin-top: var(--spacing-rg); }
+.q-appgrid__copy .q-copy__actions { flex-direction: row; justify-content: center; }
+.q-appgrid__list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
+.q-appgrid__item { display: flex; flex-direction: column; box-sizing: border-box; padding: var(--spacing-xl); border-radius: var(--radius-lg); background: var(--surface-neutral-100); box-shadow: var(--shadow-card); }
+.q-appgrid__head { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-rg); }
+.q-appgrid__icon { display: block; flex: none; width: calc(var(--spacing-2xl) + var(--spacing-4xl)); height: calc(var(--spacing-2xl) + var(--spacing-4xl)); }
+.q-appgrid__title { min-height: 3.3em; margin: 0; font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.1; letter-spacing: -0.02em; letter-spacing: -2%; text-align: center; color: var(--text-primary); }
+.q-appgrid__rule { height: var(--spacing-5xs); margin: var(--spacing-xl) calc(var(--spacing-xl) * -1); background: var(--qualys-blue); }
+.q-appgrid__links { display: flex; flex-direction: column; gap: var(--spacing-rg); margin: 0; padding: 0; list-style: none; }
+.q-appgrid__link { font-family: var(--font-body); font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-primary); text-decoration: none; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.q-appgrid__link:hover, .q-appgrid__link:focus-visible { color: var(--hyperlink-default); text-decoration-line: underline; }
+
+/* ── EventBanner: series name beside a rule, a blue Tag and the title, one Button at the right, over a light picture or video ── */
+.q-eventbanner__card { position: relative; isolation: isolate; display: flex; align-items: center; overflow: hidden; box-sizing: border-box; min-height: 230px; padding: var(--spacing-xl); border-radius: var(--radius-lg); background: var(--surface-neutral-100); box-shadow: var(--shadow-card); color: var(--text-primary); }
+.q-eventbanner__media { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+.q-eventbanner--dark .q-eventbanner__card { background: var(--asphalt); color: var(--text-inverted); }
+.q-eventbanner--dark .q-eventbanner__card::before { content: ""; position: absolute; inset: 0; z-index: 1; background: var(--overlay-dark); }
+.q-eventbanner__row { position: relative; z-index: 2; flex: 1; display: flex; align-items: center; gap: var(--spacing-2xl); min-width: 0; }
+.q-eventbanner__series { flex: none; width: min-content; margin: 0; padding: var(--spacing-xs) var(--spacing-2xl) var(--spacing-xs) var(--spacing-rg); border-right: 1px solid var(--stroke-neutral-500); font-family: var(--font-heading); font-weight: 500; font-size: 24px; line-height: 1.25; letter-spacing: 0.2em; text-align: right; text-transform: uppercase; }
+.q-eventbanner--dark .q-eventbanner__series { border-right-color: currentColor; }
+.q-eventbanner__copy { flex: 0 1 600px; min-width: 0; }
+.q-eventbanner__tag { margin-bottom: var(--spacing-rg); }
+.q-eventbanner__title { margin: 0; color: inherit; }
+.q-eventbanner__action { flex: none; margin: 0 var(--spacing-rg) 0 auto; }
+
+@container (max-width: 767px) {
+  .q-stats .q-statcard--plain { padding: 0; }
+  .q-featurelist { grid-template-columns: minmax(0, 1fr); }
+  .q-featurelist--card { padding: var(--spacing-lg); }
+  .q-appgrid__copy { margin-bottom: var(--spacing-xl-static); }
+  .q-appgrid__copy .q-copy__actions { flex-direction: row; justify-content: center; }
+  .q-appgrid__head { flex-direction: row; }
+  .q-appgrid__icon { width: var(--spacing-4xl-static); height: var(--spacing-4xl-static); }
+  .q-appgrid__title { min-height: 0; text-align: left; }
+  .q-eventbanner__card { min-height: 220px; padding: var(--spacing-rg); }
+  .q-eventbanner__row { flex-direction: column; align-items: flex-start; align-self: stretch; gap: var(--spacing-rg); }
+  .q-eventbanner__copy { flex: none; }
+  .q-eventbanner__series { width: auto; padding: 0; border-right: 0; font-size: 14px; letter-spacing: 0.15em; text-align: left; }
+  .q-eventbanner__action { margin: calc(var(--spacing-xl) - var(--spacing-rg)) 0 0; }
+}
 </style><script>/**
  * @license React
  * react.production.min.js
@@ -2663,7 +2737,7 @@ c,!1,d,e);a[Ja]=b.current;sc(8===a.nodeType?a.parentNode:a);return new Xf(b)};Q.
 var d=null!=c&&c.hydratedSources||null,e=!1,f="",g=aj;null!==c&&void 0!==c&&(!0===c.unstable_strictMode&&(e=!0),void 0!==c.identifierPrefix&&(f=c.identifierPrefix),void 0!==c.onRecoverableError&&(g=c.onRecoverableError));b=Wi(b,null,a,1,null!=c?c:null,e,!1,f,g);a[Ja]=b.current;sc(a);if(d)for(a=0;a<d.length;a++)c=d[a],e=c._getVersion,e=e(c._source),null==b.mutableSourceEagerHydrationData?b.mutableSourceEagerHydrationData=[c,e]:b.mutableSourceEagerHydrationData.push(c,e);return new Ud(b)};Q.render=
 function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmountComponentAtNode=function(a){if(!Vd(a))throw Error(m(40));return a._reactRootContainer?(yb(function(){Wd(null,null,a,!1,function(){a._reactRootContainer=null;a[Ja]=null})}),!0):!1};Q.unstable_batchedUpdates=Tf;Q.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!Vd(c))throw Error(m(200));if(null==a||void 0===a._reactInternals)throw Error(m(38));return Wd(a,b,c,!1,d)};Q.version="18.3.1-next-f1338f8080-20240426"});
 })();
-</script><script>/* @ds-bundle: {"format":4,"namespace":"Qualys","components":[{"name":"Button"},{"name":"Hyperlink"},{"name":"SocialButton"},{"name":"TextLink"},{"name":"BlogCard"},{"name":"Card"},{"name":"InlinePromoCard"},{"name":"IntegrationCard"},{"name":"ResourceCard"},{"name":"WebinarCard"},{"name":"Carousel"},{"name":"LogoCarousel"},{"name":"LogoHierarchy"},{"name":"TestimonialCard"},{"name":"TestimonialCarousel"},{"name":"AppliedFilters"},{"name":"FilterBar"},{"name":"FilterButton"},{"name":"FilterChip"},{"name":"FilterChipGroup"},{"name":"FilterDrawer"},{"name":"FilterDropdown"},{"name":"Checkbox"},{"name":"DemoRequestWizard"},{"name":"Form"},{"name":"FormModal"},{"name":"Radio"},{"name":"SearchBar"},{"name":"Select"},{"name":"TextField"},{"name":"Toggle"},{"name":"Flag"},{"name":"Icon"},{"name":"Marker"},{"name":"Tag"},{"name":"Breadcrumbs"},{"name":"Footer"},{"name":"Nav"},{"name":"NavBanner"},{"name":"AlertDialog"},{"name":"CookieBanner"},{"name":"ExitIntent"},{"name":"HoverCard"},{"name":"Modal"},{"name":"NotificationBar"},{"name":"Overlay"},{"name":"SessionTimeout"},{"name":"SuccessConfirmation"},{"name":"Toast"},{"name":"ToastStack"},{"name":"Tooltip"},{"name":"CtaModule"},{"name":"EventCalendar"},{"name":"EventCard"},{"name":"EventType"},{"name":"GeneralContent"},{"name":"Hero"},{"name":"Media"},{"name":"TypographicHeader"},{"name":"Avatar"},{"name":"ProfileCard"},{"name":"ProfileGrid"},{"name":"ProfileModal"},{"name":"StatCard"},{"name":"Stats"},{"name":"CardModule"},{"name":"DetailComparison"},{"name":"FeatureMatrix"},{"name":"MarketingTable"},{"name":"Accordion"},{"name":"AccordionModule"},{"name":"Drawer"},{"name":"DrawerCard"},{"name":"TabModule"},{"name":"Tabs"}]} */
+</script><script>/* @ds-bundle: {"format":4,"namespace":"Qualys","components":[{"name":"Button"},{"name":"Hyperlink"},{"name":"SocialButton"},{"name":"TextLink"},{"name":"BlogCard"},{"name":"Card"},{"name":"InlinePromoCard"},{"name":"IntegrationCard"},{"name":"ResourceCard"},{"name":"WebinarCard"},{"name":"Carousel"},{"name":"LogoCarousel"},{"name":"LogoHierarchy"},{"name":"TestimonialCard"},{"name":"TestimonialCarousel"},{"name":"AppliedFilters"},{"name":"FilterBar"},{"name":"FilterButton"},{"name":"FilterChip"},{"name":"FilterChipGroup"},{"name":"FilterDrawer"},{"name":"FilterDropdown"},{"name":"Checkbox"},{"name":"DemoRequestWizard"},{"name":"Form"},{"name":"FormModal"},{"name":"Radio"},{"name":"SearchBar"},{"name":"Select"},{"name":"TextField"},{"name":"Toggle"},{"name":"Flag"},{"name":"Icon"},{"name":"Marker"},{"name":"Tag"},{"name":"Breadcrumbs"},{"name":"Footer"},{"name":"Nav"},{"name":"NavBanner"},{"name":"AlertDialog"},{"name":"CookieBanner"},{"name":"ExitIntent"},{"name":"HoverCard"},{"name":"Modal"},{"name":"NotificationBar"},{"name":"Overlay"},{"name":"SessionTimeout"},{"name":"SuccessConfirmation"},{"name":"Toast"},{"name":"ToastStack"},{"name":"Tooltip"},{"name":"CtaModule"},{"name":"EventCalendar"},{"name":"EventBanner"},{"name":"AppGrid"},{"name":"FeatureList"},{"name":"SpeakerList"},{"name":"EventCard"},{"name":"EventType"},{"name":"GeneralContent"},{"name":"Hero"},{"name":"Media"},{"name":"TypographicHeader"},{"name":"Avatar"},{"name":"ProfileCard"},{"name":"ProfileGrid"},{"name":"ProfileModal"},{"name":"StatCard"},{"name":"Stats"},{"name":"CardModule"},{"name":"DetailComparison"},{"name":"FeatureMatrix"},{"name":"MarketingTable"},{"name":"Accordion"},{"name":"AccordionModule"},{"name":"Drawer"},{"name":"DrawerCard"},{"name":"TabModule"},{"name":"Tabs"}]} */
 (function () {
   var React = window.React;
   var h = React.createElement;
@@ -3817,7 +3891,8 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
 
   /* StatCard */
   function StatCard(p) {
-    return h('div', { className: cx('q-statcard', 'q-statcard--' + (p.tone === 'outline' ? 'outline' : 'solid'), 'q-statcard--' + (p.size === 'md' ? 'md' : 'lg'), p.className) }, statBody(p));
+    var tone = p.tone === 'outline' || p.tone === 'plain' ? p.tone : 'solid';
+    return h('div', { className: cx('q-statcard', 'q-statcard--' + tone, 'q-statcard--' + (p.size === 'md' ? 'md' : 'lg'), p.className) }, statBody(p));
   }
   function statBody(s, key) {
     var icon = s.icon, suffix = s.suffix != null ? s.suffix : s.unit;
@@ -3832,11 +3907,11 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
   }
   /* Stats — the Figma Stats page as a module: layout 'block' (one panel of three figures) or 'cards' (three or four cards in a row). */
   function Stats(p) {
-    var items = p.items || [], outline = p.tone === 'outline';
+    var items = p.items || [], outline = p.tone === 'outline', cardTone = p.tone === 'plain' ? 'plain' : outline ? 'outline' : 'solid';
     var size = p.size || (items.length >= 4 ? 'md' : 'lg');
     var inner = p.layout === 'cards'
       ? h('div', { className: cx('q-stats__cards', 'q-stats__cards--' + size), style: { '--q-n': items.length } }, items.map(function (it, i) {
-          return h(StatCard, Object.assign({ key: i, tone: outline ? 'outline' : 'solid', size: size, countUp: p.countUp }, it));
+          return h(StatCard, Object.assign({ key: i, tone: cardTone, size: size, countUp: p.countUp }, it));
         }))
       : h('div', { className: cx('q-stats__panel', outline && 'q-stats__panel--outline') }, items.map(function (it, i) { return statBody(Object.assign({ countUp: p.countUp }, it), i); }));
     return h('section', { className: cx('q-section', 'q-stats', 'q-stats--' + size, p.className), id: p.id, 'aria-label': p.label },
@@ -4248,6 +4323,13 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
     }
     var consentErr = consent ? errors[consentName] : null;
     var banner = p.banner || (p.image ? { image: p.image, imageAlt: p.imageAlt } : null);
+    /* Submitted: the card keeps its banner, and the heading, fields and button give way to the inline SuccessConfirmation. */
+    if (p.submitted) {
+      var done = Object.assign({ type: 'download' }, p.success || {});
+      return h('div', { className: cx('q-form', 'q-form--' + variant, banner && 'q-form--media', 'q-form--submitted', p.appearance === 'bare' && 'q-form--bare', p.tone === 'inverted' && 'q-form--inverted', p.className) },
+        formBanner(banner, 'q-form__banner'),
+        h('div', { className: 'q-form__done', role: 'status' }, h(SuccessConfirmation, Object.assign({}, done, { inline: true }))));
+    }
     return h('div', { className: cx('q-form', 'q-form--' + variant, banner && 'q-form--media', p.appearance === 'bare' && 'q-form--bare', p.tone === 'inverted' && 'q-form--inverted', p.className) },
       formBanner(banner, 'q-form__banner'),
       h('form', { ref: formRef, className: 'q-form__body', action: p.action, method: p.method, noValidate: true, onSubmit: submit, 'aria-labelledby': p.title ? id + '-title' : undefined, 'aria-label': p.title ? undefined : p.label },
@@ -4487,7 +4569,13 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
       el.scrollBy({ left: dir * (first.offsetWidth + gap), behavior: prefersStill() ? 'auto' : 'smooth' });
     }
     var w = p.slideWidth, style = w ? { '--q-slide': typeof w === 'number' ? w + 'px' : w } : undefined;
-    return h('section', { className: cx('q-section', 'q-carousel', 'q-carousel--' + (p.variant === 'single' ? 'single' : 'multi'), p.spacing === 'lg' && 'q-carousel--roomy', p.className), id: p.id, 'aria-roledescription': 'carousel', 'aria-label': p.label, style: style },
+    /* title and link: a heading row above the cards, with a "View All" text link at its right. */
+    var headId = useId(p.id && p.id + '-title'), link = typeof p.link === 'string' ? { label: p.link } : p.link;
+    var head = p.title || link ? h('div', { className: 'q-section__inner q-carousel__head' },
+      p.title ? heading(p.titleLevel || 2, { className: 'q-copy__title q-carousel__title', id: headId }, p.title) : null,
+      link ? h(TextLink, { tone: 'neutral', arrow: true, href: link.href || '#', onClick: link.onClick, className: 'q-carousel__link' }, link.label) : null) : null;
+    return h('section', { className: cx('q-section', 'q-carousel', 'q-carousel--' + (p.variant === 'single' ? 'single' : 'multi'), p.spacing === 'lg' && 'q-carousel--roomy', head && 'q-carousel--head', p.className), id: p.id, 'aria-roledescription': 'carousel', 'aria-label': p.label, 'aria-labelledby': !p.label && p.title ? headId : undefined, style: style },
+      head,
       h('div', { className: 'q-carousel__viewport', ref: vp, onScroll: measure, tabIndex: 0, role: 'group', 'aria-label': p.label ? p.label + ', scrollable' : 'Scrollable' },
         h('ul', { className: 'q-carousel__track' }, slides.map(function (c, i) { return h('li', { key: i, className: 'q-carousel__slide' }, c); }))),
       slides.length > 1 ? h('div', { className: 'q-section__inner q-carousel__controls' },
@@ -5595,10 +5683,80 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
         })) : null)));
   }
 
+  /* SpeakerList — who is speaking: a round photo, the name and the role for each person.
+     layout 'horizontal' (side by side, wrapping) | 'vertical' (stacked). */
+  function SpeakerList(p) {
+    var items = p.speakers || p.items || [];
+    var layout = p.layout === 'vertical' ? 'vertical' : 'horizontal';
+    return h('ul', { className: cx('q-speakers', 'q-speakers--' + layout, p.tone === 'inverted' && 'q-speakers--inverted', p.className), 'aria-label': p.label || 'Speakers' },
+      items.map(function (s, i) {
+        return h('li', { key: i, className: 'q-speaker' },
+          h(Avatar, { size: p.size === 'md' ? 'md' : 'sm', image: s.image }),
+          h('div', { className: 'q-speaker__text' },
+            h('p', { className: 'q-speaker__name' }, s.name),
+            s.role ? h('p', { className: 'q-speaker__role' }, s.role) : null));
+      }));
+  }
+
+  /* FeatureList — a checklist of what's included: a blue check before each item, in columns. card: false drops the white card. */
+  function FeatureList(p) {
+    var items = p.items || [];
+    return h('ul', { className: cx('q-featurelist', p.card !== false && 'q-featurelist--card', p.className), 'aria-label': p.label, style: p.columns ? { '--q-cols': p.columns } : undefined },
+      items.map(function (it, i) {
+        var item = typeof it === 'string' || React.isValidElement(it) ? { label: it } : it;
+        return h('li', { key: i, className: 'q-featurelist__item' },
+          h(Icon, { name: item.icon || p.icon || 'check', size: 'lg', tone: 'blue', className: 'q-featurelist__icon' }),
+          h('span', { className: 'q-featurelist__label' }, item.href ? h('a', { href: item.href }, item.label) : item.label));
+      }));
+  }
+
+  /* AppGrid — the app suite: one card per product family (its icon and name over a blue rule), each listing its apps as links.
+     An optional centered copy block (title, body, link) sits above the cards. */
+  function AppGrid(p) {
+    var groups = p.groups || p.apps || [];
+    var link = typeof p.link === 'string' ? { label: p.link } : p.link;
+    var hasCopy = p.title || p.body || link;
+    return h('section', { className: cx('q-section', 'q-appgrid', p.className), id: p.id, 'aria-label': hasCopy ? undefined : p.label },
+      h('div', { className: 'q-section__inner' },
+        hasCopy ? h('div', { className: 'q-copy q-appgrid__copy' }, copyParts({ eyebrow: p.eyebrow, title: p.title, titleLevel: p.titleLevel, body: p.body,
+          actions: link ? h(TextLink, { tone: 'neutral', arrow: true, href: link.href || '#', onClick: link.onClick }, link.label) : null }, 2)) : null,
+        h('ul', { className: 'q-appgrid__list', 'aria-label': p.label || 'Apps' }, groups.map(function (g, i) {
+          return h('li', { key: i, className: 'q-appgrid__item' },
+            h('div', { className: 'q-appgrid__head' },
+              g.icon ? h('img', { className: 'q-appgrid__icon', src: g.icon, alt: '' }) : null,
+              heading(p.titleLevel ? p.titleLevel + 1 : 3, { className: 'q-appgrid__title' }, g.title)),
+            h('div', { className: 'q-appgrid__rule', 'aria-hidden': 'true' }),
+            h('ul', { className: 'q-appgrid__links' }, (g.links || []).map(function (l, k) {
+              var a = typeof l === 'string' ? { label: l } : l;
+              return h('li', { key: k }, h('a', { className: 'q-appgrid__link', href: a.href || '#' }, a.label));
+            })));
+        }))));
+  }
+
+  /* EventBanner — a banner for an event or series: the series name beside a rule, a blue Tag, the title, and one Button at the right,
+     over a light picture or a silent looping video. tone 'dark' puts black at 50% over the picture, with white type. */
+  function EventBanner(p) {
+    var tone = p.tone === 'dark' ? 'dark' : 'light';
+    var action = p.action ? (typeof p.action === 'string' ? { label: p.action } : p.action) : null;
+    var media = p.video ? h('video', { className: 'q-eventbanner__media', src: p.video, poster: p.image, autoPlay: !prefersStill(), muted: true, loop: true, playsInline: true, 'aria-hidden': 'true' })
+      : p.image ? h('img', { className: 'q-eventbanner__media', src: p.image, alt: '' }) : null;
+    return h('section', { className: cx('q-section', 'q-eventbanner', 'q-eventbanner--' + tone, p.className), id: p.id },
+      h('div', { className: 'q-section__inner' },
+        h('div', { className: 'q-eventbanner__card' },
+          media,
+          h('div', { className: 'q-eventbanner__row' },
+            p.series ? h('p', { className: 'q-eventbanner__series' }, p.series) : null,
+            h('div', { className: 'q-eventbanner__copy' },
+              p.tag ? h(Tag, { variant: 'fill', tone: 'blue', className: 'q-eventbanner__tag' }, p.tag) : null,
+              p.title ? heading(p.titleLevel || 2, { className: 'q-copy__title q-eventbanner__title' }, p.title) : null),
+            action ? h('div', { className: 'q-eventbanner__action' }, h(Button, { href: action.href || '#', onClick: action.onClick, variant: action.variant }, action.label)) : (p.actions ? h('div', { className: 'q-eventbanner__action' }, p.actions) : null)))));
+  }
+
   window.Qualys = Object.assign(window.Qualys || {}, {
     Button: Button, TextLink: TextLink, Hyperlink: Hyperlink, Breadcrumbs: Breadcrumbs, SocialButton: SocialButton, Icon: Icon, Tag: Tag, FilterChip: FilterChip, Flag: Flag, Marker: Marker, EventType: EventType, Tabs: Tabs, Drawer: Drawer, DrawerCard: DrawerCard, Accordion: Accordion, Avatar: Avatar, ProfileCard: ProfileCard, ProfileModal: ProfileModal, ProfileGrid: ProfileGrid, TextField: TextField, Select: Select, FilterDropdown: FilterDropdown, FilterChipGroup: FilterChipGroup, AppliedFilters: AppliedFilters, FilterButton: FilterButton, FilterBar: FilterBar, FilterDrawer: FilterDrawer, SearchBar: SearchBar, Checkbox: Checkbox, Radio: Radio, Toggle: Toggle, Form: Form,
     Card: Card, IntegrationCard: IntegrationCard, EventCard: EventCard, WebinarCard: WebinarCard, ResourceCard: ResourceCard, BlogCard: BlogCard, InlinePromoCard: InlinePromoCard, StatCard: StatCard,
     Nav: Nav, NavBanner: NavBanner, Media: Media, Hero: Hero, TypographicHeader: TypographicHeader, GeneralContent: GeneralContent, TabModule: TabModule, AccordionModule: AccordionModule, CtaModule: CtaModule, Stats: Stats, CardModule: CardModule, Carousel: Carousel, TestimonialCard: TestimonialCard, TestimonialCarousel: TestimonialCarousel, LogoCarousel: LogoCarousel, LogoHierarchy: LogoHierarchy, EventCalendar: EventCalendar, Footer: Footer,
+    SpeakerList: SpeakerList, FeatureList: FeatureList, AppGrid: AppGrid, EventBanner: EventBanner,
     FeatureMatrix: FeatureMatrix, DetailComparison: DetailComparison, MarketingTable: MarketingTable, HoverCard: HoverCard,
     Overlay: Overlay, Modal: Modal, FormModal: FormModal, AlertDialog: AlertDialog, SessionTimeout: SessionTimeout, SuccessConfirmation: SuccessConfirmation, ExitIntent: ExitIntent, DemoRequestWizard: DemoRequestWizard, Toast: Toast, ToastStack: ToastStack, NotificationBar: NotificationBar, CookieBanner: CookieBanner, Tooltip: Tooltip
   });

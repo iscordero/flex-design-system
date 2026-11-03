@@ -1216,7 +1216,7 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-gc__bannerimg { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
 .q-gc__shade { position: absolute; inset: 0; background: var(--overlay-dark); }
 .q-gc__bannercopy { position: relative; flex: 0 1 600px; }
-.q-gc__banner .q-copy__title, .q-gc__banner .q-copy__body { color: inherit; }
+.q-gc__banner .q-copy__eyebrow, .q-gc__banner .q-copy__title, .q-gc__banner .q-copy__body { color: inherit; }
 .q-gc__banner .q-copy__actions { margin-top: var(--spacing-xl); }
 .q-gc__play { margin: auto; }
 
@@ -1335,7 +1335,8 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-cta--form { overflow: hidden; }
 .q-cta--form > .q-section__inner { position: relative; padding-block: var(--spacing-5xl); }
 .q-cta__row { display: flex; align-items: center; gap: var(--spacing-5xl); }
-.q-cta__formcol { display: flex; flex: 520 1 0; justify-content: center; min-width: 0; }
+.q-cta__formcol { display: flex; flex: 520 1 0; justify-content: flex-start; min-width: 0; }
+.q-cta--media-left .q-cta__formcol { justify-content: flex-end; }
 .q-cta__media { flex: 560 1 0; min-width: 0; }
 .q-cta--media-left .q-cta__media { order: -1; }
 .q-cta__media .q-media { aspect-ratio: 14 / 9; }
@@ -1409,7 +1410,7 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-tcard__name { font-family: var(--font-heading); font-weight: 600; font-size: 16px; line-height: 1.3; letter-spacing: 0; }
 .q-tcard__company { font-family: var(--font-body); font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-secondary); }
 .q-tcard__foot .q-textlink { flex: none; }
-.q-tcard--lg { min-height: 500px; }
+.q-tcard--lg { min-height: calc(var(--spacing-6xl) * 4); }
 .q-tcard--sm { padding: var(--spacing-xl); }
 .q-tcard--sm .q-tcard__quote { margin-bottom: var(--spacing-xl); font-size: 24px; letter-spacing: -0.02em; letter-spacing: -2%; }
 /* On a photo: the quote sits on a white 90% panel, 580 of 939 wide */
@@ -2165,4 +2166,77 @@ button.q-hcard__close:focus-visible { outline: none; box-shadow: var(--focus-rin
   .tag-sm, .eyebrow-lg, .eyebrow-md, .eyebrow-sm, .eyebrow-xs { letter-spacing: 0.05em; }
   .tag-xs { letter-spacing: 0.03em; }
   .button-label, .stat-lg, .stat-md { letter-spacing: -0.005em; }
+}
+
+/* ── StatCard: plain (no card): the figure and label in Qualys blue, the description in text-primary ── */
+.q-statcard--plain { padding: 0; border-radius: 0; background: none; box-shadow: none; color: var(--qualys-blue); }
+.q-statcard--plain .q-stat__desc { margin-top: var(--spacing-xs); color: var(--text-primary); }
+
+/* ── Carousel: heading row with a "View All" link above the cards ── */
+.q-carousel__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--spacing-rg); padding-bottom: 0; }
+.q-carousel__title { max-width: 740px; margin: 0; }
+
+/* ── Form: submitted. The card keeps its banner; the inline SuccessConfirmation fills the rest on the card's own ground ── */
+.q-form__done > .q-modal--inline { width: 100%; }
+.q-form__done > .q-modal--inline > .q-modal__panel { max-width: none; border-radius: 0; background: none; box-shadow: none; }
+
+/* ── SpeakerList: a round photo, the name and the role; side by side or stacked ── */
+.q-speakers { display: flex; flex-wrap: wrap; gap: var(--spacing-rg) var(--spacing-xl); margin: 0; padding: 0; list-style: none; }
+.q-speakers--vertical { flex-direction: column; gap: var(--spacing-rg); }
+.q-speaker { display: flex; align-items: center; gap: var(--spacing-2xs); min-width: 0; }
+.q-speaker__text { min-width: 0; }
+.q-speaker__name { margin: 0; font-family: var(--font-heading); font-weight: 600; font-size: 16px; line-height: 1.3; color: var(--text-primary); }
+.q-speaker__role { margin: 0; font-family: var(--font-body); font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-secondary); }
+.q-speakers--inverted .q-speaker__name, .q-speakers--inverted .q-speaker__role { color: var(--text-inverted); }
+
+/* ── FeatureList: a blue check before each item, in columns, on a white card ── */
+.q-featurelist { display: grid; grid-template-columns: repeat(var(--q-cols, auto-fit), minmax(min(100%, 250px), 1fr)); gap: var(--spacing-lg) var(--spacing-xl); margin: 0; padding: 0; list-style: none; }
+.q-featurelist--card { padding: var(--spacing-xl); border-radius: var(--radius-lg); background: var(--surface-neutral-100); box-shadow: var(--shadow-card); }
+.q-featurelist__item { display: flex; align-items: flex-start; gap: var(--spacing-2xs); }
+.q-featurelist__icon { flex: none; }
+.q-featurelist__label { font-family: var(--font-body); font-weight: 500; font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-primary); }
+.q-featurelist__label a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.q-featurelist__label a:hover { color: var(--hyperlink-default); }
+
+/* ── AppGrid: one card per product family, apps as links that turn into hyperlinks on hover ── */
+.q-appgrid__copy { max-width: 800px; margin: 0 auto var(--spacing-4xl); text-align: center; }
+.q-appgrid__copy .q-copy__body { margin-top: var(--spacing-rg); }
+.q-appgrid__copy .q-copy__actions { flex-direction: row; justify-content: center; }
+.q-appgrid__list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
+.q-appgrid__item { display: flex; flex-direction: column; box-sizing: border-box; padding: var(--spacing-xl); border-radius: var(--radius-lg); background: var(--surface-neutral-100); box-shadow: var(--shadow-card); }
+.q-appgrid__head { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-rg); }
+.q-appgrid__icon { display: block; flex: none; width: calc(var(--spacing-2xl) + var(--spacing-4xl)); height: calc(var(--spacing-2xl) + var(--spacing-4xl)); }
+.q-appgrid__title { min-height: 3.3em; margin: 0; font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.1; letter-spacing: -0.02em; letter-spacing: -2%; text-align: center; color: var(--text-primary); }
+.q-appgrid__rule { height: var(--spacing-5xs); margin: var(--spacing-xl) calc(var(--spacing-xl) * -1); background: var(--qualys-blue); }
+.q-appgrid__links { display: flex; flex-direction: column; gap: var(--spacing-rg); margin: 0; padding: 0; list-style: none; }
+.q-appgrid__link { font-family: var(--font-body); font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-primary); text-decoration: none; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.q-appgrid__link:hover, .q-appgrid__link:focus-visible { color: var(--hyperlink-default); text-decoration-line: underline; }
+
+/* ── EventBanner: series name beside a rule, a blue Tag and the title, one Button at the right, over a light picture or video ── */
+.q-eventbanner__card { position: relative; isolation: isolate; display: flex; align-items: center; overflow: hidden; box-sizing: border-box; min-height: 230px; padding: var(--spacing-xl); border-radius: var(--radius-lg); background: var(--surface-neutral-100); box-shadow: var(--shadow-card); color: var(--text-primary); }
+.q-eventbanner__media { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+.q-eventbanner--dark .q-eventbanner__card { background: var(--asphalt); color: var(--text-inverted); }
+.q-eventbanner--dark .q-eventbanner__card::before { content: ""; position: absolute; inset: 0; z-index: 1; background: var(--overlay-dark); }
+.q-eventbanner__row { position: relative; z-index: 2; flex: 1; display: flex; align-items: center; gap: var(--spacing-2xl); min-width: 0; }
+.q-eventbanner__series { flex: none; width: min-content; margin: 0; padding: var(--spacing-xs) var(--spacing-2xl) var(--spacing-xs) var(--spacing-rg); border-right: 1px solid var(--stroke-neutral-500); font-family: var(--font-heading); font-weight: 500; font-size: 24px; line-height: 1.25; letter-spacing: 0.2em; text-align: right; text-transform: uppercase; }
+.q-eventbanner--dark .q-eventbanner__series { border-right-color: currentColor; }
+.q-eventbanner__copy { flex: 0 1 600px; min-width: 0; }
+.q-eventbanner__tag { margin-bottom: var(--spacing-rg); }
+.q-eventbanner__title { margin: 0; color: inherit; }
+.q-eventbanner__action { flex: none; margin: 0 var(--spacing-rg) 0 auto; }
+
+@container (max-width: 767px) {
+  .q-stats .q-statcard--plain { padding: 0; }
+  .q-featurelist { grid-template-columns: minmax(0, 1fr); }
+  .q-featurelist--card { padding: var(--spacing-lg); }
+  .q-appgrid__copy { margin-bottom: var(--spacing-xl-static); }
+  .q-appgrid__copy .q-copy__actions { flex-direction: row; justify-content: center; }
+  .q-appgrid__head { flex-direction: row; }
+  .q-appgrid__icon { width: var(--spacing-4xl-static); height: var(--spacing-4xl-static); }
+  .q-appgrid__title { min-height: 0; text-align: left; }
+  .q-eventbanner__card { min-height: 220px; padding: var(--spacing-rg); }
+  .q-eventbanner__row { flex-direction: column; align-items: flex-start; align-self: stretch; gap: var(--spacing-rg); }
+  .q-eventbanner__copy { flex: none; }
+  .q-eventbanner__series { width: auto; padding: 0; border-right: 0; font-size: 14px; letter-spacing: 0.15em; text-align: left; }
+  .q-eventbanner__action { margin: calc(var(--spacing-xl) - var(--spacing-rg)) 0 0; }
 }

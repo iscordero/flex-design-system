@@ -3,13 +3,14 @@
 
 The carousel module from the Figma Carousel Modules page: a row of cards you scroll sideways, with a progress bar and previous / next buttons.
 
-**Provide:** the cards as children, a `label` that names the set ("Latest resources"), and optionally `variant="single"` or `slideWidth`.
+**Provide:** the cards as children, a `label` that names the set ("Latest resources"), and optionally `variant="single"`, `slideWidth`, a `title` and a `link`.
 
 | Variant | Figma name | What it shows |
 |---|---|---|
 | `multi` (default) | Multi Card Carousel | Cards 350px wide, 24px apart; three fit the column and the next one peeks in |
 | `single` | Single Card Carousel | One card as wide as the content column (up to 1440px), such as a featured EventCard |
 
+- **Heading:** `title` puts a heading over the cards in `h2` (SemiBold 38px, 740px wide at most) on the content column, 100px from the top of the section. `link` (`"View All Resources"` or `{ label, href }`) adds a neutral TextLink with an arrow at its right, on the heading's last line; on phones it wraps under the heading. The cards start 32px below. The heading also names the carousel for screen readers when there is no `label`.
 - Section on `surface-neutral-200`, 48px top and bottom. The first card starts on the content column (up to 1440px) and the row runs off the right edge of the page.
 - **Controls,** 36px under the cards and right-aligned to the column: the progress bar, 48px, then the two buttons.
 - **Progress bar:** 377 × 4px, Charcoal at 20% with a `qualys-blue` fill that grows as you move through the set.

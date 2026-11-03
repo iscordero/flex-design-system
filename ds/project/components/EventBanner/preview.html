@@ -1,0 +1,23 @@
+<!-- @dsCard group="Page modules · Events" height=1119 width=1440 subtitle="Block module · An event or series banner: series name beside a rule, a blue tag and the title, one button at the right, over a light picture or video." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>EventBanner — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card);background:var(--surface-neutral-200);container-type:inline-size}.pad{padding:0 var(--spacing-xl) var(--spacing-xl)}.ground{background:var(--surface-neutral-200);container-type:inline-size}.dark{display:inline-block;padding:var(--spacing-xl);border-radius:var(--radius-lg);background:var(--asphalt)}.pair{display:flex;gap:var(--spacing-4xl);align-items:flex-start}.w{width:600px}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+var OFFICE = '/_blob/0d022f9bddd95029144a197b97432323';
+var E = {series: 'Cyber Risk Series', tag: 'Live Virtual Event', title: 'Mind the Gap: From Disclosure to Detection', action: {label: 'Watch Now', href: '#'}};
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('Light (default): dark type on a light picture or video'), h('div', {className: 'ground'}, h(Q.EventBanner, E)),
+  cap('Dark: black at 50% over a photo, white type'), h('div', {className: 'ground'}, h(Q.EventBanner, Object.assign({}, E, {tone: 'dark', image: OFFICE}))),
+  cap('Mobile'), h('div', {className: 'phones'}, h('div', {className: 'phone'}, h(Q.EventBanner, E)), h('div', {className: 'phone'}, h(Q.EventBanner, Object.assign({}, E, {tone: 'dark', image: OFFICE}))))));
+</script>
+</body>
+</html>

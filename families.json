@@ -67,7 +67,8 @@
         "Avatar",
         "ProfileCard",
         "ProfileModal",
-        "ProfileGrid"
+        "ProfileGrid",
+        "SpeakerList"
       ]
     ],
     [
@@ -132,7 +133,9 @@
         "TabModule",
         "AccordionModule",
         "Stats",
-        "CardModule"
+        "CardModule",
+        "AppGrid",
+        "FeatureList"
       ]
     ],
     [
@@ -153,7 +156,8 @@
     [
       "Events",
       [
-        "EventCalendar"
+        "EventCalendar",
+        "EventBanner"
       ]
     ],
     [
@@ -240,7 +244,11 @@
     "HoverCard": "Component",
     "FeatureMatrix": "Block module",
     "DetailComparison": "Block module",
-    "MarketingTable": "Block module"
+    "MarketingTable": "Block module",
+    "SpeakerList": "Component",
+    "FeatureList": "Component",
+    "AppGrid": "Block module",
+    "EventBanner": "Block module"
   },
   "sections": [
     [

@@ -1,0 +1,22 @@
+<!-- @dsCard group="Page modules · Content sections" height=977 width=1440 subtitle="Component · A checklist of what's included: a blue check before each item, in columns, on a white card." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FeatureList — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card);background:var(--surface-neutral-200);container-type:inline-size}.pad{padding:0 var(--spacing-xl) var(--spacing-xl)}.ground{background:var(--surface-neutral-200);container-type:inline-size}.dark{display:inline-block;padding:var(--spacing-xl);border-radius:var(--radius-lg);background:var(--asphalt)}.pair{display:flex;gap:var(--spacing-4xl);align-items:flex-start}.w{width:600px}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+var ITEMS = ['Asset Inventory and Vulnerability Management', 'TruRisk™ with Real-Time Threat Indicators and Continuous Monitoring', 'Unlimited Virtual Scanners, Cloud Agents, Passive Sensors and Container Sensors', 'Runtime Software Composition Analysis', 'Certificate Inventory, Assessment, and Renewal', 'Cloud, Container, and Mobile Inventory', 'QFlow (Rule-Based Automation)', 'Patch Detection and CVE Correlation'];
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('On a card (default), as many 250px columns as fit'), h('div', {className: 'pad'}, h('div', {className: 'w'}, h(Q.FeatureList, {items: ITEMS, label: 'Included in VMDR'}))),
+  cap('No card, three columns, with links'), h('div', {className: 'pad'}, h(Q.FeatureList, {items: ITEMS.slice(0, 6).map(function (t, i) { return i < 2 ? {label: t, href: '#'} : t; }), card: false, columns: 3, label: 'Included'})),
+  cap('Mobile'), h('div', {className: 'phones'}, h('div', {className: 'phone', style: {padding: 'var(--spacing-lg)'}}, h(Q.FeatureList, {items: ITEMS.slice(0, 5), label: 'Included in VMDR'})))));
+</script>
+</body>
+</html>

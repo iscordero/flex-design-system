@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"Qualys","components":[{"name":"Button"},{"name":"Hyperlink"},{"name":"SocialButton"},{"name":"TextLink"},{"name":"BlogCard"},{"name":"Card"},{"name":"InlinePromoCard"},{"name":"IntegrationCard"},{"name":"ResourceCard"},{"name":"WebinarCard"},{"name":"Carousel"},{"name":"LogoCarousel"},{"name":"LogoHierarchy"},{"name":"TestimonialCard"},{"name":"TestimonialCarousel"},{"name":"AppliedFilters"},{"name":"FilterBar"},{"name":"FilterButton"},{"name":"FilterChip"},{"name":"FilterChipGroup"},{"name":"FilterDrawer"},{"name":"FilterDropdown"},{"name":"Checkbox"},{"name":"DemoRequestWizard"},{"name":"Form"},{"name":"FormModal"},{"name":"Radio"},{"name":"SearchBar"},{"name":"Select"},{"name":"TextField"},{"name":"Toggle"},{"name":"Flag"},{"name":"Icon"},{"name":"Marker"},{"name":"Tag"},{"name":"Breadcrumbs"},{"name":"Footer"},{"name":"Nav"},{"name":"NavBanner"},{"name":"AlertDialog"},{"name":"CookieBanner"},{"name":"ExitIntent"},{"name":"HoverCard"},{"name":"Modal"},{"name":"NotificationBar"},{"name":"Overlay"},{"name":"SessionTimeout"},{"name":"SuccessConfirmation"},{"name":"Toast"},{"name":"ToastStack"},{"name":"Tooltip"},{"name":"CtaModule"},{"name":"EventCalendar"},{"name":"EventCard"},{"name":"EventType"},{"name":"GeneralContent"},{"name":"Hero"},{"name":"Media"},{"name":"TypographicHeader"},{"name":"Avatar"},{"name":"ProfileCard"},{"name":"ProfileGrid"},{"name":"ProfileModal"},{"name":"StatCard"},{"name":"Stats"},{"name":"CardModule"},{"name":"DetailComparison"},{"name":"FeatureMatrix"},{"name":"MarketingTable"},{"name":"Accordion"},{"name":"AccordionModule"},{"name":"Drawer"},{"name":"DrawerCard"},{"name":"TabModule"},{"name":"Tabs"}]} */
+/* @ds-bundle: {"format":4,"namespace":"Qualys","components":[{"name":"Button"},{"name":"Hyperlink"},{"name":"SocialButton"},{"name":"TextLink"},{"name":"BlogCard"},{"name":"Card"},{"name":"InlinePromoCard"},{"name":"IntegrationCard"},{"name":"ResourceCard"},{"name":"WebinarCard"},{"name":"Carousel"},{"name":"LogoCarousel"},{"name":"LogoHierarchy"},{"name":"TestimonialCard"},{"name":"TestimonialCarousel"},{"name":"AppliedFilters"},{"name":"FilterBar"},{"name":"FilterButton"},{"name":"FilterChip"},{"name":"FilterChipGroup"},{"name":"FilterDrawer"},{"name":"FilterDropdown"},{"name":"Checkbox"},{"name":"DemoRequestWizard"},{"name":"Form"},{"name":"FormModal"},{"name":"Radio"},{"name":"SearchBar"},{"name":"Select"},{"name":"TextField"},{"name":"Toggle"},{"name":"Flag"},{"name":"Icon"},{"name":"Marker"},{"name":"Tag"},{"name":"Breadcrumbs"},{"name":"Footer"},{"name":"Nav"},{"name":"NavBanner"},{"name":"AlertDialog"},{"name":"CookieBanner"},{"name":"ExitIntent"},{"name":"HoverCard"},{"name":"Modal"},{"name":"NotificationBar"},{"name":"Overlay"},{"name":"SessionTimeout"},{"name":"SuccessConfirmation"},{"name":"Toast"},{"name":"ToastStack"},{"name":"Tooltip"},{"name":"CtaModule"},{"name":"EventCalendar"},{"name":"EventBanner"},{"name":"AppGrid"},{"name":"FeatureList"},{"name":"SpeakerList"},{"name":"EventCard"},{"name":"EventType"},{"name":"GeneralContent"},{"name":"Hero"},{"name":"Media"},{"name":"TypographicHeader"},{"name":"Avatar"},{"name":"ProfileCard"},{"name":"ProfileGrid"},{"name":"ProfileModal"},{"name":"StatCard"},{"name":"Stats"},{"name":"CardModule"},{"name":"DetailComparison"},{"name":"FeatureMatrix"},{"name":"MarketingTable"},{"name":"Accordion"},{"name":"AccordionModule"},{"name":"Drawer"},{"name":"DrawerCard"},{"name":"TabModule"},{"name":"Tabs"}]} */
 (function () {
   var React = window.React;
   var h = React.createElement;
@@ -1152,7 +1152,8 @@
 
   /* StatCard */
   function StatCard(p) {
-    return h('div', { className: cx('q-statcard', 'q-statcard--' + (p.tone === 'outline' ? 'outline' : 'solid'), 'q-statcard--' + (p.size === 'md' ? 'md' : 'lg'), p.className) }, statBody(p));
+    var tone = p.tone === 'outline' || p.tone === 'plain' ? p.tone : 'solid';
+    return h('div', { className: cx('q-statcard', 'q-statcard--' + tone, 'q-statcard--' + (p.size === 'md' ? 'md' : 'lg'), p.className) }, statBody(p));
   }
   function statBody(s, key) {
     var icon = s.icon, suffix = s.suffix != null ? s.suffix : s.unit;
@@ -1167,11 +1168,11 @@
   }
   /* Stats — the Figma Stats page as a module: layout 'block' (one panel of three figures) or 'cards' (three or four cards in a row). */
   function Stats(p) {
-    var items = p.items || [], outline = p.tone === 'outline';
+    var items = p.items || [], outline = p.tone === 'outline', cardTone = p.tone === 'plain' ? 'plain' : outline ? 'outline' : 'solid';
     var size = p.size || (items.length >= 4 ? 'md' : 'lg');
     var inner = p.layout === 'cards'
       ? h('div', { className: cx('q-stats__cards', 'q-stats__cards--' + size), style: { '--q-n': items.length } }, items.map(function (it, i) {
-          return h(StatCard, Object.assign({ key: i, tone: outline ? 'outline' : 'solid', size: size, countUp: p.countUp }, it));
+          return h(StatCard, Object.assign({ key: i, tone: cardTone, size: size, countUp: p.countUp }, it));
         }))
       : h('div', { className: cx('q-stats__panel', outline && 'q-stats__panel--outline') }, items.map(function (it, i) { return statBody(Object.assign({ countUp: p.countUp }, it), i); }));
     return h('section', { className: cx('q-section', 'q-stats', 'q-stats--' + size, p.className), id: p.id, 'aria-label': p.label },
@@ -1583,6 +1584,13 @@
     }
     var consentErr = consent ? errors[consentName] : null;
     var banner = p.banner || (p.image ? { image: p.image, imageAlt: p.imageAlt } : null);
+    /* Submitted: the card keeps its banner, and the heading, fields and button give way to the inline SuccessConfirmation. */
+    if (p.submitted) {
+      var done = Object.assign({ type: 'download' }, p.success || {});
+      return h('div', { className: cx('q-form', 'q-form--' + variant, banner && 'q-form--media', 'q-form--submitted', p.appearance === 'bare' && 'q-form--bare', p.tone === 'inverted' && 'q-form--inverted', p.className) },
+        formBanner(banner, 'q-form__banner'),
+        h('div', { className: 'q-form__done', role: 'status' }, h(SuccessConfirmation, Object.assign({}, done, { inline: true }))));
+    }
     return h('div', { className: cx('q-form', 'q-form--' + variant, banner && 'q-form--media', p.appearance === 'bare' && 'q-form--bare', p.tone === 'inverted' && 'q-form--inverted', p.className) },
       formBanner(banner, 'q-form__banner'),
       h('form', { ref: formRef, className: 'q-form__body', action: p.action, method: p.method, noValidate: true, onSubmit: submit, 'aria-labelledby': p.title ? id + '-title' : undefined, 'aria-label': p.title ? undefined : p.label },
@@ -1822,7 +1830,13 @@
       el.scrollBy({ left: dir * (first.offsetWidth + gap), behavior: prefersStill() ? 'auto' : 'smooth' });
     }
     var w = p.slideWidth, style = w ? { '--q-slide': typeof w === 'number' ? w + 'px' : w } : undefined;
-    return h('section', { className: cx('q-section', 'q-carousel', 'q-carousel--' + (p.variant === 'single' ? 'single' : 'multi'), p.spacing === 'lg' && 'q-carousel--roomy', p.className), id: p.id, 'aria-roledescription': 'carousel', 'aria-label': p.label, style: style },
+    /* title and link: a heading row above the cards, with a "View All" text link at its right. */
+    var headId = useId(p.id && p.id + '-title'), link = typeof p.link === 'string' ? { label: p.link } : p.link;
+    var head = p.title || link ? h('div', { className: 'q-section__inner q-carousel__head' },
+      p.title ? heading(p.titleLevel || 2, { className: 'q-copy__title q-carousel__title', id: headId }, p.title) : null,
+      link ? h(TextLink, { tone: 'neutral', arrow: true, href: link.href || '#', onClick: link.onClick, className: 'q-carousel__link' }, link.label) : null) : null;
+    return h('section', { className: cx('q-section', 'q-carousel', 'q-carousel--' + (p.variant === 'single' ? 'single' : 'multi'), p.spacing === 'lg' && 'q-carousel--roomy', head && 'q-carousel--head', p.className), id: p.id, 'aria-roledescription': 'carousel', 'aria-label': p.label, 'aria-labelledby': !p.label && p.title ? headId : undefined, style: style },
+      head,
       h('div', { className: 'q-carousel__viewport', ref: vp, onScroll: measure, tabIndex: 0, role: 'group', 'aria-label': p.label ? p.label + ', scrollable' : 'Scrollable' },
         h('ul', { className: 'q-carousel__track' }, slides.map(function (c, i) { return h('li', { key: i, className: 'q-carousel__slide' }, c); }))),
       slides.length > 1 ? h('div', { className: 'q-section__inner q-carousel__controls' },
@@ -2930,10 +2944,80 @@
         })) : null)));
   }
 
+  /* SpeakerList — who is speaking: a round photo, the name and the role for each person.
+     layout 'horizontal' (side by side, wrapping) | 'vertical' (stacked). */
+  function SpeakerList(p) {
+    var items = p.speakers || p.items || [];
+    var layout = p.layout === 'vertical' ? 'vertical' : 'horizontal';
+    return h('ul', { className: cx('q-speakers', 'q-speakers--' + layout, p.tone === 'inverted' && 'q-speakers--inverted', p.className), 'aria-label': p.label || 'Speakers' },
+      items.map(function (s, i) {
+        return h('li', { key: i, className: 'q-speaker' },
+          h(Avatar, { size: p.size === 'md' ? 'md' : 'sm', image: s.image }),
+          h('div', { className: 'q-speaker__text' },
+            h('p', { className: 'q-speaker__name' }, s.name),
+            s.role ? h('p', { className: 'q-speaker__role' }, s.role) : null));
+      }));
+  }
+
+  /* FeatureList — a checklist of what's included: a blue check before each item, in columns. card: false drops the white card. */
+  function FeatureList(p) {
+    var items = p.items || [];
+    return h('ul', { className: cx('q-featurelist', p.card !== false && 'q-featurelist--card', p.className), 'aria-label': p.label, style: p.columns ? { '--q-cols': p.columns } : undefined },
+      items.map(function (it, i) {
+        var item = typeof it === 'string' || React.isValidElement(it) ? { label: it } : it;
+        return h('li', { key: i, className: 'q-featurelist__item' },
+          h(Icon, { name: item.icon || p.icon || 'check', size: 'lg', tone: 'blue', className: 'q-featurelist__icon' }),
+          h('span', { className: 'q-featurelist__label' }, item.href ? h('a', { href: item.href }, item.label) : item.label));
+      }));
+  }
+
+  /* AppGrid — the app suite: one card per product family (its icon and name over a blue rule), each listing its apps as links.
+     An optional centered copy block (title, body, link) sits above the cards. */
+  function AppGrid(p) {
+    var groups = p.groups || p.apps || [];
+    var link = typeof p.link === 'string' ? { label: p.link } : p.link;
+    var hasCopy = p.title || p.body || link;
+    return h('section', { className: cx('q-section', 'q-appgrid', p.className), id: p.id, 'aria-label': hasCopy ? undefined : p.label },
+      h('div', { className: 'q-section__inner' },
+        hasCopy ? h('div', { className: 'q-copy q-appgrid__copy' }, copyParts({ eyebrow: p.eyebrow, title: p.title, titleLevel: p.titleLevel, body: p.body,
+          actions: link ? h(TextLink, { tone: 'neutral', arrow: true, href: link.href || '#', onClick: link.onClick }, link.label) : null }, 2)) : null,
+        h('ul', { className: 'q-appgrid__list', 'aria-label': p.label || 'Apps' }, groups.map(function (g, i) {
+          return h('li', { key: i, className: 'q-appgrid__item' },
+            h('div', { className: 'q-appgrid__head' },
+              g.icon ? h('img', { className: 'q-appgrid__icon', src: g.icon, alt: '' }) : null,
+              heading(p.titleLevel ? p.titleLevel + 1 : 3, { className: 'q-appgrid__title' }, g.title)),
+            h('div', { className: 'q-appgrid__rule', 'aria-hidden': 'true' }),
+            h('ul', { className: 'q-appgrid__links' }, (g.links || []).map(function (l, k) {
+              var a = typeof l === 'string' ? { label: l } : l;
+              return h('li', { key: k }, h('a', { className: 'q-appgrid__link', href: a.href || '#' }, a.label));
+            })));
+        }))));
+  }
+
+  /* EventBanner — a banner for an event or series: the series name beside a rule, a blue Tag, the title, and one Button at the right,
+     over a light picture or a silent looping video. tone 'dark' puts black at 50% over the picture, with white type. */
+  function EventBanner(p) {
+    var tone = p.tone === 'dark' ? 'dark' : 'light';
+    var action = p.action ? (typeof p.action === 'string' ? { label: p.action } : p.action) : null;
+    var media = p.video ? h('video', { className: 'q-eventbanner__media', src: p.video, poster: p.image, autoPlay: !prefersStill(), muted: true, loop: true, playsInline: true, 'aria-hidden': 'true' })
+      : p.image ? h('img', { className: 'q-eventbanner__media', src: p.image, alt: '' }) : null;
+    return h('section', { className: cx('q-section', 'q-eventbanner', 'q-eventbanner--' + tone, p.className), id: p.id },
+      h('div', { className: 'q-section__inner' },
+        h('div', { className: 'q-eventbanner__card' },
+          media,
+          h('div', { className: 'q-eventbanner__row' },
+            p.series ? h('p', { className: 'q-eventbanner__series' }, p.series) : null,
+            h('div', { className: 'q-eventbanner__copy' },
+              p.tag ? h(Tag, { variant: 'fill', tone: 'blue', className: 'q-eventbanner__tag' }, p.tag) : null,
+              p.title ? heading(p.titleLevel || 2, { className: 'q-copy__title q-eventbanner__title' }, p.title) : null),
+            action ? h('div', { className: 'q-eventbanner__action' }, h(Button, { href: action.href || '#', onClick: action.onClick, variant: action.variant }, action.label)) : (p.actions ? h('div', { className: 'q-eventbanner__action' }, p.actions) : null)))));
+  }
+
   window.Qualys = Object.assign(window.Qualys || {}, {
     Button: Button, TextLink: TextLink, Hyperlink: Hyperlink, Breadcrumbs: Breadcrumbs, SocialButton: SocialButton, Icon: Icon, Tag: Tag, FilterChip: FilterChip, Flag: Flag, Marker: Marker, EventType: EventType, Tabs: Tabs, Drawer: Drawer, DrawerCard: DrawerCard, Accordion: Accordion, Avatar: Avatar, ProfileCard: ProfileCard, ProfileModal: ProfileModal, ProfileGrid: ProfileGrid, TextField: TextField, Select: Select, FilterDropdown: FilterDropdown, FilterChipGroup: FilterChipGroup, AppliedFilters: AppliedFilters, FilterButton: FilterButton, FilterBar: FilterBar, FilterDrawer: FilterDrawer, SearchBar: SearchBar, Checkbox: Checkbox, Radio: Radio, Toggle: Toggle, Form: Form,
     Card: Card, IntegrationCard: IntegrationCard, EventCard: EventCard, WebinarCard: WebinarCard, ResourceCard: ResourceCard, BlogCard: BlogCard, InlinePromoCard: InlinePromoCard, StatCard: StatCard,
     Nav: Nav, NavBanner: NavBanner, Media: Media, Hero: Hero, TypographicHeader: TypographicHeader, GeneralContent: GeneralContent, TabModule: TabModule, AccordionModule: AccordionModule, CtaModule: CtaModule, Stats: Stats, CardModule: CardModule, Carousel: Carousel, TestimonialCard: TestimonialCard, TestimonialCarousel: TestimonialCarousel, LogoCarousel: LogoCarousel, LogoHierarchy: LogoHierarchy, EventCalendar: EventCalendar, Footer: Footer,
+    SpeakerList: SpeakerList, FeatureList: FeatureList, AppGrid: AppGrid, EventBanner: EventBanner,
     FeatureMatrix: FeatureMatrix, DetailComparison: DetailComparison, MarketingTable: MarketingTable, HoverCard: HoverCard,
     Overlay: Overlay, Modal: Modal, FormModal: FormModal, AlertDialog: AlertDialog, SessionTimeout: SessionTimeout, SuccessConfirmation: SuccessConfirmation, ExitIntent: ExitIntent, DemoRequestWizard: DemoRequestWizard, Toast: Toast, ToastStack: ToastStack, NotificationBar: NotificationBar, CookieBanner: CookieBanner, Tooltip: Tooltip
   });
