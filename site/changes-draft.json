@@ -8,7 +8,7 @@
   "Claude"
  ],
  "approvedBy": [],
- "commits": 15,
+ "commits": 18,
  "base": "ffe562dd38b0eca02a6c08b752522054033221ee",
  "pr": null,
  "items": [
@@ -55,6 +55,28 @@
     "look"
    ],
    "weight": 6
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "CtaModule",
+   "what": [
+    "look",
+    "docs"
+   ],
+   "weight": 3,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "The form is the Form component without its card (`variant=\"full\"`, `appearance=\"bare\"`): the shield, a centered `h2` heading, the fields, the opt-in, one primary Button and the consent line. Beside an image (`media-right`, `media-left`) the form fills its column, so the fields stretch, starting on the content's left edge in line with the sections above (on the right edge in `media-left`). In `bleed` and `background` it stays 460px wide.",
+     "was": "The form is the Form component without its card (`variant=\"full\"`, `appearance=\"bare\"`): the shield, a centered `h2` heading, the fields, the opt-in, one primary Button and the consent line, 460px wide, starting on the content's left edge in line with the sections above (on the right edge in `media-left`)."
+    },
+    {
+     "kind": "changed",
+     "text": "The image is `radius-lg`, 100px (`spacing-6xl`) from the form; 48px when the module is narrower than 1024px. The form takes 520 parts of the row and the image 560. `media` is `{ src, alt }`; leave it empty for the placeholder.",
+     "was": "The image is `radius-lg`, 56px (`spacing-5xl`) from the form. `media` is `{ src, alt }`; leave it empty for the placeholder."
+    }
+   ]
   },
   {
    "type": "component",
@@ -148,6 +170,15 @@
      "was": "**Legal line:** centered, `paragraph-sm` (14px) Rhino: the copyright, then each legal link followed by a full stop."
     }
    ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Form",
+   "what": [
+    "look"
+   ],
+   "weight": 1
   },
   {
    "type": "component",
@@ -261,11 +292,15 @@
   {
    "about": "DetailComparison",
    "text": "four text columns get too narrow to read"
+  },
+  {
+   "about": "CtaModule",
+   "text": "too much empty space between the form and the image; the fields should fill the column and leave about 100px"
   }
  ],
- "headline": "Updated 15 components",
+ "headline": "Updated 17 components",
  "highlights": [
-  "Updated components: 15, including MarketingTable, DetailComparison and Footer"
+  "Updated components: 17, including MarketingTable, DetailComparison and Footer"
  ],
  "minor": false
 }

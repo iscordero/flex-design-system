@@ -2269,7 +2269,17 @@
     "1d4f472b63b6afaf0280244f11f33b9976dabf5f"
    ],
    "order": 0,
-   "v": 2
+   "v": 2,
+   "why": [
+    {
+     "about": "h3",
+     "text": "1.1 crowded two-line card and drawer titles; 130% matches h4 and h5"
+    },
+    {
+     "about": "h3",
+     "text": "asked for 120%; 130% read too loose for 24px titles"
+    }
+   ]
   },
   {
    "id": "af2c972",
@@ -5221,6 +5231,30 @@
     {
      "about": "Breadcrumbs",
      "text": "The 3px gap above the hover bar rounds to the 4px token."
+    },
+    {
+     "about": "Typography",
+     "text": "a one-line sample can't show line height"
+    },
+    {
+     "about": "Footer",
+     "text": "column titles should read as headings, and the legal links ran together"
+    },
+    {
+     "about": "MarketingTable",
+     "text": "needed a header for light pages; past three columns the cells get too narrow for their copy"
+    },
+    {
+     "about": "FeatureMatrix",
+     "text": "past five competitors the marks get too narrow to scan"
+    },
+    {
+     "about": "DetailComparison",
+     "text": "four text columns get too narrow to read"
+    },
+    {
+     "about": "Typography",
+     "text": "the samples on the Typography page were still one line, so line height didn't show"
     }
    ]
   },
@@ -7055,6 +7089,10 @@
     {
      "about": "GeneralContent",
      "text": "an eyebrow on a dark banner stayed gray and hard to read, so it now follows the banner's text color."
+    },
+    {
+     "about": "CtaModule",
+     "text": "too much empty space between the form and the image; the fields should fill the column and leave about 100px"
     }
    ],
    "headline": "Added 4 components · Updated 14 components",
@@ -7355,6 +7393,73 @@
     "96896036a0a3da8167ac428d3c7624b248fc5d7a"
    ],
    "order": 179434143100
+  },
+  {
+   "id": "030d734",
+   "sha": "030d734ad04d7c479a2d48fdd8d214625d2876a4",
+   "date": "2026-11-10",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "CtaModule",
+     "what": [
+      "look",
+      "docs"
+     ],
+     "weight": 3,
+     "notes": [
+      {
+       "kind": "changed",
+       "text": "The form is the Form component without its card (`variant=\"full\"`, `appearance=\"bare\"`): the shield, a centered `h2` heading, the fields, the opt-in, one primary Button and the consent line. Beside an image (`media-right`, `media-left`) the form fills its column, so the fields stretch, starting on the content's left edge in line with the sections above (on the right edge in `media-left`). In `bleed` and `background` it stays 460px wide.",
+       "was": "The form is the Form component without its card (`variant=\"full\"`, `appearance=\"bare\"`): the shield, a centered `h2` heading, the fields, the opt-in, one primary Button and the consent line, 460px wide, starting on the content's left edge in line with the sections above (on the right edge in `media-left`)."
+      },
+      {
+       "kind": "changed",
+       "text": "The image is `radius-lg`, 100px (`spacing-6xl`) from the form; 48px when the module is narrower than 1024px. The form takes 520 parts of the row and the image 560. `media` is `{ src, alt }`; leave it empty for the placeholder.",
+       "was": "The image is `radius-lg`, 56px (`spacing-5xl`) from the form. `media` is `{ src, alt }`; leave it empty for the placeholder."
+      }
+     ]
+    }
+   ],
+   "shots": [
+    {
+     "name": "CtaModule",
+     "label": "Form · media right",
+     "before": "changes/030d734/CtaModule-0-before.webp",
+     "after": "changes/030d734/CtaModule-0-after.webp"
+    },
+    {
+     "name": "CtaModule",
+     "label": "Form · media left",
+     "before": "changes/030d734/CtaModule-1-before.webp",
+     "after": "changes/030d734/CtaModule-1-after.webp"
+    }
+   ],
+   "v": 2,
+   "why": [
+    {
+     "about": "CtaModule",
+     "text": "too much empty space between the form and the image; the fields should fill the column and leave about 100px"
+    }
+   ],
+   "headline": "Updated CtaModule",
+   "highlights": [
+    "Updated CtaModule"
+   ],
+   "minor": false,
+   "shas": [
+    "11223a6561ea2b9e08f214d581b6f235c31e3c3e",
+    "cd5fa6d6b851431845ab9771bc23556f1bd55424",
+    "030d734ad04d7c479a2d48fdd8d214625d2876a4"
+   ],
+   "order": 179434226600
   }
  ]
 }
