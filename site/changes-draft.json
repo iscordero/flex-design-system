@@ -1,0 +1,795 @@
+{
+ "id": "draft",
+ "sha": "",
+ "draft": true,
+ "date": "2026-11-10",
+ "author": "Isabel",
+ "with": [
+  "Claude"
+ ],
+ "approvedBy": [],
+ "commits": 5,
+ "base": "f01b7bb35e6be5a1bb2cd1071f7e6978468a2efb",
+ "pr": null,
+ "items": [
+  {
+   "type": "component",
+   "action": "added",
+   "name": "AppGrid",
+   "notes": [
+    {
+     "kind": "added",
+     "text": "The app suite: one card per product family, each with its icon and name over a blue rule and its apps listed as links. An optional centered copy block (title, paragraph, text link) sits above the cards."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Card",
+   "what": [
+    "look",
+    "docs"
+   ],
+   "weight": 7,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "**Heading:** SemiBold 24px (`h3`), line height 1.3, −2%; Title Case, at most 60 characters.",
+     "was": "**Heading:** SemiBold 24px, line height 1.1, −2%; Title Case, at most 60 characters."
+    },
+    {
+     "kind": "changed",
+     "text": "**CTA:** the blue text link (blue label and arrow, `link-primary`), 24px under the content (16px on a card with no icon and no badge). Every card's CTA is blue, so links read the same in any row of cards.",
+     "was": "**CTA:** the neutral text link (charcoal label, blue arrow), 24px under the content (16px on a card with no icon and no badge)."
+    },
+    {
+     "kind": "added",
+     "text": "**In a row:** cards share the row's height, and the CTA (with the tags or badge above it) sits on the bottom edge, so the links line up across the row however long each card's copy is. This holds in any row (a CardModule, a `.q-grid` in a page, a carousel, or a card in its own wrapper), not only in CardModule."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "CardModule",
+   "what": [
+    "look"
+   ],
+   "weight": 8,
+   "follows": [
+    "Card"
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Carousel",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 27,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "**Provide:** the cards as children, a `label` that names the set (\"Latest resources\"), and optionally `variant=\"single\"`, `slideWidth`, a `title` and a `link`.",
+     "was": "**Provide:** the cards as children, a `label` that names the set (\"Latest resources\"), and optionally `variant=\"single\"` or `slideWidth`."
+    },
+    {
+     "kind": "added",
+     "text": "**Heading:** `title` puts a heading over the cards in `h2` (SemiBold 38px, 740px wide at most) on the content column, 100px from the top of the section. `link` (`\"View All Resources\"` or `{ label, href }`) adds a neutral TextLink with an arrow at its right, on the heading's last line; on phones it wraps under the heading. The cards start 32px below. The heading also names the carousel for screen readers when there is no `label`."
+    }
+   ],
+   "propsAdded": [
+    {
+     "name": "title",
+     "doc": "a heading above the cards, on the content column (it also names the carousel when there is no label)"
+    },
+    {
+     "name": "titleLevel",
+     "doc": "heading level, default 2"
+    },
+    {
+     "name": "link",
+     "doc": "a \"View All\" text link at the right of the heading: a label, or { label, href, onClick }"
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "CtaModule",
+   "what": [
+    "look",
+    "docs"
+   ],
+   "weight": 16,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "Layout: `bleed` · What it shows: The picture runs off the right edge behind a rounded, cloud-shaped edge. It starts 56px (`spacing-5xl`) below the top of the section, so its rounded top shows, and runs off the bottom",
+     "was": "What it shows: The picture runs off the right edge behind a rounded, cloud-shaped edge"
+    },
+    {
+     "kind": "changed",
+     "text": "The form is the Form component without its card (`variant=\"full\"`, `appearance=\"bare\"`): the shield, a centered `h2` heading, the fields, the opt-in, one primary Button and the consent line, 460px wide, starting on the content's left edge in line with the sections above (on the right edge in `media-left`).",
+     "was": "The form is the Form component without its card (`variant=\"full\"`, `appearance=\"bare\"`): the shield, a centered `h2` heading, the fields, the opt-in, one primary Button and the consent line, 460px wide, centered in its half."
+    },
+    {
+     "kind": "added",
+     "text": "The bleed picture is drawn flush with the top of the section, which reads as a hard, straight crop; it starts 56px down, level with the section's padding."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "DetailComparison",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 12,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "**Picking competitors:** filter chips (\"Compare Qualys With · Choose up to 3\"). At least one stays picked; at three, the rest are disabled until one is released. `max` lowers the limit (**min 1, max 3** competitors beside Qualys; a larger `max` is held at 3, since four text columns get too narrow), `defaultPicked` sets the starting ids (the first two by default), `picked` with `onChange` controls it.",
+     "was": "**Picking competitors:** filter chips (\"Compare Qualys With · Choose up to 3\"). At least one stays picked; at three, the rest are disabled until one is released. `max` changes the limit, `defaultPicked` sets the starting ids (the first two by default), `picked` with `onChange` controls it."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "DrawerCard",
+   "what": [
+    "look",
+    "docs"
+   ],
+   "weight": 2,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`; 10px; title in Wix Madefor Text SemiBold 24px, line height 1.3, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time.",
+     "was": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`; 10px; title in Wix Madefor Text SemiBold 24px, line height 1.1, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "added",
+   "name": "EventBanner",
+   "notes": [
+    {
+     "kind": "added",
+     "text": "A banner for an event or a series of them: the series name in spaced capitals beside a thin rule, then a blue Tag (\"Live Virtual Event\") and the title, with one Button at the right. It sits over a light picture or a silent, looping video."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "added",
+   "name": "FeatureList",
+   "notes": [
+    {
+     "kind": "added",
+     "text": "A checklist of what a product or plan includes: a blue check before each item, in columns, usually on a white card beside a copy block (\"More Than Just a License to Scan\")."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "FeatureMatrix",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 11,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "**Columns:** `[{ id, name, logo, subtitle }]`. Give every column its `logo`; without one a dashed slot holds the name (as in the preview, where competitor logos are placeholders). **Min 1, max 5** competitors beside Qualys; columns past the fifth competitor are left out, because the marks get too narrow to scan. Two to five read best on desktop.",
+     "was": "**Columns:** `[{ id, name, logo, subtitle }]`. Give every column its `logo`; without one a dashed slot holds the name (as in the preview, where competitor logos are placeholders). Two to five competitors read well on desktop."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Footer",
+   "what": [
+    "look",
+    "docs"
+   ],
+   "weight": 20,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "**Link columns (right):** 56px apart (`spacing-5xl`). Titles in the `h5` heading style (Wix Madefor Text SemiBold 18px, line height 1.3, −1%) `text-inverted`; links in Medium 16px Rhino, 16px apart, white on hover.",
+     "was": "**Link columns (right):** 56px apart (`spacing-5xl`). Titles in IBM Plex Sans SemiBold 16px `text-inverted`; links in Medium 16px Rhino, 16px apart, white on hover."
+    },
+    {
+     "kind": "changed",
+     "text": "**Legal line:** centered, `paragraph-sm` (14px) Rhino: the copyright, then each legal link followed by a full stop. Each item is set apart by 18px (`spacing-md`); when the line runs out of room the items wrap to a new centered row, 4px below (`spacing-4xs`), and an item never breaks in the middle.",
+     "was": "**Legal line:** centered, `paragraph-sm` (14px) Rhino: the copyright, then each legal link followed by a full stop."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Form",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 18,
+   "notes": [
+    {
+     "kind": "added",
+     "text": "`submitted` swaps the card's heading, fields, opt-in, button and consent line for an inline SuccessConfirmation: the green tick, the title, the message and one button. Any `banner` stays, so the card keeps its look before and after. Give the confirmation's text in `success` (`{ title, message, actionLabel, href }`; `type` is `download` unless you say `general`)."
+    },
+    {
+     "kind": "added",
+     "text": "The confirmation sits on the card's own ground, with no second panel or shadow, and the card keeps its width. It is announced to screen readers as a status."
+    },
+    {
+     "kind": "added",
+     "text": "`submitted` is yours to set: show it from `onSubmit` once the request has gone through. For a popup instead, use SuccessConfirmation on its own."
+    }
+   ],
+   "propsAdded": [
+    {
+     "name": "submitted",
+     "doc": "true shows the submitted state: the banner stays, and the heading, fields and button give way to an inline SuccessConfirmation"
+    },
+    {
+     "name": "success",
+     "doc": "the confirmation's props for the submitted state (title, message, actionLabel, href, type; type defaults to 'download')"
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "GeneralContent",
+   "what": [
+    "look",
+    "docs"
+   ],
+   "weight": 9,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "A `radius-lg` panel, 230px tall at least, 24px padding. The copy is 600px wide at most: an optional eyebrow, the heading in `h2`, 12px, the body, 24px, one primary Button, all in `text-inverted` (the eyebrow too, not the gray it has elsewhere).",
+     "was": "A `radius-lg` panel, 230px tall at least, 24px padding. The copy is 600px wide at most: heading in `h2`, 12px, the body, 24px, one primary Button, all in `text-inverted`."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "HoverCard",
+   "what": [
+    "look",
+    "docs"
+   ],
+   "weight": 2,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "**Logo card** (`kind=\"logo\"`): `logo` (and `logoAlt`), optional `badge` (an image address or your own node, for a partner or certification badge), `title`, `body` and `link` (`{ label, href }`). The link is a blue TextLink with the arrow, like every card CTA. One link only.",
+     "was": "**Logo card** (`kind=\"logo\"`): `logo` (and `logoAlt`), optional `badge` (an image address or your own node, for a partner or certification badge), `title`, `body` and `link` (`{ label, href }`). The link is a neutral TextLink with the blue arrow. One link only."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "LogoCarousel",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 15,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "**Provide:** `title` and `logos` (`{ src, alt, href, scale }`). Optional: `mobile`, `mobileMax`, `optical`, `duration`, `pauseButton`.",
+     "was": "**Provide:** `title` and `logos` (`{ src, alt, href, scale }`). Optional: `mobile`, `mobileMax`, `optical`, `duration`."
+    },
+    {
+     "kind": "changed",
+     "text": "**Heading:** `h2` (SemiBold 38px), on the content column (up to 1440px), 740px wide at most. A 44px pause button sits at the right; `pauseButton={false}` hides it (see Pause button).",
+     "was": "**Heading:** `h2` (SemiBold 38px), on the content column (up to 1440px), 740px wide at most. A 44px pause button sits at the right."
+    },
+    {
+     "kind": "added",
+     "text": "`pauseButton`: `true` (default) · What shows: The 44px pause button at the right of the heading · Use it when: Every page, unless the design calls for a clean heading row"
+    },
+    {
+     "kind": "added",
+     "text": "`pauseButton`: `false` · What shows: No button. It comes into view only when it gets keyboard focus, so keyboard and screen reader users can still stop the row · Use it when: The heading row must stay clear, such as a centered heading"
+    },
+    {
+     "kind": "added",
+     "text": "With the button hidden, the row still pauses under the pointer and when a logo link has focus, and it stays still for anyone who has reduced motion turned on."
+    },
+    {
+     "kind": "added",
+     "text": "**Hidden pause button (known problem):** WCAG 2.2.2 asks for a visible way to pause anything that moves on its own for more than five seconds. With `pauseButton={false}` the row pauses on hover and stays still with reduced motion, and keyboard users can reach the button, but a mouse user who only wants it to stop has to keep the pointer on it. Keep the button wherever you can."
+    }
+   ],
+   "propsAdded": [
+    {
+     "name": "pauseButton",
+     "doc": "false hides the pause button until it gets keyboard focus; the row still pauses on hover and focus. Default true"
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "MarketingTable",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 21,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "**Columns:** the row headings take 1.25 parts and every other column 1 part. Drawn with two columns after the row headings. **Min 1, max 3** columns after the row headings; more are left out (with a console warning), because past three the cells get too narrow for their copy on desktop.",
+     "was": "**Columns:** the row headings take 1.25 parts and every other column 1 part. Drawn with two columns after the row headings."
+    },
+    {
+     "kind": "changed",
+     "text": "**Header row:** 140px tall, with 32px padding and the copy at the bottom; 1px white rules at 30% divide the columns. The ground is `qualys-blue` across the top, easing to `blue-gradient-end` at the foot, or Charcoal (`tone=\"dark\"`), or white (`tone=\"light\"`): the photo in grays under a white overlay, with the heading in `text-primary`, the subtitle in `text-secondary`, `stroke-neutral-400` rules between columns and along the foot of the row. On white, use the full-color Qualys logo, not the reversed one. The heading is `h2` (SemiBold 38px, line height 1.1, −2%), 8px above the subtitle in `paragraph-rg` Medium; both `text-inverted`. A column with a `logo` shows it in place of the heading: the reversed Qualys logo, 37px tall.",
+     "was": "**Header row:** 140px tall, with 32px padding and the copy at the bottom; 1px white rules at 30% divide the columns. The ground is `qualys-blue` across the top, easing to `blue-gradient-end` at the foot, or Charcoal (`tone=\"dark\"`). The heading is `h2` (SemiBold 38px, line height 1.1, −2%), 8px above the subtitle in `paragraph-rg` Medium; both `text-inverted`. A column with a `logo` shows it in place of the heading: the reversed Qualys logo, 37px tall."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Modal",
+   "what": [
+    "look"
+   ],
+   "weight": 4
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "ResourceCard",
+   "what": [
+    "look",
+    "docs"
+   ],
+   "weight": 2,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "`action`: `cta` · Footer: The blue text link with an arrow",
+     "was": "Footer: The neutral text link with an arrow"
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "added",
+   "name": "SpeakerList",
+   "notes": [
+    {
+     "kind": "added",
+     "text": "Who is speaking at a webinar, briefing or event: a round photo, the person's name and their role, for each speaker. It sits in a Hero's body, an EventBanner, a DrawerCard or any copy block."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "StatCard",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 15,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "**Tone:** `solid` (default) is `qualys-blue` with white figures and a `misty-blue` description; `outline` is a 1px `qualys-blue` outline with blue figures and a `text-secondary` description; `plain` has no card at all: the figure and its label in `qualys-blue`, the description in `text-primary`, 12px below.",
+     "was": "**Tone:** `solid` (default) is `qualys-blue` with white figures and a `misty-blue` description; `outline` is a 1px `qualys-blue` outline with blue figures and a `text-secondary` description."
+    },
+    {
+     "kind": "added",
+     "text": "**Plain:** for figures that sit in a copy block or beside a picture rather than in a row of cards, such as two figures under a paragraph. No padding, so it lines up with the text around it. Two side by side, 24px apart; they stack on phones. Stats takes `tone=\"plain\"` with `layout=\"cards\"`."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Stats",
+   "what": [
+    "props"
+   ],
+   "weight": 10
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "TestimonialCard",
+   "what": [
+    "look",
+    "docs"
+   ],
+   "weight": 4,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "Figma name: Large Testimonial Card · What it shows: 939px wide and 400px tall at least (taller for a long quote; cards in a row match the tallest), the quote in `quote-lg` (32px)",
+     "was": "What it shows: 939 × 500px, the quote in `quote-lg` (32px)"
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "TestimonialCarousel",
+   "what": [
+    "look",
+    "props",
+    "docs"
+   ],
+   "weight": 14,
+   "notes": [
+    {
+     "kind": "added",
+     "text": "With one or two items there is nothing to scroll to, so the module drops the carousel. The cards share one row and fill the content column (two at half width each, 24px apart; one at the full width), with no progress bar or buttons, and 100px above and below. Each card keeps its size (`lg`, `sm` or `video`) and its height matches the tallest. On phones the cards stack, 16px apart. Three or more quotes always use the carousel."
+    },
+    {
+     "kind": "changed",
+     "text": "Use it once per page. A single quote can also be a TestimonialCard on its own in a section.",
+     "was": "Use it once per page. For a single quote, use a TestimonialCard on its own."
+    }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "TextLink",
+   "what": [
+    "look",
+    "docs"
+   ],
+   "weight": 1,
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "Tone: `blue` · Use: Functional clickable elements such as filters; with an arrow, the CTA that ends a card (Card, ResourceCard, TestimonialCard, HoverCard) and CTAs in banners, modals and dense text.",
+     "was": "Use: Functional clickable elements such as filters; with an arrow, CTAs in banners, modals and dense text."
+    },
+    {
+     "kind": "changed",
+     "text": "Tone: `neutral` · Use: Lesser CTAs in small modules that aren't cards, such as an accordion row or a copy block.",
+     "was": "Use: Lesser CTAs inside cards and other small modules."
+    }
+   ]
+  },
+  {
+   "type": "guide",
+   "name": "Text link buttons",
+   "guide": "Buttons and Links",
+   "gid": "guide-8",
+   "section": "Text link buttons",
+   "action": "changed",
+   "notes": [
+    {
+     "kind": "added",
+     "text": "**On cards, it's blue.** The call to action that ends a card (Card, ResourceCard, TestimonialCard, HoverCard) is always the blue text link with its arrow, never the neutral one, so links read the same across every row of cards."
+    }
+   ],
+   "minor": true
+  },
+  {
+   "type": "guide",
+   "name": "Explaining the product",
+   "guide": "Choosing Components",
+   "gid": "guide-11",
+   "section": "Explaining the product",
+   "action": "changed",
+   "notes": [
+    {
+     "kind": "added",
+     "text": "Use: **AppGrid** · When: The app suite: a card per product family with its apps as links, under centered copy. For platform and overview pages."
+    },
+    {
+     "kind": "added",
+     "text": "Use: **FeatureList** · When: A checklist of what a product or plan includes, beside a copy block and one button."
+    },
+    {
+     "kind": "added",
+     "text": "Use: **StatCard** (plain) · When: One or two figures inside a copy block, beside a picture, with no card."
+    }
+   ],
+   "minor": true
+  },
+  {
+   "type": "guide",
+   "name": "Proof and social proof",
+   "guide": "Choosing Components",
+   "gid": "guide-11",
+   "section": "Proof and social proof",
+   "action": "changed",
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "Use: **TestimonialCarousel** · When: Customer quotes or video stories. Use the video version when you have recordings. With fewer than three quotes it shows them as cards that fill the row instead of a carousel.",
+     "was": "When: Customer quotes or video stories. Use the video version when you have recordings."
+    },
+    {
+     "kind": "changed",
+     "text": "Use: **Carousel** · When: A row of resources, events or blog posts people browse sideways (\"Latest Resources\"). Give it a `title` and a \"View All\" `link` for the heading row above the cards.",
+     "was": "When: A row of resources, events or blog posts people browse sideways (\"Latest Resources\")."
+    }
+   ],
+   "minor": true
+  },
+  {
+   "type": "guide",
+   "name": "Forms",
+   "guide": "Choosing Components",
+   "gid": "guide-11",
+   "section": "Forms",
+   "action": "changed",
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "After a form, show **SuccessConfirmation** in its place, rather than sending people to a new page. A Form's `submitted` state does this inside the card and keeps its banner.",
+     "was": "After a form, show **SuccessConfirmation** in its place, rather than sending people to a new page."
+    }
+   ],
+   "minor": true
+  },
+  {
+   "type": "guide",
+   "name": "Cards",
+   "guide": "Choosing Components",
+   "gid": "guide-11",
+   "section": "Cards",
+   "action": "changed",
+   "notes": [
+    {
+     "kind": "added",
+     "text": "Use: **SpeakerList** · When: Who is speaking, as small photos with names and roles, inside a Hero, an EventBanner or a copy block. Not a card: use ProfileCard when people need a bio or a link."
+    },
+    {
+     "kind": "changed",
+     "text": "Keep one kind of card per row. Mixing a ResourceCard and a BlogCard in one carousel is fine; mixing a Card with a ResourceCard is not. Cards in a row share one height, with their calls to action lined up along the bottom, and a card's text-link CTA is always blue.",
+     "was": "Keep one kind of card per row. Mixing a ResourceCard and a BlogCard in one carousel is fine; mixing a Card with a ResourceCard is not."
+    }
+   ],
+   "minor": true
+  },
+  {
+   "type": "guide",
+   "name": "Messages and overlays",
+   "guide": "Choosing Components",
+   "gid": "guide-11",
+   "section": "Messages and overlays",
+   "action": "changed",
+   "notes": [
+    {
+     "kind": "added",
+     "text": "Use: **EventBanner** · When: Promoting an event or a series inside the page: series name, a tag, the title and one button, over a light picture or video."
+    }
+   ],
+   "minor": true
+  },
+  {
+   "type": "guide",
+   "name": "Columns",
+   "guide": "Layout, Spacing and Radius",
+   "gid": "guide-4",
+   "section": "Columns",
+   "action": "changed",
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "**Rows of cards** (stat cards, Card Module, profile grids): pick the number across so rows come out full, and never leave one card alone on a row when another number avoids it: five are 3 + 2, not 4 + 1; four on tablet are 2 × 2, not 3 + 1. A row that still comes out short is centered, with its cards at the same width as the rows above. Listings that grow, such as search results or the events grid with Load More, keep their reading order and start each row on the left. Cards in a row share one height, and each card's call to action (text link, button or footer) sits on its bottom edge, so the calls to action line up across the row however long each card's copy is, wherever the row sits: a Card Module, a grid in a page or a carousel. A card's text link is always blue (see Buttons and links).",
+     "was": "**Rows of cards** (stat cards, Card Module, profile grids): pick the number across so rows come out full, and never leave one card alone on a row when another number avoids it: five are 3 + 2, not 4 + 1; four on tablet are 2 × 2, not 3 + 1. A row that still comes out short is centered, with its cards at the same width as the rows above. Listings that grow, such as search results or the events grid with Load More, keep their reading order and start each row on the left."
+    }
+   ],
+   "minor": true
+  },
+  {
+   "type": "guide",
+   "name": "Headings",
+   "guide": "Typography",
+   "gid": "guide-3",
+   "section": "Headings",
+   "action": "changed",
+   "notes": [
+    {
+     "kind": "changed",
+     "text": "**Headings** `h1` 44 Bold, `h2` 38, `h3` 24, `h4` 20, `h5` 18 SemiBold; −2% letter spacing to h3, −1% below. Line height 1.1 for `h1` and `h2`, 1.3 (130%) from `h3` down, so two-line card and drawer titles don't crowd. Title Case.",
+     "was": "**Headings** `h1` 44 Bold, `h2` 38, `h3` 24, `h4` 20, `h5` 18 SemiBold; −2% letter spacing to h3, −1% below. Title Case."
+    }
+   ],
+   "minor": true
+  },
+  {
+   "type": "site",
+   "action": "changed",
+   "name": "Reference site",
+   "minor": true
+  }
+ ],
+ "shots": [
+  {
+   "name": "AppGrid",
+   "label": "Five product families under centered copy (hover an app)",
+   "after": "changes/draft/AppGrid-0-after.webp",
+   "new": true
+  },
+  {
+   "name": "AppGrid",
+   "label": "Mobile",
+   "after": "changes/draft/AppGrid-1-after.webp",
+   "new": true
+  },
+  {
+   "name": "EventBanner",
+   "label": "Light (default): dark type on a light picture or video",
+   "after": "changes/draft/EventBanner-0-after.webp",
+   "new": true
+  },
+  {
+   "name": "EventBanner",
+   "label": "Dark: black at 50% over a photo, white type",
+   "after": "changes/draft/EventBanner-1-after.webp",
+   "new": true
+  },
+  {
+   "name": "FeatureList",
+   "label": "On a card (default), as many 250px columns as fit",
+   "after": "changes/draft/FeatureList-0-after.webp",
+   "new": true
+  },
+  {
+   "name": "FeatureList",
+   "label": "No card, three columns, with links",
+   "after": "changes/draft/FeatureList-1-after.webp",
+   "new": true
+  },
+  {
+   "name": "SpeakerList",
+   "label": "Horizontal (default): side by side, wrapping",
+   "after": "changes/draft/SpeakerList-0-after.webp",
+   "new": true
+  },
+  {
+   "name": "SpeakerList",
+   "label": "Vertical / Vertical, medium photos / Inverted, on a dark ground",
+   "after": "changes/draft/SpeakerList-1-after.webp",
+   "new": true
+  },
+  {
+   "name": "Carousel",
+   "label": "With a heading and a View All link",
+   "new": true,
+   "after": "changes/draft/Carousel-0-after.webp"
+  },
+  {
+   "name": "Carousel",
+   "label": "Mobile",
+   "before": "changes/draft/Carousel-1-before.webp",
+   "after": "changes/draft/Carousel-1-after.webp"
+  },
+  {
+   "name": "MarketingTable",
+   "label": "White header (tone=\"light\") · the full-color logo",
+   "new": true,
+   "after": "changes/draft/MarketingTable-0-after.webp"
+  },
+  {
+   "name": "Footer",
+   "label": "Desktop",
+   "before": "changes/draft/Footer-0-before.webp",
+   "after": "changes/draft/Footer-0-after.webp"
+  },
+  {
+   "name": "Footer",
+   "label": "Mobile",
+   "before": "changes/draft/Footer-1-before.webp",
+   "after": "changes/draft/Footer-1-after.webp"
+  },
+  {
+   "name": "Form",
+   "label": "Submitted · with a banner / Submitted · no banner",
+   "new": true,
+   "after": "changes/draft/Form-2-after.webp",
+   "moreParts": 1
+  },
+  {
+   "name": "CtaModule",
+   "label": "Form · media right",
+   "before": "changes/draft/CtaModule-0-before.webp",
+   "after": "changes/draft/CtaModule-0-after.webp"
+  },
+  {
+   "name": "CtaModule",
+   "label": "Form · media left",
+   "before": "changes/draft/CtaModule-1-before.webp",
+   "after": "changes/draft/CtaModule-1-after.webp"
+  },
+  {
+   "name": "CtaModule",
+   "label": "Form · media bleeds right",
+   "before": "changes/draft/CtaModule-2-before.webp",
+   "after": "changes/draft/CtaModule-2-after.webp",
+   "moreParts": 1
+  },
+  {
+   "name": "LogoCarousel",
+   "label": "Pause button hidden: pauseButton={false} (Tab to it to bring it back)",
+   "new": true,
+   "after": "changes/draft/LogoCarousel-0-after.webp"
+  }
+ ],
+ "v": 2,
+ "why": [
+  {
+   "about": "EventBanner",
+   "text": "published to the artifact on Nov 3 but missing from the repo"
+  },
+  {
+   "about": "AppGrid",
+   "text": "published to the artifact on Nov 3 but missing from the repo"
+  },
+  {
+   "about": "FeatureList",
+   "text": "published to the artifact on Nov 3 but missing from the repo"
+  },
+  {
+   "about": "SpeakerList",
+   "text": "published to the artifact on Nov 3 but missing from the repo"
+  },
+  {
+   "about": "Typography",
+   "text": "a one-line sample can't show line height"
+  },
+  {
+   "about": "Footer",
+   "text": "column titles should read as headings, and the legal links ran together"
+  },
+  {
+   "about": "MarketingTable",
+   "text": "needed a header for light pages; past three columns the cells get too narrow for their copy"
+  },
+  {
+   "about": "FeatureMatrix",
+   "text": "past five competitors the marks get too narrow to scan"
+  },
+  {
+   "about": "DetailComparison",
+   "text": "four text columns get too narrow to read"
+  }
+ ],
+ "headline": "Added 4 components · Updated 20 components",
+ "highlights": [
+  "New components: AppGrid, EventBanner, FeatureList and SpeakerList",
+  "Updated components: 20, including Carousel, MarketingTable and Footer"
+ ],
+ "minor": false
+}
