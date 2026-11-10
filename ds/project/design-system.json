@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-11-10T19:58:27Z",
+    "at": "2026-11-10T20:23:36Z",
     "by": "Isabel",
-    "note": "h3 line height 120% (was 130%), desktop and mobile; h3-style titles in Card, DrawerCard, Footer, large Modal, comparisons and AppGrid follow.",
+    "note": "CtaModule with media: the form fills its column (fields stretch) and sits 100px (spacing-6xl) from the image, 48px under 1024px.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

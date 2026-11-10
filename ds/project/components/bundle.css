@@ -1336,6 +1336,10 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-cta--form > .q-section__inner { position: relative; padding-block: var(--spacing-5xl); }
 .q-cta__row { display: flex; align-items: center; gap: var(--spacing-5xl); }
 .q-cta__formcol { display: flex; flex: 520 1 0; justify-content: flex-start; min-width: 0; }
+/* Media left or right: the form fills its column (the fields stretch) and sits 100px (spacing-6xl) from the image; 48px under 1024px */
+.q-cta--media-right .q-cta__row, .q-cta--media-left .q-cta__row { gap: var(--spacing-6xl); }
+.q-cta--media-right .q-cta__formcol .q-form, .q-cta--media-left .q-cta__formcol .q-form { max-width: none; }
+@container (max-width: 1023px) { .q-cta--media-right .q-cta__row, .q-cta--media-left .q-cta__row { gap: var(--spacing-4xl-static); } }
 .q-cta--media-left .q-cta__formcol { justify-content: flex-end; }
 .q-cta__media { flex: 560 1 0; min-width: 0; }
 .q-cta--media-left .q-cta__media { order: -1; }
