@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-11-10T18:59:00Z",
+    "at": "2026-11-10T19:58:27Z",
     "by": "Isabel",
-    "note": "Typography page: every sample runs over two lines so each style shows its line height (display-xl and h1 samples shortened to fit).",
+    "note": "h3 line height 120% (was 130%), desktop and mobile; h3-style titles in Card, DrawerCard, Footer, large Modal, comparisons and AppGrid follow.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",
