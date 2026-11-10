@@ -2,13 +2,11 @@
  "id": "draft",
  "sha": "",
  "draft": true,
- "date": "2026-11-10",
- "author": "Isabel",
- "with": [
-  "Claude"
- ],
+ "date": "2026-11-03",
+ "author": "Claude",
+ "with": [],
  "approvedBy": [],
- "commits": 12,
+ "commits": 7,
  "base": "f01b7bb35e6be5a1bb2cd1071f7e6978468a2efb",
  "pr": null,
  "items": [
@@ -31,7 +29,7 @@
    "what": [
     "look"
    ],
-   "weight": 8
+   "weight": 2
   },
   {
    "type": "component",
@@ -52,13 +50,8 @@
     "look",
     "docs"
    ],
-   "weight": 7,
+   "weight": 5,
    "notes": [
-    {
-     "kind": "changed",
-     "text": "**Heading:** SemiBold 24px (`h3`), line height 1.2, −2%; Title Case, at most 60 characters.",
-     "was": "**Heading:** SemiBold 24px, line height 1.1, −2%; Title Case, at most 60 characters."
-    },
     {
      "kind": "changed",
      "text": "**CTA:** the blue text link (blue label and arrow, `link-primary`), 24px under the content (16px on a card with no icon and no badge). Every card's CTA is blue, so links read the same in any row of cards.",
@@ -125,7 +118,7 @@
    "what": [
     "look"
    ],
-   "weight": 8,
+   "weight": 2,
    "follows": [
     "TextLink"
    ]
@@ -163,42 +156,16 @@
    "what": [
     "look"
    ],
-   "weight": 8
+   "weight": 2
   },
   {
    "type": "component",
    "action": "changed",
    "name": "DetailComparison",
    "what": [
-    "look",
-    "props",
-    "docs"
+    "look"
    ],
-   "weight": 12,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Picking competitors:** filter chips (\"Compare Qualys With · Choose up to 3\"). At least one stays picked; at three, the rest are disabled until one is released. `max` lowers the limit (**min 1, max 3** competitors beside Qualys; a larger `max` is held at 3, since four text columns get too narrow), `defaultPicked` sets the starting ids (the first two by default), `picked` with `onChange` controls it.",
-     "was": "**Picking competitors:** filter chips (\"Compare Qualys With · Choose up to 3\"). At least one stays picked; at three, the rest are disabled until one is released. `max` changes the limit, `defaultPicked` sets the starting ids (the first two by default), `picked` with `onChange` controls it."
-    }
-   ]
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "DrawerCard",
-   "what": [
-    "look",
-    "docs"
-   ],
-   "weight": 2,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`; 10px; title in Wix Madefor Text SemiBold 24px, line height 1.2, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time.",
-     "was": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`; 10px; title in Wix Madefor Text SemiBold 24px, line height 1.1, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time."
-    }
-   ]
+   "weight": 2
   },
   {
    "type": "component",
@@ -227,7 +194,7 @@
    "what": [
     "look"
    ],
-   "weight": 8,
+   "weight": 2,
    "follows": [
     "TextLink"
    ]
@@ -248,40 +215,18 @@
    "action": "changed",
    "name": "FeatureMatrix",
    "what": [
-    "look",
-    "props",
-    "docs"
+    "look"
    ],
-   "weight": 11,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Columns:** `[{ id, name, logo, subtitle }]`. Give every column its `logo`; without one a dashed slot holds the name (as in the preview, where competitor logos are placeholders). **Min 1, max 5** competitors beside Qualys; columns past the fifth competitor are left out, because the marks get too narrow to scan. Two to five read best on desktop.",
-     "was": "**Columns:** `[{ id, name, logo, subtitle }]`. Give every column its `logo`; without one a dashed slot holds the name (as in the preview, where competitor logos are placeholders). Two to five competitors read well on desktop."
-    }
-   ]
+   "weight": 2
   },
   {
    "type": "component",
    "action": "changed",
    "name": "Footer",
    "what": [
-    "look",
-    "docs"
+    "look"
    ],
-   "weight": 20,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Link columns (right):** 56px apart (`spacing-5xl`). Titles in the `h5` heading style (Wix Madefor Text SemiBold 18px, line height 1.3, −1%) `text-inverted`; links in Medium 16px Rhino, 16px apart, white on hover.",
-     "was": "**Link columns (right):** 56px apart (`spacing-5xl`). Titles in IBM Plex Sans SemiBold 16px `text-inverted`; links in Medium 16px Rhino, 16px apart, white on hover."
-    },
-    {
-     "kind": "changed",
-     "text": "**Legal line:** centered, `paragraph-sm` (14px) Rhino: the copyright, then each legal link followed by a full stop. Each item is set apart by 18px (`spacing-md`); when the line runs out of room the items wrap to a new centered row, 4px below (`spacing-4xs`), and an item never breaks in the middle.",
-     "was": "**Legal line:** centered, `paragraph-sm` (14px) Rhino: the copyright, then each legal link followed by a full stop."
-    }
-   ]
+   "weight": 10
   },
   {
    "type": "component",
@@ -433,23 +378,9 @@
    "action": "changed",
    "name": "MarketingTable",
    "what": [
-    "look",
-    "props",
-    "docs"
+    "look"
    ],
-   "weight": 21,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Columns:** the row headings take 1.25 parts and every other column 1 part. Drawn with two columns after the row headings. **Min 1, max 3** columns after the row headings; more are left out (with a console warning), because past three the cells get too narrow for their copy on desktop.",
-     "was": "**Columns:** the row headings take 1.25 parts and every other column 1 part. Drawn with two columns after the row headings."
-    },
-    {
-     "kind": "changed",
-     "text": "**Header row:** 140px tall, with 32px padding and the copy at the bottom; 1px white rules at 30% divide the columns. The ground is `qualys-blue` across the top, easing to `blue-gradient-end` at the foot, or Charcoal (`tone=\"dark\"`), or white (`tone=\"light\"`): the photo in grays under a white overlay, with the heading in `text-primary`, the subtitle in `text-secondary`, `stroke-neutral-400` rules between columns and along the foot of the row. On white, use the full-color Qualys logo, not the reversed one. The heading is `h2` (SemiBold 38px, line height 1.1, −2%), 8px above the subtitle in `paragraph-rg` Medium; both `text-inverted`. A column with a `logo` shows it in place of the heading: the reversed Qualys logo, 37px tall.",
-     "was": "**Header row:** 140px tall, with 32px padding and the copy at the bottom; 1px white rules at 30% divide the columns. The ground is `qualys-blue` across the top, easing to `blue-gradient-end` at the foot, or Charcoal (`tone=\"dark\"`). The heading is `h2` (SemiBold 38px, line height 1.1, −2%), 8px above the subtitle in `paragraph-rg` Medium; both `text-inverted`. A column with a `logo` shows it in place of the heading: the reversed Qualys logo, 37px tall."
-    }
-   ]
+   "weight": 2
   },
   {
    "type": "component",
@@ -458,7 +389,7 @@
    "what": [
     "look"
    ],
-   "weight": 8
+   "weight": 2
   },
   {
    "type": "component",
@@ -484,7 +415,7 @@
    "what": [
     "look"
    ],
-   "weight": 8
+   "weight": 2
   },
   {
    "type": "component",
@@ -539,7 +470,7 @@
    "what": [
     "look"
    ],
-   "weight": 8
+   "weight": 2
   },
   {
    "type": "component",
@@ -622,15 +553,6 @@
     "look"
    ],
    "weight": 7
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "Typography",
-   "what": [
-    "look"
-   ],
-   "weight": 6
   },
   {
    "type": "guide",
@@ -759,22 +681,6 @@
    "minor": true
   },
   {
-   "type": "guide",
-   "name": "Headings",
-   "guide": "Typography",
-   "gid": "guide-3",
-   "section": "Headings",
-   "action": "changed",
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Headings** `h1` 44 Bold, `h2` 38, `h3` 24, `h4` 20, `h5` 18 SemiBold; −2% letter spacing to h3, −1% below. Line height 1.1 for `h1` and `h2`, 1.2 (120%) for `h3`, 1.3 (130%) for `h4` and `h5`, so two-line card and drawer titles don't crowd. Title Case.",
-     "was": "**Headings** `h1` 44 Bold, `h2` 38, `h3` 24, `h4` 20, `h5` 18 SemiBold; −2% letter spacing to h3, −1% below. Title Case."
-    }
-   ],
-   "minor": true
-  },
-  {
    "type": "site",
    "action": "changed",
    "name": "Reference site",
@@ -785,50 +691,46 @@
  "v": 2,
  "why": [
   {
-   "about": "EventBanner",
-   "text": "published to the artifact on Nov 3 but missing from the repo"
+   "about": "Card",
+   "text": "CTAs must line up along the bottom of every row of cards, not only inside a Card Module, so rows read as one level."
   },
   {
-   "about": "AppGrid",
-   "text": "published to the artifact on Nov 3 but missing from the repo"
+   "about": "Card",
+   "text": "card CTAs use blue text so links read the same across every row of cards."
   },
   {
-   "about": "FeatureList",
-   "text": "published to the artifact on Nov 3 but missing from the repo"
+   "about": "LogoCarousel",
+   "text": "the homepage logo row needs a clean heading row without the pause button, so designers can turn it off per page."
   },
   {
-   "about": "SpeakerList",
-   "text": "published to the artifact on Nov 3 but missing from the repo"
+   "about": "ResourceCard",
+   "text": "card CTAs use blue text so links read the same across every row of cards."
   },
   {
-   "about": "Typography",
-   "text": "a one-line sample can't show line height"
+   "about": "TestimonialCard",
+   "text": "card CTAs use blue text so links read the same across every row of cards."
   },
   {
-   "about": "Typography",
-   "text": "the samples on the Typography page were still one line, so line height didn't show"
+   "about": "HoverCard",
+   "text": "card CTAs use blue text so links read the same across every row of cards."
   },
   {
-   "about": "Footer",
-   "text": "column titles should read as headings, and the legal links ran together"
+   "about": "TestimonialCarousel",
+   "text": "with fewer than three quotes there is nothing to scroll to, so the cards fill the width of the container instead."
   },
   {
-   "about": "MarketingTable",
-   "text": "needed a header for light pages; past three columns the cells get too narrow for their copy"
+   "about": "CtaModule",
+   "text": "the bleed picture was cropped flat along the section's top edge, so it now starts lower and shows its rounded top."
   },
   {
-   "about": "FeatureMatrix",
-   "text": "past five competitors the marks get too narrow to scan"
-  },
-  {
-   "about": "DetailComparison",
-   "text": "four text columns get too narrow to read"
+   "about": "CtaModule",
+   "text": "the bleed picture's rounded top corner was clipped flat, so the shape now fits the picture and the corner shows whole."
   }
  ],
- "headline": "Added 4 components · Updated 34 components",
+ "headline": "Added 4 components · Updated 32 components",
  "highlights": [
   "New components: AppGrid, EventBanner, FeatureList and SpeakerList",
-  "Updated components: 34, including Carousel, MarketingTable and Footer"
+  "Updated components: 32, including Carousel, Form and CtaModule"
  ],
  "minor": false
 }

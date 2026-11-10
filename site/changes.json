@@ -2269,17 +2269,7 @@
     "1d4f472b63b6afaf0280244f11f33b9976dabf5f"
    ],
    "order": 0,
-   "v": 2,
-   "why": [
-    {
-     "about": "h3",
-     "text": "1.1 crowded two-line card and drawer titles; 130% matches h4 and h5"
-    },
-    {
-     "about": "h3",
-     "text": "asked for 120%; 130% read too loose for 24px titles"
-    }
-   ]
+   "v": 2
   },
   {
    "id": "af2c972",
@@ -5231,26 +5221,6 @@
     {
      "about": "Breadcrumbs",
      "text": "The 3px gap above the hover bar rounds to the 4px token."
-    },
-    {
-     "about": "Typography",
-     "text": "a one-line sample can't show line height"
-    },
-    {
-     "about": "Footer",
-     "text": "column titles should read as headings, and the legal links ran together"
-    },
-    {
-     "about": "MarketingTable",
-     "text": "needed a header for light pages; past three columns the cells get too narrow for their copy"
-    },
-    {
-     "about": "FeatureMatrix",
-     "text": "past five competitors the marks get too narrow to scan"
-    },
-    {
-     "about": "DetailComparison",
-     "text": "four text columns get too narrow to read"
     }
    ]
   },
@@ -6253,14 +6223,6 @@
     {
      "about": "Breadcrumbs",
      "text": "The 3px gap above the hover bar rounds to the 4px token."
-    },
-    {
-     "about": "Hero",
-     "text": "The photo card ran almost to the window edges; it now has a 1440px maximum and lines up with the Nav and the content of the page."
-    },
-    {
-     "about": "Hero",
-     "text": "The split hero's text column is wider, up to 600px (was 520px), set in review."
     }
    ],
    "headline": "New tokens (17) · Updated 6 components · Updated Layout, Spacing and Radius guide",
@@ -6379,15 +6341,18 @@
    "order": 179325124500
   },
   {
-   "id": "4f3351f",
-   "sha": "4f3351f63a97fb07e6508ff9cd1aa9022ed76231",
-   "date": "2026-11-10",
-   "author": "Isabel Cordero",
+   "id": "bd824e7",
+   "sha": "bd824e7c098b96f49a013293460d42c879b2914d",
+   "date": "2026-11-03",
+   "author": "iscordero",
    "with": [
     "Claude"
    ],
    "approvedBy": [],
-   "pr": null,
+   "pr": {
+    "number": 1,
+    "url": "https://github.com/iscordero/flex-design-system/pull/1"
+   },
    "items": [
     {
      "type": "component",
@@ -6408,13 +6373,8 @@
       "look",
       "docs"
      ],
-     "weight": 7,
+     "weight": 5,
      "notes": [
-      {
-       "kind": "changed",
-       "text": "**Heading:** SemiBold 24px (`h3`), line height 1.3, −2%; Title Case, at most 60 characters.",
-       "was": "**Heading:** SemiBold 24px, line height 1.1, −2%; Title Case, at most 60 characters."
-      },
       {
        "kind": "changed",
        "text": "**CTA:** the blue text link (blue label and arrow, `link-primary`), 24px under the content (16px on a card with no icon and no badge). Every card's CTA is blue, so links read the same in any row of cards.",
@@ -6502,41 +6462,6 @@
     },
     {
      "type": "component",
-     "action": "changed",
-     "name": "DetailComparison",
-     "what": [
-      "look",
-      "props",
-      "docs"
-     ],
-     "weight": 12,
-     "notes": [
-      {
-       "kind": "changed",
-       "text": "**Picking competitors:** filter chips (\"Compare Qualys With · Choose up to 3\"). At least one stays picked; at three, the rest are disabled until one is released. `max` lowers the limit (**min 1, max 3** competitors beside Qualys; a larger `max` is held at 3, since four text columns get too narrow), `defaultPicked` sets the starting ids (the first two by default), `picked` with `onChange` controls it.",
-       "was": "**Picking competitors:** filter chips (\"Compare Qualys With · Choose up to 3\"). At least one stays picked; at three, the rest are disabled until one is released. `max` changes the limit, `defaultPicked` sets the starting ids (the first two by default), `picked` with `onChange` controls it."
-      }
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "DrawerCard",
-     "what": [
-      "look",
-      "docs"
-     ],
-     "weight": 2,
-     "notes": [
-      {
-       "kind": "changed",
-       "text": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`; 10px; title in Wix Madefor Text SemiBold 24px, line height 1.3, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time.",
-       "was": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`; 10px; title in Wix Madefor Text SemiBold 24px, line height 1.1, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time."
-      }
-     ]
-    },
-    {
-     "type": "component",
      "action": "added",
      "name": "EventBanner",
      "notes": [
@@ -6554,46 +6479,6 @@
       {
        "kind": "added",
        "text": "A checklist of what a product or plan includes: a blue check before each item, in columns, usually on a white card beside a copy block (\"More Than Just a License to Scan\")."
-      }
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "FeatureMatrix",
-     "what": [
-      "look",
-      "props",
-      "docs"
-     ],
-     "weight": 11,
-     "notes": [
-      {
-       "kind": "changed",
-       "text": "**Columns:** `[{ id, name, logo, subtitle }]`. Give every column its `logo`; without one a dashed slot holds the name (as in the preview, where competitor logos are placeholders). **Min 1, max 5** competitors beside Qualys; columns past the fifth competitor are left out, because the marks get too narrow to scan. Two to five read best on desktop.",
-       "was": "**Columns:** `[{ id, name, logo, subtitle }]`. Give every column its `logo`; without one a dashed slot holds the name (as in the preview, where competitor logos are placeholders). Two to five competitors read well on desktop."
-      }
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Footer",
-     "what": [
-      "look",
-      "docs"
-     ],
-     "weight": 20,
-     "notes": [
-      {
-       "kind": "changed",
-       "text": "**Link columns (right):** 56px apart (`spacing-5xl`). Titles in the `h5` heading style (Wix Madefor Text SemiBold 18px, line height 1.3, −1%) `text-inverted`; links in Medium 16px Rhino, 16px apart, white on hover.",
-       "was": "**Link columns (right):** 56px apart (`spacing-5xl`). Titles in IBM Plex Sans SemiBold 16px `text-inverted`; links in Medium 16px Rhino, 16px apart, white on hover."
-      },
-      {
-       "kind": "changed",
-       "text": "**Legal line:** centered, `paragraph-sm` (14px) Rhino: the copyright, then each legal link followed by a full stop. Each item is set apart by 18px (`spacing-md`); when the line runs out of room the items wrap to a new centered row, 4px below (`spacing-4xs`), and an item never breaks in the middle.",
-       "was": "**Legal line:** centered, `paragraph-sm` (14px) Rhino: the copyright, then each legal link followed by a full stop."
       }
      ]
     },
@@ -6710,38 +6595,6 @@
        "doc": "false hides the pause button until it gets keyboard focus; the row still pauses on hover and focus. Default true"
       }
      ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "MarketingTable",
-     "what": [
-      "look",
-      "props",
-      "docs"
-     ],
-     "weight": 21,
-     "notes": [
-      {
-       "kind": "changed",
-       "text": "**Columns:** the row headings take 1.25 parts and every other column 1 part. Drawn with two columns after the row headings. **Min 1, max 3** columns after the row headings; more are left out (with a console warning), because past three the cells get too narrow for their copy on desktop.",
-       "was": "**Columns:** the row headings take 1.25 parts and every other column 1 part. Drawn with two columns after the row headings."
-      },
-      {
-       "kind": "changed",
-       "text": "**Header row:** 140px tall, with 32px padding and the copy at the bottom; 1px white rules at 30% divide the columns. The ground is `qualys-blue` across the top, easing to `blue-gradient-end` at the foot, or Charcoal (`tone=\"dark\"`), or white (`tone=\"light\"`): the photo in grays under a white overlay, with the heading in `text-primary`, the subtitle in `text-secondary`, `stroke-neutral-400` rules between columns and along the foot of the row. On white, use the full-color Qualys logo, not the reversed one. The heading is `h2` (SemiBold 38px, line height 1.1, −2%), 8px above the subtitle in `paragraph-rg` Medium; both `text-inverted`. A column with a `logo` shows it in place of the heading: the reversed Qualys logo, 37px tall.",
-       "was": "**Header row:** 140px tall, with 32px padding and the copy at the bottom; 1px white rules at 30% divide the columns. The ground is `qualys-blue` across the top, easing to `blue-gradient-end` at the foot, or Charcoal (`tone=\"dark\"`). The heading is `h2` (SemiBold 38px, line height 1.1, −2%), 8px above the subtitle in `paragraph-rg` Medium; both `text-inverted`. A column with a `logo` shows it in place of the heading: the reversed Qualys logo, 37px tall."
-      }
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Modal",
-     "what": [
-      "look"
-     ],
-     "weight": 4
     },
     {
      "type": "component",
@@ -6990,22 +6843,6 @@
      "minor": true
     },
     {
-     "type": "guide",
-     "name": "Headings",
-     "guide": "Typography",
-     "gid": "guide-3",
-     "section": "Headings",
-     "action": "changed",
-     "notes": [
-      {
-       "kind": "changed",
-       "text": "**Headings** `h1` 44 Bold, `h2` 38, `h3` 24, `h4` 20, `h5` 18 SemiBold; −2% letter spacing to h3, −1% below. Line height 1.1 for `h1` and `h2`, 1.3 (130%) from `h3` down, so two-line card and drawer titles don't crowd. Title Case.",
-       "was": "**Headings** `h1` 44 Bold, `h2` 38, `h3` 24, `h4` 20, `h5` 18 SemiBold; −2% letter spacing to h3, −1% below. Title Case."
-      }
-     ],
-     "minor": true
-    },
-    {
      "type": "site",
      "action": "changed",
      "name": "Reference site",
@@ -7016,380 +6853,217 @@
     {
      "name": "AppGrid",
      "label": "Five product families under centered copy (hover an app)",
-     "after": "changes/4f3351f/AppGrid-0-after.webp",
+     "after": "changes/bd824e7/AppGrid-0-after.webp",
      "new": true
     },
     {
      "name": "AppGrid",
      "label": "Mobile",
-     "after": "changes/4f3351f/AppGrid-1-after.webp",
+     "after": "changes/bd824e7/AppGrid-1-after.webp",
      "new": true
     },
     {
      "name": "EventBanner",
      "label": "Light (default): dark type on a light picture or video",
-     "after": "changes/4f3351f/EventBanner-0-after.webp",
+     "after": "changes/bd824e7/EventBanner-0-after.webp",
      "new": true
     },
     {
      "name": "EventBanner",
      "label": "Dark: black at 50% over a photo, white type",
-     "after": "changes/4f3351f/EventBanner-1-after.webp",
+     "after": "changes/bd824e7/EventBanner-1-after.webp",
      "new": true
     },
     {
      "name": "FeatureList",
      "label": "On a card (default), as many 250px columns as fit",
-     "after": "changes/4f3351f/FeatureList-0-after.webp",
+     "after": "changes/bd824e7/FeatureList-0-after.webp",
      "new": true
     },
     {
      "name": "FeatureList",
      "label": "No card, three columns, with links",
-     "after": "changes/4f3351f/FeatureList-1-after.webp",
+     "after": "changes/bd824e7/FeatureList-1-after.webp",
      "new": true
     },
     {
      "name": "SpeakerList",
      "label": "Horizontal (default): side by side, wrapping",
-     "after": "changes/4f3351f/SpeakerList-0-after.webp",
+     "after": "changes/bd824e7/SpeakerList-0-after.webp",
      "new": true
     },
     {
      "name": "SpeakerList",
      "label": "Vertical / Vertical, medium photos / Inverted, on a dark ground",
-     "after": "changes/4f3351f/SpeakerList-1-after.webp",
+     "after": "changes/bd824e7/SpeakerList-1-after.webp",
      "new": true
     },
     {
      "name": "Carousel",
      "label": "With a heading and a View All link",
      "new": true,
-     "after": "changes/4f3351f/Carousel-0-after.webp"
+     "after": "changes/bd824e7/Carousel-0-after.webp"
     },
     {
      "name": "Carousel",
      "label": "Mobile",
-     "before": "changes/4f3351f/Carousel-1-before.webp",
-     "after": "changes/4f3351f/Carousel-1-after.webp"
-    },
-    {
-     "name": "MarketingTable",
-     "label": "White header (tone=\"light\") · the full-color logo",
-     "new": true,
-     "after": "changes/4f3351f/MarketingTable-0-after.webp"
-    },
-    {
-     "name": "Footer",
-     "label": "Desktop",
-     "before": "changes/4f3351f/Footer-0-before.webp",
-     "after": "changes/4f3351f/Footer-0-after.webp"
-    },
-    {
-     "name": "Footer",
-     "label": "Mobile",
-     "before": "changes/4f3351f/Footer-1-before.webp",
-     "after": "changes/4f3351f/Footer-1-after.webp"
+     "before": "changes/bd824e7/Carousel-1-before.webp",
+     "after": "changes/bd824e7/Carousel-1-after.webp"
     },
     {
      "name": "Form",
      "label": "Submitted · with a banner / Submitted · no banner",
      "new": true,
-     "after": "changes/4f3351f/Form-2-after.webp",
+     "after": "changes/bd824e7/Form-2-after.webp",
      "moreParts": 1
     },
     {
      "name": "CtaModule",
      "label": "Form · media right",
-     "before": "changes/4f3351f/CtaModule-0-before.webp",
-     "after": "changes/4f3351f/CtaModule-0-after.webp"
+     "before": "changes/bd824e7/CtaModule-0-before.webp",
+     "after": "changes/bd824e7/CtaModule-0-after.webp"
     },
     {
      "name": "CtaModule",
      "label": "Form · media left",
-     "before": "changes/4f3351f/CtaModule-1-before.webp",
-     "after": "changes/4f3351f/CtaModule-1-after.webp"
+     "before": "changes/bd824e7/CtaModule-1-before.webp",
+     "after": "changes/bd824e7/CtaModule-1-after.webp"
     },
     {
      "name": "CtaModule",
      "label": "Form · media bleeds right",
-     "before": "changes/4f3351f/CtaModule-2-before.webp",
-     "after": "changes/4f3351f/CtaModule-2-after.webp",
+     "before": "changes/bd824e7/CtaModule-2-before.webp",
+     "after": "changes/bd824e7/CtaModule-2-after.webp",
      "moreParts": 1
     },
     {
      "name": "LogoCarousel",
      "label": "Pause button hidden: pauseButton={false} (Tab to it to bring it back)",
      "new": true,
-     "after": "changes/4f3351f/LogoCarousel-0-after.webp"
+     "after": "changes/bd824e7/LogoCarousel-0-after.webp"
+    },
+    {
+     "name": "StatCard",
+     "label": "Large (three in a row) and medium (four in a row)",
+     "before": "changes/bd824e7/StatCard-0-before.webp",
+     "after": "changes/bd824e7/StatCard-0-after.webp"
+    },
+    {
+     "name": "StatCard",
+     "label": "Plain (no card): figures beside each other under copy",
+     "new": true,
+     "after": "changes/bd824e7/StatCard-1-after.webp"
+    },
+    {
+     "name": "TestimonialCarousel",
+     "label": "Large",
+     "before": "changes/bd824e7/TestimonialCarousel-0-before.webp",
+     "after": "changes/bd824e7/TestimonialCarousel-0-after.webp"
+    },
+    {
+     "name": "TestimonialCarousel",
+     "label": "Large, on a photo",
+     "before": "changes/bd824e7/TestimonialCarousel-1-before.webp",
+     "after": "changes/bd824e7/TestimonialCarousel-1-after.webp"
+    },
+    {
+     "name": "TestimonialCarousel",
+     "label": "Small",
+     "before": "changes/bd824e7/TestimonialCarousel-2-before.webp",
+     "after": "changes/bd824e7/TestimonialCarousel-2-after.webp",
+     "moreParts": 3
     }
    ],
    "v": 2,
    "why": [
     {
+     "about": "Card",
+     "text": "CTAs must line up along the bottom of every row of cards, not only inside a Card Module, so rows read as one level."
+    },
+    {
+     "about": "Card",
+     "text": "card CTAs use blue text so links read the same across every row of cards."
+    },
+    {
+     "about": "LogoCarousel",
+     "text": "the homepage logo row needs a clean heading row without the pause button, so designers can turn it off per page."
+    },
+    {
+     "about": "ResourceCard",
+     "text": "card CTAs use blue text so links read the same across every row of cards."
+    },
+    {
+     "about": "TestimonialCard",
+     "text": "card CTAs use blue text so links read the same across every row of cards."
+    },
+    {
+     "about": "TestimonialCard",
+     "text": "large cards were too tall for short quotes, so they now start at 400px and grow with the longest quote."
+    },
+    {
+     "about": "HoverCard",
+     "text": "card CTAs use blue text so links read the same across every row of cards."
+    },
+    {
+     "about": "TestimonialCarousel",
+     "text": "with fewer than three quotes there is nothing to scroll to, so the cards fill the width of the container instead."
+    },
+    {
+     "about": "CtaModule",
+     "text": "the bleed picture was cropped flat along the section's top edge, so it now starts lower and shows its rounded top."
+    },
+    {
+     "about": "CtaModule",
+     "text": "the bleed picture's rounded top corner was clipped flat, so the shape now fits the picture and the corner shows whole."
+    },
+    {
+     "about": "CtaModule",
+     "text": "the form sat centered in its half, out of line with the content above, so it now starts on the content edge."
+    },
+    {
+     "about": "CtaModule",
+     "text": "the bleed picture was cropped flat along the section's top edge and at its rounded corner, so it now starts lower and its rounded top shows whole."
+    },
+    {
      "about": "EventBanner",
-     "text": "published to the artifact on Nov 3 but missing from the repo"
+     "text": "the homepage needs an in-page banner for event series like the Cyber Risk Series, with a video background and one button."
     },
     {
      "about": "AppGrid",
-     "text": "published to the artifact on Nov 3 but missing from the repo"
+     "text": "the app suite on the homepage is a reusable way to list products by family, so it belongs in Flex."
     },
     {
      "about": "FeatureList",
-     "text": "published to the artifact on Nov 3 but missing from the repo"
+     "text": "product pages list what's included, like VMDR's \"More Than Just a License to Scan\", so the checklist is now a component."
     },
     {
      "about": "SpeakerList",
-     "text": "published to the artifact on Nov 3 but missing from the repo"
+     "text": "briefings and webinars show their speakers in heroes and banners, side by side or stacked."
     },
     {
-     "about": "Typography",
-     "text": "a one-line sample can't show line height"
+     "about": "StatCard",
+     "text": "figures inside a copy block or beside a picture need to work without a card, in blue."
     },
     {
-     "about": "Footer",
-     "text": "column titles should read as headings, and the legal links ran together"
+     "about": "Carousel",
+     "text": "every carousel on the redesigned pages has a heading with a \"View All\" link, so the carousel can now draw it."
     },
     {
-     "about": "MarketingTable",
-     "text": "needed a header for light pages; past three columns the cells get too narrow for their copy"
+     "about": "Form",
+     "text": "after a successful submit the card should keep its banner and show the confirmation in place of the fields."
     },
     {
-     "about": "FeatureMatrix",
-     "text": "past five competitors the marks get too narrow to scan"
-    },
-    {
-     "about": "DetailComparison",
-     "text": "four text columns get too narrow to read"
-    },
-    {
-     "about": "Typography",
-     "text": "the samples on the Typography page were still one line, so line height didn't show"
+     "about": "GeneralContent",
+     "text": "an eyebrow on a dark banner stayed gray and hard to read, so it now follows the banner's text color."
     }
    ],
-   "headline": "Added 4 components · Updated 20 components",
+   "headline": "Added 4 components · Updated 14 components",
    "highlights": [
     "New components: AppGrid, EventBanner, FeatureList and SpeakerList",
-    "Updated components: 20, including Carousel, MarketingTable and Footer"
+    "Updated components: 14, including Carousel, Form and CtaModule"
    ],
    "minor": false,
-   "shas": [
-    "8bef7cff547dbd5f31af5ade6f25fb0e821a3bd9",
-    "d024b141a2143904faad4e1705ba3883b9db2e84",
-    "d21086e59104610bc2fb5c1ce64be671b0308d60",
-    "6371dadc615da40039d4400b5f751b4377876f5b",
-    "62c2302da51a311caf81e47752b29eca35a7d404",
-    "4f3351f63a97fb07e6508ff9cd1aa9022ed76231"
-   ],
-   "order": 179433535300
-  },
-  {
-   "id": "ff03480",
-   "sha": "ff034806577e6f0486b0afd64bd14a33b709fb3d",
-   "date": "2026-11-10",
-   "author": "Isabel Cordero",
-   "with": [
-    "Claude"
-   ],
-   "approvedBy": [],
-   "pr": null,
-   "items": [
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Typography",
-     "what": [
-      "look"
-     ],
-     "weight": 4
-    }
-   ],
-   "shots": [
-    {
-     "name": "Typography",
-     "label": "",
-     "before": "changes/ff03480/Typography-0-before.webp",
-     "after": "changes/ff03480/Typography-0-after.webp"
-    }
-   ],
-   "v": 2,
-   "why": [
-    {
-     "about": "Typography",
-     "text": "the samples on the Typography page were still one line, so line height didn't show"
-    }
-   ],
-   "headline": "Updated Typography",
-   "highlights": [
-    "Updated Typography"
-   ],
-   "minor": false,
-   "shas": [
-    "f574de6177a5e1572c9ad90cceab2dfc0940050a",
-    "0616694cd7124f7866f798c5c5f4416ec87cd9f8",
-    "ff034806577e6f0486b0afd64bd14a33b709fb3d"
-   ],
-   "order": 179433718900
-  },
-  {
-   "id": "e5d4d37",
-   "sha": "e5d4d37e9739cf6a009419e9a020100fbadbbd52",
-   "date": "2026-11-10",
-   "author": "Isabel Cordero",
-   "with": [
-    "Claude"
-   ],
-   "approvedBy": [],
-   "pr": null,
-   "items": [
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "AppGrid",
-     "what": [
-      "look"
-     ],
-     "weight": 2
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Card",
-     "what": [
-      "look",
-      "docs"
-     ],
-     "weight": 2,
-     "notes": [
-      {
-       "kind": "changed",
-       "text": "**Heading:** SemiBold 24px (`h3`), line height 1.2, −2%; Title Case, at most 60 characters.",
-       "was": "**Heading:** SemiBold 24px (`h3`), line height 1.3, −2%; Title Case, at most 60 characters."
-      }
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "DrawerCard",
-     "what": [
-      "look",
-      "docs"
-     ],
-     "weight": 2,
-     "notes": [
-      {
-       "kind": "changed",
-       "text": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`; 10px; title in Wix Madefor Text SemiBold 24px, line height 1.2, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time.",
-       "was": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`; 10px; title in Wix Madefor Text SemiBold 24px, line height 1.3, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time."
-      }
-     ]
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Footer",
-     "what": [
-      "look"
-     ],
-     "weight": 2
-    },
-    {
-     "type": "component",
-     "action": "changed",
-     "name": "Typography",
-     "what": [
-      "look"
-     ],
-     "weight": 2
-    },
-    {
-     "type": "guide",
-     "name": "Headings",
-     "guide": "Typography",
-     "gid": "guide-3",
-     "section": "Headings",
-     "action": "changed",
-     "wording": true,
-     "notes": [
-      {
-       "kind": "changed",
-       "text": "**Headings** `h1` 44 Bold, `h2` 38, `h3` 24, `h4` 20, `h5` 18 SemiBold; −2% letter spacing to h3, −1% below. Line height 1.1 for `h1` and `h2`, 1.2 (120%) for `h3`, 1.3 (130%) for `h4` and `h5`, so two-line card and drawer titles don't crowd. Title Case.",
-       "was": "**Headings** `h1` 44 Bold, `h2` 38, `h3` 24, `h4` 20, `h5` 18 SemiBold; −2% letter spacing to h3, −1% below. Line height 1.1 for `h1` and `h2`, 1.3 (130%) from `h3` down, so two-line card and drawer titles don't crowd. Title Case."
-      }
-     ],
-     "minor": true
-    }
-   ],
-   "shots": [
-    {
-     "name": "Card",
-     "label": "With an icon",
-     "before": "changes/e5d4d37/Card-0-before.webp",
-     "after": "changes/e5d4d37/Card-0-after.webp"
-    },
-    {
-     "name": "DrawerCard",
-     "label": "1 profile: First and last name, role, company.",
-     "before": "changes/e5d4d37/DrawerCard-0-before.webp",
-     "after": "changes/e5d4d37/DrawerCard-0-after.webp"
-    },
-    {
-     "name": "DrawerCard",
-     "label": "2 profiles: Name, role, company. Each profile is as wide as its content.",
-     "before": "changes/e5d4d37/DrawerCard-1-before.webp",
-     "after": "changes/e5d4d37/DrawerCard-1-after.webp"
-    },
-    {
-     "name": "DrawerCard",
-     "label": "3 profiles: Name, role (two lines at most), company.",
-     "before": "changes/e5d4d37/DrawerCard-2-before.webp",
-     "after": "changes/e5d4d37/DrawerCard-2-after.webp",
-     "moreParts": 15
-    },
-    {
-     "name": "AppGrid",
-     "label": "Five product families under centered copy (hover an app)",
-     "before": "changes/e5d4d37/AppGrid-0-before.webp",
-     "after": "changes/e5d4d37/AppGrid-0-after.webp"
-    },
-    {
-     "name": "AppGrid",
-     "label": "Mobile",
-     "before": "changes/e5d4d37/AppGrid-1-before.webp",
-     "after": "changes/e5d4d37/AppGrid-1-after.webp"
-    },
-    {
-     "name": "Footer",
-     "label": "Desktop",
-     "before": "changes/e5d4d37/Footer-0-before.webp",
-     "after": "changes/e5d4d37/Footer-0-after.webp"
-    },
-    {
-     "name": "Footer",
-     "label": "Mobile",
-     "before": "changes/e5d4d37/Footer-1-before.webp",
-     "after": "changes/e5d4d37/Footer-1-after.webp"
-    },
-    {
-     "name": "Typography",
-     "label": "",
-     "before": "changes/e5d4d37/Typography-0-before.webp",
-     "after": "changes/e5d4d37/Typography-0-after.webp"
-    }
-   ],
-   "v": 2,
-   "headline": "Updated 5 components",
-   "highlights": [
-    "Updated components: 5, including AppGrid, Card and DrawerCard"
-   ],
-   "minor": false,
-   "shas": [
-    "2fb442443bd4d52d0c40cb13685cb8728c946df0",
-    "30bdb2393978ae44d708214e773bbb73d1c84c73",
-    "e5d4d37e9739cf6a009419e9a020100fbadbbd52"
-   ],
-   "order": 179434095000
+   "order": 179366916200
   }
  ]
 }
