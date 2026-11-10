@@ -32,7 +32,7 @@ That spacing is a starting point, not a rule. Reduce it, or remove it between tw
 
 Desktop up to four; tablet up to three, four become 2 × 2; mobile stacks everything to one. Use `.q-container` and `.q-grid--2/3/4`.
 
-**Rows of cards** (stat cards, Card Module, profile grids): pick the number across so rows come out full, and never leave one card alone on a row when another number avoids it: five are 3 + 2, not 4 + 1; four on tablet are 2 × 2, not 3 + 1. A row that still comes out short is centered, with its cards at the same width as the rows above. Listings that grow, such as search results or the events grid with Load More, keep their reading order and start each row on the left.
+**Rows of cards** (stat cards, Card Module, profile grids): pick the number across so rows come out full, and never leave one card alone on a row when another number avoids it: five are 3 + 2, not 4 + 1; four on tablet are 2 × 2, not 3 + 1. A row that still comes out short is centered, with its cards at the same width as the rows above. Listings that grow, such as search results or the events grid with Load More, keep their reading order and start each row on the left. Cards in a row share one height, and each card's call to action (text link, button or footer) sits on its bottom edge, so the calls to action line up across the row however long each card's copy is, wherever the row sits: a Card Module, a grid in a page or a carousel. A card's text link is always blue (see Buttons and links).
 
 ### Spacing
 

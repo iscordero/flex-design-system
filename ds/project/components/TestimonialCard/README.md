@@ -7,14 +7,14 @@ A customer quote from the Figma Testimonials page: the customer's logo, the quot
 
 | Figma name | Props | What it shows |
 |---|---|---|
-| Large Testimonial Card | default | 939 × 500px, the quote in `quote-lg` (32px) |
+| Large Testimonial Card | default | 939px wide and 400px tall at least (taller for a long quote; cards in a row match the tallest), the quote in `quote-lg` (32px) |
 | Full Image Background Large Testimonial Card | `image` | The same over a photo, with the quote on a white panel |
 | Small Testimonial Card | `size="sm"` | 500px wide, the quote in `quote-md` (24px) |
 | Video Testimonial Card | `video` | The small card with a portrait clip on the right |
 
 - White, `radius-lg`, `shadow-drawer`. Padding is 36px (large) or 24px (small).
 - **Logo:** up to 60px tall, at the top left; 24px below it, the quote.
-- **Foot,** pinned to the bottom: a 40px Avatar with the name (Wix Madefor Text SemiBold 16px) over the company (`text-secondary`), and on the right a neutral TextLink with the arrow, "Read the Story".
+- **Foot,** pinned to the bottom: a 40px Avatar with the name (Wix Madefor Text SemiBold 16px) over the company (`text-secondary`), and on the right a blue TextLink with the arrow, "Read the Story".
 - **On a photo:** the picture fills the card with a hairline edge; the content sits on a panel 62% wide, white at 90%, `radius-md`, 24px padding.
 - **With a video:** the clip is 312px wide with `radius-rg`, 24px from the copy, with the play button. The person shows without an avatar. With no video, leave `video` out and the quote takes the full width.
 - **On its own:** place the card in a section (`.q-section` › `.q-section__inner`), centered at up to 939px, the Large card's Figma width.

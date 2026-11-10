@@ -1,4 +1,4 @@
-<!-- @dsCard group="Page modules · Carousels and logos" height=1817 width=1440 subtitle="Block module · Cards you scroll sideways, several at once or one across, with progress bar and arrows." -->
+<!-- @dsCard group="Page modules · Carousels and logos" height=2696 width=1440 subtitle="Block module · Cards you scroll sideways, several at once or one across, with progress bar and arrows." -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,10 +16,12 @@ function phone(t, node) { return h('div', null, cap(t).props.children ? h('div',
 function res(i) { return h(Q.ResourceCard, {key: i, href: '#', external: true, flag: i === 1 ? undefined : 'Tag Text', resourceType: 'Resource Type', title: 'This is a Resource Title Lorem Ipsum Dolor', date: 'Dec 10, 2025'}); }
 function ev(i) { return h(Q.EventCard, {key: i, layout: 'featured', href: '#', external: true, flag: 'Tag Text', category: 'Event Type', format: 'Event Format', title: 'This is an Event Title Lorem Ipsum Dolor', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris ipsum dolor sit amet, consectetur.', date: 'Dec 10, 2026 • 11a PST'}); }
 function multi() { return h(Q.Carousel, {label: 'Resources'}, [0, 1, 2, 3, 4, 5].map(res)); }
+function headed() { return h(Q.Carousel, {title: 'The Latest in Enterprise Cyber Risk and Security', link: {label: 'View All Resources', href: '#'}}, [0, 1, 2, 3, 4, 5].map(res)); }
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
   cap('Multi card'), multi(),
   cap('Single card'), h(Q.Carousel, {variant: 'single', label: 'Featured events'}, [0, 1, 2].map(ev)),
-  cap('Mobile'), h('div', {className: 'phones'}, h('div', {className: 'phone'}, multi()))));
+  cap('With a heading and a View All link'), headed(),
+  cap('Mobile'), h('div', {className: 'phones'}, h('div', {className: 'phone'}, multi()), h('div', {className: 'phone'}, headed()))));
 </script>
 </body>
 </html>

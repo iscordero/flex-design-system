@@ -5,7 +5,8 @@ One figure from the Figma Stats page: a feature icon, a large number with its un
 
 **Provide:** `value` and `label`; optionally `suffix` ("%", "x") or `prefix` ("#"), `icon` (a Feature Icon), `description`, `tone` and `size`.
 
-- **Tone:** `solid` (default) is `qualys-blue` with white figures and a `misty-blue` description; `outline` is a 1px `qualys-blue` outline with blue figures and a `text-secondary` description.
+- **Tone:** `solid` (default) is `qualys-blue` with white figures and a `misty-blue` description; `outline` is a 1px `qualys-blue` outline with blue figures and a `text-secondary` description; `plain` has no card at all: the figure and its label in `qualys-blue`, the description in `text-primary`, 12px below.
+- **Plain:** for figures that sit in a copy block or beside a picture rather than in a row of cards, such as two figures under a paragraph. No padding, so it lines up with the text around it. Two side by side, 24px apart; they stack on phones. Stats takes `tone="plain"` with `layout="cards"`.
 - **Large (`lg`, three in a row):** 36px padding. The number is `stat-lg` (Bold 86px) with its unit at 48px on the same baseline; the label is Wix Madefor Text Medium 38px; the description is `paragraph-rg`, 16px below.
 - **Medium (`md`, four in a row):** 16px top and 24px side and bottom padding. Number `stat-md` (64px) with a 38px unit; label Medium 24px.
 - **Icon:** a Feature Icon in a 56px box, 8px above the number.

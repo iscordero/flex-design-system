@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components · Forms" height=6834 width=1440 subtitle="Pattern · Lead-capture card in its four Figma variants, with errors, on mobile, and with banners: photo, headline on a color, headline with an image, headline over a photo. Submit it empty to test." -->
+<!-- @dsCard group="Components · Forms" height=8011 width=1440 subtitle="Pattern · Lead-capture card in its four Figma variants, with errors, on mobile, and with banners: photo, headline on a color, headline with an image, headline over a photo. Submit it empty to test." -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -54,7 +54,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className:
     col('Mobile', h('div', {className: 'stack'},
       h('div', {className: 'col--m'}, minimal({banner: {title: 'See Qualys in Action. Secure Your Enterprise.', image: LAPTOP}})),
       h('div', {className: 'col--m'}, minimal({banner: {title: 'De-Risk Your Business', image: OFFICE, imagePosition: 'background'}})),
-      h('div', {className: 'col--m'}, minimal({banner: {title: 'See Qualys in Action. Secure Your Enterprise.'}})))))));
+      h('div', {className: 'col--m'}, minimal({banner: {title: 'See Qualys in Action. Secure Your Enterprise.'}}))))),
+  h('h2', {className: 'h'}, 'Submitted'),
+  h('p', {className: 'rule'}, h('b', null, 'After a successful submit: '), 'the banner stays, and the heading, fields and button give way to the green tick, a title, a message and one button. Set submitted from onSubmit.'),
+  h('div', {className: 'row'},
+    col('Submitted \u00b7 with a banner', minimal({banner: {title: 'Built on Data From 250+ Organizations', image: LAPTOP, background: 'gradient'}, submitted: true, success: {title: 'Your Report Is Ready', message: 'Thanks for your interest. Your copy of the report is ready to download.', actionLabel: 'Download Report', href: '#'}})),
+    col('Submitted \u00b7 no banner', gate({submitted: true, success: {type: 'general', title: 'Thanks, You\u2019re Signed Up', message: 'We\u2019ve emailed you the details. Check your inbox in a few minutes.', actionLabel: 'Done'}}))),
+  h('div', {className: 'row'}, col('Mobile \u00b7 submitted', minimal({banner: {title: 'Built on Data From 250+ Organizations', image: LAPTOP, background: 'gradient'}, submitted: true, success: {title: 'Your Report Is Ready', message: 'Thanks for your interest. Your copy of the report is ready to download.', actionLabel: 'Download Report', href: '#'}}), true))));
 </script>
 </body>
 </html>
