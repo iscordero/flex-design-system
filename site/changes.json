@@ -7157,6 +7157,10 @@
     {
      "about": "DetailComparison",
      "text": "four text columns get too narrow to read"
+    },
+    {
+     "about": "Typography",
+     "text": "the samples on the Typography page were still one line, so line height didn't show"
     }
    ],
    "headline": "Added 4 components · Updated 20 components",
@@ -7174,6 +7178,54 @@
     "4f3351f63a97fb07e6508ff9cd1aa9022ed76231"
    ],
    "order": 179433535300
+  },
+  {
+   "id": "ff03480",
+   "sha": "ff034806577e6f0486b0afd64bd14a33b709fb3d",
+   "date": "2026-11-10",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Typography",
+     "what": [
+      "look"
+     ],
+     "weight": 4
+    }
+   ],
+   "shots": [
+    {
+     "name": "Typography",
+     "label": "",
+     "before": "changes/ff03480/Typography-0-before.webp",
+     "after": "changes/ff03480/Typography-0-after.webp"
+    }
+   ],
+   "v": 2,
+   "why": [
+    {
+     "about": "Typography",
+     "text": "the samples on the Typography page were still one line, so line height didn't show"
+    }
+   ],
+   "headline": "Updated Typography",
+   "highlights": [
+    "Updated Typography"
+   ],
+   "minor": false,
+   "shas": [
+    "f574de6177a5e1572c9ad90cceab2dfc0940050a",
+    "0616694cd7124f7866f798c5c5f4416ec87cd9f8",
+    "ff034806577e6f0486b0afd64bd14a33b709fb3d"
+   ],
+   "order": 179433718900
   }
  ]
 }

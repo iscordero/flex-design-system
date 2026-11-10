@@ -8,7 +8,7 @@
   "Claude"
  ],
  "approvedBy": [],
- "commits": 6,
+ "commits": 9,
  "base": "f01b7bb35e6be5a1bb2cd1071f7e6978468a2efb",
  "pr": null,
  "items": [
@@ -624,6 +624,15 @@
    "weight": 7
   },
   {
+   "type": "component",
+   "action": "changed",
+   "name": "Typography",
+   "what": [
+    "look"
+   ],
+   "weight": 4
+  },
+  {
    "type": "guide",
    "name": "Text link buttons",
    "guide": "Buttons and Links",
@@ -796,6 +805,10 @@
    "text": "a one-line sample can't show line height"
   },
   {
+   "about": "Typography",
+   "text": "the samples on the Typography page were still one line, so line height didn't show"
+  },
+  {
    "about": "Footer",
    "text": "column titles should read as headings, and the legal links ran together"
   },
@@ -812,10 +825,10 @@
    "text": "four text columns get too narrow to read"
   }
  ],
- "headline": "Added 4 components · Updated 33 components",
+ "headline": "Added 4 components · Updated 34 components",
  "highlights": [
   "New components: AppGrid, EventBanner, FeatureList and SpeakerList",
-  "Updated components: 33, including Carousel, MarketingTable and Footer"
+  "Updated components: 34, including Carousel, MarketingTable and Footer"
  ],
  "minor": false
 }
