@@ -8,10 +8,31 @@
   "Claude"
  ],
  "approvedBy": [],
- "commits": 5,
+ "commits": 6,
  "base": "f01b7bb35e6be5a1bb2cd1071f7e6978468a2efb",
  "pr": null,
  "items": [
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "AccordionModule",
+   "what": [
+    "look"
+   ],
+   "weight": 7,
+   "follows": [
+    "TextLink"
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "AlertDialog",
+   "what": [
+    "look"
+   ],
+   "weight": 4
+  },
   {
    "type": "component",
    "action": "added",
@@ -100,6 +121,18 @@
   {
    "type": "component",
    "action": "changed",
+   "name": "CookieBanner",
+   "what": [
+    "look"
+   ],
+   "weight": 4,
+   "follows": [
+    "TextLink"
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
    "name": "CtaModule",
    "what": [
     "look",
@@ -122,6 +155,15 @@
      "text": "The bleed picture is drawn flush with the top of the section, which reads as a hard, straight crop; it starts 56px down, level with the section's padding."
     }
    ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "DemoRequestWizard",
+   "what": [
+    "look"
+   ],
+   "weight": 4
   },
   {
    "type": "component",
@@ -167,6 +209,27 @@
      "kind": "added",
      "text": "A banner for an event or a series of them: the series name in spaced capitals beside a thin rule, then a blue Tag (\"Live Virtual Event\") and the title, with one Button at the right. It sits over a light picture or a silent, looping video."
     }
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "EventCalendar",
+   "what": [
+    "look"
+   ],
+   "weight": 2
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "ExitIntent",
+   "what": [
+    "look"
+   ],
+   "weight": 4,
+   "follows": [
+    "TextLink"
    ]
   },
   {
@@ -275,6 +338,19 @@
   {
    "type": "component",
    "action": "changed",
+   "name": "Hero",
+   "what": [
+    "look"
+   ],
+   "weight": 7,
+   "follows": [
+    "Form",
+    "TextLink"
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
    "name": "HoverCard",
    "what": [
     "look",
@@ -288,6 +364,15 @@
      "was": "**Logo card** (`kind=\"logo\"`): `logo` (and `logoAlt`), optional `badge` (an image address or your own node, for a partner or certification badge), `title`, `body` and `link` (`{ label, href }`). The link is a neutral TextLink with the blue arrow. One link only."
     }
    ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "IntegrationCard",
+   "what": [
+    "look"
+   ],
+   "weight": 0
   },
   {
    "type": "component",
@@ -333,6 +418,15 @@
      "doc": "false hides the pause button until it gets keyboard focus; the row still pauses on hover and focus. Default true"
     }
    ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "LogoHierarchy",
+   "what": [
+    "look"
+   ],
+   "weight": 8
   },
   {
    "type": "component",
@@ -385,6 +479,15 @@
   },
   {
    "type": "component",
+   "action": "changed",
+   "name": "SessionTimeout",
+   "what": [
+    "look"
+   ],
+   "weight": 4
+  },
+  {
+   "type": "component",
    "action": "added",
    "name": "SpeakerList",
    "notes": [
@@ -421,9 +524,34 @@
    "action": "changed",
    "name": "Stats",
    "what": [
+    "look",
     "props"
    ],
-   "weight": 10
+   "weight": 10,
+   "follows": [
+    "StatCard"
+   ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "SuccessConfirmation",
+   "what": [
+    "look"
+   ],
+   "weight": 4
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "TabModule",
+   "what": [
+    "look"
+   ],
+   "weight": 7,
+   "follows": [
+    "TextLink"
+   ]
   },
   {
    "type": "component",
@@ -485,6 +613,15 @@
      "was": "Use: Lesser CTAs inside cards and other small modules."
     }
    ]
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "TypographicHeader",
+   "what": [
+    "look"
+   ],
+   "weight": 7
   },
   {
    "type": "guide",
@@ -635,118 +772,7 @@
    "minor": true
   }
  ],
- "shots": [
-  {
-   "name": "AppGrid",
-   "label": "Five product families under centered copy (hover an app)",
-   "after": "changes/draft/AppGrid-0-after.webp",
-   "new": true
-  },
-  {
-   "name": "AppGrid",
-   "label": "Mobile",
-   "after": "changes/draft/AppGrid-1-after.webp",
-   "new": true
-  },
-  {
-   "name": "EventBanner",
-   "label": "Light (default): dark type on a light picture or video",
-   "after": "changes/draft/EventBanner-0-after.webp",
-   "new": true
-  },
-  {
-   "name": "EventBanner",
-   "label": "Dark: black at 50% over a photo, white type",
-   "after": "changes/draft/EventBanner-1-after.webp",
-   "new": true
-  },
-  {
-   "name": "FeatureList",
-   "label": "On a card (default), as many 250px columns as fit",
-   "after": "changes/draft/FeatureList-0-after.webp",
-   "new": true
-  },
-  {
-   "name": "FeatureList",
-   "label": "No card, three columns, with links",
-   "after": "changes/draft/FeatureList-1-after.webp",
-   "new": true
-  },
-  {
-   "name": "SpeakerList",
-   "label": "Horizontal (default): side by side, wrapping",
-   "after": "changes/draft/SpeakerList-0-after.webp",
-   "new": true
-  },
-  {
-   "name": "SpeakerList",
-   "label": "Vertical / Vertical, medium photos / Inverted, on a dark ground",
-   "after": "changes/draft/SpeakerList-1-after.webp",
-   "new": true
-  },
-  {
-   "name": "Carousel",
-   "label": "With a heading and a View All link",
-   "new": true,
-   "after": "changes/draft/Carousel-0-after.webp"
-  },
-  {
-   "name": "Carousel",
-   "label": "Mobile",
-   "before": "changes/draft/Carousel-1-before.webp",
-   "after": "changes/draft/Carousel-1-after.webp"
-  },
-  {
-   "name": "MarketingTable",
-   "label": "White header (tone=\"light\") · the full-color logo",
-   "new": true,
-   "after": "changes/draft/MarketingTable-0-after.webp"
-  },
-  {
-   "name": "Footer",
-   "label": "Desktop",
-   "before": "changes/draft/Footer-0-before.webp",
-   "after": "changes/draft/Footer-0-after.webp"
-  },
-  {
-   "name": "Footer",
-   "label": "Mobile",
-   "before": "changes/draft/Footer-1-before.webp",
-   "after": "changes/draft/Footer-1-after.webp"
-  },
-  {
-   "name": "Form",
-   "label": "Submitted · with a banner / Submitted · no banner",
-   "new": true,
-   "after": "changes/draft/Form-2-after.webp",
-   "moreParts": 1
-  },
-  {
-   "name": "CtaModule",
-   "label": "Form · media right",
-   "before": "changes/draft/CtaModule-0-before.webp",
-   "after": "changes/draft/CtaModule-0-after.webp"
-  },
-  {
-   "name": "CtaModule",
-   "label": "Form · media left",
-   "before": "changes/draft/CtaModule-1-before.webp",
-   "after": "changes/draft/CtaModule-1-after.webp"
-  },
-  {
-   "name": "CtaModule",
-   "label": "Form · media bleeds right",
-   "before": "changes/draft/CtaModule-2-before.webp",
-   "after": "changes/draft/CtaModule-2-after.webp",
-   "moreParts": 1
-  },
-  {
-   "name": "LogoCarousel",
-   "label": "Pause button hidden: pauseButton={false} (Tab to it to bring it back)",
-   "new": true,
-   "after": "changes/draft/LogoCarousel-0-after.webp"
-  }
- ],
+ "shots": [],
  "v": 2,
  "why": [
   {
@@ -786,10 +812,10 @@
    "text": "four text columns get too narrow to read"
   }
  ],
- "headline": "Added 4 components · Updated 20 components",
+ "headline": "Added 4 components · Updated 33 components",
  "highlights": [
   "New components: AppGrid, EventBanner, FeatureList and SpeakerList",
-  "Updated components: 20, including Carousel, MarketingTable and Footer"
+  "Updated components: 33, including Carousel, MarketingTable and Footer"
  ],
  "minor": false
 }
