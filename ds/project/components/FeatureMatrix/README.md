@@ -5,7 +5,7 @@ A yes/no comparison table: Qualys in the first, highlighted column, competitors 
 
 **Provide:** `columns` (the first is Qualys), `sections` and optionally `title`, `subtitle`.
 
-- **Columns:** `[{ id, name, logo, subtitle }]`. Give every column its `logo`; without one a dashed slot holds the name (as in the preview, where competitor logos are placeholders). Two to five competitors read well on desktop.
+- **Columns:** `[{ id, name, logo, subtitle }]`. Give every column its `logo`; without one a dashed slot holds the name (as in the preview, where competitor logos are placeholders). **Min 1, max 5** competitors beside Qualys; columns past the fifth competitor are left out, because the marks get too narrow to scan. Two to five read best on desktop.
 - **Sections:** `[{ title, open, rows }]`. Each is a Drawer; set `open` on the ones that start open. A row is `[label, 1, 0, 1, …]` or `{ label, values }`, one value per column.
 - **Marks:** yes is a white tick on `success`, 24px circle. No is a gray cross on `chip-bg` in `text-secondary`, so the yes marks stand out; there is no red variant. Color is never the only signal: the tick and cross differ, and each mark is read as "Wiz: No".
 - **Totals:** the last row of each section counts the yes marks ("6 of 8") under the label "Supported". `totalLabel` renames it, `formatTotal(n, total)` reformats it, `totals={false}` removes it.

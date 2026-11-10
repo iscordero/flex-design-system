@@ -2008,9 +2008,11 @@
 
   /* FeatureMatrix — a yes/no comparison: the first column (Qualys) is highlighted, competitors sit beside it, features are grouped in drawers with a "Supported" count.
      Narrower than 768px it compares Qualys with one competitor at a time (tabs) and can show only the rows that differ. */
+  var FMATRIX_MAX = 5;
   function FeatureMatrix(p) {
     var ref = React.useRef(null), mobile = useNarrow(ref, 768, p.layout);
-    var cols = cmpColumns(p.columns), own = cols[0] || { id: '0', name: '' }, others = cols.slice(1);
+    /* Columns: Qualys, then one to five competitors (FMATRIX_MAX); extra columns are left out. */
+    var cols = cmpColumns(p.columns).slice(0, 1 + FMATRIX_MAX), own = cols[0] || { id: '0', name: '' }, others = cols.slice(1);
     var cs = React.useState(p.defaultCompare != null ? String(p.defaultCompare) : null), comp = p.compare !== undefined ? String(p.compare) : cs[0];
     var ds = React.useState(!!p.defaultDiffOnly), diff = ds[0];
     var cur = 0;
@@ -2059,9 +2061,9 @@
      Narrower than 768px one competitor shows at a time (tabs) and the two texts stack as cards. */
   function DetailComparison(p) {
     var ref = React.useRef(null), mobile = useNarrow(ref, 768, p.layout);
-    var cols = cmpColumns(p.columns), own = cols[0] || { id: '0', name: '' }, others = cols.slice(1), max = p.max || 3;
+    var cols = cmpColumns(p.columns), own = cols[0] || { id: '0', name: '' }, others = cols.slice(1), max = Math.max(1, Math.min(p.max || 3, 3)); /* Qualys plus one to three picked competitors */
     var ps = React.useState(function () { return (p.defaultPicked || others.slice(0, 2).map(function (c) { return c.id; })).map(String); });
-    var picked = (p.picked !== undefined ? p.picked.map(String) : ps[0]).filter(function (id) { return others.some(function (c) { return c.id === id; }); });
+    var picked = (p.picked !== undefined ? p.picked.map(String) : ps[0]).filter(function (id) { return others.some(function (c) { return c.id === id; }); }).slice(0, max);
     var cs = React.useState(null), comp = cs[0] != null ? cs[0] : (picked[0] || (others[0] && others[0].id));
     var cur = 0;
     others.forEach(function (c, i) { if (c.id === comp) cur = i; });
@@ -2113,15 +2115,18 @@
   }
 
   /* MarketingTable — a branded comparison table as a page section: a header row on a photo, row headings with Feature Icons, and one featured column. */
+  var MTABLE_MAX = 3;
   function MarketingTable(p) {
-    var cols = p.columns || [], rows = p.rows || [], data = cols.slice(1);
+    /* Columns: the row headings, then one to three more (MTABLE_MAX); extra columns are left out. */
+    var cols = (p.columns || []).slice(0, 1 + MTABLE_MAX), rows = p.rows || [], data = cols.slice(1);
+    if ((p.columns || []).length > cols.length && window.console) console.warn('MarketingTable: at most ' + MTABLE_MAX + ' columns after the row headings; the rest are left out.');
     var img = p.image && typeof p.image === 'object' ? p.image : { src: p.image };
     var vars = { '--q-mtable-cols': data.length || 1 };
     if (img.size) vars['--q-mtable-photo-size'] = img.size;
     if (img.focus) vars['--q-mtable-photo-focus'] = img.focus;
     /* A column's name in words: its title, or what its logo says. Under 768px each cell carries it as a label. */
     function colName(c) { return c.title || (c.logo ? c.logoAlt || 'Qualys' : null); }
-    return h('section', { className: cx('q-section', 'q-mtable', 'q-mtable--' + (p.tone === 'dark' ? 'dark' : 'blue'), p.className), id: p.id },
+    return h('section', { className: cx('q-section', 'q-mtable', 'q-mtable--' + (p.tone === 'dark' || p.tone === 'light' ? p.tone : 'blue'), p.className), id: p.id },
       h('div', { className: 'q-section__inner' },
         h('div', { className: 'q-mtable__card' },
           h('div', { className: 'q-mtable__table', role: 'table', 'aria-label': p.label, style: vars },
@@ -2938,9 +2943,9 @@
                 return h('li', { key: k }, h('a', { className: 'q-footer__link', href: link.href || '#' }, link.label));
               })));
           })) : null),
-        p.copyright || legal.length ? h('p', { className: 'q-footer__legal' }, p.copyright, legal.map(function (l, i) {
+        p.copyright || legal.length ? h('p', { className: 'q-footer__legal' }, p.copyright ? h('span', null, p.copyright) : null, legal.map(function (l, i) {
           var link = typeof l === 'string' ? { label: l } : l;
-          return h(React.Fragment, { key: i }, ' ', h('a', { href: link.href || '#' }, link.label), '.');
+          return h('span', { key: i }, h('a', { href: link.href || '#' }, link.label), '.');
         })) : null)));
   }
 

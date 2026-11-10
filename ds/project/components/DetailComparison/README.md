@@ -7,7 +7,7 @@ A written comparison: Qualys beside up to three competitors the reader picks, on
 
 - **Columns:** `[{ id, name, logo, subtitle }]`. Without a `logo` a dashed slot holds the name (competitor logos in the preview are placeholders).
 - **Sections:** `[{ title, open, heading, copy }]`. `copy` is keyed by column id: a string, or `{ heading, body }` to give that vendor its own cell heading. Each section is a Drawer.
-- **Picking competitors:** filter chips ("Compare Qualys With · Choose up to 3"). At least one stays picked; at three, the rest are disabled until one is released. `max` changes the limit, `defaultPicked` sets the starting ids (the first two by default), `picked` with `onChange` controls it.
+- **Picking competitors:** filter chips ("Compare Qualys With · Choose up to 3"). At least one stays picked; at three, the rest are disabled until one is released. `max` lowers the limit (**min 1, max 3** competitors beside Qualys; a larger `max` is held at 3, since four text columns get too narrow), `defaultPicked` sets the starting ids (the first two by default), `picked` with `onChange` controls it.
 - **Layout:** Qualys and the picked vendors share the width in equal columns, so two competitors give three columns and three give four. The Qualys cell sits on Ecru (`surface-neutral-300`, `radius-md`); the others are plain. 20px padding in every cell.
 - **Type:** module heading `h3`; cell heading `title-sm` (16px SemiBold); copy `paragraph-rg`. Keep copy to about 250 characters so columns stay a similar height; longer copy wraps and the row grows.
 - **Size:** a white card (`radius-lg`, `shadow-card`) in the content column (up to 1440px). Below 240px per column the table scrolls sideways inside the card.

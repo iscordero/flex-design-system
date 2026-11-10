@@ -1656,7 +1656,7 @@ export interface FeatureMatrixRow { label: React.ReactNode; values: Array<boolea
 export interface FeatureMatrixProps {
   title?: React.ReactNode;
   subtitle?: React.ReactNode;
-  /** the first column is the highlighted one (Qualys) */
+  /** the first column is the highlighted one (Qualys), then 1 to 5 competitors (more are left out) */
   columns: Array<ComparisonColumn | string>;
   /** a row is { label, values } or [label, 1, 0, ...], one value per column */
   sections: Array<{ title: React.ReactNode; open?: boolean; rows: Array<FeatureMatrixRow | Array<React.ReactNode | boolean | number>> }>;
@@ -1687,7 +1687,7 @@ export interface DetailComparisonProps {
   columns: Array<ComparisonColumn | string>;
   /** copy is keyed by column id: a text, or { heading, body } */
   sections: Array<{ title: React.ReactNode; open?: boolean; heading?: React.ReactNode; copy: Record<string, React.ReactNode | { heading?: React.ReactNode; body?: React.ReactNode }> }>;
-  /** the most competitors shown beside the first column, default 3 */
+  /** the most competitors shown beside the first column: 1 to 3, default 3 (a larger value is held at 3) */
   max?: number;
   picked?: string[];
   defaultPicked?: string[];
@@ -1729,13 +1729,13 @@ export interface MarketingTableImage {
   focus?: string;
 }
 export interface MarketingTableProps {
-  /** the first column heads the rows; each further column holds one cell per row */
+  /** the first column heads the rows; then 1 to 3 columns, each holding one cell per row (more are left out) */
   columns: MarketingTableColumn[];
   rows: MarketingTableRow[];
   /** the photo in the middle of the header row, drawn in grays and blended into the header color: a URL, or { src, size, focus } */
   image?: string | MarketingTableImage;
-  /** header ground: 'blue' = Qualys Blue, deepening at the foot (default); 'dark' = Charcoal */
-  tone?: 'blue' | 'dark';
+  /** header ground: 'blue' = Qualys Blue, deepening at the foot (default); 'dark' = Charcoal; 'light' = white overlay with dark copy (use the full-color logo) */
+  tone?: 'blue' | 'dark' | 'light';
   /** accessible name of the table */
   label?: string;
   id?: string;

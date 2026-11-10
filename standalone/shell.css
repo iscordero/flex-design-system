@@ -257,7 +257,7 @@ a { color: var(--ds-link); }
 .ds-rows li:last-child { border-bottom: 0; }
 .ds-rows .ds-meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .ds-rows .ds-demo { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
-.ds-spec { color: var(--ds-ink); overflow-wrap: anywhere; }
+.ds-spec { color: var(--ds-ink); overflow-wrap: anywhere; white-space: pre-line; } /* type samples run over two lines, so each style shows its line height */
 .ds-bar { height: 12px; max-width: 100%; border-radius: 3px; background: var(--ds-accent); }
 .ds-box { width: 72px; height: 56px; background: var(--ds-tint); border: 1px solid var(--ds-accent); }
 .ds-lift { width: 132px; height: 56px; margin: 8px 0 12px; border-radius: 10px; background: var(--ds-paper); }

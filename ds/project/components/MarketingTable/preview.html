@@ -1,4 +1,4 @@
-<!-- @dsCard group="Page modules · Tables" height=4475 width=1440 subtitle="Block module · A branded table: photo header, Feature Icon row headings, one featured column. Charcoal, tablet, mobile." -->
+<!-- @dsCard group="Page modules · Tables" height=5411 width=1440 subtitle="Block module · A branded table: photo header, Feature Icon row headings, one featured column. Charcoal, white, tablet, mobile." -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,7 +12,7 @@
 <script>
 var Q = window.Qualys, h = React.createElement;
 function cap(t) { return h('div', {className: 'cap'}, t); }
-var CAPITOL = '/_blob/34746d9de197742e629cf55fcd5ebc07', LOGO = '/_blob/2f12addb8d68868ae064a58fad459a07';
+var CAPITOL = '/_blob/34746d9de197742e629cf55fcd5ebc07', LOGO = '/_blob/2f12addb8d68868ae064a58fad459a07', LOGO_FULL = '/_blob/a0d4062abbce2ceb87d5be08d326359f';
 var ICON = {
   prioritize: '/_blob/879916cd1c61396c65bde874a0e7ba08', threat: '/_blob/e594a6d966d00d9ea5bb37fd3d806358', detect: '/_blob/bdcd7cc4b2bbc39f3f0aba2ee1b6ea8e',
   vulnerability: '/_blob/2278c0ac5e6973627f979d3b3e36a0ff', measure: '/_blob/08a9d26a3a902a648c904b65297a8cb7', agentic: '/_blob/ab4c0b41714ffc1726347d4515429315'
@@ -41,6 +41,7 @@ function table(extra) {
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
   cap('Qualys Blue header with a photo · Feature Icons · the Qualys column featured'), table(),
   cap('Charcoal header · rows without icons'), table({tone: 'dark', rows: plain()}),
+  cap('White header (tone="light") · the full-color logo'), table({tone: 'light', columns: COLUMNS.map(function (c) { return c.logo ? Object.assign({}, c, {logo: LOGO_FULL}) : c; })}),
   cap('Tablet'), h('div', {className: 'tablet'}, table()),
   cap('Mobile — the columns stack under each row heading'), h('div', {className: 'phones'},
     h('div', {className: 'phone'}, table()),
