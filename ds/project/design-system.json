@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-11-10T18:13:14Z",
+    "at": "2026-11-10T18:59:00Z",
     "by": "Isabel",
-    "note": "Type samples on two lines to show line height; h3 line height 1.3; footer column titles in h5, legal items 18px apart; MarketingTable white header (tone light); column limits: MarketingTable 1-3, FeatureMatrix 1-5, DetailComparison 1-3.",
+    "note": "Typography page: every sample runs over two lines so each style shows its line height (display-xl and h1 samples shortened to fit).",
     "via": "Claude (Cowork)"
   },
   "layout": "files",
