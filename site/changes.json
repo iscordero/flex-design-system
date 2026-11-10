@@ -7064,6 +7064,297 @@
    ],
    "minor": false,
    "order": 179366916200
+  },
+  {
+   "id": "9689603",
+   "sha": "96896036a0a3da8167ac428d3c7624b248fc5d7a",
+   "date": "2026-11-10",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "AppGrid",
+     "what": [
+      "look"
+     ],
+     "weight": 2
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Card",
+     "what": [
+      "look",
+      "docs"
+     ],
+     "weight": 2,
+     "notes": [
+      {
+       "kind": "changed",
+       "text": "**Heading:** SemiBold 24px (`h3`), line height 1.2, −2%; Title Case, at most 60 characters.",
+       "was": "**Heading:** SemiBold 24px, line height 1.1, −2%; Title Case, at most 60 characters."
+      }
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DetailComparison",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ],
+     "weight": 10,
+     "notes": [
+      {
+       "kind": "changed",
+       "text": "**Picking competitors:** filter chips (\"Compare Qualys With · Choose up to 3\"). At least one stays picked; at three, the rest are disabled until one is released. `max` lowers the limit (**min 1, max 3** competitors beside Qualys; a larger `max` is held at 3, since four text columns get too narrow), `defaultPicked` sets the starting ids (the first two by default), `picked` with `onChange` controls it.",
+       "was": "**Picking competitors:** filter chips (\"Compare Qualys With · Choose up to 3\"). At least one stays picked; at three, the rest are disabled until one is released. `max` changes the limit, `defaultPicked` sets the starting ids (the first two by default), `picked` with `onChange` controls it."
+      }
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DrawerCard",
+     "what": [
+      "look",
+      "docs"
+     ],
+     "weight": 2,
+     "notes": [
+      {
+       "kind": "changed",
+       "text": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`; 10px; title in Wix Madefor Text SemiBold 24px, line height 1.2, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time.",
+       "was": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`; 10px; title in Wix Madefor Text SemiBold 24px, line height 1.1, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time."
+      }
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FeatureMatrix",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ],
+     "weight": 9,
+     "notes": [
+      {
+       "kind": "changed",
+       "text": "**Columns:** `[{ id, name, logo, subtitle }]`. Give every column its `logo`; without one a dashed slot holds the name (as in the preview, where competitor logos are placeholders). **Min 1, max 5** competitors beside Qualys; columns past the fifth competitor are left out, because the marks get too narrow to scan. Two to five read best on desktop.",
+       "was": "**Columns:** `[{ id, name, logo, subtitle }]`. Give every column its `logo`; without one a dashed slot holds the name (as in the preview, where competitor logos are placeholders). Two to five competitors read well on desktop."
+      }
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Footer",
+     "what": [
+      "look",
+      "docs"
+     ],
+     "weight": 10,
+     "notes": [
+      {
+       "kind": "changed",
+       "text": "**Link columns (right):** 56px apart (`spacing-5xl`). Titles in the `h5` heading style (Wix Madefor Text SemiBold 18px, line height 1.3, −1%) `text-inverted`; links in Medium 16px Rhino, 16px apart, white on hover.",
+       "was": "**Link columns (right):** 56px apart (`spacing-5xl`). Titles in IBM Plex Sans SemiBold 16px `text-inverted`; links in Medium 16px Rhino, 16px apart, white on hover."
+      },
+      {
+       "kind": "changed",
+       "text": "**Legal line:** centered, `paragraph-sm` (14px) Rhino: the copyright, then each legal link followed by a full stop. Each item is set apart by 18px (`spacing-md`); when the line runs out of room the items wrap to a new centered row, 4px below (`spacing-4xs`), and an item never breaks in the middle.",
+       "was": "**Legal line:** centered, `paragraph-sm` (14px) Rhino: the copyright, then each legal link followed by a full stop."
+      }
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "MarketingTable",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ],
+     "weight": 19,
+     "notes": [
+      {
+       "kind": "changed",
+       "text": "**Columns:** the row headings take 1.25 parts and every other column 1 part. Drawn with two columns after the row headings. **Min 1, max 3** columns after the row headings; more are left out (with a console warning), because past three the cells get too narrow for their copy on desktop.",
+       "was": "**Columns:** the row headings take 1.25 parts and every other column 1 part. Drawn with two columns after the row headings."
+      },
+      {
+       "kind": "changed",
+       "text": "**Header row:** 140px tall, with 32px padding and the copy at the bottom; 1px white rules at 30% divide the columns. The ground is `qualys-blue` across the top, easing to `blue-gradient-end` at the foot, or Charcoal (`tone=\"dark\"`), or white (`tone=\"light\"`): the photo in grays under a white overlay, with the heading in `text-primary`, the subtitle in `text-secondary`, `stroke-neutral-400` rules between columns and along the foot of the row. On white, use the full-color Qualys logo, not the reversed one. The heading is `h2` (SemiBold 38px, line height 1.1, −2%), 8px above the subtitle in `paragraph-rg` Medium; both `text-inverted`. A column with a `logo` shows it in place of the heading: the reversed Qualys logo, 37px tall.",
+       "was": "**Header row:** 140px tall, with 32px padding and the copy at the bottom; 1px white rules at 30% divide the columns. The ground is `qualys-blue` across the top, easing to `blue-gradient-end` at the foot, or Charcoal (`tone=\"dark\"`). The heading is `h2` (SemiBold 38px, line height 1.1, −2%), 8px above the subtitle in `paragraph-rg` Medium; both `text-inverted`. A column with a `logo` shows it in place of the heading: the reversed Qualys logo, 37px tall."
+      }
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Typography",
+     "what": [
+      "look"
+     ],
+     "weight": 6
+    },
+    {
+     "type": "guide",
+     "name": "Headings",
+     "guide": "Typography",
+     "gid": "guide-3",
+     "section": "Headings",
+     "action": "changed",
+     "notes": [
+      {
+       "kind": "changed",
+       "text": "**Headings** `h1` 44 Bold, `h2` 38, `h3` 24, `h4` 20, `h5` 18 SemiBold; −2% letter spacing to h3, −1% below. Line height 1.1 for `h1` and `h2`, 1.2 (120%) for `h3`, 1.3 (130%) for `h4` and `h5`, so two-line card and drawer titles don't crowd. Title Case.",
+       "was": "**Headings** `h1` 44 Bold, `h2` 38, `h3` 24, `h4` 20, `h5` 18 SemiBold; −2% letter spacing to h3, −1% below. Title Case."
+      }
+     ],
+     "minor": true
+    },
+    {
+     "type": "site",
+     "action": "changed",
+     "name": "Reference site",
+     "minor": true
+    }
+   ],
+   "shots": [
+    {
+     "name": "MarketingTable",
+     "label": "White header (tone=\"light\") · the full-color logo",
+     "new": true,
+     "after": "changes/9689603/MarketingTable-0-after.webp"
+    },
+    {
+     "name": "Footer",
+     "label": "Desktop",
+     "before": "changes/9689603/Footer-0-before.webp",
+     "after": "changes/9689603/Footer-0-after.webp"
+    },
+    {
+     "name": "Footer",
+     "label": "Mobile",
+     "before": "changes/9689603/Footer-1-before.webp",
+     "after": "changes/9689603/Footer-1-after.webp"
+    },
+    {
+     "name": "DrawerCard",
+     "label": "1 profile: First and last name, role, company.",
+     "before": "changes/9689603/DrawerCard-0-before.webp",
+     "after": "changes/9689603/DrawerCard-0-after.webp"
+    },
+    {
+     "name": "DrawerCard",
+     "label": "2 profiles: Name, role, company. Each profile is as wide as its content.",
+     "before": "changes/9689603/DrawerCard-1-before.webp",
+     "after": "changes/9689603/DrawerCard-1-after.webp"
+    },
+    {
+     "name": "DrawerCard",
+     "label": "3 profiles: Name, role (two lines at most), company.",
+     "before": "changes/9689603/DrawerCard-2-before.webp",
+     "after": "changes/9689603/DrawerCard-2-after.webp",
+     "moreParts": 13
+    },
+    {
+     "name": "Typography",
+     "label": "",
+     "before": "changes/9689603/Typography-0-before.webp",
+     "after": "changes/9689603/Typography-0-after.webp"
+    },
+    {
+     "name": "AppGrid",
+     "label": "Five product families under centered copy (hover an app)",
+     "before": "changes/9689603/AppGrid-0-before.webp",
+     "after": "changes/9689603/AppGrid-0-after.webp"
+    },
+    {
+     "name": "AppGrid",
+     "label": "Mobile",
+     "before": "changes/9689603/AppGrid-1-before.webp",
+     "after": "changes/9689603/AppGrid-1-after.webp"
+    }
+   ],
+   "v": 2,
+   "why": [
+    {
+     "about": "AppGrid",
+     "text": "its product-family titles use the h3 style, so they follow h3 down to 120%, with room kept for three lines."
+    },
+    {
+     "about": "Typography",
+     "text": "a one-line sample can't show line height"
+    },
+    {
+     "about": "Typography",
+     "text": "the samples on the Typography page were still one line, so line height didn't show"
+    },
+    {
+     "about": "Footer",
+     "text": "column titles should read as headings, and the legal links ran together"
+    },
+    {
+     "about": "MarketingTable",
+     "text": "needed a header for light pages; past three columns the cells get too narrow for their copy"
+    },
+    {
+     "about": "FeatureMatrix",
+     "text": "past five competitors the marks get too narrow to scan"
+    },
+    {
+     "about": "DetailComparison",
+     "text": "four text columns get too narrow to read"
+    },
+    {
+     "about": "Headings",
+     "text": "h3 line height is now 120% (h1 and h2 110%, h4 and h5 130%); 130% read too loose for 24px titles."
+    },
+    {
+     "about": "Card",
+     "text": "card titles use the h3 style, so they follow it to 120% line height."
+    },
+    {
+     "about": "DrawerCard",
+     "text": "drawer card titles use the h3 style, so they follow it to 120% line height."
+    }
+   ],
+   "headline": "Updated 8 components",
+   "highlights": [
+    "Updated components: 8, including MarketingTable, DetailComparison and Footer"
+   ],
+   "minor": false,
+   "shas": [
+    "8bef7cff547dbd5f31af5ade6f25fb0e821a3bd9",
+    "d024b141a2143904faad4e1705ba3883b9db2e84",
+    "d21086e59104610bc2fb5c1ce64be671b0308d60",
+    "6371dadc615da40039d4400b5f751b4377876f5b",
+    "62c2302da51a311caf81e47752b29eca35a7d404",
+    "4f3351f63a97fb07e6508ff9cd1aa9022ed76231",
+    "f574de6177a5e1572c9ad90cceab2dfc0940050a",
+    "0616694cd7124f7866f798c5c5f4416ec87cd9f8",
+    "ff034806577e6f0486b0afd64bd14a33b709fb3d",
+    "2fb442443bd4d52d0c40cb13685cb8728c946df0",
+    "30bdb2393978ae44d708214e773bbb73d1c84c73",
+    "e5d4d37e9739cf6a009419e9a020100fbadbbd52",
+    "c4759a63827c05ff3b73e55d0fe824f572f67246",
+    "49b3281a382a4bf4364f2180aa42cc6e9c508d4e",
+    "96896036a0a3da8167ac428d3c7624b248fc5d7a"
+   ],
+   "order": 179434143100
   }
  ]
 }
