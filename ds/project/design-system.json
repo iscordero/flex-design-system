@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-11-10T20:23:36Z",
+    "at": "2026-11-16T17:27:54Z",
     "by": "Isabel",
-    "note": "CtaModule with media: the form fills its column (fields stretch) and sits 100px (spacing-6xl) from the image, 48px under 1024px.",
+    "note": "Patterns guide, Comparison tables: minimum and maximum columns for MarketingTable (1-3), FeatureMatrix (1-5) and DetailComparison (1-3), with the reasons.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",
