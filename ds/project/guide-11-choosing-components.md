@@ -46,6 +46,19 @@ Choosing between them: if every item deserves to be seen, use cards; if people o
 | **DetailComparison** | Fewer topics, where each difference needs a sentence. |
 | **MarketingTable** | A short, branded list of statements with the Qualys column featured; for campaign pages rather than detailed comparisons. |
 
+**Columns: minimum and maximum.** Each table holds a set range of columns beside its first column, so cells keep enough width for their content on desktop.
+
+| Table | First column | Min | Max | Why the max |
+| --- | --- | --- | --- | --- |
+| MarketingTable | Row headings | 1 | 3 | Cells hold full phrases. With 3 columns each keeps about 250px of text and wraps to two lines; a fourth drops that to about 190px, so cells run to four or five lines and rows go uneven. |
+| FeatureMatrix | Qualys | 1 competitor | 5 competitors | Cells are only ticks and crosses, so it takes the most columns. Past five, the logos and subtitles in the column headers get cramped. |
+| DetailComparison | Qualys | 1 competitor | 3 competitors | Each cell is a short paragraph (up to about 250 characters). Qualys plus three gives four columns of about 280px; a fifth would drop them to about 230px and make rows very tall. The chips tell readers "Choose up to 3". |
+
+- **Why a minimum of one:** a comparison needs at least one column to compare against. With none, use a list instead of a table.
+- **Over the maximum:** the components leave the extra columns out (MarketingTable also logs a warning in the console). DetailComparison's `max` can lower the limit but not raise it past 3. Don't work around the limits: split the content into two tables, or move the extra detail into a DetailComparison or the page copy.
+- **Under the minimum:** DetailComparison won't let the last competitor be unpicked. MarketingTable and FeatureMatrix don't check, so give them at least one column after the first.
+- **Mobile:** the limits are the same, but the tables reflow. MarketingTable stacks each row's cells under its heading; FeatureMatrix and DetailComparison compare Qualys with one competitor at a time.
+
 ### Closing the page
 
 | Use | When |
