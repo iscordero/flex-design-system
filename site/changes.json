@@ -7460,6 +7460,67 @@
     "030d734ad04d7c479a2d48fdd8d214625d2876a4"
    ],
    "order": 179434226600
+  },
+  {
+   "id": "6e175e5",
+   "sha": "6e175e5fd7af1be6c007c494138738ac430a1528",
+   "date": "2026-11-16",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "pr": null,
+   "items": [
+    {
+     "type": "guide",
+     "name": "Comparing",
+     "guide": "Choosing Components",
+     "gid": "guide-11",
+     "section": "Comparing",
+     "action": "changed",
+     "big": true,
+     "notes": [
+      {
+       "kind": "added",
+       "text": "**Columns: minimum and maximum.** Each table holds a set range of columns beside its first column, so cells keep enough width for their content on desktop."
+      },
+      {
+       "kind": "added",
+       "text": "Table: MarketingTable · First column: Row headings · Min: 1 · Max: 3 · Why the max: Cells hold full phrases. With 3 columns each keeps about 250px of text and wraps to two lines; a fourth drops that to about 190px, so cells run to four or five lines and rows go uneven."
+      },
+      {
+       "kind": "added",
+       "text": "Table: FeatureMatrix · First column: Qualys · Min: 1 competitor · Max: 5 competitors · Why the max: Cells are only ticks and crosses, so it takes the most columns. Past five, the logos and subtitles in the column headers get cramped."
+      },
+      {
+       "kind": "added",
+       "text": "Table: DetailComparison · First column: Qualys · Min: 1 competitor · Max: 3 competitors · Why the max: Each cell is a short paragraph (up to about 250 characters). Qualys plus three gives four columns of about 280px; a fifth would drop them to about 230px and make rows very tall. The chips tell readers \"Choose up to 3\"."
+      }
+     ],
+     "moreNotes": 4
+    }
+   ],
+   "shots": [],
+   "v": 2,
+   "why": [
+    {
+     "about": "Comparing",
+     "text": "developers need the column limits where they choose a table"
+    }
+   ],
+   "headline": "Updated Choosing Components guide",
+   "highlights": [
+    "Updated guide: Choosing Components"
+   ],
+   "minor": false,
+   "shas": [
+    "daa314ba3b0e287d75f97089471994d2292d7552",
+    "8fe24bc504e1a2d447afa14cb0473da814618487",
+    "bfbc9810539ba77c70e55ba69026be6b202d8ea0",
+    "6e175e5fd7af1be6c007c494138738ac430a1528"
+   ],
+   "order": 179485025600
   }
  ]
 }

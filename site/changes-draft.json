@@ -2,258 +2,43 @@
  "id": "draft",
  "sha": "",
  "draft": true,
- "date": "2026-11-10",
+ "date": "2026-11-16",
  "author": "Isabel",
  "with": [
   "Claude"
  ],
  "approvedBy": [],
- "commits": 18,
- "base": "ffe562dd38b0eca02a6c08b752522054033221ee",
+ "commits": 4,
+ "base": "de7eafc5601c226fbbb3d038a1e69ac55934138a",
  "pr": null,
  "items": [
   {
-   "type": "component",
-   "action": "changed",
-   "name": "AlertDialog",
-   "what": [
-    "look"
-   ],
-   "weight": 6
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "AppGrid",
-   "what": [
-    "look"
-   ],
-   "weight": 2
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "Card",
-   "what": [
-    "look",
-    "docs"
-   ],
-   "weight": 2,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Heading:** SemiBold 24px (`h3`), line height 1.2, −2%; Title Case, at most 60 characters.",
-     "was": "**Heading:** SemiBold 24px, line height 1.1, −2%; Title Case, at most 60 characters."
-    }
-   ]
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "CookieBanner",
-   "what": [
-    "look"
-   ],
-   "weight": 6
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "CtaModule",
-   "what": [
-    "look",
-    "docs"
-   ],
-   "weight": 3,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "The form is the Form component without its card (`variant=\"full\"`, `appearance=\"bare\"`): the shield, a centered `h2` heading, the fields, the opt-in, one primary Button and the consent line. Beside an image (`media-right`, `media-left`) the form fills its column, so the fields stretch, starting on the content's left edge in line with the sections above (on the right edge in `media-left`). In `bleed` and `background` it stays 460px wide.",
-     "was": "The form is the Form component without its card (`variant=\"full\"`, `appearance=\"bare\"`): the shield, a centered `h2` heading, the fields, the opt-in, one primary Button and the consent line, 460px wide, starting on the content's left edge in line with the sections above (on the right edge in `media-left`)."
-    },
-    {
-     "kind": "changed",
-     "text": "The image is `radius-lg`, 100px (`spacing-6xl`) from the form; 48px when the module is narrower than 1024px. The form takes 520 parts of the row and the image 560. `media` is `{ src, alt }`; leave it empty for the placeholder.",
-     "was": "The image is `radius-lg`, 56px (`spacing-5xl`) from the form. `media` is `{ src, alt }`; leave it empty for the placeholder."
-    }
-   ]
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "DemoRequestWizard",
-   "what": [
-    "look"
-   ],
-   "weight": 6
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "DetailComparison",
-   "what": [
-    "look",
-    "props",
-    "docs"
-   ],
-   "weight": 10,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Picking competitors:** filter chips (\"Compare Qualys With · Choose up to 3\"). At least one stays picked; at three, the rest are disabled until one is released. `max` lowers the limit (**min 1, max 3** competitors beside Qualys; a larger `max` is held at 3, since four text columns get too narrow), `defaultPicked` sets the starting ids (the first two by default), `picked` with `onChange` controls it.",
-     "was": "**Picking competitors:** filter chips (\"Compare Qualys With · Choose up to 3\"). At least one stays picked; at three, the rest are disabled until one is released. `max` changes the limit, `defaultPicked` sets the starting ids (the first two by default), `picked` with `onChange` controls it."
-    }
-   ]
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "DrawerCard",
-   "what": [
-    "look",
-    "docs"
-   ],
-   "weight": 2,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`; 10px; title in Wix Madefor Text SemiBold 24px, line height 1.2, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time.",
-     "was": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`; 10px; title in Wix Madefor Text SemiBold 24px, line height 1.1, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time."
-    }
-   ]
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "ExitIntent",
-   "what": [
-    "look"
-   ],
-   "weight": 6
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "FeatureMatrix",
-   "what": [
-    "look",
-    "props",
-    "docs"
-   ],
-   "weight": 9,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Columns:** `[{ id, name, logo, subtitle }]`. Give every column its `logo`; without one a dashed slot holds the name (as in the preview, where competitor logos are placeholders). **Min 1, max 5** competitors beside Qualys; columns past the fifth competitor are left out, because the marks get too narrow to scan. Two to five read best on desktop.",
-     "was": "**Columns:** `[{ id, name, logo, subtitle }]`. Give every column its `logo`; without one a dashed slot holds the name (as in the preview, where competitor logos are placeholders). Two to five competitors read well on desktop."
-    }
-   ]
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "Footer",
-   "what": [
-    "look",
-    "docs"
-   ],
-   "weight": 10,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Link columns (right):** 56px apart (`spacing-5xl`). Titles in the `h5` heading style (Wix Madefor Text SemiBold 18px, line height 1.3, −1%) `text-inverted`; links in Medium 16px Rhino, 16px apart, white on hover.",
-     "was": "**Link columns (right):** 56px apart (`spacing-5xl`). Titles in IBM Plex Sans SemiBold 16px `text-inverted`; links in Medium 16px Rhino, 16px apart, white on hover."
-    },
-    {
-     "kind": "changed",
-     "text": "**Legal line:** centered, `paragraph-sm` (14px) Rhino: the copyright, then each legal link followed by a full stop. Each item is set apart by 18px (`spacing-md`); when the line runs out of room the items wrap to a new centered row, 4px below (`spacing-4xs`), and an item never breaks in the middle.",
-     "was": "**Legal line:** centered, `paragraph-sm` (14px) Rhino: the copyright, then each legal link followed by a full stop."
-    }
-   ]
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "Form",
-   "what": [
-    "look"
-   ],
-   "weight": 1
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "MarketingTable",
-   "what": [
-    "look",
-    "props",
-    "docs"
-   ],
-   "weight": 19,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Columns:** the row headings take 1.25 parts and every other column 1 part. Drawn with two columns after the row headings. **Min 1, max 3** columns after the row headings; more are left out (with a console warning), because past three the cells get too narrow for their copy on desktop.",
-     "was": "**Columns:** the row headings take 1.25 parts and every other column 1 part. Drawn with two columns after the row headings."
-    },
-    {
-     "kind": "changed",
-     "text": "**Header row:** 140px tall, with 32px padding and the copy at the bottom; 1px white rules at 30% divide the columns. The ground is `qualys-blue` across the top, easing to `blue-gradient-end` at the foot, or Charcoal (`tone=\"dark\"`), or white (`tone=\"light\"`): the photo in grays under a white overlay, with the heading in `text-primary`, the subtitle in `text-secondary`, `stroke-neutral-400` rules between columns and along the foot of the row. On white, use the full-color Qualys logo, not the reversed one. The heading is `h2` (SemiBold 38px, line height 1.1, −2%), 8px above the subtitle in `paragraph-rg` Medium; both `text-inverted`. A column with a `logo` shows it in place of the heading: the reversed Qualys logo, 37px tall.",
-     "was": "**Header row:** 140px tall, with 32px padding and the copy at the bottom; 1px white rules at 30% divide the columns. The ground is `qualys-blue` across the top, easing to `blue-gradient-end` at the foot, or Charcoal (`tone=\"dark\"`). The heading is `h2` (SemiBold 38px, line height 1.1, −2%), 8px above the subtitle in `paragraph-rg` Medium; both `text-inverted`. A column with a `logo` shows it in place of the heading: the reversed Qualys logo, 37px tall."
-    }
-   ]
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "Modal",
-   "what": [
-    "look"
-   ],
-   "weight": 6
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "SessionTimeout",
-   "what": [
-    "look"
-   ],
-   "weight": 6
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "SuccessConfirmation",
-   "what": [
-    "look"
-   ],
-   "weight": 6
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "Typography",
-   "what": [
-    "look"
-   ],
-   "weight": 6
-  },
-  {
    "type": "guide",
-   "name": "Headings",
-   "guide": "Typography",
-   "gid": "guide-3",
-   "section": "Headings",
+   "name": "Comparing",
+   "guide": "Choosing Components",
+   "gid": "guide-11",
+   "section": "Comparing",
    "action": "changed",
+   "big": true,
    "notes": [
     {
-     "kind": "changed",
-     "text": "**Headings** `h1` 44 Bold, `h2` 38, `h3` 24, `h4` 20, `h5` 18 SemiBold; −2% letter spacing to h3, −1% below. Line height 1.1 for `h1` and `h2`, 1.2 (120%) for `h3`, 1.3 (130%) for `h4` and `h5`, so two-line card and drawer titles don't crowd. Title Case.",
-     "was": "**Headings** `h1` 44 Bold, `h2` 38, `h3` 24, `h4` 20, `h5` 18 SemiBold; −2% letter spacing to h3, −1% below. Title Case."
+     "kind": "added",
+     "text": "**Columns: minimum and maximum.** Each table holds a set range of columns beside its first column, so cells keep enough width for their content on desktop."
+    },
+    {
+     "kind": "added",
+     "text": "Table: MarketingTable · First column: Row headings · Min: 1 · Max: 3 · Why the max: Cells hold full phrases. With 3 columns each keeps about 250px of text and wraps to two lines; a fourth drops that to about 190px, so cells run to four or five lines and rows go uneven."
+    },
+    {
+     "kind": "added",
+     "text": "Table: FeatureMatrix · First column: Qualys · Min: 1 competitor · Max: 5 competitors · Why the max: Cells are only ticks and crosses, so it takes the most columns. Past five, the logos and subtitles in the column headers get cramped."
+    },
+    {
+     "kind": "added",
+     "text": "Table: DetailComparison · First column: Qualys · Min: 1 competitor · Max: 3 competitors · Why the max: Each cell is a short paragraph (up to about 250 characters). Qualys plus three gives four columns of about 280px; a fifth would drop them to about 230px and make rows very tall. The chips tell readers \"Choose up to 3\"."
     }
    ],
-   "minor": true
+   "moreNotes": 4
   },
   {
    "type": "site",
@@ -266,41 +51,13 @@
  "v": 2,
  "why": [
   {
-   "about": "AppGrid",
-   "text": "published to the artifact on Nov 3 but missing from the repo"
-  },
-  {
-   "about": "Typography",
-   "text": "a one-line sample can't show line height"
-  },
-  {
-   "about": "Typography",
-   "text": "the samples on the Typography page were still one line, so line height didn't show"
-  },
-  {
-   "about": "Footer",
-   "text": "column titles should read as headings, and the legal links ran together"
-  },
-  {
-   "about": "MarketingTable",
-   "text": "needed a header for light pages; past three columns the cells get too narrow for their copy"
-  },
-  {
-   "about": "FeatureMatrix",
-   "text": "past five competitors the marks get too narrow to scan"
-  },
-  {
-   "about": "DetailComparison",
-   "text": "four text columns get too narrow to read"
-  },
-  {
-   "about": "CtaModule",
-   "text": "too much empty space between the form and the image; the fields should fill the column and leave about 100px"
+   "about": "Comparing",
+   "text": "developers need the column limits where they choose a table"
   }
  ],
- "headline": "Updated 17 components",
+ "headline": "Updated Choosing Components guide",
  "highlights": [
-  "Updated components: 17, including MarketingTable, DetailComparison and Footer"
+  "Updated guide: Choosing Components"
  ],
  "minor": false
 }
