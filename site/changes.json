@@ -5255,6 +5255,22 @@
     {
      "about": "Typography",
      "text": "the samples on the Typography page were still one line, so line height didn't show"
+    },
+    {
+     "about": "EventCard",
+     "text": "the gallery card should show only the starting time, formatted like the drawers"
+    },
+    {
+     "about": "WebinarCard",
+     "text": "dates match the event cards"
+    },
+    {
+     "about": "Dates and times",
+     "text": "one time format across drawers, the calendar and cards"
+    },
+    {
+     "about": "ProfileModal",
+     "text": "the profile should stay fixed on the left while a long bio scrolls"
     }
    ]
   },
@@ -5873,6 +5889,10 @@
     {
      "about": "Hero",
      "text": "The photo card's copy uses 36px side padding (spacing-3xl) instead of 40px."
+    },
+    {
+     "about": "Tabs",
+     "text": "on mobile, tapping a tab near the edge should scroll it to the middle so readers see there are more; the last tab rests on the right"
     }
    ],
    "undone": [
@@ -6257,6 +6277,10 @@
     {
      "about": "Breadcrumbs",
      "text": "The 3px gap above the hover bar rounds to the 4px token."
+    },
+    {
+     "about": "EventCalendar",
+     "text": "grid cards show only the start time; times match the drawers"
     }
    ],
    "headline": "New tokens (17) · Updated 6 components · Updated Layout, Spacing and Radius guide",
@@ -7368,6 +7392,18 @@
     {
      "about": "DrawerCard",
      "text": "drawer card titles use the h3 style, so they follow it to 120% line height."
+    },
+    {
+     "about": "DrawerCard",
+     "text": "one time format everywhere (no \"Noon\")"
+    },
+    {
+     "about": "FeatureMatrix",
+     "text": "the optional subheadings are removed; logos stay centered with the heading"
+    },
+    {
+     "about": "Typography",
+     "text": "needed a TM superscript style, top-aligned and smaller, with sizes for headings and body"
     }
    ],
    "headline": "Updated 8 components",
@@ -7521,6 +7557,374 @@
     "6e175e5fd7af1be6c007c494138738ac430a1528"
    ],
    "order": 179485025600
+  },
+  {
+   "id": "18df948",
+   "sha": "18df9488415de71b5f0cd9f8cae1c1751e0c190f",
+   "date": "2026-11-17",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Carousel",
+     "what": [
+      "look"
+     ],
+     "weight": 2,
+     "follows": [
+      "EventCard"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DrawerCard",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ],
+     "weight": 6,
+     "notes": [
+      {
+       "kind": "changed",
+       "text": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`, in the shared time format: hours and minutes with AM or PM (\"8:00 AM\"), a range joined by a spaced en dash (\"8:00 AM – 12:00 PM\"), then the time zone if any (\"PST\"): \"8:00 AM – 12:00 PM\" (not \"Noon\"; shorthand is rewritten); 10px; title in Wix Madefor Text SemiBold 24px, line height 1.2, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time.",
+       "was": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`; 10px; title in Wix Madefor Text SemiBold 24px, line height 1.2, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time."
+      }
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "EventCalendar",
+     "what": [
+      "look",
+      "docs"
+     ],
+     "weight": 38,
+     "notes": [
+      {
+       "kind": "added",
+       "text": "`time` is the event's time or time range, such as \"10:00 AM – 11:00 AM PST\" or \"All day\". It is shown in the shared time format: hours and minutes with AM or PM (\"8:00 AM\"), a range joined by a spaced en dash (\"8:00 AM – 12:00 PM\"), then the time zone if any (\"PST\"), the same as on DrawerCards. Shorthand (\"10a – 11a PST\", \"9:30am\", \"14:00\", \"Noon\") is rewritten to it; text that isn't a time is shown as given."
+      },
+      {
+       "kind": "changed",
+       "text": "**Row:** the time (200px, 180px on tablet, so a full range such as \"10:00 AM – 11:30 AM PST\" fits on one line on desktop; Medium 16px `text-secondary`; \"All day\" when an event has none), the event type icon, the title (Wix Madefor Text SemiBold 18px, two lines at most) and a secondary Button, 140px wide.",
+       "was": "**Row:** the time (150px, Medium 16px `text-secondary`; \"All day\" when an event has none), the event type icon, the title (Wix Madefor Text SemiBold 18px, two lines at most) and a secondary Button, 140px wide."
+      },
+      {
+       "kind": "added",
+       "text": "**Card date:** the short date, a bullet, then the start time only, with its time zone: \"Jan 27, 2025 • 10:00 AM PST\". The end time is left out (the list view and the event page give the full range). Several days read \"Feb 4 – 6, 2025\" or \"Jan 30 – Feb 2, 2025\"; an event without a time reads \"Jan 1, 2025 • All day\". The hover card in the month view shows the same card."
+      },
+      {
+       "kind": "removed",
+       "text": "`time` is the text to show, such as \"10a – 11a PST\"."
+      }
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "EventCard",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ],
+     "weight": 10,
+     "notes": [
+      {
+       "kind": "changed",
+       "text": "**Date:** short date, a bullet, then the start time only, with the time zone: \"Dec 10, 2026 • 11:00 AM PST\". Times use the shared time format: hours and minutes with AM or PM (\"8:00 AM\"), a range joined by a spaced en dash (\"8:00 AM – 12:00 PM\"), then the time zone if any (\"PST\"), as on DrawerCards; a shorthand time after the bullet (\"11a PST\") is rewritten, and an end time is dropped.",
+       "was": "**Date:** short date, a bullet, then the time: \"Dec 10, 2026 • 11a PST\"."
+      }
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "FeatureMatrix",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ],
+     "weight": 14,
+     "notes": [
+      {
+       "kind": "changed",
+       "text": "**Columns:** `[{ id, name, logo }]`. Give every column its `logo`; without one a dashed slot holds the name (as in the preview, where competitor logos are placeholders). **Min 1, max 5** competitors beside Qualys; columns past the fifth competitor are left out, because the marks get too narrow to scan. Two to five read best on desktop.",
+       "was": "**Columns:** `[{ id, name, logo, subtitle }]`. Give every column its `logo`; without one a dashed slot holds the name (as in the preview, where competitor logos are placeholders). **Min 1, max 5** competitors beside Qualys; columns past the fifth competitor are left out, because the marks get too narrow to scan. Two to five read best on desktop."
+      },
+      {
+       "kind": "added",
+       "text": "**Header row:** the heading on the left and one logo per column, each logo centered in its column and on the heading's middle line. There are no subheadings: a table `subtitle` and column `subtitle`s are not shown (DetailComparison still uses them)."
+      }
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "ProfileModal",
+     "what": [
+      "look",
+      "docs"
+     ],
+     "weight": 4,
+     "notes": [
+      {
+       "kind": "changed",
+       "text": "**Panel:** white, `radius-lg`, `shadow-drawer`, 24px padding, up to 1128px wide and centered; the height follows the bio up to 80% of the viewport.",
+       "was": "**Panel:** white, `radius-lg`, `shadow-drawer`, 24px padding, up to 1128px wide and centered; the height follows the bio up to 80% of the viewport, then the panel scrolls."
+      },
+      {
+       "kind": "added",
+       "text": "**Overflow:** the profile (photo, name, designation, logo) stays fixed on the left. When the bio is taller than the panel, only the About text scrolls (a thin scrollbar on its right; scrolling stops at its ends instead of moving the page); the \"About\" label and the links row stay in view. The text can be scrolled with the keyboard: it takes focus after the close button. On mobile the whole bottom sheet scrolls instead, photo first."
+      }
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Tabs",
+     "what": [
+      "look",
+      "docs"
+     ],
+     "weight": 17,
+     "notes": [
+      {
+       "kind": "changed",
+       "text": "**Mobile (or whenever the tabs don't fit):** the bar keeps its size and scrolls sideways inside its container; the right-most tab shows partly cut off as the cue that more exist.",
+       "was": "**Mobile:** the bar keeps its size and scrolls sideways inside its container; the right-most tab shows partly cut off as the cue that more exist. A selected tab scrolls into view."
+      },
+      {
+       "kind": "added",
+       "text": "**Picking a tab that's partly hidden:** the bar scrolls (300ms, smooth) to bring the picked tab to the middle, so tabs peek in on both sides and it's clear there are more. Near the ends the scroll stops at the edge: the first tab rests on the left, and the last tab rests on the right, which shows there are no more. Arrow keys, Home and End do the same. With reduced motion it jumps instead of sliding."
+      }
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Typography",
+     "what": [
+      "look",
+      "docs"
+     ],
+     "weight": 29,
+     "notes": [
+      {
+       "kind": "added",
+       "text": "**Trademark (TM):** a last section shows `<sup class=\"q-tm\">TM</sup>` after a sample in each display, heading and paragraph style, with the text size, the TM size and the ratio read back from the page. TM is 50% of headings, display text and stats, 60% of body text (8px at least), with its top on the text's cap height. See the Typography guide."
+      }
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "WebinarCard",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ],
+     "weight": 6,
+     "notes": [
+      {
+       "kind": "changed",
+       "text": "**Footer:** the date in Medium 16px `text-secondary` and the outlink icon. Use the short date, as on EventCard: \"Dec 10, 2026\", or \"Dec 10, 2026 • 11:00 AM PST\" for a live session (start time only, in the shared time format).",
+       "was": "**Footer:** the date in Medium 16px `text-secondary` (\"Tue Dec 10, 2026\") and the outlink icon."
+      }
+     ]
+    },
+    {
+     "type": "guide",
+     "name": "Dates and times",
+     "guide": "Content",
+     "gid": "guide-1",
+     "section": "Dates and times",
+     "action": "changed",
+     "big": true,
+     "notes": [
+      {
+       "kind": "changed",
+       "text": "**Dates and times:** long date \"Mon Dec 9, 2024\" for headers, detail pages and featured content; short date \"Dec 9, 2024\" on compact cards; date and time range \"Mon Dec 9, 2024 • 10:00 AM – 11:00 AM PST\" for events; time range alone \"8:00 AM – 12:00 PM\" when the date is already clear (drawers, the calendar list). Every time has hours and minutes and AM or PM (\"8:00 AM\", never \"8a\" or \"Noon\"), ranges use a spaced en dash, and the time zone follows the last time. Event and webinar cards show the short date, a bullet and the start time only: \"Dec 10, 2026 • 11:00 AM PST\". Set dates and times in Medium (500).",
+       "was": "**Dates and times:** long date \"Mon Dec 9, 2024\" for headers, detail pages and featured content; short date \"Dec 9, 2024\" on compact cards; date and time range \"Mon Dec 9, 2024  10:00 – 11:00a PST\" for events; time range alone \"8:00 AM – 12:00 PM\" when the date is already clear. Event cards join the short date and start time with a bullet: \"Dec 10, 2026 • 11a PST\". Set dates and times in Medium (500)."
+      },
+      {
+       "kind": "changed",
+       "text": "Picture: Five date formats: long date Mon Dec 9, 2024; short date Dec 9, 2024; date and time Mon Dec 9, 2024, bullet, 10:00 AM to 11:00 AM PST; time range 8:00 AM to 12:00 PM; event card Dec 10, 2026, bullet, 11:00 AM PST."
+      }
+     ]
+    },
+    {
+     "type": "guide",
+     "name": "Trademark (TM)",
+     "guide": "Typography",
+     "gid": "guide-3",
+     "section": "Trademark (TM)",
+     "action": "added",
+     "notes": [
+      {
+       "kind": "added",
+       "text": "Mark a trademark with the letters TM as a superscript, right after the word, with no space: `TruRisk<sup class=\"q-tm\">TM</sup>`. Type the two capital letters; don't use the ™ character, which each font draws at its own size and height. The `q-tm` class sets the size and position, so the same markup works in any style:"
+      },
+      {
+       "kind": "added",
+       "text": "**Top-aligned:** the top of the TM sits on the cap height of the text beside it (the top of a capital letter), not above it. It doesn't add space between lines."
+      }
+     ]
+    }
+   ],
+   "shots": [
+    {
+     "name": "EventCalendar",
+     "label": "List view",
+     "before": "changes/18df948/EventCalendar-0-before.webp",
+     "after": "changes/18df948/EventCalendar-0-after.webp"
+    },
+    {
+     "name": "EventCalendar",
+     "label": "Grid view",
+     "before": "changes/18df948/EventCalendar-1-before.webp",
+     "after": "changes/18df948/EventCalendar-1-after.webp"
+    },
+    {
+     "name": "EventCalendar",
+     "label": "Mobile: month, list and grid",
+     "before": "changes/18df948/EventCalendar-2-before.webp",
+     "after": "changes/18df948/EventCalendar-2-after.webp"
+    },
+    {
+     "name": "FeatureMatrix",
+     "label": "Desktop",
+     "before": "changes/18df948/FeatureMatrix-0-before.webp",
+     "after": "changes/18df948/FeatureMatrix-0-after.webp"
+    },
+    {
+     "name": "FeatureMatrix",
+     "label": "Mobile: pick a competitor; show differences only",
+     "before": "changes/18df948/FeatureMatrix-1-before.webp",
+     "after": "changes/18df948/FeatureMatrix-1-after.webp"
+    },
+    {
+     "name": "EventCard",
+     "label": "Default",
+     "before": "changes/18df948/EventCard-0-before.webp",
+     "after": "changes/18df948/EventCard-0-after.webp"
+    },
+    {
+     "name": "EventCard",
+     "label": "Featured",
+     "before": "changes/18df948/EventCard-1-before.webp",
+     "after": "changes/18df948/EventCard-1-after.webp"
+    },
+    {
+     "name": "DrawerCard",
+     "label": "No profile: Time and title only. A button sits beside the title.",
+     "before": "changes/18df948/DrawerCard-0-before.webp",
+     "after": "changes/18df948/DrawerCard-0-after.webp"
+    },
+    {
+     "name": "DrawerCard",
+     "label": "1 profile: First and last name, role, company.",
+     "before": "changes/18df948/DrawerCard-1-before.webp",
+     "after": "changes/18df948/DrawerCard-1-after.webp"
+    },
+    {
+     "name": "DrawerCard",
+     "label": "2 profiles: Name, role, company. Each profile is as wide as its content.",
+     "before": "changes/18df948/DrawerCard-2-before.webp",
+     "after": "changes/18df948/DrawerCard-2-after.webp",
+     "moreParts": 26
+    },
+    {
+     "name": "WebinarCard",
+     "label": "No speaker / 1 speaker / 2 speakers",
+     "before": "changes/18df948/WebinarCard-0-before.webp",
+     "after": "changes/18df948/WebinarCard-0-after.webp"
+    },
+    {
+     "name": "WebinarCard",
+     "label": "3 speakers / 4 speakers / 5 speakers",
+     "before": "changes/18df948/WebinarCard-1-before.webp",
+     "after": "changes/18df948/WebinarCard-1-after.webp"
+    },
+    {
+     "name": "WebinarCard",
+     "label": "6 speakers / More than 6",
+     "before": "changes/18df948/WebinarCard-2-before.webp",
+     "after": "changes/18df948/WebinarCard-2-after.webp",
+     "moreParts": 4
+    },
+    {
+     "name": "Carousel",
+     "label": "Single card",
+     "before": "changes/18df948/Carousel-0-before.webp",
+     "after": "changes/18df948/Carousel-0-after.webp"
+    }
+   ],
+   "v": 2,
+   "why": [
+    {
+     "about": "EventCard",
+     "text": "the gallery card should show only the starting time, formatted like the drawers"
+    },
+    {
+     "about": "EventCalendar",
+     "text": "grid cards show only the start time; times match the drawers"
+    },
+    {
+     "about": "WebinarCard",
+     "text": "dates match the event cards"
+    },
+    {
+     "about": "DrawerCard",
+     "text": "one time format everywhere (no \"Noon\")"
+    },
+    {
+     "about": "Dates and times",
+     "text": "one time format across drawers, the calendar and cards"
+    },
+    {
+     "about": "ProfileModal",
+     "text": "the profile should stay fixed on the left while a long bio scrolls"
+    },
+    {
+     "about": "FeatureMatrix",
+     "text": "the optional subheadings are removed; logos stay centered with the heading"
+    },
+    {
+     "about": "Tabs",
+     "text": "on mobile, tapping a tab near the edge should scroll it to the middle so readers see there are more; the last tab rests on the right"
+    },
+    {
+     "about": "Typography",
+     "text": "needed a TM superscript style, top-aligned and smaller, with sizes for headings and body"
+    },
+    {
+     "about": "Trademark (TM)",
+     "text": "needed a TM superscript style, top-aligned and smaller, with sizes for headings and body"
+    }
+   ],
+   "headline": "Updated 9 components · Updated Content and Typography guides",
+   "highlights": [
+    "Updated components: 9, including EventCalendar, Typography and Tabs",
+    "Updated guides: Content and Typography"
+   ],
+   "minor": false,
+   "shas": [
+    "6811ba963374316fccc4b40cd8de420d3a6d4101",
+    "18df9488415de71b5f0cd9f8cae1c1751e0c190f"
+   ],
+   "order": 179494290200
   }
  ]
 }
