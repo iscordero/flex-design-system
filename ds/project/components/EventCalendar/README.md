@@ -9,7 +9,7 @@ Each event: `{ id, title, type, format, start, end, time, href, image, flag, spe
 
 - `type` is `qualys`, `industry`, `webinar`, `speaking` or `training`.
 - `start` and `end` are dates as `YYYY-MM-DD`; leave `end` out for a one-day event.
-- `time` is the text to show, such as "10a – 11a PST".
+- `time` is the event's time or time range, such as "10:00 AM – 11:00 AM PST" or "All day". It is shown in the shared time format: hours and minutes with AM or PM ("8:00 AM"), a range joined by a spaced en dash ("8:00 AM – 12:00 PM"), then the time zone if any ("PST"), the same as on DrawerCards. Shorthand ("10a – 11a PST", "9:30am", "14:00", "Noon") is rewritten to it; text that isn't a time is shown as given.
 
 | View | Figma name | What it shows |
 |---|---|---|
@@ -39,13 +39,14 @@ List view:
 
 - **Legend** uses the EventType icons, in the same position and with the same spacing as the month view's.
 - **Day heading:** "Tuesday Jan 14", IBM Plex Sans Medium 16px, 20px in from the left. 8px below it, a white card (`radius-lg`, 24px padding) with one row per event; rows are divided by a `stroke-neutral-400` line.
-- **Row:** the time (150px, Medium 16px `text-secondary`; "All day" when an event has none), the event type icon, the title (Wix Madefor Text SemiBold 18px, two lines at most) and a secondary Button, 140px wide.
+- **Row:** the time (200px, 180px on tablet, so a full range such as "10:00 AM – 11:30 AM PST" fits on one line on desktop; Medium 16px `text-secondary`; "All day" when an event has none), the event type icon, the title (Wix Madefor Text SemiBold 18px, two lines at most) and a secondary Button, 140px wide.
 - **Button:** "Register" by default. Set `action` on an event to change it, such as `{ label: 'Join Waitlist', variant: 'secondary-alt' }`, or `action: false` to leave it out.
 - A row never shows a date, because it already sits under its day. An event of several days repeats under each of its days.
 
 Grid view:
 
 - Three cards across, 24px apart, 36px between rows; each at least 440px tall. Events use EventCard, or WebinarCard when they have `speakers`.
+- **Card date:** the short date, a bullet, then the start time only, with its time zone: "Jan 27, 2025 • 10:00 AM PST". The end time is left out (the list view and the event page give the full range). Several days read "Feb 4 – 6, 2025" or "Jan 30 – Feb 2, 2025"; an event without a time reads "Jan 1, 2025 • All day". The hover card in the month view shows the same card.
 - `promo` (InlinePromoCard props) places a dark promo card as the sixth tile.
 - "Load More" (secondary Button), centered 36px under the grid, adds another page. `pageSize` sets how many tiles a page has (9).
 - **Hover:** the same as every card: the blue bar slides in and the outlink arrow nudges.

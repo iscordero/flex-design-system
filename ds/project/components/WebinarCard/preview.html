@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components · Cards" height=3007 width=1180 subtitle="Component · Webinar card, default and featured. Every number of speakers, from none to more than six." -->
+<!-- @dsCard group="Components · Cards" height=2987 width=1180 subtitle="Component · Webinar card, default and featured. Every number of speakers, from none to more than six." -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,11 +20,11 @@ function label(n) { return LABEL[n] || n + ' speakers'; }
 function def(n, i) {
   var extra = i === 1 ? {flag: 'On Demand'} : i === 2 ? {flag: 'Live', flagTone: 'tier-3'} : {};
   return h('div', {key: n}, h('div', {className: 'cap'}, label(n)),
-    h(Q.WebinarCard, Object.assign({href: '#', external: true, format: i % 2 ? 'Episode' : 'Series', duration: i % 2 ? '13 min' : '45 min', title: TITLES[i], speakers: S.slice(0, n), date: 'Tue Dec 10, 2026'}, extra)));
+    h(Q.WebinarCard, Object.assign({href: '#', external: true, format: i % 2 ? 'Episode' : 'Series', duration: i % 2 ? '13 min' : '45 min', title: TITLES[i], speakers: S.slice(0, n), date: 'Dec 10, 2026'}, extra)));
 }
 function feat(n) {
   return h('div', {key: n}, h('div', {className: 'cap'}, label(n)),
-    h(Q.WebinarCard, {layout: 'featured', href: '#', external: true, flag: n === 1 ? 'On Demand' : undefined, format: 'Episode', duration: '13 min', title: 'Proactive Defense: Implementing Risk-Based Vulnerability Management', speakers: S.slice(0, n), description: body, date: 'Tue Dec 10, 2026'}));
+    h(Q.WebinarCard, {layout: 'featured', href: '#', external: true, flag: n === 1 ? 'On Demand' : undefined, format: 'Episode', duration: '13 min', title: 'Proactive Defense: Implementing Risk-Based Vulnerability Management', speakers: S.slice(0, n), description: body, date: 'Dec 10, 2026'}));
 }
 function rule(strong, text) { return h('p', {className: 'rule'}, h('b', null, strong + ' '), text); }
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className: 'pv'},

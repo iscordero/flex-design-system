@@ -64,6 +64,32 @@ Regular (400) for paragraphs, long-form and supporting text, and field text and 
 
 **Label** 16 (text tied to UI elements); **quotes** `quote-lg` 32 / `quote-md` 24 (standalone), `quote-sm` 20 (testimonial cards); **stats** `stat-lg` 86 (up to three in a row) and `stat-md` 64 (four in a row); **button label** 16 SemiBold, −0.5%.
 
+### Trademark (TM)
+
+Mark a trademark with the letters TM as a superscript, right after the word, with no space: `TruRisk<sup class="q-tm">TM</sup>`. Type the two capital letters; don't use the ™ character, which each font draws at its own size and height. The `q-tm` class sets the size and position, so the same markup works in any style:
+
+- **Top-aligned:** the top of the TM sits on the cap height of the text beside it (the top of a capital letter), not above it. It doesn't add space between lines.
+- **Smaller:** headings, display text and stats take TM at 50% of their size; body text at 60%, and never under 8px so it stays readable. Sizes round to whole pixels. The TM keeps the weight of the text around it.
+- **Mobile:** the TM follows each style's mobile size by itself.
+- **Where:** on first use of a trademarked name on a page, in headings and body copy. Not in buttons, navigation, tags or eyebrows.
+
+| Style | Text desktop | TM desktop | Text mobile | TM mobile |
+| --- | --- | --- | --- | --- |
+| `display-xl` | 64px | 32px | 36px | 18px |
+| `display-lg` | 56px | 28px | 36px | 18px |
+| `h1` | 44px | 22px | 32px | 16px |
+| `h2` | 38px | 19px | 24px | 12px |
+| `h3` | 24px | 12px | 20px | 10px |
+| `h4` | 20px | 10px | 18px | 9px |
+| `h5` | 18px | 9px | 16px | 8px |
+| `paragraph-lg` | 24px | 14px | 18px | 11px |
+| `paragraph-md` | 18px | 11px | 16px | 10px |
+| `paragraph-rg` | 16px | 10px | 16px | 10px |
+| `paragraph-sm` | 14px | 8px | 14px | 8px |
+| `paragraph-xs` | 12px | 8px | 12px | 8px |
+
+How it's built: `font-size` is the ratio of the text size, rounded to a whole pixel, with an 8px floor; `vertical-align` raises it by (1 − ratio) × cap height ÷ ratio, in the TM's own em (cap height is 0.719 em in Wix Madefor Text and 0.703 em in IBM Plex Sans); `line-height: 0` keeps the line spacing as it was. The Typography page shows every size.
+
 ### Line breaks
 
 Headings, titles and eyebrows **balance** their lines (`text-wrap: balance`), so a heading never ends on one short word: "See Your Risk in One / Place, Then Act on It", not "See Your Risk in One Place, Then Act on / It". Paragraphs, descriptions and quotes use **pretty** wrapping (`text-wrap: pretty`), which avoids a single word on the last line. Both are set once in `bundle.css` for every component; browsers that don't support them wrap normally. To force a break, use a `<br>`; to keep two words together (a product name, a number and its unit), join them with a non-breaking space. Don't hand-break headings to fit one screen width; they reflow at every size.

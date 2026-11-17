@@ -25,6 +25,32 @@
     var sp = cut.lastIndexOf(' ');
     return (sp > max * 0.6 ? cut.slice(0, sp) : cut).replace(/[\s.,;:]+$/, '') + '…';
   }
+  /* Times read the same everywhere (drawers, calendar, event cards): "8:00 AM", a range "8:00 AM – 12:00 PM" with an en dash,
+     then the time zone if one is given. Shorthand such as "10a – 11a PST", "9:30am", "14:00" or "Noon" is rewritten;
+     text it can't read ("Doors open at 6") is shown as given. startOnly keeps the start time (and the zone). */
+  function clockOf(v, ap0) {
+    var s = String(v).trim().toLowerCase().replace(/\./g, '');
+    if (s === 'noon') return '12:00 PM';
+    if (s === 'midnight') return '12:00 AM';
+    var m = /^(\d{1,2})(?::(\d{2}))?\s*(am|pm|a|p)?$/.exec(s); if (!m) return null;
+    var hh = +m[1], mm = m[2] || '00', ap = m[3] ? m[3].charAt(0) : ap0 || null;
+    if (+mm > 59) return null;
+    if (!ap) { if (!m[2] || hh > 23) return null; ap = hh >= 12 ? 'p' : 'a'; hh = hh % 12 || 12; }
+    else if (hh < 1 || hh > 12) return null;
+    return hh + ':' + mm + ' ' + (ap === 'p' ? 'PM' : 'AM');
+  }
+  function timeText(t, startOnly) {
+    if (typeof t !== 'string' || !t.trim()) return t;
+    var s = t.trim();
+    if (/^all[\s-]?day$/i.test(s)) return 'All day';
+    var zm = /\s+([A-Z]{2,5}(?:[+-]\d{1,2})?)$/.exec(s), zone = zm && zm[1] !== 'AM' && zm[1] !== 'PM' ? zm[1] : '';
+    var parts = (zone ? s.slice(0, zm.index) : s).split(/\s*(?:[\u2013\u2014-]|\bto\b)\s*/);
+    if (parts.length > 2) return t;
+    var b = parts.length > 1 ? clockOf(parts[1]) : null;
+    var a = clockOf(parts[0]) || (b ? clockOf(parts[0], b.slice(-2) === 'PM' ? 'p' : 'a') : null);
+    if (!a || (parts.length > 1 && !b)) return t;
+    return (startOnly || !b ? a : a + ' \u2013 ' + b) + (zone ? ' ' + zone : '');
+  }
 
   /* Icon — the Qualys utility set, inline so it takes currentColor. */
   function hugeEls(els, sw) {
@@ -592,11 +618,18 @@
       if (ind.width && !ready) { var r = requestAnimationFrame(function () { setReady(true); }); return function () { cancelAnimationFrame(r); }; }
       return undefined;
     }, [ind.width]);
-    function reveal(i) {
+    /* When the tabs scroll sideways (a narrow screen), the picked tab moves to the middle so the tabs on both sides peek in
+       and show there are more. Near either end the scroll stops at the edge: the first tab rests on the left, the last on the right. */
+    function reveal(i, smooth) {
       var list = listRef.current, t = tabRefs.current[i]; if (!list || !t) return;
-      if (t.offsetLeft < list.scrollLeft) list.scrollLeft = t.offsetLeft;
-      else if (t.offsetLeft + t.offsetWidth > list.scrollLeft + list.clientWidth) list.scrollLeft = t.offsetLeft + t.offsetWidth - list.clientWidth;
+      var max = list.scrollWidth - list.clientWidth; if (max <= 0) return;
+      var lr = list.getBoundingClientRect(), tr = t.getBoundingClientRect();
+      var to = Math.max(0, Math.min(max, Math.round(list.scrollLeft + (tr.left - lr.left) + tr.width / 2 - list.clientWidth / 2)));
+      if (Math.abs(to - list.scrollLeft) < 1) return;
+      if (smooth && !prefersStill() && list.scrollTo) list.scrollTo({ left: to, behavior: 'smooth' }); else list.scrollLeft = to;
     }
+    var shownOnce = React.useRef(false);
+    React.useEffect(function () { reveal(active, shownOnce.current); shownOnce.current = true; }, [active, items.length]);
     /* Autoplay: the next tab opens by itself every few seconds. It waits while the pointer or the focus is on the tabs,
        stops for good once the reader picks a tab, and never starts under reduced motion. There is no pause button. */
     var every = p.autoplay ? (typeof p.autoplay === 'number' ? Math.max(3000, p.autoplay) : 6000) : 0;
@@ -606,12 +639,12 @@
       var key = keyOf(items[i], i);
       if (!isControlled) st[1](key);
       if (p.onChange) p.onChange(key, i);
-      reveal(i);
+      reveal(i, true);
     }
     function select(i, focus) {
       if (playing) setPlaying(false);
       go(i);
-      if (focus && tabRefs.current[i]) tabRefs.current[i].focus();
+      if (focus && tabRefs.current[i]) tabRefs.current[i].focus({ preventScroll: true });
     }
     React.useEffect(function () {
       if (!every || !playing || held || items.length < 2) return undefined;
@@ -791,7 +824,7 @@
     return h('div', { ref: rootRef, className: cx('q-dcard', open && 'is-open', n ? 'has-people' : 'no-people', hasCta && 'has-cta', 'q-dcard--n' + Math.min(n, 7), compact && 'is-compact', two && 'is-two', stacked && 'is-stacked', fit.squeeze && named === 1 && 'is-squeezed', p.layout === 'mobile' && 'q-dcard--mobile', p.className) },
       heading(p.headingLevel, { className: 'q-dcard__heading' },
         h('button', { type: 'button', id: id + '-btn', className: 'q-dcard__head', 'aria-expanded': open ? 'true' : 'false', 'aria-controls': id + '-panel', 'aria-disabled': p.locked && open ? 'true' : undefined, onClick: o[1] },
-          p.time ? h('span', { className: 'q-dcard__time' }, p.time) : null,
+          p.time ? h('span', { className: 'q-dcard__time' }, timeText(p.time)) : null,
           h('span', { className: 'q-dcard__title' }, p.title),
           h('span', { className: 'q-dcard__chevron', 'aria-hidden': 'true' },
             h('svg', { viewBox: '0 0 30 30', width: 30, height: 30, fill: 'none', focusable: 'false' },
@@ -1019,7 +1052,13 @@
     ]);
   }
   function cardTitle(p, cls) { return heading(p.headingLevel, { className: cls || 'q-ccard__title' }, p.title); }
-  function cardDate(text) { return text ? h('span', { className: 'q-card__date' }, text) : null; }
+  /* "Dec 10, 2026 • 11:00 AM PST": the date, a bullet, then the start time only, in the shared time format. */
+  function cardDate(text) {
+    if (!text) return null;
+    var i = typeof text === 'string' ? text.indexOf(' \u2022 ') : -1;
+    if (i >= 0) text = text.slice(0, i) + ' \u2022 ' + timeText(text.slice(i + 3), true);
+    return h('span', { className: 'q-card__date' }, text);
+  }
 
   /* Card — the Standard card: optional icon, eyebrow or tag name, heading, copy, tags or a badge, text-link CTA. */
   function Card(p) {
@@ -2012,6 +2051,8 @@
   function FeatureMatrix(p) {
     var ref = React.useRef(null), mobile = useNarrow(ref, 768, p.layout);
     /* Columns: Qualys, then one to five competitors (FMATRIX_MAX); extra columns are left out. */
+    /* No subheadings: the table shows its heading only, and each column only its logo, centered beside the heading. */
+    var head = Object.assign({}, p, { subtitle: null });
     var cols = cmpColumns(p.columns).slice(0, 1 + FMATRIX_MAX), own = cols[0] || { id: '0', name: '' }, others = cols.slice(1);
     var cs = React.useState(p.defaultCompare != null ? String(p.defaultCompare) : null), comp = p.compare !== undefined ? String(p.compare) : cs[0];
     var ds = React.useState(!!p.defaultDiffOnly), diff = ds[0];
@@ -2042,15 +2083,15 @@
     var table = h('div', { key: 'table', className: 'q-cmp__table' },
       h('div', { className: 'q-cmp__hl', 'aria-hidden': 'true', style: mobile ? undefined : { left: 'calc(100% * 2.2 / ' + (2.2 + cols.length) + ' + 6px)', width: 'calc(100% / ' + (2.2 + cols.length) + ' - 12px)' } }),
       h('div', { className: 'q-cmp__head', style: grid },
-        mobile ? h('div') : cmpHeading(p),
+        mobile ? h('div') : cmpHeading(head),
         shown.map(function (i) {
           var c = cols[i];
-          return h('div', { key: c.id, className: 'q-cmp__col' }, cmpLogo(c, mobile ? (i ? 24 : 22) : 28), !mobile && c.subtitle ? h('p', { className: 'q-cmp__colsub' }, c.subtitle) : null);
+          return h('div', { key: c.id, className: 'q-cmp__col' }, cmpLogo(c, mobile ? (i ? 24 : 22) : 28));
         })),
       (p.sections || []).map(section));
     return h('section', { ref: ref, className: cx('q-section', 'q-cmp', 'q-cmp--matrix', mobile && 'q-cmp--mobile', p.className), id: p.id },
       h('div', { className: 'q-section__inner' }, mobile ? [
-        cmpHeading(p, 'heading'),
+        cmpHeading(head, 'heading'),
         cmpTabs(p, own, others, cur, function (id) { cs[1](id); if (p.onCompareChange) p.onCompareChange(id); }),
         others.length ? h('div', { key: 'diff', className: 'q-cmp__diff' }, h(Toggle, { label: p.diffLabel || 'Show Differences Only', checked: diff, onChange: function (e) { ds[1](e.target.checked); } })) : null,
         table
@@ -2651,6 +2692,12 @@
       weekday: function (d) { return [wl.format(d), ws.format(d), wn.format(d)]; },
       /* "Tuesday Jan 14" */
       day: function (d) { return wl.format(d) + ' ' + md(d); },
+      /* Event cards: the short date. "Jan 27, 2025", "Feb 4 – 6, 2025", "Jan 30 – Feb 2, 2025" */
+      short: function (a, b) {
+        if (calKey(a) === calKey(b)) return md(a) + ', ' + a.getFullYear();
+        if (a.getFullYear() !== b.getFullYear()) return md(a) + ', ' + a.getFullYear() + ' – ' + md(b) + ', ' + b.getFullYear();
+        return (a.getMonth() === b.getMonth() ? md(a) + ' – ' + b.getDate() : md(a) + ' – ' + md(b)) + ', ' + b.getFullYear();
+      },
       /* "Fri Jan 27, 2025" or "Mon Feb 4 – Wed Feb 6, 2025" */
       span: function (a, b) {
         function one(d) { return ws.format(d) + ' ' + md(d); }
@@ -2764,7 +2811,7 @@
     function card(ev, extra) {
       var e = ev.src;
       return h(e.speakers && e.speakers.length ? WebinarCard : EventCard, Object.assign({
-        title: e.title, category: ev.typeLabel, format: e.format, date: fmt.span(ev.start, ev.end) + (e.time ? ' • ' + e.time : ''),
+        title: e.title, category: ev.typeLabel, format: e.format, date: fmt.short(ev.start, ev.end) + (e.time ? ' • ' + timeText(e.time, true) : ''),
         href: e.href, external: e.external, image: e.image, imageAlt: e.imageAlt, flag: e.flag, flagTone: e.flagTone, speakers: e.speakers, duration: e.duration, headingLevel: hl + 1
       }, extra));
     }
@@ -2776,7 +2823,7 @@
       var props = {
         key: pk, style: o.style,
         className: cx('q-cal__event', 'q-cal__event--' + ev.type, o.multi && 'q-cal__event--multi', o.compact && 'q-cal__event--compact', o.pre && 'is-pre', o.post && 'is-post', pop && pop.key === pk && 'is-open'),
-        'aria-label': [e.title, ev.typeLabel, e.format, fmt.span(ev.start, ev.end), e.time].filter(Boolean).join(', '),
+        'aria-label': [e.title, ev.typeLabel, e.format, fmt.span(ev.start, ev.end), timeText(e.time)].filter(Boolean).join(', '),
         onMouseEnter: function (x) { openPop(pk, ev, x.currentTarget, false); }, onMouseLeave: schedClose,
         onFocus: function (x) { openPop(pk, ev, x.currentTarget, false); }, onBlur: schedClose,
         onPointerDown: function (x) { touch.current = x.pointerType === 'touch' || x.pointerType === 'pen'; },
@@ -2860,7 +2907,7 @@
             var e = ev.src;
             var act = e.action === false ? null : Object.assign({ label: L.action, href: e.href }, typeof e.action === 'string' ? { label: e.action } : e.action);
             return h('li', { key: ev.key, className: 'q-cal__row' },
-              h('span', { className: 'q-cal__time' }, e.time || L.allDay),
+              h('span', { className: 'q-cal__time' }, timeText(e.time) || L.allDay),
               h(EventType, { type: ev.type, className: 'q-cal__type' }, ev.typeLabel),
               h(e.href ? 'a' : 'span', { className: 'q-cal__rowtitle', href: e.href }, e.title),
               act ? h(Button, { className: 'q-cal__action', variant: act.variant || 'secondary', href: act.href, onClick: act.onClick, target: act.href && e.external ? '_blank' : undefined, rel: act.href && e.external ? 'noopener' : undefined, 'aria-label': act.label + ': ' + e.title }, act.label) : null);

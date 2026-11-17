@@ -50,7 +50,7 @@ G1=[(None,'g1-address','Do: The Qualys Cloud Platform gives your team a single s
     ('CTAs','g1-ctas','Buttons and text links that start with a verb: Get a Demo, Get Started, Register Now, Learn More, Explore the Platform, and Download Report with a download icon. Passive labels such as More Information and Demo Request are marked wrong.'),
     (None,'g1-numbers','Running copy spells the number out, Set up in three steps; a stat uses numerals, 3,847 patched.'),
     (None,'g1-punct','The Oxford comma highlighted in Detect, Prioritize, and Eliminate Risk; an em dash highlighted in One platform, every asset; the same line with a hyphen is marked wrong.'),
-    ('Dates and times','g1-dates','Five date formats: long date Mon Dec 9, 2024; short date Dec 9, 2024; date and time Mon Dec 9, 2024 10:00 to 11:00a PST; time range 8:00 AM to 12:00 PM; event card Dec 10, 2026, bullet, 11a PST.'),
+    ('Dates and times','g1-dates','Five date formats: long date Mon Dec 9, 2024; short date Dec 9, 2024; date and time Mon Dec 9, 2024, bullet, 10:00 AM to 11:00 AM PST; time range 8:00 AM to 12:00 PM; event card Dec 10, 2026, bullet, 11:00 AM PST.'),
     ('No emoji',None,None)]
 G2=[(None,'g2-surfaces','Six surfaces stacked like page sections: Warm Off White page background, Ecru and White alternate sections, Polar Blue light blue sections, Qualys Blue sections, Charcoal dark sections and footer.'),
     (None,'g2-text','Five text colors with their tokens: text-primary for headings and body, text-secondary for metadata, text-inverted on charcoal, text-accent-primary in blue for emphasis, text-accent-secondary in red for button text links.'),

@@ -341,7 +341,7 @@ export declare function Drawer(props: DrawerProps): React.ReactElement;
 
 export interface DrawerSpeaker { name: string; designation?: string; company?: string; /** company logo for the profile hover card */ logo?: string; logoAlt?: string; /** headshot URL; a placeholder shows without one */ image?: string; /** LinkedIn profile, drawn as the social icon in the profile hover card */ link?: { href: string; label?: string } }
 export interface DrawerCardProps {
-  /** overline above the title, e.g. "Noon – 12:45 PM" */
+  /** overline above the title, e.g. "12:00 PM – 12:45 PM"; shorthand times ("12p – 12:45p") are rewritten to "h:mm AM" form */
   time?: React.ReactNode;
   /** up to 180 characters; clamps at two lines */
   title: React.ReactNode;
@@ -472,7 +472,7 @@ export interface EventCardProps extends ContentCardBase {
   category?: string;
   /** e.g. "Conference" */
   format?: string;
-  /** "Dec 10, 2026 • 11a PST" */
+  /** short date, bullet, start time: "Dec 10, 2026 • 11:00 AM PST" (a shorthand time after the bullet is rewritten) */
   date?: string;
   /** 'featured' = full width, image left, from 1024px */
   layout?: 'default' | 'featured';
@@ -491,7 +491,7 @@ export interface WebinarCardProps extends ContentCardBase {
   speakers?: CardPerson[];
   /** accessible name for the speaker group, default "Speakers" */
   speakersLabel?: string;
-  /** "Tue Dec 10, 2026" */
+  /** short date: "Dec 10, 2026", or "Dec 10, 2026 • 11:00 AM PST" for a live session */
   date?: string;
   layout?: 'default' | 'featured';
   /** featured only */
@@ -1151,7 +1151,7 @@ export interface CalendarEvent {
   start: string | Date;
   /** last day, for an event of several days */
   end?: string | Date;
-  /** the time as shown, e.g. "10a – 11a PST" */
+  /** the time or range, e.g. "10:00 AM – 11:00 AM PST" or "All day"; shorthand ("10a – 11a PST") is rewritten. Cards show the start time only */
   time?: string;
   href?: string;
   /** open the link in a new tab */
@@ -1655,6 +1655,7 @@ export interface ComparisonColumn { id?: string | number; name: string; logo?: s
 export interface FeatureMatrixRow { label: React.ReactNode; values: Array<boolean | 0 | 1> }
 export interface FeatureMatrixProps {
   title?: React.ReactNode;
+  /** not shown: the matrix has no subheadings (column subtitles aren't shown either) */
   subtitle?: React.ReactNode;
   /** the first column is the highlighted one (Qualys), then 1 to 5 competitors (more are left out) */
   columns: Array<ComparisonColumn | string>;

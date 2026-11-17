@@ -37,7 +37,7 @@ var body = 'Master proactive defense strategies through comprehensive risk-based
 function reg() { return h(Q.Button, {variant: 'secondary'}, 'Register'); }
 function wait() { return h(Q.Button, {variant: 'secondary-alt'}, 'Join Waitlist'); }
 function card(n, extra) {
-  return h(Q.DrawerCard, Object.assign({key: n + JSON.stringify(extra || {}), time: 'Noon \u2013 12:45 PM', title: 'The Evolution of the Qualys Platform', speakers: P.slice(0, n)}, extra), body);
+  return h(Q.DrawerCard, Object.assign({key: n + JSON.stringify(extra || {}), time: '12:00 PM \u2013 12:45 PM', title: 'The Evolution of the Qualys Platform', speakers: P.slice(0, n)}, extra), body);
 }
 /* The rule for a closed card, by number of profiles. Each group shows the card without and with a button. */
 var RULES = [

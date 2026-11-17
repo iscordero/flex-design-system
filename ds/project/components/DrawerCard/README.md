@@ -5,7 +5,7 @@ The card drawer from the Figma Drawers page, built for event agendas: a white ca
 
 **Provide:** `title`; optionally `time` (the overline), a description as children, `speakers` (`{ name, designation, company, image }`) and `cta` (a secondary Button such as "Register"). `defaultOpen`, or `open` + `onToggle`, set the state.
 
-- **Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`; 10px; title in Wix Madefor Text SemiBold 24px, line height 1.2, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time.
+- **Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`, in the shared time format: hours and minutes with AM or PM ("8:00 AM"), a range joined by a spaced en dash ("8:00 AM – 12:00 PM"), then the time zone if any ("PST"): "8:00 AM – 12:00 PM" (not "Noon"; shorthand is rewritten); 10px; title in Wix Madefor Text SemiBold 24px, line height 1.2, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time.
 - **Open:** the description (Regular 16px, under 500 characters) appears 10px under the title; profiles follow 20px below.
 - **Profile:** 40px round headshot (or the `avatar-bg` placeholder), 16px, then name (SemiBold 16px), designation (Regular 16px `text-secondary`) and company (Medium 16px `text-secondary`).
 

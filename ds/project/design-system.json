@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-11-16T17:31:30Z",
+    "at": "2026-11-17T19:13:26Z",
     "by": "Isabel",
-    "note": "Choosing Components guide, Comparing: minimum and maximum columns for MarketingTable (1-3), FeatureMatrix (1-5) and DetailComparison (1-3), with the reasons.",
+    "note": "Event cards: start time only, times as 8:00 AM everywhere; ProfileModal: profile fixed, About scrolls; FeatureMatrix: no subheadings, logos centered; Tabs: picked tab scrolls to the middle on mobile; TM superscript style.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",
