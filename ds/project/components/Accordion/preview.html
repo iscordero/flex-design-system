@@ -28,12 +28,12 @@ var speaker = [{name: 'Sumedh Thakar', designation: 'President and CEO, Qualys'}
 function reg() { return h(Q.Button, {variant: 'secondary'}, 'Register'); }
 function wait() { return h(Q.Button, {variant: 'secondary-alt'}, 'Join Waitlist'); }
 var sessions = [
-  ['8:00 AM \u2013 12:00 PM', 'Proactive Defense: Implementing Risk-Based Vulnerability Management with Qualys TruRisk'],
-  ['8:00 AM \u2013 12:00 PM', 'Securing your Multi-Cloud Environment with TotalCloud 2.0'],
-  ['8:00 AM \u2013 12:00 PM', 'Managing Misconfigurations: Leveraging Qualys Policy Compliance to Reduce Risk'],
-  ['1:00 PM \u2013 5:00 PM', 'Reduce Risk and MTTR everywhere using Qualys Patch Management'],
-  ['1:00 PM \u2013 5:00 PM', 'Secure Kubernetes and Containers from Build to Runtime with Qualys TotalCloud'],
-  ['1:00 PM \u2013 5:00 PM', 'Beyond Inventory: Strategic Asset Risk Operations with Qualys CSAM']
+  ['8a \u2013 12p', 'Proactive Defense: Implementing Risk-Based Vulnerability Management with Qualys TruRisk'],
+  ['8a \u2013 12p', 'Securing your Multi-Cloud Environment with TotalCloud 2.0'],
+  ['8a \u2013 12p', 'Managing Misconfigurations: Leveraging Qualys Policy Compliance to Reduce Risk'],
+  ['1p \u2013 5p', 'Reduce Risk and MTTR everywhere using Qualys Patch Management'],
+  ['1p \u2013 5p', 'Secure Kubernetes and Containers from Build to Runtime with Qualys TotalCloud'],
+  ['1p \u2013 5p', 'Beyond Inventory: Strategic Asset Risk Operations with Qualys CSAM']
 ].map(function (s, i) { return {time: s[0], title: s[1], content: body, speakers: speaker, cta: i === 2 || i === 4 ? wait() : reg()}; });
 ReactDOM.createRoot(document.getElementById('root')).render(
   h('div', {className: 'pv', style: {gap: 32}},

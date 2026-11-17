@@ -22,7 +22,7 @@ The Webinar card from the Figma Cards page: an image, "Webinar | format | durati
 | 5 | First named, 2 headshots and "+4" | Two named, 3 headshots |
 | 6 | First named, 2 headshots and "+5" | Two named, 2 headshots and "+4" |
 | More than 6 | First named, 2 headshots and "+N" | Two named, 2 headshots and "+N" |
-- **Footer:** the date in Medium 16px `text-secondary` and the outlink icon. Use the short date, as on EventCard: "Dec 10, 2026", or "Dec 10, 2026 • 11:00 AM PST" for a live session (start time only, in the shared time format).
+- **Footer:** the date in Medium 16px `text-secondary` and the outlink icon. Use the short date, as on EventCard: "Dec 10, 2026", or "Dec 10, 2026 • 11a PST" for a live session (start time only, in the shared short time format).
 - **Approved button type:** the outlink icon, the same as the other content cards. Figma's usage note also lists a primary button; it is not used on this card (review decision).
 - **Featured** (`layout="featured"`): one card across the full width, 320px tall, image on the left (47%, `radius-md`), copy on the right. It applies from 1024px; on tablet and mobile the card stacks like the default. It names the first two speakers with their company (Regular 16px `text-secondary`), then the description; see the speaker rule. Once it has stacked, the speaker row may wrap.
 - Figma's default webinar card has no bar track (409px); this one keeps the track every card has, so it runs 6px taller.

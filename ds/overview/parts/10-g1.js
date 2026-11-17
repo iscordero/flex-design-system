@@ -31,5 +31,5 @@ viz('g1-punct', {display: 'flex', flexDirection: 'column', gap: 12},
   h('div', {style: {borderTop: '1px solid var(--stroke-neutral-400)', paddingTop: 12}}, dd(false, 'One platform ', bad('-'), ' every asset.')));
 
 viz('g1-dates', null, h('div', {className: 'grid2', style: {gridTemplateColumns: '112px 1fr', rowGap: 10}},
-  [['Long date', 'Mon Dec 9, 2024'], ['Short date', 'Dec 9, 2024'], ['Date and time', 'Mon Dec 9, 2024 • 10:00 AM – 11:00 AM PST'], ['Time range', '8:00 AM – 12:00 PM'], ['Event card', 'Dec 10, 2026 • 11:00 AM PST']].map(function (r) {
+  [['Long date', 'Mon Dec 9, 2024'], ['Short date', 'Dec 9, 2024'], ['Date and time', 'Mon Dec 9, 2024 • 10a – 11a PST'], ['Time range', '8a – 12p'], ['Event card', 'Dec 10, 2026 • 11a PST']].map(function (r) {
     return [t('cap', r[0], {key: r[0] + 'l'}), h('span', {key: r[0], style: {fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: 15, lineHeight: 1.3, letterSpacing: '-.01em', whiteSpace: 'pre'}}, r[1])]; })));

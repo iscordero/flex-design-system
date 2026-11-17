@@ -1811,8 +1811,8 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-cal__rows { margin: var(--spacing-3xs) 0 0; padding: 0 var(--spacing-xl); border-radius: var(--radius-lg); background: var(--surface-neutral-100); box-shadow: var(--shadow-card); list-style: none; }
 .q-cal__row { display: flex; align-items: center; gap: var(--spacing-lg); min-height: 50px; padding: var(--spacing-xl) 0; }
 .q-cal__row + .q-cal__row { border-top: 1px solid var(--stroke-neutral-400); }
-/* Wide enough for the longest range on one line: "10:00 AM – 11:30 AM PST" */
-.q-cal__time { flex: 0 0 200px; font-family: var(--font-body); font-weight: 500; font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-secondary); }
+/* Wide enough for a range with minutes on one line: "10:30a – 11:30a PST" */
+.q-cal__time { flex: 0 0 170px; font-family: var(--font-body); font-weight: 500; font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-secondary); }
 .q-cal__type { flex: none; }
 .q-cal__type .q-event__label { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .q-cal__rowtitle { display: -webkit-box; flex: 1; min-width: 0; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-family: var(--font-heading); font-weight: 600; font-size: 18px; line-height: 1.1; letter-spacing: -0.01em; letter-spacing: -1%; text-decoration: none; color: var(--text-primary); }
@@ -1841,7 +1841,7 @@ a.q-cal__rowtitle:focus-visible { outline: none; border-radius: var(--radius-xs)
   .q-cal__stack { gap: var(--spacing-4xs); padding-inline: var(--spacing-4xs); }
   .q-cal__emeta { display: none; }
   .q-cal__etitle { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .q-cal__time { flex-basis: 180px; }
+  .q-cal__time { flex-basis: 150px; }
   .q-cal__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @container (max-width: 767px) {

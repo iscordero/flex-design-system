@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-11-17T19:13:26Z",
+    "at": "2026-11-17T20:01:34Z",
     "by": "Isabel",
-    "note": "Event cards: start time only, times as 8:00 AM everywhere; ProfileModal: profile fixed, About scrolls; FeatureMatrix: no subheadings, logos centered; Tabs: picked tab scrolls to the middle on mobile; TM superscript style.",
+    "note": "Times in the short form everywhere (9a PST, 8a – 12p): event and webinar cards, drawer cards, the calendar. Comparison tables: mobile competitor tabs scroll the tapped one to the middle, as Tabs do.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

@@ -25,19 +25,20 @@
     var sp = cut.lastIndexOf(' ');
     return (sp > max * 0.6 ? cut.slice(0, sp) : cut).replace(/[\s.,;:]+$/, '') + '…';
   }
-  /* Times read the same everywhere (drawers, calendar, event cards): "8:00 AM", a range "8:00 AM – 12:00 PM" with an en dash,
-     then the time zone if one is given. Shorthand such as "10a – 11a PST", "9:30am", "14:00" or "Noon" is rewritten;
+  /* Times read the same everywhere (drawer cards, the calendar, event cards), in the short form: the hour and a lowercase
+     a or p ("9a", "12p"), minutes only when they aren't :00 ("9:30a"), a range joined by a spaced en dash ("8a – 12p"),
+     then the time zone if one is given ("9a PST"). Other spellings ("9:00 AM", "9:30am", "14:00", "Noon") are rewritten;
      text it can't read ("Doors open at 6") is shown as given. startOnly keeps the start time (and the zone). */
   function clockOf(v, ap0) {
     var s = String(v).trim().toLowerCase().replace(/\./g, '');
-    if (s === 'noon') return '12:00 PM';
-    if (s === 'midnight') return '12:00 AM';
+    if (s === 'noon') return '12p';
+    if (s === 'midnight') return '12a';
     var m = /^(\d{1,2})(?::(\d{2}))?\s*(am|pm|a|p)?$/.exec(s); if (!m) return null;
     var hh = +m[1], mm = m[2] || '00', ap = m[3] ? m[3].charAt(0) : ap0 || null;
     if (+mm > 59) return null;
     if (!ap) { if (!m[2] || hh > 23) return null; ap = hh >= 12 ? 'p' : 'a'; hh = hh % 12 || 12; }
     else if (hh < 1 || hh > 12) return null;
-    return hh + ':' + mm + ' ' + (ap === 'p' ? 'PM' : 'AM');
+    return hh + (mm === '00' ? '' : ':' + mm) + ap;
   }
   function timeText(t, startOnly) {
     if (typeof t !== 'string' || !t.trim()) return t;
@@ -47,7 +48,7 @@
     var parts = (zone ? s.slice(0, zm.index) : s).split(/\s*(?:[\u2013\u2014-]|\bto\b)\s*/);
     if (parts.length > 2) return t;
     var b = parts.length > 1 ? clockOf(parts[1]) : null;
-    var a = clockOf(parts[0]) || (b ? clockOf(parts[0], b.slice(-2) === 'PM' ? 'p' : 'a') : null);
+    var a = clockOf(parts[0]) || (b ? clockOf(parts[0], b.slice(-1)) : null);
     if (!a || (parts.length > 1 && !b)) return t;
     return (startOnly || !b ? a : a + ' \u2013 ' + b) + (zone ? ' ' + zone : '');
   }
