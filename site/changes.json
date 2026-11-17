@@ -7912,6 +7912,10 @@
     {
      "about": "Trademark (TM)",
      "text": "needed a TM superscript style, top-aligned and smaller, with sizes for headings and body"
+    },
+    {
+     "about": "Carousel",
+     "text": "its sample event card now shows the start time in the shared format (\"11:00 AM PST\")."
     }
    ],
    "headline": "Updated 9 components · Updated Content and Typography guides",
