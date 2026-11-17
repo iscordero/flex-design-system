@@ -5271,6 +5271,10 @@
     {
      "about": "ProfileModal",
      "text": "the profile should stay fixed on the left while a long bio scrolls"
+    },
+    {
+     "about": "Accordion",
+     "text": "its session cards are drawer cards, so their times use the 9a format"
     }
    ]
   },
@@ -7404,6 +7408,10 @@
     {
      "about": "Typography",
      "text": "needed a TM superscript style, top-aligned and smaller, with sizes for headings and body"
+    },
+    {
+     "about": "DetailComparison",
+     "text": "the mobile competitor tabs should scroll the tapped one to the middle, like Tabs"
     }
    ],
    "headline": "Updated 8 components",
@@ -7559,8 +7567,8 @@
    "order": 179485025600
   },
   {
-   "id": "18df948",
-   "sha": "18df9488415de71b5f0cd9f8cae1c1751e0c190f",
+   "id": "e2d6fd6",
+   "sha": "e2d6fd607d62f9d2367372da0b3cd09bab7c97e8",
    "date": "2026-11-17",
    "author": "Isabel Cordero",
    "with": [
@@ -7572,13 +7580,30 @@
     {
      "type": "component",
      "action": "changed",
-     "name": "Carousel",
+     "name": "Accordion",
      "what": [
       "look"
      ],
-     "weight": 2,
+     "weight": 12,
      "follows": [
-      "EventCard"
+      "DrawerCard"
+     ]
+    },
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "DetailComparison",
+     "what": [
+      "look",
+      "docs"
+     ],
+     "weight": 9,
+     "notes": [
+      {
+       "kind": "changed",
+       "text": "**Mobile (the table narrower than 768px):** no card, on the page background. Tabs pick one competitor (every competitor is a tab, not only the picked ones). When they don't fit, the tabs scroll sideways and behave like Tabs: tapping one near the edge scrolls it to the middle, and the last one rests on the right. In each section the Qualys text (Ecru card) sits above the competitor's (outlined card), each under its logo.",
+       "was": "**Mobile (the table narrower than 768px):** no card, on the page background. Tabs pick one competitor; in each section the Qualys text (Ecru card) sits above the competitor's (outlined card), each under its logo."
+      }
      ]
     },
     {
@@ -7594,7 +7619,7 @@
      "notes": [
       {
        "kind": "changed",
-       "text": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`, in the shared time format: hours and minutes with AM or PM (\"8:00 AM\"), a range joined by a spaced en dash (\"8:00 AM – 12:00 PM\"), then the time zone if any (\"PST\"): \"8:00 AM – 12:00 PM\" (not \"Noon\"; shorthand is rewritten); 10px; title in Wix Madefor Text SemiBold 24px, line height 1.2, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time.",
+       "text": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`, in the shared short time format: the hour and a lowercase a or p (\"9a\", \"12p\"), minutes only when they aren't :00 (\"9:30a\"), a range joined by a spaced en dash (\"8a – 12p\"), then the time zone if any (\"9a PST\"): \"8a – 12p\" (not \"Noon\" or \"8:00 AM\"; other spellings are rewritten); 10px; title in Wix Madefor Text SemiBold 24px, line height 1.2, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time.",
        "was": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`; 10px; title in Wix Madefor Text SemiBold 24px, line height 1.2, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time."
       }
      ]
@@ -7607,20 +7632,20 @@
       "look",
       "docs"
      ],
-     "weight": 38,
+     "weight": 10,
      "notes": [
       {
        "kind": "added",
-       "text": "`time` is the event's time or time range, such as \"10:00 AM – 11:00 AM PST\" or \"All day\". It is shown in the shared time format: hours and minutes with AM or PM (\"8:00 AM\"), a range joined by a spaced en dash (\"8:00 AM – 12:00 PM\"), then the time zone if any (\"PST\"), the same as on DrawerCards. Shorthand (\"10a – 11a PST\", \"9:30am\", \"14:00\", \"Noon\") is rewritten to it; text that isn't a time is shown as given."
+       "text": "`time` is the event's time or time range, such as \"10a – 11a PST\" or \"All day\". It is shown in the shared short time format: the hour and a lowercase a or p (\"9a\", \"12p\"), minutes only when they aren't :00 (\"9:30a\"), a range joined by a spaced en dash (\"8a – 12p\"), then the time zone if any (\"9a PST\"), the same as on DrawerCards. Other spellings (\"10:00 AM – 11:00 AM PST\", \"9:30am\", \"14:00\", \"Noon\") are rewritten to it; text that isn't a time is shown as given."
       },
       {
        "kind": "changed",
-       "text": "**Row:** the time (200px, 180px on tablet, so a full range such as \"10:00 AM – 11:30 AM PST\" fits on one line on desktop; Medium 16px `text-secondary`; \"All day\" when an event has none), the event type icon, the title (Wix Madefor Text SemiBold 18px, two lines at most) and a secondary Button, 140px wide.",
+       "text": "**Row:** the time (170px, 150px on tablet, so a range with minutes such as \"10:30a – 11:30a PST\" fits on one line on desktop; Medium 16px `text-secondary`; \"All day\" when an event has none), the event type icon, the title (Wix Madefor Text SemiBold 18px, two lines at most) and a secondary Button, 140px wide.",
        "was": "**Row:** the time (150px, Medium 16px `text-secondary`; \"All day\" when an event has none), the event type icon, the title (Wix Madefor Text SemiBold 18px, two lines at most) and a secondary Button, 140px wide."
       },
       {
        "kind": "added",
-       "text": "**Card date:** the short date, a bullet, then the start time only, with its time zone: \"Jan 27, 2025 • 10:00 AM PST\". The end time is left out (the list view and the event page give the full range). Several days read \"Feb 4 – 6, 2025\" or \"Jan 30 – Feb 2, 2025\"; an event without a time reads \"Jan 1, 2025 • All day\". The hover card in the month view shows the same card."
+       "text": "**Card date:** the short date, a bullet, then the start time only, with its time zone: \"Jan 27, 2025 • 10a PST\". The end time is left out (the list view and the event page give the full range). Several days read \"Feb 4 – 6, 2025\" or \"Jan 30 – Feb 2, 2025\"; an event without a time reads \"Jan 1, 2025 • All day\". The hover card in the month view shows the same card."
       },
       {
        "kind": "removed",
@@ -7637,11 +7662,11 @@
       "props",
       "docs"
      ],
-     "weight": 10,
+     "weight": 2,
      "notes": [
       {
        "kind": "changed",
-       "text": "**Date:** short date, a bullet, then the start time only, with the time zone: \"Dec 10, 2026 • 11:00 AM PST\". Times use the shared time format: hours and minutes with AM or PM (\"8:00 AM\"), a range joined by a spaced en dash (\"8:00 AM – 12:00 PM\"), then the time zone if any (\"PST\"), as on DrawerCards; a shorthand time after the bullet (\"11a PST\") is rewritten, and an end time is dropped.",
+       "text": "**Date:** short date, a bullet, then the start time only, with the time zone: \"Dec 10, 2026 • 11a PST\". Times use the shared short time format: the hour and a lowercase a or p (\"9a\", \"12p\"), minutes only when they aren't :00 (\"9:30a\"), a range joined by a spaced en dash (\"8a – 12p\"), then the time zone if any (\"9a PST\"), as on DrawerCards; another spelling after the bullet (\"11:00 AM PST\") is rewritten, and an end time is dropped.",
        "was": "**Date:** short date, a bullet, then the time: \"Dec 10, 2026 • 11a PST\"."
       }
      ]
@@ -7655,7 +7680,7 @@
       "props",
       "docs"
      ],
-     "weight": 14,
+     "weight": 24,
      "notes": [
       {
        "kind": "changed",
@@ -7665,6 +7690,11 @@
       {
        "kind": "added",
        "text": "**Header row:** the heading on the left and one logo per column, each logo centered in its column and on the heading's middle line. There are no subheadings: a table `subtitle` and column `subtitle`s are not shown (DetailComparison still uses them)."
+      },
+      {
+       "kind": "changed",
+       "text": "**Mobile (the table narrower than 768px):** no card, on the page background, 20px side padding. Qualys is compared with one competitor at a time, picked with Tabs (\"Compare Qualys With\"). When the competitors don't fit, the tabs scroll sideways and behave like Tabs: tapping a competitor near the edge scrolls it to the middle, and the last one rests on the right; the \"Show Differences Only\" Toggle hides the rows where both agree, and a section with none says \"No differences in this section.\" Columns are 96px each.",
+       "was": "**Mobile (the table narrower than 768px):** no card, on the page background, 20px side padding. Qualys is compared with one competitor at a time, picked with Tabs (\"Compare Qualys With\"); the \"Show Differences Only\" Toggle hides the rows where both agree, and a section with none says \"No differences in this section.\" Columns are 96px each."
       }
      ]
     },
@@ -7706,7 +7736,7 @@
       },
       {
        "kind": "added",
-       "text": "**Picking a tab that's partly hidden:** the bar scrolls (300ms, smooth) to bring the picked tab to the middle, so tabs peek in on both sides and it's clear there are more. Near the ends the scroll stops at the edge: the first tab rests on the left, and the last tab rests on the right, which shows there are no more. Arrow keys, Home and End do the same. With reduced motion it jumps instead of sliding."
+       "text": "**Picking a tab that's partly hidden:** the bar scrolls (300ms, smooth) to bring the picked tab to the middle, so tabs peek in on both sides and it's clear there are more. Near the ends the scroll stops at the edge: the first tab rests on the left, and the last tab rests on the right, which shows there are no more. Arrow keys, Home and End do the same. With reduced motion it jumps instead of sliding. The competitor tabs on FeatureMatrix and DetailComparison (mobile) are these Tabs, so they behave the same."
       }
      ]
     },
@@ -7739,7 +7769,7 @@
      "notes": [
       {
        "kind": "changed",
-       "text": "**Footer:** the date in Medium 16px `text-secondary` and the outlink icon. Use the short date, as on EventCard: \"Dec 10, 2026\", or \"Dec 10, 2026 • 11:00 AM PST\" for a live session (start time only, in the shared time format).",
+       "text": "**Footer:** the date in Medium 16px `text-secondary` and the outlink icon. Use the short date, as on EventCard: \"Dec 10, 2026\", or \"Dec 10, 2026 • 11a PST\" for a live session (start time only, in the shared short time format).",
        "was": "**Footer:** the date in Medium 16px `text-secondary` (\"Tue Dec 10, 2026\") and the outlink icon."
       }
      ]
@@ -7755,12 +7785,12 @@
      "notes": [
       {
        "kind": "changed",
-       "text": "**Dates and times:** long date \"Mon Dec 9, 2024\" for headers, detail pages and featured content; short date \"Dec 9, 2024\" on compact cards; date and time range \"Mon Dec 9, 2024 • 10:00 AM – 11:00 AM PST\" for events; time range alone \"8:00 AM – 12:00 PM\" when the date is already clear (drawers, the calendar list). Every time has hours and minutes and AM or PM (\"8:00 AM\", never \"8a\" or \"Noon\"), ranges use a spaced en dash, and the time zone follows the last time. Event and webinar cards show the short date, a bullet and the start time only: \"Dec 10, 2026 • 11:00 AM PST\". Set dates and times in Medium (500).",
+       "text": "**Dates and times:** long date \"Mon Dec 9, 2024\" for headers, detail pages and featured content; short date \"Dec 9, 2024\" on compact cards; date and time range \"Mon Dec 9, 2024 • 10a – 11a PST\" for events; time range alone \"8a – 12p\" when the date is already clear (drawer cards, the calendar list). Times use the short form: the hour and a lowercase a or p (\"9a\", \"12p\", never \"9:00 AM\" or \"Noon\"), minutes only when they aren't :00 (\"9:30a\"); ranges use a spaced en dash, and the time zone follows the last time. Event and webinar cards show the short date, a bullet and the start time only: \"Dec 10, 2026 • 11a PST\". Set dates and times in Medium (500).",
        "was": "**Dates and times:** long date \"Mon Dec 9, 2024\" for headers, detail pages and featured content; short date \"Dec 9, 2024\" on compact cards; date and time range \"Mon Dec 9, 2024  10:00 – 11:00a PST\" for events; time range alone \"8:00 AM – 12:00 PM\" when the date is already clear. Event cards join the short date and start time with a bullet: \"Dec 10, 2026 • 11a PST\". Set dates and times in Medium (500)."
       },
       {
        "kind": "changed",
-       "text": "Picture: Five date formats: long date Mon Dec 9, 2024; short date Dec 9, 2024; date and time Mon Dec 9, 2024, bullet, 10:00 AM to 11:00 AM PST; time range 8:00 AM to 12:00 PM; event card Dec 10, 2026, bullet, 11:00 AM PST."
+       "text": "Picture: Five date formats: long date Mon Dec 9, 2024; short date Dec 9, 2024; date and time Mon Dec 9, 2024, bullet, 10a to 11a PST; time range 8a to 12p; event card Dec 10, 2026, bullet, 11a PST."
       }
      ]
     },
@@ -7785,90 +7815,102 @@
    ],
    "shots": [
     {
+     "name": "FeatureMatrix",
+     "label": "Desktop",
+     "before": "changes/e2d6fd6/FeatureMatrix-0-before.webp",
+     "after": "changes/e2d6fd6/FeatureMatrix-0-after.webp"
+    },
+    {
+     "name": "FeatureMatrix",
+     "label": "Mobile: pick a competitor (tap one near the edge and the tabs scroll it to the middle); sh",
+     "before": "changes/e2d6fd6/FeatureMatrix-1-before.webp",
+     "after": "changes/e2d6fd6/FeatureMatrix-1-after.webp"
+    },
+    {
      "name": "EventCalendar",
      "label": "List view",
-     "before": "changes/18df948/EventCalendar-0-before.webp",
-     "after": "changes/18df948/EventCalendar-0-after.webp"
+     "before": "changes/e2d6fd6/EventCalendar-0-before.webp",
+     "after": "changes/e2d6fd6/EventCalendar-0-after.webp"
     },
     {
      "name": "EventCalendar",
      "label": "Grid view",
-     "before": "changes/18df948/EventCalendar-1-before.webp",
-     "after": "changes/18df948/EventCalendar-1-after.webp"
+     "before": "changes/e2d6fd6/EventCalendar-1-before.webp",
+     "after": "changes/e2d6fd6/EventCalendar-1-after.webp"
     },
     {
      "name": "EventCalendar",
      "label": "Mobile: month, list and grid",
-     "before": "changes/18df948/EventCalendar-2-before.webp",
-     "after": "changes/18df948/EventCalendar-2-after.webp"
+     "before": "changes/e2d6fd6/EventCalendar-2-before.webp",
+     "after": "changes/e2d6fd6/EventCalendar-2-after.webp"
     },
     {
-     "name": "FeatureMatrix",
-     "label": "Desktop",
-     "before": "changes/18df948/FeatureMatrix-0-before.webp",
-     "after": "changes/18df948/FeatureMatrix-0-after.webp"
+     "name": "DetailComparison",
+     "label": "Desktop: two competitors picked",
+     "before": "changes/e2d6fd6/DetailComparison-0-before.webp",
+     "after": "changes/e2d6fd6/DetailComparison-0-after.webp"
     },
     {
-     "name": "FeatureMatrix",
-     "label": "Mobile: pick a competitor; show differences only",
-     "before": "changes/18df948/FeatureMatrix-1-before.webp",
-     "after": "changes/18df948/FeatureMatrix-1-after.webp"
+     "name": "DetailComparison",
+     "label": "Three competitors (the most)",
+     "before": "changes/e2d6fd6/DetailComparison-1-before.webp",
+     "after": "changes/e2d6fd6/DetailComparison-1-after.webp"
     },
     {
-     "name": "EventCard",
-     "label": "Default",
-     "before": "changes/18df948/EventCard-0-before.webp",
-     "after": "changes/18df948/EventCard-0-after.webp"
-    },
-    {
-     "name": "EventCard",
-     "label": "Featured",
-     "before": "changes/18df948/EventCard-1-before.webp",
-     "after": "changes/18df948/EventCard-1-after.webp"
+     "name": "DetailComparison",
+     "label": "Mobile: one competitor at a time (tap one near the edge and the tabs scroll it to the midd",
+     "before": "changes/e2d6fd6/DetailComparison-2-before.webp",
+     "after": "changes/e2d6fd6/DetailComparison-2-after.webp"
     },
     {
      "name": "DrawerCard",
      "label": "No profile: Time and title only. A button sits beside the title.",
-     "before": "changes/18df948/DrawerCard-0-before.webp",
-     "after": "changes/18df948/DrawerCard-0-after.webp"
+     "before": "changes/e2d6fd6/DrawerCard-0-before.webp",
+     "after": "changes/e2d6fd6/DrawerCard-0-after.webp"
     },
     {
      "name": "DrawerCard",
      "label": "1 profile: First and last name, role, company.",
-     "before": "changes/18df948/DrawerCard-1-before.webp",
-     "after": "changes/18df948/DrawerCard-1-after.webp"
+     "before": "changes/e2d6fd6/DrawerCard-1-before.webp",
+     "after": "changes/e2d6fd6/DrawerCard-1-after.webp"
     },
     {
      "name": "DrawerCard",
      "label": "2 profiles: Name, role, company. Each profile is as wide as its content.",
-     "before": "changes/18df948/DrawerCard-2-before.webp",
-     "after": "changes/18df948/DrawerCard-2-after.webp",
+     "before": "changes/e2d6fd6/DrawerCard-2-before.webp",
+     "after": "changes/e2d6fd6/DrawerCard-2-after.webp",
      "moreParts": 26
     },
     {
      "name": "WebinarCard",
      "label": "No speaker / 1 speaker / 2 speakers",
-     "before": "changes/18df948/WebinarCard-0-before.webp",
-     "after": "changes/18df948/WebinarCard-0-after.webp"
+     "before": "changes/e2d6fd6/WebinarCard-0-before.webp",
+     "after": "changes/e2d6fd6/WebinarCard-0-after.webp"
     },
     {
      "name": "WebinarCard",
      "label": "3 speakers / 4 speakers / 5 speakers",
-     "before": "changes/18df948/WebinarCard-1-before.webp",
-     "after": "changes/18df948/WebinarCard-1-after.webp"
+     "before": "changes/e2d6fd6/WebinarCard-1-before.webp",
+     "after": "changes/e2d6fd6/WebinarCard-1-after.webp"
     },
     {
      "name": "WebinarCard",
      "label": "6 speakers / More than 6",
-     "before": "changes/18df948/WebinarCard-2-before.webp",
-     "after": "changes/18df948/WebinarCard-2-after.webp",
+     "before": "changes/e2d6fd6/WebinarCard-2-before.webp",
+     "after": "changes/e2d6fd6/WebinarCard-2-after.webp",
      "moreParts": 4
     },
     {
-     "name": "Carousel",
-     "label": "Single card",
-     "before": "changes/18df948/Carousel-0-before.webp",
-     "after": "changes/18df948/Carousel-0-after.webp"
+     "name": "Accordion",
+     "label": "Content cards",
+     "before": "changes/e2d6fd6/Accordion-0-before.webp",
+     "after": "changes/e2d6fd6/Accordion-0-after.webp"
+    },
+    {
+     "name": "Accordion",
+     "label": "Mobile — 375px screen, 16px page margins",
+     "before": "changes/e2d6fd6/Accordion-1-before.webp",
+     "after": "changes/e2d6fd6/Accordion-1-after.webp"
     }
    ],
    "v": 2,
@@ -7878,20 +7920,32 @@
      "text": "the gallery card should show only the starting time, formatted like the drawers"
     },
     {
+     "about": "EventCard",
+     "text": "use the 9a PST format, including after the date"
+    },
+    {
      "about": "EventCalendar",
      "text": "grid cards show only the start time; times match the drawers"
     },
     {
+     "about": "EventCalendar",
+     "text": "grid cards and times use the 9a PST format"
+    },
+    {
      "about": "WebinarCard",
-     "text": "dates match the event cards"
+     "text": "dates and times match the event cards (9a PST)"
     },
     {
      "about": "DrawerCard",
      "text": "one time format everywhere (no \"Noon\")"
     },
     {
+     "about": "DrawerCard",
+     "text": "use the 9a PST format, like the event cards"
+    },
+    {
      "about": "Dates and times",
-     "text": "one time format across drawers, the calendar and cards"
+     "text": "the short 9a PST format is the one format for cards, drawers and the calendar"
     },
     {
      "about": "ProfileModal",
@@ -7902,8 +7956,16 @@
      "text": "the optional subheadings are removed; logos stay centered with the heading"
     },
     {
+     "about": "FeatureMatrix",
+     "text": "the mobile competitor tabs should scroll the tapped one to the middle, like Tabs"
+    },
+    {
      "about": "Tabs",
      "text": "on mobile, tapping a tab near the edge should scroll it to the middle so readers see there are more; the last tab rests on the right"
+    },
+    {
+     "about": "Tabs",
+     "text": "the comparison tables' competitor tabs behave the same"
     },
     {
      "about": "Typography",
@@ -7914,21 +7976,29 @@
      "text": "needed a TM superscript style, top-aligned and smaller, with sizes for headings and body"
     },
     {
-     "about": "Carousel",
-     "text": "its sample event card now shows the start time in the shared format (\"11:00 AM PST\")."
+     "about": "Accordion",
+     "text": "its session cards are drawer cards, so their times use the 9a format"
+    },
+    {
+     "about": "DetailComparison",
+     "text": "the mobile competitor tabs should scroll the tapped one to the middle, like Tabs"
     }
    ],
-   "headline": "Updated 9 components · Updated Content and Typography guides",
+   "headline": "Updated 10 components · Updated Content and Typography guides",
    "highlights": [
-    "Updated components: 9, including EventCalendar, Typography and Tabs",
+    "Updated components: 10, including Typography, FeatureMatrix and Tabs",
     "Updated guides: Content and Typography"
    ],
    "minor": false,
    "shas": [
     "6811ba963374316fccc4b40cd8de420d3a6d4101",
-    "18df9488415de71b5f0cd9f8cae1c1751e0c190f"
+    "18df9488415de71b5f0cd9f8cae1c1751e0c190f",
+    "844f96a97e45cda747f6eb927bc82fce594f0dd9",
+    "db8879e7143b95c5f94fc78405349a0f29a8edc4",
+    "46689adb25c6a085bf4e114bb7b2ba2bc083fff0",
+    "e2d6fd607d62f9d2367372da0b3cd09bab7c97e8"
    ],
-   "order": 179494290200
+   "order": 179494582900
   }
  ]
 }
