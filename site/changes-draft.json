@@ -8,7 +8,7 @@
   "Claude"
  ],
  "approvedBy": [],
- "commits": 2,
+ "commits": 7,
  "base": "90879e54b0135206383c3a9ef055b83cfde1b96b",
  "pr": null,
  "items": [
@@ -118,14 +118,28 @@
      "text": "Figma name: Hero with background visual · Props: `layout=\"split\"` or `\"left\"`, `visual` · Use it for: Campaign and product launch pages that want the Lead Form hero's look without a form"
     },
     {
-     "kind": "added",
-     "text": "**Background visual (split and left-aligned):** the same graphic as the Lead Form hero (`visual-star.svg` in Images; pass its address as `visual`). With split media it sits behind the image or video, starting 7.5% left of it and 15% above, 165% of its width, the media on top. With left-aligned text the copy keeps a 600px column and the graphic fills the right side, centered top to bottom at 110% of that side's width. The section clips whatever runs past its edges. It is decoration only (`aria-hidden`) and never sits under the copy. Not for centered heroes or heroes on a photo or video, where it would fight the copy or the picture."
+     "kind": "changed",
+     "text": "**Lead form:** copy on the left, the Form (`variant=\"gate\"`) on the right on `surface-blue-100` with a deeper shadow. `visual` places a decorative graphic behind the form (see Background visual).",
+     "was": "**Lead form:** copy on the left, the Form (`variant=\"gate\"`) on the right on `surface-blue-100` with a deeper shadow. `visual` places a decorative graphic behind the form."
     },
     {
      "kind": "added",
-     "text": "**Background visual on phones:** with split media it rises from behind the foot of the image into the space above, and stops short of the copy; with left-aligned text it is hidden, since there is no side to fill."
+     "text": "A decorative graphic behind the hero's content: the wireframe star from the Lead Form hero (`visual-star.svg` in Images). It adds depth to a hero that has no photo, and marks campaign and launch pages."
+    },
+    {
+     "kind": "added",
+     "text": "**Where it works:** `layout=\"form\"` (behind the form), `layout=\"split\"` (behind the image or video) and `layout=\"left\"` (filling the empty right side). Pass the image's address, or an inline SVG node, as `visual`. It is ignored on centered heroes (it would sit under the copy) and on heroes with a background photo or video (it would fight the picture)."
+    },
+    {
+     "kind": "added",
+     "text": "**The image:** use the supplied star. Any replacement must be a vector (SVG) or a transparent PNG at least 1840px wide, roughly square, light and airy (pale blues, thin lines, lots of empty space), with no text, logos or faces in it. Never recolor, rotate or crop the supplied file."
+    },
+    {
+     "kind": "added",
+     "text": "**Layering:** the graphic always sits behind: under the form, under the media, and never under the copy. The form or media keeps its own background and shadow on top of it."
     }
-   ]
+   ],
+   "moreNotes": 11
   },
   {
    "type": "component",
@@ -165,6 +179,17 @@
   },
   {
    "type": "component",
+   "action": "added",
+   "name": "StandardTable",
+   "notes": [
+    {
+     "kind": "added",
+     "text": "The standard table: a plain table of copy: a header row, then rows of text, in a white card. Use it for information that reads across, such as module overviews, plan details, specifications and schedules. It has the same parts as MarketingTable (a header row group and a body row group, each cell labeled with its column on phones) without the photo header, row icons or featured column. To set requirements beside what Qualys offers, use MarketingTable; to compare Qualys with competitors, FeatureMatrix or DetailComparison."
+    }
+   ]
+  },
+  {
+   "type": "component",
    "action": "changed",
    "name": "Stats",
    "what": [
@@ -180,17 +205,6 @@
     "look"
    ],
    "weight": 1
-  },
-  {
-   "type": "component",
-   "action": "added",
-   "name": "Table",
-   "notes": [
-    {
-     "kind": "added",
-     "text": "A plain table of copy: a header row, then rows of text, in a white card. Use it for information that reads across, such as module overviews, plan details, specifications and schedules. It has the same parts as MarketingTable (a header row group and a body row group, each cell labeled with its column on phones) without the photo header, row icons or featured column. To set requirements beside what Qualys offers, use MarketingTable; to compare Qualys with competitors, FeatureMatrix or DetailComparison."
-    }
-   ]
   },
   {
    "type": "component",
@@ -220,19 +234,19 @@
    "notes": [
     {
      "kind": "added",
-     "text": "Use: **Table** · When: Plain information in rows and columns, not a comparison: module overviews, plan details, specifications, schedules. `size=\"compact\"` for data; `striped` for long tables."
+     "text": "Use: **StandardTable** · When: Plain information in rows and columns, not a comparison: module overviews, plan details, specifications, schedules. `size=\"compact\"` for data; `striped` for long tables."
     },
     {
      "kind": "added",
-     "text": "Table: Table (standard) · First column: Any · Min: 2 columns · Max: 6 columns · Why the max: Each column keeps about 200px for wrapping copy in the content column."
+     "text": "Table: StandardTable (standard) · First column: Any · Min: 2 columns · Max: 6 columns · Why the max: Each column keeps about 200px for wrapping copy in the content column."
     },
     {
      "kind": "added",
-     "text": "Table: Table (compact) · First column: Any · Min: 2 columns · Max: 8 columns · Why the max: Short values need less room; past what fits at 96px a column, the table scrolls sideways."
+     "text": "Table: StandardTable (compact) · First column: Any · Min: 2 columns · Max: 8 columns · Why the max: Short values need less room; past what fits at 96px a column, the table scrolls sideways."
     },
     {
      "kind": "changed",
-     "text": "**Why a minimum of one:** a comparison needs at least one column to compare against. With none, use a list instead of a table. A Table needs two: with one column it is a list.",
+     "text": "**Why a minimum of one:** a comparison needs at least one column to compare against. With none, use a list instead of a table. A StandardTable needs two: with one column it is a list.",
      "was": "**Why a minimum of one:** a comparison needs at least one column to compare against. With none, use a list instead of a table."
     }
    ],
@@ -260,21 +274,25 @@
  "v": 2,
  "why": [
   {
-   "about": "Table",
-   "text": "needed a standard copy table, with a compact variant for data and alternating row colors, using the same structure as MarketingTable"
-  },
-  {
    "about": "Comparing",
    "text": "the new Table and its column limits"
   },
   {
    "about": "Hero",
    "text": "a Hero variant with the background elements of the lead form module"
+  },
+  {
+   "about": "Hero",
+   "text": "the hero with a background image element needs usage notes on how the image behaves and displays"
+  },
+  {
+   "about": "StandardTable",
+   "text": "call it standard table"
   }
  ],
- "headline": "Added Table · Updated 19 components",
+ "headline": "Added StandardTable · Updated 19 components",
  "highlights": [
-  "New component: Table",
+  "New component: StandardTable",
   "Updated components: 19, including Hero, MarketingTable and EventBanner"
  ],
  "minor": false
