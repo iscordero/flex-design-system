@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-11-25T23:26:47Z",
+    "at": "2026-11-25T23:29:46Z",
     "by": "Isabel",
-    "note": "Table renamed StandardTable (the standard table: copy, compact for data, striped rows).",
+    "note": "Hero: usage notes for the background visual (where it works, the image, layering, size, overflow, tablet and mobile behavior, accessibility). Table renamed StandardTable.",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

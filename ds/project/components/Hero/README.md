@@ -26,13 +26,32 @@ The top-of-page module from the Figma Hero page (Ready for Dev): an eyebrow, a d
 - **Split:** copy up to 600px (at every width above mobile), 56px (`spacing-5xl`), media. Images are 14:9 (560 × 360) and videos 16:9, both `radius-lg`. Impact centers the copy on the media; Standard aligns both to the top.
 - **Left and center:** the copy block is 1000px at most; centered heroes center everything.
 - **On a photo or video:** `radius-lg`. `tone: 'dark'` (default) puts black at 50% over the picture, with white copy; `tone: 'light'` puts a white veil over it, with `text-primary` copy: 82% under centered copy; under left-aligned copy 92% fading to 30% at the far side, so the photo still shows there (a flat 86% on mobile). Every photo and video sits in a rounded card as wide as the content column (up to 1440px), with its edges lined up with the Nav and the other modules. Left-aligned copy is 56px from the top and bottom and 36px (`spacing-3xl`) from the sides inside the card; centered copy has 36px all round; 24px × 20px on phones. `background.contained: false` gives the older card instead, inset 16px (`spacing-rg`) from the window on every side (8px on phones). Actions are a primary Button and an inverted TextLink with an arrow, 16px apart.
-- **Lead form:** copy on the left, the Form (`variant="gate"`) on the right on `surface-blue-100` with a deeper shadow. `visual` places a decorative graphic behind the form.
-- **Background visual (split and left-aligned):** the same graphic as the Lead Form hero (`visual-star.svg` in Images; pass its address as `visual`). With split media it sits behind the image or video, starting 7.5% left of it and 15% above, 165% of its width, the media on top. With left-aligned text the copy keeps a 600px column and the graphic fills the right side, centered top to bottom at 110% of that side's width. The section clips whatever runs past its edges. It is decoration only (`aria-hidden`) and never sits under the copy. Not for centered heroes or heroes on a photo or video, where it would fight the copy or the picture.
-- **Background visual on phones:** with split media it rises from behind the foot of the image into the space above, and stops short of the copy; with left-aligned text it is hidden, since there is no side to fill.
+- **Lead form:** copy on the left, the Form (`variant="gate"`) on the right on `surface-blue-100` with a deeper shadow. `visual` places a decorative graphic behind the form (see Background visual).
 
 **Tablet (768–1023px):** split heroes stay side by side, copy 60% and media 40%, and the heading scales down. The lead form drops under the copy.
 
 **Mobile (under 768px):** 24px × 20px padding. Media moves above the copy, 20px apart. Eyebrow 16px, heading 36px, body 18px (16px beside media or a form). Buttons stack full width, 8px apart. On a photo they keep their own width and stack 16px apart.
+
+**Background visual**
+
+A decorative graphic behind the hero's content: the wireframe star from the Lead Form hero (`visual-star.svg` in Images). It adds depth to a hero that has no photo, and marks campaign and launch pages.
+
+- **Where it works:** `layout="form"` (behind the form), `layout="split"` (behind the image or video) and `layout="left"` (filling the empty right side). Pass the image's address, or an inline SVG node, as `visual`. It is ignored on centered heroes (it would sit under the copy) and on heroes with a background photo or video (it would fight the picture).
+- **The image:** use the supplied star. Any replacement must be a vector (SVG) or a transparent PNG at least 1840px wide, roughly square, light and airy (pale blues, thin lines, lots of empty space), with no text, logos or faces in it. Never recolor, rotate or crop the supplied file.
+- **Layering:** the graphic always sits behind: under the form, under the media, and never under the copy. The form or media keeps its own background and shadow on top of it.
+- **Size and position:**
+  - Lead form: 165% of the form's width, starting 7.5% left of the form and 15% above it.
+  - Split media: the same, measured from the image or video.
+  - Left-aligned text: the copy keeps a 600px column; the graphic fills the right side at 110% of its width, centered top to bottom, starting 4% in from the side's left edge. That side is at least 360px tall.
+- **Overflow:** the graphic is larger than its box on purpose. The hero section clips it at its own edges (`overflow: hidden`), so it can bleed off the top, bottom and right of the section but never into the next section or across the page.
+- **Display:** shown in full color at full opacity, no blend mode, no shadow. It doesn't move: no parallax, animation or hover effect, so there is nothing to switch off for reduced motion.
+- **Tablet (768–1023px):** split and left-aligned heroes keep their row, so the graphic keeps its place and scales with the narrower side. The lead form drops under the copy, and the graphic follows the form.
+- **Mobile (under 768px):**
+  - Split media: the image moves above the copy, and the graphic rises from behind the image's foot into the space above it (124% of the image's width, its bottom edge 4% below the image), so it never reaches the copy.
+  - Lead form: the graphic sits behind the form at 184% of its width, starting 12% down and 27.5% to the left.
+  - Left-aligned text: hidden, because there is no empty side to fill.
+- **Accessibility:** decoration only. It is `aria-hidden`, its image has empty `alt`, and it takes no pointer events, so it can't be clicked or focused.
+- **Use it once per page,** in the hero. Don't add it to other sections, and don't place text, buttons or badges over it.
 
 **Character counts (from Figma)**
 
