@@ -6382,6 +6382,10 @@
     {
      "about": "Hero",
      "text": "The split hero's text column is wider, up to 600px (was 520px), set in review."
+    },
+    {
+     "about": "Hero",
+     "text": "a Hero variant with the background elements of the lead form module"
     }
    ],
    "headline": "Updated Hero",
@@ -7551,6 +7555,10 @@
     {
      "about": "Comparing",
      "text": "developers need the column limits where they choose a table"
+    },
+    {
+     "about": "Comparing",
+     "text": "the new Table and its column limits"
     }
    ],
    "headline": "Updated Choosing Components guide",
@@ -7999,6 +8007,162 @@
     "e2d6fd607d62f9d2367372da0b3cd09bab7c97e8"
    ],
    "order": 179494582900
+  },
+  {
+   "id": "69f25ac",
+   "sha": "69f25acf4e7a2df61abfb063f6e726ac9539f2b4",
+   "date": "2026-11-25",
+   "author": "Isabel Cordero",
+   "with": [
+    "Claude"
+   ],
+   "approvedBy": [],
+   "pr": null,
+   "items": [
+    {
+     "type": "component",
+     "action": "changed",
+     "name": "Hero",
+     "what": [
+      "look",
+      "props",
+      "docs"
+     ],
+     "weight": 30,
+     "notes": [
+      {
+       "kind": "added",
+       "text": "Figma name: Hero with background visual · Props: `layout=\"split\"` or `\"left\"`, `visual` · Use it for: Campaign and product launch pages that want the Lead Form hero's look without a form"
+      },
+      {
+       "kind": "added",
+       "text": "**Background visual (split and left-aligned):** the same graphic as the Lead Form hero (`visual-star.svg` in Images; pass its address as `visual`). With split media it sits behind the image or video, starting 7.5% left of it and 15% above, 165% of its width, the media on top. With left-aligned text the copy keeps a 600px column and the graphic fills the right side, centered top to bottom at 110% of that side's width. The section clips whatever runs past its edges. It is decoration only (`aria-hidden`) and never sits under the copy. Not for centered heroes or heroes on a photo or video, where it would fight the copy or the picture."
+      },
+      {
+       "kind": "added",
+       "text": "**Background visual on phones:** with split media it rises from behind the foot of the image into the space above, and stops short of the copy; with left-aligned text it is hidden, since there is no side to fill."
+      }
+     ]
+    },
+    {
+     "type": "component",
+     "action": "added",
+     "name": "Table",
+     "notes": [
+      {
+       "kind": "added",
+       "text": "A plain table of copy: a header row, then rows of text, in a white card. Use it for information that reads across, such as module overviews, plan details, specifications and schedules. It has the same parts as MarketingTable (a header row group and a body row group, each cell labeled with its column on phones) without the photo header, row icons or featured column. To set requirements beside what Qualys offers, use MarketingTable; to compare Qualys with competitors, FeatureMatrix or DetailComparison."
+      }
+     ]
+    },
+    {
+     "type": "guide",
+     "name": "Comparing",
+     "guide": "Choosing Components",
+     "gid": "guide-11",
+     "section": "Comparing",
+     "action": "changed",
+     "notes": [
+      {
+       "kind": "added",
+       "text": "Use: **Table** · When: Plain information in rows and columns, not a comparison: module overviews, plan details, specifications, schedules. `size=\"compact\"` for data; `striped` for long tables."
+      },
+      {
+       "kind": "added",
+       "text": "Table: Table (standard) · First column: Any · Min: 2 columns · Max: 6 columns · Why the max: Each column keeps about 200px for wrapping copy in the content column."
+      },
+      {
+       "kind": "added",
+       "text": "Table: Table (compact) · First column: Any · Min: 2 columns · Max: 8 columns · Why the max: Short values need less room; past what fits at 96px a column, the table scrolls sideways."
+      },
+      {
+       "kind": "changed",
+       "text": "**Why a minimum of one:** a comparison needs at least one column to compare against. With none, use a list instead of a table. A Table needs two: with one column it is a list.",
+       "was": "**Why a minimum of one:** a comparison needs at least one column to compare against. With none, use a list instead of a table."
+      }
+     ],
+     "moreNotes": 2,
+     "minor": true
+    },
+    {
+     "type": "guide",
+     "name": "Block modules",
+     "guide": "Layout, Spacing and Radius",
+     "gid": "guide-4",
+     "section": "Block modules",
+     "action": "changed",
+     "wording": true,
+     "minor": true
+    },
+    {
+     "type": "site",
+     "action": "changed",
+     "name": "Reference site",
+     "minor": true
+    }
+   ],
+   "shots": [
+    {
+     "name": "Table",
+     "label": "Standard",
+     "after": "changes/69f25ac/Table-0-after.webp",
+     "new": true
+    },
+    {
+     "name": "Table",
+     "label": "Standard · striped",
+     "after": "changes/69f25ac/Table-1-after.webp",
+     "new": true
+    },
+    {
+     "name": "Hero",
+     "label": "Split media with the background visual",
+     "new": true,
+     "after": "changes/69f25ac/Hero-0-after.webp"
+    },
+    {
+     "name": "Hero",
+     "label": "Left-aligned text with the background visual",
+     "new": true,
+     "after": "changes/69f25ac/Hero-1-after.webp"
+    },
+    {
+     "name": "Hero",
+     "label": "Mobile",
+     "before": "changes/69f25ac/Hero-2-before.webp",
+     "after": "changes/69f25ac/Hero-2-after.webp"
+    }
+   ],
+   "v": 2,
+   "why": [
+    {
+     "about": "Table",
+     "text": "needed a standard copy table, with a compact variant for data and alternating row colors, using the same structure as MarketingTable"
+    },
+    {
+     "about": "Comparing",
+     "text": "the new Table and its column limits"
+    },
+    {
+     "about": "Hero",
+     "text": "a Hero variant with the background elements of the lead form module"
+    },
+    {
+     "about": "Block modules",
+     "text": "Table is a block module, so it joins the list."
+    }
+   ],
+   "headline": "Added Table · Updated Hero",
+   "highlights": [
+    "New component: Table",
+    "Updated Hero"
+   ],
+   "minor": false,
+   "shas": [
+    "65ab626ddf29ef3b265397e9a9a79dfa7a3f290c",
+    "69f25acf4e7a2df61abfb063f6e726ac9539f2b4"
+   ],
+   "order": 179564852600
   }
  ]
 }

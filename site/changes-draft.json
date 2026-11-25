@@ -2,271 +2,252 @@
  "id": "draft",
  "sha": "",
  "draft": true,
- "date": "2026-11-17",
+ "date": "2026-11-25",
  "author": "Isabel",
  "with": [
   "Claude"
  ],
  "approvedBy": [],
- "commits": 6,
- "base": "39ca6c5e2315cc1408293b93a10c9343c6e5f428",
+ "commits": 2,
+ "base": "90879e54b0135206383c3a9ef055b83cfde1b96b",
  "pr": null,
  "items": [
   {
    "type": "component",
    "action": "changed",
-   "name": "Accordion",
+   "name": "AccordionModule",
    "what": [
     "look"
    ],
-   "weight": 12,
-   "follows": [
-    "DrawerCard"
-   ]
+   "weight": 1
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "AppGrid",
+   "what": [
+    "look"
+   ],
+   "weight": 1
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "CardModule",
+   "what": [
+    "look"
+   ],
+   "weight": 1
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Carousel",
+   "what": [
+    "look"
+   ],
+   "weight": 1
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "CtaModule",
+   "what": [
+    "look"
+   ],
+   "weight": 1
   },
   {
    "type": "component",
    "action": "changed",
    "name": "DetailComparison",
    "what": [
-    "look",
-    "docs"
+    "look"
    ],
-   "weight": 9,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Mobile (the table narrower than 768px):** no card, on the page background. Tabs pick one competitor (every competitor is a tab, not only the picked ones). When they don't fit, the tabs scroll sideways and behave like Tabs: tapping one near the edge scrolls it to the middle, and the last one rests on the right. In each section the Qualys text (Ecru card) sits above the competitor's (outlined card), each under its logo.",
-     "was": "**Mobile (the table narrower than 768px):** no card, on the page background. Tabs pick one competitor; in each section the Qualys text (Ecru card) sits above the competitor's (outlined card), each under its logo."
-    }
-   ]
+   "weight": 1
   },
   {
    "type": "component",
    "action": "changed",
-   "name": "DrawerCard",
+   "name": "EventBanner",
    "what": [
-    "look",
-    "props",
-    "docs"
+    "look"
    ],
-   "weight": 6,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`, in the shared short time format: the hour and a lowercase a or p (\"9a\", \"12p\"), minutes only when they aren't :00 (\"9:30a\"), a range joined by a spaced en dash (\"8a – 12p\"), then the time zone if any (\"9a PST\"): \"8a – 12p\" (not \"Noon\" or \"8:00 AM\"; other spellings are rewritten); 10px; title in Wix Madefor Text SemiBold 24px, line height 1.2, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time.",
-     "was": "**Card:** white, `radius-lg`, `shadow-drawer`, 24px padding (16px on mobile). Time in IBM Plex Sans Medium 16px `text-secondary`; 10px; title in Wix Madefor Text SemiBold 24px, line height 1.2, −2% (under 180 characters, clamped at two lines). A 30px chevron sits top right, level with the time."
-    }
-   ]
+   "weight": 3
   },
   {
    "type": "component",
    "action": "changed",
    "name": "EventCalendar",
    "what": [
-    "look",
-    "docs"
-   ],
-   "weight": 10,
-   "notes": [
-    {
-     "kind": "added",
-     "text": "`time` is the event's time or time range, such as \"10a – 11a PST\" or \"All day\". It is shown in the shared short time format: the hour and a lowercase a or p (\"9a\", \"12p\"), minutes only when they aren't :00 (\"9:30a\"), a range joined by a spaced en dash (\"8a – 12p\"), then the time zone if any (\"9a PST\"), the same as on DrawerCards. Other spellings (\"10:00 AM – 11:00 AM PST\", \"9:30am\", \"14:00\", \"Noon\") are rewritten to it; text that isn't a time is shown as given."
-    },
-    {
-     "kind": "changed",
-     "text": "**Row:** the time (170px, 150px on tablet, so a range with minutes such as \"10:30a – 11:30a PST\" fits on one line on desktop; Medium 16px `text-secondary`; \"All day\" when an event has none), the event type icon, the title (Wix Madefor Text SemiBold 18px, two lines at most) and a secondary Button, 140px wide.",
-     "was": "**Row:** the time (150px, Medium 16px `text-secondary`; \"All day\" when an event has none), the event type icon, the title (Wix Madefor Text SemiBold 18px, two lines at most) and a secondary Button, 140px wide."
-    },
-    {
-     "kind": "added",
-     "text": "**Card date:** the short date, a bullet, then the start time only, with its time zone: \"Jan 27, 2025 • 10a PST\". The end time is left out (the list view and the event page give the full range). Several days read \"Feb 4 – 6, 2025\" or \"Jan 30 – Feb 2, 2025\"; an event without a time reads \"Jan 1, 2025 • All day\". The hover card in the month view shows the same card."
-    },
-    {
-     "kind": "removed",
-     "text": "`time` is the text to show, such as \"10a – 11a PST\"."
-    }
-   ]
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "EventCard",
-   "what": [
-    "look",
-    "props",
-    "docs"
-   ],
-   "weight": 2,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Date:** short date, a bullet, then the start time only, with the time zone: \"Dec 10, 2026 • 11a PST\". Times use the shared short time format: the hour and a lowercase a or p (\"9a\", \"12p\"), minutes only when they aren't :00 (\"9:30a\"), a range joined by a spaced en dash (\"8a – 12p\"), then the time zone if any (\"9a PST\"), as on DrawerCards; another spelling after the bullet (\"11:00 AM PST\") is rewritten, and an end time is dropped.",
-     "was": "**Date:** short date, a bullet, then the time: \"Dec 10, 2026 • 11a PST\"."
-    }
-   ]
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "ExamplePage",
-   "what": [
     "look"
    ],
-   "weight": 4,
-   "follows": [
-    "FeatureMatrix"
-   ]
+   "weight": 1
   },
   {
    "type": "component",
    "action": "changed",
    "name": "FeatureMatrix",
    "what": [
-    "look",
-    "props",
-    "docs"
+    "look"
    ],
-   "weight": 24,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Columns:** `[{ id, name, logo }]`. Give every column its `logo`; without one a dashed slot holds the name (as in the preview, where competitor logos are placeholders). **Min 1, max 5** competitors beside Qualys; columns past the fifth competitor are left out, because the marks get too narrow to scan. Two to five read best on desktop.",
-     "was": "**Columns:** `[{ id, name, logo, subtitle }]`. Give every column its `logo`; without one a dashed slot holds the name (as in the preview, where competitor logos are placeholders). **Min 1, max 5** competitors beside Qualys; columns past the fifth competitor are left out, because the marks get too narrow to scan. Two to five read best on desktop."
-    },
-    {
-     "kind": "added",
-     "text": "**Header row:** the heading on the left and one logo per column, each logo centered in its column and on the heading's middle line. There are no subheadings: a table `subtitle` and column `subtitle`s are not shown (DetailComparison still uses them)."
-    },
-    {
-     "kind": "changed",
-     "text": "**Mobile (the table narrower than 768px):** no card, on the page background, 20px side padding. Qualys is compared with one competitor at a time, picked with Tabs (\"Compare Qualys With\"). When the competitors don't fit, the tabs scroll sideways and behave like Tabs: tapping a competitor near the edge scrolls it to the middle, and the last one rests on the right; the \"Show Differences Only\" Toggle hides the rows where both agree, and a section with none says \"No differences in this section.\" Columns are 96px each.",
-     "was": "**Mobile (the table narrower than 768px):** no card, on the page background, 20px side padding. Qualys is compared with one competitor at a time, picked with Tabs (\"Compare Qualys With\"); the \"Show Differences Only\" Toggle hides the rows where both agree, and a section with none says \"No differences in this section.\" Columns are 96px each."
-    }
-   ]
+   "weight": 1
   },
   {
    "type": "component",
    "action": "changed",
-   "name": "ProfileModal",
-   "what": [
-    "look",
-    "docs"
-   ],
-   "weight": 4,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Panel:** white, `radius-lg`, `shadow-drawer`, 24px padding, up to 1128px wide and centered; the height follows the bio up to 80% of the viewport.",
-     "was": "**Panel:** white, `radius-lg`, `shadow-drawer`, 24px padding, up to 1128px wide and centered; the height follows the bio up to 80% of the viewport, then the panel scrolls."
-    },
-    {
-     "kind": "added",
-     "text": "**Overflow:** the profile (photo, name, designation, logo) stays fixed on the left. When the bio is taller than the panel, only the About text scrolls (a thin scrollbar on its right; scrolling stops at its ends instead of moving the page); the \"About\" label and the links row stay in view. The text can be scrolled with the keyboard: it takes focus after the close button. On mobile the whole bottom sheet scrolls instead, photo first."
-    }
-   ]
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "ResourceCard",
+   "name": "GeneralContent",
    "what": [
     "look"
    ],
-   "weight": 0
+   "weight": 2
   },
   {
    "type": "component",
    "action": "changed",
-   "name": "Tabs",
-   "what": [
-    "look",
-    "docs"
-   ],
-   "weight": 17,
-   "notes": [
-    {
-     "kind": "changed",
-     "text": "**Mobile (or whenever the tabs don't fit):** the bar keeps its size and scrolls sideways inside its container; the right-most tab shows partly cut off as the cue that more exist.",
-     "was": "**Mobile:** the bar keeps its size and scrolls sideways inside its container; the right-most tab shows partly cut off as the cue that more exist. A selected tab scrolls into view."
-    },
-    {
-     "kind": "added",
-     "text": "**Picking a tab that's partly hidden:** the bar scrolls (300ms, smooth) to bring the picked tab to the middle, so tabs peek in on both sides and it's clear there are more. Near the ends the scroll stops at the edge: the first tab rests on the left, and the last tab rests on the right, which shows there are no more. Arrow keys, Home and End do the same. With reduced motion it jumps instead of sliding. The competitor tabs on FeatureMatrix and DetailComparison (mobile) are these Tabs, so they behave the same."
-    }
-   ]
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "Typography",
-   "what": [
-    "look",
-    "docs"
-   ],
-   "weight": 29,
-   "notes": [
-    {
-     "kind": "added",
-     "text": "**Trademark (TM):** a last section shows `<sup class=\"q-tm\">TM</sup>` after a sample in each display, heading and paragraph style, with the text size, the TM size and the ratio read back from the page. TM is 50% of headings, display text and stats, 60% of body text (8px at least), with its top on the text's cap height. See the Typography guide."
-    }
-   ]
-  },
-  {
-   "type": "component",
-   "action": "changed",
-   "name": "WebinarCard",
+   "name": "Hero",
    "what": [
     "look",
     "props",
     "docs"
    ],
-   "weight": 6,
+   "weight": 30,
    "notes": [
     {
-     "kind": "changed",
-     "text": "**Footer:** the date in Medium 16px `text-secondary` and the outlink icon. Use the short date, as on EventCard: \"Dec 10, 2026\", or \"Dec 10, 2026 • 11a PST\" for a live session (start time only, in the shared short time format).",
-     "was": "**Footer:** the date in Medium 16px `text-secondary` (\"Tue Dec 10, 2026\") and the outlink icon."
+     "kind": "added",
+     "text": "Figma name: Hero with background visual · Props: `layout=\"split\"` or `\"left\"`, `visual` · Use it for: Campaign and product launch pages that want the Lead Form hero's look without a form"
+    },
+    {
+     "kind": "added",
+     "text": "**Background visual (split and left-aligned):** the same graphic as the Lead Form hero (`visual-star.svg` in Images; pass its address as `visual`). With split media it sits behind the image or video, starting 7.5% left of it and 15% above, 165% of its width, the media on top. With left-aligned text the copy keeps a 600px column and the graphic fills the right side, centered top to bottom at 110% of that side's width. The section clips whatever runs past its edges. It is decoration only (`aria-hidden`) and never sits under the copy. Not for centered heroes or heroes on a photo or video, where it would fight the copy or the picture."
+    },
+    {
+     "kind": "added",
+     "text": "**Background visual on phones:** with split media it rises from behind the foot of the image into the space above, and stops short of the copy; with left-aligned text it is hidden, since there is no side to fill."
     }
    ]
   },
   {
-   "type": "guide",
-   "name": "Dates and times",
-   "guide": "Content",
-   "gid": "guide-1",
-   "section": "Dates and times",
+   "type": "component",
    "action": "changed",
-   "big": true,
+   "name": "LogoCarousel",
+   "what": [
+    "look"
+   ],
+   "weight": 1
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "LogoHierarchy",
+   "what": [
+    "look"
+   ],
+   "weight": 1
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "MarketingTable",
+   "what": [
+    "look"
+   ],
+   "weight": 9
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Media",
+   "what": [
+    "look"
+   ],
+   "weight": 1
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "Stats",
+   "what": [
+    "look"
+   ],
+   "weight": 1
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "TabModule",
+   "what": [
+    "look"
+   ],
+   "weight": 1
+  },
+  {
+   "type": "component",
+   "action": "added",
+   "name": "Table",
    "notes": [
     {
-     "kind": "changed",
-     "text": "**Dates and times:** long date \"Mon Dec 9, 2024\" for headers, detail pages and featured content; short date \"Dec 9, 2024\" on compact cards; date and time range \"Mon Dec 9, 2024 • 10a – 11a PST\" for events; time range alone \"8a – 12p\" when the date is already clear (drawer cards, the calendar list). Times use the short form: the hour and a lowercase a or p (\"9a\", \"12p\", never \"9:00 AM\" or \"Noon\"), minutes only when they aren't :00 (\"9:30a\"); ranges use a spaced en dash, and the time zone follows the last time. Event and webinar cards show the short date, a bullet and the start time only: \"Dec 10, 2026 • 11a PST\". Set dates and times in Medium (500).",
-     "was": "**Dates and times:** long date \"Mon Dec 9, 2024\" for headers, detail pages and featured content; short date \"Dec 9, 2024\" on compact cards; date and time range \"Mon Dec 9, 2024  10:00 – 11:00a PST\" for events; time range alone \"8:00 AM – 12:00 PM\" when the date is already clear. Event cards join the short date and start time with a bullet: \"Dec 10, 2026 • 11a PST\". Set dates and times in Medium (500)."
-    },
-    {
-     "kind": "changed",
-     "text": "Picture: Five date formats: long date Mon Dec 9, 2024; short date Dec 9, 2024; date and time Mon Dec 9, 2024, bullet, 10a to 11a PST; time range 8a to 12p; event card Dec 10, 2026, bullet, 11a PST."
+     "kind": "added",
+     "text": "A plain table of copy: a header row, then rows of text, in a white card. Use it for information that reads across, such as module overviews, plan details, specifications and schedules. It has the same parts as MarketingTable (a header row group and a body row group, each cell labeled with its column on phones) without the photo header, row icons or featured column. To set requirements beside what Qualys offers, use MarketingTable; to compare Qualys with competitors, FeatureMatrix or DetailComparison."
     }
    ]
   },
   {
+   "type": "component",
+   "action": "changed",
+   "name": "TestimonialCarousel",
+   "what": [
+    "look"
+   ],
+   "weight": 1
+  },
+  {
+   "type": "component",
+   "action": "changed",
+   "name": "TypographicHeader",
+   "what": [
+    "look"
+   ],
+   "weight": 1
+  },
+  {
    "type": "guide",
-   "name": "Trademark (TM)",
-   "guide": "Typography",
-   "gid": "guide-3",
-   "section": "Trademark (TM)",
-   "action": "added",
+   "name": "Comparing",
+   "guide": "Choosing Components",
+   "gid": "guide-11",
+   "section": "Comparing",
+   "action": "changed",
    "notes": [
     {
      "kind": "added",
-     "text": "Mark a trademark with the letters TM as a superscript, right after the word, with no space: `TruRisk<sup class=\"q-tm\">TM</sup>`. Type the two capital letters; don't use the ™ character, which each font draws at its own size and height. The `q-tm` class sets the size and position, so the same markup works in any style:"
+     "text": "Use: **Table** · When: Plain information in rows and columns, not a comparison: module overviews, plan details, specifications, schedules. `size=\"compact\"` for data; `striped` for long tables."
     },
     {
      "kind": "added",
-     "text": "**Top-aligned:** the top of the TM sits on the cap height of the text beside it (the top of a capital letter), not above it. It doesn't add space between lines."
+     "text": "Table: Table (standard) · First column: Any · Min: 2 columns · Max: 6 columns · Why the max: Each column keeps about 200px for wrapping copy in the content column."
+    },
+    {
+     "kind": "added",
+     "text": "Table: Table (compact) · First column: Any · Min: 2 columns · Max: 8 columns · Why the max: Short values need less room; past what fits at 96px a column, the table scrolls sideways."
+    },
+    {
+     "kind": "changed",
+     "text": "**Why a minimum of one:** a comparison needs at least one column to compare against. With none, use a list instead of a table. A Table needs two: with one column it is a list.",
+     "was": "**Why a minimum of one:** a comparison needs at least one column to compare against. With none, use a list instead of a table."
     }
-   ]
+   ],
+   "moreNotes": 2,
+   "minor": true
+  },
+  {
+   "type": "guide",
+   "name": "Block modules",
+   "guide": "Layout, Spacing and Radius",
+   "gid": "guide-4",
+   "section": "Block modules",
+   "action": "changed",
+   "wording": true,
+   "minor": true
   },
   {
    "type": "site",
@@ -279,86 +260,22 @@
  "v": 2,
  "why": [
   {
-   "about": "EventCard",
-   "text": "the gallery card should show only the starting time, formatted like the drawers"
+   "about": "Table",
+   "text": "needed a standard copy table, with a compact variant for data and alternating row colors, using the same structure as MarketingTable"
   },
   {
-   "about": "EventCard",
-   "text": "use the 9a PST format, including after the date"
+   "about": "Comparing",
+   "text": "the new Table and its column limits"
   },
   {
-   "about": "EventCalendar",
-   "text": "grid cards show only the start time; times match the drawers"
-  },
-  {
-   "about": "EventCalendar",
-   "text": "grid cards and times use the 9a PST format"
-  },
-  {
-   "about": "WebinarCard",
-   "text": "dates match the event cards"
-  },
-  {
-   "about": "WebinarCard",
-   "text": "dates and times match the event cards (9a PST)"
-  },
-  {
-   "about": "DrawerCard",
-   "text": "one time format everywhere (no \"Noon\")"
-  },
-  {
-   "about": "DrawerCard",
-   "text": "use the 9a PST format, like the event cards"
-  },
-  {
-   "about": "Dates and times",
-   "text": "one time format across drawers, the calendar and cards"
-  },
-  {
-   "about": "Dates and times",
-   "text": "the short 9a PST format is the one format for cards, drawers and the calendar"
-  },
-  {
-   "about": "ProfileModal",
-   "text": "the profile should stay fixed on the left while a long bio scrolls"
-  },
-  {
-   "about": "FeatureMatrix",
-   "text": "the optional subheadings are removed; logos stay centered with the heading"
-  },
-  {
-   "about": "FeatureMatrix",
-   "text": "the mobile competitor tabs should scroll the tapped one to the middle, like Tabs"
-  },
-  {
-   "about": "Tabs",
-   "text": "on mobile, tapping a tab near the edge should scroll it to the middle so readers see there are more; the last tab rests on the right"
-  },
-  {
-   "about": "Tabs",
-   "text": "the comparison tables' competitor tabs behave the same"
-  },
-  {
-   "about": "Typography",
-   "text": "needed a TM superscript style, top-aligned and smaller, with sizes for headings and body"
-  },
-  {
-   "about": "Trademark (TM)",
-   "text": "needed a TM superscript style, top-aligned and smaller, with sizes for headings and body"
-  },
-  {
-   "about": "Accordion",
-   "text": "its session cards are drawer cards, so their times use the 9a format"
-  },
-  {
-   "about": "DetailComparison",
-   "text": "the mobile competitor tabs should scroll the tapped one to the middle, like Tabs"
+   "about": "Hero",
+   "text": "a Hero variant with the background elements of the lead form module"
   }
  ],
- "headline": "Updated 12 components · Updated Content and Typography guides",
+ "headline": "Added Table · Updated 19 components",
  "highlights": [
-  "Updated components: 12, including Typography, FeatureMatrix and Tabs",
-  "Updated guides: Content and Typography"
+  "New component: Table",
+  "Updated components: 19, including Hero, MarketingTable and EventBanner"
  ],
  "minor": false
 }
