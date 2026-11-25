@@ -1,11 +1,11 @@
-<!-- @dsCard group="Page modules · Heroes and headers" height=6474 width=1440 subtitle="Block module · Hero in each layout: split media, text only, on a photo or video, with a lead form; then mobile." -->
+<!-- @dsCard group="Page modules · Heroes and headers" height=8433 width=1440 subtitle="Block module · Hero in each layout: split media, text only, on a photo or video, with a lead form; then mobile." -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>Hero — preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}</style>
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-100)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;box-shadow:var(--shadow-card)}.phone .cap{padding:0 0 var(--spacing-xs);background:var(--surface-neutral-100)}.tablet{width:834px;margin:0 var(--spacing-xl) var(--spacing-xl);box-shadow:var(--shadow-card)}</style>
 </head>
 <body>
 <div id="root"></div>
@@ -32,12 +32,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
   cap('Left-aligned on a photo · light'), hero({size: 'rg', background: {src: OFFICE, tone: 'light'}, actions: onPhoto('light')}),
   cap('Center-aligned on a photo'), hero({layout: 'center', size: 'rg', background: {src: BUILDING}, actions: onPhoto()}),
   cap('Left-aligned on a video (placeholder)'), hero({size: 'rg', background: {video: true}, actions: onPhoto()}),
+  cap('Split media with the background visual'), hero({media: {}, visual: STAR}),
+  cap('Left-aligned text with the background visual'), hero({layout: 'left', visual: STAR}),
   cap('Lead form'), formHero(),
   cap('Tablet · split media'), h('div', {className: 'tablet'}, hero({media: {}})),
   cap('Mobile'), h('div', {className: 'phones'},
     h('div', {className: 'phone'}, hero({media: {}})),
     h('div', {className: 'phone'}, hero({size: 'rg', background: {src: BUILDING}, actions: onPhoto()})),
-    h('div', {className: 'phone'}, formHero()))));
+    h('div', {className: 'phone'}, formHero()),
+    h('div', {className: 'phone'}, hero({media: {}, visual: STAR})))));
 </script>
 </body>
 </html>

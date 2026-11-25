@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"Qualys","components":[{"name":"Button"},{"name":"Hyperlink"},{"name":"SocialButton"},{"name":"TextLink"},{"name":"BlogCard"},{"name":"Card"},{"name":"InlinePromoCard"},{"name":"IntegrationCard"},{"name":"ResourceCard"},{"name":"WebinarCard"},{"name":"Carousel"},{"name":"LogoCarousel"},{"name":"LogoHierarchy"},{"name":"TestimonialCard"},{"name":"TestimonialCarousel"},{"name":"AppliedFilters"},{"name":"FilterBar"},{"name":"FilterButton"},{"name":"FilterChip"},{"name":"FilterChipGroup"},{"name":"FilterDrawer"},{"name":"FilterDropdown"},{"name":"Checkbox"},{"name":"DemoRequestWizard"},{"name":"Form"},{"name":"FormModal"},{"name":"Radio"},{"name":"SearchBar"},{"name":"Select"},{"name":"TextField"},{"name":"Toggle"},{"name":"Flag"},{"name":"Icon"},{"name":"Marker"},{"name":"Tag"},{"name":"Breadcrumbs"},{"name":"Footer"},{"name":"Nav"},{"name":"NavBanner"},{"name":"AlertDialog"},{"name":"CookieBanner"},{"name":"ExitIntent"},{"name":"HoverCard"},{"name":"Modal"},{"name":"NotificationBar"},{"name":"Overlay"},{"name":"SessionTimeout"},{"name":"SuccessConfirmation"},{"name":"Toast"},{"name":"ToastStack"},{"name":"Tooltip"},{"name":"CtaModule"},{"name":"EventCalendar"},{"name":"EventBanner"},{"name":"AppGrid"},{"name":"FeatureList"},{"name":"SpeakerList"},{"name":"EventCard"},{"name":"EventType"},{"name":"GeneralContent"},{"name":"Hero"},{"name":"Media"},{"name":"TypographicHeader"},{"name":"Avatar"},{"name":"ProfileCard"},{"name":"ProfileGrid"},{"name":"ProfileModal"},{"name":"StatCard"},{"name":"Stats"},{"name":"CardModule"},{"name":"DetailComparison"},{"name":"FeatureMatrix"},{"name":"MarketingTable"},{"name":"Accordion"},{"name":"AccordionModule"},{"name":"Drawer"},{"name":"DrawerCard"},{"name":"TabModule"},{"name":"Tabs"}]} */
+/* @ds-bundle: {"format":4,"namespace":"Qualys","components":[{"name":"Button"},{"name":"Hyperlink"},{"name":"SocialButton"},{"name":"TextLink"},{"name":"BlogCard"},{"name":"Card"},{"name":"InlinePromoCard"},{"name":"IntegrationCard"},{"name":"ResourceCard"},{"name":"WebinarCard"},{"name":"Carousel"},{"name":"LogoCarousel"},{"name":"LogoHierarchy"},{"name":"TestimonialCard"},{"name":"TestimonialCarousel"},{"name":"AppliedFilters"},{"name":"FilterBar"},{"name":"FilterButton"},{"name":"FilterChip"},{"name":"FilterChipGroup"},{"name":"FilterDrawer"},{"name":"FilterDropdown"},{"name":"Checkbox"},{"name":"DemoRequestWizard"},{"name":"Form"},{"name":"FormModal"},{"name":"Radio"},{"name":"SearchBar"},{"name":"Select"},{"name":"TextField"},{"name":"Toggle"},{"name":"Flag"},{"name":"Icon"},{"name":"Marker"},{"name":"Tag"},{"name":"Breadcrumbs"},{"name":"Footer"},{"name":"Nav"},{"name":"NavBanner"},{"name":"AlertDialog"},{"name":"CookieBanner"},{"name":"ExitIntent"},{"name":"HoverCard"},{"name":"Modal"},{"name":"NotificationBar"},{"name":"Overlay"},{"name":"SessionTimeout"},{"name":"SuccessConfirmation"},{"name":"Toast"},{"name":"ToastStack"},{"name":"Tooltip"},{"name":"CtaModule"},{"name":"EventCalendar"},{"name":"EventBanner"},{"name":"AppGrid"},{"name":"FeatureList"},{"name":"SpeakerList"},{"name":"EventCard"},{"name":"EventType"},{"name":"GeneralContent"},{"name":"Hero"},{"name":"Media"},{"name":"TypographicHeader"},{"name":"Avatar"},{"name":"ProfileCard"},{"name":"ProfileGrid"},{"name":"ProfileModal"},{"name":"StatCard"},{"name":"Stats"},{"name":"CardModule"},{"name":"DetailComparison"},{"name":"FeatureMatrix"},{"name":"MarketingTable"},{"name":"Table"},{"name":"Accordion"},{"name":"AccordionModule"},{"name":"Drawer"},{"name":"DrawerCard"},{"name":"TabModule"},{"name":"Tabs"}]} */
 (function () {
   var React = window.React;
   var h = React.createElement;
@@ -1701,6 +1701,9 @@
     var size = p.size === 'rg' ? 'rg' : 'lg';
     var copy = h('div', { className: 'q-copy q-hero__copy' }, copyParts(p, 1));
     var inner = copy, mod = null;
+    function visualNode() { return h('div', { className: 'q-hero__visual', 'aria-hidden': 'true' }, typeof p.visual === 'string' ? h('img', { src: p.visual, alt: '' }) : p.visual); }
+    /* visual: the decorative graphic from the Lead Form hero, here behind the media (split) or filling the right side (text only, left). */
+    var deco = p.visual && !bg && (layout === 'split' || layout === 'left');
     if (bg) {
       var tone = bg.tone === 'light' ? 'light' : 'dark';
       /* Photo and video heroes sit in a card as wide as the content column (up to 1440px), lined up with the Nav. contained: false gives the older card inset 16px from the window. */
@@ -1713,14 +1716,16 @@
         h('div', { className: 'q-hero__shade', 'aria-hidden': 'true' }),
         h('div', { className: 'q-hero__panelin' }, copy));
     } else if (layout === 'split') {
-      inner = h('div', { className: 'q-hero__row' }, copy, h('div', { className: 'q-hero__media' }, mediaOf(media)));
+      inner = h('div', { className: 'q-hero__row' }, copy, h('div', { className: 'q-hero__media' }, deco ? visualNode() : null, mediaOf(media)));
+    } else if (layout === 'left' && deco) {
+      inner = h('div', { className: 'q-hero__row' }, copy, h('div', { className: 'q-hero__deco' }, visualNode()));
     } else if (layout === 'form') {
       inner = h('div', { className: 'q-hero__row' }, copy,
         h('div', { className: 'q-hero__form' },
-          p.visual ? h('div', { className: 'q-hero__visual', 'aria-hidden': 'true' }, typeof p.visual === 'string' ? h('img', { src: p.visual, alt: '' }) : p.visual) : null,
+          p.visual ? visualNode() : null,
           React.isValidElement(form) ? form : h(Form, Object.assign({ variant: 'gate' }, form))));
     }
-    return h('section', { className: cx('q-section', 'q-hero', 'q-hero--' + layout, 'q-hero--' + size, mod, p.className), id: p.id },
+    return h('section', { className: cx('q-section', 'q-hero', 'q-hero--' + layout, 'q-hero--' + size, mod, deco && 'q-hero--visual', p.className), id: p.id },
       h('div', { className: 'q-section__inner' }, inner));
   }
 
@@ -2194,6 +2199,44 @@
                       h('span', { className: 'q-mtable__text' }, (r.cells || [])[k])));
                 }));
             }))))));
+  }
+
+  /* Table — a plain table of copy: a header row, then rows of text, in a white card. The same parts as MarketingTable
+     (a role="table" grid, header and body row groups, each cell labeled with its column on phones) without the photo header or row icons.
+     size 'standard' (default) | 'compact' (tighter, smaller, for data); striped tints every other row.
+     columns [{ title, width, align }] or strings: 2 to 6 columns (compact: up to 8); width is a share of the row (default 1).
+     rows [[...cells]] or [{ cells }]. rowHeaders makes the first cell of each row its header (SemiBold).
+     Phones: standard stacks each row as a block, every cell under its column name; compact keeps the grid and scrolls sideways,
+     with the first column held in place. */
+  var TABLE_MIN = 2, TABLE_MAX = { standard: 6, compact: 8 };
+  function Table(p) {
+    var size = p.size === 'compact' ? 'compact' : 'standard', max = TABLE_MAX[size];
+    var all = (p.columns || []).map(function (c) { return typeof c === 'string' || React.isValidElement(c) ? { title: c } : c; });
+    var cols = all.slice(0, max);
+    if (all.length > max && window.console) console.warn('Table: at most ' + max + ' columns (' + size + '); the rest are left out.');
+    if (cols.length < TABLE_MIN && window.console) console.warn('Table: give it at least ' + TABLE_MIN + ' columns; for one, use a list.');
+    var tpl = cols.map(function (c) { var w = c.width; return typeof w === 'string' ? w : 'minmax(0, ' + (w || 1) + 'fr)'; }).join(' ');
+    var ref = React.useRef(null), mobile = useNarrow(ref, 768, p.layout);
+    var scroll = size === 'compact';
+    function align(c) { return c.align === 'right' || c.align === 'center' ? 'is-' + c.align : null; }
+    var table = h('div', { className: 'q-table__table', role: 'table', 'aria-label': p.label, style: { '--q-table-cols': tpl, '--q-table-n': cols.length } },
+      h('div', { className: 'q-table__head', role: 'rowgroup' },
+        h('div', { className: 'q-table__row q-table__row--head', role: 'row' }, cols.map(function (c, i) {
+          return h('div', { key: i, className: cx('q-table__th', align(c)), role: 'columnheader' }, c.title);
+        }))),
+      h('div', { className: 'q-table__body', role: 'rowgroup' }, (p.rows || []).map(function (r, i) {
+        var cells = Array.isArray(r) ? r : (r.cells || []);
+        return h('div', { key: i, className: 'q-table__row', role: 'row' }, cols.map(function (c, k) {
+          var head = k === 0 && p.rowHeaders;
+          return h('div', { key: k, className: cx('q-table__cell', head && 'q-table__cell--head', align(c)), role: head ? 'rowheader' : 'cell' },
+            k > 0 || !p.rowHeaders ? h('span', { className: 'q-table__label' }, c.title) : null,
+            h('span', { className: 'q-table__value' }, cells[k]));
+        }));
+      })));
+    return h('section', { ref: ref, className: cx('q-section', 'q-table', 'q-table--' + size, p.striped && 'q-table--striped', mobile && 'q-table--mobile', mobile && !scroll && 'q-table--stacked', p.className), id: p.id },
+      h('div', { className: 'q-section__inner' },
+        h('div', { className: 'q-table__card' },
+          scroll ? h('div', { className: 'q-table__scroll', tabIndex: 0, role: 'region', 'aria-label': (p.label ? p.label + ', ' : '') + 'scrolls sideways' }, table) : table)));
   }
 
   /* ── Overlays, dialogs and notifications (Figma: Modals, Popups, Tooltips) ── */
@@ -3071,7 +3114,7 @@
     Card: Card, IntegrationCard: IntegrationCard, EventCard: EventCard, WebinarCard: WebinarCard, ResourceCard: ResourceCard, BlogCard: BlogCard, InlinePromoCard: InlinePromoCard, StatCard: StatCard,
     Nav: Nav, NavBanner: NavBanner, Media: Media, Hero: Hero, TypographicHeader: TypographicHeader, GeneralContent: GeneralContent, TabModule: TabModule, AccordionModule: AccordionModule, CtaModule: CtaModule, Stats: Stats, CardModule: CardModule, Carousel: Carousel, TestimonialCard: TestimonialCard, TestimonialCarousel: TestimonialCarousel, LogoCarousel: LogoCarousel, LogoHierarchy: LogoHierarchy, EventCalendar: EventCalendar, Footer: Footer,
     SpeakerList: SpeakerList, FeatureList: FeatureList, AppGrid: AppGrid, EventBanner: EventBanner,
-    FeatureMatrix: FeatureMatrix, DetailComparison: DetailComparison, MarketingTable: MarketingTable, HoverCard: HoverCard,
+    FeatureMatrix: FeatureMatrix, DetailComparison: DetailComparison, MarketingTable: MarketingTable, Table: Table, HoverCard: HoverCard,
     Overlay: Overlay, Modal: Modal, FormModal: FormModal, AlertDialog: AlertDialog, SessionTimeout: SessionTimeout, SuccessConfirmation: SuccessConfirmation, ExitIntent: ExitIntent, DemoRequestWizard: DemoRequestWizard, Toast: Toast, ToastStack: ToastStack, NotificationBar: NotificationBar, CookieBanner: CookieBanner, Tooltip: Tooltip
   });
 })();

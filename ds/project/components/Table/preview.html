@@ -1,0 +1,43 @@
+<!-- @dsCard group="Page modules · Tables" height=2995 width=1440 subtitle="Block module · A plain table of copy: standard, compact for data, striped rows; stacks or scrolls on phones." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Table — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-200)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;background:var(--surface-neutral-200);box-shadow:var(--shadow-card)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+var Q = window.Qualys, h = React.createElement;
+function cap(t) { return h('div', {className: 'cap'}, t); }
+/* Standard: copy that reads across. Six columns, the most a standard table takes. */
+var COLS = ['Module', 'What It Covers', 'Deployment', 'Data Retention', 'Support', 'Included In'];
+var ROWS = [
+  ['Vulnerability Management', 'Continuous discovery and assessment of every asset across on-premises, cloud and endpoints.', 'Cloud Agent or scanner', '13 months', 'Standard and Premium', 'VMDR'],
+  ['Patch Management', 'Finds the patches that fix the vulnerabilities you have and deploys them from the same console.', 'Cloud Agent', '13 months', 'Standard and Premium', 'VMDR, TruRisk Eliminate'],
+  ['Policy Compliance', 'Checks configurations against CIS benchmarks and your own policies.', 'Cloud Agent or scanner', '24 months', 'Premium', 'Policy Audit'],
+  ['Web Application Scanning', 'Finds and tests web apps and APIs, with authenticated scanning.', 'Cloud scanner', '13 months', 'Standard and Premium', 'WAS']];
+/* Compact: numbers and short values, right-aligned where they are numbers. */
+var DCOLS = [{title: 'Region'}, {title: 'Assets', align: 'right'}, {title: 'Critical', align: 'right'}, {title: 'High', align: 'right'}, {title: 'Medium', align: 'right'}, {title: 'Patched', align: 'right'}, {title: 'MTTR (days)', align: 'right'}, {title: 'Owner'}];
+var DROWS = [
+  ['North America', '48,210', '312', '1,904', '6,233', '92%', '6.4', 'J. Rivera'],
+  ['Europe', '31,877', '201', '1,120', '4,018', '89%', '7.9', 'A. Morgan'],
+  ['Asia Pacific', '22,406', '187', '966', '3,557', '85%', '9.1', 'S. Patel'],
+  ['Latin America', '9,385', '64', '402', '1,388', '90%', '7.2', 'M. Costa'],
+  ['Middle East', '6,112', '41', '275', '942', '87%', '8.6', 'L. Haddad'],
+  ['Africa', '3,940', '22', '160', '611', '83%', '10.3', 'N. Okafor']];
+function std(extra) { return h(Q.Table, Object.assign({label: 'Qualys modules compared', columns: COLS, rows: ROWS}, extra)); }
+function cmp(extra) { return h(Q.Table, Object.assign({label: 'Vulnerabilities by region', size: 'compact', rowHeaders: true, columns: DCOLS, rows: DROWS}, extra)); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  cap('Standard'), std(),
+  cap('Standard · striped'), std({striped: true}),
+  cap('Compact · data, numbers right-aligned, first column as row headers'), cmp(),
+  cap('Compact · striped'), cmp({striped: true}),
+  cap('Mobile — standard stacks each row; compact scrolls sideways with the first column held'), h('div', {className: 'phones'},
+    h('div', {className: 'phone'}, std({rows: ROWS.slice(0, 2)})),
+    h('div', {className: 'phone'}, cmp({striped: true})))));
+</script>
+</body>
+</html>

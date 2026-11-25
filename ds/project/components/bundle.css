@@ -1179,6 +1179,13 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
 .q-hero__form .q-form { position: relative; z-index: 1; max-width: none; background: var(--surface-blue-100); box-shadow: var(--shadow-card); }
 .q-hero__visual { position: absolute; z-index: 0; top: -14.7%; left: -7.5%; width: 164.6%; pointer-events: none; }
 .q-hero__visual > img, .q-hero__visual > svg { display: block; width: 100%; height: auto; }
+/* Hero with a visual (split or text-only): the Lead Form hero's graphic behind the media, or filling the right side; the section clips it */
+.q-hero--visual { overflow: hidden; }
+.q-hero--visual .q-hero__media { position: relative; }
+.q-hero--visual .q-hero__media > .q-media, .q-hero--visual .q-hero__media > :not(.q-hero__visual) { position: relative; z-index: 1; }
+.q-hero--visual.q-hero--left .q-hero__copy { position: relative; z-index: 1; flex: 0 1 600px; max-width: 600px; }
+.q-hero__deco { position: relative; flex: 1 1 0; align-self: stretch; min-width: 0; min-height: 360px; }
+.q-hero__deco .q-hero__visual { top: 50%; left: 4%; width: 110%; transform: translateY(-50%); }
 /* Image or video background: radius-lg; black 50% under white copy, or white 25% under dark copy */
 .q-hero__panel { position: relative; overflow: hidden; border-radius: var(--radius-lg); background: var(--surface-neutral-600); color: var(--text-inverted); }
 .q-hero__panel--empty { background: var(--asphalt); }
@@ -1259,6 +1266,10 @@ a:hover .q-mega__arrow, a:focus-visible .q-mega__arrow { opacity: 1; transform: 
   .q-hero__media .q-media, .q-gc__media .q-media, .q-gc--full .q-media { aspect-ratio: 67 / 50; }
   .q-hero__media .q-media--video, .q-gc__media .q-media--video, .q-gc--full .q-media--video { aspect-ratio: 16 / 9; }
   .q-hero__visual { top: 12%; left: -27.5%; width: 184%; }
+  .q-hero__deco { display: none; }
+  .q-hero--visual.q-hero--left .q-hero__copy { flex: none; max-width: none; }
+  /* Phones: the visual rises from behind the media's foot into the space above it, never under the copy */
+  .q-hero--visual .q-hero__media .q-hero__visual { top: auto; bottom: -4%; left: -12%; width: 124%; }
   .q-hero--bleed > .q-section__inner { padding: var(--spacing-3xs); }
   .q-hero--bleed .q-hero__panelin, .q-hero--contained.q-hero--left .q-hero__panelin { padding: var(--spacing-xl-static) var(--spacing-lg); }
   .q-hero--left .q-hero__panel--light .q-hero__shade { background: color-mix(in srgb, var(--surface-neutral-100) 86%, transparent); }
@@ -2076,6 +2087,46 @@ button.q-hcard__close:focus-visible { outline: none; box-shadow: var(--focus-rin
 @media (prefers-reduced-motion: reduce) { .q-cmp__row { transition: none; } }
 
 /* ── MarketingTable: a branded comparison table as a page section (header row on a photo, Feature Icon row headings, one featured column) ── */
+/* ── Table: a plain table of copy (same parts as MarketingTable, no photo header or row icons) ── */
+.q-table__card { overflow: hidden; border-radius: var(--radius-lg); background: var(--surface-neutral-100); box-shadow: var(--shadow-card); }
+.q-table__table { --q-table-pad: var(--spacing-xl); --q-table-gap: var(--spacing-xl); padding-block: var(--spacing-xl-static) var(--spacing-3xs); }
+.q-table__row { display: grid; grid-template-columns: var(--q-table-cols); column-gap: var(--q-table-gap); padding-inline: var(--q-table-pad); }
+.q-table__head .q-table__row { padding-bottom: var(--spacing-xl-static); border-bottom: 1px solid var(--stroke-neutral-500); }
+.q-table__th { min-width: 0; font-family: var(--font-heading); font-weight: 600; font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-primary); text-wrap: balance; }
+.q-table__body .q-table__row { padding-block: var(--spacing-rg); }
+.q-table__body .q-table__row + .q-table__row { border-top: 1px solid var(--stroke-neutral-400); }
+.q-table__cell { min-width: 0; font-family: var(--font-body); font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-primary); overflow-wrap: break-word; text-wrap: pretty; }
+.q-table__cell--head { font-family: var(--font-heading); font-weight: 600; }
+.q-table__th.is-right, .q-table__cell.is-right { text-align: right; }
+.q-table__th.is-center, .q-table__cell.is-center { text-align: center; }
+.q-table__label { display: none; }
+/* Compact: data. 14px type, 8px row padding, 16px between columns, numbers in even widths; the grid scrolls sideways when the columns can't fit at 96px each */
+.q-table--compact .q-table__table { --q-table-pad: var(--spacing-rg); --q-table-gap: var(--spacing-rg); min-width: calc(var(--q-table-n) * 96px + (var(--q-table-n) - 1) * var(--spacing-rg) + var(--spacing-rg) * 2); padding-block: var(--spacing-rg) var(--spacing-5xs); }
+.q-table--compact .q-table__head .q-table__row { padding-bottom: var(--spacing-xs); }
+.q-table--compact .q-table__th, .q-table--compact .q-table__cell { font-size: 14px; font-variant-numeric: tabular-nums; }
+.q-table--compact .q-table__body .q-table__row { padding-block: var(--spacing-3xs); }
+.q-table__scroll { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: var(--stroke-neutral-500) transparent; }
+.q-table__scroll:focus-visible { outline: none; box-shadow: inset var(--focus-ring); border-radius: var(--radius-lg); }
+/* Striped: every other body row on Ecru, edge to edge; the rules between rows go */
+.q-table--striped .q-table__body .q-table__row + .q-table__row { border-top: 0; }
+.q-table--striped .q-table__body .q-table__row:nth-child(even) { background: var(--surface-neutral-300); }
+/* Mobile, compact: the first column stays in place while the rest scroll under it */
+.q-table--compact.q-table--mobile .q-table__table { min-width: calc(var(--q-table-n) * 120px + (var(--q-table-n) - 1) * var(--spacing-rg) + var(--spacing-rg) * 2); }
+.q-table--compact.q-table--mobile .q-table__th:first-child, .q-table--compact.q-table--mobile .q-table__cell:first-child { position: sticky; left: 0; z-index: 1; margin-left: calc(-1 * var(--q-table-pad)); padding-left: var(--q-table-pad); background: var(--surface-neutral-100); box-shadow: 1px 0 0 var(--stroke-neutral-400); }
+.q-table--compact.q-table--mobile.q-table--striped .q-table__body .q-table__row:nth-child(even) .q-table__cell:first-child { background: var(--surface-neutral-300); }
+.q-table--mobile > .q-section__inner { padding-inline: var(--spacing-lg); }
+/* Mobile, standard: each row is a block; every cell sits under its column name */
+.q-table--stacked .q-table__table { padding-block: var(--spacing-3xs); }
+.q-table--stacked .q-table__head { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.q-table--stacked .q-table__row { display: block; padding: var(--spacing-rg) var(--spacing-lg); }
+.q-table--stacked .q-table__body .q-table__row { padding-block: var(--spacing-rg); }
+.q-table--stacked .q-table__cell + .q-table__cell { margin-top: var(--spacing-xs); }
+.q-table--stacked .q-table__label { display: block; margin-bottom: var(--spacing-5xs); font-family: var(--font-heading); font-weight: 600; font-size: 14px; line-height: 1.3; letter-spacing: -0.01em; letter-spacing: -1%; color: var(--text-secondary); }
+/* The row's first cell is its title: no label, SemiBold 18px */
+.q-table--stacked .q-table__cell:first-child .q-table__label { display: none; }
+.q-table--stacked .q-table__cell:first-child { font-family: var(--font-heading); font-weight: 600; font-size: 18px; }
+.q-table--stacked .q-table__cell:first-child + .q-table__cell { margin-top: var(--spacing-rg); }
+.q-table--stacked .q-table__th.is-right, .q-table--stacked .q-table__cell.is-right, .q-table--stacked .q-table__cell.is-center { text-align: left; }
 .q-mtable__card { overflow: hidden; border-radius: var(--radius-lg); background: var(--surface-neutral-100); box-shadow: var(--shadow-card); }
 /* Qualys Blue across the top, easing to the deeper gradient blue at the foot, where the small subtitles sit. */
 .q-mtable__head { position: relative; overflow: hidden; isolation: isolate; background: linear-gradient(180deg, var(--qualys-blue) 20%, var(--blue-gradient-end) 125%); color: var(--text-inverted); }

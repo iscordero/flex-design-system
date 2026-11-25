@@ -165,7 +165,8 @@
       [
         "DetailComparison",
         "FeatureMatrix",
-        "MarketingTable"
+        "MarketingTable",
+        "Table"
       ]
     ]
   ],
@@ -248,7 +249,8 @@
     "SpeakerList": "Component",
     "FeatureList": "Component",
     "AppGrid": "Block module",
-    "EventBanner": "Block module"
+    "EventBanner": "Block module",
+    "Table": "Block module"
   },
   "sections": [
     [
@@ -424,7 +426,8 @@
           [
             "DetailComparison",
             "FeatureMatrix",
-            "MarketingTable"
+            "MarketingTable",
+            "Table"
           ]
         ]
       ]
