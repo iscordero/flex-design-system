@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Table — preview</title>
+<title>StandardTable — preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>html,body{margin:0}body{font-family:var(--font-body);color:var(--text-primary);background:var(--surface-neutral-200)}.cap{padding:var(--spacing-xl) var(--spacing-xl) var(--spacing-xs);font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary)}.phones{display:flex;align-items:flex-start;gap:var(--spacing-xl);padding:0 var(--spacing-xl) var(--spacing-xl)}.phone{flex:none;width:375px;background:var(--surface-neutral-200);box-shadow:var(--shadow-card)}</style>
 </head>
@@ -28,8 +28,8 @@ var DROWS = [
   ['Latin America', '9,385', '64', '402', '1,388', '90%', '7.2', 'M. Costa'],
   ['Middle East', '6,112', '41', '275', '942', '87%', '8.6', 'L. Haddad'],
   ['Africa', '3,940', '22', '160', '611', '83%', '10.3', 'N. Okafor']];
-function std(extra) { return h(Q.Table, Object.assign({label: 'Qualys modules compared', columns: COLS, rows: ROWS}, extra)); }
-function cmp(extra) { return h(Q.Table, Object.assign({label: 'Vulnerabilities by region', size: 'compact', rowHeaders: true, columns: DCOLS, rows: DROWS}, extra)); }
+function std(extra) { return h(Q.StandardTable, Object.assign({label: 'Qualys modules compared', columns: COLS, rows: ROWS}, extra)); }
+function cmp(extra) { return h(Q.StandardTable, Object.assign({label: 'Vulnerabilities by region', size: 'compact', rowHeaders: true, columns: DCOLS, rows: DROWS}, extra)); }
 ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
   cap('Standard'), std(),
   cap('Standard · striped'), std({striped: true}),

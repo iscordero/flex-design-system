@@ -45,7 +45,7 @@ Choosing between them: if every item deserves to be seen, use cards; if people o
 | **FeatureMatrix** | Many features, yes or no for Qualys and each competitor. |
 | **DetailComparison** | Fewer topics, where each difference needs a sentence. |
 | **MarketingTable** | A short, branded list of statements with the Qualys column featured; for campaign pages rather than detailed comparisons. |
-| **Table** | Plain information in rows and columns, not a comparison: module overviews, plan details, specifications, schedules. `size="compact"` for data; `striped` for long tables. |
+| **StandardTable** | Plain information in rows and columns, not a comparison: module overviews, plan details, specifications, schedules. `size="compact"` for data; `striped` for long tables. |
 
 **Columns: minimum and maximum.** Each table holds a set range of columns beside its first column, so cells keep enough width for their content on desktop.
 
@@ -54,13 +54,13 @@ Choosing between them: if every item deserves to be seen, use cards; if people o
 | MarketingTable | Row headings | 1 | 3 | Cells hold full phrases. With 3 columns each keeps about 250px of text and wraps to two lines; a fourth drops that to about 190px, so cells run to four or five lines and rows go uneven. |
 | FeatureMatrix | Qualys | 1 competitor | 5 competitors | Cells are only ticks and crosses, so it takes the most columns. Past five, the logos and subtitles in the column headers get cramped. |
 | DetailComparison | Qualys | 1 competitor | 3 competitors | Each cell is a short paragraph (up to about 250 characters). Qualys plus three gives four columns of about 280px; a fifth would drop them to about 230px and make rows very tall. The chips tell readers "Choose up to 3". |
-| Table (standard) | Any | 2 columns | 6 columns | Each column keeps about 200px for wrapping copy in the content column. |
-| Table (compact) | Any | 2 columns | 8 columns | Short values need less room; past what fits at 96px a column, the table scrolls sideways. |
+| StandardTable (standard) | Any | 2 columns | 6 columns | Each column keeps about 200px for wrapping copy in the content column. |
+| StandardTable (compact) | Any | 2 columns | 8 columns | Short values need less room; past what fits at 96px a column, the table scrolls sideways. |
 
-- **Why a minimum of one:** a comparison needs at least one column to compare against. With none, use a list instead of a table. A Table needs two: with one column it is a list.
-- **Over the maximum:** the components leave the extra columns out (MarketingTable and Table also log a warning in the console). DetailComparison's `max` can lower the limit but not raise it past 3. Don't work around the limits: split the content into two tables, or move the extra detail into a DetailComparison or the page copy.
+- **Why a minimum of one:** a comparison needs at least one column to compare against. With none, use a list instead of a table. A StandardTable needs two: with one column it is a list.
+- **Over the maximum:** the components leave the extra columns out (MarketingTable and StandardTable also log a warning in the console). DetailComparison's `max` can lower the limit but not raise it past 3. Don't work around the limits: split the content into two tables, or move the extra detail into a DetailComparison or the page copy.
 - **Under the minimum:** DetailComparison won't let the last competitor be unpicked. MarketingTable and FeatureMatrix don't check, so give them at least one column after the first.
-- **Mobile:** the limits are the same, but the tables reflow. MarketingTable and a standard Table stack each row's cells under its heading; a compact Table scrolls sideways with its first column held; FeatureMatrix and DetailComparison compare Qualys with one competitor at a time.
+- **Mobile:** the limits are the same, but the tables reflow. MarketingTable and StandardTable (standard size) stack each row's cells under its heading; a compact StandardTable scrolls sideways with its first column held; FeatureMatrix and DetailComparison compare Qualys with one competitor at a time.
 
 ### Closing the page
 

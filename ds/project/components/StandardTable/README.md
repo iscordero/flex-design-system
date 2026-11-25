@@ -1,7 +1,7 @@
-# Table
+# StandardTable
 
 
-A plain table of copy: a header row, then rows of text, in a white card. Use it for information that reads across, such as module overviews, plan details, specifications and schedules. It has the same parts as MarketingTable (a header row group and a body row group, each cell labeled with its column on phones) without the photo header, row icons or featured column. To set requirements beside what Qualys offers, use MarketingTable; to compare Qualys with competitors, FeatureMatrix or DetailComparison.
+The standard table: a plain table of copy: a header row, then rows of text, in a white card. Use it for information that reads across, such as module overviews, plan details, specifications and schedules. It has the same parts as MarketingTable (a header row group and a body row group, each cell labeled with its column on phones) without the photo header, row icons or featured column. To set requirements beside what Qualys offers, use MarketingTable; to compare Qualys with competitors, FeatureMatrix or DetailComparison.
 
 **Provide:** `columns` (titles, or `{ title, width, align }`) and `rows` (one array of cells per row, in column order, or `{ cells }`). Optionally `size`, `striped`, `rowHeaders` and a `label` naming the table for screen readers.
 

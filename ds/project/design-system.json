@@ -562,9 +562,9 @@
     "Images"
   ],
   "lastChange": {
-    "at": "2026-11-25T23:14:31Z",
+    "at": "2026-11-25T23:26:47Z",
     "by": "Isabel",
-    "note": "New: Table (standard copy table, compact for data, striped rows; stacks or scrolls on phones). Hero: the Lead Form background visual on split and left-aligned heroes.",
+    "note": "Table renamed StandardTable (the standard table: copy, compact for data, striped rows).",
     "via": "Claude (Cowork)"
   },
   "layout": "files",

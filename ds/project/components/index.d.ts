@@ -1743,16 +1743,16 @@ export interface MarketingTableProps {
   className?: string;
 }
 export declare function MarketingTable(props: MarketingTableProps): React.ReactElement;
-export interface TableColumn {
+export interface StandardTableColumn {
   title: React.ReactNode;
   /** share of the row's width (default 1), or a CSS track size such as "200px" */
   width?: number | string;
   /** right-align numbers; default left */
   align?: 'left' | 'right' | 'center';
 }
-export interface TableProps {
+export interface StandardTableProps {
   /** 2 to 6 columns ('standard') or 2 to 8 ('compact'); more are left out */
-  columns: Array<TableColumn | string>;
+  columns: Array<StandardTableColumn | string>;
   /** one array of cells per row, in column order, or { cells } */
   rows: Array<React.ReactNode[] | { cells: React.ReactNode[] }>;
   /** 'standard' (default): copy, 16px; 'compact': data, 14px, tighter rows, scrolls sideways when the columns can't fit */
@@ -1768,7 +1768,7 @@ export interface TableProps {
   id?: string;
   className?: string;
 }
-export declare function Table(props: TableProps): React.ReactElement;
+export declare function StandardTable(props: StandardTableProps): React.ReactElement;
 
 declare global {
   interface Window {
@@ -1779,7 +1779,7 @@ declare global {
       Checkbox: typeof Checkbox; Radio: typeof Radio; Toggle: typeof Toggle; Form: typeof Form;
       Card: typeof Card; IntegrationCard: typeof IntegrationCard; EventCard: typeof EventCard; WebinarCard: typeof WebinarCard; ResourceCard: typeof ResourceCard; BlogCard: typeof BlogCard; InlinePromoCard: typeof InlinePromoCard; StatCard: typeof StatCard;
       Nav: typeof Nav; NavBanner: typeof NavBanner; Media: typeof Media; Hero: typeof Hero; TypographicHeader: typeof TypographicHeader; GeneralContent: typeof GeneralContent; TabModule: typeof TabModule; AccordionModule: typeof AccordionModule; CtaModule: typeof CtaModule; Stats: typeof Stats; Carousel: typeof Carousel; TestimonialCard: typeof TestimonialCard; TestimonialCarousel: typeof TestimonialCarousel; LogoCarousel: typeof LogoCarousel; LogoHierarchy: typeof LogoHierarchy; EventCalendar: typeof EventCalendar; Footer: typeof Footer; SpeakerList: typeof SpeakerList; FeatureList: typeof FeatureList; AppGrid: typeof AppGrid; EventBanner: typeof EventBanner;
-      HoverCard: typeof HoverCard; FeatureMatrix: typeof FeatureMatrix; DetailComparison: typeof DetailComparison; MarketingTable: typeof MarketingTable; Table: typeof Table;
+      HoverCard: typeof HoverCard; FeatureMatrix: typeof FeatureMatrix; DetailComparison: typeof DetailComparison; MarketingTable: typeof MarketingTable; StandardTable: typeof StandardTable;
       Overlay: typeof Overlay; Modal: typeof Modal; FormModal: typeof FormModal; AlertDialog: typeof AlertDialog; SessionTimeout: typeof SessionTimeout; SuccessConfirmation: typeof SuccessConfirmation; ExitIntent: typeof ExitIntent; DemoRequestWizard: typeof DemoRequestWizard; Toast: typeof Toast; ToastStack: typeof ToastStack; NotificationBar: typeof NotificationBar; CookieBanner: typeof CookieBanner; Tooltip: typeof Tooltip;
     };
   }
