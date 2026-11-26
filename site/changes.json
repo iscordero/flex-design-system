@@ -6406,6 +6406,10 @@
     {
      "about": "Hero",
      "text": "a Hero variant with the background elements of the lead form module"
+    },
+    {
+     "about": "Hero",
+     "text": "the hero with a background image element needs usage notes on how the image behaves and displays"
     }
    ],
    "headline": "Updated Hero",
