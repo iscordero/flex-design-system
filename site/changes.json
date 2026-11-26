@@ -5275,6 +5275,18 @@
     {
      "about": "Accordion",
      "text": "its session cards are drawer cards, so their times use the 9a format"
+    },
+    {
+     "about": "EventCard",
+     "text": "use the 9a PST format, including after the date"
+    },
+    {
+     "about": "WebinarCard",
+     "text": "dates and times match the event cards (9a PST)"
+    },
+    {
+     "about": "Dates and times",
+     "text": "the short 9a PST format is the one format for cards, drawers and the calendar"
     }
    ]
   },
@@ -5897,6 +5909,10 @@
     {
      "about": "Tabs",
      "text": "on mobile, tapping a tab near the edge should scroll it to the middle so readers see there are more; the last tab rests on the right"
+    },
+    {
+     "about": "Tabs",
+     "text": "the comparison tables' competitor tabs behave the same"
     }
    ],
    "undone": [
@@ -6285,6 +6301,10 @@
     {
      "about": "EventCalendar",
      "text": "grid cards show only the start time; times match the drawers"
+    },
+    {
+     "about": "EventCalendar",
+     "text": "grid cards and times use the 9a PST format"
     }
    ],
    "headline": "New tokens (17) · Updated 6 components · Updated Layout, Spacing and Radius guide",
@@ -7125,6 +7145,10 @@
     {
      "about": "CtaModule",
      "text": "too much empty space between the form and the image; the fields should fill the column and leave about 100px"
+    },
+    {
+     "about": "Carousel",
+     "text": "its sample event card uses the 9a PST format"
     }
    ],
    "headline": "Added 4 components · Updated 14 components",
@@ -7416,6 +7440,10 @@
     {
      "about": "DetailComparison",
      "text": "the mobile competitor tabs should scroll the tapped one to the middle, like Tabs"
+    },
+    {
+     "about": "DrawerCard",
+     "text": "use the 9a PST format, like the event cards"
     }
    ],
    "headline": "Updated 8 components",

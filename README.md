@@ -2,6 +2,8 @@
 
 Everything needed to change, check and rebuild the Flex design system and its reference site.
 
+Link to live dev page: https://flex-design-system.pages.dev
+
 Working with an AI agent? Start with `AGENTS.md`. The process people follow is **Change Management** on the site.
 
 ## What's here
